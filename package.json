@@ -10,7 +10,8 @@
     "ai:server": "cd src/services/ai && .\\venv\\Scripts\\activate && uvicorn vector:app --reload",
     "worker:fetch": "npx ts-node src/workers/fetch_worker.ts",
     "worker:parse": "npx ts-node src/workers/parse_worker.ts",
-    "feed": "npx ts-node src/services/scheduler.ts",
+    "crawl": "npx ts-node src/index.ts",
+    "feed": "npx ts-node src/services/feeder/frontier-feed.ts",
     "docker-up": "docker-compose up -d && npx supabase start",
     "docker-down": "npx supabase stop && docker-compose down"
   },

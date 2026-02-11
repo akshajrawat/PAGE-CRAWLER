@@ -18,8 +18,7 @@ class TextRequest(BaseModel):
 @app.post("/embed")
 async def generate_vector(request: TextRequest):
     # generate vector
-    vector = model.enco
-    (request.text)
+    vector = model.encode(request.text)
     # Return it as a simple list of numbers
     return {"embedding": vector.tolist()}
 

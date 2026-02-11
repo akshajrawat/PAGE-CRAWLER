@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   # --- SERVICE: REDIS (The Nervous System) ---
   # Supabase handles the DB, but we still need Redis for our Queues.

@@ -1,12 +1,5 @@
-import { createClient } from "@supabase/supabase-js";
 import { getVectorEmbeddings } from "../services/ai";
-
-// 1. Initialize Supabase
-// Ensure these are in your .env file!
-const supabase = createClient(
-  process.env.SUPABASE_URL!,
-  process.env.SUPABASE_KEY!,
-);
+import { supabase } from "./supabase";
 
 // Define the shape of data coming from the crawler
 export type CrawlResult = {
