@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.95.3",
+    "@types/react-syntax-highlighter": "^15.5.13",
     "axios": "^1.13.5",
     "bullmq": "^5.67.3",
     "cheerio": "^1.2.0",
@@ -39,6 +40,7 @@
     "dotenv": "^17.2.4",
     "express": "^5.2.1",
     "ioredis": "^5.9.2",
-    "pg": "^8.18.0"
+    "pg": "^8.18.0",
+    "react-syntax-highlighter": "^16.1.0"
   }
 }

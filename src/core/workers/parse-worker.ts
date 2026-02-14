@@ -68,16 +68,33 @@ const parseProcessor = async (job: Job<parseJobData>) => {
     });
 
     // extract code snippets
+    // ... inside parseProcessor ...
+
+    // extract code snippets
     const codeSnippets: { language: string; content: string }[] = [];
+
     $("pre").each((_, el) => {
       const $el = $(el);
       const $code = $el.find("code");
-      const content = $(el).text().trim();
+
+      // 1️⃣ PICK THE RIGHT TARGET: Prefer <code> inside <pre>, otherwise use <pre>
+      const $target = $code.length ? $code : $el;
+
+      // 2️⃣ CLONE IT: We don't want to break the original HTML structure for other extractors
+      const $clone = $target.clone();
+
+      // 3️⃣ INJECT NEWLINES: Replace <br> and closing block tags with \n
+      $clone.find("br").replaceWith("\n");
+      $clone.find("div, p, li, tr").after("\n");
+
+      // 4️⃣ EXTRACT: Now .text() will see the \n characters we injected
+      let content = $clone.text().trim();
+
       if (content.length < 10) {
         return;
       }
 
-      // guess language
+      // guess language (Same as before)
       const dataLang = $el.attr("data-language") || $code.attr("data-language");
       const className = $el.attr("class") || $code.attr("class") || "";
       const classMatch = className.match(/(?:language|lang)-(\w+)/);

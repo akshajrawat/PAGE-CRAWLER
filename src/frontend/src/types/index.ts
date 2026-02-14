@@ -12,3 +12,19 @@ export interface ApiResponse {
   page: number;
   data: SearchResult[];
 }
+
+// codesnippet
+export interface CodeSnippet {
+  id: number;
+  content: string;
+  language: string;
+  page_url: string;
+  page_title: string;
+  similarity: number;
+}
+
+export interface CodeApiResponse {
+  count: number;
+  page: number;
+  data: CodeSnippet[];
+}
