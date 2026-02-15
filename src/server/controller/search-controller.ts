@@ -20,7 +20,9 @@ export const searchController = async (req: Request, res: Response) => {
     const offset = (page - 1) * 10;
 
     const { data: searchResult, error } = await supabase.rpc("search_pages", {
-      keyword: query,
+      query_text: query,
+      match_threshold: 0.5,
+      match_count: 10,
       page_offset: offset,
     });
 
@@ -29,17 +31,10 @@ export const searchController = async (req: Request, res: Response) => {
       return res.status(500).json({ error: error.message });
     }
 
-    if (!searchResult || searchResult.length === 0) {
-      res.json({
-        message: `No result found for query :- ${query}`,
-      });
-      return;
-    }
-
     return res.json({
       page: page,
       count: searchResult.length,
-      data: searchResult,
+      data: searchResult || [],
     });
   } catch (error) {
     console.error(error);

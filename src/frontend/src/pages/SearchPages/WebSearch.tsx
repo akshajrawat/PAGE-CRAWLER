@@ -110,7 +110,7 @@ const WebSearch = () => {
             {/* 3. SNIPPET */}
             <p className="text-gray-400 text-sm leading-relaxed line-clamp-2">
               {/* We assume your backend returns a snippet, if not we show a placeholder */}
-              {result.title ||
+              {result.description ||
                 "No description available for this result. The crawler has indexed this page but metadata is sparse."}
             </p>
 
@@ -119,9 +119,9 @@ const WebSearch = () => {
               <span className="px-2 py-0.5 rounded text-[10px] font-medium bg-white/5 text-gray-500 border border-white/5">
                 WEB
               </span>
-              {result.rank && (
+              {result.similarity && (
                 <span className="px-2 py-0.5 rounded text-[10px] font-medium bg-purple-500/10 text-purple-400 border border-purple-500/20">
-                  SCORE: {result.rank.toFixed(2)}
+                  SCORE: {result.similarity.toFixed(2)}
                 </span>
               )}
             </div>

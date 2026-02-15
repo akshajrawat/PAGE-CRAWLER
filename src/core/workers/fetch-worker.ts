@@ -52,4 +52,8 @@ const fetchProcessor = async (job: Job<FetchJobData>) => {
   }
 };
 
-export const fetchWorker = createWorker(QUEUE_NAMES.FRONTIER, fetchProcessor);
+export const fetchWorker = createWorker(
+  QUEUE_NAMES.FRONTIER,
+  fetchProcessor,
+  50,
+);

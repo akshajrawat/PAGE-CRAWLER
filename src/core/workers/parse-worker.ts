@@ -1,6 +1,6 @@
 import { Job } from "bullmq";
 import fs from "fs/promises";
-import { createQueue, createWorker, QUEUE_NAMES } from "../../lib/queue";
+import { createWorker, QUEUE_NAMES } from "../../lib/queue";
 import * as cheerio from "cheerio";
 import { getNormalizedUrl } from "../../utils/normalize_url";
 import { savePageData } from "../../db/db";
@@ -55,6 +55,21 @@ const parseProcessor = async (job: Job<parseJobData>) => {
     // title
     const title = $("title").text().trim() || url;
 
+    // description
+    const description =
+      $('meta[name="description"]').attr("content") ||
+      $('meta[property="og:description"]').attr("content") ||
+      $('meta[name="twitter:description"]').attr("content") ||
+      "";
+
+    // body content
+    const $body = $("body").clone();
+    $body.find("script, style, noscript, iframe, svg, nav, footer").remove();
+
+    // Collapse whitespace: "Hello    World" -> "Hello World"
+    // Limit to 100k chars to prevent Postgres issues with massive pages
+    const body_text = $body.text().replace(/\s+/g, " ").trim().slice(0, 100000);
+
     // extract links
     const links: string[] = [];
     $("a").each((_, el) => {
@@ -66,9 +81,6 @@ const parseProcessor = async (job: Job<parseJobData>) => {
         }
       }
     });
-
-    // extract code snippets
-    // ... inside parseProcessor ...
 
     // extract code snippets
     const codeSnippets: { language: string; content: string }[] = [];
@@ -112,6 +124,8 @@ const parseProcessor = async (job: Job<parseJobData>) => {
     // add data to postgresql table
     await savePageData(url, {
       title: title,
+      description: description.slice(0, 500),
+      body_text: body_text,
       links: links,
       codeSnippets: codeSnippets,
     });
@@ -136,6 +150,6 @@ const parseProcessor = async (job: Job<parseJobData>) => {
   }
 };
 
-export const parseWorker = createWorker(QUEUE_NAMES.PARSE, parseProcessor);
+export const parseWorker = createWorker(QUEUE_NAMES.PARSE, parseProcessor, 10);
 
 console.log(" Parse Worker Started! Waiting for HTML files...");

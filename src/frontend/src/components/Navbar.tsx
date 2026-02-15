@@ -72,20 +72,6 @@ const Navbar = ({
           All Results
         </NavLink>
         <NavLink
-          to={"/"}
-          end
-          className="pb-3 border-b-2 border-transparent hover:text-white transition-colors"
-        >
-          Images
-        </NavLink>
-        <NavLink
-          to={"/"}
-          end
-          className="pb-3 border-b-2 border-transparent hover:text-white transition-colors"
-        >
-          News
-        </NavLink>
-        <NavLink
           to={`/search/code?q=${query}`}
           end
           className="pb-3 border-b-2 border-transparent hover:text-white transition-colors"

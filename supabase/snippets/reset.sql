@@ -1,0 +1,1 @@
+TRUNCATE TABLE pages, links, code_snippets RESTART IDENTITY CASCADE;

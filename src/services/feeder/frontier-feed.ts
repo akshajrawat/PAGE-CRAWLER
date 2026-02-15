@@ -22,35 +22,49 @@ export const addUrlToFrontier = async (url: string) => {
   console.log(`✅ [Queue] Job Added: ${safeId}`);
 };
 
-// first feed
+// RUNNER
 if (require.main === module) {
-  const url = process.argv[2];
-
-  if (!url) {
-    console.error("❌ Error: You must provide a URL!");
-    process.exit(1);
-  }
+  const seedUrls = [
+    "https://react.dev",
+    "https://nextjs.org/docs",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+    "https://tailwindcss.com/docs",
+    "https://python.org",
+    "https://nodejs.org/en/docs",
+    "https://supabase.com/docs",
+    "https://www.docker.com", // Added 'www' (canonical usually better)
+  ];
 
   const run = async () => {
-    // 1. MANUALLY SAVE THE SEED TO DB
-    console.log("🌱 Seeding Database...");
-    await supabase.from("pages").upsert(
-      {
-        url: url,
+    try {
+      console.log("🌱 Seeding Database...");
+
+      // 1. MANUALLY SAVE THE SEED TO DB (Corrected!)
+      // We map the array of strings to an array of objects
+      const rowsToInsert = seedUrls.map((u) => ({
+        url: u,
         status: "discovered",
-      },
-      { onConflict: "url" },
-    );
+      }));
 
-    // 2. ADD TO QUEUE
-    await addUrlToFrontier(url);
+      const { error } = await supabase
+        .from("pages")
+        .upsert(rowsToInsert, { onConflict: "url", ignoreDuplicates: true });
 
-    console.log("✅ Seed URL added successfully.");
-    process.exit(0);
+      if (error) throw error;
+
+      // 2. ADD TO QUEUE
+      console.log("🚀 pushing to Redis...");
+      for (const u of seedUrls) {
+        await addUrlToFrontier(u);
+      }
+
+      console.log("✅ Seed complete. Start your workers!");
+      process.exit(0);
+    } catch (err) {
+      console.error("❌ Seed Failed:", err);
+      process.exit(1);
+    }
   };
 
-  run().catch((err) => {
-    console.error(err);
-    process.exit(1);
-  });
+  run();
 }

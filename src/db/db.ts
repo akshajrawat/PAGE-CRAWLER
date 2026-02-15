@@ -4,6 +4,8 @@ import { supabase } from "./supabase";
 // Define the shape of data coming from the crawler
 export type CrawlResult = {
   title: string;
+  description: string;
+  body_text: string;
   links: string[];
   codeSnippets: { language: string; content: string }[];
 };
@@ -22,8 +24,9 @@ export const savePageData = async (url: string, data: CrawlResult) => {
     .update({
       title: data.title,
       status: "crawled",
-      last_crawled: new Date().toISOString(),
-      links: data.links,
+      last_crawled_at: new Date().toISOString(),
+      description: data.description,
+      body_text: data.body_text,
     })
     .eq("url", url)
     .select()
@@ -67,17 +70,34 @@ export const savePageData = async (url: string, data: CrawlResult) => {
   // We use "upsert" to ignore duplicates automatically.
   if (data.links.length > 0) {
     const linksToInsert = data.links.map((link) => ({
-      url: link,
-      status: "discovered", // Ready to be crawled next
+      from_id: pageId,
+      to_url: link,
     }));
 
     // 'onConflict' ensures we don't crash if the URL already exists
-    const { error } = await supabase.from("pages").upsert(linksToInsert, {
-      onConflict: "url",
-      ignoreDuplicates: true,
-    });
+    const { error: linkError } = await supabase
+      .from("links")
+      .upsert(linksToInsert, {
+        onConflict: "from_id,to_url",
+        ignoreDuplicates: true,
+      });
 
-    if (error) console.error("Error saving links:", error);
+    if (linkError) console.error("Error saving links:", linkError);
+
+    const newPagesToDiscover = data.links.map((link) => ({
+      url: link,
+      status: "discovered",
+    }));
+
+    const { error: discoveryError } = await supabase
+      .from("pages")
+      .upsert(newPagesToDiscover, {
+        onConflict: "url",
+        ignoreDuplicates: true,
+      });
+
+    if (discoveryError)
+      console.error("Error updating frontier:", discoveryError);
   }
 
   console.log("✅ [DB] Page saved successfully!");

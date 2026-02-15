@@ -21,10 +21,14 @@ export const createQueue = (name: string) => {
 };
 
 // 4. Helper to create a Worker
-export const createWorker = (name: string, processor: any) => {
+export const createWorker = (
+  name: string,
+  processor: any,
+  concurrency?: number,
+) => {
   return new Worker(name, processor, {
     connection: new IORedis(redisConfig),
-    concurrency: 5,
+    concurrency: concurrency || 5,
     limiter: {
       max: 10,
       duration: 1000,

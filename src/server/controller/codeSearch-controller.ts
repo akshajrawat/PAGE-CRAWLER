@@ -25,6 +25,8 @@ export const codeSearchController = async (req: Request, res: Response) => {
       "match_code_snippets",
       {
         query_embedding: queryVector,
+        match_threshold: 0.5,
+        match_count: 10,
         page_offset: offset,
       },
     );
@@ -34,17 +36,10 @@ export const codeSearchController = async (req: Request, res: Response) => {
       return res.status(500).json({ error: error.message });
     }
 
-    if (!searchResult || searchResult.length === 0) {
-      res.json({
-        message: `No result found for query :- ${query}`,
-      });
-      return;
-    }
-
     return res.json({
       page: page,
       count: searchResult.length,
-      data: searchResult,
+      data: searchResult || [],
     });
   } catch (error) {
     console.error(error);

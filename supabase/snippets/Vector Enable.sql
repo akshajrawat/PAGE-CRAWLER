@@ -1,0 +1,4 @@
+DROP FUNCTION IF EXISTS search_pages;
+DROP FUNCTION IF EXISTS match_code_snippets;
+DROP TABLE IF EXISTS code_snippets;
+DROP TABLE IF EXISTS pages;

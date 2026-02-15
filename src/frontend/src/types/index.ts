@@ -2,8 +2,9 @@
 export interface SearchResult {
   url: string;
   title: string;
-  last_crawled: string;
-  rank?: number;
+  last_crawled_at: string;
+  description: string;
+  similarity?: number;
 }
 
 // The response of the api
