@@ -1,9 +1,7 @@
 import axios from "axios";
-import { configDotenv } from "dotenv";
 import { Request, Response } from "express";
 import { supabase } from "../../db/supabase";
 
-configDotenv();
 
 export const codeSearchController = async (req: Request, res: Response) => {
   try {

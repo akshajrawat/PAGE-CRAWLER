@@ -19,6 +19,13 @@ export const savePageData = async (url: string, data: CrawlResult) => {
 
   // STEP 1: Update the 'pages' table
   // We mark the page as 'crawled' and save its title.
+  let pageEmbedding;
+  try {
+    const textToEmbed = `Title: ${data.title}\nDescription: ${data.description}\nContent: ${data.body_text.slice(0, 300)}`;
+    pageEmbedding = await getVectorEmbeddings(textToEmbed);
+  } catch (error) {
+    console.error("Failed to process page vector", error);
+  }
   const { data: pageRecord, error: pageError } = await supabase
     .from("pages")
     .update({
@@ -27,6 +34,7 @@ export const savePageData = async (url: string, data: CrawlResult) => {
       last_crawled_at: new Date().toISOString(),
       description: data.description,
       body_text: data.body_text,
+      embedding: pageEmbedding,
     })
     .eq("url", url)
     .select()

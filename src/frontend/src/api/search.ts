@@ -1,4 +1,4 @@
-import type { ApiResponse, CodeApiResponse } from "../types";
+import type { ApiResponse, AskResponse, CodeApiResponse } from "../types";
 import axios from "axios";
 
 const API = "http://localhost:3000/api";
@@ -18,5 +18,10 @@ export const searchCodeApi = async (
   const response = await axios.get(
     `${API}/code-search?q=${query}&page=${page}`,
   );
+  return response.data;
+};
+
+export const askAi = async (query: string): Promise<AskResponse> => {
+  const response = await axios.get(`${API}/ask?q=${query}`);
   return response.data;
 };

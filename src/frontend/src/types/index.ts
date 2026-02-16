@@ -29,3 +29,8 @@ export interface CodeApiResponse {
   page: number;
   data: CodeSnippet[];
 }
+
+export interface AskResponse {
+  answer: string;
+  sources: { title: string; url: string }[];
+}

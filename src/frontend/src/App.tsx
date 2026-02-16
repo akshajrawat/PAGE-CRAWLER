@@ -4,6 +4,7 @@ import SearchLayout from "./pages/SearchLayout";
 import Dashboard from "./pages/Dashboard";
 import WebSearch from "./pages/SearchPages/WebSearch";
 import CodeSearch from "./pages/SearchPages/CodeSearch";
+import AskAi from "./pages/SearchPages/AskAi";
 
 const App = () => {
   return (
@@ -13,7 +14,7 @@ const App = () => {
         <Route path="/search" element={<SearchLayout />}>
           <Route index element={<WebSearch />} />
           <Route path="code" element={<CodeSearch />} />
-          <Route element={<Home />} />
+          <Route path="ask-ai" element={<AskAi />} />
         </Route>
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
