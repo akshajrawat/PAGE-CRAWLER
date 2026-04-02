@@ -5,10 +5,12 @@ import * as cheerio from "cheerio";
 import { getNormalizedUrl } from "../../utils/normalize_url";
 import { savePageData } from "../../db/db";
 import { addUrlToFrontier } from "../../services/feeder/frontier-feed";
+import { isAllowedForCrawl } from "../../utils/url_filter";
 
 interface parseJobData {
   url: string;
   filePath: string;
+  depth?: number;
 }
 
 // guess the language
@@ -45,7 +47,9 @@ const detectLanguage = (content: string, hint: string = ""): string => {
 
 // the processor
 const parseProcessor = async (job: Job<parseJobData>) => {
-  const { url, filePath } = job.data;
+  const { url, filePath, depth = 0 } = job.data;
+  const MAX_DEPTH = 3; // SAFETY DEPTH
+
   console.log(` [PARSE] Processing: ${url}`);
 
   try {
@@ -72,15 +76,32 @@ const parseProcessor = async (job: Job<parseJobData>) => {
 
     // extract links
     const links: string[] = [];
-    $("a").each((_, el) => {
-      const href = $(el).attr("href");
-      if (href) {
-        const validUrl = getNormalizedUrl(href);
-        if (validUrl) {
-          links.push(validUrl);
+
+    if (depth < MAX_DEPTH) {
+      $("a").each((_, el) => {
+        const href = $(el).attr("href");
+        if (!href) return;
+        try {
+          const absoluteUrl = new URL(href, url).toString();
+          const validUrl = getNormalizedUrl(absoluteUrl);
+
+          if (validUrl) {
+            const isAllowed = isAllowedForCrawl(validUrl);
+
+            // Remove duplicates from same page from the same page
+            if (isAllowed && !links.includes(validUrl)) {
+              links.push(validUrl);
+            }
+          }
+        } catch (error) {
+          // Ignore invalid URL structures without crashing
         }
-      }
-    });
+      });
+    } else {
+      console.log(
+        `[PARSE] 🛑 Max Depth (${MAX_DEPTH}) Reached. Stopping outward crawl.`,
+      );
+    }
 
     // extract code snippets
     const codeSnippets: { language: string; content: string }[] = [];
@@ -89,17 +110,17 @@ const parseProcessor = async (job: Job<parseJobData>) => {
       const $el = $(el);
       const $code = $el.find("code");
 
-      // 1️⃣ PICK THE RIGHT TARGET: Prefer <code> inside <pre>, otherwise use <pre>
+      // 1️ : PICK THE RIGHT TARGET: Prefer <code> inside <pre>, otherwise use <pre>
       const $target = $code.length ? $code : $el;
 
-      // 2️⃣ CLONE IT: We don't want to break the original HTML structure for other extractors
+      // 2️ : CLONE IT: We don't want to break the original HTML structure for other extractors
       const $clone = $target.clone();
 
-      // 3️⃣ INJECT NEWLINES: Replace <br> and closing block tags with \n
+      // 3️ : INJECT NEWLINES: Replace <br> and closing block tags with \n
       $clone.find("br").replaceWith("\n");
       $clone.find("div, p, li, tr").after("\n");
 
-      // 4️⃣ EXTRACT: Now .text() will see the \n characters we injected
+      // 4️ : EXTRACT: Now .text() will see the \n characters we injected
       let content = $clone.text().trim();
 
       if (content.length < 10) {
@@ -119,7 +140,7 @@ const parseProcessor = async (job: Job<parseJobData>) => {
       codeSnippets.push({ language, content });
     });
 
-    console.log("💕💕💕💕💕💕💕💕💕💕💕found code" + codeSnippets.length);
+    console.log("✅found code >>> " + codeSnippets.length);
 
     // add data to postgresql table
     await savePageData(url, {
@@ -132,7 +153,7 @@ const parseProcessor = async (job: Job<parseJobData>) => {
 
     // add to frontier queue to continue the infinite loop
     const result = await Promise.allSettled(
-      links.map((link) => addUrlToFrontier(link)),
+      links.map((link) => addUrlToFrontier(link, depth + 1)),
     );
     const newLinkCount: number = result.filter((r) => {
       return r.status === "fulfilled";

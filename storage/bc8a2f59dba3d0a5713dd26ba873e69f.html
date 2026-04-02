@@ -1,0 +1,2610 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Iot - DEV Community</title>
+    
+  
+<link rel="canonical" href="https://dev.to/t/iot" />
+<meta name="description" content="iot content on DEV Community">
+<meta name="keywords" content="software development, engineering, iot">
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://dev.to/t/iot" />
+<meta property="og:title" content="Iot" />
+<meta property="og:description" content="Iot content on DEV Community" />
+<meta property="og:site_name" content="DEV Community" />
+
+<meta name="twitter:site" content="@thepracticaldev">
+<meta name="twitter:creator" content="@Iot">
+<meta name="twitter:title" content="Iot">
+<meta name="twitter:description" content="Iot content on DEV Community">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3otvb2z646ytpt1hl2rv.jpg">
+  <meta name="twitter:image:src" content="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3otvb2z646ytpt1hl2rv.jpg">
+
+
+      <meta name="last-updated" content="2026-04-01 08:17:02 UTC">
+      <meta name="user-signed-in" content="false">
+      <meta name="head-cached-at" content="1775031422">
+      <meta name="environment" content="production">
+      <link rel="stylesheet" href="https://assets.dev.to/assets/minimal-102395aec70cbac5f7d0bd5bebb5b56f0459629c5d224dae16333f11604cbad3.css" media="all" id="main-minimal-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/views-daf614dcfafed4955d7758a6a86d63bfbb1e8d4eae8b6317b421e18a99bbe867.css" media="all" id="main-views-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/crayons-8fce708625aacc3ff4a4d4947252a1cfab954753bb082374c0bed738861b52f2.css" media="all" id="main-crayons-stylesheet" />
+
+      <script src="https://assets.dev.to/assets/base-0c748bbcdc30041261c326ef2ce931fbce46c58bc3c488da881ae35c4750941d.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/application-0b268684912bef9b0f23defff01cb608bfc5d5e5610287725e7b686139ae32d3.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/baseInitializers-2f0777a6d67046056f9f42665560ce072de3801292674358ddbad6e135c1891d.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/baseTracking-b6bf73e5ee66633e151e7d5b7c6bbccedfa4c59e3615be97b98c4c0f543ddae7.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/followButtons-a29380c2c88136b97b2b5e63e94614ff7458fc72e07cffa7b6153831c28a40d2.js" defer="defer"></script>
+
+        <meta name="search-script" content="https://assets.dev.to/assets/Search-b977aea0f2d7a5818b4ebd97f7d4aba8548099f84f5db5761f8fa67be76abc54.js">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+      <link rel="icon" type="image/x-icon" href="https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" />
+      <link rel="apple-touch-icon" href="https://media2.dev.to/dynamic/image/width=180,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="https://media2.dev.to/dynamic/image/width=152,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="https://media2.dev.to/dynamic/image/width=180,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="167x167" href="https://media2.dev.to/dynamic/image/width=167,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link href="https://media2.dev.to/dynamic/image/width=192,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" rel="icon" sizes="192x192" />
+      <link href="https://media2.dev.to/dynamic/image/width=128,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" rel="icon" sizes="128x128" />
+      <meta name="apple-mobile-web-app-title" content="dev.to">
+      <meta name="application-name" content="dev.to">
+      <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+      <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+      <link rel="search" href="https://dev.to/open-search.xml" type="application/opensearchdescription+xml" title="DEV Community" />
+
+      <meta property="forem:name" content="DEV Community" />
+      <meta property="forem:logo" content="https://media2.dev.to/dynamic/image/width=512,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" />
+      <meta property="forem:domain" content="dev.to" />
+    <style>
+.ltag__link--embedded img.subscription-icon {
+max-height: 13px !important;
+max-width: 21px !important;
+display: inline-block !important;
+border-radius: 0 !important;
+}
+.text-styles .crayons-article__context-note p {
+margin-bottom: 0 !important;
+}
+</style>
+  </head>
+    <body
+      class="sans-serif-article-body default-header"
+      data-user-status="logged-out"
+      data-is-root-subforem="false"
+        data-subforem-id="1"
+      data-side-nav-visible="true"
+      data-community-name="DEV Community"
+      data-subscription-icon="https://assets.dev.to/assets/subscription-icon-805dfa7ac7dd660f07ed8d654877270825b07a92a03841aa99a1093bd00431b2.png"
+      data-locale="en"
+      data-honeybadger-key="hbp_nqu4Y66HuEKlD6YRGssZuRQnPOjDm50J8Zkr"
+      data-deployed-at="2026-03-31T16:23:33Z"
+      data-latest-commit-id="786e25495afed32bb807645b48a724374606e51e"
+      data-ga-tracking="UA-71991109-1"
+      data-cookie-banner-user-context="logged_out_only"
+      data-cookie-banner-platform-context="off"
+      data-algolia-id="PRSOBFP46H"
+      data-algolia-search-key="9aa7d31610cba78851c9b1f63776a9dd"
+      data-algolia-display="true"
+      data-dynamic-url-component="bmar11"
+      data-ga4-tracking-id="G-TYEM8Y3JN3">
+      
+      <script>
+        if (navigator.userAgent === 'ForemWebView/1' || window.frameElement) {
+          document.body.classList.add("hidden-shell");
+        }
+          if (new Date() > new Date("2026-02-04T09:00:00-05:00")) {
+            document.body.dataset.sideNavVisible = "false";
+          } 
+      </script>
+
+      <link rel="stylesheet" href="https://assets.dev.to/assets/minimal-102395aec70cbac5f7d0bd5bebb5b56f0459629c5d224dae16333f11604cbad3.css" media="all" id="secondary-minimal-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/views-daf614dcfafed4955d7758a6a86d63bfbb1e8d4eae8b6317b421e18a99bbe867.css" media="all" id="secondary-views-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/crayons-8fce708625aacc3ff4a4d4947252a1cfab954753bb082374c0bed738861b52f2.css" media="all" id="secondary-crayons-stylesheet" />
+
+      <div id="body-styles">
+        <style>
+          :root {
+            --accent-brand-lighter-rgb: 80, 99, 301;
+            --accent-brand-rgb: 59, 73, 223;
+            --accent-brand-darker-rgb: 47, 58, 178;
+          }
+        </style>
+      </div>
+      <div id="audiocontent" data-podcast="">
+        
+      </div>
+      <div class="navigation-progress" id="navigation-progress"></div>
+
+<header id="topbar" class="crayons-header topbar print-hidden">
+  <span id="route-change-target" tabindex="-1"></span>
+  <a href="#main-content" class="skip-content-link">Skip to content</a>
+  <div class="crayons-header__container">
+    <span class="inline-block m:hidden ">
+      <button class="c-btn c-btn--icon-alone js-hamburger-trigger mx-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="apqpewvkkf7z3lt001ckkg83w7zsmo2r" class="crayons-icon"><title id="apqpewvkkf7z3lt001ckkg83w7zsmo2r">Navigation menu</title>
+    <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"></path>
+</svg>
+
+      </button>
+    </span>
+    <a href="/" class="site-logo" aria-label="DEV Community Home" >
+    <img class="site-logo__img"
+         src="https://media2.dev.to/dynamic/image/quality=100/https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png"
+         style="aspect-ratio: 10 / 8"
+         alt="DEV Community">
+</a>
+
+
+    <div class="crayons-header--search js-search-form" id="header-search">
+      <form accept-charset="UTF-8" method="get" action="/search" role="search">
+        <div class="crayons-fields crayons-fields--horizontal">
+          <div class="crayons-field flex-1 relative">
+            <input id="search-input" class="crayons-header--search-input crayons-textfield js-search-input" type="text" id="nav-search" name="q" placeholder="Search..." autocomplete="off" />
+            <button type="submit" aria-label="Search" class="c-btn c-btn--icon-alone absolute inset-px right-auto mt-0 py-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a8644j3ilgzdmk4qgdaexwec29v1murc" aria-hidden="true" class="crayons-icon"><title id="a8644j3ilgzdmk4qgdaexwec29v1murc">Search</title>
+    <path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0111 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 01-1.969 5.617zm-2.006-.742A6.977 6.977 0 0018 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 004.875-1.975l.15-.15z"></path>
+</svg>
+
+            </button>
+
+            <a class="crayons-header--search-brand-indicator" href="https://www.algolia.com/developers/?utm_source=devto&utm_medium=referral" target="_blank" rel="noopener noreferrer">
+                Powered by Algolia
+                <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" width="24" height="24" viewBox="0 0 500 500.34" role="img" aria-labelledby="acbn73k705hpxhowasj5pgi4yzlw9rfi" aria-hidden="true" class="crayons-icon"><title id="acbn73k705hpxhowasj5pgi4yzlw9rfi">Search</title>
+  <defs></defs><path class="cls-1" d="M250,0C113.38,0,2,110.16,.03,246.32c-2,138.29,110.19,252.87,248.49,253.67,42.71,.25,83.85-10.2,120.38-30.05,3.56-1.93,4.11-6.83,1.08-9.52l-23.39-20.74c-4.75-4.22-11.52-5.41-17.37-2.92-25.5,10.85-53.21,16.39-81.76,16.04-111.75-1.37-202.04-94.35-200.26-206.1,1.76-110.33,92.06-199.55,202.8-199.55h202.83V407.68l-115.08-102.25c-3.72-3.31-9.43-2.66-12.43,1.31-18.47,24.46-48.56,39.67-81.98,37.36-46.36-3.2-83.92-40.52-87.4-86.86-4.15-55.28,39.65-101.58,94.07-101.58,49.21,0,89.74,37.88,93.97,86.01,.38,4.28,2.31,8.28,5.53,11.13l29.97,26.57c3.4,3.01,8.8,1.17,9.63-3.3,2.16-11.55,2.92-23.6,2.07-35.95-4.83-70.39-61.84-127.01-132.26-131.35-80.73-4.98-148.23,58.18-150.37,137.35-2.09,77.15,61.12,143.66,138.28,145.36,32.21,.71,62.07-9.42,86.2-26.97l150.36,133.29c6.45,5.71,16.62,1.14,16.62-7.48V9.49C500,4.25,495.75,0,490.51,0H250Z"></path>
+</svg>
+
+            </a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="flex items-center h-100 ml-auto">
+        <div class="flex" id="authentication-top-nav-actions">
+          <span class="hidden m:block">
+            <a href="https://dev.to/enter?signup_subforem=1" class="c-link c-link--block mr-2 whitespace-nowrap ml-auto" data-no-instant>
+              Log in
+            </a>
+          </span>
+
+          <a href="https://dev.to/enter?signup_subforem=1&amp;state=new-user" data-tracking-id="ca_top_nav" data-tracking-source="top_navbar" class="c-cta c-cta--branded whitespace-nowrap mr-2" data-no-instant>
+            Create account
+          </a>
+        </div>
+    </div>
+  </div>
+</header>
+
+<div class="hamburger">
+  <div class="hamburger__content">
+    <header class="hamburger__content__header">
+      <h2 class="fs-l fw-bold flex-1 break-word lh-tight">DEV Community</h2>
+
+      <button class="c-btn c-btn--icon-alone js-hamburger-trigger shrink-0" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a867r6vp4dopi0jygm2fjjqj2awpcsln" aria-hidden="true" class="crayons-icon c-btn__icon"><title id="a867r6vp4dopi0jygm2fjjqj2awpcsln">Close</title><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636l4.95 4.95z"></path></svg>
+
+      </button>
+    </header>
+
+    <div class="p-2 js-navigation-links-container" id="authentication-hamburger-actions">
+    </div>
+  </div>
+  <div class="hamburger__overlay js-hamburger-trigger"></div>
+</div>
+
+
+      <div id="active-broadcast" class="broadcast-wrapper"></div>
+<div id="page-content" class="wrapper tagged_articles tagged_articles-index" data-current-page="tagged_articles-index">
+  <div id="page-content-inner" data-internal-nav="false">
+    <div id="page-route-change" class="screen-reader-only" aria-live="polite" aria-atomic="true"></div>
+
+    <div data-tag-id="317" data-tag-name="iot" id="tag-317" class="crayons-layout js-tag-card">
+  <header class="crayons-card branded-4 p-4 l:p-6 spec__tag-header" style="border-top-color:  ">
+    <div class="flex">
+      <div class="flex flex-col w-100 justify-center">
+        <div class="flex justify-between items-center">
+          <h1 class="crayons-title">
+              <span class="opacity-50">#</span>
+              iot
+          </h1>
+            <div id="tag-buttons-317" class="mt-auto flex items-end justify-between">
+              <div class="flex gap-2">
+                <button
+                  class="c-btn c-btn--primary js-follow-tag-button"
+                  aria-label="Follow tag: iot">
+                  Follow
+                </button>
+                <button
+                  class="c-btn js-hide-tag-button"
+                  aria-label="Hide tag: iot">
+                  Hide
+                </button>
+              </div>
+            </div>
+        </div>
+          <p class="max-w-100 m:max-w-75 pt-2 s:pt-4">
+            Security challenges and solutions for Internet of Things and embedded devices.
+          </p>
+      </div>
+    </div>
+  </header>
+</div>
+
+<div class="home sub-home" id="index-container"
+    data-params="{&quot;tag&quot;:&quot;iot&quot;,&quot;sort_by&quot;:&quot;hotness_score&quot;,&quot;sort_direction&quot;:&quot;desc&quot;}" data-which=""
+    data-tag="iot"
+    data-feed="base-feed"
+    data-disable-infinite-scroll="true"
+    data-requires-approval="false"
+    data-articles-since="">
+    <div id="sidebar-wrapper-left" class="sidebar-wrapper sidebar-wrapper-left">
+    <div class="sidebar-bg" id="sidebar-bg-left"></div>
+    <aside class="side-bar fs-s">
+        <div class="widget js-policy-article-create">
+          <a class="crayons-btn crayons-btn--s" href="/new/iot">
+            Create Post
+          </a>
+</div>      <div class="sidebar-data">
+          <hr />
+          <div class="olderposts-header fs-base fw-medium">Older #iot posts</div>
+          <div class="olderposts-links">
+                  <span class="olderposts-pagenumber">1</span>
+          </div>
+      </div>
+    </aside>
+  </div>
+
+  <main class="articles-list" id="main-content" data-follow-button-container="true">
+    <header class="flex items-center p-2 m:p-0 m:pb-2" id="on-page-nav-controls">
+      <h1 class="screen-reader-only">Posts</h1>
+      <button type="button" class="crayons-btn crayons-btn--ghost crayons-btn--icon mr-2 inline-block m:hidden mb-auto" id="on-page-nav-butt-left" aria-label="nav-button-left">
+        <div class="crayons-icon nav-icon ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a5qb9odfktd71ui4vi4czxqxajwxyvio" class="crayons-icon"><title id="a5qb9odfktd71ui4vi4czxqxajwxyvio">Left menu</title>
+    <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"></path>
+</svg>
+
+        </div>
+      </button>
+        <div class="flex-1 flex items-center justify-between">
+          <div class="crayons-notice w-100" aria-live="polite">👋 <a href="https://dev.to/enter?signup_subforem=1">Sign in</a> for the ability to sort posts by <strong>relevant</strong>, <strong>latest</strong>, or <strong>top</strong>.</div>
+        </div>
+
+      <button type="button" class="crayons-btn crayons-btn--ghost crayons-btn--icon ml-2 inline-block l:hidden mb-auto" id="on-page-nav-butt-right" aria-label="nav-button-right">
+        <div class="crayons-icon nav-icon ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="ab9bpswgv8v3305ckjd7m0c0g7thrliy" class="crayons-icon"><title id="ab9bpswgv8v3305ckjd7m0c0g7thrliy">Right menu</title>
+    <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"></path>
+</svg>
+
+        </div>
+      </button>
+    </header>
+
+    <div class="substories" id="substories">
+        <div class="crayons-story " data-feed-content-id="3437203" data-content-user-id="2057038">
+  <a href="https://dev.to/gaurav_sharma_c2ef5dd7646/designing-a-practical-iiot-architecture-1cnn" aria-labelledby="article-link-3437203" class="crayons-story__hidden-navigation-link">Designing a Practical IIoT Architecture</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/gaurav_sharma_c2ef5dd7646" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F2057038%2F363a6933-a83d-4a8a-af41-8fe5e4d9dbf0.jpg" alt="gaurav_sharma_c2ef5dd7646 profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/gaurav_sharma_c2ef5dd7646" class="crayons-story__secondary fw-medium m:hidden">
+              Gaurav Sharma
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3437203" aria-controls="story-author-preview-content-3437203" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Gaurav Sharma profile details">
+                Gaurav Sharma
+                
+              </button>
+              <div
+                id="story-author-preview-content-3437203"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/gaurav_sharma_c2ef5dd7646" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F2057038%2F363a6933-a83d-4a8a-af41-8fe5e4d9dbf0.jpg"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Gaurav Sharma</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:2057038,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Gaurav Sharma&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="2057038"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/gaurav_sharma_c2ef5dd7646/designing-a-practical-iiot-architecture-1cnn" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-31T16:25:27Z">Mar 31</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774974327"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/gaurav_sharma_c2ef5dd7646/designing-a-practical-iiot-architecture-1cnn" data-preload-image="" id="article-link-3437203">
+          Designing a Practical IIoT Architecture
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/iot"><span class="crayons-tag__prefix">#</span>iot</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(235, 223, 55, 0.10);
+        --tag-prefix: #ebdf37;
+        --tag-bg-hover: rgba(235, 223, 55, 0.10);
+        --tag-prefix-hover: #ebdf37;
+      " href="/t/architecture"><span class="crayons-tag__prefix">#</span>architecture</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/systemdesign"><span class="crayons-tag__prefix">#</span>systemdesign</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(255, 153, 0, 0.10);
+        --tag-prefix: #FF9900;
+        --tag-bg-hover: rgba(255, 153, 0, 0.10);
+        --tag-prefix-hover: #FF9900;
+      " href="/t/cloud"><span class="crayons-tag__prefix">#</span>cloud</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+            <a href="https://dev.to/gaurav_sharma_c2ef5dd7646/designing-a-practical-iiot-architecture-1cnn#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Designing a Practical IIoT Architecture">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="aqkfhpxe40ivq6k9yhc3c5lfuf0lpuha" class="crayons-icon"><title id="aqkfhpxe40ivq6k9yhc3c5lfuf0lpuha">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            2 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3437203"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3437203"
+              data-article-author-id="2057038"
+              aria-label="Save post Designing a Practical IIoT Architecture to reading list"
+              title="Save post Designing a Practical IIoT Architecture to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3434357" data-content-user-id="3765348">
+  <a href="https://dev.to/thilak_kumar/i-chose-the-vs1838b-ir-receiver-for-my-esp32-based-project-1o7l" aria-labelledby="article-link-3434357" class="crayons-story__hidden-navigation-link">I Chose the VS1838B IR Receiver for My ESP32-Based Project</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/thilak_kumar" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3765348%2F46ffa688-7de0-46da-860d-3da19739f411.jpg" alt="thilak_kumar profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/thilak_kumar" class="crayons-story__secondary fw-medium m:hidden">
+              Thilak Kumar
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3434357" aria-controls="story-author-preview-content-3434357" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Thilak Kumar profile details">
+                Thilak Kumar
+                
+              </button>
+              <div
+                id="story-author-preview-content-3434357"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/thilak_kumar" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3765348%2F46ffa688-7de0-46da-860d-3da19739f411.jpg"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Thilak Kumar</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3765348,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Thilak Kumar&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3765348"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/thilak_kumar/i-chose-the-vs1838b-ir-receiver-for-my-esp32-based-project-1o7l" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-31T06:28:14Z">Mar 31</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774938494"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/thilak_kumar/i-chose-the-vs1838b-ir-receiver-for-my-esp32-based-project-1o7l" data-preload-image="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Foi5je2okkr2igc183o8w.png" id="article-link-3434357">
+          I Chose the VS1838B IR Receiver for My ESP32-Based Project
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/iot"><span class="crayons-tag__prefix">#</span>iot</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(227, 255, 0, 0.10);
+        --tag-prefix: #e3ff00;
+        --tag-bg-hover: rgba(227, 255, 0, 0.10);
+        --tag-prefix-hover: #e3ff00;
+      " href="/t/cybersecurity"><span class="crayons-tag__prefix">#</span>cybersecurity</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/ir"><span class="crayons-tag__prefix">#</span>ir</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/irutesam"><span class="crayons-tag__prefix">#</span>irutesam</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+            <a href="https://dev.to/thilak_kumar/i-chose-the-vs1838b-ir-receiver-for-my-esp32-based-project-1o7l#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - I Chose the VS1838B IR Receiver for My ESP32-Based Project">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="ao66929zslzuklz32nxzgm7ni6t767fe" class="crayons-icon"><title id="ao66929zslzuklz32nxzgm7ni6t767fe">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            3 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3434357"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3434357"
+              data-article-author-id="3765348"
+              aria-label="Save post I Chose the VS1838B IR Receiver for My ESP32-Based Project to reading list"
+              title="Save post I Chose the VS1838B IR Receiver for My ESP32-Based Project to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3433934" data-content-user-id="3765348">
+  <a href="https://dev.to/thilak_kumar/why-i-chose-the-esp32-dev-module-for-my-project-13d8" aria-labelledby="article-link-3433934" class="crayons-story__hidden-navigation-link">Why I Chose the ESP32 Dev Module for My Project</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/thilak_kumar" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3765348%2F46ffa688-7de0-46da-860d-3da19739f411.jpg" alt="thilak_kumar profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/thilak_kumar" class="crayons-story__secondary fw-medium m:hidden">
+              Thilak Kumar
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3433934" aria-controls="story-author-preview-content-3433934" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Thilak Kumar profile details">
+                Thilak Kumar
+                
+              </button>
+              <div
+                id="story-author-preview-content-3433934"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/thilak_kumar" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3765348%2F46ffa688-7de0-46da-860d-3da19739f411.jpg"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Thilak Kumar</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3765348,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Thilak Kumar&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3765348"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/thilak_kumar/why-i-chose-the-esp32-dev-module-for-my-project-13d8" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-31T04:55:41Z">Mar 31</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774932941"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/thilak_kumar/why-i-chose-the-esp32-dev-module-for-my-project-13d8" data-preload-image="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fy9hmvmgrknpcez0nnnp4.png" id="article-link-3433934">
+          Why I Chose the ESP32 Dev Module for My Project
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/esp32"><span class="crayons-tag__prefix">#</span>esp32</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/iot"><span class="crayons-tag__prefix">#</span>iot</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/electronics"><span class="crayons-tag__prefix">#</span>electronics</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(227, 255, 0, 0.10);
+        --tag-prefix: #e3ff00;
+        --tag-bg-hover: rgba(227, 255, 0, 0.10);
+        --tag-prefix-hover: #e3ff00;
+      " href="/t/cybersecurity"><span class="crayons-tag__prefix">#</span>cybersecurity</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+            <a href="https://dev.to/thilak_kumar/why-i-chose-the-esp32-dev-module-for-my-project-13d8#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Why I Chose the ESP32 Dev Module for My Project">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="ajxa9g2xd8gxhogo2xtz9hi56r7833cu" class="crayons-icon"><title id="ajxa9g2xd8gxhogo2xtz9hi56r7833cu">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            2 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3433934"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3433934"
+              data-article-author-id="3765348"
+              aria-label="Save post Why I Chose the ESP32 Dev Module for My Project to reading list"
+              title="Save post Why I Chose the ESP32 Dev Module for My Project to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3433158" data-content-user-id="3842052">
+  <a href="https://dev.to/techpulselab/matter-protocol-explained-why-it-matters-for-your-smart-home-2ij4" aria-labelledby="article-link-3433158" class="crayons-story__hidden-navigation-link">Matter Protocol Explained: Why It Matters for Your Smart Home</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/techpulselab" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3842052%2F94a13f5d-9eb6-4635-9496-d3b0fcb0d475.png" alt="techpulselab profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/techpulselab" class="crayons-story__secondary fw-medium m:hidden">
+              TechPulse Lab
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3433158" aria-controls="story-author-preview-content-3433158" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="TechPulse Lab profile details">
+                TechPulse Lab
+                
+              </button>
+              <div
+                id="story-author-preview-content-3433158"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/techpulselab" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3842052%2F94a13f5d-9eb6-4635-9496-d3b0fcb0d475.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">TechPulse Lab</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3842052,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;TechPulse Lab&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3842052"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/techpulselab/matter-protocol-explained-why-it-matters-for-your-smart-home-2ij4" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-31T00:06:36Z">Mar 31</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774915596"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/techpulselab/matter-protocol-explained-why-it-matters-for-your-smart-home-2ij4" data-preload-image="" id="article-link-3433158">
+          Matter Protocol Explained: Why It Matters for Your Smart Home
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/iot"><span class="crayons-tag__prefix">#</span>iot</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/smarthome"><span class="crayons-tag__prefix">#</span>smarthome</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/matter"><span class="crayons-tag__prefix">#</span>matter</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/homeautomation"><span class="crayons-tag__prefix">#</span>homeautomation</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+            <a href="https://dev.to/techpulselab/matter-protocol-explained-why-it-matters-for-your-smart-home-2ij4#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Matter Protocol Explained: Why It Matters for Your Smart Home">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="arhurrt9b96eryfgh7pm2704jyttrfcs" class="crayons-icon"><title id="arhurrt9b96eryfgh7pm2704jyttrfcs">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            6 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3433158"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3433158"
+              data-article-author-id="3842052"
+              aria-label="Save post Matter Protocol Explained: Why It Matters for Your Smart Home to reading list"
+              title="Save post Matter Protocol Explained: Why It Matters for Your Smart Home to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3429984" data-content-user-id="3851135">
+  <a href="https://dev.to/sipanohanyan/how-to-communicate-with-silicon-labs-efr32-ncp-from-c-net-using-bgapi-576g" aria-labelledby="article-link-3429984" class="crayons-story__hidden-navigation-link">How to Communicate with Silicon Labs EFR32 NCP from C# / .NET using BGAPI</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/sipanohanyan" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3851135%2Ff33e98a5-9227-4c14-ad21-0319c3b9858b.jpeg" alt="sipanohanyan profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/sipanohanyan" class="crayons-story__secondary fw-medium m:hidden">
+              SipanOhanyan
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3429984" aria-controls="story-author-preview-content-3429984" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="SipanOhanyan profile details">
+                SipanOhanyan
+                
+              </button>
+              <div
+                id="story-author-preview-content-3429984"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/sipanohanyan" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3851135%2Ff33e98a5-9227-4c14-ad21-0319c3b9858b.jpeg"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">SipanOhanyan</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3851135,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;SipanOhanyan&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3851135"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/sipanohanyan/how-to-communicate-with-silicon-labs-efr32-ncp-from-c-net-using-bgapi-576g" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-30T09:52:40Z">Mar 30</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774864360"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/sipanohanyan/how-to-communicate-with-silicon-labs-efr32-ncp-from-c-net-using-bgapi-576g" data-preload-image="" id="article-link-3429984">
+          How to Communicate with Silicon Labs EFR32 NCP from C# / .NET using BGAPI
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(7, 205, 0, 0.10);
+        --tag-prefix: #07CD00;
+        --tag-bg-hover: rgba(7, 205, 0, 0.10);
+        --tag-prefix-hover: #07CD00;
+      " href="/t/csharp"><span class="crayons-tag__prefix">#</span>csharp</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(81, 42, 213, 0.10);
+        --tag-prefix: #512ad5;
+        --tag-bg-hover: rgba(81, 42, 213, 0.10);
+        --tag-prefix-hover: #512ad5;
+      " href="/t/dotnet"><span class="crayons-tag__prefix">#</span>dotnet</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/iot"><span class="crayons-tag__prefix">#</span>iot</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/bluetooth"><span class="crayons-tag__prefix">#</span>bluetooth</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+            <a href="https://dev.to/sipanohanyan/how-to-communicate-with-silicon-labs-efr32-ncp-from-c-net-using-bgapi-576g#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - How to Communicate with Silicon Labs EFR32 NCP from C# / .NET using BGAPI">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a9lboffi9vzcdtmmv66861gtpfzw3rup" class="crayons-icon"><title id="a9lboffi9vzcdtmmv66861gtpfzw3rup">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            4 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3429984"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3429984"
+              data-article-author-id="3851135"
+              aria-label="Save post How to Communicate with Silicon Labs EFR32 NCP from C# / .NET using BGAPI to reading list"
+              title="Save post How to Communicate with Silicon Labs EFR32 NCP from C# / .NET using BGAPI to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3431434" data-content-user-id="1749369">
+  <a href="https://dev.to/ndygen/my-washing-machine-picks-its-own-schedule-and-saves-money-3ape" aria-labelledby="article-link-3431434" class="crayons-story__hidden-navigation-link">My Washing Machine Picks Its Own Schedule (and Saves Money)</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/ndygen" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F1749369%2Fdc576384-ef56-4258-a0f1-06d76fc61940.png" alt="ndygen profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/ndygen" class="crayons-story__secondary fw-medium m:hidden">
+              The Refactored Road
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3431434" aria-controls="story-author-preview-content-3431434" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="The Refactored Road profile details">
+                The Refactored Road
+                
+              </button>
+              <div
+                id="story-author-preview-content-3431434"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/ndygen" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F1749369%2Fdc576384-ef56-4258-a0f1-06d76fc61940.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">The Refactored Road</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:1749369,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;The Refactored Road&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="1749369"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/ndygen/my-washing-machine-picks-its-own-schedule-and-saves-money-3ape" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-30T15:09:11Z">Mar 30</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774883351"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/ndygen/my-washing-machine-picks-its-own-schedule-and-saves-money-3ape" data-preload-image="" id="article-link-3431434">
+          My Washing Machine Picks Its Own Schedule (and Saves Money)
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/homeautomation"><span class="crayons-tag__prefix">#</span>homeautomation</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/iot"><span class="crayons-tag__prefix">#</span>iot</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/smarthome"><span class="crayons-tag__prefix">#</span>smarthome</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/energy"><span class="crayons-tag__prefix">#</span>energy</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+            <a href="https://dev.to/ndygen/my-washing-machine-picks-its-own-schedule-and-saves-money-3ape#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - My Washing Machine Picks Its Own Schedule (and Saves Money)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="apxu8mtpp6pb2uflroxi7u4xama80fih" class="crayons-icon"><title id="apxu8mtpp6pb2uflroxi7u4xama80fih">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            6 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3431434"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3431434"
+              data-article-author-id="1749369"
+              aria-label="Save post My Washing Machine Picks Its Own Schedule (and Saves Money) to reading list"
+              title="Save post My Washing Machine Picks Its Own Schedule (and Saves Money) to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3435406" data-content-user-id="3852212">
+  <a href="https://dev.to/walid_azrour_0813f6b60398/digital-twins-are-quietly-becoming-the-backbone-of-modern-engineering-2gee" aria-labelledby="article-link-3435406" class="crayons-story__hidden-navigation-link">Digital Twins Are Quietly Becoming the Backbone of Modern Engineering</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/walid_azrour_0813f6b60398" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3852212%2F847dcebf-ad19-41a4-9063-edecbb6e1a92.png" alt="walid_azrour_0813f6b60398 profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/walid_azrour_0813f6b60398" class="crayons-story__secondary fw-medium m:hidden">
+              Walid Azrour
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3435406" aria-controls="story-author-preview-content-3435406" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Walid Azrour profile details">
+                Walid Azrour
+                
+              </button>
+              <div
+                id="story-author-preview-content-3435406"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/walid_azrour_0813f6b60398" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3852212%2F847dcebf-ad19-41a4-9063-edecbb6e1a92.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Walid Azrour</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3852212,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Walid Azrour&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3852212"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/walid_azrour_0813f6b60398/digital-twins-are-quietly-becoming-the-backbone-of-modern-engineering-2gee" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-31T10:05:50Z">Mar 31</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774951550"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/walid_azrour_0813f6b60398/digital-twins-are-quietly-becoming-the-backbone-of-modern-engineering-2gee" data-preload-image="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fsource.unsplash.com%2Frandom%2F1200x630%2F%3Ftechnology%2Cengineering%2Cindustrial" id="article-link-3435406">
+          Digital Twins Are Quietly Becoming the Backbone of Modern Engineering
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/digitaltwins"><span class="crayons-tag__prefix">#</span>digitaltwins</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/iot"><span class="crayons-tag__prefix">#</span>iot</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/engineering"><span class="crayons-tag__prefix">#</span>engineering</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/tech"><span class="crayons-tag__prefix">#</span>tech</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+            <a href="https://dev.to/walid_azrour_0813f6b60398/digital-twins-are-quietly-becoming-the-backbone-of-modern-engineering-2gee#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Digital Twins Are Quietly Becoming the Backbone of Modern Engineering">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="arqxc9v979lwhcplorsuyqgqbupol86y" class="crayons-icon"><title id="arqxc9v979lwhcplorsuyqgqbupol86y">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            5 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3435406"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3435406"
+              data-article-author-id="3852212"
+              aria-label="Save post Digital Twins Are Quietly Becoming the Backbone of Modern Engineering to reading list"
+              title="Save post Digital Twins Are Quietly Becoming the Backbone of Modern Engineering to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3428418" data-content-user-id="3850448">
+  <a href="https://dev.to/sandun_siwantha/building-a-reliable-iot-telemetry-pipeline-lessons-from-real-systems-20lf" aria-labelledby="article-link-3428418" class="crayons-story__hidden-navigation-link">Building a Reliable IoT Telemetry Pipeline (Lessons from Real Systems)</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/sandun_siwantha" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3850448%2F506e6aa7-4e6b-4643-9699-77d13b41db8f.jpg" alt="sandun_siwantha profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/sandun_siwantha" class="crayons-story__secondary fw-medium m:hidden">
+              Sandun Siwantha
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3428418" aria-controls="story-author-preview-content-3428418" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Sandun Siwantha profile details">
+                Sandun Siwantha
+                
+              </button>
+              <div
+                id="story-author-preview-content-3428418"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/sandun_siwantha" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3850448%2F506e6aa7-4e6b-4643-9699-77d13b41db8f.jpg"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Sandun Siwantha</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3850448,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Sandun Siwantha&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3850448"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/sandun_siwantha/building-a-reliable-iot-telemetry-pipeline-lessons-from-real-systems-20lf" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-30T04:29:13Z">Mar 30</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774844953"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/sandun_siwantha/building-a-reliable-iot-telemetry-pipeline-lessons-from-real-systems-20lf" data-preload-image="" id="article-link-3428418">
+          Building a Reliable IoT Telemetry Pipeline (Lessons from Real Systems)
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/iot"><span class="crayons-tag__prefix">#</span>iot</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(29, 99, 237, 0.10);
+        --tag-prefix: #1D63ED;
+        --tag-bg-hover: rgba(29, 99, 237, 0.10);
+        --tag-prefix-hover: #1D63ED;
+      " href="/t/docker"><span class="crayons-tag__prefix">#</span>docker</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(0, 0, 0, 0.10);
+        --tag-prefix: #000000;
+        --tag-bg-hover: rgba(0, 0, 0, 0.10);
+        --tag-prefix-hover: #000000;
+      " href="/t/linux"><span class="crayons-tag__prefix">#</span>linux</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(151, 37, 234, 0.10);
+        --tag-prefix: #9725ea;
+        --tag-bg-hover: rgba(151, 37, 234, 0.10);
+        --tag-prefix-hover: #9725ea;
+      " href="/t/api"><span class="crayons-tag__prefix">#</span>api</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+            <a href="https://dev.to/sandun_siwantha/building-a-reliable-iot-telemetry-pipeline-lessons-from-real-systems-20lf#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Building a Reliable IoT Telemetry Pipeline (Lessons from Real Systems)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="abbmdm9zh613zi0q3bopwt6gsqewanta" class="crayons-icon"><title id="abbmdm9zh613zi0q3bopwt6gsqewanta">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            1 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3428418"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3428418"
+              data-article-author-id="3850448"
+              aria-label="Save post Building a Reliable IoT Telemetry Pipeline (Lessons from Real Systems) to reading list"
+              title="Save post Building a Reliable IoT Telemetry Pipeline (Lessons from Real Systems) to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3427937" data-content-user-id="1308158">
+  <a href="https://dev.to/asouza/deteccao-de-anomalias-do-sensor-ao-dashboard-294h" aria-labelledby="article-link-3427937" class="crayons-story__hidden-navigation-link">Detecção de anomalias: do sensor ao dashboard</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/asouza" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F1308158%2F8fd06aa0-b887-40fd-a791-b03dafdaa0ec.jpeg" alt="asouza profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/asouza" class="crayons-story__secondary fw-medium m:hidden">
+              Alberto Luiz Souza
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3427937" aria-controls="story-author-preview-content-3427937" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Alberto Luiz Souza profile details">
+                Alberto Luiz Souza
+                
+              </button>
+              <div
+                id="story-author-preview-content-3427937"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/asouza" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F1308158%2F8fd06aa0-b887-40fd-a791-b03dafdaa0ec.jpeg"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Alberto Luiz Souza</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:1308158,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Alberto Luiz Souza&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="1308158"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/asouza/deteccao-de-anomalias-do-sensor-ao-dashboard-294h" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-30T01:11:49Z">Mar 30</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774833109"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/asouza/deteccao-de-anomalias-do-sensor-ao-dashboard-294h" data-preload-image="" id="article-link-3427937">
+          Detecção de anomalias: do sensor ao dashboard
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(23, 253, 26, 0.10);
+        --tag-prefix: #17fd1a;
+        --tag-bg-hover: rgba(23, 253, 26, 0.10);
+        --tag-prefix-hover: #17fd1a;
+      " href="/t/ai"><span class="crayons-tag__prefix">#</span>ai</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/iot"><span class="crayons-tag__prefix">#</span>iot</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(229, 255, 227, 0.10);
+        --tag-prefix: #E5FFE3;
+        --tag-bg-hover: rgba(229, 255, 227, 0.10);
+        --tag-prefix-hover: #E5FFE3;
+      " href="/t/machinelearning"><span class="crayons-tag__prefix">#</span>machinelearning</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(254, 255, 165, 0.10);
+        --tag-prefix: #FEFFA5;
+        --tag-bg-hover: rgba(254, 255, 165, 0.10);
+        --tag-prefix-hover: #FEFFA5;
+      " href="/t/tutorial"><span class="crayons-tag__prefix">#</span>tutorial</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+            <a href="https://dev.to/asouza/deteccao-de-anomalias-do-sensor-ao-dashboard-294h#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Detecção de anomalias: do sensor ao dashboard">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a3bcodoqgtho7gd0azsd4tupuk7eknen" class="crayons-icon"><title id="a3bcodoqgtho7gd0azsd4tupuk7eknen">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            7 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3427937"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3427937"
+              data-article-author-id="1308158"
+              aria-label="Save post Detecção de anomalias: do sensor ao dashboard to reading list"
+              title="Save post Detecção de anomalias: do sensor ao dashboard to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3423182" data-content-user-id="3847163">
+  <a href="https://dev.to/vijaygovindaraja/how-i-built-aegis-5-an-ensemble-framework-that-detects-9998-of-iiot-intrusions-39bk" aria-labelledby="article-link-3423182" class="crayons-story__hidden-navigation-link">How I Built Aegis-5: An Ensemble Framework That Detects 99.98% of IIoT Intrusions</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/vijaygovindaraja" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3847163%2Fd79d2436-e162-476b-ad26-80f01e4c119a.jpeg" alt="vijaygovindaraja profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/vijaygovindaraja" class="crayons-story__secondary fw-medium m:hidden">
+              Vijay Govindaraja
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3423182" aria-controls="story-author-preview-content-3423182" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Vijay Govindaraja profile details">
+                Vijay Govindaraja
+                
+              </button>
+              <div
+                id="story-author-preview-content-3423182"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/vijaygovindaraja" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3847163%2Fd79d2436-e162-476b-ad26-80f01e4c119a.jpeg"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Vijay Govindaraja</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3847163,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Vijay Govindaraja&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3847163"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/vijaygovindaraja/how-i-built-aegis-5-an-ensemble-framework-that-detects-9998-of-iiot-intrusions-39bk" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-29T03:54:35Z">Mar 29</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774756475"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/vijaygovindaraja/how-i-built-aegis-5-an-ensemble-framework-that-detects-9998-of-iiot-intrusions-39bk" data-preload-image="" id="article-link-3423182">
+          How I Built Aegis-5: An Ensemble Framework That Detects 99.98% of IIoT Intrusions
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(23, 253, 26, 0.10);
+        --tag-prefix: #17fd1a;
+        --tag-bg-hover: rgba(23, 253, 26, 0.10);
+        --tag-prefix-hover: #17fd1a;
+      " href="/t/ai"><span class="crayons-tag__prefix">#</span>ai</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/iot"><span class="crayons-tag__prefix">#</span>iot</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(119, 194, 127, 0.10);
+        --tag-prefix: #77c27f;
+        --tag-bg-hover: rgba(119, 194, 127, 0.10);
+        --tag-prefix-hover: #77c27f;
+      " href="/t/networking"><span class="crayons-tag__prefix">#</span>networking</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(137, 6, 6, 0.10);
+        --tag-prefix: #890606;
+        --tag-bg-hover: rgba(137, 6, 6, 0.10);
+        --tag-prefix-hover: #890606;
+      " href="/t/programming"><span class="crayons-tag__prefix">#</span>programming</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+            <a href="https://dev.to/vijaygovindaraja/how-i-built-aegis-5-an-ensemble-framework-that-detects-9998-of-iiot-intrusions-39bk#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - How I Built Aegis-5: An Ensemble Framework That Detects 99.98% of IIoT Intrusions">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="ack0d56o20crvowgtd6cf4h36hpdyvsk" class="crayons-icon"><title id="ack0d56o20crvowgtd6cf4h36hpdyvsk">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            4 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3423182"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3423182"
+              data-article-author-id="3847163"
+              aria-label="Save post How I Built Aegis-5: An Ensemble Framework That Detects 99.98% of IIoT Intrusions to reading list"
+              title="Save post How I Built Aegis-5: An Ensemble Framework That Detects 99.98% of IIoT Intrusions to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3422472" data-content-user-id="3842052">
+  <a href="https://dev.to/techpulselab/wi-fi-sensing-your-smart-home-can-track-you-without-cameras-44m9" aria-labelledby="article-link-3422472" class="crayons-story__hidden-navigation-link">Wi-Fi Sensing: Your Smart Home Can Track You Without Cameras</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/techpulselab" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3842052%2F94a13f5d-9eb6-4635-9496-d3b0fcb0d475.png" alt="techpulselab profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/techpulselab" class="crayons-story__secondary fw-medium m:hidden">
+              TechPulse Lab
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3422472" aria-controls="story-author-preview-content-3422472" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="TechPulse Lab profile details">
+                TechPulse Lab
+                
+              </button>
+              <div
+                id="story-author-preview-content-3422472"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/techpulselab" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3842052%2F94a13f5d-9eb6-4635-9496-d3b0fcb0d475.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">TechPulse Lab</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3842052,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;TechPulse Lab&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3842052"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/techpulselab/wi-fi-sensing-your-smart-home-can-track-you-without-cameras-44m9" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-28T22:12:04Z">Mar 28</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774735924"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/techpulselab/wi-fi-sensing-your-smart-home-can-track-you-without-cameras-44m9" data-preload-image="" id="article-link-3422472">
+          Wi-Fi Sensing: Your Smart Home Can Track You Without Cameras
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/smarthome"><span class="crayons-tag__prefix">#</span>smarthome</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/privacy"><span class="crayons-tag__prefix">#</span>privacy</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(27, 172, 128, 0.10);
+        --tag-prefix: #1bac80;
+        --tag-bg-hover: rgba(27, 172, 128, 0.10);
+        --tag-prefix-hover: #1bac80;
+      " href="/t/security"><span class="crayons-tag__prefix">#</span>security</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/iot"><span class="crayons-tag__prefix">#</span>iot</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+            <a href="https://dev.to/techpulselab/wi-fi-sensing-your-smart-home-can-track-you-without-cameras-44m9#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Wi-Fi Sensing: Your Smart Home Can Track You Without Cameras">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a313y11nxk4ry5u27whqopqqtju5llq9" class="crayons-icon"><title id="a313y11nxk4ry5u27whqopqqtju5llq9">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            4 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3422472"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3422472"
+              data-article-author-id="3842052"
+              aria-label="Save post Wi-Fi Sensing: Your Smart Home Can Track You Without Cameras to reading list"
+              title="Save post Wi-Fi Sensing: Your Smart Home Can Track You Without Cameras to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3419366" data-content-user-id="3835946">
+  <a href="https://dev.to/_0c004e5fde78250aee362/yong-wokwi-mo-ni-qi-ji-shi-ce-shi-ni-de-arduino-dian-lu-ling-cheng-ben-ying-ti-kai-fa-xin-fang-fa-i2" aria-labelledby="article-link-3419366" class="crayons-story__hidden-navigation-link">用 Wokwi 模擬器即時測試你的 Arduino 電路 - 零成本硬體開發新方法</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/_0c004e5fde78250aee362" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3835946%2F7b142c84-de05-4005-bda6-8f44d601df51.png" alt="_0c004e5fde78250aee362 profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/_0c004e5fde78250aee362" class="crayons-story__secondary fw-medium m:hidden">
+              張旭豐
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3419366" aria-controls="story-author-preview-content-3419366" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="張旭豐 profile details">
+                張旭豐
+                
+              </button>
+              <div
+                id="story-author-preview-content-3419366"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/_0c004e5fde78250aee362" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3835946%2F7b142c84-de05-4005-bda6-8f44d601df51.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">張旭豐</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3835946,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;張旭豐&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3835946"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/_0c004e5fde78250aee362/yong-wokwi-mo-ni-qi-ji-shi-ce-shi-ni-de-arduino-dian-lu-ling-cheng-ben-ying-ti-kai-fa-xin-fang-fa-i2" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-28T08:26:14Z">Mar 28</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774686374"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/_0c004e5fde78250aee362/yong-wokwi-mo-ni-qi-ji-shi-ce-shi-ni-de-arduino-dian-lu-ling-cheng-ben-ying-ti-kai-fa-xin-fang-fa-i2" data-preload-image="" id="article-link-3419366">
+          用 Wokwi 模擬器即時測試你的 Arduino 電路 - 零成本硬體開發新方法
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(0, 131, 53, 0.10);
+        --tag-prefix: #008335;
+        --tag-bg-hover: rgba(0, 131, 53, 0.10);
+        --tag-prefix-hover: #008335;
+      " href="/t/beginners"><span class="crayons-tag__prefix">#</span>beginners</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/iot"><span class="crayons-tag__prefix">#</span>iot</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(193, 216, 47, 0.10);
+        --tag-prefix: #c1d82f;
+        --tag-bg-hover: rgba(193, 216, 47, 0.10);
+        --tag-prefix-hover: #c1d82f;
+      " href="/t/tooling"><span class="crayons-tag__prefix">#</span>tooling</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(254, 255, 165, 0.10);
+        --tag-prefix: #FEFFA5;
+        --tag-bg-hover: rgba(254, 255, 165, 0.10);
+        --tag-prefix-hover: #FEFFA5;
+      " href="/t/tutorial"><span class="crayons-tag__prefix">#</span>tutorial</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+            <a href="https://dev.to/_0c004e5fde78250aee362/yong-wokwi-mo-ni-qi-ji-shi-ce-shi-ni-de-arduino-dian-lu-ling-cheng-ben-ying-ti-kai-fa-xin-fang-fa-i2#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - 用 Wokwi 模擬器即時測試你的 Arduino 電路 - 零成本硬體開發新方法">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="aggjoljxz409dlbgf7x5r1535ngks6qz" class="crayons-icon"><title id="aggjoljxz409dlbgf7x5r1535ngks6qz">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            1 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3419366"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3419366"
+              data-article-author-id="3835946"
+              aria-label="Save post 用 Wokwi 模擬器即時測試你的 Arduino 電路 - 零成本硬體開發新方法 to reading list"
+              title="Save post 用 Wokwi 模擬器即時測試你的 Arduino 電路 - 零成本硬體開發新方法 to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3416818" data-content-user-id="3789952">
+  <a href="https://dev.to/arrows/timestamp-drift-and-ghost-alerts-industrial-iot-has-a-time-problem-nobody-is-officially-measuring-1n9n" aria-labelledby="article-link-3416818" class="crayons-story__hidden-navigation-link">Timestamp Drift and Ghost Alerts: Industrial IoT Has a Time Problem Nobody Is Officially Measuring</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/arrows" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3789952%2F22cb7c89-9fad-44f5-b31f-dfe543176859.jpeg" alt="arrows profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/arrows" class="crayons-story__secondary fw-medium m:hidden">
+              Tyler
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3416818" aria-controls="story-author-preview-content-3416818" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Tyler profile details">
+                Tyler
+                
+              </button>
+              <div
+                id="story-author-preview-content-3416818"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/arrows" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3789952%2F22cb7c89-9fad-44f5-b31f-dfe543176859.jpeg"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Tyler</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3789952,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Tyler&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3789952"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/arrows/timestamp-drift-and-ghost-alerts-industrial-iot-has-a-time-problem-nobody-is-officially-measuring-1n9n" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-27T20:14:53Z">Mar 27</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774642493"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/arrows/timestamp-drift-and-ghost-alerts-industrial-iot-has-a-time-problem-nobody-is-officially-measuring-1n9n" data-preload-image="" id="article-link-3416818">
+          Timestamp Drift and Ghost Alerts: Industrial IoT Has a Time Problem Nobody Is Officially Measuring
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(235, 223, 55, 0.10);
+        --tag-prefix: #ebdf37;
+        --tag-bg-hover: rgba(235, 223, 55, 0.10);
+        --tag-prefix-hover: #ebdf37;
+      " href="/t/architecture"><span class="crayons-tag__prefix">#</span>architecture</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/iot"><span class="crayons-tag__prefix">#</span>iot</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(255, 163, 100, 0.10);
+        --tag-prefix: #ffa364;
+        --tag-bg-hover: rgba(255, 163, 100, 0.10);
+        --tag-prefix-hover: #ffa364;
+      " href="/t/monitoring"><span class="crayons-tag__prefix">#</span>monitoring</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(119, 194, 127, 0.10);
+        --tag-prefix: #77c27f;
+        --tag-bg-hover: rgba(119, 194, 127, 0.10);
+        --tag-prefix-hover: #77c27f;
+      " href="/t/networking"><span class="crayons-tag__prefix">#</span>networking</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+            <a href="https://dev.to/arrows/timestamp-drift-and-ghost-alerts-industrial-iot-has-a-time-problem-nobody-is-officially-measuring-1n9n#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Timestamp Drift and Ghost Alerts: Industrial IoT Has a Time Problem Nobody Is Officially Measuring">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a1m89iw6tf88nz3303l7jx230ni0toqm" class="crayons-icon"><title id="a1m89iw6tf88nz3303l7jx230ni0toqm">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            6 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3416818"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3416818"
+              data-article-author-id="3789952"
+              aria-label="Save post Timestamp Drift and Ghost Alerts: Industrial IoT Has a Time Problem Nobody Is Officially Measuring to reading list"
+              title="Save post Timestamp Drift and Ghost Alerts: Industrial IoT Has a Time Problem Nobody Is Officially Measuring to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3414197" data-content-user-id="3654967">
+  <a href="https://dev.to/norvi_controllers/build-a-smart-building-automation-controller-using-norvi-x-1m17" aria-labelledby="article-link-3414197" class="crayons-story__hidden-navigation-link">Build a Smart Building Automation Controller Using NORVI X</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+          <a class="crayons-logo crayons-logo--l" href="/norvi_controllers">
+            <img alt="NORVI Controllers logo" src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Forganization%2Fprofile_image%2F12053%2F7777c618-f991-404d-9c01-03f2b7575e29.png" class="crayons-logo__image" loading="lazy" />
+          </a>
+
+          <a href="/bhanuka_gamachchige" class="crayons-avatar  crayons-avatar--s absolute -right-2 -bottom-2 border-solid border-2 border-base-inverted  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3654967%2F9aea17c0-c460-424a-8e2f-b825d917f81a.jpeg" alt="bhanuka_gamachchige profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/bhanuka_gamachchige" class="crayons-story__secondary fw-medium m:hidden">
+              Bhanuka Gamachchige
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3414197" aria-controls="story-author-preview-content-3414197" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Bhanuka Gamachchige profile details">
+                Bhanuka Gamachchige
+                
+              </button>
+              <div
+                id="story-author-preview-content-3414197"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/bhanuka_gamachchige" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3654967%2F9aea17c0-c460-424a-8e2f-b825d917f81a.jpeg"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Bhanuka Gamachchige</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3654967,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Bhanuka Gamachchige&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3654967"></div>
+                </div>
+              </div>
+            </div>
+
+            <span>
+              <span class="crayons-story__tertiary fw-normal"> for </span><a href="/norvi_controllers" class="crayons-story__secondary fw-medium">NORVI Controllers</a>
+            </span>
+          </div>
+          <a href="https://dev.to/norvi_controllers/build-a-smart-building-automation-controller-using-norvi-x-1m17" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-27T11:29:04Z">Mar 27</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774610944"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/norvi_controllers/build-a-smart-building-automation-controller-using-norvi-x-1m17" data-preload-image="" id="article-link-3414197">
+          Build a Smart Building Automation Controller Using NORVI X
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/iot"><span class="crayons-tag__prefix">#</span>iot</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+            <a href="https://dev.to/norvi_controllers/build-a-smart-building-automation-controller-using-norvi-x-1m17#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Build a Smart Building Automation Controller Using NORVI X">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="argocucpbpkj2tklavbnqy0xfitqaxql" class="crayons-icon"><title id="argocucpbpkj2tklavbnqy0xfitqaxql">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            5 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3414197"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3414197"
+              data-article-author-id="3654967"
+              aria-label="Save post Build a Smart Building Automation Controller Using NORVI X to reading list"
+              title="Save post Build a Smart Building Automation Controller Using NORVI X to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3411591" data-content-user-id="1888401">
+  <a href="https://dev.to/aws-builders/amazon-bedrock-agents-building-an-industrial-ai-assistant-57ci" aria-labelledby="article-link-3411591" class="crayons-story__hidden-navigation-link">Amazon Bedrock Agents: Building an Industrial AI Assistant</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+          <a class="crayons-logo crayons-logo--l" href="/aws-builders">
+            <img alt="AWS Community Builders  logo" src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Forganization%2Fprofile_image%2F2794%2F88da75b6-aadd-4ea1-8083-ae2dfca8be94.png" class="crayons-logo__image" loading="lazy" />
+          </a>
+
+          <a href="/codecr" class="crayons-avatar  crayons-avatar--s absolute -right-2 -bottom-2 border-solid border-2 border-base-inverted  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F1888401%2F40ce581a-280e-4c7b-96f1-51ebf3681695.jpg" alt="codecr profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/codecr" class="crayons-story__secondary fw-medium m:hidden">
+              Gerardo Arroyo
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3411591" aria-controls="story-author-preview-content-3411591" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Gerardo Arroyo profile details">
+                Gerardo Arroyo
+                
+              </button>
+              <div
+                id="story-author-preview-content-3411591"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/codecr" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F1888401%2F40ce581a-280e-4c7b-96f1-51ebf3681695.jpg"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Gerardo Arroyo</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:1888401,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Gerardo Arroyo&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="1888401"></div>
+                </div>
+              </div>
+            </div>
+
+            <span>
+              <span class="crayons-story__tertiary fw-normal"> for </span><a href="/aws-builders" class="crayons-story__secondary fw-medium">AWS Community Builders </a>
+            </span>
+          </div>
+          <a href="https://dev.to/aws-builders/amazon-bedrock-agents-building-an-industrial-ai-assistant-57ci" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-27T01:47:22Z">Mar 27</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774576042"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/aws-builders/amazon-bedrock-agents-building-an-industrial-ai-assistant-57ci" data-preload-image="" id="article-link-3411591">
+          Amazon Bedrock Agents: Building an Industrial AI Assistant
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(33, 43, 58, 0.10);
+        --tag-prefix: #212b3a;
+        --tag-bg-hover: rgba(33, 43, 58, 0.10);
+        --tag-prefix-hover: #212b3a;
+      " href="/t/aws"><span class="crayons-tag__prefix">#</span>aws</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/bedrock"><span class="crayons-tag__prefix">#</span>bedrock</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/llm"><span class="crayons-tag__prefix">#</span>llm</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/iot"><span class="crayons-tag__prefix">#</span>iot</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+            <a href="https://dev.to/aws-builders/amazon-bedrock-agents-building-an-industrial-ai-assistant-57ci#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Amazon Bedrock Agents: Building an Industrial AI Assistant">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="af3rkpw6j32ogbzrr5e4rkr945gt206w" class="crayons-icon"><title id="af3rkpw6j32ogbzrr5e4rkr945gt206w">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            12 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3411591"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3411591"
+              data-article-author-id="1888401"
+              aria-label="Save post Amazon Bedrock Agents: Building an Industrial AI Assistant to reading list"
+              title="Save post Amazon Bedrock Agents: Building an Industrial AI Assistant to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="placeholder-div"></div>
+<div class="single-article-small-pic" id="article-index-hidden-div" style="display:none"></div>
+
+    </div>
+      <div class="crayons-notice mt-4" aria-live="polite">
+        👋 <a href="https://dev.to/enter?signup_subforem=1">Sign in</a> for the ability to sort posts by <strong>relevant</strong>, <strong>latest</strong>, or <strong>top</strong>.
+      </div>
+  </main>
+    <div id="sidebar-wrapper-right" class="sidebar-wrapper sidebar-wrapper-right">
+    <div class="sidebar-bg" id="sidebar-bg-right"></div>
+    <aside class="side-bar sidebar-additional showing fs-s" id="sidebar-additional">
+            <div class="widget">
+              <header>
+                <h4 class="fs-base fw-medium">trending guides/resources</h4>
+              </header>
+              <div class="widget-body fs-s">
+                <div class="widget-link-list">
+                  
+
+<a class="crayons-link crayons-link--contentful" href="/andremmfaria/i-just-wanted-a-desk-clock-i-accidentally-built-a-home-assistant-dashboard-o96">
+  I just wanted a desk clock I accidentally built a Home Assistant dashboard
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/tonyhe8688/designing-a-custom-sbc-with-integrated-display-for-industrial-applications-406d">
+  Designing a Custom SBC with Integrated Display for Industrial Applications
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/david_thomas/raspberry-pi-pico-rtc-digital-clock-5ci6">
+  Raspberry Pi Pico RTC Digital Clock
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/ktauchathuranga/introducing-openpager-a-pocsag-transmitter-library-for-arduino-1lh1">
+  Introducing OpenPager: A POCSAG Transceiver Library for Arduino
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/vlad_avramut/lora-vs-lorawan-vs-meshtastic-the-architecture-most-people-get-wrong-288f">
+  LoRa vs LoRaWAN vs Meshtastic — The Architecture Most People Get Wrong
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/amanprasad/mqtt-explained-in-simple-terms-the-lightweight-protocol-that-powers-the-entire-iot-world-142p">
+  MQTT Explained in Simple Terms: The Lightweight Protocol That Powers the Entire IoT World
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/makepkg/implementing-ble-security-on-esp32-le-secure-connections-the-hard-way-2kb9">
+  Implementing BLE Security on ESP32: LE Secure Connections the Hard Way
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/ramikronbi/seeing-in-the-dark-real-time-thermal-super-resolution-that-actually-runs-on-edge-devices-3nc7">
+  Seeing in the Dark: Real-Time Thermal Super-Resolution (That Actually Runs on Edge Devices)
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/belochka1-04/smart-kitchen-shelf-net-esp32-ai-for-full-inventory-automation-part-1-36be">
+  Smart Kitchen Shelf: .NET + ESP32 + AI for Full Inventory Automation. Part 1
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/mackmoneymaker/i-built-a-simple-smart-home-dashboard-because-home-assistants-ui-made-me-cry-4gh3">
+  I Built a Simple Smart Home Dashboard Because Home Assistant&#39;s UI Made Me Cry
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/aws-builders/iot-development-with-kiro-part-1-stm32-on-zephyr-1jg9">
+  IoT Development with kiro: Part 1. STM32 on Zephyr
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/aws-builders/amazon-bedrock-agents-building-an-industrial-ai-assistant-57ci">
+  Amazon Bedrock Agents: Building an Industrial AI Assistant
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/3lvv0w/modern-iot-controlling-devices-via-line-bot-mqtt-and-serverless-2026-edition-3dal">
+  Modern IoT: Controlling Devices via LINE Bot, MQTT, and Serverless (2026 Edition)
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/godofgeeks/embedded-rust-basics-4f8g">
+  Embedded Rust Basics
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/automatanexus/why-i-built-a-multi-paradigm-database-in-rust-and-deployed-it-on-50-raspberry-pis-1o7e">
+  Why I Built a Multi-Paradigm Database in Rust — And Deployed It on 50+ Raspberry Pis
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/vlad_avramut/lora-lorawan-meshtastic-what-each-technology-actually-is-2hk6">
+  LoRa, LoRaWAN &amp; Meshtastic — What Each Technology Actually Is
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/shuran_xu_21cce007f2e27b8/a-practical-bare-metal-secure-boot-kit-for-cortex-m-1nll">
+  A Practical Bare-Metal Secure Boot Kit for Cortex-M
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/krunal16c/reachy-mini-not-speaking-5dcc">
+  Reachy Mini Not Speaking
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/tiamatenity/always-listening-the-privacy-crisis-of-voice-ai-and-smart-speakers-2m">
+  Always Listening: The Privacy Crisis of Voice AI and Smart Speakers
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/hexsoon2026/testing-a-24g-77g-mmwave-radar-for-reliable-distance-sensing-on-uav-robotics-4ldb">
+  Testing a 24G / 77G mmWave Radar for Reliable Distance Sensing on UAV &amp; Robotics
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/sherman95/from-burned-sensors-to-sunset-algorithms-my-full-stack-iot-journey-with-google-gemini-5fae">
+  From Burned Sensors to Sunset Algorithms: My Full-Stack IoT Journey with Google Gemini
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/vladimir_vician/we-built-a-free-cra-compliance-scorer-into-a-silicon-advisor-heres-what-we-learned-4bk0">
+  We built a free CRA compliance scorer into a silicon advisor. Here&#39;s what we learned.
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/_0c004e5fde78250aee362/ci-li-zen-mo-zuo-cheng-hu-dong-zhuang-zhi-cong-gan-ce-dao-zhi-dong-de-wan-zheng-shi-zuo-j13">
+  磁力怎麼做成互動裝置？從感測到致動的完整實作
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/openclawgotchi/meet-openclawgotchi-the-living-ai-on-a-raspberry-pi-3jaa">
+  Meet OpenClawGotchi: The Living AI on a Raspberry Pi
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/alexmo/esp32-c3-ai-text-to-speech-system-build-a-cloud-voice-output-device-with-i2s-audio-and-witai-4jho">
+  ESP32-C3 AI Text-to-Speech System: Build a Cloud Voice Output Device with I2S Audio and Wit.ai
+</a>
+
+                </div>
+              </div>
+            </div>
+    </aside>
+  </div>
+
+</div>
+
+<script src="https://assets.dev.to/assets/storiesList-b9c50cbd898a3a64258a3a49db1c531651b0a4a11937be35ed4651111802b5b5.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/tagFollows-07a4928c795d6d74427628f275723d9c29def9bb2706cc45ccbb95c0054465fe.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/feedPreviewCards-8d16b0b656456a28c0a290f756cf6e21e19833111c4796f48c631bfea8323d51.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/hideBookmarkButtons-a5d5527593e7fcba1cba72db457b57f49f94bf2266c62db454b2c8a00e751d33.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/drawerSliders-823098a874684cfb50f32368b8dd1c7854954b83a588b8b6cfaef1e8fd30d858.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/localizeArticleDates-70147c5c6bfe350b42e020ebb2a3dd37419d83978982b5a67b6389119bf162ac.js" defer="defer"></script>
+
+    <div id="runtime-banner-container"></div>
+    <div id="i18n-translations" data-translations="{&quot;en&quot;:{&quot;core&quot;:{&quot;add_comment&quot;:&quot;Add comment&quot;,&quot;beta&quot;:&quot;beta&quot;,&quot;comment&quot;:&quot;Comment&quot;,&quot;copy_link&quot;:&quot;Copy link&quot;,&quot;edit_profile&quot;:&quot;Edit profile&quot;,&quot;follow&quot;:&quot;Follow&quot;,&quot;follow_back&quot;:&quot;Follow back&quot;,&quot;following&quot;:&quot;Following&quot;,&quot;like&quot;:&quot;Like&quot;,&quot;loading&quot;:&quot;loading...&quot;,&quot;reaction&quot;:&quot;Reaction&quot;,&quot;report_abuse&quot;:&quot;Report abuse&quot;,&quot;search&quot;:&quot;Search&quot;,&quot;success_settings&quot;:&quot;Successfully updated settings.&quot;,&quot;search_placeholder&quot;:&quot;Search...&quot;,&quot;search_find_related_posts&quot;:&quot;Find related posts...&quot;,&quot;search_powered_by&quot;:&quot;Powered by Algolia&quot;,&quot;search_submit_search&quot;:&quot;Submit search for advanced filtering.&quot;,&quot;search_displaying_recommendations&quot;:&quot;Displaying Algolia Recommendations — Start typing to search&quot;,&quot;article_form_save_changes&quot;:&quot;Save changes&quot;,&quot;article_form_schedule&quot;:&quot;Schedule&quot;,&quot;article_form_publish&quot;:&quot;Publish&quot;,&quot;article_form_loading_preview&quot;:&quot;Loading preview&quot;,&quot;article_form_preview_loaded&quot;:&quot;Preview loaded&quot;,&quot;comments_preview&quot;:&quot;Preview&quot;,&quot;comments_continue_editing&quot;:&quot;Continue editing&quot;,&quot;survey_enter_response&quot;:&quot;Enter your response here...&quot;,&quot;survey_thank_you_response&quot;:&quot;Thank you for your response.&quot;,&quot;survey_thank_you_completing&quot;:&quot;Thank you for completing the survey!&quot;,&quot;dashboard_analytics_readers&quot;:&quot;Readers&quot;,&quot;dashboard_analytics_comments&quot;:&quot;Comments&quot;,&quot;dashboard_analytics_reactions&quot;:&quot;Reactions&quot;,&quot;stats_by&quot;:&quot;by&quot;,&quot;editor_new_title&quot;:&quot;New post title here...&quot;,&quot;editor_body_placeholder&quot;:&quot;Write your post content here...&quot;,&quot;tags_field_label&quot;:&quot;Add up to 4 tags&quot;,&quot;tags_field_placeholder&quot;:&quot;Add up to 4 tags...&quot;,&quot;counted_organization&quot;:{&quot;one&quot;:&quot;%{count} organization&quot;,&quot;other&quot;:&quot;%{count} organizations&quot;},&quot;counted_user&quot;:{&quot;one&quot;:&quot;%{count} person&quot;,&quot;other&quot;:&quot;%{count} people&quot;},&quot;not_following&quot;:&quot;You&#39;re not following anyone&quot;,&quot;following_everyone&quot;:&quot;You&#39;re following %{details} (everyone)&quot;,&quot;you_are_following&quot;:&quot;You&#39;re following&quot;,&quot;and&quot;:&quot;and&quot;}}}"></div>
+  </div>
+</div>
+    
+
+<footer id="footer" class="crayons-footer print-hidden">
+  <div id="footer-container" class="crayons-footer__container">
+
+
+        <style>
+  .long-bb-body {
+    max-height: calc(100vh - 200px);
+    overflow: hidden;
+  }
+  .long-bb-bottom {
+    height: 180px;
+    background: linear-gradient(to top, var(--card-bg), transparent);
+    margin-top: -180px;
+    position:relative;
+    z-index: 5;
+  }
+</style>
+
+  <div
+    style=""
+    data-display-unit data-id="146443"
+    data-category-click="click"
+    data-category-impression="impression"
+    data-context-type="home"
+    data-special="nothing"
+    data-article-id=""
+    data-type-of="in_house">
+          <div class="crayons-card crayons-card--secondary crayons-bb bb-placement js-billboard" style="display: inline-flex; flex-direction: column; align-items: center; margin: 0 auto 2rem auto; width: fit-content; padding: 2rem;">
+        <p style="font-weight: bold; margin: 0 0 1rem 0;">
+            💎 DEV Diamond Sponsors
+        </p>
+        <p style="font-size: 0.8em; margin: 0 0 2rem 0;">
+            Thank you to our Diamond Sponsors for supporting the DEV Community
+        </p>
+    
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://aistudio.google.com/?utm_source=partner&amp;utm_medium=partner&amp;utm_campaign=FY25-Global-DEVpartnership-sponsorship-AIS&amp;utm_content=-&amp;utm_term=-&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fxjlyhbdqehj3akhz166w.png" alt="Google AI - Official AI Model and Platform Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 54px; padding: 10px;" loading="lazy" width="2048" height="472">
+                </a>
+                <p style="text-align: center;">Google AI is the official AI Model and Platform Partner of DEV</p>
+            </div>
+
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://neon.tech/?ref=devto&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fbnl88cil6afxzmgwrgtt.png" alt="Neon - Official Database Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 60px; padding: 10px;" loading="lazy" width="2286" height="596">
+                </a>
+                <p style="text-align: center;">Neon is the official database partner of DEV</p>
+            </div>
+    
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://www.algolia.com/developers/?utm_source=devto&amp;utm_medium=referral&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fv30ephnolfvnlwgwm0yz.png" alt="Algolia - Official Search Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 60px; padding: 10px;" loading="lazy" width="2286" height="596">
+                </a>
+                <p style="text-align: center;">Algolia is the official search partner of DEV</p>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+    <p class="fs-s crayons-footer__description">
+      <a class="c-link c-link--branded fw-medium" aria-label="DEV Community Home" href="/">DEV Community</a> — Your community HQ
+    </p>
+
+    <ul class="footer__nav-links flex gap-2 justify-center flex-wrap fs-s p-0" style="" />
+        <li class="footer__nav-link flex items-center">
+    <a href="/">
+      Home
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/about">
+      About
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/contact">
+      Contact
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://mlh.io/">
+      MLH
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+
+    </ul>
+
+    <ul class="footer__nav-links flex gap-2 justify-center flex-wrap fs-s p-0" style="" />
+        <li class="footer__nav-link flex items-center">
+    <a href="/code-of-conduct">
+      Code of Conduct
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/privacy">
+      Privacy Policy
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/terms">
+      Terms of Use
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+
+    </ul>
+
+    <div class="fs-s">
+      <p>Built on <a class="c-link c-link--branded" target="_blank" rel="noopener" href="https://www.forem.com">Forem</a> — the <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/t/opensource">open source</a> software that powers <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to">DEV</a> and other inclusive communities.</p>
+      <p>Made with love and <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/t/rails">Ruby on Rails</a>. DEV Community <span title="copyright">&copy;</span> 2016 - 2026.</p>
+    </div>
+  </div>
+</footer>
+<div id="snack-zone"></div>
+
+    <div id="global-signup-modal" class="authentication-modal hidden">
+  <div class="authentication-modal__container">
+    <figure class="authentication-modal__image-container">
+      <img class="authentication-modal__image" src="https://media2.dev.to/dynamic/image/width=190,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+        alt="DEV Community" loading="lazy" />
+    </figure>
+    <div class="authentication-modal__content">
+      <p class="authentication-modal__description">
+          We&#39;re a place where coders share, stay up-to-date and grow their careers.
+      </p>
+    </div>
+    <div class="authentication-modal__actions">
+      <a href="https://dev.to/enter?signup_subforem=1" class="crayons-btn" aria-label="Log in" data-no-instant>
+        Log in
+      </a>
+      <a href="https://dev.to/enter?signup_subforem=1&amp;state=new-user" class="crayons-btn crayons-btn--ghost-brand js-global-signup-modal__create-account" aria-label="Create new account" data-no-instant>
+        Create account
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="https://assets.dev.to/assets/signupModalShortcuts-0b25469b985100a01e94cbd7fccaf7f0a4d776e129aac65c766aa32cb28ab29a.js" defer="defer"></script>
+
+    <div id="cookie-consent"></div>
+  <div id="reaction-category-resources" class="hidden" aria-hidden="true">
+    <img data-name="Like" data-slug="like" data-position="1" src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+    <img data-name="Unicorn" data-slug="unicorn" data-position="2" src="https://assets.dev.to/assets/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" width="18" height="18" />
+    <img data-name="Exploding Head" data-slug="exploding_head" data-position="3" src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" width="18" height="18" />
+    <img data-name="Raised Hands" data-slug="raised_hands" data-position="4" src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="18" height="18" />
+    <img data-name="Fire" data-slug="fire" data-position="5" src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+</div>
+
+    <script>
+  var userSignedIn = false;
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    initAuth();
+  } else {
+    document.addEventListener('DOMContentLoaded', initAuth);
+  }
+
+  function initAuth() {
+    var paramToken = new URLSearchParams(window.location.search).get('jwt');
+
+    if (paramToken && !userSignedIn) {
+      authenticateUser(paramToken);
+    } else {
+      var iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = 'https://forem.com/auth_pass/iframe';
+  
+      document.body.appendChild(iframe);
+  
+      window.addEventListener('message', function(event) {
+        if (event.origin !== 'https://forem.com' && event.origin !== window.location.origin) {
+          return;
+        }
+  
+        var data = event.data;
+  
+        if (data.authenticated && !userSignedIn) {
+          authenticateUser(data.token);
+        } else if(data.authenticated && window.ReactNativeWebView && window.ReactNativeWebView.postMessage) {
+          window.ReactNativeWebView.postMessage(JSON.stringify({
+            action: 'login',
+            token: data.token,
+          }));
+        }
+      });  
+    }
+
+    function authenticateUser(token) {
+      fetch('/auth_pass/token_login', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': getMetaContent('csrf-token'),
+        },
+        body: JSON.stringify({ token: token }),
+      })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        if (data.success) {
+          if (document.head.querySelector('meta[name="user-signed-in"][content="false"]')) {
+            // Reload the page to update the user's state
+            location.reload();
+          }
+        }
+      })
+      .catch(function(error) {
+        console.error('Error during authentication:', error);
+      });
+    }
+
+    function getMetaContent(name) {
+      var element = document.querySelector('meta[name="' + name + '"]');
+      return element ? element.getAttribute('content') : '';
+    }
+  }
+</script>
+
+  
+  
+  
+  </body>
+  </html>

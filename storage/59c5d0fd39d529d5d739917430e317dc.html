@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Terraform Security Best Practices: Encryption, IAM, and Drift Detection - DEV Community</title>
+    
+    <link rel="preload" href="/reactions?article_id=3437265" as="fetch" crossorigin="same-origin">
+    <link rel="canonical" href="https://orthogonal.info/terraform-security-best-practices-encryption-iam-and-drift-detection/" />
+    <meta name="description" content="What happens when your Terraform state file ends up in the wrong hands? Spoiler: it’s not pretty, and... Tagged with security, devops, terraform, cloud.">
+    <meta name="keywords" content="security, devops, terraform, cloud, software, coding, development, engineering, inclusive, community">
+
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://dev.to/orthogonalinfo/terraform-security-best-practices-encryption-iam-and-drift-detection-11ge" />
+    <meta property="og:title" content="Terraform Security Best Practices: Encryption, IAM, and Drift Detection" />
+    <meta property="og:description" content="What happens when your Terraform state file ends up in the wrong hands? Spoiler: it’s not pretty, and..." />
+    <meta property="og:site_name" content="DEV Community" />
+    <meta name="twitter:site" content="@thepracticaldev">
+    <meta name="twitter:creator" content="@">
+    <meta name="twitter:title" content="Terraform Security Best Practices: Encryption, IAM, and Drift Detection">
+    <meta name="twitter:description" content="What happens when your Terraform state file ends up in the wrong hands? Spoiler: it’s not pretty, and...">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:widgets:new-embed-design" content="on">
+    <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+      <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F0piauwr94x1vjocskisn.png" />
+      <meta name="twitter:image:src" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F0piauwr94x1vjocskisn.png">
+      <meta name="robots" content="noindex">
+      <meta name="robots" content="nofollow">
+
+      <meta name="last-updated" content="2026-03-31 16:54:25 UTC">
+      <meta name="user-signed-in" content="false">
+      <meta name="head-cached-at" content="1774976065">
+      <meta name="environment" content="production">
+      <link rel="stylesheet" href="https://assets.dev.to/assets/minimal-102395aec70cbac5f7d0bd5bebb5b56f0459629c5d224dae16333f11604cbad3.css" media="all" id="main-minimal-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/views-daf614dcfafed4955d7758a6a86d63bfbb1e8d4eae8b6317b421e18a99bbe867.css" media="all" id="main-views-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/crayons-8fce708625aacc3ff4a4d4947252a1cfab954753bb082374c0bed738861b52f2.css" media="all" id="main-crayons-stylesheet" />
+
+      <script src="https://assets.dev.to/assets/base-0c748bbcdc30041261c326ef2ce931fbce46c58bc3c488da881ae35c4750941d.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/application-0b268684912bef9b0f23defff01cb608bfc5d5e5610287725e7b686139ae32d3.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/baseInitializers-2f0777a6d67046056f9f42665560ce072de3801292674358ddbad6e135c1891d.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/baseTracking-b6bf73e5ee66633e151e7d5b7c6bbccedfa4c59e3615be97b98c4c0f543ddae7.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/followButtons-a29380c2c88136b97b2b5e63e94614ff7458fc72e07cffa7b6153831c28a40d2.js" defer="defer"></script>
+
+        <meta name="search-script" content="https://assets.dev.to/assets/Search-b977aea0f2d7a5818b4ebd97f7d4aba8548099f84f5db5761f8fa67be76abc54.js">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+      <link rel="icon" type="image/x-icon" href="https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" />
+      <link rel="apple-touch-icon" href="https://media2.dev.to/dynamic/image/width=180,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="https://media2.dev.to/dynamic/image/width=152,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="https://media2.dev.to/dynamic/image/width=180,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="167x167" href="https://media2.dev.to/dynamic/image/width=167,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link href="https://media2.dev.to/dynamic/image/width=192,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" rel="icon" sizes="192x192" />
+      <link href="https://media2.dev.to/dynamic/image/width=128,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" rel="icon" sizes="128x128" />
+      <meta name="apple-mobile-web-app-title" content="dev.to">
+      <meta name="application-name" content="dev.to">
+      <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+      <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+      <link rel="search" href="https://dev.to/open-search.xml" type="application/opensearchdescription+xml" title="DEV Community" />
+
+      <meta property="forem:name" content="DEV Community" />
+      <meta property="forem:logo" content="https://media2.dev.to/dynamic/image/width=512,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" />
+      <meta property="forem:domain" content="dev.to" />
+    <style>
+.ltag__link--embedded img.subscription-icon {
+max-height: 13px !important;
+max-width: 21px !important;
+display: inline-block !important;
+border-radius: 0 !important;
+}
+.text-styles .crayons-article__context-note p {
+margin-bottom: 0 !important;
+}
+</style>
+  </head>
+    <body
+      class="sans-serif-article-body default-header"
+      data-user-status="logged-out"
+      data-is-root-subforem="false"
+        data-subforem-id="1"
+      data-side-nav-visible="true"
+      data-community-name="DEV Community"
+      data-subscription-icon="https://assets.dev.to/assets/subscription-icon-805dfa7ac7dd660f07ed8d654877270825b07a92a03841aa99a1093bd00431b2.png"
+      data-locale="en"
+      data-honeybadger-key="hbp_nqu4Y66HuEKlD6YRGssZuRQnPOjDm50J8Zkr"
+      data-deployed-at="2026-03-31T16:23:33Z"
+      data-latest-commit-id="786e25495afed32bb807645b48a724374606e51e"
+      data-ga-tracking="UA-71991109-1"
+      data-cookie-banner-user-context="logged_out_only"
+      data-cookie-banner-platform-context="off"
+      data-algolia-id="PRSOBFP46H"
+      data-algolia-search-key="9aa7d31610cba78851c9b1f63776a9dd"
+      data-algolia-display="true"
+      data-dynamic-url-component="bmar11"
+      data-ga4-tracking-id="G-TYEM8Y3JN3">
+      
+      <script>
+        if (navigator.userAgent === 'ForemWebView/1' || window.frameElement) {
+          document.body.classList.add("hidden-shell");
+        }
+          if (new Date() > new Date("2026-02-04T09:00:00-05:00")) {
+            document.body.dataset.sideNavVisible = "false";
+          } 
+      </script>
+
+      <link rel="stylesheet" href="https://assets.dev.to/assets/minimal-102395aec70cbac5f7d0bd5bebb5b56f0459629c5d224dae16333f11604cbad3.css" media="all" id="secondary-minimal-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/views-daf614dcfafed4955d7758a6a86d63bfbb1e8d4eae8b6317b421e18a99bbe867.css" media="all" id="secondary-views-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/crayons-8fce708625aacc3ff4a4d4947252a1cfab954753bb082374c0bed738861b52f2.css" media="all" id="secondary-crayons-stylesheet" />
+
+      <div id="body-styles">
+        <style>
+          :root {
+            --accent-brand-lighter-rgb: 80, 99, 301;
+            --accent-brand-rgb: 59, 73, 223;
+            --accent-brand-darker-rgb: 47, 58, 178;
+          }
+        </style>
+      </div>
+      <div id="audiocontent" data-podcast="">
+        
+      </div>
+      <div class="navigation-progress" id="navigation-progress"></div>
+
+<header id="topbar" class="crayons-header topbar print-hidden">
+  <span id="route-change-target" tabindex="-1"></span>
+  <a href="#main-content" class="skip-content-link">Skip to content</a>
+  <div class="crayons-header__container">
+    <span class="inline-block m:hidden ">
+      <button class="c-btn c-btn--icon-alone js-hamburger-trigger mx-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="af2vmrbqjx3myv5jy3tje9sz96ceyzdh" class="crayons-icon"><title id="af2vmrbqjx3myv5jy3tje9sz96ceyzdh">Navigation menu</title>
+    <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"></path>
+</svg>
+
+      </button>
+    </span>
+    <a href="/" class="site-logo" aria-label="DEV Community Home" >
+    <img class="site-logo__img"
+         src="https://media2.dev.to/dynamic/image/quality=100/https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png"
+         style="aspect-ratio: 10 / 8"
+         alt="DEV Community">
+</a>
+
+
+    <div class="crayons-header--search js-search-form" id="header-search">
+      <form accept-charset="UTF-8" method="get" action="/search" role="search">
+        <div class="crayons-fields crayons-fields--horizontal">
+          <div class="crayons-field flex-1 relative">
+            <input id="search-input" class="crayons-header--search-input crayons-textfield js-search-input" type="text" id="nav-search" name="q" placeholder="Find related posts..." autocomplete="off" />
+            <button type="submit" aria-label="Search" class="c-btn c-btn--icon-alone absolute inset-px right-auto mt-0 py-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="abcdoix8bp2ayp0kqjzmndk1331k2kx4" aria-hidden="true" class="crayons-icon"><title id="abcdoix8bp2ayp0kqjzmndk1331k2kx4">Search</title>
+    <path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0111 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 01-1.969 5.617zm-2.006-.742A6.977 6.977 0 0018 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 004.875-1.975l.15-.15z"></path>
+</svg>
+
+            </button>
+
+            <a class="crayons-header--search-brand-indicator" href="https://www.algolia.com/developers/?utm_source=devto&utm_medium=referral" target="_blank" rel="noopener noreferrer">
+                Powered by Algolia
+                <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" width="24" height="24" viewBox="0 0 500 500.34" role="img" aria-labelledby="a8mlh1t6tji36u47q6649tmm35xxg2dy" aria-hidden="true" class="crayons-icon"><title id="a8mlh1t6tji36u47q6649tmm35xxg2dy">Search</title>
+  <defs></defs><path class="cls-1" d="M250,0C113.38,0,2,110.16,.03,246.32c-2,138.29,110.19,252.87,248.49,253.67,42.71,.25,83.85-10.2,120.38-30.05,3.56-1.93,4.11-6.83,1.08-9.52l-23.39-20.74c-4.75-4.22-11.52-5.41-17.37-2.92-25.5,10.85-53.21,16.39-81.76,16.04-111.75-1.37-202.04-94.35-200.26-206.1,1.76-110.33,92.06-199.55,202.8-199.55h202.83V407.68l-115.08-102.25c-3.72-3.31-9.43-2.66-12.43,1.31-18.47,24.46-48.56,39.67-81.98,37.36-46.36-3.2-83.92-40.52-87.4-86.86-4.15-55.28,39.65-101.58,94.07-101.58,49.21,0,89.74,37.88,93.97,86.01,.38,4.28,2.31,8.28,5.53,11.13l29.97,26.57c3.4,3.01,8.8,1.17,9.63-3.3,2.16-11.55,2.92-23.6,2.07-35.95-4.83-70.39-61.84-127.01-132.26-131.35-80.73-4.98-148.23,58.18-150.37,137.35-2.09,77.15,61.12,143.66,138.28,145.36,32.21,.71,62.07-9.42,86.2-26.97l150.36,133.29c6.45,5.71,16.62,1.14,16.62-7.48V9.49C500,4.25,495.75,0,490.51,0H250Z"></path>
+</svg>
+
+            </a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="flex items-center h-100 ml-auto">
+        <div class="flex" id="authentication-top-nav-actions">
+          <span class="hidden m:block">
+            <a href="https://dev.to/enter?signup_subforem=1" class="c-link c-link--block mr-2 whitespace-nowrap ml-auto" data-no-instant>
+              Log in
+            </a>
+          </span>
+
+          <a href="https://dev.to/enter?signup_subforem=1&amp;state=new-user" data-tracking-id="ca_top_nav" data-tracking-source="top_navbar" class="c-cta c-cta--branded whitespace-nowrap mr-2" data-no-instant>
+            Create account
+          </a>
+        </div>
+    </div>
+  </div>
+</header>
+
+<div class="hamburger">
+  <div class="hamburger__content">
+    <header class="hamburger__content__header">
+      <h2 class="fs-l fw-bold flex-1 break-word lh-tight">DEV Community</h2>
+
+      <button class="c-btn c-btn--icon-alone js-hamburger-trigger shrink-0" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a4a2enua5nnwcbun1t95gvfgf7mccijo" aria-hidden="true" class="crayons-icon c-btn__icon"><title id="a4a2enua5nnwcbun1t95gvfgf7mccijo">Close</title><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636l4.95 4.95z"></path></svg>
+
+      </button>
+    </header>
+
+    <div class="p-2 js-navigation-links-container" id="authentication-hamburger-actions">
+    </div>
+  </div>
+  <div class="hamburger__overlay js-hamburger-trigger"></div>
+</div>
+
+
+      <div id="active-broadcast" class="broadcast-wrapper"></div>
+<div id="page-content" class="wrapper stories stories-show articletag-security articletag-devops articletag-terraform articletag-cloud articleuser-3847175" data-current-page="stories-show">
+  <div id="page-content-inner" data-internal-nav="false">
+    <div id="page-route-change" class="screen-reader-only" aria-live="polite" aria-atomic="true"></div>
+
+    
+<style>
+  .html-variant-wrapper { display: none}
+</style>
+
+
+
+<script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.2.10/webcomponents-loader.js"
+        integrity="sha384-3HK5hxQbkFqOIxMbpROlRmRtYl2LBZ52t+tqcjzsmr9NJuOWQxl8RgQSyFvq2lhy"
+        crossorigin="anonymous" defer></script>
+
+  <script src="https://assets.dev.to/assets/webShare-0686f0b9ac40589694ef6ae6a6202c44119bc781c254f6cf6d52d8a008461156.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/articlePage-ed23d70916aed9a7fec41f94e64aac17438d3210c1bb1d6fceace80f15445213.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/commentDropdowns-7a28d130e5b78d38b30a9495a964003a66bd64fa455fc70b766d69cf06b9ba24.js" defer="defer"></script>
+
+  <script type="application/ld+json">
+    {"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://dev.to/orthogonalinfo/terraform-security-best-practices-encryption-iam-and-drift-detection-11ge"},"url":"https://dev.to/orthogonalinfo/terraform-security-best-practices-encryption-iam-and-drift-detection-11ge","image":["https://media2.dev.to/dynamic/image/width=1080,height=1080,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F0piauwr94x1vjocskisn.png","https://media2.dev.to/dynamic/image/width=1280,height=720,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F0piauwr94x1vjocskisn.png","https://media2.dev.to/dynamic/image/width=1600,height=900,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F0piauwr94x1vjocskisn.png"],"publisher":{"@context":"http://schema.org","@type":"Organization","name":"DEV Community","logo":{"@context":"http://schema.org","@type":"ImageObject","url":"https://media2.dev.to/dynamic/image/width=192,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png","width":"192","height":"192"}},"headline":"Terraform Security Best Practices: Encryption, IAM, and Drift Detection","author":{"@context":"http://schema.org","@type":"Person","url":"https://dev.to/orthogonalinfo","name":"Max"},"datePublished":"2026-03-31T16:47:40Z","dateModified":"2026-03-31T16:47:40Z"}
+  </script>
+
+  
+  <div class="crayons-layout crayons-layout--3-cols crayons-layout--article">
+    <aside class="crayons-layout__sidebar-left" aria-label="Article actions">
+      <script>
+  if (/Twitter for (iPhone|iPad|Android)/i.test(navigator.userAgent)) {
+    document.documentElement.classList.add('is-twitter-in-app');
+  }
+</script>
+<div class="crayons-article-actions print-hidden">
+  <div class="crayons-article-actions__inner">
+
+    
+<div class="reaction-drawer__outer hoverdown" style="">
+  <button
+    id="reaction-drawer-trigger"
+    aria-label="reaction-drawer-trigger"
+    aria-pressed="false"
+    class="hoverdown-trigger crayons-reaction pseudo-reaction crayons-tooltip__activator relative">
+      <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction--like crayons-reaction__icon--inactive" style="width: 40px; height: 40px">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" role="img" aria-hidden="true" class="crayons-icon">
+    <g clip-path="url(#clip0_988_3276)">
+        <path d="M19 14V17H22V19H18.999L19 22H17L16.999 19H14V17H17V14H19ZM20.243 4.75698C22.505 7.02498 22.583 10.637 20.479 12.992L19.059 11.574C20.39 10.05 20.32 7.65998 18.827 6.16998C17.324 4.67098 14.907 4.60698 13.337 6.01698L12.002 7.21498L10.666 6.01798C9.09103 4.60598 6.67503 4.66798 5.17203 6.17198C3.68203 7.66198 3.60703 10.047 4.98003 11.623L13.412 20.069L12 21.485L3.52003 12.993C1.41603 10.637 1.49503 7.01898 3.75603 4.75698C6.02103 2.49298 9.64403 2.41698 12 4.52898C14.349 2.41998 17.979 2.48998 20.242 4.75698H20.243Z" fill="#525252"></path>
+    </g>
+    <defs>
+        <clipPath id="clip0_988_3276">
+        <rect width="24" height="24" fill="white"></rect>
+        </clipPath>
+    </defs>
+</svg>
+
+      </span>
+      <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--active" style="width: 40px; height: 40px">
+        <img aria_hidden="true" height="24" width="24" src="https://assets.dev.to/assets/heart-plus-active-9ea3b22f2bc311281db911d416166c5f430636e76b15cd5df6b3b841d830eefa.svg" />
+      </span>
+      <span class="crayons-reaction__count" id="reaction_total_count">
+        <span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span>
+      </span>
+      <span class="crayons-tooltip__content">
+        Add reaction
+      </span>
+  </button>
+
+  <div class="reaction-drawer" aria-expanded="false">
+    <div class="reaction-drawer__container">
+        <button
+  id="reaction-butt-like"
+  name="Like"
+  aria-label="Like"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="like">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-like"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Like
+    </span>
+</button>
+
+        <button
+  id="reaction-butt-unicorn"
+  name="Unicorn"
+  aria-label="Unicorn"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="unicorn">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-unicorn"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Unicorn
+    </span>
+</button>
+
+        <button
+  id="reaction-butt-exploding_head"
+  name="Exploding Head"
+  aria-label="Exploding Head"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="exploding_head">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-exploding_head"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Exploding Head
+    </span>
+</button>
+
+        <button
+  id="reaction-butt-raised_hands"
+  name="Raised Hands"
+  aria-label="Raised Hands"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="raised_hands">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-raised_hands"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Raised Hands
+    </span>
+</button>
+
+        <button
+  id="reaction-butt-fire"
+  name="Fire"
+  aria-label="Fire"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="fire">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-fire"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Fire
+    </span>
+</button>
+
+    </div>
+  </div>
+</div>
+
+<button
+  id="reaction-butt-comment"
+  aria-label="Jump to Comments"
+  aria-pressed="false"
+  class="crayons-reaction crayons-reaction--comment crayons-tooltip__activator relative"
+  data-category="comment">
+    <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--inactive">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-hidden="true" class="crayons-icon">
+    <path d="M10 3h4a8 8 0 010 16v3.5c-5-2-12-5-12-11.5a8 8 0 018-8zm2 14h2a6 6 0 000-12h-4a6 6 0 00-6 6c0 3.61 2.462 5.966 8 8.48V17z"></path>
+</svg>
+
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-comment" data-count="0">
+      <span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span>
+    </span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Jump to Comments
+    </span>
+</button>
+
+<button
+  id="reaction-butt-readinglist"
+  aria-label="Add to reading list"
+  aria-pressed="false"
+  class="crayons-reaction crayons-reaction--readinglist crayons-tooltip__activator relative"
+  data-category="readinglist">
+    <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--inactive">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-hidden="true" class="crayons-icon">
+    <path d="M5 2h14a1 1 0 011 1v19.143a.5.5 0 01-.766.424L12 18.03l-7.234 4.536A.5.5 0 014 22.143V3a1 1 0 011-1zm13 2H6v15.432l6-3.761 6 3.761V4z"></path>
+</svg>
+
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-readinglist"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Save
+    </span>
+</button>
+
+
+<button
+  id="reaction-butt-boost"
+  aria-label="Boost"
+  aria-pressed="false"
+  class="crayons-reaction crayons-reaction--boost crayons-tooltip__activator relative">
+    <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--inactive">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" role="img" aria-hidden="true" class="crayons-icon" width="24" height="24">
+  <path transform="translate(24,0) scale(-1,1)" d="M6 4H21C21.5523 4 22 4.44772 22 5V12H20V6H6V9L1 5L6 1V4ZM18 20H3C2.44772 20 2 19.5523 2 19V12H4V18H18V15L23 19L18 23V20Z"></path>
+</svg>
+
+    </span>
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Boost
+    </span>
+</button>
+
+
+    <div class="only-sidebar-menu-item">
+      <div id="mod-actions-menu-btn-area" class="print-hidden trusted-visible-block align-center">
+      </div>
+    </div>
+    <div class="align-center m:relative">
+      <button id="article-show-more-button" aria-controls="article-show-more-dropdown" aria-expanded="false" aria-haspopup="true" class="dropbtn crayons-btn crayons-btn--ghost-dimmed crayons-btn--icon-rounded" aria-label="Share post options">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a7xl8ln8yocyhzhn34c7wqjpzlq4p3nt" aria-hidden="true" class="crayons-icon dropdown-icon"><title id="a7xl8ln8yocyhzhn34c7wqjpzlq4p3nt">More...</title><path fill-rule="evenodd" clip-rule="evenodd" d="M7 12a2 2 0 11-4 0 2 2 0 014 0zm7 0a2 2 0 11-4 0 2 2 0 014 0zm5 2a2 2 0 100-4 2 2 0 000 4z"></path></svg>
+
+      </button>
+
+      <div id="article-show-more-dropdown" class="crayons-dropdown side-bar left-2 right-2 m:right-auto m:left-100 s:left-auto mb-1 m:mb-0 top-unset bottom-100 m:top-0 m:bottom-unset">
+        <div>
+          <button
+            id="copy-post-url-button"
+            class="flex justify-between crayons-link crayons-link--block w-100 bg-transparent border-0"
+            data-postUrl="https://dev.to/orthogonalinfo/terraform-security-best-practices-encryption-iam-and-drift-detection-11ge">
+            <span class="fw-bold">Copy link</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" id="article-copy-icon" role="img" aria-labelledby="anfntiyimwg00epf1tq5strw1nz509r8" aria-hidden="true" class="crayons-icon mx-2 shrink-0"><title id="anfntiyimwg00epf1tq5strw1nz509r8">Copy link</title>
+    <path d="M7 6V3a1 1 0 011-1h12a1 1 0 011 1v14a1 1 0 01-1 1h-3v3c0 .552-.45 1-1.007 1H4.007A1 1 0 013 21l.003-14c0-.552.45-1 1.007-1H7zm2 0h8v10h2V4H9v2zm-2 5v2h6v-2H7zm0 4v2h6v-2H7z"></path>
+</svg>
+
+          </button>
+          <div id="article-copy-link-announcer" aria-live="polite" class="crayons-notice crayons-notice--success my-2 p-1" aria-live="polite" hidden>Copied to Clipboard</div>
+        </div>
+
+        <div class="Desktop-only">
+          <a
+            target="_blank"
+            class="crayons-link crayons-link--block"
+            rel="noopener"
+            href='https://twitter.com/intent/tweet?text=%22Terraform%20Security%20Best%20Practices%3A%20Encryption%2C%20IAM%2C%20and%20Drift%20Detection%22%20by%20Max%20%23DEVCommunity%20https%3A%2F%2Fdev.to%2Forthogonalinfo%2Fterraform-security-best-practices-encryption-iam-and-drift-detection-11ge'>
+            Share to X
+          </a>
+          <a
+            target="_blank"
+            class="crayons-link crayons-link--block"
+            rel="noopener"
+            href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fdev.to%2Forthogonalinfo%2Fterraform-security-best-practices-encryption-iam-and-drift-detection-11ge&title=Terraform%20Security%20Best%20Practices%3A%20Encryption%2C%20IAM%2C%20and%20Drift%20Detection&summary=What%20happens%20when%20your%20Terraform%20state%20file%20ends%20up%20in%20the%20wrong%20hands%3F%20Spoiler%3A%20it%E2%80%99s%20not%20pretty%2C%20and...&source=DEV%20Community">
+            Share to LinkedIn
+          </a>
+          <a
+            target="_blank"
+            class="crayons-link crayons-link--block"
+            rel="noopener"
+            href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fdev.to%2Forthogonalinfo%2Fterraform-security-best-practices-encryption-iam-and-drift-detection-11ge">
+            Share to Facebook
+          </a>
+          <a
+            target="_blank"
+            class="crayons-link crayons-link--block"
+            rel="noopener"
+            href="https://s2f.kytta.dev/?text=https%3A%2F%2Fdev.to%2Forthogonalinfo%2Fterraform-security-best-practices-encryption-iam-and-drift-detection-11ge">
+            Share to Mastodon
+          </a>
+        </div>
+
+        <web-share-wrapper shareurl="https://dev.to/orthogonalinfo/terraform-security-best-practices-encryption-iam-and-drift-detection-11ge" sharetitle="Terraform Security Best Practices: Encryption, IAM, and Drift Detection" sharetext="What happens when your Terraform state file ends up in the wrong hands? Spoiler: it’s not pretty, and..." template="web-share-button">
+        </web-share-wrapper>
+        <template id="web-share-button">
+          <a href="#" class="dropdown-link-row crayons-link crayons-link--block">Share Post via...</a>
+        </template>
+
+        <a href="/report-abuse" class="crayons-link crayons-link--block" id="ReportButtonAuthor">Report Abuse</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </aside>
+
+    <main id="main-content" class="crayons-layout__content grid gap-4">
+      <div class="article-wrapper">
+
+
+        <article class="crayons-card crayons-article mb-4"
+          id="article-show-container"
+          data-article-id="3437265"
+          data-article-slug="terraform-security-best-practices-encryption-iam-and-drift-detection-11ge"
+          data-author-id="3847175"
+          data-author-name="Max"
+          data-author-username="orthogonalinfo"
+          data-co-author-ids=""
+          data-path="/orthogonalinfo/terraform-security-best-practices-encryption-iam-and-drift-detection-11ge"
+          data-pin-path="/stories/feed/pinned_article"
+          data-pinned-article-id=""
+          data-published="true"
+          data-scheduled="false"
+          lang=en
+           >
+          <script>
+            try {
+              if(localStorage) {
+                let currentUser = localStorage.getItem('current_user');
+
+                if (currentUser) {
+                  currentUser = JSON.parse(currentUser);
+                  if (currentUser.id === 3847175) {
+                    document.getElementById('article-show-container').classList.add('current-user-is-article-author');
+                  }
+                }
+              }
+            } catch (e) {
+              console.error(e);
+            }
+          </script>
+          <header class="crayons-article__header" id="main-title">
+
+            <div class="crayons-article__header__meta">
+              <div class="flex s:items-start flex-col s:flex-row">
+                <div id="action-space" class="crayons-article__actions mb-4 s:mb-0 s:order-last"></div>
+                <div class="flex flex-1 mb-5 items-start">
+                  <div class="relative">
+                      <a href="/orthogonalinfo"><img class="radius-full align-middle" src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3847175%2F78878eb1-022c-4880-ba72-cde851bc87d8.png" width="40" height="40" alt="Max" /></a>
+                  </div>
+                  <div class="pl-3 flex-1">
+                    <a href="/orthogonalinfo" class="crayons-link fw-bold">Max</a>
+                    
+                    <p class="fs-xs color-base-60">
+                        Posted on <time datetime="2026-03-31T16:47:40Z" class="date-no-year">Mar 31</time>
+
+
+                        &bull; Originally published at <a style="color:#1395b8" href="https://orthogonal.info/terraform-security-best-practices-encryption-iam-and-drift-detection/">orthogonal.info</a> 
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              
+
+              <h1 class=" fs-3xl m:fs-4xl l:fs-5xl fw-bold s:fw-heavy lh-tight mb-2 long">
+                Terraform Security Best Practices: Encryption, IAM, and Drift Detection
+              </h1>
+              
+                  <div class="spec__tags flex flex-wrap">
+                      <a class="crayons-tag   " style="
+        --tag-bg: rgba(27, 172, 128, 0.10);
+        --tag-prefix: #1bac80;
+        --tag-bg-hover: rgba(27, 172, 128, 0.10);
+        --tag-prefix-hover: #1bac80;
+      " href="/t/security"><span class="crayons-tag__prefix">#</span>security</a>
+                      <a class="crayons-tag   " style="
+        --tag-bg: rgba(6, 181, 0, 0.10);
+        --tag-prefix: #06B500;
+        --tag-bg-hover: rgba(6, 181, 0, 0.10);
+        --tag-prefix-hover: #06B500;
+      " href="/t/devops"><span class="crayons-tag__prefix">#</span>devops</a>
+                      <a class="crayons-tag   " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/terraform"><span class="crayons-tag__prefix">#</span>terraform</a>
+                      <a class="crayons-tag   " style="
+        --tag-bg: rgba(255, 153, 0, 0.10);
+        --tag-prefix: #FF9900;
+        --tag-bg-hover: rgba(255, 153, 0, 0.10);
+        --tag-prefix-hover: #FF9900;
+      " href="/t/cloud"><span class="crayons-tag__prefix">#</span>cloud</a>
+                  </div>
+            </div>
+          </header>
+
+          <div class="crayons-article__main ">
+            <div class="crayons-article__body text-styles spec__body" data-article-id="3437265" id="article-body">
+                <p>What happens when your Terraform state file ends up in the wrong hands? Spoiler: it’s not pretty, and your cloud environment might as well send out party invitations to every hacker on the internet.</p>
+
+<p>Keeping your Terraform setup secure can feel like trying to lock the front door while someone’s already sneaking in through the window. But don’t worry—this article will help you safeguard your state files with encryption, configure IAM policies that won’t break your workflows (or your spirit), and detect drift before it turns into a full-blown disaster. Let’s dive in, and maybe even have a laugh along the way—because crying over misconfigured permissions is so last year.</p>
+
+
+<hr>
+
+<h2>
+  <a name="introduction-why-terraform-security-matters" href="#introduction-why-terraform-security-matters">
+  </a>
+  Introduction: Why Terraform Security Matters
+</h2>
+
+<p>Let’s face it: Terraform is like the Swiss Army knife of infrastructure as code (IaC). It’s powerful, versatile, and can make you feel like a wizard conjuring up entire cloud environments with a few lines of HCL. But with great power comes great responsibility—or, in this case, great security risks. If you’re not careful, your Terraform setup can go from “cloud hero” to “security zero” faster than you can say <code>terraform apply</code>.</p>
+
+<p>Cloud engineers and DevOps teams often face a minefield of security challenges when using Terraform. From accidentally exposing sensitive data in state files to over-permissioned IAM roles that scream “hack me,” the risks are real. And don’t even get me started on the chaos of managing shared state files in a team environment. It’s like trying to share a single toothbrush—gross and a bad idea.</p>
+
+<p>So, why does securing Terraform matter so much in production? Because your infrastructure isn’t just a playground; it’s the backbone of your business. A poorly secured Terraform setup can lead to data breaches, compliance violations, and sleepless nights filled with regret. Trust me, I’ve been there—it’s not fun.</p>
+
+<blockquote>
+<p><strong>💡 Pro Tip:</strong> Always encrypt your state files and follow Terraform security best practices, like using least privilege IAM roles. Your future self will thank you.</p>
+</blockquote>
+
+<p>In this blog, we’ll dive into practical tips and strategies to keep your Terraform setup secure and your cloud environments safe. Let’s get started before the hackers do!</p>
+
+<h2>
+  <a name="securing-terraform-state-files-with-encryption" href="#securing-terraform-state-files-with-encryption">
+  </a>
+  Securing Terraform State Files with Encryption
+</h2>
+
+<p>Let’s talk about Terraform state files. These little critters are like the diary of your infrastructure—holding all the juicy details about your resources, configurations, and even some sensitive data. If someone gets unauthorized access to your state file, it’s like handing them the keys to your cloud kingdom. Not ideal, right?</p>
+
+<p>Now, before you panic and start imagining hackers in hoodies sipping coffee while reading your state file, let’s discuss how to protect it. The answer? Encryption. Think of it as putting your state file in a vault with a combination lock. Even if someone gets their hands on it, they can’t read it without the secret code.</p>
+
+<h3>
+  <a name="why-terraform-state-files-are-critical-and-sensitive" href="#why-terraform-state-files-are-critical-and-sensitive">
+  </a>
+  Why Terraform State Files Are Critical and Sensitive
+</h3>
+
+<p>Terraform state files are the source of truth for your infrastructure. They track the current state of your resources, which Terraform uses to determine what needs to be added, updated, or deleted. Unfortunately, these files can also contain sensitive data like resource IDs, secrets, and even passwords (yes, passwords—yikes!). If exposed, this information can lead to unauthorized access or worse, a full-blown data breach.</p>
+
+<h3>
+  <a name="best-practices-for-encrypting-state-files" href="#best-practices-for-encrypting-state-files">
+  </a>
+  Best Practices for Encrypting State Files
+</h3>
+
+<p>Encrypting your state files is not just a good idea; it’s a <strong>must-do</strong> for anyone running Terraform in production. Here are some best practices:</p>
+
+<ul>
+<li>
+<strong>Use backend storage with built-in encryption:</strong> AWS S3 with KMS (Key Management Service) or Azure Blob Storage with encryption are excellent choices. These services handle encryption for you, so you don’t have to reinvent the wheel.</li>
+<li>
+<strong>Enable least privilege IAM:</strong> Ensure that only authorized users and systems can access your state file. Use IAM policies to restrict access and regularly audit permissions.</li>
+<li>
+<strong>Version your state files:</strong> Store previous versions of your state file securely so you can recover from accidental changes or corruption.</li>
+</ul>
+
+<blockquote>
+<p><strong>💡 Pro Tip:</strong> Always enable server-side encryption when using cloud storage for your state files. It’s like locking your front door—basic but essential.</p>
+</blockquote>
+
+<h3>
+  <a name="realworld-example-how-encryption-prevented-a-data-breach" href="#realworld-example-how-encryption-prevented-a-data-breach">
+  </a>
+  Real-World Example: How Encryption Prevented a Data Breach
+</h3>
+
+<p>A friend of mine (who shall remain nameless to protect their dignity) once accidentally exposed their Terraform state file on a public S3 bucket. Cue the horror music. Fortunately, they had enabled KMS encryption on the bucket. Even though the file was publicly accessible for a brief moment, the encryption ensured that no one could read its contents. Crisis averted, lesson learned: encryption is your best friend.</p>
+
+<h3>
+  <a name="code-example-setting-up-aws-s3-backend-with-kms-encryption" href="#code-example-setting-up-aws-s3-backend-with-kms-encryption">
+  </a>
+  Code Example: Setting Up AWS S3 Backend with KMS Encryption
+</h3>
+
+
+
+<div class="highlight js-code-highlight">
+<pre class="highlight terraform"><code><span class="k">terraform</span> <span class="p">{</span>
+  <span class="nx">backend</span> <span class="s2">"s3"</span> <span class="p">{</span>
+    <span class="nx">bucket</span>         <span class="p">=</span> <span class="s2">"my-terraform-state-bucket"</span>
+    <span class="nx">key</span>            <span class="p">=</span> <span class="s2">"terraform/state/production.tfstate"</span>
+    <span class="nx">region</span>         <span class="p">=</span> <span class="s2">"us-east-1"</span>
+    <span class="nx">kms_key_id</span>     <span class="p">=</span> <span class="s2">"arn:aws:kms:us-east-1:123456789012:key/abc123"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>In this example, we’re using an S3 bucket with KMS encryption enabled. The <code>kms_key_id</code> parameter specifies the KMS key used for encryption. Server-side encryption is automatically handled by S3 when configured correctly. Simple, effective, and hacker-proof (well, almost).</p>
+
+<p>So, there you have it—encrypt your Terraform state files like your infrastructure depends on it. Because, spoiler alert: it does.</p>
+
+<h2>
+  <a name="implementing-least-privilege-iam-policies-for-terraform" href="#implementing-least-privilege-iam-policies-for-terraform">
+  </a>
+  Implementing Least Privilege IAM Policies for Terraform
+</h2>
+
+<p>If you’ve ever handed out overly permissive IAM roles in your Terraform setup, you know the feeling—it’s like giving your dog the keys to your car and hoping for the best. Sure, nothing might go wrong, but when it does, it’s going to be spectacularly messy. That’s why today we’re diving into the principle of least privilege and how to apply it to your Terraform workflows without losing your sanity (or your state file).</p>
+
+<p>The principle of least privilege is simple: give your Terraform processes only the permissions they absolutely need and nothing more. Think of it like packing for a weekend trip—you don’t need to bring your entire wardrobe, just the essentials. This approach reduces the risk of privilege escalation, accidental deletions, or someone (or something) running off with your cloud resources.</p>
+
+<blockquote>
+<p><strong>💡 Pro Tip:</strong> Always encrypt your Terraform state file. It’s like locking your diary—nobody needs to see your secrets.</p>
+</blockquote>
+
+<h3>
+  <a name="stepbystep-guide-creating-least-privilege-iam-roles" href="#stepbystep-guide-creating-least-privilege-iam-roles">
+  </a>
+  Step-by-Step Guide: Creating Least Privilege IAM Roles
+</h3>
+
+<p>Here’s how you can create and assign least privilege IAM roles for Terraform:</p>
+
+<ul>
+<li>
+<strong>Step 1:</strong> Identify the specific actions Terraform needs to perform. For example, does it need to manage S3 buckets, create EC2 instances, or update Lambda functions?</li>
+<li>
+<strong>Step 2:</strong> Create a custom IAM policy that includes only those actions. Use AWS documentation to find the exact permissions required for each resource.</li>
+<li>
+<strong>Step 3:</strong> Assign the custom policy to an IAM role and attach that role to the Terraform process (e.g., through an EC2 instance profile or directly in your CI/CD pipeline).</li>
+<li>
+<strong>Step 4:</strong> Test the setup with a dry run. If Terraform complains about missing permissions, add only what’s necessary—don’t just slap on <code>AdministratorAccess</code> and call it a day!</li>
+</ul>
+
+<p>Here’s an example of a minimal IAM policy for managing S3 buckets:<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"s3:CreateBucket"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"s3:DeleteBucket"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"s3:PutObject"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"s3:GetObject"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:s3:::your-bucket-name/*"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<blockquote>
+<p><strong>💡 Pro Tip:</strong> Use Terraform’s <code>data</code> blocks to fetch existing IAM policies and roles. It’s like borrowing a recipe instead of guessing the ingredients.</p>
+</blockquote>
+
+<h3>
+  <a name="case-study-avoiding-privilege-escalation" href="#case-study-avoiding-privilege-escalation">
+  </a>
+  Case Study: Avoiding Privilege Escalation
+</h3>
+
+<p>Let me tell you about the time I learned this lesson the hard way. I once gave Terraform a role with permissions to manage IAM users. Guess what? A misconfigured module ended up creating a user with full admin access. That user could have done anything—like spinning up Bitcoin miners or deleting production databases. Thankfully, I caught it before disaster struck, but it was a wake-up call.</p>
+
+<p>By restricting Terraform’s permissions to only what it needed, I avoided future mishaps. No more “oops” moments, just smooth deployments.</p>
+
+<p>So, there you have it: implementing least privilege IAM policies for Terraform is like putting up guardrails on a winding road. It keeps you safe, sane, and out of trouble. Follow these Terraform security best practices, and don’t forget to encrypt your state file. Your future self will thank you!</p>
+
+<h2>
+  <a name="policy-as-code-enforcing-security-with-opa-and-sentinel" href="#policy-as-code-enforcing-security-with-opa-and-sentinel">
+  </a>
+  Policy as Code: Enforcing Security with OPA and Sentinel
+</h2>
+
+<p>If you’ve ever tried to enforce security policies manually in your Terraform workflows, you know it’s like trying to herd cats—blindfolded. Enter <strong>policy as code</strong>, the knight in shining YAML armor that automates security enforcement. Today, we’re diving into how Open Policy Agent (OPA) and HashiCorp Sentinel can help you sleep better at night by ensuring your Terraform configurations don’t accidentally create a security nightmare.</p>
+
+<p>First, let’s talk about why policy as code is so important. Terraform is an incredible tool for provisioning infrastructure, but it’s also a double-edged sword. Without proper guardrails, you might end up with unrestricted IAM roles, unencrypted state files, or resources scattered across your cloud like confetti. Policy as code lets you define rules that Terraform must follow, ensuring security best practices like <strong>least privilege IAM</strong> and <strong>state file encryption</strong> are baked into your workflows.</p>
+
+<p>Now, let’s get to the fun part: using OPA and Sentinel to enforce these policies. Think of OPA as the Swiss Army knife of policy engines—it’s flexible, open-source, and works across multiple platforms. Sentinel, on the other hand, is like the VIP lounge for HashiCorp products, offering deep integration with Terraform Enterprise and Cloud. Both tools let you write policies that Terraform checks before applying changes, but they approach the problem differently.</p>
+
+<ul>
+<li>
+<strong>OPA:</strong> Uses Rego, a declarative language, to define policies. It’s great for complex, cross-platform rules.</li>
+<li>
+<strong>Sentinel:</strong> Uses a custom language designed specifically for HashiCorp products. It’s perfect for Terraform-specific policies.</li>
+</ul>
+
+<p>Let’s look at an example policy to restrict resource creation based on tags. Imagine your team has a rule: every resource must have a <code>Environment</code> tag set to either <code>Production</code>, <code>Staging</code>, or <code>Development</code>. Here’s how you’d enforce that with OPA:<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight rego"><code><span class="c1"># OPA policy in Rego</span>
+<span class="ow">package</span> <span class="n">terraform</span>
+
+<span class="ow">default</span> <span class="n">allow</span> <span class="o">=</span> <span class="kc">false</span>
+
+<span class="n">allow</span> <span class="p">{</span>
+  <span class="n">input</span><span class="p">.</span><span class="n">resource</span><span class="p">.</span><span class="n">tags</span><span class="p">[</span><span class="s2">"Environment"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Production"</span> <span class="p">||</span>
+  <span class="n">input</span><span class="p">.</span><span class="n">resource</span><span class="p">.</span><span class="n">tags</span><span class="p">[</span><span class="s2">"Environment"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Staging"</span> <span class="p">||</span>
+  <span class="n">input</span><span class="p">.</span><span class="n">resource</span><span class="p">.</span><span class="n">tags</span><span class="p">[</span><span class="s2">"Environment"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Development"</span>
+<span class="p">}</span>
+
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>And here’s how you’d do it with Sentinel:<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code># Sentinel policy
+import "tfplan"
+
+allowed_tags = ["Production", "Staging", "Development"]
+
+all_resources_compliant = rule {
+  all tfplan.resources as resource {
+    resource.tags["Environment"] in allowed_tags
+  }
+}
+
+main = rule {
+  all_resources_compliant
+}
+
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>Both policies achieve the same goal, but the choice between OPA and Sentinel depends on your ecosystem. If you’re already using Terraform Enterprise or Cloud, Sentinel might be the easier option. For broader use cases, OPA’s versatility shines.</p>
+
+<blockquote>
+<p><strong>💡 Pro Tip:</strong> Always test your policies in a staging environment before enforcing them in production. Trust me, debugging a policy that locks everyone out of the cloud is not fun.</p>
+</blockquote>
+
+<p>In conclusion, policy as code is a must-have for Terraform security best practices. Whether you choose OPA or Sentinel, you’ll be able to enforce rules like <strong>least privilege IAM</strong> and <strong>state file encryption</strong> without breaking a sweat. And hey, if you mess up, at least you can blame the policy engine instead of yourself. Happy coding!</p>
+
+<h2>
+  <a name="injecting-secrets-into-terraform-securely" href="#injecting-secrets-into-terraform-securely">
+  </a>
+  Injecting Secrets into Terraform Securely
+</h2>
+
+<p>Let’s talk about secrets in Terraform. No, not the kind of secrets you whisper to your dog when no one’s watching—I’m talking about sensitive data like API keys, database passwords, and other credentials that you absolutely should not hardcode into your Terraform configurations. Trust me, I’ve learned this the hard way. Nothing says “rookie mistake” like accidentally committing your AWS access keys to GitHub. (Yes, I did that once. No, it wasn’t fun.)</p>
+
+<p>Hardcoding secrets in your Terraform files is like leaving your house key under the doormat. Sure, it’s convenient, but anyone who knows where to look can find it. And in the world of cloud engineering, “anyone” could mean malicious actors, disgruntled ex-employees, or even your overly curious coworker who thinks debugging means poking around in your state files.</p>
+
+<p>So, what’s the solution? Injecting secrets securely using tools like HashiCorp Vault or AWS Secrets Manager. These tools act like a vault (pun intended) for your sensitive data, ensuring that secrets are stored securely and accessed only by authorized entities. Plus, they integrate beautifully with Terraform, making your life easier and your infrastructure safer.</p>
+
+<blockquote>
+<p><strong>💡 Pro Tip:</strong> Always follow the principle of <strong>least privilege IAM</strong>. Only grant access to secrets to the people and systems that absolutely need it.</p>
+</blockquote>
+
+<p>Here’s a quick example of how you can use HashiCorp Vault to manage secrets in Terraform. Vault allows you to dynamically generate secrets and securely inject them into your Terraform configurations without exposing them in plaintext.<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight terraform"><code><span class="k">provider</span> <span class="s2">"vault"</span> <span class="p">{</span>
+  <span class="nx">address</span> <span class="p">=</span> <span class="s2">"https://vault.example.com"</span>
+<span class="p">}</span>
+
+<span class="k">data</span> <span class="s2">"vault_generic_secret"</span> <span class="s2">"db_creds"</span> <span class="p">{</span>
+  <span class="nx">path</span> <span class="p">=</span> <span class="s2">"database/creds/my-role"</span>
+<span class="p">}</span>
+
+<span class="k">resource</span> <span class="s2">"aws_db_instance"</span> <span class="s2">"example"</span> <span class="p">{</span>
+  <span class="nx">identifier</span>          <span class="p">=</span> <span class="s2">"my-db-instance"</span>
+  <span class="nx">engine</span>              <span class="p">=</span> <span class="s2">"mysql"</span>
+  <span class="nx">username</span>            <span class="p">=</span> <span class="k">data</span><span class="p">.</span><span class="nx">vault_generic_secret</span><span class="p">.</span><span class="nx">db_creds</span><span class="p">.</span><span class="k">data</span><span class="p">.</span><span class="nx">username</span>
+  <span class="nx">password</span>            <span class="p">=</span> <span class="k">data</span><span class="p">.</span><span class="nx">vault_generic_secret</span><span class="p">.</span><span class="nx">db_creds</span><span class="p">.</span><span class="k">data</span><span class="p">.</span><span class="nx">password</span>
+  <span class="nx">allocated_storage</span>   <span class="p">=</span> <span class="mi">20</span>
+  <span class="nx">instance_class</span>      <span class="p">=</span> <span class="s2">"db.t2.micro"</span>
+<span class="p">}</span>
+
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>In this example, Terraform fetches the database credentials from Vault dynamically using the <code>vault_generic_secret</code> data source. The credentials are never hardcoded in your configuration files or exposed in your state file. Speaking of state files, make sure you enable <strong>state file encryption</strong> to protect sensitive data stored in your Terraform state.</p>
+
+<p>Using tools like Vault or AWS Secrets Manager might seem like overkill at first, but trust me, it’s worth the effort. Think of it like wearing a seatbelt in a car—it might feel unnecessary until you hit a bump (or a security breach). So, buckle up, follow Terraform security best practices, and keep those secrets safe!</p>
+
+<blockquote>
+<p><strong>🛠️ Recommended Resources:</strong></p>
+</blockquote>
+
+<p>Tools and books mentioned in (or relevant to) this article:</p>
+
+<ul>
+<li>
+<a href="https://www.amazon.com/dp/B086967C9X?tag=orthogonalinf-20" target="_blank" rel="noopener noreferrer">UniFi Dream Machine Pro</a> — All-in-one network appliance with IDS/IPS and VLAN support ($379-399)</li>
+<li>
+<a href="https://www.amazon.com/dp/B0CMQ6SK7W?tag=orthogonalinf-20" target="_blank" rel="noopener noreferrer">WD Red Plus 8TB NAS HDD</a> — CMR drive designed for 24/7 NAS operation with RAID support ($140-180)</li>
+</ul>
+
+<h2>
+  <a name="detecting-and-resolving-infrastructure-drift" href="#detecting-and-resolving-infrastructure-drift">
+  </a>
+  Detecting and Resolving Infrastructure Drift
+</h2>
+
+<p>Let’s talk about infrastructure drift. It’s like that one drawer in your kitchen where you swear everything was organized last week, but now it’s a chaotic mess of rubber bands, takeout menus, and a single AA battery. Drift happens when your actual infrastructure starts to differ from what’s defined in your Terraform code. And trust me, it’s not the kind of surprise you want in production.</p>
+
+<p>Why does it matter? Well, infrastructure drift can lead to misconfigurations, security vulnerabilities, and the kind of 3 a.m. pager alerts that make you question your life choices. If you’re serious about <strong>Terraform security best practices</strong>, keeping drift in check is non-negotiable. It’s like flossing for your cloud environment—annoying, but necessary.</p>
+
+<h3>
+  <a name="tools-and-techniques-for-drift-detection" href="#tools-and-techniques-for-drift-detection">
+  </a>
+  Tools and Techniques for Drift Detection
+</h3>
+
+<p>So, how do you detect drift? Thankfully, you don’t have to do it manually (because who has time for that?). Here are a couple of tools that can save your bacon:</p>
+
+<ul>
+<li>
+<code>terraform plan</code>: This is your first line of defense. Running <code>terraform plan</code> lets you see if there are any differences between your state file and the actual infrastructure. Think of it as a “before you wreck yourself” check.</li>
+<li>
+<code>driftctl</code>: This nifty open-source tool goes a step further by scanning your cloud environment for resources that aren’t in your Terraform state. It’s like having a detective comb through your infrastructure for rogue elements.</li>
+</ul>
+
+<blockquote>
+<p><strong>💡 Pro Tip:</strong> Always encrypt your Terraform state file and follow <strong>state file encryption</strong> best practices. A compromised state file is like handing over the keys to your kingdom.</p>
+</blockquote>
+
+<h3>
+  <a name="realworld-example-drift-detection-saves-the-day" href="#realworld-example-drift-detection-saves-the-day">
+  </a>
+  Real-World Example: Drift Detection Saves the Day
+</h3>
+
+<p>Here’s a true story from the trenches. A team I worked with once discovered that a critical IAM policy had been manually updated in the AWS console. This violated our <strong>least privilege IAM</strong> principle and opened up a security hole big enough to drive a truck through. Luckily, our regular <code>terraform plan</code> runs caught the drift before it became a full-blown incident.</p>
+
+<p>We used <code>driftctl</code> to identify other unmanaged resources and cleaned up the mess. The moral of the story? Drift detection isn’t just about avoiding chaos—it</p>
+
+<h2>
+  <a name="keep-reading" href="#keep-reading">
+  </a>
+  Keep Reading
+</h2>
+
+<p>Enjoyed this Terraform security deep dive? Here’s more from orthogonal.info:</p>
+
+<ul>
+<li>
+<a href="https://orthogonal.info/how-to-secure-github-actions-oidc-authentication-least-privilege-and-supply-chain-attack-prevention/" target="_blank" rel="noopener noreferrer">How to Secure GitHub Actions: OIDC Authentication &amp; Supply Chain Prevention</a> — Your Terraform runs in CI/CD. Make sure the pipeline itself isn’t the weak link.</li>
+<li>
+<a href="https://orthogonal.info/secrets-management-in-kubernetes-a-security-first-guide/" target="_blank" rel="noopener noreferrer">Secrets Management in Kubernetes: A Security-First Guide</a> — From Terraform state secrets to runtime — secure the full lifecycle.</li>
+<li>
+<a href="https://orthogonal.info/zero-trust-for-developers-a-practical-guide/" target="_blank" rel="noopener noreferrer">Zero Trust for Developers: Secure Systems by Design</a> — The IAM least-privilege patterns from this post are just one part of a zero trust architecture.</li>
+</ul>
+
+<h3>
+  <a name="recommended-tools" href="#recommended-tools">
+  </a>
+  🛠️ Recommended Tools
+</h3>
+
+<ul>
+<li>
+<a href="https://www.amazon.com/Terraform-Running-Writing-Infrastructure-Code/dp/1098116747?tag=orthogonalinf-20" target="_blank" rel="noopener noreferrer">Terraform: Up &amp; Running (3rd Edition)</a> — The definitive guide to Terraform, including security best practices and team workflows.</li>
+<li>
+<a href="https://www.amazon.com/Yubico-YubiKey-Factor-Authentication-Security/dp/B07HBD71HL?tag=orthogonalinf-20" target="_blank" rel="noopener noreferrer">YubiKey 5 NFC Security Key</a> — Protect your cloud provider accounts with hardware 2FA. Essential when your Terraform controls production infrastructure.</li>
+<li>
+<a href="https://www.amazon.com/Practical-Cloud-Security-Secure-Deployment/dp/1492037516?tag=orthogonalinf-20" target="_blank" rel="noopener noreferrer">Practical Cloud Security (O’Reilly)</a> — Deep coverage of IAM, encryption at rest, and infrastructure security patterns.</li>
+</ul>
+
+<p>{<br>
+  "<a class="mentioned-user" href="https://dev.to/context">@context</a>": "<a href="https://schema.org" target="_blank" rel="noopener noreferrer">https://schema.org</a>",<br>
+  "@type": "TechArticle",<br>
+  "headline": "Terraform Security Best Practices: Encryption, IAM, and Drift Detection",<br>
+  "url": "<a href="https://orthogonal.info/terraform-security-best-practices-encryption-iam-and-drift-detection/" target="_blank" rel="noopener noreferrer">https://orthogonal.info/terraform-security-best-practices-encryption-iam-and-drift-detection/</a>",<br>
+  "datePublished": "2026-03-30T10:05:45",<br>
+  "dateModified": "2026-03-30T10:10:57",<br>
+  "author": {<br>
+    "@type": "Person",<br>
+    "name": "Max L",<br>
+    "jobTitle": "Security Engineer",<br>
+    "url": "<a href="https://orthogonal.info" target="_blank" rel="noopener noreferrer">https://orthogonal.info</a>",<br>
+    "knowsAbout": [<br>
+      "DevSecOps",<br>
+      "Kubernetes Security",<br>
+      "AI Development",<br>
+      "Quantitative Finance",<br>
+      "Cloud Architecture",<br>
+      "Container Security",<br>
+      "Zero Trust",<br>
+      "Infrastructure as Code",<br>
+      "Docker",<br>
+      "Homelab"<br>
+    ]<br>
+  },<br>
+  "publisher": {<br>
+    "@type": "Organization",<br>
+    "name": "Orthogonal Info",<br>
+    "url": "<a href="https://orthogonal.info" target="_blank" rel="noopener noreferrer">https://orthogonal.info</a>"<br>
+  },<br>
+  "description": "What happens when your Terraform state file ends up in the wrong hands? Spoiler: it\u2019s not pretty, and your cloud environment might as well send out party invitations to every hacker on the internet. Keeping your Terraform setup secure can feel like trying to lock the front door while someone\u2019s alrea",<br>
+  "wordCount": 2643,<br>
+  "inLanguage": "en-US",<br>
+  "genre": "Deep Dives",<br>
+  "isAccessibleForFree": true,<br>
+  "speakable": {<br>
+    "@type": "SpeakableSpecification",<br>
+    "cssSelector": [<br>
+      "h2",<br>
+      ".callout",<br>
+      "p:first-of-type"<br>
+    ]<br>
+  },<br>
+  "mainEntityOfPage": {<br>
+    "@type": "WebPage",<br>
+    "<a class="mentioned-user" href="https://dev.to/id">@id</a>": "<a href="https://orthogonal.info/terraform-security-best-practices-encryption-iam-and-drift-detection/" target="_blank" rel="noopener noreferrer">https://orthogonal.info/terraform-security-best-practices-encryption-iam-and-drift-detection/</a>"<br>
+  }<br>
+}</p>
+
+<p>{<br>
+  "<a class="mentioned-user" href="https://dev.to/context">@context</a>": "<a href="https://schema.org" target="_blank" rel="noopener noreferrer">https://schema.org</a>",<br>
+  "@type": "FAQPage",<br>
+  "mainEntity": [<br>
+    {<br>
+      "@type": "Question",<br>
+      "name": "Introduction: Why Terraform Security Matters",<br>
+      "acceptedAnswer": {<br>
+        "@type": "Answer",<br>
+        "text": "Let\u2019s face it: Terraform is like the Swiss Army knife of infrastructure as code (IaC). It\u2019s powerful, versatile, and can make you feel like a wizard conjuring up entire cloud environments with a few lines of HCL. But with great power comes great responsibility\u2014or, in this case, great security risks. If you\u2019re not careful, your Terraform setup can go from \u201ccloud hero\u201d to \u201csecurity zero\u201d faster than you can say terraform apply. Cloud engineers and DevOps teams often face a minefield of security ch"<br>
+      }<br>
+    },<br>
+    {<br>
+      "@type": "Question",<br>
+      "name": "Securing Terraform State Files with Encryption",<br>
+      "acceptedAnswer": {<br>
+        "@type": "Answer",<br>
+        "text": "Let\u2019s talk about Terraform state files. These little critters are like the diary of your infrastructure\u2014holding all the juicy details about your resources, configurations, and even some sensitive data. If someone gets unauthorized access to your state file, it\u2019s like handing them the keys to your cloud kingdom. Not ideal, right? Now, before you panic and start imagining hackers in hoodies sipping coffee while reading your state file, let\u2019s discuss how to protect it. The answer? Encryption. Think"<br>
+      }<br>
+    },<br>
+    {<br>
+      "@type": "Question",<br>
+      "name": "Implementing Least Privilege IAM Policies for Terraform",<br>
+      "acceptedAnswer": {<br>
+        "@type": "Answer",<br>
+        "text": "If you\u2019ve ever handed out overly permissive IAM roles in your Terraform setup, you know the feeling\u2014it\u2019s like giving your dog the keys to your car and hoping for the best. Sure, nothing might go wrong, but when it does, it\u2019s going to be spectacularly messy. That\u2019s why today we\u2019re diving into the principle of least privilege and how to apply it to your Terraform workflows without losing your sanity (or your state file). The principle of least privilege is simple: give your Terraform processes onl"<br>
+      }<br>
+    },<br>
+    {<br>
+      "@type": "Question",<br>
+      "name": "Policy as Code: Enforcing Security with OPA and Sentinel",<br>
+      "acceptedAnswer": {<br>
+        "@type": "Answer",<br>
+        "text": "If you\u2019ve ever tried to enforce security policies manually in your Terraform workflows, you know it\u2019s like trying to herd cats\u2014blindfolded. Enter policy as code, the knight in shining YAML armor that automates security enforcement. Today, we\u2019re diving into how Open Policy Agent (OPA) and HashiCorp Sentinel can help you sleep better at night by ensuring your Terraform configurations don\u2019t accidentally create a security nightmare. First, let\u2019s talk about why policy as code is so important. Terrafo"<br>
+      }<br>
+    },<br>
+    {<br>
+      "@type": "Question",<br>
+      "name": "Injecting Secrets into Terraform Securely",<br>
+      "acceptedAnswer": {<br>
+        "@type": "Answer",<br>
+        "text": "Let\u2019s talk about secrets in Terraform. No, not the kind of secrets you whisper to your dog when no one\u2019s watching\u2014I\u2019m talking about sensitive data like API keys, database passwords, and other credentials that you absolutely should not hardcode into your Terraform configurations. Trust me, I\u2019ve learned this the hard way. Nothing says \u201crookie mistake\u201d like accidentally committing your AWS access keys to GitHub. (Yes, I did that once. No, it wasn\u2019t fun.) Hardcoding secrets in your Terraform files i"<br>
+      }<br>
+    },<br>
+    {<br>
+      "@type": "Question",<br>
+      "name": "Detecting and Resolving Infrastructure Drift",<br>
+      "acceptedAnswer": {<br>
+        "@type": "Answer",<br>
+        "text": "Let\u2019s talk about infrastructure drift. It\u2019s like that one drawer in your kitchen where you swear everything was organized last week, but now it\u2019s a chaotic mess of rubber bands, takeout menus, and a single AA battery. Drift happens when your actual infrastructure starts to differ from what\u2019s defined in your Terraform code. And trust me, it\u2019s not the kind of surprise you want in production. Why does it matter? Well, infrastructure drift can lead to misconfigurations, security vulnerabilities, and"<br>
+      }<br>
+    }<br>
+  ]<br>
+}</p>
+
+
+            </div>
+
+              <div class="below-post-bb body-billboard-container" data-async-url="/orthogonalinfo/terraform-security-best-practices-encryption-iam-and-drift-detection-11ge/bmar11/post_body_bottom"></div>
+          </div>
+          <section id="comments" data-follow-button-container="true" data-updated-at="2026-03-31 16:54:25 UTC" class="text-padding mb-4 border-t-1 border-0 border-solid border-base-10">
+    <header class="relative flex justify-between items-center mb-6">
+      <div class="flex items-center">
+        <h2 class="crayons-subtitle-1">
+          Top comments <span class="js-comments-count" data-comments-count="0">(0)</span>
+        </h2>
+      </div>
+
+
+      <div id="comment-subscription" class="print-hidden">
+        <div class="crayons-btn-group">
+          <span class="crayons-btn crayons-btn--outlined">Subscribe</span>
+        </div>
+      </div>
+    </header>
+    <div id="billboard_delay_trigger"></div>
+    <div
+      id="comments-container"
+      data-testid="comments-container"
+      data-commentable-id="3437265"
+      data-commentable-type="Article"
+      data-has-recent-comment-activity="true">
+
+        <div id="response-templates-data" class="hidden"></div>
+
+
+<form class="comment-form print-hidden" id="new_comment" action="/comments" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" />
+
+  <input type="hidden" name="authenticity_token" value="NOTHING" id="new_comment_authenticity_token">
+
+    <input value="3437265" autocomplete="off" type="hidden" name="comment[commentable_id]" id="comment_commentable_id" />
+    <input value="Article" autocomplete="off" type="hidden" name="comment[commentable_type]" id="comment_commentable_type" />
+    
+
+  <span class="crayons-avatar m:crayons-avatar--l mr-2 shrink-0">
+    <img src="https://media2.dev.to/dynamic/image/width=256,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" width="32" height="32" alt="pic" class="crayons-avatar__image overflow-hidden" id="comment-primary-user-profile--avatar" loading="lazy" />
+  </span>
+  <div class="comment-form__inner">
+    <div class="comment-form__field" data-tracking-name="comment_form_textfield">
+      <textarea placeholder="Add to the discussion" onfocus="handleFocus(event)" onkeyup="handleKeyUp(event)" onkeydown="handleKeyDown(event)" oninput="handleChange(event)" id="text-area" required="required" class="crayons-textfield comment-textarea crayons-textfield--ghost" aria-label="Add a comment to the discussion" name="comment[body_markdown]">
+</textarea>
+
+    </div>
+
+    <div class="response-templates-container crayons-card crayons-card--secondary p-4 mb-4 comment-form__templates fs-base hidden">
+      <header class="mb-3">
+        <button type="button" class="crayons-btn personal-template-button active" data-target-type="personal" data-form-id="new_comment">Personal</button>
+        <button type="button" class="crayons-btn moderator-template-button hidden" data-target-type="moderator" data-form-id="new_comment">Trusted User</button>
+      </header>
+
+      <div class="personal-responses-container">
+      </div>
+      <div class="moderator-responses-container hidden">
+      </div>
+
+      <a target="_blank" rel="noopener nofollow" href="/settings/response-templates">
+        Create template
+      </a>
+      <p>Templates let you quickly answer FAQs or store snippets for re-use.</p>
+    </div>
+
+    <div class="comment-form__preview text-styles text-styles--secondary" id="preview-div"></div>
+
+    <div class="comment-form__buttons mb-4">
+      <button type="submit" class="crayons-btn mr-2 js-btn-enable" onclick="validateField(event)" data-tracking-name="comment_submit_button" disabled>Submit</button>
+      <button type="button" class="preview-toggle crayons-btn crayons-btn--secondary comment-action-preview js-btn-enable mr-2" data-tracking-name="comment_preview_button" disabled>Preview</button>
+      <a href="/404.html" class="dismiss-edit-comment crayons-btn crayons-btn--ghost js-btn-dismiss hidden">Dismiss</a>
+    </div>
+  </div>
+
+  <div class="code-of-conduct" id="toggle-code-of-conduct-checkbox"></div>
+</form>
+
+
+      <div class="comments" id="comment-trees-container">
+      </div>
+    </div>
+
+    <div class="align-center">
+
+
+  <nav class="fs-s align-center block" aria-label="Conduct controls">
+  <a href="/code-of-conduct" class="crayons-link crayons-link--secondary">Code of Conduct</a>
+  <span class="opacity-25 px-2" role="presentation">&bull;</span>
+  <a href="/report-abuse" class="crayons-link crayons-link--secondary">Report abuse</a>
+</nav>
+
+</div>
+
+</section>
+<div id="hide-comments-modal" class="hidden">
+  <form id="hide-comments-modal__form" class="hide-comments-modal__form" data-type="json" action="/comments/hide" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="_method" value="patch" autocomplete="off" /><input type="hidden" name="authenticity_token" value="009CYNOJD3BVqaupVK9d3vn99RQFk6eqEM_zZg_YbJD0lAwCe15RGFwU-qm7QdG2TsEFNvYSg2KO_lXOH5Qi5g" autocomplete="off" />
+    <div class="hide-comments-modal__content">
+      <p class="pb-2">
+        Are you sure you want to hide this comment? It will become hidden in your post, but will still be visible via the comment's <a id="hide-comments-modal__comment-permalink" href="#">permalink</a>.
+      </p>
+      <label class="crayons-field crayons-field--checkbox my-2">
+        <input name="hide_children" type="hidden" value="0" autocomplete="off" /><input class="hide_children crayons-checkbox" type="checkbox" value="1" name="hide_children" id="hide_children" />
+        <p class="crayons-field__label">Hide child comments as well</p>
+      </label>
+      <p class="pb-4 pt-2">
+        <button type="submit" class="crayons-btn">
+          Confirm
+        </button>
+      </p>
+    </div>
+</form>  <p class="fs-s color-base-60">For further actions, you may consider blocking this person and/or <a id="hide-comments-modal__report-link" href="/report-abuse">reporting abuse</a></p>
+</div>
+
+
+
+        </article>
+
+        <div class="pb-4 crayons-layout__comments-billboard">
+          <div class="new-bb-container pb-4 crayons-layout__comments-billboard" data-async-url="/orthogonalinfo/terraform-security-best-practices-encryption-iam-and-drift-detection-11ge/bmar11/post_comments"></div>
+        </div>
+
+          <!-- Bottom content skipped via SKIP_BOTTOM_CONTENT config -->
+      </div>
+    </main>
+
+    <aside class="crayons-layout__sidebar-right" aria-label="Author details">
+      <div class="crayons-article-sticky grid gap-4 pb-4 break-word" id="article-show-primary-sticky-nav">
+  <div class="crayons-card crayons-card--secondary branded-7 p-4 pt-0 gap-4 grid" style="border-top-color: #000000;">
+    <div class="-mt-4">
+  <a href="/orthogonalinfo" class="flex">
+    <span class="crayons-avatar crayons-avatar--xl  mr-2 shrink-0">
+      <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3847175%2F78878eb1-022c-4880-ba72-cde851bc87d8.png" class="crayons-avatar__image" alt="" loading="lazy" />
+    </span>
+    <span class="crayons-link crayons-subtitle-2 mt-5">
+      Max
+      
+    </span>
+  </a>
+</div>
+
+<div class="print-hidden">
+  <button name="button" type="button" data-info="{&quot;className&quot;:&quot;User&quot;,&quot;style&quot;:&quot;&quot;,&quot;id&quot;:3847175,&quot;name&quot;:&quot;Max&quot;}" class="crayons-btn follow-action-button whitespace-nowrap w-100 follow-user" aria-label="Follow user: Max" aria-pressed="false">Follow</button>
+</div>
+
+  <div class="user-metadata-details">
+    <ul class="user-metadata-details-inner">
+      <li>
+        <div class="key">
+          Joined
+        </div>
+        <div class="value">
+          <time datetime="2026-03-28T07:06:21Z" class="date">Mar 28, 2026</time>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  </div>
+
+      <div class="crayons-card crayons-card--secondary">
+        <header class="crayons-card__header">
+          <h3 class="crayons-subtitle-2">
+            More from <a href="/orthogonalinfo">Max</a>
+          </h3>
+        </header>
+        <div>
+            <a class="crayons-link crayons-link--contentful" href="/orthogonalinfo/how-to-secure-github-actions-oidc-authentication-least-privilege-and-supply-chain-attack-1d13">
+              How to Secure GitHub Actions: OIDC Authentication, Least Privilege, and Supply Chain Attack Prevention
+              <div class="crayons-link__secondary -ml-1">
+                  <span class="mr-1"><span class="opacity-50">#</span>security</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>devops</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>github</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>cicd</span>
+              </div>
+            </a>
+            <a class="crayons-link crayons-link--contentful" href="/orthogonalinfo/cve-2025-53521-f5-big-ip-apm-rce-cisa-deadline-is-march-30-3fk5">
+              CVE-2025-53521: F5 BIG-IP APM RCE — CISA Deadline Is March 30
+              <div class="crayons-link__secondary -ml-1">
+                  <span class="mr-1"><span class="opacity-50">#</span>security</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>devops</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>cybersecurity</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>networking</span>
+              </div>
+            </a>
+            <a class="crayons-link crayons-link--contentful" href="/orthogonalinfo/securing-kubernetes-supply-chains-with-sbom-sigstore-410">
+              Securing Kubernetes Supply Chains with SBOM &amp; Sigstore
+              <div class="crayons-link__secondary -ml-1">
+                  <span class="mr-1"><span class="opacity-50">#</span>kubernetes</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>security</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>devops</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>opensource</span>
+              </div>
+            </a>
+        </div>
+      </div>
+</div>
+
+<div class="crayons-article-sticky grid gap-4 break-word sidebar-bb" data-async-url="/orthogonalinfo/terraform-security-best-practices-encryption-iam-and-drift-detection-11ge/bmar11/post_sidebar"></div>
+
+    </aside>
+  </div>
+
+  <div class="mod-actions-menu print-hidden"></div>
+  <div data-testid="unpublish-post-modal-container" class="unpublish-post-modal-container hidden"></div>
+
+  <div class="fullscreen-code js-fullscreen-code"></div>
+  <script src="https://assets.dev.to/assets/billboard-365f8f60fc3506e63bc54cc5b0a2e36f4c11024ff6a30dccd5462467f24b5215.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/localizeArticleDates-70147c5c6bfe350b42e020ebb2a3dd37419d83978982b5a67b6389119bf162ac.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/articleReactions-1f2220b03b8ee48f0e9196d07b123ad5c5d942328819c33728eab4a4ff83150b.js" defer="defer"></script>
+
+  <script>
+    function activateRunkitTags() {
+  if (!areAnyRunkitTagsPresent())
+    return
+
+  var checkRunkit = setInterval(function() {
+    try {
+      dynamicallyLoadRunkitLibrary()
+
+      if (typeof(RunKit) === 'undefined') {
+        return
+      }
+
+      replaceTagContentsWithRunkitWidget()
+      clearInterval(checkRunkit);
+    } catch(e) {
+      console.error(e);
+      clearInterval(checkRunkit);
+    }
+  }, 200);
+}
+
+function isRunkitTagAlreadyActive(runkitTag) {
+  return runkitTag.querySelector("iframe") !== null;
+};
+
+function areAnyRunkitTagsPresent() {
+  var presentRunkitTags = document.getElementsByClassName("runkit-element");
+
+  return presentRunkitTags.length > 0
+}
+
+function replaceTagContentsWithRunkitWidget() {
+  var targets = document.getElementsByClassName("runkit-element");
+  for (var i = 0; i < targets.length; i++) {
+    if (isRunkitTagAlreadyActive(targets[i])) {
+      continue;
+    }
+
+    var wrapperContent = targets[i].textContent;
+    if (/^(<iframe src)/.test(wrapperContent) === false) {
+      if (targets[i].children.length > 0) {
+        var preamble = targets[i].children[0].textContent;
+        var content = targets[i].children[1].textContent;
+        targets[i].innerHTML = "";
+        var notebook = RunKit.createNotebook({
+          element: targets[i],
+          source: content,
+          preamble: preamble
+        });
+      }
+    }
+  }
+};
+
+function dynamicallyLoadRunkitLibrary() {
+  if (typeof(dynamicallyLoadScript) === "undefined")
+    return
+
+  dynamicallyLoadScript("//embed.runkit.com")
+}
+
+activateRunkitTags();
+
+  </script>
+  <div class="js-billboard-container pb-4 crayons-layout__comments-billboard" data-async-url="/orthogonalinfo/terraform-security-best-practices-encryption-iam-and-drift-detection-11ge/bmar11/post_fixed_bottom"></div>
+
+
+    <div id="runtime-banner-container"></div>
+    <div id="i18n-translations" data-translations="{&quot;en&quot;:{&quot;core&quot;:{&quot;add_comment&quot;:&quot;Add comment&quot;,&quot;beta&quot;:&quot;beta&quot;,&quot;comment&quot;:&quot;Comment&quot;,&quot;copy_link&quot;:&quot;Copy link&quot;,&quot;edit_profile&quot;:&quot;Edit profile&quot;,&quot;follow&quot;:&quot;Follow&quot;,&quot;follow_back&quot;:&quot;Follow back&quot;,&quot;following&quot;:&quot;Following&quot;,&quot;like&quot;:&quot;Like&quot;,&quot;loading&quot;:&quot;loading...&quot;,&quot;reaction&quot;:&quot;Reaction&quot;,&quot;report_abuse&quot;:&quot;Report abuse&quot;,&quot;search&quot;:&quot;Search&quot;,&quot;success_settings&quot;:&quot;Successfully updated settings.&quot;,&quot;search_placeholder&quot;:&quot;Search...&quot;,&quot;search_find_related_posts&quot;:&quot;Find related posts...&quot;,&quot;search_powered_by&quot;:&quot;Powered by Algolia&quot;,&quot;search_submit_search&quot;:&quot;Submit search for advanced filtering.&quot;,&quot;search_displaying_recommendations&quot;:&quot;Displaying Algolia Recommendations — Start typing to search&quot;,&quot;article_form_save_changes&quot;:&quot;Save changes&quot;,&quot;article_form_schedule&quot;:&quot;Schedule&quot;,&quot;article_form_publish&quot;:&quot;Publish&quot;,&quot;article_form_loading_preview&quot;:&quot;Loading preview&quot;,&quot;article_form_preview_loaded&quot;:&quot;Preview loaded&quot;,&quot;comments_preview&quot;:&quot;Preview&quot;,&quot;comments_continue_editing&quot;:&quot;Continue editing&quot;,&quot;survey_enter_response&quot;:&quot;Enter your response here...&quot;,&quot;survey_thank_you_response&quot;:&quot;Thank you for your response.&quot;,&quot;survey_thank_you_completing&quot;:&quot;Thank you for completing the survey!&quot;,&quot;dashboard_analytics_readers&quot;:&quot;Readers&quot;,&quot;dashboard_analytics_comments&quot;:&quot;Comments&quot;,&quot;dashboard_analytics_reactions&quot;:&quot;Reactions&quot;,&quot;stats_by&quot;:&quot;by&quot;,&quot;editor_new_title&quot;:&quot;New post title here...&quot;,&quot;editor_body_placeholder&quot;:&quot;Write your post content here...&quot;,&quot;tags_field_label&quot;:&quot;Add up to 4 tags&quot;,&quot;tags_field_placeholder&quot;:&quot;Add up to 4 tags...&quot;,&quot;counted_organization&quot;:{&quot;one&quot;:&quot;%{count} organization&quot;,&quot;other&quot;:&quot;%{count} organizations&quot;},&quot;counted_user&quot;:{&quot;one&quot;:&quot;%{count} person&quot;,&quot;other&quot;:&quot;%{count} people&quot;},&quot;not_following&quot;:&quot;You&#39;re not following anyone&quot;,&quot;following_everyone&quot;:&quot;You&#39;re following %{details} (everyone)&quot;,&quot;you_are_following&quot;:&quot;You&#39;re following&quot;,&quot;and&quot;:&quot;and&quot;}}}"></div>
+  </div>
+</div>
+    
+
+<footer id="footer" class="crayons-footer print-hidden">
+  <div id="footer-container" class="crayons-footer__container">
+
+
+        <style>
+  .long-bb-body {
+    max-height: calc(100vh - 200px);
+    overflow: hidden;
+  }
+  .long-bb-bottom {
+    height: 180px;
+    background: linear-gradient(to top, var(--card-bg), transparent);
+    margin-top: -180px;
+    position:relative;
+    z-index: 5;
+  }
+</style>
+
+  <div
+    style=""
+    data-display-unit data-id="146443"
+    data-category-click="click"
+    data-category-impression="impression"
+    data-context-type="home"
+    data-special="nothing"
+    data-article-id=""
+    data-type-of="in_house">
+          <div class="crayons-card crayons-card--secondary crayons-bb bb-placement js-billboard" style="display: inline-flex; flex-direction: column; align-items: center; margin: 0 auto 2rem auto; width: fit-content; padding: 2rem;">
+        <p style="font-weight: bold; margin: 0 0 1rem 0;">
+            💎 DEV Diamond Sponsors
+        </p>
+        <p style="font-size: 0.8em; margin: 0 0 2rem 0;">
+            Thank you to our Diamond Sponsors for supporting the DEV Community
+        </p>
+    
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://aistudio.google.com/?utm_source=partner&amp;utm_medium=partner&amp;utm_campaign=FY25-Global-DEVpartnership-sponsorship-AIS&amp;utm_content=-&amp;utm_term=-&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fxjlyhbdqehj3akhz166w.png" alt="Google AI - Official AI Model and Platform Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 54px; padding: 10px;" loading="lazy" width="2048" height="472">
+                </a>
+                <p style="text-align: center;">Google AI is the official AI Model and Platform Partner of DEV</p>
+            </div>
+
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://neon.tech/?ref=devto&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fbnl88cil6afxzmgwrgtt.png" alt="Neon - Official Database Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 60px; padding: 10px;" loading="lazy" width="2286" height="596">
+                </a>
+                <p style="text-align: center;">Neon is the official database partner of DEV</p>
+            </div>
+    
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://www.algolia.com/developers/?utm_source=devto&amp;utm_medium=referral&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fv30ephnolfvnlwgwm0yz.png" alt="Algolia - Official Search Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 60px; padding: 10px;" loading="lazy" width="2286" height="596">
+                </a>
+                <p style="text-align: center;">Algolia is the official search partner of DEV</p>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+    <p class="fs-s crayons-footer__description">
+      <a class="c-link c-link--branded fw-medium" aria-label="DEV Community Home" href="/">DEV Community</a> — Your community HQ
+    </p>
+
+    <ul class="footer__nav-links flex gap-2 justify-center flex-wrap fs-s p-0" style="" />
+        <li class="footer__nav-link flex items-center">
+    <a href="/">
+      Home
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/about">
+      About
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/contact">
+      Contact
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://mlh.io/">
+      MLH
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+
+    </ul>
+
+    <ul class="footer__nav-links flex gap-2 justify-center flex-wrap fs-s p-0" style="" />
+        <li class="footer__nav-link flex items-center">
+    <a href="/code-of-conduct">
+      Code of Conduct
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/privacy">
+      Privacy Policy
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/terms">
+      Terms of Use
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+
+    </ul>
+
+    <div class="fs-s">
+      <p>Built on <a class="c-link c-link--branded" target="_blank" rel="noopener" href="https://www.forem.com">Forem</a> — the <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/t/opensource">open source</a> software that powers <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to">DEV</a> and other inclusive communities.</p>
+      <p>Made with love and <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/t/rails">Ruby on Rails</a>. DEV Community <span title="copyright">&copy;</span> 2016 - 2026.</p>
+    </div>
+  </div>
+</footer>
+<div id="snack-zone"></div>
+
+    <div id="global-signup-modal" class="authentication-modal hidden">
+  <div class="authentication-modal__container">
+    <figure class="authentication-modal__image-container">
+      <img class="authentication-modal__image" src="https://media2.dev.to/dynamic/image/width=190,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+        alt="DEV Community" loading="lazy" />
+    </figure>
+    <div class="authentication-modal__content">
+      <p class="authentication-modal__description">
+          We&#39;re a place where coders share, stay up-to-date and grow their careers.
+      </p>
+    </div>
+    <div class="authentication-modal__actions">
+      <a href="https://dev.to/enter?signup_subforem=1" class="crayons-btn" aria-label="Log in" data-no-instant>
+        Log in
+      </a>
+      <a href="https://dev.to/enter?signup_subforem=1&amp;state=new-user" class="crayons-btn crayons-btn--ghost-brand js-global-signup-modal__create-account" aria-label="Create new account" data-no-instant>
+        Create account
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="https://assets.dev.to/assets/signupModalShortcuts-0b25469b985100a01e94cbd7fccaf7f0a4d776e129aac65c766aa32cb28ab29a.js" defer="defer"></script>
+
+    <div id="cookie-consent"></div>
+  <div id="reaction-category-resources" class="hidden" aria-hidden="true">
+    <img data-name="Like" data-slug="like" data-position="1" src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+    <img data-name="Unicorn" data-slug="unicorn" data-position="2" src="https://assets.dev.to/assets/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" width="18" height="18" />
+    <img data-name="Exploding Head" data-slug="exploding_head" data-position="3" src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" width="18" height="18" />
+    <img data-name="Raised Hands" data-slug="raised_hands" data-position="4" src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="18" height="18" />
+    <img data-name="Fire" data-slug="fire" data-position="5" src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+</div>
+
+    <script>
+  var userSignedIn = false;
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    initAuth();
+  } else {
+    document.addEventListener('DOMContentLoaded', initAuth);
+  }
+
+  function initAuth() {
+    var paramToken = new URLSearchParams(window.location.search).get('jwt');
+
+    if (paramToken && !userSignedIn) {
+      authenticateUser(paramToken);
+    } else {
+      var iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = 'https://forem.com/auth_pass/iframe';
+  
+      document.body.appendChild(iframe);
+  
+      window.addEventListener('message', function(event) {
+        if (event.origin !== 'https://forem.com' && event.origin !== window.location.origin) {
+          return;
+        }
+  
+        var data = event.data;
+  
+        if (data.authenticated && !userSignedIn) {
+          authenticateUser(data.token);
+        } else if(data.authenticated && window.ReactNativeWebView && window.ReactNativeWebView.postMessage) {
+          window.ReactNativeWebView.postMessage(JSON.stringify({
+            action: 'login',
+            token: data.token,
+          }));
+        }
+      });  
+    }
+
+    function authenticateUser(token) {
+      fetch('/auth_pass/token_login', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': getMetaContent('csrf-token'),
+        },
+        body: JSON.stringify({ token: token }),
+      })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        if (data.success) {
+          if (document.head.querySelector('meta[name="user-signed-in"][content="false"]')) {
+            // Reload the page to update the user's state
+            location.reload();
+          }
+        }
+      })
+      .catch(function(error) {
+        console.error('Error during authentication:', error);
+      });
+    }
+
+    function getMetaContent(name) {
+      var element = document.querySelector('meta[name="' + name + '"]');
+      return element ? element.getAttribute('content') : '';
+    }
+  }
+</script>
+
+  
+  
+  
+  </body>
+  </html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="robots" content="noindex,nofollow"><title>Share₂Fedi</title><meta name="description" content="Share₂Fedi is a share page for Mastodon, Misskey, Friendica, and others. Type in your post text and the instance URL and click ‘Publish!’" data-translate="metaDescription" data-translate-attribute="content"><link rel="canonical" href="https://s2f.kytta.dev"><meta property="og:title" content="Share₂Fedi, a share page for the Fediverse"><meta property="og:type" content="website"><meta property="og:image" content="https://s2f.kytta.dev/banner.png"><meta property="og:url" content="https://s2f.kytta.dev"><link rel="icon" href="/favicon.ico" sizes="32x32"><link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><meta name="generator" content="Astro v5.18.1"><meta itemprop="version" content="4.0.0-alpha.3"><style>/*!
+ * This file is part of Share₂Fedi
+ * https://github.com/kytta/share2fedi
+ *
+ * SPDX-FileCopyrightText: © 2023 Nikita Karamov <me@kytta.dev>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+*,:before,:after{box-sizing:border-box}:root{--s2f-accent-color:#40665c;--s2f-accent-color-light:#5d8379;--s2f-accent-color-contrast:#005e4e;--s2f-error-color:#a12f2d;--s2f-border-color:#ccc;--s2f-border-width:1px;--s2f-input-group-bg-color:#eee;--s2f-input-bg-color:#fff;--s2f-input-text-color:#000;--s2f-button-text-color:#fff;--lightningcss-light:initial;--lightningcss-dark: ;color-scheme:light dark;accent-color:var(--s2f-accent-color);font-family:Helvetica Neue,Helvetica,FreeSans,Nimbus Sans L,Inter,Arial,system-ui,sans-serif;font-size:16px}@media (prefers-color-scheme:dark){:root{--lightningcss-light: ;--lightningcss-dark:initial}}html{line-height:1.5}body{flex-flow:wrap;max-width:60em;margin-block:0;margin-inline:auto;display:flex}body>*{flex-shrink:0;width:100%;max-width:100%}header{justify-content:space-between;align-items:center;padding:1rem;display:flex}main{margin-block-end:2rem}main,aside{padding-block:0;padding-inline:1rem}hr{height:0;color:inherit;border-color:var(--s2f-border-color);border-width:.5px}details{font-size:smaller}summary{font-weight:bolder}a{color:var(--s2f-accent-color-contrast)}b,strong{font-weight:bolder}label{display:block}input,textarea{border-radius:4px;margin:0;padding:.5rem;font-family:inherit;font-size:100%;line-height:1.15}textarea{resize:vertical;resize:block}input[type=text],textarea{width:100%;color:var(--s2f-input-text-color);background-color:var(--s2f-input-bg-color);border:var(--s2f-border-width)solid var(--s2f-border-color)}input[type=checkbox],input[type=radio]{vertical-align:middle}input[type=submit]{background-color:var(--s2f-accent-color);color:var(--s2f-button-text-color);cursor:pointer;appearance:auto;border:0;height:2.5rem;padding-block:.5rem;padding-inline:1.5rem;font-weight:bolder}input[type=submit]:hover{background-color:var(--s2f-accent-color-light)}@media (prefers-color-scheme:dark){:root{--s2f-accent-color:#43776a;--s2f-accent-color-light:#619587;--s2f-accent-color-contrast:#a8f7e2;--s2f-border-color:#333;--s2f-input-group-bg-color:#111}}@media screen and (width>=768px){main,aside{flex:none}main{width:66.6667%}aside{width:33.3333%}}[aria-invalid=true],[aria-errormessage]{--s2f-input-text-color:var(--s2f-error-color);--s2f-border-color:var(--s2f-error-color);accent-color:var(--s2f-error-color)}p.error{color:var(--s2f-error-color);margin-block:0 1rem;margin-inline:0}.mt1r{margin-block-start:1rem!important}.instance-input[data-astro-cid-aadm65zu]{flex-wrap:wrap;align-items:stretch;width:100%;display:flex;position:relative}.instance-input[data-astro-cid-aadm65zu] span[data-astro-cid-aadm65zu]{align-items:center;padding:.5rem;font-size:1rem;display:flex}.instance-input[data-astro-cid-aadm65zu] input[data-astro-cid-aadm65zu][type=text]{flex:auto;width:1%;position:relative}#saved-instances[data-astro-cid-aadm65zu]{margin-block-end:1rem}#saved-instances[data-astro-cid-aadm65zu]>div[data-astro-cid-aadm65zu]{display:inline-block}#saved-instances[data-astro-cid-aadm65zu] span.link{color:var(--s2f-accent-color-contrast);cursor:pointer;text-decoration:underline 1px}
+</style></head> <header> <img src="/logo.svg" alt="Share2Fedi" width="195" height="60"> <label>
+🌍 <span data-translate="language">Language:</span>&#x0020;
+<select name="language" id="language"> <option value="ar"> العربية </option><option value="de"> Deutsch </option><option selected value="en"> English </option><option value="es"> Español </option><option value="et"> Eesti </option><option value="fr"> Français </option><option value="nl"> Nederlands </option><option value="ru"> Русский </option><option value="ta"> தமிழ் </option><option value="zh-Hans"> 中文（简体） </option> </select> </label> <script type="module" src="/_astro/language-select.astro_astro_type_script_index_0_lang.Ckx23yHk.js"></script> </header> <main>  <form id="form" method="POST"> <label> <span data-translate="postText">Post text</span> <textarea name="text" id="text" rows="7" placeholder="What’s on your mind?" required aria-invalid="false" data-translate="postTextPlaceholder" data-translate-attribute="placeholder">https://dev.to/devteam/announcing-the-first-dev-education-track-build-apps-with-google-ai-studio-ej7</textarea>  </label> <datalist id="popular-instances" data-astro-cid-aadm65zu></datalist> <label class="mt1r" data-astro-cid-aadm65zu> <span data-translate="instance" data-astro-cid-aadm65zu>Fediverse instance</span> <div class="instance-input" dir="ltr" data-astro-cid-aadm65zu> <span id="https-label" data-astro-cid-aadm65zu>https://</span> <input type="text" name="instance" id="instance" list="popular-instances" required aria-invalid="false" aria-describedby="https-label" data-astro-cid-aadm65zu> </div>  </label> <div id="saved-instances" class="mt1r" data-astro-cid-aadm65zu> <span data-translate="previouslyUsed" data-astro-cid-aadm65zu>Previously used:</span>&#x0020;
+<span class="list" data-astro-cid-aadm65zu></span> </div> <label class="mt1r" for="remember" data-astro-cid-aadm65zu> <input type="checkbox" id="remember" name="remember" data-astro-cid-aadm65zu>&#x0020;
+<span data-translate="rememberInstance" data-astro-cid-aadm65zu>Remember instance on this device</span><noscript>.</noscript> <noscript style="color:darkred;font-size:smaller">
+This will not work when JavaScript is disabled.</noscript> </label>  <script type="module" src="/_astro/instance-select.astro_astro_type_script_index_0_lang.DfXyanVD.js"></script> <input type="submit" value="Publish" class="mt1r" data-translate="publish" data-translate-attribute="value"> </form>  </main> <aside> <p data-translate="description">
+Share₂Fedi is an instance-agnostic share page for
+<a href="https://en.wikipedia.org/wiki/Fediverse" data-translate="fediverse">the Fediverse</a>. With it, you can post to various federated platforms from a single
+				page.
+</p> <p><b data-translate="supportedProjects">Supported projects:</b></p> <ul> <li>
+Mastodon (<span data-translate="incl">incl.</span>&#x0020;<span data-enumerate="Hometown,Fedibird,GlitchCafé">Hometown, Fedibird, GlitchCafé</span>)
+</li> <li>
+Misskey (<span data-translate="incl">incl.</span>&#x0020;<span data-enumerate="Firefish,Calckey,FoundKey,Meisskey">Firefish, Calckey, FoundKey, Meisskey</span>)
+</li> <li>Friendica</li> <li>Hubzilla</li> <li>GNU Social</li> </ul> <p data-translate="credits">
+Share₂Fedi is developed and maintained by
+<a href="https://www.kytta.dev/" data-translate="nikita">Nikita Karamov</a>. Source code is
+<a href="https://github.com/kytta/share2fedi" data-translate="onGitHub">on GitHub</a>.
+<a href="https://stats.uptimerobot.com/QOXj3uXPDX" data-translate="statusPage">Status page</a>.
+</p> <!--
+This file is part of Share₂Fedi
+https://github.com/kytta/share2fedi
+
+SPDX-FileCopyrightText: © 2023 Nikita Karamov <me@kytta.dev>
+SPDX-License-Identifier: CC0-1.0
+-->
+
+<details>
+	<summary data-translate="licence">Licence</summary>
+	<p
+		data-translate="licence1"
+		dir="auto"
+	>
+		Share₂Fedi is free software: you can redistribute it and/or modify it under
+		the terms of the GNU Affero General Public License, version 3, as published
+		by the Free Software Foundation.
+	</p>
+
+	<p
+		data-translate="licence2"
+		dir="auto"
+	>
+		Share₂Fedi is distributed in the hope that it will be useful, but WITHOUT
+		ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+		FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License
+		for more details.
+	</p>
+</details>
+ <!--
+This file is part of Share₂Fedi
+https://github.com/kytta/share2fedi
+
+SPDX-FileCopyrightText: © 2023, 2026 Nikita Karamov <me@kytta.dev>
+SPDX-License-Identifier: CC0-1.0
+-->
+
+<details>
+	<summary data-translate="privacyNotice">Privacy Notice</summary>
+	<p
+		data-translate="privacy2"
+		dir="auto"
+	>
+		When you click the ‘Publish’ button, you’ll get redirected to a Fediverse
+		instance you’ve specified. It may process and/or store your data. Please
+		refer to the privacy policy of the respective instance.
+	</p>
+</details>
+ </aside> </html>

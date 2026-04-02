@@ -1,0 +1,1937 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Placet: An Open Source Human-in-the-Loop Platform for AI Agents and Automation Workflows - DEV Community</title>
+    
+    <link rel="preload" href="/reactions?article_id=3437908" as="fetch" crossorigin="same-origin">
+    <link rel="canonical" href="https://dev.to/kesimo/placet-an-open-source-human-in-the-loop-platform-for-ai-agents-and-automation-workflows-4bf9" />
+    <meta name="description" content="AI agents are getting better every week. They write code, analyze data, generate reports, moderate... Tagged with opensource, ai, agents, automation.">
+    <meta name="keywords" content="opensource, ai, agents, automation, software, coding, development, engineering, inclusive, community">
+
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://dev.to/kesimo/placet-an-open-source-human-in-the-loop-platform-for-ai-agents-and-automation-workflows-4bf9" />
+    <meta property="og:title" content="Placet: An Open Source Human-in-the-Loop Platform for AI Agents and Automation Workflows" />
+    <meta property="og:description" content="AI agents are getting better every week. They write code, analyze data, generate reports, moderate..." />
+    <meta property="og:site_name" content="DEV Community" />
+    <meta name="twitter:site" content="@thepracticaldev">
+    <meta name="twitter:creator" content="@">
+    <meta name="twitter:title" content="Placet: An Open Source Human-in-the-Loop Platform for AI Agents and Automation Workflows">
+    <meta name="twitter:description" content="AI agents are getting better every week. They write code, analyze data, generate reports, moderate...">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:widgets:new-embed-design" content="on">
+    <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+      <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Frx3t4vjeq3wbhpfphact.png" />
+      <meta name="twitter:image:src" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Frx3t4vjeq3wbhpfphact.png">
+      <meta name="robots" content="noindex">
+      <meta name="robots" content="nofollow">
+
+      <meta name="last-updated" content="2026-03-31 21:15:17 UTC">
+      <meta name="user-signed-in" content="false">
+      <meta name="head-cached-at" content="1774991717">
+      <meta name="environment" content="production">
+      <link rel="stylesheet" href="https://assets.dev.to/assets/minimal-102395aec70cbac5f7d0bd5bebb5b56f0459629c5d224dae16333f11604cbad3.css" media="all" id="main-minimal-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/views-daf614dcfafed4955d7758a6a86d63bfbb1e8d4eae8b6317b421e18a99bbe867.css" media="all" id="main-views-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/crayons-8fce708625aacc3ff4a4d4947252a1cfab954753bb082374c0bed738861b52f2.css" media="all" id="main-crayons-stylesheet" />
+
+      <script src="https://assets.dev.to/assets/base-0c748bbcdc30041261c326ef2ce931fbce46c58bc3c488da881ae35c4750941d.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/application-0b268684912bef9b0f23defff01cb608bfc5d5e5610287725e7b686139ae32d3.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/baseInitializers-2f0777a6d67046056f9f42665560ce072de3801292674358ddbad6e135c1891d.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/baseTracking-b6bf73e5ee66633e151e7d5b7c6bbccedfa4c59e3615be97b98c4c0f543ddae7.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/followButtons-a29380c2c88136b97b2b5e63e94614ff7458fc72e07cffa7b6153831c28a40d2.js" defer="defer"></script>
+
+        <meta name="search-script" content="https://assets.dev.to/assets/Search-b977aea0f2d7a5818b4ebd97f7d4aba8548099f84f5db5761f8fa67be76abc54.js">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+      <link rel="icon" type="image/x-icon" href="https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" />
+      <link rel="apple-touch-icon" href="https://media2.dev.to/dynamic/image/width=180,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="https://media2.dev.to/dynamic/image/width=152,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="https://media2.dev.to/dynamic/image/width=180,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="167x167" href="https://media2.dev.to/dynamic/image/width=167,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link href="https://media2.dev.to/dynamic/image/width=192,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" rel="icon" sizes="192x192" />
+      <link href="https://media2.dev.to/dynamic/image/width=128,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" rel="icon" sizes="128x128" />
+      <meta name="apple-mobile-web-app-title" content="dev.to">
+      <meta name="application-name" content="dev.to">
+      <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+      <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+      <link rel="search" href="https://dev.to/open-search.xml" type="application/opensearchdescription+xml" title="DEV Community" />
+
+      <meta property="forem:name" content="DEV Community" />
+      <meta property="forem:logo" content="https://media2.dev.to/dynamic/image/width=512,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" />
+      <meta property="forem:domain" content="dev.to" />
+    <style>
+.ltag__link--embedded img.subscription-icon {
+max-height: 13px !important;
+max-width: 21px !important;
+display: inline-block !important;
+border-radius: 0 !important;
+}
+.text-styles .crayons-article__context-note p {
+margin-bottom: 0 !important;
+}
+</style>
+  </head>
+    <body
+      class="sans-serif-article-body default-header"
+      data-user-status="logged-out"
+      data-is-root-subforem="false"
+        data-subforem-id="1"
+      data-side-nav-visible="true"
+      data-community-name="DEV Community"
+      data-subscription-icon="https://assets.dev.to/assets/subscription-icon-805dfa7ac7dd660f07ed8d654877270825b07a92a03841aa99a1093bd00431b2.png"
+      data-locale="en"
+      data-honeybadger-key="hbp_nqu4Y66HuEKlD6YRGssZuRQnPOjDm50J8Zkr"
+      data-deployed-at="2026-03-31T16:23:33Z"
+      data-latest-commit-id="786e25495afed32bb807645b48a724374606e51e"
+      data-ga-tracking="UA-71991109-1"
+      data-cookie-banner-user-context="logged_out_only"
+      data-cookie-banner-platform-context="off"
+      data-algolia-id="PRSOBFP46H"
+      data-algolia-search-key="9aa7d31610cba78851c9b1f63776a9dd"
+      data-algolia-display="true"
+      data-dynamic-url-component="bmar11"
+      data-ga4-tracking-id="G-TYEM8Y3JN3">
+      
+      <script>
+        if (navigator.userAgent === 'ForemWebView/1' || window.frameElement) {
+          document.body.classList.add("hidden-shell");
+        }
+          if (new Date() > new Date("2026-02-04T09:00:00-05:00")) {
+            document.body.dataset.sideNavVisible = "false";
+          } 
+      </script>
+
+      <link rel="stylesheet" href="https://assets.dev.to/assets/minimal-102395aec70cbac5f7d0bd5bebb5b56f0459629c5d224dae16333f11604cbad3.css" media="all" id="secondary-minimal-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/views-daf614dcfafed4955d7758a6a86d63bfbb1e8d4eae8b6317b421e18a99bbe867.css" media="all" id="secondary-views-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/crayons-8fce708625aacc3ff4a4d4947252a1cfab954753bb082374c0bed738861b52f2.css" media="all" id="secondary-crayons-stylesheet" />
+
+      <div id="body-styles">
+        <style>
+          :root {
+            --accent-brand-lighter-rgb: 80, 99, 301;
+            --accent-brand-rgb: 59, 73, 223;
+            --accent-brand-darker-rgb: 47, 58, 178;
+          }
+        </style>
+      </div>
+      <div id="audiocontent" data-podcast="">
+        
+      </div>
+      <div class="navigation-progress" id="navigation-progress"></div>
+
+<header id="topbar" class="crayons-header topbar print-hidden">
+  <span id="route-change-target" tabindex="-1"></span>
+  <a href="#main-content" class="skip-content-link">Skip to content</a>
+  <div class="crayons-header__container">
+    <span class="inline-block m:hidden ">
+      <button class="c-btn c-btn--icon-alone js-hamburger-trigger mx-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="aox0dwgaknze6m5havczu5j5hkciupe7" class="crayons-icon"><title id="aox0dwgaknze6m5havczu5j5hkciupe7">Navigation menu</title>
+    <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"></path>
+</svg>
+
+      </button>
+    </span>
+    <a href="/" class="site-logo" aria-label="DEV Community Home" >
+    <img class="site-logo__img"
+         src="https://media2.dev.to/dynamic/image/quality=100/https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png"
+         style="aspect-ratio: 10 / 8"
+         alt="DEV Community">
+</a>
+
+
+    <div class="crayons-header--search js-search-form" id="header-search">
+      <form accept-charset="UTF-8" method="get" action="/search" role="search">
+        <div class="crayons-fields crayons-fields--horizontal">
+          <div class="crayons-field flex-1 relative">
+            <input id="search-input" class="crayons-header--search-input crayons-textfield js-search-input" type="text" id="nav-search" name="q" placeholder="Find related posts..." autocomplete="off" />
+            <button type="submit" aria-label="Search" class="c-btn c-btn--icon-alone absolute inset-px right-auto mt-0 py-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="ao0b8x3t1mmhz8chk4god7k0wt8yweq5" aria-hidden="true" class="crayons-icon"><title id="ao0b8x3t1mmhz8chk4god7k0wt8yweq5">Search</title>
+    <path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0111 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 01-1.969 5.617zm-2.006-.742A6.977 6.977 0 0018 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 004.875-1.975l.15-.15z"></path>
+</svg>
+
+            </button>
+
+            <a class="crayons-header--search-brand-indicator" href="https://www.algolia.com/developers/?utm_source=devto&utm_medium=referral" target="_blank" rel="noopener noreferrer">
+                Powered by Algolia
+                <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" width="24" height="24" viewBox="0 0 500 500.34" role="img" aria-labelledby="agw2d1bqs9e4iby2pkzt2rfx9czxt20h" aria-hidden="true" class="crayons-icon"><title id="agw2d1bqs9e4iby2pkzt2rfx9czxt20h">Search</title>
+  <defs></defs><path class="cls-1" d="M250,0C113.38,0,2,110.16,.03,246.32c-2,138.29,110.19,252.87,248.49,253.67,42.71,.25,83.85-10.2,120.38-30.05,3.56-1.93,4.11-6.83,1.08-9.52l-23.39-20.74c-4.75-4.22-11.52-5.41-17.37-2.92-25.5,10.85-53.21,16.39-81.76,16.04-111.75-1.37-202.04-94.35-200.26-206.1,1.76-110.33,92.06-199.55,202.8-199.55h202.83V407.68l-115.08-102.25c-3.72-3.31-9.43-2.66-12.43,1.31-18.47,24.46-48.56,39.67-81.98,37.36-46.36-3.2-83.92-40.52-87.4-86.86-4.15-55.28,39.65-101.58,94.07-101.58,49.21,0,89.74,37.88,93.97,86.01,.38,4.28,2.31,8.28,5.53,11.13l29.97,26.57c3.4,3.01,8.8,1.17,9.63-3.3,2.16-11.55,2.92-23.6,2.07-35.95-4.83-70.39-61.84-127.01-132.26-131.35-80.73-4.98-148.23,58.18-150.37,137.35-2.09,77.15,61.12,143.66,138.28,145.36,32.21,.71,62.07-9.42,86.2-26.97l150.36,133.29c6.45,5.71,16.62,1.14,16.62-7.48V9.49C500,4.25,495.75,0,490.51,0H250Z"></path>
+</svg>
+
+            </a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="flex items-center h-100 ml-auto">
+        <div class="flex" id="authentication-top-nav-actions">
+          <span class="hidden m:block">
+            <a href="https://dev.to/enter?signup_subforem=1" class="c-link c-link--block mr-2 whitespace-nowrap ml-auto" data-no-instant>
+              Log in
+            </a>
+          </span>
+
+          <a href="https://dev.to/enter?signup_subforem=1&amp;state=new-user" data-tracking-id="ca_top_nav" data-tracking-source="top_navbar" class="c-cta c-cta--branded whitespace-nowrap mr-2" data-no-instant>
+            Create account
+          </a>
+        </div>
+    </div>
+  </div>
+</header>
+
+<div class="hamburger">
+  <div class="hamburger__content">
+    <header class="hamburger__content__header">
+      <h2 class="fs-l fw-bold flex-1 break-word lh-tight">DEV Community</h2>
+
+      <button class="c-btn c-btn--icon-alone js-hamburger-trigger shrink-0" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="ajj8tfol2wi4x605lx3c4eskne84cjqy" aria-hidden="true" class="crayons-icon c-btn__icon"><title id="ajj8tfol2wi4x605lx3c4eskne84cjqy">Close</title><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636l4.95 4.95z"></path></svg>
+
+      </button>
+    </header>
+
+    <div class="p-2 js-navigation-links-container" id="authentication-hamburger-actions">
+    </div>
+  </div>
+  <div class="hamburger__overlay js-hamburger-trigger"></div>
+</div>
+
+
+      <div id="active-broadcast" class="broadcast-wrapper"></div>
+<div id="page-content" class="wrapper stories stories-show articletag-opensource articletag-ai articletag-agents articletag-automation articleuser-2333897" data-current-page="stories-show">
+  <div id="page-content-inner" data-internal-nav="false">
+    <div id="page-route-change" class="screen-reader-only" aria-live="polite" aria-atomic="true"></div>
+
+    
+<style>
+  .html-variant-wrapper { display: none}
+</style>
+
+
+
+<script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.2.10/webcomponents-loader.js"
+        integrity="sha384-3HK5hxQbkFqOIxMbpROlRmRtYl2LBZ52t+tqcjzsmr9NJuOWQxl8RgQSyFvq2lhy"
+        crossorigin="anonymous" defer></script>
+
+  <script src="https://assets.dev.to/assets/webShare-0686f0b9ac40589694ef6ae6a6202c44119bc781c254f6cf6d52d8a008461156.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/articlePage-ed23d70916aed9a7fec41f94e64aac17438d3210c1bb1d6fceace80f15445213.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/commentDropdowns-7a28d130e5b78d38b30a9495a964003a66bd64fa455fc70b766d69cf06b9ba24.js" defer="defer"></script>
+
+  <script type="application/ld+json">
+    {"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://dev.to/kesimo/placet-an-open-source-human-in-the-loop-platform-for-ai-agents-and-automation-workflows-4bf9"},"url":"https://dev.to/kesimo/placet-an-open-source-human-in-the-loop-platform-for-ai-agents-and-automation-workflows-4bf9","image":["https://media2.dev.to/dynamic/image/width=1080,height=1080,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Frx3t4vjeq3wbhpfphact.png","https://media2.dev.to/dynamic/image/width=1280,height=720,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Frx3t4vjeq3wbhpfphact.png","https://media2.dev.to/dynamic/image/width=1600,height=900,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Frx3t4vjeq3wbhpfphact.png"],"publisher":{"@context":"http://schema.org","@type":"Organization","name":"DEV Community","logo":{"@context":"http://schema.org","@type":"ImageObject","url":"https://media2.dev.to/dynamic/image/width=192,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png","width":"192","height":"192"}},"headline":"Placet: An Open Source Human-in-the-Loop Platform for AI Agents and Automation Workflows","author":{"@context":"http://schema.org","@type":"Person","url":"https://dev.to/kesimo","name":"Kevin"},"datePublished":"2026-03-31T20:58:44Z","dateModified":"2026-03-31T20:58:44Z"}
+  </script>
+
+  
+  <div class="crayons-layout crayons-layout--3-cols crayons-layout--article">
+    <aside class="crayons-layout__sidebar-left" aria-label="Article actions">
+      <script>
+  if (/Twitter for (iPhone|iPad|Android)/i.test(navigator.userAgent)) {
+    document.documentElement.classList.add('is-twitter-in-app');
+  }
+</script>
+<div class="crayons-article-actions print-hidden">
+  <div class="crayons-article-actions__inner">
+
+    
+<div class="reaction-drawer__outer hoverdown" style="">
+  <button
+    id="reaction-drawer-trigger"
+    aria-label="reaction-drawer-trigger"
+    aria-pressed="false"
+    class="hoverdown-trigger crayons-reaction pseudo-reaction crayons-tooltip__activator relative">
+      <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction--like crayons-reaction__icon--inactive" style="width: 40px; height: 40px">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" role="img" aria-hidden="true" class="crayons-icon">
+    <g clip-path="url(#clip0_988_3276)">
+        <path d="M19 14V17H22V19H18.999L19 22H17L16.999 19H14V17H17V14H19ZM20.243 4.75698C22.505 7.02498 22.583 10.637 20.479 12.992L19.059 11.574C20.39 10.05 20.32 7.65998 18.827 6.16998C17.324 4.67098 14.907 4.60698 13.337 6.01698L12.002 7.21498L10.666 6.01798C9.09103 4.60598 6.67503 4.66798 5.17203 6.17198C3.68203 7.66198 3.60703 10.047 4.98003 11.623L13.412 20.069L12 21.485L3.52003 12.993C1.41603 10.637 1.49503 7.01898 3.75603 4.75698C6.02103 2.49298 9.64403 2.41698 12 4.52898C14.349 2.41998 17.979 2.48998 20.242 4.75698H20.243Z" fill="#525252"></path>
+    </g>
+    <defs>
+        <clipPath id="clip0_988_3276">
+        <rect width="24" height="24" fill="white"></rect>
+        </clipPath>
+    </defs>
+</svg>
+
+      </span>
+      <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--active" style="width: 40px; height: 40px">
+        <img aria_hidden="true" height="24" width="24" src="https://assets.dev.to/assets/heart-plus-active-9ea3b22f2bc311281db911d416166c5f430636e76b15cd5df6b3b841d830eefa.svg" />
+      </span>
+      <span class="crayons-reaction__count" id="reaction_total_count">
+        <span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span>
+      </span>
+      <span class="crayons-tooltip__content">
+        Add reaction
+      </span>
+  </button>
+
+  <div class="reaction-drawer" aria-expanded="false">
+    <div class="reaction-drawer__container">
+        <button
+  id="reaction-butt-like"
+  name="Like"
+  aria-label="Like"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="like">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-like"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Like
+    </span>
+</button>
+
+        <button
+  id="reaction-butt-unicorn"
+  name="Unicorn"
+  aria-label="Unicorn"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="unicorn">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-unicorn"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Unicorn
+    </span>
+</button>
+
+        <button
+  id="reaction-butt-exploding_head"
+  name="Exploding Head"
+  aria-label="Exploding Head"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="exploding_head">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-exploding_head"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Exploding Head
+    </span>
+</button>
+
+        <button
+  id="reaction-butt-raised_hands"
+  name="Raised Hands"
+  aria-label="Raised Hands"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="raised_hands">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-raised_hands"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Raised Hands
+    </span>
+</button>
+
+        <button
+  id="reaction-butt-fire"
+  name="Fire"
+  aria-label="Fire"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="fire">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-fire"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Fire
+    </span>
+</button>
+
+    </div>
+  </div>
+</div>
+
+<button
+  id="reaction-butt-comment"
+  aria-label="Jump to Comments"
+  aria-pressed="false"
+  class="crayons-reaction crayons-reaction--comment crayons-tooltip__activator relative"
+  data-category="comment">
+    <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--inactive">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-hidden="true" class="crayons-icon">
+    <path d="M10 3h4a8 8 0 010 16v3.5c-5-2-12-5-12-11.5a8 8 0 018-8zm2 14h2a6 6 0 000-12h-4a6 6 0 00-6 6c0 3.61 2.462 5.966 8 8.48V17z"></path>
+</svg>
+
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-comment" data-count="0">
+      <span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span>
+    </span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Jump to Comments
+    </span>
+</button>
+
+<button
+  id="reaction-butt-readinglist"
+  aria-label="Add to reading list"
+  aria-pressed="false"
+  class="crayons-reaction crayons-reaction--readinglist crayons-tooltip__activator relative"
+  data-category="readinglist">
+    <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--inactive">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-hidden="true" class="crayons-icon">
+    <path d="M5 2h14a1 1 0 011 1v19.143a.5.5 0 01-.766.424L12 18.03l-7.234 4.536A.5.5 0 014 22.143V3a1 1 0 011-1zm13 2H6v15.432l6-3.761 6 3.761V4z"></path>
+</svg>
+
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-readinglist"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Save
+    </span>
+</button>
+
+
+<button
+  id="reaction-butt-boost"
+  aria-label="Boost"
+  aria-pressed="false"
+  class="crayons-reaction crayons-reaction--boost crayons-tooltip__activator relative">
+    <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--inactive">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" role="img" aria-hidden="true" class="crayons-icon" width="24" height="24">
+  <path transform="translate(24,0) scale(-1,1)" d="M6 4H21C21.5523 4 22 4.44772 22 5V12H20V6H6V9L1 5L6 1V4ZM18 20H3C2.44772 20 2 19.5523 2 19V12H4V18H18V15L23 19L18 23V20Z"></path>
+</svg>
+
+    </span>
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Boost
+    </span>
+</button>
+
+
+    <div class="only-sidebar-menu-item">
+      <div id="mod-actions-menu-btn-area" class="print-hidden trusted-visible-block align-center">
+      </div>
+    </div>
+    <div class="align-center m:relative">
+      <button id="article-show-more-button" aria-controls="article-show-more-dropdown" aria-expanded="false" aria-haspopup="true" class="dropbtn crayons-btn crayons-btn--ghost-dimmed crayons-btn--icon-rounded" aria-label="Share post options">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="asvkakibauekkzh1nr82a4y95dgdvrqt" aria-hidden="true" class="crayons-icon dropdown-icon"><title id="asvkakibauekkzh1nr82a4y95dgdvrqt">More...</title><path fill-rule="evenodd" clip-rule="evenodd" d="M7 12a2 2 0 11-4 0 2 2 0 014 0zm7 0a2 2 0 11-4 0 2 2 0 014 0zm5 2a2 2 0 100-4 2 2 0 000 4z"></path></svg>
+
+      </button>
+
+      <div id="article-show-more-dropdown" class="crayons-dropdown side-bar left-2 right-2 m:right-auto m:left-100 s:left-auto mb-1 m:mb-0 top-unset bottom-100 m:top-0 m:bottom-unset">
+        <div>
+          <button
+            id="copy-post-url-button"
+            class="flex justify-between crayons-link crayons-link--block w-100 bg-transparent border-0"
+            data-postUrl="https://dev.to/kesimo/placet-an-open-source-human-in-the-loop-platform-for-ai-agents-and-automation-workflows-4bf9">
+            <span class="fw-bold">Copy link</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" id="article-copy-icon" role="img" aria-labelledby="a1wicuonkrvn8exqqqtizh5bvn5c48al" aria-hidden="true" class="crayons-icon mx-2 shrink-0"><title id="a1wicuonkrvn8exqqqtizh5bvn5c48al">Copy link</title>
+    <path d="M7 6V3a1 1 0 011-1h12a1 1 0 011 1v14a1 1 0 01-1 1h-3v3c0 .552-.45 1-1.007 1H4.007A1 1 0 013 21l.003-14c0-.552.45-1 1.007-1H7zm2 0h8v10h2V4H9v2zm-2 5v2h6v-2H7zm0 4v2h6v-2H7z"></path>
+</svg>
+
+          </button>
+          <div id="article-copy-link-announcer" aria-live="polite" class="crayons-notice crayons-notice--success my-2 p-1" aria-live="polite" hidden>Copied to Clipboard</div>
+        </div>
+
+        <div class="Desktop-only">
+          <a
+            target="_blank"
+            class="crayons-link crayons-link--block"
+            rel="noopener"
+            href='https://twitter.com/intent/tweet?text=%22Placet%3A%20An%20Open%20Source%20Human-in-the-Loop%20Platform%20for%20AI%20Agents%20and%20Automation%20Workflows%22%20by%20Kevin%20%23DEVCommunity%20https%3A%2F%2Fdev.to%2Fkesimo%2Fplacet-an-open-source-human-in-the-loop-platform-for-ai-agents-and-automation-workflows-4bf9'>
+            Share to X
+          </a>
+          <a
+            target="_blank"
+            class="crayons-link crayons-link--block"
+            rel="noopener"
+            href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fdev.to%2Fkesimo%2Fplacet-an-open-source-human-in-the-loop-platform-for-ai-agents-and-automation-workflows-4bf9&title=Placet%3A%20An%20Open%20Source%20Human-in-the-Loop%20Platform%20for%20AI%20Agents%20and%20Automation%20Workflows&summary=AI%20agents%20are%20getting%20better%20every%20week.%20They%20write%20code%2C%20analyze%20data%2C%20generate%20reports%2C%20moderate...&source=DEV%20Community">
+            Share to LinkedIn
+          </a>
+          <a
+            target="_blank"
+            class="crayons-link crayons-link--block"
+            rel="noopener"
+            href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fdev.to%2Fkesimo%2Fplacet-an-open-source-human-in-the-loop-platform-for-ai-agents-and-automation-workflows-4bf9">
+            Share to Facebook
+          </a>
+          <a
+            target="_blank"
+            class="crayons-link crayons-link--block"
+            rel="noopener"
+            href="https://s2f.kytta.dev/?text=https%3A%2F%2Fdev.to%2Fkesimo%2Fplacet-an-open-source-human-in-the-loop-platform-for-ai-agents-and-automation-workflows-4bf9">
+            Share to Mastodon
+          </a>
+        </div>
+
+        <web-share-wrapper shareurl="https://dev.to/kesimo/placet-an-open-source-human-in-the-loop-platform-for-ai-agents-and-automation-workflows-4bf9" sharetitle="Placet: An Open Source Human-in-the-Loop Platform for AI Agents and Automation Workflows" sharetext="AI agents are getting better every week. They write code, analyze data, generate reports, moderate..." template="web-share-button">
+        </web-share-wrapper>
+        <template id="web-share-button">
+          <a href="#" class="dropdown-link-row crayons-link crayons-link--block">Share Post via...</a>
+        </template>
+
+        <a href="/report-abuse" class="crayons-link crayons-link--block" id="ReportButtonAuthor">Report Abuse</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </aside>
+
+    <main id="main-content" class="crayons-layout__content grid gap-4">
+      <div class="article-wrapper">
+
+
+        <article class="crayons-card crayons-article mb-4"
+          id="article-show-container"
+          data-article-id="3437908"
+          data-article-slug="placet-an-open-source-human-in-the-loop-platform-for-ai-agents-and-automation-workflows-4bf9"
+          data-author-id="2333897"
+          data-author-name="Kevin"
+          data-author-username="kesimo"
+          data-co-author-ids=""
+          data-path="/kesimo/placet-an-open-source-human-in-the-loop-platform-for-ai-agents-and-automation-workflows-4bf9"
+          data-pin-path="/stories/feed/pinned_article"
+          data-pinned-article-id=""
+          data-published="true"
+          data-scheduled="false"
+          lang=en
+           >
+          <script>
+            try {
+              if(localStorage) {
+                let currentUser = localStorage.getItem('current_user');
+
+                if (currentUser) {
+                  currentUser = JSON.parse(currentUser);
+                  if (currentUser.id === 2333897) {
+                    document.getElementById('article-show-container').classList.add('current-user-is-article-author');
+                  }
+                }
+              }
+            } catch (e) {
+              console.error(e);
+            }
+          </script>
+          <header class="crayons-article__header" id="main-title">
+              <a class="crayons-article__cover" href="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Frx3t4vjeq3wbhpfphact.png">
+                <img
+                  src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Frx3t4vjeq3wbhpfphact.png"
+                  style="aspect-ratio: auto 1000 / 420;"
+                  width="1000" height="420"
+                  class="crayons-article__cover__image" alt="Cover image for Placet: An Open Source Human-in-the-Loop Platform for AI Agents and Automation Workflows">
+              </a>
+
+            <div class="crayons-article__header__meta">
+              <div class="flex s:items-start flex-col s:flex-row">
+                <div id="action-space" class="crayons-article__actions mb-4 s:mb-0 s:order-last"></div>
+                <div class="flex flex-1 mb-5 items-start">
+                  <div class="relative">
+                      <a href="/kesimo"><img class="radius-full align-middle" src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F2333897%2F966ec6dd-6a8a-4a5c-9ccb-c3a08e04ac6c.png" width="40" height="40" alt="Kevin" /></a>
+                  </div>
+                  <div class="pl-3 flex-1">
+                    <a href="/kesimo" class="crayons-link fw-bold">Kevin</a>
+                    
+                    <p class="fs-xs color-base-60">
+                        Posted on <time datetime="2026-03-31T20:58:44Z" class="date-no-year">Mar 31</time>
+
+
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="multiple_reactions_engagement">
+    <button
+      class="reaction_engagement_like hidden crayons-reaction crayons-reaction--like"
+      data-category="like"
+      aria-label="Like"
+      type="button"
+    ><span class="crayons-reaction__icon crayons-reaction__icon--inactive p-1"><img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="24" height="24" /></span>
+      <span class="crayons-reaction__count" id="reaction_engagement_like_count">&nbsp;</span>
+    </button>    <button
+      class="reaction_engagement_unicorn hidden crayons-reaction crayons-reaction--unicorn"
+      data-category="unicorn"
+      aria-label="Unicorn"
+      type="button"
+    ><span class="crayons-reaction__icon crayons-reaction__icon--inactive p-1"><img src="https://assets.dev.to/assets/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" width="24" height="24" /></span>
+      <span class="crayons-reaction__count" id="reaction_engagement_unicorn_count">&nbsp;</span>
+    </button>    <button
+      class="reaction_engagement_exploding_head hidden crayons-reaction crayons-reaction--exploding_head"
+      data-category="exploding_head"
+      aria-label="Exploding Head"
+      type="button"
+    ><span class="crayons-reaction__icon crayons-reaction__icon--inactive p-1"><img src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" width="24" height="24" /></span>
+      <span class="crayons-reaction__count" id="reaction_engagement_exploding_head_count">&nbsp;</span>
+    </button>    <button
+      class="reaction_engagement_raised_hands hidden crayons-reaction crayons-reaction--raised_hands"
+      data-category="raised_hands"
+      aria-label="Raised Hands"
+      type="button"
+    ><span class="crayons-reaction__icon crayons-reaction__icon--inactive p-1"><img src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="24" height="24" /></span>
+      <span class="crayons-reaction__count" id="reaction_engagement_raised_hands_count">&nbsp;</span>
+    </button>    <button
+      class="reaction_engagement_fire hidden crayons-reaction crayons-reaction--fire"
+      data-category="fire"
+      aria-label="Fire"
+      type="button"
+    ><span class="crayons-reaction__icon crayons-reaction__icon--inactive p-1"><img src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="24" height="24" /></span>
+      <span class="crayons-reaction__count" id="reaction_engagement_fire_count">&nbsp;</span>
+    </button>
+</div>
+
+
+              <h1 class=" fs-3xl m:fs-4xl l:fs-5xl fw-bold s:fw-heavy lh-tight mb-2 longer">
+                Placet: An Open Source Human-in-the-Loop Platform for AI Agents and Automation Workflows
+              </h1>
+              
+                  <div class="spec__tags flex flex-wrap">
+                      <a class="crayons-tag   " style="
+        --tag-bg: rgba(11, 226, 245, 0.10);
+        --tag-prefix: #0be2f5;
+        --tag-bg-hover: rgba(11, 226, 245, 0.10);
+        --tag-prefix-hover: #0be2f5;
+      " href="/t/agents"><span class="crayons-tag__prefix">#</span>agents</a>
+                      <a class="crayons-tag   " style="
+        --tag-bg: rgba(23, 253, 26, 0.10);
+        --tag-prefix: #17fd1a;
+        --tag-bg-hover: rgba(23, 253, 26, 0.10);
+        --tag-prefix-hover: #17fd1a;
+      " href="/t/ai"><span class="crayons-tag__prefix">#</span>ai</a>
+                      <a class="crayons-tag   " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/automation"><span class="crayons-tag__prefix">#</span>automation</a>
+                      <a class="crayons-tag   " style="
+        --tag-bg: rgba(38, 190, 0, 0.10);
+        --tag-prefix: #26BE00;
+        --tag-bg-hover: rgba(38, 190, 0, 0.10);
+        --tag-prefix-hover: #26BE00;
+      " href="/t/opensource"><span class="crayons-tag__prefix">#</span>opensource</a>
+                  </div>
+            </div>
+          </header>
+
+          <div class="crayons-article__main ">
+            <div class="crayons-article__body text-styles spec__body" data-article-id="3437908" id="article-body">
+                <p>AI agents are getting better every week. They write code, analyze data, generate reports, moderate content, and propose infrastructure changes. In many cases that output is good enough to act on directly.</p>
+
+<p>But for most business-critical workflows a human still needs to be in the loop (HITL). Not because the AI is unreliable, but because accountability, context, and final judgment still matter.</p>
+
+<p>The question is: <em>where</em> does that human review actually happen?</p>
+
+<p>In most teams the answer is Slack, Teams, Telegram, or email. Someone builds a bot, it sends a message, attaches some context, asks for a thumbs-up. It works, barely. But these tools were designed for human-to-human communication and they were never built for structured agent-human collaboration.</p>
+
+<p>I built <a href="https://placet.io" target="_blank" rel="noopener noreferrer">Placet</a> to fix that.</p>
+
+
+<hr>
+
+<h2>
+  <a name="what-is-placet" href="#what-is-placet">
+  </a>
+  What is Placet?
+</h2>
+
+<p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Frq0f2m6d5rgnumqorydi.png" class="article-body-image-wrapper"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Frq0f2m6d5rgnumqorydi.png" alt="Placet-screenshot" loading="lazy"></a></p>
+
+<p><strong>Placet</strong> (Latin for "it pleases" or "approved") is a self-hostable, open source inbox purpose-built for human-in-the-loop (HITL) workflows. It provides:</p>
+
+<ul>
+<li>A <strong>REST API</strong> that any agent, script, or automation tool can call via standard HTTP</li>
+<li>A <strong>web UI</strong> where humans review messages, respond to structured requests, and annotate files</li>
+<li>A <strong>plugin system</strong> for rendering custom message types inside sandboxed iframes</li>
+<li>A <strong>webhook and long-polling system</strong> to deliver review responses back to the agent</li>
+</ul>
+
+<p>The design philosophy is simple: be the cURL of human interaction. If your tool can make an HTTP request, it can integrate with Placet. No SDK required, no framework coupling.</p>
+
+<blockquote>
+<p>📸 <em>Image: Architecture diagram showing an AI agent on the left sending a POST request to the Placet API, the web UI in the center where a human reviews and responds, and a webhook callback flowing back to the agent on the right. Clean, three-component view.</em></p>
+</blockquote>
+
+
+<hr>
+
+<h2>
+  <a name="why-not-just-use-slack-or-telegram" href="#why-not-just-use-slack-or-telegram">
+  </a>
+  Why Not Just Use Slack or Telegram?
+</h2>
+
+<p>This question comes up every time. The short answer: an approval button in Slack is a hack, not a feature.</p>
+
+<div class="table-wrapper-paragraph"><table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Slack / Telegram / Teams</th>
+<th>Placet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Structured approval with styled buttons</td>
+<td>Button text only, no visual hierarchy</td>
+<td>Primary / Danger / Default button styles</td>
+</tr>
+<tr>
+<td>Multi-field form submission</td>
+<td>Impossible without a custom app</td>
+<td>Native form review type (12 field types)</td>
+</tr>
+<tr>
+<td>Rich file previews inline</td>
+<td>Images only, limited context</td>
+<td>PDF, DOCX, XLSX, MP4, audio, code, SVG all inline</td>
+</tr>
+<tr>
+<td>Image annotation</td>
+<td>Not possible</td>
+<td>Canvas overlay: pen, arrow, rectangle, text</td>
+</tr>
+<tr>
+<td>Review expiry with webhook callback</td>
+<td>Manual workaround required</td>
+<td>Built-in, configurable per review</td>
+</tr>
+<tr>
+<td>Delivery status tracking</td>
+<td>Not available</td>
+<td>WhatsApp-style: <code>sent</code> to <code>delivered</code> to <code>agent_received</code>
+</td>
+</tr>
+<tr>
+<td>Agent status heartbeat</td>
+<td>Not available</td>
+<td>4 states with full history timeline</td>
+</tr>
+<tr>
+<td>Self-hosted, no cloud dependency</td>
+<td>SaaS only or complex setup</td>
+<td>One <code>docker compose up</code>
+</td>
+</tr>
+<tr>
+<td>Open source</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table></div>
+
+<p>I personally replaced my Telegram-based approval flows with Placet and the difference was immediate. Review context stays in one place, responses are structured JSON instead of freeform text, and I can annotate AI-generated images without switching to another tool.</p>
+
+
+<hr>
+
+<h2>
+  <a name="core-concepts" href="#core-concepts">
+  </a>
+  Core Concepts
+</h2>
+
+<h3>
+  <a name="agents-and-channels" href="#agents-and-channels">
+  </a>
+  Agents and Channels
+</h3>
+
+<p>Every integration is an <strong>agent</strong>: an entity that holds an API key and has its own chat channel in the UI. You can have as many agents as you want, one per LangChain workflow, one per CI/CD pipeline, one per cron job.</p>
+
+<p>Each agent gets:</p>
+
+<ul>
+<li>Its own isolated channel (like a dedicated chat thread)</li>
+<li>A configurable webhook URL for receiving review responses</li>
+<li>An optional avatar and description for identification</li>
+<li>A status heartbeat system with full history</li>
+</ul>
+
+<h3>
+  <a name="the-five-review-types" href="#the-five-review-types">
+  </a>
+  The Five Review Types
+</h3>
+
+<p>Placet ships with five built-in review primitives:</p>
+
+<div class="table-wrapper-paragraph"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>When to use</th>
+<th>Response shape</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Approval</strong></td>
+<td>Binary or small set of choices (approve/reject)</td>
+<td><code>{ selectedOption, comment? }</code></td>
+</tr>
+<tr>
+<td><strong>Selection</strong></td>
+<td>Single or multi-select from a list of items</td>
+<td><code>{ selectedIds: [...] }</code></td>
+</tr>
+<tr>
+<td><strong>Form</strong></td>
+<td>Structured data entry with multiple typed fields</td>
+<td><code>{ fieldName: value, ... }</code></td>
+</tr>
+<tr>
+<td><strong>Text Input</strong></td>
+<td>Open-ended freeform response with optional markdown preview</td>
+<td><code>{ text: "..." }</code></td>
+</tr>
+<tr>
+<td><strong>Freeform</strong></td>
+<td>Custom JSON, rendered and submitted by a plugin</td>
+<td>any JSON</td>
+</tr>
+</tbody>
+</table></div>
+
+<p>All review types support:</p>
+
+<ul>
+<li>
+<code>expiresInSeconds</code> or <code>expiresAt</code> (default 24 hours, max 36 hours)</li>
+<li>Per-message webhook callbacks</li>
+<li>Long-polling via <code>GET /api/v1/reviews/:id/wait</code>
+</li>
+<li>A <code>review:expired</code> webhook callback when the timer runs out</li>
+</ul>
+
+<h3>
+  <a name="how-agents-receive-responses" href="#how-agents-receive-responses">
+  </a>
+  How Agents Receive Responses
+</h3>
+
+<p>When a human responds to a review, the agent can receive it via one of three connection types:</p>
+
+<ol>
+<li>
+<strong>Webhook callback</strong>: Placet POSTs the response to your configured URL</li>
+<li>
+<strong>Long-polling</strong>: The agent waits on <code>GET /api/v1/reviews/:id/wait</code> for up to 30 seconds</li>
+<li>
+<strong>WebSocket</strong>: Subscribe to real-time events via Socket.io (e.g. <code>review:responded</code>, <code>review:expired</code>, <code>message:created</code>)</li>
+</ol>
+
+<p>The WebSocket connection is particularly useful for agents that want to stay permanently connected and react instantly without the overhead of repeated polling. Here is a minimal example using the Socket.io client:<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight typescript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">io</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">socket.io-client</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">socket</span> <span class="o">=</span> <span class="nf">io</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://your-placet-instance.com</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">auth</span><span class="p">:</span> <span class="p">{</span> <span class="na">token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">hp_your_api_key</span><span class="dl">'</span> <span class="p">},</span>
+<span class="p">});</span>
+
+<span class="nx">socket</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">review:responded</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">messageId</span><span class="p">,</span> <span class="nx">channelId</span><span class="p">,</span> <span class="nx">response</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">event</span><span class="p">;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Review </span><span class="p">${</span><span class="nx">messageId</span><span class="p">}</span><span class="s2"> completed:`</span><span class="p">,</span> <span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">socket</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">review:expired</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Review </span><span class="p">${</span><span class="nx">event</span><span class="p">.</span><span class="nx">messageId</span><span class="p">}</span><span class="s2"> expired without a response`</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="webhook-resolution-three-layers" href="#webhook-resolution-three-layers">
+  </a>
+  Webhook Resolution: Three Layers
+</h3>
+
+<p>When a human responds to a review, Placet resolves where to send the callback in a fixed priority chain:</p>
+
+<div class="table-wrapper-paragraph"><table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Source</th>
+<th>How to set it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 (highest)</td>
+<td><strong>Message-level webhook</strong></td>
+<td>Pass <code>webhookUrl</code> in the <code>POST /api/v1/messages</code> body</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Agent-level default webhook</strong></td>
+<td>Set once in the agent settings panel</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Legacy inline callback</strong></td>
+<td>A <code>callback</code> field inside the review payload (backwards compat)</td>
+</tr>
+</tbody>
+</table></div>
+
+<p>The message-level override exists because real pipelines are rarely that uniform. A single agent might dispatch review requests from multiple concurrent LangChain runs, each needing its response routed somewhere different: a per-run callback URL, a short-lived ngrok tunnel, a specific Lambda invocation. Passing <code>webhookUrl</code> per message solves this cleanly without spinning up a new agent for each run.</p>
+
+<p>WebSocket events (<code>review:responded</code>, <code>review:expired</code>) always fire in parallel with the HTTP callback, regardless of which tier is active. When a webhook call fails, the message flips to a <code>webhook_failed</code> delivery status, visible as a red indicator in the UI. A single click retries delivery without touching the review state.</p>
+
+<h3>
+  <a name="pushonly-vs-bidirectional-channels" href="#pushonly-vs-bidirectional-channels">
+  </a>
+  Push-Only vs Bidirectional Channels
+</h3>
+
+<p>Not every workflow needs a free-text chat box. Placet channels support two practical communication patterns, and which one applies is determined by how the agent is configured.</p>
+
+<p><strong>Push-only (watch mode):</strong> The agent sends messages to the inbox and may request structured responses. Humans respond exclusively through the built-in review UI: clicking an approval button, selecting options, filling a form, drawing annotations. The free-text message input is present in the UI but serves no purpose for the agent, because there is no webhook to receive unstructured user messages. This is the right pattern for automated pipelines where the agent controls the agenda and the human is there to gate-keep specific decision points.</p>
+
+<p><strong>Bidirectional (chat mode):</strong> When the agent has a webhook configured, human-typed messages (stored with <code>senderType: "user"</code>) are forwarded to that same webhook in real time, alongside review responses and delivery events. The agent can react to free-text input, ask follow-up questions, or run a full conversational loop. The LangChain example in the repository demonstrates this pattern: the agent pauses mid-task to ask a question, the human types an answer in the chat box, and the agent continues with the new context.</p>
+
+<p>The distinction matters when you are designing a workflow. A production deploy gate needs only structured approval buttons. A research assistant that takes mid-run guidance needs the full chat loop. Placet does not force a choice: configure the webhook and you get both structured reviews and free-text input from the same channel.</p>
+
+<h3>
+  <a name="upcoming-integrations" href="#upcoming-integrations">
+  </a>
+  Upcoming Integrations
+</h3>
+
+<p>Beyond the REST API and WebSocket, two more connection types are actively in development:</p>
+
+<div class="table-wrapper-paragraph"><table>
+<thead>
+<tr>
+<th>Integration</th>
+<th>Status</th>
+<th>What it will enable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MCP server</strong></td>
+<td>In development</td>
+<td>Claude, Cursor, and other MCP-compatible agents can call Placet tools (send message, request approval, wait for response) natively without an HTTP wrapper</td>
+</tr>
+<tr>
+<td><strong>n8n node</strong></td>
+<td>In development</td>
+<td>Native Placet node for n8n workflows: trigger on review response, send messages, request approvals directly from the n8n canvas</td>
+</tr>
+<tr>
+<td><strong>Make.com module</strong></td>
+<td>In development</td>
+<td>Same native integration for Make (formerly Integromat) automation scenarios</td>
+</tr>
+</tbody>
+</table></div>
+
+<p>Once the MCP server ships, agents running in Claude or any MCP-compatible runtime will be able to integrate with Placet with zero REST boilerplate. The n8n and Make.com integrations will make Placet accessible to no-code automation builders without writing a single line of code.</p>
+
+
+<hr>
+
+<h2>
+  <a name="the-api-in-practice" href="#the-api-in-practice">
+  </a>
+  The API in Practice
+</h2>
+
+<p>Sending a message is a single HTTP call. No SDK, no special client library required:<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight shell"><code>curl <span class="nt">-X</span> POST https://your-placet-instance.com/api/v1/messages <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer hp_your-key-here"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"channelId": "your-agent-id", "text": "Analysis complete.", "status": "success"}'</span>
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>Adding a human approval request takes a few more fields:<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight shell"><code>curl <span class="nt">-X</span> POST https://your-placet-instance.com/api/v1/messages <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer hp_your-key-here"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+    "channelId": "your-agent-id",
+    "text": "Deploy v2.1 to production?",
+    "review": {
+      "type": "approval",
+      "payload": {
+        "options": [
+          {"id": "deploy", "label": "Deploy", "style": "primary"},
+          {"id": "cancel", "label": "Cancel", "style": "danger"}
+        ]
+      }
+    }
+  }'</span>
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>From Python, using <code>requests</code>:<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight python"><code><span class="kn">import</span> <span class="n">requests</span>
+
+<span class="n">BASE_URL</span> <span class="o">=</span> <span class="sh">"</span><span class="s">https://your-placet-instance.com</span><span class="sh">"</span>
+<span class="n">API_KEY</span> <span class="o">=</span> <span class="sh">"</span><span class="s">hp_your-api-key</span><span class="sh">"</span>
+<span class="n">CHANNEL_ID</span> <span class="o">=</span> <span class="sh">"</span><span class="s">your-agent-id</span><span class="sh">"</span>
+
+<span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+    <span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">BASE_URL</span><span class="si">}</span><span class="s">/api/v1/messages</span><span class="sh">"</span><span class="p">,</span>
+    <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="sh">"</span><span class="s">Authorization</span><span class="sh">"</span><span class="p">:</span> <span class="sa">f</span><span class="sh">"</span><span class="s">Bearer </span><span class="si">{</span><span class="n">API_KEY</span><span class="si">}</span><span class="sh">"</span><span class="p">},</span>
+    <span class="n">json</span><span class="o">=</span><span class="p">{</span>
+        <span class="sh">"</span><span class="s">channelId</span><span class="sh">"</span><span class="p">:</span> <span class="n">CHANNEL_ID</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">text</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">Please review the attached report.</span><span class="sh">"</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">status</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">warning</span><span class="sh">"</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">review</span><span class="sh">"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="sh">"</span><span class="s">type</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">approval</span><span class="sh">"</span><span class="p">,</span>
+            <span class="sh">"</span><span class="s">payload</span><span class="sh">"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="sh">"</span><span class="s">options</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span><span class="sh">"</span><span class="s">id</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">approve</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">label</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">Approve</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">style</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">primary</span><span class="sh">"</span><span class="p">},</span>
+                    <span class="p">{</span><span class="sh">"</span><span class="s">id</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">reject</span><span class="sh">"</span><span class="p">,</span>  <span class="sh">"</span><span class="s">label</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">Reject</span><span class="sh">"</span><span class="p">,</span>  <span class="sh">"</span><span class="s">style</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">danger</span><span class="sh">"</span><span class="p">},</span>
+                <span class="p">],</span>
+            <span class="p">},</span>
+        <span class="p">},</span>
+    <span class="p">},</span>
+<span class="p">).</span><span class="nf">json</span><span class="p">()</span>
+
+<span class="c1"># Long-poll for the human response (synchronous, max 30s per call)
+</span><span class="n">review</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+    <span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">BASE_URL</span><span class="si">}</span><span class="s">/api/v1/reviews/</span><span class="si">{</span><span class="n">resp</span><span class="p">[</span><span class="sh">'</span><span class="s">id</span><span class="sh">'</span><span class="p">]</span><span class="si">}</span><span class="s">/wait</span><span class="sh">"</span><span class="p">,</span>
+    <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="sh">"</span><span class="s">Authorization</span><span class="sh">"</span><span class="p">:</span> <span class="sa">f</span><span class="sh">"</span><span class="s">Bearer </span><span class="si">{</span><span class="n">API_KEY</span><span class="si">}</span><span class="sh">"</span><span class="p">},</span>
+<span class="p">).</span><span class="nf">json</span><span class="p">()</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">review</span><span class="p">[</span><span class="sh">"</span><span class="s">message</span><span class="sh">"</span><span class="p">][</span><span class="sh">"</span><span class="s">review</span><span class="sh">"</span><span class="p">][</span><span class="sh">"</span><span class="s">response</span><span class="sh">"</span><span class="p">][</span><span class="sh">"</span><span class="s">selectedOption</span><span class="sh">"</span><span class="p">])</span>  <span class="c1"># "approve" or "reject"
+</span></code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>The full API reference is available at <a href="https://docs.placet.io" target="_blank" rel="noopener noreferrer">docs.placet.io</a>.</p>
+
+
+<hr>
+
+<h2>
+  <a name="agent-status-heartbeat" href="#agent-status-heartbeat">
+  </a>
+  Agent Status Heartbeat
+</h2>
+
+<p>Beyond sending messages, agents can report their current operational status so humans have a live health dashboard across all running workflows:<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight shell"><code>curl <span class="nt">-X</span> POST http://localhost:3001/api/v1/status/ping <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer hp_your-key-here"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"status": "busy", "message": "Processing 847 records from the data pipeline"}'</span>
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>The four status values are <code>active</code>, <code>busy</code>, <code>error</code>, and <code>offline</code>. The UI shows the current badge next to the agent name and maintains a full history timeline, which is useful for debugging why an agent went silent or when a pipeline stalled.</p>
+
+
+<hr>
+
+<h2>
+  <a name="the-plugin-system" href="#the-plugin-system">
+  </a>
+  The Plugin System
+</h2>
+
+<p>One of Placet's more distinctive features is its plugin system. You can define custom message renderers as static HTML files loaded in sandboxed iframes. All built-in review types use this same system internally; there is no special-casing.</p>
+
+<p>A plugin is a directory with three files. That is all it takes:<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>packages/plugins/my-plugin/
+  plugin.json   - manifest: name, version, input schema, HTTP permissions
+  render.html   - the UI: plain HTML + CSS + JS, no build step required
+  icon.svg      - optional icon shown in the Settings UI
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>The plugin receives message data from the host via <code>postMessage</code> and submits responses the same way. Outbound HTTP requests are proxied server-side with a per-plugin domain allowlist, so plugins can call external APIs without exposing credentials to the browser or opening SSRF vectors.</p>
+
+<p>Plugins are decoupled from the review system. A plugin controls <em>how</em> a message is rendered; a review controls <em>whether</em> user input is required. You can use either independently or combine them on the same message.</p>
+
+<p>Two example plugins are included in the repository to use as a starting point:</p>
+
+<div class="table-wrapper-paragraph"><table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>What it does</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>form-submit</code></td>
+<td>Renders a dynamic form and POSTs the response to a configurable webhook URL</td>
+<td><a href="https://github.com/placet-io/placet/tree/main/packages/plugins/form-submit" target="_blank" rel="noopener noreferrer">packages/plugins/form-submit</a></td>
+</tr>
+<tr>
+<td><code>kroki-diagram</code></td>
+<td>Renders Mermaid, PlantUML, D2, Graphviz, and more via a Kroki server</td>
+<td><a href="https://github.com/placet-io/placet/tree/main/packages/plugins/kroki-diagram" target="_blank" rel="noopener noreferrer">packages/plugins/kroki-diagram</a></td>
+</tr>
+</tbody>
+</table></div>
+
+
+<hr>
+
+<h2>
+  <a name="file-handling" href="#file-handling">
+  </a>
+  File Handling
+</h2>
+
+<p>Placet treats files as first-class citizens of the review workflow. Supported formats are previewed inline without any application switching.</p>
+
+<div class="table-wrapper-paragraph"><table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Formats</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Images</td>
+<td>JPG, PNG, GIF, WebP, SVG</td>
+</tr>
+<tr>
+<td>Video</td>
+<td>MP4, WebM, MOV (inline player)</td>
+</tr>
+<tr>
+<td>Audio</td>
+<td>MP3, WAV, OGG, M4A (inline player)</td>
+</tr>
+<tr>
+<td>Documents</td>
+<td>PDF, DOCX, ODT</td>
+</tr>
+<tr>
+<td>Spreadsheets</td>
+<td>XLSX, XLS, ODS, CSV</td>
+</tr>
+<tr>
+<td>Presentations</td>
+<td>PPTX</td>
+</tr>
+<tr>
+<td>Code / Text</td>
+<td>40+ languages with Shiki syntax highlighting</td>
+</tr>
+<tr>
+<td>Markdown</td>
+<td>GitHub Flavored Markdown rendered inline</td>
+</tr>
+</tbody>
+</table></div>
+
+<p><strong>Image annotation</strong> is built directly into the review flow. When an agent generates images, diagrams, or screenshots, the human reviewer can open an annotation canvas in-chat and draw with pen, arrows, rectangles, and text labels. The annotated image is saved back into the conversation. No external markup tool needed.</p>
+
+<p>Additional file features: JWT-based share links (1-hour expiry), bulk ZIP download, full-text search in the file browser, and presigned S3-compatible uploads via MinIO.</p>
+
+
+<hr>
+
+<h2>
+  <a name="selfhosting-in-three-minutes" href="#selfhosting-in-three-minutes">
+  </a>
+  Self-Hosting in Three Minutes
+</h2>
+
+<p><strong>Prerequisites:</strong> Git, Node.js 22+, Docker with Docker Compose v2, 2 GB RAM.<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight shell"><code>git clone https://github.com/placet-io/placet.git
+<span class="nb">cd </span>placet
+<span class="nb">cp</span> .env.example .env
+make setup
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p><code>make setup</code> installs dependencies, builds all packages, starts the full Docker Compose stack (PostgreSQL + MinIO + backend + frontend), runs database migrations, and creates the initial user. Everything runs locally with zero cloud dependencies.</p>
+
+<p><strong>Services available after setup:</strong></p>
+
+<div class="table-wrapper-paragraph"><table>
+<thead>
+<tr>
+<th>Service</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Frontend</td>
+<td><a href="http://localhost:3000" target="_blank" rel="noopener noreferrer">http://localhost:3000</a></td>
+</tr>
+<tr>
+<td>Backend API</td>
+<td><a href="http://localhost:3001" target="_blank" rel="noopener noreferrer">http://localhost:3001</a></td>
+</tr>
+<tr>
+<td>API docs</td>
+<td><a href="https://docs.placet.io" target="_blank" rel="noopener noreferrer">https://docs.placet.io</a></td>
+</tr>
+<tr>
+<td>MinIO Console</td>
+<td><a href="http://localhost:9001" target="_blank" rel="noopener noreferrer">http://localhost:9001</a></td>
+</tr>
+</tbody>
+</table></div>
+
+<p><strong>Default login:</strong> <code>admin@placet.local</code> / <code>changeme</code> (configurable in <code>.env</code>)</p>
+
+<p>Once you are in:</p>
+
+<ol>
+<li>Go to <strong>Settings → API Keys</strong> and create a key</li>
+<li>Go to <strong>Settings → Agents</strong> and create an agent</li>
+<li>Send your first message:
+</li>
+</ol>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight shell"><code>curl <span class="nt">-X</span> POST http://localhost:3001/api/v1/messages <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer hp_your-key-here"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"text": "Hello from my agent!", "status": "success"}'</span>
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<ol>
+<li>Open the agent channel in the UI and your message appears in real time.</li>
+</ol>
+
+<p>For production deployments, a Traefik overlay (<code>docker-compose.traefik.yml</code>) is included and handles automatic HTTPS via Let's Encrypt.</p>
+
+
+<hr>
+
+<h2>
+  <a name="how-i-use-placet-in-my-own-workflows" href="#how-i-use-placet-in-my-own-workflows">
+  </a>
+  How I Use Placet in My Own Workflows
+</h2>
+
+<p>I run Placet as the central review layer across several of my personal and business automation workflows. Here are three concrete examples:</p>
+
+<p><strong>Document approval pipeline.</strong> An AI pipeline processes incoming data, generates a weekly summary PDF, and sends it to Placet with an approval request before distribution. I open the rendered PDF directly in the chat, annotate sections if needed, and click "Approve" or "Hold for Revision." The pipeline receives the structured response and acts on it.</p>
+
+<p><strong>CI/CD production gating.</strong> Pipeline steps that affect production infrastructure gate on a Placet approval before continuing. I review a summary of what is about to happen, approve or reject, and the pipeline proceeds or aborts accordingly. This replaced a fragile Telegram bot that had no audit trail and broke regularly after API changes.</p>
+
+<p><strong>LangChain agents with mid-run questions.</strong> LangChain agents running multi-step tasks hit decision points where they genuinely need human judgment. They call the Placet API, present the question with full context, and wait. When I respond, they continue. The full conversation history that led to the question is visible in the chat.</p>
+
+<p>The advantage over Telegram or Slack is not just the UI quality. It is having all reviews in one structured place, with delivery receipts, history, and a consistent response schema that the downstream code can rely on.</p>
+
+
+<hr>
+
+<h2>
+  <a name="open-source-contributions-are-very-welcome" href="#open-source-contributions-are-very-welcome">
+  </a>
+  Open Source: Contributions Are Very Welcome
+</h2>
+
+<p>Placet is open source and contributions of any size are genuinely appreciated.</p>
+
+<p>Whether you are:</p>
+
+<ul>
+<li>Fixing a typo in the docs</li>
+<li>Reporting a bug you hit while integrating Placet into your workflow</li>
+<li>Suggesting a missing feature or integration</li>
+<li>Submitting a pull request for a new review type, plugin, or API capability</li>
+<li>Just dropping a GitHub star</li>
+</ul>
+
+<p>All of it matters. <strong>Bug reports are contributions too</strong>, and they are often the most valuable ones because they come from real usage.</p>
+
+<p>The repo is at <strong><a href="https://github.com/placet-io/placet" target="_blank" rel="noopener noreferrer">github.com/placet-io/placet</a></strong>. If you are building something on top of Placet or using it in your own workflows, I would love to hear about it. Open an issue, start a discussion, or reach out directly.</p>
+
+
+<hr>
+
+<h2>
+  <a name="closing" href="#closing">
+  </a>
+  Closing
+</h2>
+
+<p>Human-in-the-loop workflows are not a temporary workaround before full AI autonomy arrives. As agents become more capable and more autonomous, the seams where humans and agents interact become more important, not less. Those seams deserve better tooling than a Telegram bot.</p>
+
+<p>Placet is my attempt at building that tooling in the open. It is early, it is opinionated, and it is actively developed.</p>
+
+<p><strong>Links:</strong></p>
+
+<ul>
+<li>GitHub: <a href="https://github.com/placet-io/placet" target="_blank" rel="noopener noreferrer">github.com/placet-io/placet</a>
+</li>
+<li>Self-host: <code>make setup</code> (see the <a href="https://github.com/placet-io/placet" target="_blank" rel="noopener noreferrer">README</a>)</li>
+<li>Docs: <a href="https://docs.placet.io" target="_blank" rel="noopener noreferrer">docs.placet.io</a>
+</li>
+</ul>
+
+
+            </div>
+
+              <div class="below-post-bb body-billboard-container" data-async-url="/kesimo/placet-an-open-source-human-in-the-loop-platform-for-ai-agents-and-automation-workflows-4bf9/bmar11/post_body_bottom"></div>
+          </div>
+          <section id="comments" data-follow-button-container="true" data-updated-at="2026-03-31 21:15:17 UTC" class="text-padding mb-4 border-t-1 border-0 border-solid border-base-10">
+    <header class="relative flex justify-between items-center mb-6">
+      <div class="flex items-center">
+        <h2 class="crayons-subtitle-1">
+          Top comments <span class="js-comments-count" data-comments-count="0">(0)</span>
+        </h2>
+      </div>
+
+
+      <div id="comment-subscription" class="print-hidden">
+        <div class="crayons-btn-group">
+          <span class="crayons-btn crayons-btn--outlined">Subscribe</span>
+        </div>
+      </div>
+    </header>
+    <div id="billboard_delay_trigger"></div>
+    <div
+      id="comments-container"
+      data-testid="comments-container"
+      data-commentable-id="3437908"
+      data-commentable-type="Article"
+      data-has-recent-comment-activity="true">
+
+        <div id="response-templates-data" class="hidden"></div>
+
+
+<form class="comment-form print-hidden" id="new_comment" action="/comments" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" />
+
+  <input type="hidden" name="authenticity_token" value="NOTHING" id="new_comment_authenticity_token">
+
+    <input value="3437908" autocomplete="off" type="hidden" name="comment[commentable_id]" id="comment_commentable_id" />
+    <input value="Article" autocomplete="off" type="hidden" name="comment[commentable_type]" id="comment_commentable_type" />
+    
+
+  <span class="crayons-avatar m:crayons-avatar--l mr-2 shrink-0">
+    <img src="https://media2.dev.to/dynamic/image/width=256,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" width="32" height="32" alt="pic" class="crayons-avatar__image overflow-hidden" id="comment-primary-user-profile--avatar" loading="lazy" />
+  </span>
+  <div class="comment-form__inner">
+    <div class="comment-form__field" data-tracking-name="comment_form_textfield">
+      <textarea placeholder="Add to the discussion" onfocus="handleFocus(event)" onkeyup="handleKeyUp(event)" onkeydown="handleKeyDown(event)" oninput="handleChange(event)" id="text-area" required="required" class="crayons-textfield comment-textarea crayons-textfield--ghost" aria-label="Add a comment to the discussion" name="comment[body_markdown]">
+</textarea>
+
+    </div>
+
+    <div class="response-templates-container crayons-card crayons-card--secondary p-4 mb-4 comment-form__templates fs-base hidden">
+      <header class="mb-3">
+        <button type="button" class="crayons-btn personal-template-button active" data-target-type="personal" data-form-id="new_comment">Personal</button>
+        <button type="button" class="crayons-btn moderator-template-button hidden" data-target-type="moderator" data-form-id="new_comment">Trusted User</button>
+      </header>
+
+      <div class="personal-responses-container">
+      </div>
+      <div class="moderator-responses-container hidden">
+      </div>
+
+      <a target="_blank" rel="noopener nofollow" href="/settings/response-templates">
+        Create template
+      </a>
+      <p>Templates let you quickly answer FAQs or store snippets for re-use.</p>
+    </div>
+
+    <div class="comment-form__preview text-styles text-styles--secondary" id="preview-div"></div>
+
+    <div class="comment-form__buttons mb-4">
+      <button type="submit" class="crayons-btn mr-2 js-btn-enable" onclick="validateField(event)" data-tracking-name="comment_submit_button" disabled>Submit</button>
+      <button type="button" class="preview-toggle crayons-btn crayons-btn--secondary comment-action-preview js-btn-enable mr-2" data-tracking-name="comment_preview_button" disabled>Preview</button>
+      <a href="/404.html" class="dismiss-edit-comment crayons-btn crayons-btn--ghost js-btn-dismiss hidden">Dismiss</a>
+    </div>
+  </div>
+
+  <div class="code-of-conduct" id="toggle-code-of-conduct-checkbox"></div>
+</form>
+
+
+      <div class="comments" id="comment-trees-container">
+      </div>
+    </div>
+
+    <div class="align-center">
+
+
+  <nav class="fs-s align-center block" aria-label="Conduct controls">
+  <a href="/code-of-conduct" class="crayons-link crayons-link--secondary">Code of Conduct</a>
+  <span class="opacity-25 px-2" role="presentation">&bull;</span>
+  <a href="/report-abuse" class="crayons-link crayons-link--secondary">Report abuse</a>
+</nav>
+
+</div>
+
+</section>
+<div id="hide-comments-modal" class="hidden">
+  <form id="hide-comments-modal__form" class="hide-comments-modal__form" data-type="json" action="/comments/hide" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="_method" value="patch" autocomplete="off" /><input type="hidden" name="authenticity_token" value="j2Nqm9ZcoMCglJV4DMJe-mxwN25TAyIkH-6g9Ra-cNxCxE5DcfIUuhvaBNOJHRzPtWDnc5SIkBogIo8_sd7Fug" autocomplete="off" />
+    <div class="hide-comments-modal__content">
+      <p class="pb-2">
+        Are you sure you want to hide this comment? It will become hidden in your post, but will still be visible via the comment's <a id="hide-comments-modal__comment-permalink" href="#">permalink</a>.
+      </p>
+      <label class="crayons-field crayons-field--checkbox my-2">
+        <input name="hide_children" type="hidden" value="0" autocomplete="off" /><input class="hide_children crayons-checkbox" type="checkbox" value="1" name="hide_children" id="hide_children" />
+        <p class="crayons-field__label">Hide child comments as well</p>
+      </label>
+      <p class="pb-4 pt-2">
+        <button type="submit" class="crayons-btn">
+          Confirm
+        </button>
+      </p>
+    </div>
+</form>  <p class="fs-s color-base-60">For further actions, you may consider blocking this person and/or <a id="hide-comments-modal__report-link" href="/report-abuse">reporting abuse</a></p>
+</div>
+
+
+
+        </article>
+
+        <div class="pb-4 crayons-layout__comments-billboard">
+          <div class="new-bb-container pb-4 crayons-layout__comments-billboard" data-async-url="/kesimo/placet-an-open-source-human-in-the-loop-platform-for-ai-agents-and-automation-workflows-4bf9/bmar11/post_comments"></div>
+        </div>
+
+          <!-- Bottom content skipped via SKIP_BOTTOM_CONTENT config -->
+      </div>
+    </main>
+
+    <aside class="crayons-layout__sidebar-right" aria-label="Author details">
+      <div class="crayons-article-sticky grid gap-4 pb-4 break-word" id="article-show-primary-sticky-nav">
+  <div class="crayons-card crayons-card--secondary branded-7 p-4 pt-0 gap-4 grid" style="border-top-color: #303030;">
+    <div class="-mt-4">
+  <a href="/kesimo" class="flex">
+    <span class="crayons-avatar crayons-avatar--xl  mr-2 shrink-0">
+      <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F2333897%2F966ec6dd-6a8a-4a5c-9ccb-c3a08e04ac6c.png" class="crayons-avatar__image" alt="" loading="lazy" />
+    </span>
+    <span class="crayons-link crayons-subtitle-2 mt-5">
+      Kevin
+      
+    </span>
+  </a>
+</div>
+
+<div class="print-hidden">
+  <button name="button" type="button" data-info="{&quot;className&quot;:&quot;User&quot;,&quot;style&quot;:&quot;&quot;,&quot;id&quot;:2333897,&quot;name&quot;:&quot;Kevin&quot;}" class="crayons-btn follow-action-button whitespace-nowrap w-100 follow-user" aria-label="Follow user: Kevin" aria-pressed="false">Follow</button>
+</div>
+  <div class="color-base-70">
+    ENV=&quot;${BIO:-just_a_random_dev}&quot;
+BIO=&quot;CEO @ Centerbit. Full-stack developer building scalable systems. AI enthusiast hacking on the future of intelligent tools.&quot;
+  </div>
+
+  <div class="user-metadata-details">
+    <ul class="user-metadata-details-inner">
+        <li>
+          <div class="key">
+            Location
+          </div>
+          <div class="value">
+            Germany
+          </div>
+        </li>
+      <li>
+        <div class="key">
+          Joined
+        </div>
+        <div class="value">
+          <time datetime="2024-11-03T10:45:51Z" class="date">Nov 3, 2024</time>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  </div>
+
+      <div class="crayons-card crayons-card--secondary">
+        <header class="crayons-card__header">
+          <h3 class="crayons-subtitle-2">
+            More from <a href="/kesimo">Kevin</a>
+          </h3>
+        </header>
+        <div>
+            <a class="crayons-link crayons-link--contentful" href="/kesimo/when-html-to-pdf-works-and-when-it-doesnt-a-developers-guide-to-pdf-generation-3fh2">
+              When HTML to PDF Works (And When It Doesn&#39;t): A Developer&#39;s Guide to PDF Generation
+              <div class="crayons-link__secondary -ml-1">
+                  <span class="mr-1"><span class="opacity-50">#</span>automation</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>pdf</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>api</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>learning</span>
+              </div>
+            </a>
+            <a class="crayons-link crayons-link--contentful" href="/kesimo/ocr-vs-vlm-why-you-need-both-and-how-hybrid-approaches-win-5bo4">
+              OCR vs VLM: Why You Need Both (And How Hybrid Approaches Win)
+              <div class="crayons-link__secondary -ml-1">
+                  <span class="mr-1"><span class="opacity-50">#</span>ai</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>architecture</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>llm</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>machinelearning</span>
+              </div>
+            </a>
+            <a class="crayons-link crayons-link--contentful" href="/kesimo/5-business-automations-that-save-20-hours-per-week-lao">
+              5 Business Automations That Save 20+ Hours Per Week
+              <div class="crayons-link__secondary -ml-1">
+                  <span class="mr-1"><span class="opacity-50">#</span>architecture</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>automation</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>productivity</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>tutorial</span>
+              </div>
+            </a>
+        </div>
+      </div>
+</div>
+
+<div class="crayons-article-sticky grid gap-4 break-word sidebar-bb" data-async-url="/kesimo/placet-an-open-source-human-in-the-loop-platform-for-ai-agents-and-automation-workflows-4bf9/bmar11/post_sidebar"></div>
+
+    </aside>
+  </div>
+
+  <div class="mod-actions-menu print-hidden"></div>
+  <div data-testid="unpublish-post-modal-container" class="unpublish-post-modal-container hidden"></div>
+
+  <div class="fullscreen-code js-fullscreen-code"></div>
+  <script src="https://assets.dev.to/assets/billboard-365f8f60fc3506e63bc54cc5b0a2e36f4c11024ff6a30dccd5462467f24b5215.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/localizeArticleDates-70147c5c6bfe350b42e020ebb2a3dd37419d83978982b5a67b6389119bf162ac.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/articleReactions-1f2220b03b8ee48f0e9196d07b123ad5c5d942328819c33728eab4a4ff83150b.js" defer="defer"></script>
+
+  <script>
+    function activateRunkitTags() {
+  if (!areAnyRunkitTagsPresent())
+    return
+
+  var checkRunkit = setInterval(function() {
+    try {
+      dynamicallyLoadRunkitLibrary()
+
+      if (typeof(RunKit) === 'undefined') {
+        return
+      }
+
+      replaceTagContentsWithRunkitWidget()
+      clearInterval(checkRunkit);
+    } catch(e) {
+      console.error(e);
+      clearInterval(checkRunkit);
+    }
+  }, 200);
+}
+
+function isRunkitTagAlreadyActive(runkitTag) {
+  return runkitTag.querySelector("iframe") !== null;
+};
+
+function areAnyRunkitTagsPresent() {
+  var presentRunkitTags = document.getElementsByClassName("runkit-element");
+
+  return presentRunkitTags.length > 0
+}
+
+function replaceTagContentsWithRunkitWidget() {
+  var targets = document.getElementsByClassName("runkit-element");
+  for (var i = 0; i < targets.length; i++) {
+    if (isRunkitTagAlreadyActive(targets[i])) {
+      continue;
+    }
+
+    var wrapperContent = targets[i].textContent;
+    if (/^(<iframe src)/.test(wrapperContent) === false) {
+      if (targets[i].children.length > 0) {
+        var preamble = targets[i].children[0].textContent;
+        var content = targets[i].children[1].textContent;
+        targets[i].innerHTML = "";
+        var notebook = RunKit.createNotebook({
+          element: targets[i],
+          source: content,
+          preamble: preamble
+        });
+      }
+    }
+  }
+};
+
+function dynamicallyLoadRunkitLibrary() {
+  if (typeof(dynamicallyLoadScript) === "undefined")
+    return
+
+  dynamicallyLoadScript("//embed.runkit.com")
+}
+
+activateRunkitTags();
+
+  </script>
+  <div class="js-billboard-container pb-4 crayons-layout__comments-billboard" data-async-url="/kesimo/placet-an-open-source-human-in-the-loop-platform-for-ai-agents-and-automation-workflows-4bf9/bmar11/post_fixed_bottom"></div>
+
+
+    <div id="runtime-banner-container"></div>
+    <div id="i18n-translations" data-translations="{&quot;en&quot;:{&quot;core&quot;:{&quot;add_comment&quot;:&quot;Add comment&quot;,&quot;beta&quot;:&quot;beta&quot;,&quot;comment&quot;:&quot;Comment&quot;,&quot;copy_link&quot;:&quot;Copy link&quot;,&quot;edit_profile&quot;:&quot;Edit profile&quot;,&quot;follow&quot;:&quot;Follow&quot;,&quot;follow_back&quot;:&quot;Follow back&quot;,&quot;following&quot;:&quot;Following&quot;,&quot;like&quot;:&quot;Like&quot;,&quot;loading&quot;:&quot;loading...&quot;,&quot;reaction&quot;:&quot;Reaction&quot;,&quot;report_abuse&quot;:&quot;Report abuse&quot;,&quot;search&quot;:&quot;Search&quot;,&quot;success_settings&quot;:&quot;Successfully updated settings.&quot;,&quot;search_placeholder&quot;:&quot;Search...&quot;,&quot;search_find_related_posts&quot;:&quot;Find related posts...&quot;,&quot;search_powered_by&quot;:&quot;Powered by Algolia&quot;,&quot;search_submit_search&quot;:&quot;Submit search for advanced filtering.&quot;,&quot;search_displaying_recommendations&quot;:&quot;Displaying Algolia Recommendations — Start typing to search&quot;,&quot;article_form_save_changes&quot;:&quot;Save changes&quot;,&quot;article_form_schedule&quot;:&quot;Schedule&quot;,&quot;article_form_publish&quot;:&quot;Publish&quot;,&quot;article_form_loading_preview&quot;:&quot;Loading preview&quot;,&quot;article_form_preview_loaded&quot;:&quot;Preview loaded&quot;,&quot;comments_preview&quot;:&quot;Preview&quot;,&quot;comments_continue_editing&quot;:&quot;Continue editing&quot;,&quot;survey_enter_response&quot;:&quot;Enter your response here...&quot;,&quot;survey_thank_you_response&quot;:&quot;Thank you for your response.&quot;,&quot;survey_thank_you_completing&quot;:&quot;Thank you for completing the survey!&quot;,&quot;dashboard_analytics_readers&quot;:&quot;Readers&quot;,&quot;dashboard_analytics_comments&quot;:&quot;Comments&quot;,&quot;dashboard_analytics_reactions&quot;:&quot;Reactions&quot;,&quot;stats_by&quot;:&quot;by&quot;,&quot;editor_new_title&quot;:&quot;New post title here...&quot;,&quot;editor_body_placeholder&quot;:&quot;Write your post content here...&quot;,&quot;tags_field_label&quot;:&quot;Add up to 4 tags&quot;,&quot;tags_field_placeholder&quot;:&quot;Add up to 4 tags...&quot;,&quot;counted_organization&quot;:{&quot;one&quot;:&quot;%{count} organization&quot;,&quot;other&quot;:&quot;%{count} organizations&quot;},&quot;counted_user&quot;:{&quot;one&quot;:&quot;%{count} person&quot;,&quot;other&quot;:&quot;%{count} people&quot;},&quot;not_following&quot;:&quot;You&#39;re not following anyone&quot;,&quot;following_everyone&quot;:&quot;You&#39;re following %{details} (everyone)&quot;,&quot;you_are_following&quot;:&quot;You&#39;re following&quot;,&quot;and&quot;:&quot;and&quot;}}}"></div>
+  </div>
+</div>
+    
+
+<footer id="footer" class="crayons-footer print-hidden">
+  <div id="footer-container" class="crayons-footer__container">
+
+
+        <style>
+  .long-bb-body {
+    max-height: calc(100vh - 200px);
+    overflow: hidden;
+  }
+  .long-bb-bottom {
+    height: 180px;
+    background: linear-gradient(to top, var(--card-bg), transparent);
+    margin-top: -180px;
+    position:relative;
+    z-index: 5;
+  }
+</style>
+
+  <div
+    style=""
+    data-display-unit data-id="146443"
+    data-category-click="click"
+    data-category-impression="impression"
+    data-context-type="home"
+    data-special="nothing"
+    data-article-id=""
+    data-type-of="in_house">
+          <div class="crayons-card crayons-card--secondary crayons-bb bb-placement js-billboard" style="display: inline-flex; flex-direction: column; align-items: center; margin: 0 auto 2rem auto; width: fit-content; padding: 2rem;">
+        <p style="font-weight: bold; margin: 0 0 1rem 0;">
+            💎 DEV Diamond Sponsors
+        </p>
+        <p style="font-size: 0.8em; margin: 0 0 2rem 0;">
+            Thank you to our Diamond Sponsors for supporting the DEV Community
+        </p>
+    
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://aistudio.google.com/?utm_source=partner&amp;utm_medium=partner&amp;utm_campaign=FY25-Global-DEVpartnership-sponsorship-AIS&amp;utm_content=-&amp;utm_term=-&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fxjlyhbdqehj3akhz166w.png" alt="Google AI - Official AI Model and Platform Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 54px; padding: 10px;" loading="lazy" width="2048" height="472">
+                </a>
+                <p style="text-align: center;">Google AI is the official AI Model and Platform Partner of DEV</p>
+            </div>
+
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://neon.tech/?ref=devto&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fbnl88cil6afxzmgwrgtt.png" alt="Neon - Official Database Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 60px; padding: 10px;" loading="lazy" width="2286" height="596">
+                </a>
+                <p style="text-align: center;">Neon is the official database partner of DEV</p>
+            </div>
+    
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://www.algolia.com/developers/?utm_source=devto&amp;utm_medium=referral&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fv30ephnolfvnlwgwm0yz.png" alt="Algolia - Official Search Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 60px; padding: 10px;" loading="lazy" width="2286" height="596">
+                </a>
+                <p style="text-align: center;">Algolia is the official search partner of DEV</p>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+    <p class="fs-s crayons-footer__description">
+      <a class="c-link c-link--branded fw-medium" aria-label="DEV Community Home" href="/">DEV Community</a> — Your community HQ
+    </p>
+
+    <ul class="footer__nav-links flex gap-2 justify-center flex-wrap fs-s p-0" style="" />
+        <li class="footer__nav-link flex items-center">
+    <a href="/">
+      Home
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/about">
+      About
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/contact">
+      Contact
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://mlh.io/">
+      MLH
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+
+    </ul>
+
+    <ul class="footer__nav-links flex gap-2 justify-center flex-wrap fs-s p-0" style="" />
+        <li class="footer__nav-link flex items-center">
+    <a href="/code-of-conduct">
+      Code of Conduct
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/privacy">
+      Privacy Policy
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/terms">
+      Terms of Use
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+
+    </ul>
+
+    <div class="fs-s">
+      <p>Built on <a class="c-link c-link--branded" target="_blank" rel="noopener" href="https://www.forem.com">Forem</a> — the <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/t/opensource">open source</a> software that powers <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to">DEV</a> and other inclusive communities.</p>
+      <p>Made with love and <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/t/rails">Ruby on Rails</a>. DEV Community <span title="copyright">&copy;</span> 2016 - 2026.</p>
+    </div>
+  </div>
+</footer>
+<div id="snack-zone"></div>
+
+    <div id="global-signup-modal" class="authentication-modal hidden">
+  <div class="authentication-modal__container">
+    <figure class="authentication-modal__image-container">
+      <img class="authentication-modal__image" src="https://media2.dev.to/dynamic/image/width=190,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+        alt="DEV Community" loading="lazy" />
+    </figure>
+    <div class="authentication-modal__content">
+      <p class="authentication-modal__description">
+          We&#39;re a place where coders share, stay up-to-date and grow their careers.
+      </p>
+    </div>
+    <div class="authentication-modal__actions">
+      <a href="https://dev.to/enter?signup_subforem=1" class="crayons-btn" aria-label="Log in" data-no-instant>
+        Log in
+      </a>
+      <a href="https://dev.to/enter?signup_subforem=1&amp;state=new-user" class="crayons-btn crayons-btn--ghost-brand js-global-signup-modal__create-account" aria-label="Create new account" data-no-instant>
+        Create account
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="https://assets.dev.to/assets/signupModalShortcuts-0b25469b985100a01e94cbd7fccaf7f0a4d776e129aac65c766aa32cb28ab29a.js" defer="defer"></script>
+
+    <div id="cookie-consent"></div>
+  <div id="reaction-category-resources" class="hidden" aria-hidden="true">
+    <img data-name="Like" data-slug="like" data-position="1" src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+    <img data-name="Unicorn" data-slug="unicorn" data-position="2" src="https://assets.dev.to/assets/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" width="18" height="18" />
+    <img data-name="Exploding Head" data-slug="exploding_head" data-position="3" src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" width="18" height="18" />
+    <img data-name="Raised Hands" data-slug="raised_hands" data-position="4" src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="18" height="18" />
+    <img data-name="Fire" data-slug="fire" data-position="5" src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+</div>
+
+    <script>
+  var userSignedIn = false;
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    initAuth();
+  } else {
+    document.addEventListener('DOMContentLoaded', initAuth);
+  }
+
+  function initAuth() {
+    var paramToken = new URLSearchParams(window.location.search).get('jwt');
+
+    if (paramToken && !userSignedIn) {
+      authenticateUser(paramToken);
+    } else {
+      var iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = 'https://forem.com/auth_pass/iframe';
+  
+      document.body.appendChild(iframe);
+  
+      window.addEventListener('message', function(event) {
+        if (event.origin !== 'https://forem.com' && event.origin !== window.location.origin) {
+          return;
+        }
+  
+        var data = event.data;
+  
+        if (data.authenticated && !userSignedIn) {
+          authenticateUser(data.token);
+        } else if(data.authenticated && window.ReactNativeWebView && window.ReactNativeWebView.postMessage) {
+          window.ReactNativeWebView.postMessage(JSON.stringify({
+            action: 'login',
+            token: data.token,
+          }));
+        }
+      });  
+    }
+
+    function authenticateUser(token) {
+      fetch('/auth_pass/token_login', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': getMetaContent('csrf-token'),
+        },
+        body: JSON.stringify({ token: token }),
+      })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        if (data.success) {
+          if (document.head.querySelector('meta[name="user-signed-in"][content="false"]')) {
+            // Reload the page to update the user's state
+            location.reload();
+          }
+        }
+      })
+      .catch(function(error) {
+        console.error('Error during authentication:', error);
+      });
+    }
+
+    function getMetaContent(name) {
+      var element = document.querySelector('meta[name="' + name + '"]');
+      return element ? element.getAttribute('content') : '';
+    }
+  }
+</script>
+
+  
+  
+  
+  </body>
+  </html>

@@ -1,0 +1,2764 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bigdata - DEV Community</title>
+    
+  
+<link rel="canonical" href="https://dev.to/t/bigdata" />
+<meta name="description" content="bigdata content on DEV Community">
+<meta name="keywords" content="software development, engineering, bigdata">
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://dev.to/t/bigdata" />
+<meta property="og:title" content="Bigdata" />
+<meta property="og:description" content="Bigdata content on DEV Community" />
+<meta property="og:site_name" content="DEV Community" />
+
+<meta name="twitter:site" content="@thepracticaldev">
+<meta name="twitter:creator" content="@Bigdata">
+<meta name="twitter:title" content="Bigdata">
+<meta name="twitter:description" content="Bigdata content on DEV Community">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3otvb2z646ytpt1hl2rv.jpg">
+  <meta name="twitter:image:src" content="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3otvb2z646ytpt1hl2rv.jpg">
+
+
+      <meta name="last-updated" content="2026-04-01 02:11:29 UTC">
+      <meta name="user-signed-in" content="false">
+      <meta name="head-cached-at" content="1775009489">
+      <meta name="environment" content="production">
+      <link rel="stylesheet" href="https://assets.dev.to/assets/minimal-102395aec70cbac5f7d0bd5bebb5b56f0459629c5d224dae16333f11604cbad3.css" media="all" id="main-minimal-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/views-daf614dcfafed4955d7758a6a86d63bfbb1e8d4eae8b6317b421e18a99bbe867.css" media="all" id="main-views-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/crayons-8fce708625aacc3ff4a4d4947252a1cfab954753bb082374c0bed738861b52f2.css" media="all" id="main-crayons-stylesheet" />
+
+      <script src="https://assets.dev.to/assets/base-0c748bbcdc30041261c326ef2ce931fbce46c58bc3c488da881ae35c4750941d.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/application-0b268684912bef9b0f23defff01cb608bfc5d5e5610287725e7b686139ae32d3.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/baseInitializers-2f0777a6d67046056f9f42665560ce072de3801292674358ddbad6e135c1891d.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/baseTracking-b6bf73e5ee66633e151e7d5b7c6bbccedfa4c59e3615be97b98c4c0f543ddae7.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/followButtons-a29380c2c88136b97b2b5e63e94614ff7458fc72e07cffa7b6153831c28a40d2.js" defer="defer"></script>
+
+        <meta name="search-script" content="https://assets.dev.to/assets/Search-b977aea0f2d7a5818b4ebd97f7d4aba8548099f84f5db5761f8fa67be76abc54.js">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+      <link rel="icon" type="image/x-icon" href="https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" />
+      <link rel="apple-touch-icon" href="https://media2.dev.to/dynamic/image/width=180,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="https://media2.dev.to/dynamic/image/width=152,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="https://media2.dev.to/dynamic/image/width=180,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="167x167" href="https://media2.dev.to/dynamic/image/width=167,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link href="https://media2.dev.to/dynamic/image/width=192,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" rel="icon" sizes="192x192" />
+      <link href="https://media2.dev.to/dynamic/image/width=128,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" rel="icon" sizes="128x128" />
+      <meta name="apple-mobile-web-app-title" content="dev.to">
+      <meta name="application-name" content="dev.to">
+      <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+      <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+      <link rel="search" href="https://dev.to/open-search.xml" type="application/opensearchdescription+xml" title="DEV Community" />
+
+      <meta property="forem:name" content="DEV Community" />
+      <meta property="forem:logo" content="https://media2.dev.to/dynamic/image/width=512,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" />
+      <meta property="forem:domain" content="dev.to" />
+    <style>
+.ltag__link--embedded img.subscription-icon {
+max-height: 13px !important;
+max-width: 21px !important;
+display: inline-block !important;
+border-radius: 0 !important;
+}
+.text-styles .crayons-article__context-note p {
+margin-bottom: 0 !important;
+}
+</style>
+  </head>
+    <body
+      class="sans-serif-article-body default-header"
+      data-user-status="logged-out"
+      data-is-root-subforem="false"
+        data-subforem-id="1"
+      data-side-nav-visible="true"
+      data-community-name="DEV Community"
+      data-subscription-icon="https://assets.dev.to/assets/subscription-icon-805dfa7ac7dd660f07ed8d654877270825b07a92a03841aa99a1093bd00431b2.png"
+      data-locale="en"
+      data-honeybadger-key="hbp_nqu4Y66HuEKlD6YRGssZuRQnPOjDm50J8Zkr"
+      data-deployed-at="2026-03-31T16:23:33Z"
+      data-latest-commit-id="786e25495afed32bb807645b48a724374606e51e"
+      data-ga-tracking="UA-71991109-1"
+      data-cookie-banner-user-context="logged_out_only"
+      data-cookie-banner-platform-context="off"
+      data-algolia-id="PRSOBFP46H"
+      data-algolia-search-key="9aa7d31610cba78851c9b1f63776a9dd"
+      data-algolia-display="true"
+      data-dynamic-url-component="bmar11"
+      data-ga4-tracking-id="G-TYEM8Y3JN3">
+      
+      <script>
+        if (navigator.userAgent === 'ForemWebView/1' || window.frameElement) {
+          document.body.classList.add("hidden-shell");
+        }
+          if (new Date() > new Date("2026-02-04T09:00:00-05:00")) {
+            document.body.dataset.sideNavVisible = "false";
+          } 
+      </script>
+
+      <link rel="stylesheet" href="https://assets.dev.to/assets/minimal-102395aec70cbac5f7d0bd5bebb5b56f0459629c5d224dae16333f11604cbad3.css" media="all" id="secondary-minimal-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/views-daf614dcfafed4955d7758a6a86d63bfbb1e8d4eae8b6317b421e18a99bbe867.css" media="all" id="secondary-views-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/crayons-8fce708625aacc3ff4a4d4947252a1cfab954753bb082374c0bed738861b52f2.css" media="all" id="secondary-crayons-stylesheet" />
+
+      <div id="body-styles">
+        <style>
+          :root {
+            --accent-brand-lighter-rgb: 80, 99, 301;
+            --accent-brand-rgb: 59, 73, 223;
+            --accent-brand-darker-rgb: 47, 58, 178;
+          }
+        </style>
+      </div>
+      <div id="audiocontent" data-podcast="">
+        
+      </div>
+      <div class="navigation-progress" id="navigation-progress"></div>
+
+<header id="topbar" class="crayons-header topbar print-hidden">
+  <span id="route-change-target" tabindex="-1"></span>
+  <a href="#main-content" class="skip-content-link">Skip to content</a>
+  <div class="crayons-header__container">
+    <span class="inline-block m:hidden ">
+      <button class="c-btn c-btn--icon-alone js-hamburger-trigger mx-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a5lhlfm2byzfvv6o93oaheesb9h7iob7" class="crayons-icon"><title id="a5lhlfm2byzfvv6o93oaheesb9h7iob7">Navigation menu</title>
+    <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"></path>
+</svg>
+
+      </button>
+    </span>
+    <a href="/" class="site-logo" aria-label="DEV Community Home" >
+    <img class="site-logo__img"
+         src="https://media2.dev.to/dynamic/image/quality=100/https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png"
+         style="aspect-ratio: 10 / 8"
+         alt="DEV Community">
+</a>
+
+
+    <div class="crayons-header--search js-search-form" id="header-search">
+      <form accept-charset="UTF-8" method="get" action="/search" role="search">
+        <div class="crayons-fields crayons-fields--horizontal">
+          <div class="crayons-field flex-1 relative">
+            <input id="search-input" class="crayons-header--search-input crayons-textfield js-search-input" type="text" id="nav-search" name="q" placeholder="Search..." autocomplete="off" />
+            <button type="submit" aria-label="Search" class="c-btn c-btn--icon-alone absolute inset-px right-auto mt-0 py-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a4awiw9t4mhbmhvwtovlecv1243fseph" aria-hidden="true" class="crayons-icon"><title id="a4awiw9t4mhbmhvwtovlecv1243fseph">Search</title>
+    <path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0111 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 01-1.969 5.617zm-2.006-.742A6.977 6.977 0 0018 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 004.875-1.975l.15-.15z"></path>
+</svg>
+
+            </button>
+
+            <a class="crayons-header--search-brand-indicator" href="https://www.algolia.com/developers/?utm_source=devto&utm_medium=referral" target="_blank" rel="noopener noreferrer">
+                Powered by Algolia
+                <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" width="24" height="24" viewBox="0 0 500 500.34" role="img" aria-labelledby="afndeam32ofuonjed2alj0v5gf1cm354" aria-hidden="true" class="crayons-icon"><title id="afndeam32ofuonjed2alj0v5gf1cm354">Search</title>
+  <defs></defs><path class="cls-1" d="M250,0C113.38,0,2,110.16,.03,246.32c-2,138.29,110.19,252.87,248.49,253.67,42.71,.25,83.85-10.2,120.38-30.05,3.56-1.93,4.11-6.83,1.08-9.52l-23.39-20.74c-4.75-4.22-11.52-5.41-17.37-2.92-25.5,10.85-53.21,16.39-81.76,16.04-111.75-1.37-202.04-94.35-200.26-206.1,1.76-110.33,92.06-199.55,202.8-199.55h202.83V407.68l-115.08-102.25c-3.72-3.31-9.43-2.66-12.43,1.31-18.47,24.46-48.56,39.67-81.98,37.36-46.36-3.2-83.92-40.52-87.4-86.86-4.15-55.28,39.65-101.58,94.07-101.58,49.21,0,89.74,37.88,93.97,86.01,.38,4.28,2.31,8.28,5.53,11.13l29.97,26.57c3.4,3.01,8.8,1.17,9.63-3.3,2.16-11.55,2.92-23.6,2.07-35.95-4.83-70.39-61.84-127.01-132.26-131.35-80.73-4.98-148.23,58.18-150.37,137.35-2.09,77.15,61.12,143.66,138.28,145.36,32.21,.71,62.07-9.42,86.2-26.97l150.36,133.29c6.45,5.71,16.62,1.14,16.62-7.48V9.49C500,4.25,495.75,0,490.51,0H250Z"></path>
+</svg>
+
+            </a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="flex items-center h-100 ml-auto">
+        <div class="flex" id="authentication-top-nav-actions">
+          <span class="hidden m:block">
+            <a href="https://dev.to/enter?signup_subforem=1" class="c-link c-link--block mr-2 whitespace-nowrap ml-auto" data-no-instant>
+              Log in
+            </a>
+          </span>
+
+          <a href="https://dev.to/enter?signup_subforem=1&amp;state=new-user" data-tracking-id="ca_top_nav" data-tracking-source="top_navbar" class="c-cta c-cta--branded whitespace-nowrap mr-2" data-no-instant>
+            Create account
+          </a>
+        </div>
+    </div>
+  </div>
+</header>
+
+<div class="hamburger">
+  <div class="hamburger__content">
+    <header class="hamburger__content__header">
+      <h2 class="fs-l fw-bold flex-1 break-word lh-tight">DEV Community</h2>
+
+      <button class="c-btn c-btn--icon-alone js-hamburger-trigger shrink-0" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a9p0lx5zud4fuyicp6v1wjktu05c1wyx" aria-hidden="true" class="crayons-icon c-btn__icon"><title id="a9p0lx5zud4fuyicp6v1wjktu05c1wyx">Close</title><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636l4.95 4.95z"></path></svg>
+
+      </button>
+    </header>
+
+    <div class="p-2 js-navigation-links-container" id="authentication-hamburger-actions">
+    </div>
+  </div>
+  <div class="hamburger__overlay js-hamburger-trigger"></div>
+</div>
+
+
+      <div id="active-broadcast" class="broadcast-wrapper"></div>
+<div id="page-content" class="wrapper tagged_articles tagged_articles-index" data-current-page="tagged_articles-index">
+  <div id="page-content-inner" data-internal-nav="false">
+    <div id="page-route-change" class="screen-reader-only" aria-live="polite" aria-atomic="true"></div>
+
+    <div data-tag-id="1172" data-tag-name="bigdata" id="tag-1172" class="crayons-layout js-tag-card">
+  <header class="crayons-card branded-4 p-4 l:p-6 spec__tag-header" style="border-top-color:  ">
+    <div class="flex">
+      <div class="flex flex-col w-100 justify-center">
+        <div class="flex justify-between items-center">
+          <h1 class="crayons-title">
+              <span class="opacity-50">#</span>
+              bigdata
+          </h1>
+            <div id="tag-buttons-1172" class="mt-auto flex items-end justify-between">
+              <div class="flex gap-2">
+                <button
+                  class="c-btn c-btn--primary js-follow-tag-button"
+                  aria-label="Follow tag: bigdata">
+                  Follow
+                </button>
+                <button
+                  class="c-btn js-hide-tag-button"
+                  aria-label="Hide tag: bigdata">
+                  Hide
+                </button>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
+
+<div class="home sub-home" id="index-container"
+    data-params="{&quot;tag&quot;:&quot;bigdata&quot;,&quot;sort_by&quot;:&quot;hotness_score&quot;,&quot;sort_direction&quot;:&quot;desc&quot;}" data-which=""
+    data-tag="bigdata"
+    data-feed="base-feed"
+    data-disable-infinite-scroll="true"
+    data-requires-approval="false"
+    data-articles-since="">
+    <div id="sidebar-wrapper-left" class="sidebar-wrapper sidebar-wrapper-left">
+    <div class="sidebar-bg" id="sidebar-bg-left"></div>
+    <aside class="side-bar fs-s">
+        <div class="widget js-policy-article-create">
+          <a class="crayons-btn crayons-btn--s" href="/new/bigdata">
+            Create Post
+          </a>
+</div>      <div class="sidebar-data">
+          <hr />
+          <div class="olderposts-header fs-base fw-medium">Older #bigdata posts</div>
+          <div class="olderposts-links">
+                  <span class="olderposts-pagenumber">1</span>
+          </div>
+      </div>
+    </aside>
+  </div>
+
+  <main class="articles-list" id="main-content" data-follow-button-container="true">
+    <header class="flex items-center p-2 m:p-0 m:pb-2" id="on-page-nav-controls">
+      <h1 class="screen-reader-only">Posts</h1>
+      <button type="button" class="crayons-btn crayons-btn--ghost crayons-btn--icon mr-2 inline-block m:hidden mb-auto" id="on-page-nav-butt-left" aria-label="nav-button-left">
+        <div class="crayons-icon nav-icon ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="aq3vqu2hb6ky014l794sn76ro30ssb5e" class="crayons-icon"><title id="aq3vqu2hb6ky014l794sn76ro30ssb5e">Left menu</title>
+    <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"></path>
+</svg>
+
+        </div>
+      </button>
+        <div class="flex-1 flex items-center justify-between">
+          <div class="crayons-notice w-100" aria-live="polite">👋 <a href="https://dev.to/enter?signup_subforem=1">Sign in</a> for the ability to sort posts by <strong>relevant</strong>, <strong>latest</strong>, or <strong>top</strong>.</div>
+        </div>
+
+      <button type="button" class="crayons-btn crayons-btn--ghost crayons-btn--icon ml-2 inline-block l:hidden mb-auto" id="on-page-nav-butt-right" aria-label="nav-button-right">
+        <div class="crayons-icon nav-icon ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="aaw1jqrv61lpjllmmm11lw39gcn81nwe" class="crayons-icon"><title id="aaw1jqrv61lpjllmmm11lw39gcn81nwe">Right menu</title>
+    <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"></path>
+</svg>
+
+        </div>
+      </button>
+    </header>
+
+    <div class="substories" id="substories">
+        <div class="crayons-story " data-feed-content-id="3435005" data-content-user-id="2949416">
+  <a href="https://dev.to/anshul_02/pyspark-the-big-brain-of-data-processing-10pn" aria-labelledby="article-link-3435005" class="crayons-story__hidden-navigation-link">PySpark : The Big Brain of Data Processing</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/anshul_02" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F2949416%2Ffd4711e4-ad89-4266-a8aa-a716fac4e8aa.png" alt="anshul_02 profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/anshul_02" class="crayons-story__secondary fw-medium m:hidden">
+              Anshul Jangale
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3435005" aria-controls="story-author-preview-content-3435005" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Anshul Jangale profile details">
+                Anshul Jangale
+                
+              </button>
+              <div
+                id="story-author-preview-content-3435005"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/anshul_02" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F2949416%2Ffd4711e4-ad89-4266-a8aa-a716fac4e8aa.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Anshul Jangale</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:2949416,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Anshul Jangale&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="2949416"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/anshul_02/pyspark-the-big-brain-of-data-processing-10pn" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-31T08:46:01Z">Mar 31</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774946761"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/anshul_02/pyspark-the-big-brain-of-data-processing-10pn" data-preload-image="" id="article-link-3435005">
+          PySpark : The Big Brain of Data Processing
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/data"><span class="crayons-tag__prefix">#</span>data</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/pyspark"><span class="crayons-tag__prefix">#</span>pyspark</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/bigdata"><span class="crayons-tag__prefix">#</span>bigdata</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(255, 163, 100, 0.10);
+        --tag-prefix: #ffa364;
+        --tag-bg-hover: rgba(255, 163, 100, 0.10);
+        --tag-prefix-hover: #ffa364;
+      " href="/t/performance"><span class="crayons-tag__prefix">#</span>performance</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/anshul_02/pyspark-the-big-brain-of-data-processing-10pn" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3435005" aria-label="Add a comment to post - PySpark : The Big Brain of Data Processing">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">3<span class="hidden s:inline"> reactions</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/anshul_02/pyspark-the-big-brain-of-data-processing-10pn#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - PySpark : The Big Brain of Data Processing">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a6t07g93co0ux73gqjvboa9pzwkw31rl" class="crayons-icon"><title id="a6t07g93co0ux73gqjvboa9pzwkw31rl">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            5 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3435005"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3435005"
+              data-article-author-id="2949416"
+              aria-label="Save post PySpark : The Big Brain of Data Processing to reading list"
+              title="Save post PySpark : The Big Brain of Data Processing to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3434893" data-content-user-id="3846332">
+  <a href="https://dev.to/melody_mulei/understanding-data-modeling-in-power-bi-joins-relationships-and-schemas-explained-1mgm" aria-labelledby="article-link-3434893" class="crayons-story__hidden-navigation-link">Understanding Data Modeling in Power BI: Joins, Relationships, and Schemas Explained</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/melody_mulei" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3846332%2F5eef5ce2-2fa6-46dd-963b-31d2ced359c2.png" alt="melody_mulei profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/melody_mulei" class="crayons-story__secondary fw-medium m:hidden">
+              melody mulei
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3434893" aria-controls="story-author-preview-content-3434893" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="melody mulei profile details">
+                melody mulei
+                
+              </button>
+              <div
+                id="story-author-preview-content-3434893"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/melody_mulei" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3846332%2F5eef5ce2-2fa6-46dd-963b-31d2ced359c2.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">melody mulei</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3846332,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;melody mulei&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3846332"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/melody_mulei/understanding-data-modeling-in-power-bi-joins-relationships-and-schemas-explained-1mgm" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-31T08:15:57Z">Mar 31</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774944957"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/melody_mulei/understanding-data-modeling-in-power-bi-joins-relationships-and-schemas-explained-1mgm" data-preload-image="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fumusx6d7e4btvubytzah.png" id="article-link-3434893">
+          Understanding Data Modeling in Power BI: Joins, Relationships, and Schemas Explained
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(0, 153, 153, 0.10);
+        --tag-prefix: #009999;
+        --tag-bg-hover: rgba(0, 153, 153, 0.10);
+        --tag-prefix-hover: #009999;
+      " href="/t/datascience"><span class="crayons-tag__prefix">#</span>datascience</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/bigdata"><span class="crayons-tag__prefix">#</span>bigdata</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/powerbi"><span class="crayons-tag__prefix">#</span>powerbi</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/data"><span class="crayons-tag__prefix">#</span>data</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+            <a href="https://dev.to/melody_mulei/understanding-data-modeling-in-power-bi-joins-relationships-and-schemas-explained-1mgm#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Understanding Data Modeling in Power BI: Joins, Relationships, and Schemas Explained">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a4nhdfenmb7halq728qowymtug0qkrsi" class="crayons-icon"><title id="a4nhdfenmb7halq728qowymtug0qkrsi">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            5 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3434893"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3434893"
+              data-article-author-id="3846332"
+              aria-label="Save post Understanding Data Modeling in Power BI: Joins, Relationships, and Schemas Explained to reading list"
+              title="Save post Understanding Data Modeling in Power BI: Joins, Relationships, and Schemas Explained to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3430700" data-content-user-id="3747698">
+  <a href="https://dev.to/wairimuu/data-modelling-in-power-bi-the-foundation-every-analyst-needs-31ma" aria-labelledby="article-link-3430700" class="crayons-story__hidden-navigation-link">Data Modelling in Power BI: The Foundation Every Analyst Needs.</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/wairimuu" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3747698%2F4b9df802-b4ef-4049-87a9-66dca76eb873.jpg" alt="wairimuu profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/wairimuu" class="crayons-story__secondary fw-medium m:hidden">
+              Wairimu Ikinu 
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3430700" aria-controls="story-author-preview-content-3430700" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Wairimu Ikinu  profile details">
+                Wairimu Ikinu 
+                
+              </button>
+              <div
+                id="story-author-preview-content-3430700"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/wairimuu" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3747698%2F4b9df802-b4ef-4049-87a9-66dca76eb873.jpg"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Wairimu Ikinu </span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3747698,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Wairimu Ikinu &quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3747698"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/wairimuu/data-modelling-in-power-bi-the-foundation-every-analyst-needs-31ma" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-30T16:17:00Z">Mar 30</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774887420"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/wairimuu/data-modelling-in-power-bi-the-foundation-every-analyst-needs-31ma" data-preload-image="" id="article-link-3430700">
+          Data Modelling in Power BI: The Foundation Every Analyst Needs.
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/datamodelling"><span class="crayons-tag__prefix">#</span>datamodelling</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(0, 131, 53, 0.10);
+        --tag-prefix: #008335;
+        --tag-bg-hover: rgba(0, 131, 53, 0.10);
+        --tag-prefix-hover: #008335;
+      " href="/t/beginners"><span class="crayons-tag__prefix">#</span>beginners</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(0, 153, 153, 0.10);
+        --tag-prefix: #009999;
+        --tag-bg-hover: rgba(0, 153, 153, 0.10);
+        --tag-prefix-hover: #009999;
+      " href="/t/datascience"><span class="crayons-tag__prefix">#</span>datascience</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/bigdata"><span class="crayons-tag__prefix">#</span>bigdata</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/wairimuu/data-modelling-in-power-bi-the-foundation-every-analyst-needs-31ma" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3430700" aria-label="Add a comment to post - Data Modelling in Power BI: The Foundation Every Analyst Needs.">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">1<span class="hidden s:inline"> reaction</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/wairimuu/data-modelling-in-power-bi-the-foundation-every-analyst-needs-31ma#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Data Modelling in Power BI: The Foundation Every Analyst Needs.">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a54cioaij78pv7oenpkgslu5le0pjms3" class="crayons-icon"><title id="a54cioaij78pv7oenpkgslu5le0pjms3">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            3 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3430700"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3430700"
+              data-article-author-id="3747698"
+              aria-label="Save post Data Modelling in Power BI: The Foundation Every Analyst Needs. to reading list"
+              title="Save post Data Modelling in Power BI: The Foundation Every Analyst Needs. to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3427197" data-content-user-id="3770953">
+  <a href="https://dev.to/siyana_hristova_900e581ee/how-to-fuzzy-match-1m-rows-with-dbt-in-under-10-minutes-2026-guide-2edg" aria-labelledby="article-link-3427197" class="crayons-story__hidden-navigation-link">How to fuzzy-match 1M rows with dbt in under 10 minutes (2026 guide)</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/siyana_hristova_900e581ee" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3770953%2F2ca04f47-ddf4-42c8-8235-be0725e997c0.png" alt="siyana_hristova_900e581ee profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/siyana_hristova_900e581ee" class="crayons-story__secondary fw-medium m:hidden">
+              Siyana Hristova
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3427197" aria-controls="story-author-preview-content-3427197" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Siyana Hristova profile details">
+                Siyana Hristova
+                
+              </button>
+              <div
+                id="story-author-preview-content-3427197"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/siyana_hristova_900e581ee" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3770953%2F2ca04f47-ddf4-42c8-8235-be0725e997c0.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Siyana Hristova</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3770953,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Siyana Hristova&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3770953"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/siyana_hristova_900e581ee/how-to-fuzzy-match-1m-rows-with-dbt-in-under-10-minutes-2026-guide-2edg" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-29T20:58:21Z">Mar 29</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774817901"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/siyana_hristova_900e581ee/how-to-fuzzy-match-1m-rows-with-dbt-in-under-10-minutes-2026-guide-2edg" data-preload-image="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fbjd59rrwvfstqway0y3s.png" id="article-link-3427197">
+          How to fuzzy-match 1M rows with dbt in under 10 minutes (2026 guide)
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/dbt"><span class="crayons-tag__prefix">#</span>dbt</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/bigquery"><span class="crayons-tag__prefix">#</span>bigquery</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/bigdata"><span class="crayons-tag__prefix">#</span>bigdata</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/dataengineering"><span class="crayons-tag__prefix">#</span>dataengineering</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+            <a href="https://dev.to/siyana_hristova_900e581ee/how-to-fuzzy-match-1m-rows-with-dbt-in-under-10-minutes-2026-guide-2edg#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - How to fuzzy-match 1M rows with dbt in under 10 minutes (2026 guide)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="ardkt0df5xqiczypow1zmpxeu2xyf076" class="crayons-icon"><title id="ardkt0df5xqiczypow1zmpxeu2xyf076">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            4 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3427197"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3427197"
+              data-article-author-id="3770953"
+              aria-label="Save post How to fuzzy-match 1M rows with dbt in under 10 minutes (2026 guide) to reading list"
+              title="Save post How to fuzzy-match 1M rows with dbt in under 10 minutes (2026 guide) to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3365513" data-content-user-id="3674466">
+  <a href="https://dev.to/siddhesh_surve/apache-spark-just-killed-the-microbatch-barrier-and-why-flink-should-be-worried-348c" aria-labelledby="article-link-3365513" class="crayons-story__hidden-navigation-link">🚀 Apache Spark Just Killed the Microbatch Barrier (And Why Flink Should Be Worried)</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/siddhesh_surve" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3674466%2F4395d561-d8af-4cbb-be2a-2fd3696ad2b2.png" alt="siddhesh_surve profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/siddhesh_surve" class="crayons-story__secondary fw-medium m:hidden">
+              Siddhesh Surve
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3365513" aria-controls="story-author-preview-content-3365513" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Siddhesh Surve profile details">
+                Siddhesh Surve
+                
+              </button>
+              <div
+                id="story-author-preview-content-3365513"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/siddhesh_surve" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3674466%2F4395d561-d8af-4cbb-be2a-2fd3696ad2b2.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Siddhesh Surve</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3674466,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Siddhesh Surve&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3674466"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/siddhesh_surve/apache-spark-just-killed-the-microbatch-barrier-and-why-flink-should-be-worried-348c" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-18T02:30:02Z">Mar 18</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1773801002"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/siddhesh_surve/apache-spark-just-killed-the-microbatch-barrier-and-why-flink-should-be-worried-348c" data-preload-image="" id="article-link-3365513">
+          🚀 Apache Spark Just Killed the Microbatch Barrier (And Why Flink Should Be Worried)
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/dataengineering"><span class="crayons-tag__prefix">#</span>dataengineering</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/apachespark"><span class="crayons-tag__prefix">#</span>apachespark</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/bigdata"><span class="crayons-tag__prefix">#</span>bigdata</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/cloudcomputing"><span class="crayons-tag__prefix">#</span>cloudcomputing</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/siddhesh_surve/apache-spark-just-killed-the-microbatch-barrier-and-why-flink-should-be-worried-348c" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3365513" aria-label="Add a comment to post - 🚀 Apache Spark Just Killed the Microbatch Barrier (And Why Flink Should Be Worried)">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">1<span class="hidden s:inline"> reaction</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/siddhesh_surve/apache-spark-just-killed-the-microbatch-barrier-and-why-flink-should-be-worried-348c#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - 🚀 Apache Spark Just Killed the Microbatch Barrier (And Why Flink Should Be Worried)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="af2w9epxhoqbclwetykjwi3qpgftkpjx" class="crayons-icon"><title id="af2w9epxhoqbclwetykjwi3qpgftkpjx">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            3 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3365513"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3365513"
+              data-article-author-id="3674466"
+              aria-label="Save post 🚀 Apache Spark Just Killed the Microbatch Barrier (And Why Flink Should Be Worried) to reading list"
+              title="Save post 🚀 Apache Spark Just Killed the Microbatch Barrier (And Why Flink Should Be Worried) to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3368572" data-content-user-id="3763492">
+  <a href="https://dev.to/goutam_kumar_25db122cf377/building-a-transport-monitoring-dashboard-with-apis-19l9" aria-labelledby="article-link-3368572" class="crayons-story__hidden-navigation-link">Building a Transport Monitoring Dashboard with APIs 🚚📊</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/goutam_kumar_25db122cf377" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3763492%2F3d34fd38-b571-4b78-a18a-7275281e7e40.png" alt="goutam_kumar_25db122cf377 profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/goutam_kumar_25db122cf377" class="crayons-story__secondary fw-medium m:hidden">
+              Goutam Kumar
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3368572" aria-controls="story-author-preview-content-3368572" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Goutam Kumar profile details">
+                Goutam Kumar
+                
+              </button>
+              <div
+                id="story-author-preview-content-3368572"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/goutam_kumar_25db122cf377" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3763492%2F3d34fd38-b571-4b78-a18a-7275281e7e40.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Goutam Kumar</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3763492,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Goutam Kumar&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3763492"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/goutam_kumar_25db122cf377/building-a-transport-monitoring-dashboard-with-apis-19l9" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-18T17:40:29Z">Mar 18</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1773855629"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/goutam_kumar_25db122cf377/building-a-transport-monitoring-dashboard-with-apis-19l9" data-preload-image="" id="article-link-3368572">
+          Building a Transport Monitoring Dashboard with APIs 🚚📊
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/realtime"><span class="crayons-tag__prefix">#</span>realtime</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(3, 155, 229, 0.10);
+        --tag-prefix: #039be5;
+        --tag-bg-hover: rgba(3, 155, 229, 0.10);
+        --tag-prefix-hover: #039be5;
+      " href="/t/firebase"><span class="crayons-tag__prefix">#</span>firebase</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/bigdata"><span class="crayons-tag__prefix">#</span>bigdata</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(0, 60, 179, 0.10);
+        --tag-prefix: #003cb3;
+        --tag-bg-hover: rgba(0, 60, 179, 0.10);
+        --tag-prefix-hover: #003cb3;
+      " href="/t/googlecloud"><span class="crayons-tag__prefix">#</span>googlecloud</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/goutam_kumar_25db122cf377/building-a-transport-monitoring-dashboard-with-apis-19l9" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3368572" aria-label="Add a comment to post - Building a Transport Monitoring Dashboard with APIs 🚚📊">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">1<span class="hidden s:inline"> reaction</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/goutam_kumar_25db122cf377/building-a-transport-monitoring-dashboard-with-apis-19l9#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Building a Transport Monitoring Dashboard with APIs 🚚📊">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a9gooyarms4cnv5rfe9pk49sidnpgsgh" class="crayons-icon"><title id="a9gooyarms4cnv5rfe9pk49sidnpgsgh">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            7 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3368572"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3368572"
+              data-article-author-id="3763492"
+              aria-label="Save post Building a Transport Monitoring Dashboard with APIs 🚚📊 to reading list"
+              title="Save post Building a Transport Monitoring Dashboard with APIs 🚚📊 to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3375568" data-content-user-id="3610700">
+  <a href="https://dev.to/maya_sun_29e7bf629e5dd7b3/apache-cloudberry-20-rebuilding-storage-for-the-cloud-native-era-with-pax-5a9b" aria-labelledby="article-link-3375568" class="crayons-story__hidden-navigation-link">Apache Cloudberry 2.0: Rebuilding Storage for the Cloud-Native Era with PAX</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/maya_sun_29e7bf629e5dd7b3" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3610700%2Fc605f627-c79a-4346-b78e-7c6d5c27603b.jpg" alt="maya_sun_29e7bf629e5dd7b3 profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/maya_sun_29e7bf629e5dd7b3" class="crayons-story__secondary fw-medium m:hidden">
+              Maya S.
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3375568" aria-controls="story-author-preview-content-3375568" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Maya S. profile details">
+                Maya S.
+                
+              </button>
+              <div
+                id="story-author-preview-content-3375568"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/maya_sun_29e7bf629e5dd7b3" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3610700%2Fc605f627-c79a-4346-b78e-7c6d5c27603b.jpg"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Maya S.</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3610700,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Maya S.&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3610700"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/maya_sun_29e7bf629e5dd7b3/apache-cloudberry-20-rebuilding-storage-for-the-cloud-native-era-with-pax-5a9b" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-20T08:37:44Z">Mar 20</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1773995864"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/maya_sun_29e7bf629e5dd7b3/apache-cloudberry-20-rebuilding-storage-for-the-cloud-native-era-with-pax-5a9b" data-preload-image="" id="article-link-3375568">
+          Apache Cloudberry 2.0: Rebuilding Storage for the Cloud-Native Era with PAX
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/apachecloudberry"><span class="crayons-tag__prefix">#</span>apachecloudberry</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/bigdata"><span class="crayons-tag__prefix">#</span>bigdata</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/maya_sun_29e7bf629e5dd7b3/apache-cloudberry-20-rebuilding-storage-for-the-cloud-native-era-with-pax-5a9b" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3375568" aria-label="Add a comment to post - Apache Cloudberry 2.0: Rebuilding Storage for the Cloud-Native Era with PAX">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">1<span class="hidden s:inline"> reaction</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/maya_sun_29e7bf629e5dd7b3/apache-cloudberry-20-rebuilding-storage-for-the-cloud-native-era-with-pax-5a9b#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Apache Cloudberry 2.0: Rebuilding Storage for the Cloud-Native Era with PAX">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a60b280ffzofg4mg492q5dc6eubdddx4" class="crayons-icon"><title id="a60b280ffzofg4mg492q5dc6eubdddx4">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            6 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3375568"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3375568"
+              data-article-author-id="3610700"
+              aria-label="Save post Apache Cloudberry 2.0: Rebuilding Storage for the Cloud-Native Era with PAX to reading list"
+              title="Save post Apache Cloudberry 2.0: Rebuilding Storage for the Cloud-Native Era with PAX to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3413684" data-content-user-id="672587">
+  <a href="https://dev.to/marysofteng/the-human-blueprint-of-a-winning-scorecard-4h2b" aria-labelledby="article-link-3413684" class="crayons-story__hidden-navigation-link">The Human Blueprint of a Winning Scorecard</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/marysofteng" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F672587%2F8f02d0a0-5037-4a56-bde6-b7b2a29721dd.jpg" alt="marysofteng profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/marysofteng" class="crayons-story__secondary fw-medium m:hidden">
+              Mary-softeng
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3413684" aria-controls="story-author-preview-content-3413684" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Mary-softeng profile details">
+                Mary-softeng
+                
+              </button>
+              <div
+                id="story-author-preview-content-3413684"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/marysofteng" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F672587%2F8f02d0a0-5037-4a56-bde6-b7b2a29721dd.jpg"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Mary-softeng</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:672587,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Mary-softeng&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="672587"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/marysofteng/the-human-blueprint-of-a-winning-scorecard-4h2b" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-27T12:11:15Z">Mar 27</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774613475"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/marysofteng/the-human-blueprint-of-a-winning-scorecard-4h2b" data-preload-image="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fhsxhrakspq9dc6pqhnn0.png" id="article-link-3413684">
+          The Human Blueprint of a Winning Scorecard
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/scorecard"><span class="crayons-tag__prefix">#</span>scorecard</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/analytics"><span class="crayons-tag__prefix">#</span>analytics</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(229, 255, 227, 0.10);
+        --tag-prefix: #E5FFE3;
+        --tag-bg-hover: rgba(229, 255, 227, 0.10);
+        --tag-prefix-hover: #E5FFE3;
+      " href="/t/machinelearning"><span class="crayons-tag__prefix">#</span>machinelearning</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/bigdata"><span class="crayons-tag__prefix">#</span>bigdata</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/marysofteng/the-human-blueprint-of-a-winning-scorecard-4h2b" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3413684" aria-label="Add a comment to post - The Human Blueprint of a Winning Scorecard">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">1<span class="hidden s:inline"> reaction</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/marysofteng/the-human-blueprint-of-a-winning-scorecard-4h2b#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - The Human Blueprint of a Winning Scorecard">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="ajloevii1h0ux9c4v2b1gzy8nmsy5ej1" class="crayons-icon"><title id="ajloevii1h0ux9c4v2b1gzy8nmsy5ej1">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            5 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3413684"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3413684"
+              data-article-author-id="672587"
+              aria-label="Save post The Human Blueprint of a Winning Scorecard to reading list"
+              title="Save post The Human Blueprint of a Winning Scorecard to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3314705" data-content-user-id="3786451">
+  <a href="https://dev.to/therectoverse/how-to-choose-between-serverless-and-dedicated-compute-in-databricks-j64" aria-labelledby="article-link-3314705" class="crayons-story__hidden-navigation-link">How to Choose Between Serverless and Dedicated Compute in Databricks</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/therectoverse" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3786451%2F70cfaa67-9d42-4735-a5a3-7d8b3e2a0880.jpg" alt="therectoverse profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/therectoverse" class="crayons-story__secondary fw-medium m:hidden">
+              Arjun Krishna
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3314705" aria-controls="story-author-preview-content-3314705" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Arjun Krishna profile details">
+                Arjun Krishna
+                
+              </button>
+              <div
+                id="story-author-preview-content-3314705"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/therectoverse" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3786451%2F70cfaa67-9d42-4735-a5a3-7d8b3e2a0880.jpg"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Arjun Krishna</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3786451,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Arjun Krishna&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3786451"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/therectoverse/how-to-choose-between-serverless-and-dedicated-compute-in-databricks-j64" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-06T06:35:02Z">Mar 6</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1772778902"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/therectoverse/how-to-choose-between-serverless-and-dedicated-compute-in-databricks-j64" data-preload-image="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Flonmx0o3hzehf689k8fa.png" id="article-link-3314705">
+          How to Choose Between Serverless and Dedicated Compute in Databricks
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(28, 28, 28, 0.10);
+        --tag-prefix: #1C1C1C;
+        --tag-bg-hover: rgba(28, 28, 28, 0.10);
+        --tag-prefix-hover: #1C1C1C;
+      " href="/t/serverless"><span class="crayons-tag__prefix">#</span>serverless</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/databricks"><span class="crayons-tag__prefix">#</span>databricks</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(0, 102, 102, 0.10);
+        --tag-prefix: #006666;
+        --tag-bg-hover: rgba(0, 102, 102, 0.10);
+        --tag-prefix-hover: #006666;
+      " href="/t/distributedsystems"><span class="crayons-tag__prefix">#</span>distributedsystems</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/bigdata"><span class="crayons-tag__prefix">#</span>bigdata</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/therectoverse/how-to-choose-between-serverless-and-dedicated-compute-in-databricks-j64" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3314705" aria-label="Add a comment to post - How to Choose Between Serverless and Dedicated Compute in Databricks">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">3<span class="hidden s:inline"> reactions</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/therectoverse/how-to-choose-between-serverless-and-dedicated-compute-in-databricks-j64#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - How to Choose Between Serverless and Dedicated Compute in Databricks">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a9ifm14gm65om6zhm24enl15kb3u4gwv" class="crayons-icon"><title id="a9ifm14gm65om6zhm24enl15kb3u4gwv">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            3 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3314705"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3314705"
+              data-article-author-id="3786451"
+              aria-label="Save post How to Choose Between Serverless and Dedicated Compute in Databricks to reading list"
+              title="Save post How to Choose Between Serverless and Dedicated Compute in Databricks to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3311134" data-content-user-id="3807297">
+  <a href="https://dev.to/isha_vason/orchestrating-our-way-out-of-chaos-how-i-compared-airflow-prefect-and-dagster-and-picked-what-23np" aria-labelledby="article-link-3311134" class="crayons-story__hidden-navigation-link">Orchestrating Our Way Out of Chaos: How I Compared Airflow, Prefect, and Dagster (and Picked What to Ship)</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/isha_vason" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3807297%2Fffbefcd3-65a4-46dc-b5a7-31c067eb9339.jpg" alt="isha_vason profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/isha_vason" class="crayons-story__secondary fw-medium m:hidden">
+              Isha Vason
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3311134" aria-controls="story-author-preview-content-3311134" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Isha Vason profile details">
+                Isha Vason
+                
+              </button>
+              <div
+                id="story-author-preview-content-3311134"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/isha_vason" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3807297%2Fffbefcd3-65a4-46dc-b5a7-31c067eb9339.jpg"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Isha Vason</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3807297,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Isha Vason&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3807297"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/isha_vason/orchestrating-our-way-out-of-chaos-how-i-compared-airflow-prefect-and-dagster-and-picked-what-23np" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-05T07:55:39Z">Mar 5</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1772697339"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/isha_vason/orchestrating-our-way-out-of-chaos-how-i-compared-airflow-prefect-and-dagster-and-picked-what-23np" data-preload-image="" id="article-link-3311134">
+          Orchestrating Our Way Out of Chaos: How I Compared Airflow, Prefect, and Dagster (and Picked What to Ship)
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/bigdata"><span class="crayons-tag__prefix">#</span>bigdata</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/elt"><span class="crayons-tag__prefix">#</span>elt</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/airflow"><span class="crayons-tag__prefix">#</span>airflow</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/dagster"><span class="crayons-tag__prefix">#</span>dagster</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/isha_vason/orchestrating-our-way-out-of-chaos-how-i-compared-airflow-prefect-and-dagster-and-picked-what-23np" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3311134" aria-label="Add a comment to post - Orchestrating Our Way Out of Chaos: How I Compared Airflow, Prefect, and Dagster (and Picked What to Ship)">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">2<span class="hidden s:inline"> reactions</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/isha_vason/orchestrating-our-way-out-of-chaos-how-i-compared-airflow-prefect-and-dagster-and-picked-what-23np#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Orchestrating Our Way Out of Chaos: How I Compared Airflow, Prefect, and Dagster (and Picked What to Ship)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="ae349onzxpcbmf9j0uzci0f161qc4hpv" class="crayons-icon"><title id="ae349onzxpcbmf9j0uzci0f161qc4hpv">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            6 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3311134"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3311134"
+              data-article-author-id="3807297"
+              aria-label="Save post Orchestrating Our Way Out of Chaos: How I Compared Airflow, Prefect, and Dagster (and Picked What to Ship) to reading list"
+              title="Save post Orchestrating Our Way Out of Chaos: How I Compared Airflow, Prefect, and Dagster (and Picked What to Ship) to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3311238" data-content-user-id="1533306">
+  <a href="https://dev.to/chen_debra_3060b21d12b1b0/part-3-how-does-scheduling-actually-start-running-3cjo" aria-labelledby="article-link-3311238" class="crayons-story__hidden-navigation-link">Part 3 | How Does Scheduling Actually “Start Running”?</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/chen_debra_3060b21d12b1b0" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F1533306%2Fc0ea3a94-ba17-47c8-9304-4571fb1adaf9.png" alt="chen_debra_3060b21d12b1b0 profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/chen_debra_3060b21d12b1b0" class="crayons-story__secondary fw-medium m:hidden">
+              Chen Debra
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3311238" aria-controls="story-author-preview-content-3311238" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Chen Debra profile details">
+                Chen Debra
+                
+              </button>
+              <div
+                id="story-author-preview-content-3311238"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/chen_debra_3060b21d12b1b0" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F1533306%2Fc0ea3a94-ba17-47c8-9304-4571fb1adaf9.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Chen Debra</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:1533306,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Chen Debra&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="1533306"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/chen_debra_3060b21d12b1b0/part-3-how-does-scheduling-actually-start-running-3cjo" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-05T08:29:48Z">Mar 5</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1772699388"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/chen_debra_3060b21d12b1b0/part-3-how-does-scheduling-actually-start-running-3cjo" data-preload-image="" id="article-link-3311238">
+          Part 3 | How Does Scheduling Actually “Start Running”?
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/apachedolphinscheduler"><span class="crayons-tag__prefix">#</span>apachedolphinscheduler</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(38, 190, 0, 0.10);
+        --tag-prefix: #26BE00;
+        --tag-bg-hover: rgba(38, 190, 0, 0.10);
+        --tag-prefix-hover: #26BE00;
+      " href="/t/opensource"><span class="crayons-tag__prefix">#</span>opensource</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/bigdata"><span class="crayons-tag__prefix">#</span>bigdata</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(0, 153, 153, 0.10);
+        --tag-prefix: #009999;
+        --tag-bg-hover: rgba(0, 153, 153, 0.10);
+        --tag-prefix-hover: #009999;
+      " href="/t/datascience"><span class="crayons-tag__prefix">#</span>datascience</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/chen_debra_3060b21d12b1b0/part-3-how-does-scheduling-actually-start-running-3cjo" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3311238" aria-label="Add a comment to post - Part 3 | How Does Scheduling Actually “Start Running”?">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">4<span class="hidden s:inline"> reactions</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/chen_debra_3060b21d12b1b0/part-3-how-does-scheduling-actually-start-running-3cjo#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Part 3 | How Does Scheduling Actually “Start Running”?">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="anjthexhplqnnp82j0lv513xgt5kc4er" class="crayons-icon"><title id="anjthexhplqnnp82j0lv513xgt5kc4er">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            5 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3311238"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3311238"
+              data-article-author-id="1533306"
+              aria-label="Save post Part 3 | How Does Scheduling Actually “Start Running”? to reading list"
+              title="Save post Part 3 | How Does Scheduling Actually “Start Running”? to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3222877" data-content-user-id="912835">
+  <a href="https://dev.to/gathurum/how-to-implement-data-modelling-in-power-bi-4p2h" aria-labelledby="article-link-3222877" class="crayons-story__hidden-navigation-link">How to Implement Data Modelling in Power BI</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/gathurum" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F912835%2Fe5214cca-5a55-402c-8806-eabe9d7fc72c.png" alt="gathurum profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/gathurum" class="crayons-story__secondary fw-medium m:hidden">
+              Gathuru_M
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3222877" aria-controls="story-author-preview-content-3222877" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Gathuru_M profile details">
+                Gathuru_M
+                
+              </button>
+              <div
+                id="story-author-preview-content-3222877"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/gathurum" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F912835%2Fe5214cca-5a55-402c-8806-eabe9d7fc72c.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Gathuru_M</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:912835,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Gathuru_M&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="912835"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/gathurum/how-to-implement-data-modelling-in-power-bi-4p2h" class="crayons-story__tertiary fs-xs"><time datetime="2026-02-02T21:25:14Z">Feb 2</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1770067514"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/gathurum/how-to-implement-data-modelling-in-power-bi-4p2h" data-preload-image="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fpmj33t283jzo57u9ebmi.jpg" id="article-link-3222877">
+          How to Implement Data Modelling in Power BI
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/dataengineering"><span class="crayons-tag__prefix">#</span>dataengineering</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(0, 153, 153, 0.10);
+        --tag-prefix: #009999;
+        --tag-bg-hover: rgba(0, 153, 153, 0.10);
+        --tag-prefix-hover: #009999;
+      " href="/t/datascience"><span class="crayons-tag__prefix">#</span>datascience</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/bigdata"><span class="crayons-tag__prefix">#</span>bigdata</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(0, 131, 53, 0.10);
+        --tag-prefix: #008335;
+        --tag-bg-hover: rgba(0, 131, 53, 0.10);
+        --tag-prefix-hover: #008335;
+      " href="/t/beginners"><span class="crayons-tag__prefix">#</span>beginners</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/gathurum/how-to-implement-data-modelling-in-power-bi-4p2h" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3222877" aria-label="Add a comment to post - How to Implement Data Modelling in Power BI">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">2<span class="hidden s:inline"> reactions</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/gathurum/how-to-implement-data-modelling-in-power-bi-4p2h#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - How to Implement Data Modelling in Power BI">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="ar88837ml18ijos85bdifslc2t4476xk" class="crayons-icon"><title id="ar88837ml18ijos85bdifslc2t4476xk">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            2 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3222877"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3222877"
+              data-article-author-id="912835"
+              aria-label="Save post How to Implement Data Modelling in Power BI to reading list"
+              title="Save post How to Implement Data Modelling in Power BI to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3304153" data-content-user-id="3786451">
+  <a href="https://dev.to/therectoverse/the-future-of-data-engineering-in-databricks-from-pipelines-to-intent-e1m" aria-labelledby="article-link-3304153" class="crayons-story__hidden-navigation-link">The future of Data Engineering in Databricks - From Pipelines to Intent</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/therectoverse" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3786451%2F70cfaa67-9d42-4735-a5a3-7d8b3e2a0880.jpg" alt="therectoverse profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/therectoverse" class="crayons-story__secondary fw-medium m:hidden">
+              Arjun Krishna
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3304153" aria-controls="story-author-preview-content-3304153" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Arjun Krishna profile details">
+                Arjun Krishna
+                
+              </button>
+              <div
+                id="story-author-preview-content-3304153"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/therectoverse" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3786451%2F70cfaa67-9d42-4735-a5a3-7d8b3e2a0880.jpg"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Arjun Krishna</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3786451,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Arjun Krishna&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3786451"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/therectoverse/the-future-of-data-engineering-in-databricks-from-pipelines-to-intent-e1m" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-03T05:51:31Z">Mar 3</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1772517091"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/therectoverse/the-future-of-data-engineering-in-databricks-from-pipelines-to-intent-e1m" data-preload-image="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F6swgc0hmrgexv62d7l0f.png" id="article-link-3304153">
+          The future of Data Engineering in Databricks - From Pipelines to Intent
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/dataengineering"><span class="crayons-tag__prefix">#</span>dataengineering</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/databricks"><span class="crayons-tag__prefix">#</span>databricks</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(23, 253, 26, 0.10);
+        --tag-prefix: #17fd1a;
+        --tag-bg-hover: rgba(23, 253, 26, 0.10);
+        --tag-prefix-hover: #17fd1a;
+      " href="/t/ai"><span class="crayons-tag__prefix">#</span>ai</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/bigdata"><span class="crayons-tag__prefix">#</span>bigdata</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/therectoverse/the-future-of-data-engineering-in-databricks-from-pipelines-to-intent-e1m" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3304153" aria-label="Add a comment to post - The future of Data Engineering in Databricks - From Pipelines to Intent">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">2<span class="hidden s:inline"> reactions</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/therectoverse/the-future-of-data-engineering-in-databricks-from-pipelines-to-intent-e1m#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - The future of Data Engineering in Databricks - From Pipelines to Intent">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="adzhkqp09a7o630t9gbnxosvokpk3auo" class="crayons-icon"><title id="adzhkqp09a7o630t9gbnxosvokpk3auo">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            2 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3304153"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3304153"
+              data-article-author-id="3786451"
+              aria-label="Save post The future of Data Engineering in Databricks - From Pipelines to Intent to reading list"
+              title="Save post The future of Data Engineering in Databricks - From Pipelines to Intent to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3196158" data-content-user-id="731391">
+  <a href="https://dev.to/geekusa33/designing-a-cross-cloud-data-plane-with-apache-iceberg-3n83" aria-labelledby="article-link-3196158" class="crayons-story__hidden-navigation-link">Designing a Cross-Cloud Data Plane with Apache Iceberg</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/geekusa33" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F731391%2F4a09ef56-289b-4235-8fd1-05300a399594.jpeg" alt="geekusa33 profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/geekusa33" class="crayons-story__secondary fw-medium m:hidden">
+              Andrew Kalik
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3196158" aria-controls="story-author-preview-content-3196158" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Andrew Kalik profile details">
+                Andrew Kalik
+                
+              </button>
+              <div
+                id="story-author-preview-content-3196158"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/geekusa33" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F731391%2F4a09ef56-289b-4235-8fd1-05300a399594.jpeg"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Andrew Kalik</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:731391,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Andrew Kalik&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="731391"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/geekusa33/designing-a-cross-cloud-data-plane-with-apache-iceberg-3n83" class="crayons-story__tertiary fs-xs"><time datetime="2026-01-26T19:50:36Z">Jan 26</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1769457036"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/geekusa33/designing-a-cross-cloud-data-plane-with-apache-iceberg-3n83" data-preload-image="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fkpmx30qtflzz5wci7an5.png" id="article-link-3196158">
+          Designing a Cross-Cloud Data Plane with Apache Iceberg
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/dataengineering"><span class="crayons-tag__prefix">#</span>dataengineering</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/gcp"><span class="crayons-tag__prefix">#</span>gcp</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(33, 43, 58, 0.10);
+        --tag-prefix: #212b3a;
+        --tag-bg-hover: rgba(33, 43, 58, 0.10);
+        --tag-prefix-hover: #212b3a;
+      " href="/t/aws"><span class="crayons-tag__prefix">#</span>aws</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/bigdata"><span class="crayons-tag__prefix">#</span>bigdata</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/geekusa33/designing-a-cross-cloud-data-plane-with-apache-iceberg-3n83" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3196158" aria-label="Add a comment to post - Designing a Cross-Cloud Data Plane with Apache Iceberg">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">2<span class="hidden s:inline"> reactions</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/geekusa33/designing-a-cross-cloud-data-plane-with-apache-iceberg-3n83#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Designing a Cross-Cloud Data Plane with Apache Iceberg">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="ady2ratd3alhv6xo6f4lase21n4ae282" class="crayons-icon"><title id="ady2ratd3alhv6xo6f4lase21n4ae282">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            5 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3196158"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3196158"
+              data-article-author-id="731391"
+              aria-label="Save post Designing a Cross-Cloud Data Plane with Apache Iceberg to reading list"
+              title="Save post Designing a Cross-Cloud Data Plane with Apache Iceberg to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3299003" data-content-user-id="3786451">
+  <a href="https://dev.to/therectoverse/how-to-size-a-spark-cluster-and-how-not-to-2f46" aria-labelledby="article-link-3299003" class="crayons-story__hidden-navigation-link">How to Size a Spark Cluster. And How Not To.</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/therectoverse" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3786451%2F70cfaa67-9d42-4735-a5a3-7d8b3e2a0880.jpg" alt="therectoverse profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/therectoverse" class="crayons-story__secondary fw-medium m:hidden">
+              Arjun Krishna
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3299003" aria-controls="story-author-preview-content-3299003" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Arjun Krishna profile details">
+                Arjun Krishna
+                
+              </button>
+              <div
+                id="story-author-preview-content-3299003"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/therectoverse" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3786451%2F70cfaa67-9d42-4735-a5a3-7d8b3e2a0880.jpg"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Arjun Krishna</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3786451,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Arjun Krishna&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3786451"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/therectoverse/how-to-size-a-spark-cluster-and-how-not-to-2f46" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-01T19:44:20Z">Mar 1</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1772394260"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/therectoverse/how-to-size-a-spark-cluster-and-how-not-to-2f46" data-preload-image="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fjoyeo1m3uxw0xo0jogqe.png" id="article-link-3299003">
+          How to Size a Spark Cluster. And How Not To.
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/spark"><span class="crayons-tag__prefix">#</span>spark</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/dataengineering"><span class="crayons-tag__prefix">#</span>dataengineering</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(0, 102, 102, 0.10);
+        --tag-prefix: #006666;
+        --tag-bg-hover: rgba(0, 102, 102, 0.10);
+        --tag-prefix-hover: #006666;
+      " href="/t/distributedsystems"><span class="crayons-tag__prefix">#</span>distributedsystems</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/bigdata"><span class="crayons-tag__prefix">#</span>bigdata</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/therectoverse/how-to-size-a-spark-cluster-and-how-not-to-2f46" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3299003" aria-label="Add a comment to post - How to Size a Spark Cluster. And How Not To.">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">2<span class="hidden s:inline"> reactions</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/therectoverse/how-to-size-a-spark-cluster-and-how-not-to-2f46#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - How to Size a Spark Cluster. And How Not To.">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="ags42fipetc7m1vn9ak0s9oe1knptlfg" class="crayons-icon"><title id="ags42fipetc7m1vn9ak0s9oe1knptlfg">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            6 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3299003"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3299003"
+              data-article-author-id="3786451"
+              aria-label="Save post How to Size a Spark Cluster. And How Not To. to reading list"
+              title="Save post How to Size a Spark Cluster. And How Not To. to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="placeholder-div"></div>
+<div class="single-article-small-pic" id="article-index-hidden-div" style="display:none"></div>
+
+    </div>
+      <div class="crayons-notice mt-4" aria-live="polite">
+        👋 <a href="https://dev.to/enter?signup_subforem=1">Sign in</a> for the ability to sort posts by <strong>relevant</strong>, <strong>latest</strong>, or <strong>top</strong>.
+      </div>
+  </main>
+    <div id="sidebar-wrapper-right" class="sidebar-wrapper sidebar-wrapper-right">
+    <div class="sidebar-bg" id="sidebar-bg-right"></div>
+    <aside class="side-bar sidebar-additional showing fs-s" id="sidebar-additional">
+            <div class="widget">
+              <header>
+                <h4 class="fs-base fw-medium">trending guides/resources</h4>
+              </header>
+              <div class="widget-body fs-s">
+                <div class="widget-link-list">
+                  
+
+<a class="crayons-link crayons-link--contentful" href="/seatunnel/from-tb-scale-mongodb-to-doris-5-critical-challenges-and-fixes-with-apache-seatunnel-4goi">
+  From TB-Scale MongoDB to Doris: 5 Critical Challenges and Fixes with Apache SeaTunnel
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/artzabarov/how-to-auto-label-your-segmentation-dataset-with-sam3-3p8">
+  How to Auto-Label your Segmentation Dataset with SAM3
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/goutam_kumar_25db122cf377/building-a-transport-monitoring-dashboard-with-apis-19l9">
+  Building a Transport Monitoring Dashboard with APIs 🚚📊
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/isha_vason/orchestrating-our-way-out-of-chaos-how-i-compared-airflow-prefect-and-dagster-and-picked-what-23np">
+  Orchestrating Our Way Out of Chaos: How I Compared Airflow, Prefect, and Dagster (and Picked What...
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/nk2552003/how-i-built-a-big-data-survival-guide-because-my-semester-was-not-surviving-me-5bji">
+  How I Built a Big Data Survival Guide - Because My Semester Was Not Surviving Me
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/apachedoris/overview-of-real-time-data-synchronization-from-postgresql-to-velodb-5aem">
+  Overview of Real-Time Data Synchronization from PostgreSQL to VeloDB
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/therectoverse/how-to-size-a-spark-cluster-and-how-not-to-2f46">
+  How to Size a Spark Cluster. And How Not To.
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/anshul_02/pyspark-the-big-brain-of-data-processing-10pn">
+  PySpark : The Big Brain of Data Processing
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/therectoverse/the-future-of-data-engineering-in-databricks-from-pipelines-to-intent-e1m">
+  The future of Data Engineering in Databricks - From Pipelines to Intent
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/mohhddhassan/apache-iceberg-explained-from-data-lakes-to-metadata-snapshots-and-real-world-usage-48ja">
+  Apache Iceberg Explained: From Data Lakes to Metadata, Snapshots, and Real-World Usage
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/therectoverse/how-to-choose-between-serverless-and-dedicated-compute-in-databricks-j64">
+  How to Choose Between Serverless and Dedicated Compute in Databricks
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/tech_croc_f32fbb6ea8ed4/bigtable-vs-bigquery-whats-the-difference-2026-guide-3pd9">
+  Bigtable vs BigQuery: What’s the difference? (2026 Guide)
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/sijmatz/bigquery-sharing-an-underrated-data-exchange-platform-you-should-know-1dcf">
+  BigQuery Sharing: An Underrated Data Exchange Platform You Should Know
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/angga_faizul_a318a98a7a98/a-real-world-approach-to-splitting-analytics-workloads-between-databricks-and-trino-1c6c">
+  A Real-World Approach to Splitting Analytics Workloads Between Databricks and Trino
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/siyana_hristova_900e581ee/how-to-fuzzy-match-1m-rows-with-dbt-in-under-10-minutes-2026-guide-2edg">
+  How to fuzzy-match 1M rows with dbt in under 10 minutes (2026 guide)
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/chen_debra_3060b21d12b1b0/part-3-how-does-scheduling-actually-start-running-3cjo">
+  Part 3 | How Does Scheduling Actually “Start Running”?
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/kination/build-my-own-datalake-improve-metadata-with-caching-2lbl">
+  build-my-own-datalake: Improve metadata with caching
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/geekusa33/designing-a-cross-cloud-data-plane-with-apache-iceberg-3n83">
+  Designing a Cross-Cloud Data Plane with Apache Iceberg
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/chen_debra_3060b21d12b1b0/part-1-a-scheduler-is-more-than-just-a-timer-lk8">
+  Part 1 | A Scheduler Is More Than Just a “Timer”
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/rose1845/schemas-and-data-modelling-in-power-bi-4458">
+  Schemas and Data Modelling in Power BI
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/maya_sun_29e7bf629e5dd7b3/apache-cloudberry-20-rebuilding-storage-for-the-cloud-native-era-with-pax-5a9b">
+  Apache Cloudberry 2.0: Rebuilding Storage for the Cloud-Native Era with PAX
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/seatunnel/i-an-overview-of-data-warehouses-and-data-lakes-17k3">
+  (I) An Overview of Data Warehouses and Data Lakes
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/gathurum/how-to-implement-data-modelling-in-power-bi-4p2h">
+  How to Implement Data Modelling in Power BI
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/siyana_hristova_900e581ee/fuzzy-match-millions-of-rows-in-databricks-2026-832">
+  Fuzzy-match millions of rows in Databricks (2026)
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/siddhesh_surve/apache-spark-just-killed-the-microbatch-barrier-and-why-flink-should-be-worried-348c">
+  🚀 Apache Spark Just Killed the Microbatch Barrier (And Why Flink Should Be Worried)
+</a>
+
+                </div>
+              </div>
+            </div>
+    </aside>
+  </div>
+
+</div>
+
+<script src="https://assets.dev.to/assets/storiesList-b9c50cbd898a3a64258a3a49db1c531651b0a4a11937be35ed4651111802b5b5.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/tagFollows-07a4928c795d6d74427628f275723d9c29def9bb2706cc45ccbb95c0054465fe.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/feedPreviewCards-8d16b0b656456a28c0a290f756cf6e21e19833111c4796f48c631bfea8323d51.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/hideBookmarkButtons-a5d5527593e7fcba1cba72db457b57f49f94bf2266c62db454b2c8a00e751d33.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/drawerSliders-823098a874684cfb50f32368b8dd1c7854954b83a588b8b6cfaef1e8fd30d858.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/localizeArticleDates-70147c5c6bfe350b42e020ebb2a3dd37419d83978982b5a67b6389119bf162ac.js" defer="defer"></script>
+
+    <div id="runtime-banner-container"></div>
+    <div id="i18n-translations" data-translations="{&quot;en&quot;:{&quot;core&quot;:{&quot;add_comment&quot;:&quot;Add comment&quot;,&quot;beta&quot;:&quot;beta&quot;,&quot;comment&quot;:&quot;Comment&quot;,&quot;copy_link&quot;:&quot;Copy link&quot;,&quot;edit_profile&quot;:&quot;Edit profile&quot;,&quot;follow&quot;:&quot;Follow&quot;,&quot;follow_back&quot;:&quot;Follow back&quot;,&quot;following&quot;:&quot;Following&quot;,&quot;like&quot;:&quot;Like&quot;,&quot;loading&quot;:&quot;loading...&quot;,&quot;reaction&quot;:&quot;Reaction&quot;,&quot;report_abuse&quot;:&quot;Report abuse&quot;,&quot;search&quot;:&quot;Search&quot;,&quot;success_settings&quot;:&quot;Successfully updated settings.&quot;,&quot;search_placeholder&quot;:&quot;Search...&quot;,&quot;search_find_related_posts&quot;:&quot;Find related posts...&quot;,&quot;search_powered_by&quot;:&quot;Powered by Algolia&quot;,&quot;search_submit_search&quot;:&quot;Submit search for advanced filtering.&quot;,&quot;search_displaying_recommendations&quot;:&quot;Displaying Algolia Recommendations — Start typing to search&quot;,&quot;article_form_save_changes&quot;:&quot;Save changes&quot;,&quot;article_form_schedule&quot;:&quot;Schedule&quot;,&quot;article_form_publish&quot;:&quot;Publish&quot;,&quot;article_form_loading_preview&quot;:&quot;Loading preview&quot;,&quot;article_form_preview_loaded&quot;:&quot;Preview loaded&quot;,&quot;comments_preview&quot;:&quot;Preview&quot;,&quot;comments_continue_editing&quot;:&quot;Continue editing&quot;,&quot;survey_enter_response&quot;:&quot;Enter your response here...&quot;,&quot;survey_thank_you_response&quot;:&quot;Thank you for your response.&quot;,&quot;survey_thank_you_completing&quot;:&quot;Thank you for completing the survey!&quot;,&quot;dashboard_analytics_readers&quot;:&quot;Readers&quot;,&quot;dashboard_analytics_comments&quot;:&quot;Comments&quot;,&quot;dashboard_analytics_reactions&quot;:&quot;Reactions&quot;,&quot;stats_by&quot;:&quot;by&quot;,&quot;editor_new_title&quot;:&quot;New post title here...&quot;,&quot;editor_body_placeholder&quot;:&quot;Write your post content here...&quot;,&quot;tags_field_label&quot;:&quot;Add up to 4 tags&quot;,&quot;tags_field_placeholder&quot;:&quot;Add up to 4 tags...&quot;,&quot;counted_organization&quot;:{&quot;one&quot;:&quot;%{count} organization&quot;,&quot;other&quot;:&quot;%{count} organizations&quot;},&quot;counted_user&quot;:{&quot;one&quot;:&quot;%{count} person&quot;,&quot;other&quot;:&quot;%{count} people&quot;},&quot;not_following&quot;:&quot;You&#39;re not following anyone&quot;,&quot;following_everyone&quot;:&quot;You&#39;re following %{details} (everyone)&quot;,&quot;you_are_following&quot;:&quot;You&#39;re following&quot;,&quot;and&quot;:&quot;and&quot;}}}"></div>
+  </div>
+</div>
+    
+
+<footer id="footer" class="crayons-footer print-hidden">
+  <div id="footer-container" class="crayons-footer__container">
+
+
+        <style>
+  .long-bb-body {
+    max-height: calc(100vh - 200px);
+    overflow: hidden;
+  }
+  .long-bb-bottom {
+    height: 180px;
+    background: linear-gradient(to top, var(--card-bg), transparent);
+    margin-top: -180px;
+    position:relative;
+    z-index: 5;
+  }
+</style>
+
+  <div
+    style=""
+    data-display-unit data-id="146443"
+    data-category-click="click"
+    data-category-impression="impression"
+    data-context-type="home"
+    data-special="nothing"
+    data-article-id=""
+    data-type-of="in_house">
+          <div class="crayons-card crayons-card--secondary crayons-bb bb-placement js-billboard" style="display: inline-flex; flex-direction: column; align-items: center; margin: 0 auto 2rem auto; width: fit-content; padding: 2rem;">
+        <p style="font-weight: bold; margin: 0 0 1rem 0;">
+            💎 DEV Diamond Sponsors
+        </p>
+        <p style="font-size: 0.8em; margin: 0 0 2rem 0;">
+            Thank you to our Diamond Sponsors for supporting the DEV Community
+        </p>
+    
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://aistudio.google.com/?utm_source=partner&amp;utm_medium=partner&amp;utm_campaign=FY25-Global-DEVpartnership-sponsorship-AIS&amp;utm_content=-&amp;utm_term=-&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fxjlyhbdqehj3akhz166w.png" alt="Google AI - Official AI Model and Platform Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 54px; padding: 10px;" loading="lazy" width="2048" height="472">
+                </a>
+                <p style="text-align: center;">Google AI is the official AI Model and Platform Partner of DEV</p>
+            </div>
+
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://neon.tech/?ref=devto&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fbnl88cil6afxzmgwrgtt.png" alt="Neon - Official Database Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 60px; padding: 10px;" loading="lazy" width="2286" height="596">
+                </a>
+                <p style="text-align: center;">Neon is the official database partner of DEV</p>
+            </div>
+    
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://www.algolia.com/developers/?utm_source=devto&amp;utm_medium=referral&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fv30ephnolfvnlwgwm0yz.png" alt="Algolia - Official Search Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 60px; padding: 10px;" loading="lazy" width="2286" height="596">
+                </a>
+                <p style="text-align: center;">Algolia is the official search partner of DEV</p>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+    <p class="fs-s crayons-footer__description">
+      <a class="c-link c-link--branded fw-medium" aria-label="DEV Community Home" href="/">DEV Community</a> — Your community HQ
+    </p>
+
+    <ul class="footer__nav-links flex gap-2 justify-center flex-wrap fs-s p-0" style="" />
+        <li class="footer__nav-link flex items-center">
+    <a href="/">
+      Home
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/about">
+      About
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/contact">
+      Contact
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://mlh.io/">
+      MLH
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+
+    </ul>
+
+    <ul class="footer__nav-links flex gap-2 justify-center flex-wrap fs-s p-0" style="" />
+        <li class="footer__nav-link flex items-center">
+    <a href="/code-of-conduct">
+      Code of Conduct
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/privacy">
+      Privacy Policy
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/terms">
+      Terms of Use
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+
+    </ul>
+
+    <div class="fs-s">
+      <p>Built on <a class="c-link c-link--branded" target="_blank" rel="noopener" href="https://www.forem.com">Forem</a> — the <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/t/opensource">open source</a> software that powers <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to">DEV</a> and other inclusive communities.</p>
+      <p>Made with love and <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/t/rails">Ruby on Rails</a>. DEV Community <span title="copyright">&copy;</span> 2016 - 2026.</p>
+    </div>
+  </div>
+</footer>
+<div id="snack-zone"></div>
+
+    <div id="global-signup-modal" class="authentication-modal hidden">
+  <div class="authentication-modal__container">
+    <figure class="authentication-modal__image-container">
+      <img class="authentication-modal__image" src="https://media2.dev.to/dynamic/image/width=190,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+        alt="DEV Community" loading="lazy" />
+    </figure>
+    <div class="authentication-modal__content">
+      <p class="authentication-modal__description">
+          We&#39;re a place where coders share, stay up-to-date and grow their careers.
+      </p>
+    </div>
+    <div class="authentication-modal__actions">
+      <a href="https://dev.to/enter?signup_subforem=1" class="crayons-btn" aria-label="Log in" data-no-instant>
+        Log in
+      </a>
+      <a href="https://dev.to/enter?signup_subforem=1&amp;state=new-user" class="crayons-btn crayons-btn--ghost-brand js-global-signup-modal__create-account" aria-label="Create new account" data-no-instant>
+        Create account
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="https://assets.dev.to/assets/signupModalShortcuts-0b25469b985100a01e94cbd7fccaf7f0a4d776e129aac65c766aa32cb28ab29a.js" defer="defer"></script>
+
+    <div id="cookie-consent"></div>
+  <div id="reaction-category-resources" class="hidden" aria-hidden="true">
+    <img data-name="Like" data-slug="like" data-position="1" src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+    <img data-name="Unicorn" data-slug="unicorn" data-position="2" src="https://assets.dev.to/assets/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" width="18" height="18" />
+    <img data-name="Exploding Head" data-slug="exploding_head" data-position="3" src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" width="18" height="18" />
+    <img data-name="Raised Hands" data-slug="raised_hands" data-position="4" src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="18" height="18" />
+    <img data-name="Fire" data-slug="fire" data-position="5" src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+</div>
+
+    <script>
+  var userSignedIn = false;
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    initAuth();
+  } else {
+    document.addEventListener('DOMContentLoaded', initAuth);
+  }
+
+  function initAuth() {
+    var paramToken = new URLSearchParams(window.location.search).get('jwt');
+
+    if (paramToken && !userSignedIn) {
+      authenticateUser(paramToken);
+    } else {
+      var iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = 'https://forem.com/auth_pass/iframe';
+  
+      document.body.appendChild(iframe);
+  
+      window.addEventListener('message', function(event) {
+        if (event.origin !== 'https://forem.com' && event.origin !== window.location.origin) {
+          return;
+        }
+  
+        var data = event.data;
+  
+        if (data.authenticated && !userSignedIn) {
+          authenticateUser(data.token);
+        } else if(data.authenticated && window.ReactNativeWebView && window.ReactNativeWebView.postMessage) {
+          window.ReactNativeWebView.postMessage(JSON.stringify({
+            action: 'login',
+            token: data.token,
+          }));
+        }
+      });  
+    }
+
+    function authenticateUser(token) {
+      fetch('/auth_pass/token_login', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': getMetaContent('csrf-token'),
+        },
+        body: JSON.stringify({ token: token }),
+      })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        if (data.success) {
+          if (document.head.querySelector('meta[name="user-signed-in"][content="false"]')) {
+            // Reload the page to update the user's state
+            location.reload();
+          }
+        }
+      })
+      .catch(function(error) {
+        console.error('Error during authentication:', error);
+      });
+    }
+
+    function getMetaContent(name) {
+      var element = document.querySelector('meta[name="' + name + '"]');
+      return element ? element.getAttribute('content') : '';
+    }
+  }
+</script>
+
+  
+  
+  
+  </body>
+  </html>

@@ -1,0 +1,2770 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bash - Forem</title>
+    
+  
+<link rel="canonical" href="https://forem.com/t/bash" />
+<meta name="description" content="bash content on Forem">
+<meta name="keywords" content="software development, engineering, bash">
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://forem.com/t/bash" />
+<meta property="og:title" content="Bash" />
+<meta property="og:description" content="Bash content on Forem" />
+<meta property="og:site_name" content="Forem" />
+
+<meta name="twitter:site" content="@">
+<meta name="twitter:creator" content="@Bash">
+<meta name="twitter:title" content="Bash">
+<meta name="twitter:description" content="Bash content on Forem">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/xwqjxhl12sg768xrlmlv.png">
+  <meta name="twitter:image:src" content="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/xwqjxhl12sg768xrlmlv.png">
+
+
+      <meta name="last-updated" content="2026-04-01 02:27:39 UTC">
+      <meta name="user-signed-in" content="false">
+      <meta name="head-cached-at" content="1775010459">
+      <meta name="environment" content="production">
+      <link rel="stylesheet" href="https://assets.dev.to/assets/minimal-102395aec70cbac5f7d0bd5bebb5b56f0459629c5d224dae16333f11604cbad3.css" media="all" id="main-minimal-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/views-daf614dcfafed4955d7758a6a86d63bfbb1e8d4eae8b6317b421e18a99bbe867.css" media="all" id="main-views-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/crayons-8fce708625aacc3ff4a4d4947252a1cfab954753bb082374c0bed738861b52f2.css" media="all" id="main-crayons-stylesheet" />
+
+      <script src="https://assets.dev.to/assets/base-0c748bbcdc30041261c326ef2ce931fbce46c58bc3c488da881ae35c4750941d.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/application-0b268684912bef9b0f23defff01cb608bfc5d5e5610287725e7b686139ae32d3.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/baseInitializers-2f0777a6d67046056f9f42665560ce072de3801292674358ddbad6e135c1891d.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/baseTracking-b6bf73e5ee66633e151e7d5b7c6bbccedfa4c59e3615be97b98c4c0f543ddae7.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/followButtons-a29380c2c88136b97b2b5e63e94614ff7458fc72e07cffa7b6153831c28a40d2.js" defer="defer"></script>
+
+        <meta name="search-script" content="https://assets.dev.to/assets/Search-b977aea0f2d7a5818b4ebd97f7d4aba8548099f84f5db5761f8fa67be76abc54.js">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+      <link rel="icon" type="image/x-icon" href="https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fwalhydbusoe2o1pzxfwj.png" />
+      <link rel="apple-touch-icon" href="https://media2.dev.to/dynamic/image/width=180,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fwalhydbusoe2o1pzxfwj.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="https://media2.dev.to/dynamic/image/width=152,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fwalhydbusoe2o1pzxfwj.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="https://media2.dev.to/dynamic/image/width=180,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fwalhydbusoe2o1pzxfwj.png">
+      <link rel="apple-touch-icon" sizes="167x167" href="https://media2.dev.to/dynamic/image/width=167,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fwalhydbusoe2o1pzxfwj.png">
+      <link href="https://media2.dev.to/dynamic/image/width=192,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fwalhydbusoe2o1pzxfwj.png" rel="icon" sizes="192x192" />
+      <link href="https://media2.dev.to/dynamic/image/width=128,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fwalhydbusoe2o1pzxfwj.png" rel="icon" sizes="128x128" />
+      <meta name="apple-mobile-web-app-title" content="forem.com">
+      <meta name="application-name" content="forem.com">
+      <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+      <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+      <link rel="search" href="https://forem.com/open-search.xml" type="application/opensearchdescription+xml" title="Forem" />
+
+      <meta property="forem:name" content="Forem" />
+      <meta property="forem:logo" content="https://media2.dev.to/dynamic/image/width=512,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fwalhydbusoe2o1pzxfwj.png" />
+      <meta property="forem:domain" content="forem.com" />
+    
+  </head>
+    <body
+      class="sans-serif-article-body default-header"
+      data-user-status="logged-out"
+      data-is-root-subforem="true"
+        data-subforem-id="35"
+      data-side-nav-visible="true"
+      data-community-name="Forem"
+      data-subscription-icon="https://assets.dev.to/assets/subscription-icon-805dfa7ac7dd660f07ed8d654877270825b07a92a03841aa99a1093bd00431b2.png"
+      data-locale="en"
+      data-honeybadger-key="hbp_nqu4Y66HuEKlD6YRGssZuRQnPOjDm50J8Zkr"
+      data-deployed-at="2026-03-31T16:23:33Z"
+      data-latest-commit-id="786e25495afed32bb807645b48a724374606e51e"
+      data-ga-tracking="UA-71991109-1"
+      data-cookie-banner-user-context="logged_out_only"
+      data-cookie-banner-platform-context="off"
+      data-algolia-id="PRSOBFP46H"
+      data-algolia-search-key="9aa7d31610cba78851c9b1f63776a9dd"
+      data-algolia-display="true"
+      data-dynamic-url-component="bmar11"
+      data-ga4-tracking-id="G-TYEM8Y3JN3">
+      
+      <script>
+        if (navigator.userAgent === 'ForemWebView/1' || window.frameElement) {
+          document.body.classList.add("hidden-shell");
+        }
+          if (new Date() > new Date("2026-02-04T09:00:00-05:00")) {
+            document.body.dataset.sideNavVisible = "false";
+          } 
+      </script>
+
+      <link rel="stylesheet" href="https://assets.dev.to/assets/minimal-102395aec70cbac5f7d0bd5bebb5b56f0459629c5d224dae16333f11604cbad3.css" media="all" id="secondary-minimal-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/views-daf614dcfafed4955d7758a6a86d63bfbb1e8d4eae8b6317b421e18a99bbe867.css" media="all" id="secondary-views-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/crayons-8fce708625aacc3ff4a4d4947252a1cfab954753bb082374c0bed738861b52f2.css" media="all" id="secondary-crayons-stylesheet" />
+
+      <div id="body-styles">
+        <style>
+          :root {
+            --accent-brand-lighter-rgb: 80, 99, 301;
+            --accent-brand-rgb: 59, 73, 223;
+            --accent-brand-darker-rgb: 47, 58, 178;
+          }
+        </style>
+      </div>
+      <div id="audiocontent" data-podcast="">
+        
+      </div>
+      <div class="navigation-progress" id="navigation-progress"></div>
+
+<header id="topbar" class="crayons-header topbar print-hidden">
+  <span id="route-change-target" tabindex="-1"></span>
+  <a href="#main-content" class="skip-content-link">Skip to content</a>
+  <div class="crayons-header__container">
+    <span class="inline-block m:hidden ">
+      <button class="c-btn c-btn--icon-alone js-hamburger-trigger mx-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="ad9vsehuou12eb82umokiz6s5b5mnd8z" class="crayons-icon"><title id="ad9vsehuou12eb82umokiz6s5b5mnd8z">Navigation menu</title>
+    <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"></path>
+</svg>
+
+      </button>
+    </span>
+    <a href="/" class="site-logo" aria-label="Forem Home" >
+    <img class="site-logo__img"
+         src="https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_kyjiPyA0XdMwJmQGGBvv.png"
+         style="aspect-ratio: 170 / 72"
+         alt="Forem">
+</a>
+
+
+    <div class="crayons-header--search js-search-form" id="header-search">
+      <form accept-charset="UTF-8" method="get" action="/search" role="search">
+        <div class="crayons-fields crayons-fields--horizontal">
+          <div class="crayons-field flex-1 relative">
+            <input id="search-input" class="crayons-header--search-input crayons-textfield js-search-input" type="text" id="nav-search" name="q" placeholder="Search..." autocomplete="off" />
+            <button type="submit" aria-label="Search" class="c-btn c-btn--icon-alone absolute inset-px right-auto mt-0 py-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a49k80vlimk2pfnjsf5u7yon61abryao" aria-hidden="true" class="crayons-icon"><title id="a49k80vlimk2pfnjsf5u7yon61abryao">Search</title>
+    <path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0111 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 01-1.969 5.617zm-2.006-.742A6.977 6.977 0 0018 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 004.875-1.975l.15-.15z"></path>
+</svg>
+
+            </button>
+
+            <a class="crayons-header--search-brand-indicator" href="https://www.algolia.com/developers/?utm_source=devto&utm_medium=referral" target="_blank" rel="noopener noreferrer">
+                Powered by Algolia
+                <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" width="24" height="24" viewBox="0 0 500 500.34" role="img" aria-labelledby="ar09f4njxl5fe9fl8z5idhj8z2oxla8g" aria-hidden="true" class="crayons-icon"><title id="ar09f4njxl5fe9fl8z5idhj8z2oxla8g">Search</title>
+  <defs></defs><path class="cls-1" d="M250,0C113.38,0,2,110.16,.03,246.32c-2,138.29,110.19,252.87,248.49,253.67,42.71,.25,83.85-10.2,120.38-30.05,3.56-1.93,4.11-6.83,1.08-9.52l-23.39-20.74c-4.75-4.22-11.52-5.41-17.37-2.92-25.5,10.85-53.21,16.39-81.76,16.04-111.75-1.37-202.04-94.35-200.26-206.1,1.76-110.33,92.06-199.55,202.8-199.55h202.83V407.68l-115.08-102.25c-3.72-3.31-9.43-2.66-12.43,1.31-18.47,24.46-48.56,39.67-81.98,37.36-46.36-3.2-83.92-40.52-87.4-86.86-4.15-55.28,39.65-101.58,94.07-101.58,49.21,0,89.74,37.88,93.97,86.01,.38,4.28,2.31,8.28,5.53,11.13l29.97,26.57c3.4,3.01,8.8,1.17,9.63-3.3,2.16-11.55,2.92-23.6,2.07-35.95-4.83-70.39-61.84-127.01-132.26-131.35-80.73-4.98-148.23,58.18-150.37,137.35-2.09,77.15,61.12,143.66,138.28,145.36,32.21,.71,62.07-9.42,86.2-26.97l150.36,133.29c6.45,5.71,16.62,1.14,16.62-7.48V9.49C500,4.25,495.75,0,490.51,0H250Z"></path>
+</svg>
+
+            </a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="flex items-center h-100 ml-auto">
+        <div class="flex" id="authentication-top-nav-actions">
+          <span class="hidden m:block">
+            <a href="https://forem.com/enter?signup_subforem=35" class="c-link c-link--block mr-2 whitespace-nowrap ml-auto" data-no-instant>
+              Log in
+            </a>
+          </span>
+
+          <a href="https://forem.com/enter?signup_subforem=35&amp;state=new-user" data-tracking-id="ca_top_nav" data-tracking-source="top_navbar" class="c-cta c-cta--branded whitespace-nowrap mr-2" data-no-instant>
+            Create account
+          </a>
+        </div>
+    </div>
+  </div>
+</header>
+
+<div class="hamburger">
+  <div class="hamburger__content">
+    <header class="hamburger__content__header">
+      <h2 class="fs-l fw-bold flex-1 break-word lh-tight">Forem</h2>
+
+      <button class="c-btn c-btn--icon-alone js-hamburger-trigger shrink-0" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="afii3abmu0mcvbakf0rqf3dz0l1lnk26" aria-hidden="true" class="crayons-icon c-btn__icon"><title id="afii3abmu0mcvbakf0rqf3dz0l1lnk26">Close</title><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636l4.95 4.95z"></path></svg>
+
+      </button>
+    </header>
+
+    <div class="p-2 js-navigation-links-container" id="authentication-hamburger-actions">
+    </div>
+  </div>
+  <div class="hamburger__overlay js-hamburger-trigger"></div>
+</div>
+
+
+      <div id="active-broadcast" class="broadcast-wrapper"></div>
+<div id="page-content" class="wrapper tagged_articles tagged_articles-index" data-current-page="tagged_articles-index">
+  <div id="page-content-inner" data-internal-nav="false">
+    <div id="page-route-change" class="screen-reader-only" aria-live="polite" aria-atomic="true"></div>
+
+    <div data-tag-id="349" data-tag-name="bash" id="tag-349" class="crayons-layout js-tag-card">
+  <header class="crayons-card branded-4 p-4 l:p-6 spec__tag-header" style="border-top-color: #943d3b ">
+    <div class="flex">
+          <img src="https://media2.dev.to/dynamic/image/width=64,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fbadge%2Fbadge_image%2F24%2Fshell-sticker.png" alt="" class="mr-4" style="transform: rotate(20deg); width: 64px; height: 64px;" />
+      <div class="flex flex-col w-100 justify-center">
+        <div class="flex justify-between items-center">
+          <h1 class="crayons-title">
+              Bash
+          </h1>
+            <div id="tag-buttons-349" class="mt-auto flex items-end justify-between">
+              <div class="flex gap-2">
+                <button
+                  class="c-btn c-btn--primary js-follow-tag-button"
+                  aria-label="Follow tag: bash">
+                  Follow
+                </button>
+                <button
+                  class="c-btn js-hide-tag-button"
+                  aria-label="Hide tag: bash">
+                  Hide
+                </button>
+              </div>
+            </div>
+        </div>
+          <p class="max-w-100 m:max-w-75 pt-2 s:pt-4">
+            Bourne Again Shell
+          </p>
+      </div>
+    </div>
+  </header>
+</div>
+
+<div class="home sub-home" id="index-container"
+    data-params="{&quot;tag&quot;:&quot;bash&quot;,&quot;sort_by&quot;:&quot;hotness_score&quot;,&quot;sort_direction&quot;:&quot;desc&quot;}" data-which=""
+    data-tag="bash"
+    data-feed="base-feed"
+    data-disable-infinite-scroll="true"
+    data-requires-approval="false"
+    data-articles-since="">
+    <div id="sidebar-wrapper-left" class="sidebar-wrapper sidebar-wrapper-left">
+    <div class="sidebar-bg" id="sidebar-bg-left"></div>
+    <aside class="side-bar fs-s">
+        <div class="widget js-policy-article-create">
+          <a class="crayons-btn crayons-btn--s" href="/new/bash">
+            Create Post
+          </a>
+</div>      <div class="sidebar-data">
+          <hr />
+          <div class="olderposts-header fs-base fw-medium">Older #bash posts</div>
+          <div class="olderposts-links">
+                  <span class="olderposts-pagenumber">1</span>
+                  <a href="https://dev.to/t/bash/page/2" class="olderposts-pagenumber">2</a>
+                  <a href="https://dev.to/t/bash/page/3" class="olderposts-pagenumber">3</a>
+                  <a href="https://dev.to/t/bash/page/4" class="olderposts-pagenumber">4</a>
+                  <a href="https://dev.to/t/bash/page/5" class="olderposts-pagenumber">5</a>
+                  <a href="https://dev.to/t/bash/page/6" class="olderposts-pagenumber">6</a>
+                  <a href="https://dev.to/t/bash/page/7" class="olderposts-pagenumber">7</a>
+                  <a href="https://dev.to/t/bash/page/8" class="olderposts-pagenumber">8</a>
+                  <a href="https://dev.to/t/bash/page/9" class="olderposts-pagenumber">9</a>
+              <div>
+                …<a href="https://dev.to/t/bash/page/75" class="olderposts-pagenumber">75</a>
+                …<a href="https://dev.to/t/bash/page/203" class="olderposts-pagenumber">203</a>
+              </div>
+          </div>
+      </div>
+    </aside>
+  </div>
+
+  <main class="articles-list" id="main-content" data-follow-button-container="true">
+    <header class="flex items-center p-2 m:p-0 m:pb-2" id="on-page-nav-controls">
+      <h1 class="screen-reader-only">Posts</h1>
+      <button type="button" class="crayons-btn crayons-btn--ghost crayons-btn--icon mr-2 inline-block m:hidden mb-auto" id="on-page-nav-butt-left" aria-label="nav-button-left">
+        <div class="crayons-icon nav-icon ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="ahnrj04pbr2mflbeiq0i7iqnrr6ldnu3" class="crayons-icon"><title id="ahnrj04pbr2mflbeiq0i7iqnrr6ldnu3">Left menu</title>
+    <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"></path>
+</svg>
+
+        </div>
+      </button>
+        <div class="flex-1 flex items-center justify-between">
+          <div class="crayons-notice w-100" aria-live="polite">👋 <a href="https://forem.com/enter?signup_subforem=35">Sign in</a> for the ability to sort posts by <strong>relevant</strong>, <strong>latest</strong>, or <strong>top</strong>.</div>
+        </div>
+
+      <button type="button" class="crayons-btn crayons-btn--ghost crayons-btn--icon ml-2 inline-block l:hidden mb-auto" id="on-page-nav-butt-right" aria-label="nav-button-right">
+        <div class="crayons-icon nav-icon ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a8q7oyv130a2d7ysqwyhsdap5ntlalzk" class="crayons-icon"><title id="a8q7oyv130a2d7ysqwyhsdap5ntlalzk">Right menu</title>
+    <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"></path>
+</svg>
+
+        </div>
+      </button>
+    </header>
+
+    <div class="substories" id="substories">
+        <div class="crayons-story " data-feed-content-id="3437205" data-content-user-id="3849697">
+  <a href="https://dev.to/sundr_dev/deploy-apps-to-samsung-smart-tv-the-bash-script-that-saves-hours-175b" aria-labelledby="article-link-3437205" class="crayons-story__hidden-navigation-link">Deploy Apps to Samsung Smart TV: The Bash Script That Saves Hours</a>
+    <div class="crayons-article__cover crayons-article__cover__image__feed" style="aspect-ratio: auto 1000 / 420;">
+              <a href="https://dev.to/sundr_dev/deploy-apps-to-samsung-smart-tv-the-bash-script-that-saves-hours-175b" title="Deploy Apps to Samsung Smart TV: The Bash Script That Saves Hours" aria-label="article" class="crayons-article__cover__image__feed crayons-story__cover__image">
+        <img src="https://media2.dev.to/dynamic/image/width=1000,height=1000,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fn6zv0iqg2bnt3cezw73l.jpg" width="1000" height="420" style="background-color:#dddddd;" class="crayons-article__cover__image__feed" alt="Cover image for Deploy Apps to Samsung Smart TV: The Bash Script That Saves Hours">
+      </a>
+    </div>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/sundr_dev" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3849697%2Fc4a179dc-8110-4ee2-84d4-bbaed6acd301.png" alt="sundr_dev profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/sundr_dev" class="crayons-story__secondary fw-medium m:hidden">
+              Aleksandr Sakov
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3437205" aria-controls="story-author-preview-content-3437205" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Aleksandr Sakov profile details">
+                Aleksandr Sakov
+                
+              </button>
+              <div
+                id="story-author-preview-content-3437205"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/sundr_dev" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3849697%2Fc4a179dc-8110-4ee2-84d4-bbaed6acd301.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Aleksandr Sakov</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3849697,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Aleksandr Sakov&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3849697"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/sundr_dev/deploy-apps-to-samsung-smart-tv-the-bash-script-that-saves-hours-175b" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-31T16:28:17Z">Mar 31</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774974497"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/sundr_dev/deploy-apps-to-samsung-smart-tv-the-bash-script-that-saves-hours-175b" data-preload-image="https://media2.dev.to/dynamic/image/width=1000,height=1000,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fn6zv0iqg2bnt3cezw73l.jpg" id="article-link-3437205">
+          Deploy Apps to Samsung Smart TV: The Bash Script That Saves Hours
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/tizen"><span class="crayons-tag__prefix">#</span>tizen</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/smarttv"><span class="crayons-tag__prefix">#</span>smarttv</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(148, 61, 59, 0.10);
+        --tag-prefix: #943d3b;
+        --tag-bg-hover: rgba(148, 61, 59, 0.10);
+        --tag-prefix-hover: #943d3b;
+      " href="/t/bash"><span class="crayons-tag__prefix">#</span>bash</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(86, 39, 101, 0.10);
+        --tag-prefix: #562765;
+        --tag-bg-hover: rgba(86, 39, 101, 0.10);
+        --tag-prefix-hover: #562765;
+      " href="/t/webdev"><span class="crayons-tag__prefix">#</span>webdev</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+            <a href="https://dev.to/sundr_dev/deploy-apps-to-samsung-smart-tv-the-bash-script-that-saves-hours-175b#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Deploy Apps to Samsung Smart TV: The Bash Script That Saves Hours">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="aev4wiemp3k6lshazxkajqpvnd54uia0" class="crayons-icon"><title id="aev4wiemp3k6lshazxkajqpvnd54uia0">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            8 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3437205"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3437205"
+              data-article-author-id="3849697"
+              aria-label="Save post Deploy Apps to Samsung Smart TV: The Bash Script That Saves Hours to reading list"
+              title="Save post Deploy Apps to Samsung Smart TV: The Bash Script That Saves Hours to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3372273" data-content-user-id="3833552">
+  <a href="https://dev.to/ohugonnot/claude-code-statusline-monitoring-rate-limits-in-real-time-5015" aria-labelledby="article-link-3372273" class="crayons-story__hidden-navigation-link">Claude Code Statusline: monitoring rate limits in real time</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/ohugonnot" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3833552%2F48d32eab-68ed-4496-8ba6-f01e32806723.png" alt="ohugonnot profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/ohugonnot" class="crayons-story__secondary fw-medium m:hidden">
+              Odilon HUGONNOT
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3372273" aria-controls="story-author-preview-content-3372273" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Odilon HUGONNOT profile details">
+                Odilon HUGONNOT
+                
+              </button>
+              <div
+                id="story-author-preview-content-3372273"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/ohugonnot" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3833552%2F48d32eab-68ed-4496-8ba6-f01e32806723.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Odilon HUGONNOT</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3833552,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Odilon HUGONNOT&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3833552"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/ohugonnot/claude-code-statusline-monitoring-rate-limits-in-real-time-5015" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-27T09:00:02Z">Mar 27</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774602002"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/ohugonnot/claude-code-statusline-monitoring-rate-limits-in-real-time-5015" data-preload-image="" id="article-link-3372273">
+          Claude Code Statusline: monitoring rate limits in real time
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/claudecode"><span class="crayons-tag__prefix">#</span>claudecode</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(148, 61, 59, 0.10);
+        --tag-prefix: #943d3b;
+        --tag-bg-hover: rgba(148, 61, 59, 0.10);
+        --tag-prefix-hover: #943d3b;
+      " href="/t/bash"><span class="crayons-tag__prefix">#</span>bash</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/developertools"><span class="crayons-tag__prefix">#</span>developertools</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/ratelimiting"><span class="crayons-tag__prefix">#</span>ratelimiting</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+            <a href="https://dev.to/ohugonnot/claude-code-statusline-monitoring-rate-limits-in-real-time-5015#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Claude Code Statusline: monitoring rate limits in real time">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a1gjbnqfa1g4b3qap3wtq4zon71pm7p2" class="crayons-icon"><title id="a1gjbnqfa1g4b3qap3wtq4zon71pm7p2">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            4 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3372273"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3372273"
+              data-article-author-id="3833552"
+              aria-label="Save post Claude Code Statusline: monitoring rate limits in real time to reading list"
+              title="Save post Claude Code Statusline: monitoring rate limits in real time to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3433960" data-content-user-id="3818324">
+  <a href="https://dev.to/visualeaf/a-smarter-mongodb-shell-with-built-in-visual-output-24co" aria-labelledby="article-link-3433960" class="crayons-story__hidden-navigation-link">A Smarter MongoDB Shell with Built-In Visual Output</a>
+    <div class="crayons-article__cover crayons-article__cover__image__feed" style="aspect-ratio: auto 1000 / 420;">
+              <a href="https://dev.to/visualeaf/a-smarter-mongodb-shell-with-built-in-visual-output-24co" title="A Smarter MongoDB Shell with Built-In Visual Output" aria-label="article" class="crayons-article__cover__image__feed crayons-story__cover__image">
+        <img src="https://media2.dev.to/dynamic/image/width=1000,height=1000,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fajt79fix3oksv7bsjywm.webp" width="1000" height="420" style="background-color:#dddddd;" class="crayons-article__cover__image__feed" alt="Cover image for A Smarter MongoDB Shell with Built-In Visual Output">
+      </a>
+    </div>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/visualeaf" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3818324%2F6cb54fe1-a36c-4f1a-a7b5-fa360f5daf8a.png" alt="visualeaf profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/visualeaf" class="crayons-story__secondary fw-medium m:hidden">
+              VisuaLeaf
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3433960" aria-controls="story-author-preview-content-3433960" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="VisuaLeaf profile details">
+                VisuaLeaf
+                
+              </button>
+              <div
+                id="story-author-preview-content-3433960"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/visualeaf" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3818324%2F6cb54fe1-a36c-4f1a-a7b5-fa360f5daf8a.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">VisuaLeaf</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3818324,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;VisuaLeaf&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3818324"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/visualeaf/a-smarter-mongodb-shell-with-built-in-visual-output-24co" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-31T05:04:09Z">Mar 31</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774933449"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/visualeaf/a-smarter-mongodb-shell-with-built-in-visual-output-24co" data-preload-image="https://media2.dev.to/dynamic/image/width=1000,height=1000,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fajt79fix3oksv7bsjywm.webp" id="article-link-3433960">
+          A Smarter MongoDB Shell with Built-In Visual Output
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(123, 204, 124, 0.10);
+        --tag-prefix: #7bcc7c;
+        --tag-bg-hover: rgba(123, 204, 124, 0.10);
+        --tag-prefix-hover: #7bcc7c;
+      " href="/t/mongodb"><span class="crayons-tag__prefix">#</span>mongodb</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(148, 61, 59, 0.10);
+        --tag-prefix: #943d3b;
+        --tag-bg-hover: rgba(148, 61, 59, 0.10);
+        --tag-prefix-hover: #943d3b;
+      " href="/t/bash"><span class="crayons-tag__prefix">#</span>bash</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/nosql"><span class="crayons-tag__prefix">#</span>nosql</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(237, 21, 86, 0.10);
+        --tag-prefix: #ED1556;
+        --tag-bg-hover: rgba(237, 21, 86, 0.10);
+        --tag-prefix-hover: #ED1556;
+      " href="/t/database"><span class="crayons-tag__prefix">#</span>database</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/visualeaf/a-smarter-mongodb-shell-with-built-in-visual-output-24co" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3433960" aria-label="Add a comment to post - A Smarter MongoDB Shell with Built-In Visual Output">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">6<span class="hidden s:inline"> reactions</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/visualeaf/a-smarter-mongodb-shell-with-built-in-visual-output-24co#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - A Smarter MongoDB Shell with Built-In Visual Output">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="aqgehv1rou20eh1weg4nunujhd7w5knt" class="crayons-icon"><title id="aqgehv1rou20eh1weg4nunujhd7w5knt">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            3 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3433960"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3433960"
+              data-article-author-id="3818324"
+              aria-label="Save post A Smarter MongoDB Shell with Built-In Visual Output to reading list"
+              title="Save post A Smarter MongoDB Shell with Built-In Visual Output to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3381665" data-content-user-id="3139217">
+  <a href="https://dev.to/adrianjiga/6-things-about-the-terminal-that-confuse-everyone-and-nobody-warns-you-about-4kd2" aria-labelledby="article-link-3381665" class="crayons-story__hidden-navigation-link">6 Things About The Terminal That Confuse Everyone (And Nobody Warns You About)</a>
+    <div class="crayons-article__cover crayons-article__cover__image__feed" style="aspect-ratio: auto 1000 / 420;">
+              <a href="https://dev.to/adrianjiga/6-things-about-the-terminal-that-confuse-everyone-and-nobody-warns-you-about-4kd2" title="6 Things About The Terminal That Confuse Everyone (And Nobody Warns You About)" aria-label="article" class="crayons-article__cover__image__feed crayons-story__cover__image">
+        <img src="https://media2.dev.to/dynamic/image/width=1000,height=1000,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fy3uo3l7q15vkvq5pntbm.png" width="1000" height="420" style="background-color:#dddddd;" class="crayons-article__cover__image__feed" alt="Cover image for 6 Things About The Terminal That Confuse Everyone (And Nobody Warns You About)">
+      </a>
+    </div>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/adrianjiga" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3139217%2Ffd68cc18-bc91-4d68-9c10-ee3a4c88d3ab.jpeg" alt="adrianjiga profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/adrianjiga" class="crayons-story__secondary fw-medium m:hidden">
+              Adrian Jiga
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3381665" aria-controls="story-author-preview-content-3381665" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Adrian Jiga profile details">
+                Adrian Jiga
+                
+              </button>
+              <div
+                id="story-author-preview-content-3381665"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/adrianjiga" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3139217%2Ffd68cc18-bc91-4d68-9c10-ee3a4c88d3ab.jpeg"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Adrian Jiga</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3139217,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Adrian Jiga&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3139217"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/adrianjiga/6-things-about-the-terminal-that-confuse-everyone-and-nobody-warns-you-about-4kd2" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-30T19:22:18Z">Mar 30</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774898538"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/adrianjiga/6-things-about-the-terminal-that-confuse-everyone-and-nobody-warns-you-about-4kd2" data-preload-image="https://media2.dev.to/dynamic/image/width=1000,height=1000,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fy3uo3l7q15vkvq5pntbm.png" id="article-link-3381665">
+          6 Things About The Terminal That Confuse Everyone (And Nobody Warns You About)
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(148, 61, 59, 0.10);
+        --tag-prefix: #943d3b;
+        --tag-bg-hover: rgba(148, 61, 59, 0.10);
+        --tag-prefix-hover: #943d3b;
+      " href="/t/bash"><span class="crayons-tag__prefix">#</span>bash</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(0, 0, 0, 0.10);
+        --tag-prefix: #000000;
+        --tag-bg-hover: rgba(0, 0, 0, 0.10);
+        --tag-prefix-hover: #000000;
+      " href="/t/cli"><span class="crayons-tag__prefix">#</span>cli</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(0, 0, 0, 0.10);
+        --tag-prefix: #000000;
+        --tag-bg-hover: rgba(0, 0, 0, 0.10);
+        --tag-prefix-hover: #000000;
+      " href="/t/linux"><span class="crayons-tag__prefix">#</span>linux</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(254, 255, 165, 0.10);
+        --tag-prefix: #FEFFA5;
+        --tag-bg-hover: rgba(254, 255, 165, 0.10);
+        --tag-prefix-hover: #FEFFA5;
+      " href="/t/tutorial"><span class="crayons-tag__prefix">#</span>tutorial</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/adrianjiga/6-things-about-the-terminal-that-confuse-everyone-and-nobody-warns-you-about-4kd2" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3381665" aria-label="Add a comment to post - 6 Things About The Terminal That Confuse Everyone (And Nobody Warns You About)">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">1<span class="hidden s:inline"> reaction</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/adrianjiga/6-things-about-the-terminal-that-confuse-everyone-and-nobody-warns-you-about-4kd2#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - 6 Things About The Terminal That Confuse Everyone (And Nobody Warns You About)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a5niaplznedd60emitnoyequu3w5qf02" class="crayons-icon"><title id="a5niaplznedd60emitnoyequu3w5qf02">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            6 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3381665"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3381665"
+              data-article-author-id="3139217"
+              aria-label="Save post 6 Things About The Terminal That Confuse Everyone (And Nobody Warns You About) to reading list"
+              title="Save post 6 Things About The Terminal That Confuse Everyone (And Nobody Warns You About) to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3427453" data-content-user-id="3673037">
+  <a href="https://dev.to/rahimah_dev/master-the-linux-terminal-for-modern-data-analytics-him" aria-labelledby="article-link-3427453" class="crayons-story__hidden-navigation-link">Master the Linux Terminal for Modern Data Analytics</a>
+    <div class="crayons-article__cover crayons-article__cover__image__feed" style="aspect-ratio: auto 1000 / 420;">
+              <a href="https://dev.to/rahimah_dev/master-the-linux-terminal-for-modern-data-analytics-him" title="Master the Linux Terminal for Modern Data Analytics" aria-label="article" class="crayons-article__cover__image__feed crayons-story__cover__image">
+        <img src="https://media2.dev.to/dynamic/image/width=1000,height=1000,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fhqjc94p3tslo7xvh7mmm.png" width="1000" height="420" style="background-color:#dddddd;" class="crayons-article__cover__image__feed" alt="Cover image for Master the Linux Terminal for Modern Data Analytics">
+      </a>
+    </div>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/rahimah_dev" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3673037%2Fd084c1b1-6c80-43de-8b42-c48bd0cad2f8.png" alt="rahimah_dev profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/rahimah_dev" class="crayons-story__secondary fw-medium m:hidden">
+              Rahimah Sulayman
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3427453" aria-controls="story-author-preview-content-3427453" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Rahimah Sulayman profile details">
+                Rahimah Sulayman
+                
+              </button>
+              <div
+                id="story-author-preview-content-3427453"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/rahimah_dev" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3673037%2Fd084c1b1-6c80-43de-8b42-c48bd0cad2f8.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Rahimah Sulayman</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3673037,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Rahimah Sulayman&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3673037"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/rahimah_dev/master-the-linux-terminal-for-modern-data-analytics-him" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-30T13:56:35Z">Mar 30</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774878995"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/rahimah_dev/master-the-linux-terminal-for-modern-data-analytics-him" data-preload-image="https://media2.dev.to/dynamic/image/width=1000,height=1000,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fhqjc94p3tslo7xvh7mmm.png" id="article-link-3427453">
+          Master the Linux Terminal for Modern Data Analytics
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/dataanalytics"><span class="crayons-tag__prefix">#</span>dataanalytics</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(0, 0, 0, 0.10);
+        --tag-prefix: #000000;
+        --tag-bg-hover: rgba(0, 0, 0, 0.10);
+        --tag-prefix-hover: #000000;
+      " href="/t/linux"><span class="crayons-tag__prefix">#</span>linux</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(148, 61, 59, 0.10);
+        --tag-prefix: #943d3b;
+        --tag-bg-hover: rgba(148, 61, 59, 0.10);
+        --tag-prefix-hover: #943d3b;
+      " href="/t/bash"><span class="crayons-tag__prefix">#</span>bash</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(254, 255, 165, 0.10);
+        --tag-prefix: #FEFFA5;
+        --tag-bg-hover: rgba(254, 255, 165, 0.10);
+        --tag-prefix-hover: #FEFFA5;
+      " href="/t/tutorial"><span class="crayons-tag__prefix">#</span>tutorial</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/rahimah_dev/master-the-linux-terminal-for-modern-data-analytics-him" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3427453" aria-label="Add a comment to post - Master the Linux Terminal for Modern Data Analytics">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">1<span class="hidden s:inline"> reaction</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/rahimah_dev/master-the-linux-terminal-for-modern-data-analytics-him#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Master the Linux Terminal for Modern Data Analytics">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a8tpcfr4rjwwmttq8mg2cxuejwykloy1" class="crayons-icon"><title id="a8tpcfr4rjwwmttq8mg2cxuejwykloy1">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              1<span class="hidden s:inline"> comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            14 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3427453"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3427453"
+              data-article-author-id="3673037"
+              aria-label="Save post Master the Linux Terminal for Modern Data Analytics to reading list"
+              title="Save post Master the Linux Terminal for Modern Data Analytics to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3395306" data-content-user-id="3841679">
+  <a href="https://dev.to/priyanshurav/sha256sum-shasum-get-filehash-and-still-no-good-way-to-compare-hashes-4mak" aria-labelledby="article-link-3395306" class="crayons-story__hidden-navigation-link">sha256sum, shasum, Get-FileHash — and still no good way to compare hashes</a>
+    <div class="crayons-article__cover crayons-article__cover__image__feed" style="aspect-ratio: auto 1000 / 420;">
+              <a href="https://dev.to/priyanshurav/sha256sum-shasum-get-filehash-and-still-no-good-way-to-compare-hashes-4mak" title="sha256sum, shasum, Get-FileHash — and still no good way to compare hashes" aria-label="article" class="crayons-article__cover__image__feed crayons-story__cover__image">
+        <img src="https://media2.dev.to/dynamic/image/width=1000,height=1000,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Frh5tci5jx69xdgfjrkb4.png" width="1000" height="420" style="background-color:#dddddd;" class="crayons-article__cover__image__feed" alt="Cover image for sha256sum, shasum, Get-FileHash — and still no good way to compare hashes">
+      </a>
+    </div>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/priyanshurav" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3841679%2F8de4200a-a6ab-4e2e-8064-494797e07124.png" alt="priyanshurav profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/priyanshurav" class="crayons-story__secondary fw-medium m:hidden">
+              Priyanshu Rav
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3395306" aria-controls="story-author-preview-content-3395306" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Priyanshu Rav profile details">
+                Priyanshu Rav
+                
+              </button>
+              <div
+                id="story-author-preview-content-3395306"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/priyanshurav" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3841679%2F8de4200a-a6ab-4e2e-8064-494797e07124.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Priyanshu Rav</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3841679,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Priyanshu Rav&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3841679"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/priyanshurav/sha256sum-shasum-get-filehash-and-still-no-good-way-to-compare-hashes-4mak" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-24T13:46:57Z">Mar 24</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774360017"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/priyanshurav/sha256sum-shasum-get-filehash-and-still-no-good-way-to-compare-hashes-4mak" data-preload-image="https://media2.dev.to/dynamic/image/width=1000,height=1000,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Frh5tci5jx69xdgfjrkb4.png" id="article-link-3395306">
+          sha256sum, shasum, Get-FileHash — and still no good way to compare hashes
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(0, 0, 0, 0.10);
+        --tag-prefix: #000000;
+        --tag-bg-hover: rgba(0, 0, 0, 0.10);
+        --tag-prefix-hover: #000000;
+      " href="/t/cli"><span class="crayons-tag__prefix">#</span>cli</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(0, 0, 0, 0.10);
+        --tag-prefix: #000000;
+        --tag-bg-hover: rgba(0, 0, 0, 0.10);
+        --tag-prefix-hover: #000000;
+      " href="/t/linux"><span class="crayons-tag__prefix">#</span>linux</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(27, 172, 128, 0.10);
+        --tag-prefix: #1bac80;
+        --tag-bg-hover: rgba(27, 172, 128, 0.10);
+        --tag-prefix-hover: #1bac80;
+      " href="/t/security"><span class="crayons-tag__prefix">#</span>security</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(148, 61, 59, 0.10);
+        --tag-prefix: #943d3b;
+        --tag-bg-hover: rgba(148, 61, 59, 0.10);
+        --tag-prefix-hover: #943d3b;
+      " href="/t/bash"><span class="crayons-tag__prefix">#</span>bash</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/priyanshurav/sha256sum-shasum-get-filehash-and-still-no-good-way-to-compare-hashes-4mak" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3395306" aria-label="Add a comment to post - sha256sum, shasum, Get-FileHash — and still no good way to compare hashes">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">2<span class="hidden s:inline"> reactions</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/priyanshurav/sha256sum-shasum-get-filehash-and-still-no-good-way-to-compare-hashes-4mak#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - sha256sum, shasum, Get-FileHash — and still no good way to compare hashes">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="asl468ts5an6unlrw01gqbw6vhalrbst" class="crayons-icon"><title id="asl468ts5an6unlrw01gqbw6vhalrbst">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            2 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3395306"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3395306"
+              data-article-author-id="3841679"
+              aria-label="Save post sha256sum, shasum, Get-FileHash — and still no good way to compare hashes to reading list"
+              title="Save post sha256sum, shasum, Get-FileHash — and still no good way to compare hashes to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3391874" data-content-user-id="2960810">
+  <a href="https://dev.to/neikiri/i-got-tired-of-editing-ps1-so-i-made-a-visual-prompt-generator-2e20" aria-labelledby="article-link-3391874" class="crayons-story__hidden-navigation-link">I got tired of editing PS1, so I made a visual prompt generator</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/neikiri" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F2960810%2F24f8ec36-138e-4969-8229-c85e9e73fca2.png" alt="neikiri profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/neikiri" class="crayons-story__secondary fw-medium m:hidden">
+              Jindřich Stoklasa
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3391874" aria-controls="story-author-preview-content-3391874" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Jindřich Stoklasa profile details">
+                Jindřich Stoklasa
+                
+              </button>
+              <div
+                id="story-author-preview-content-3391874"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/neikiri" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F2960810%2F24f8ec36-138e-4969-8229-c85e9e73fca2.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Jindřich Stoklasa</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:2960810,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Jindřich Stoklasa&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="2960810"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/neikiri/i-got-tired-of-editing-ps1-so-i-made-a-visual-prompt-generator-2e20" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-23T23:33:30Z">Mar 23</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774308810"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/neikiri/i-got-tired-of-editing-ps1-so-i-made-a-visual-prompt-generator-2e20" data-preload-image="" id="article-link-3391874">
+          I got tired of editing PS1, so I made a visual prompt generator
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(148, 61, 59, 0.10);
+        --tag-prefix: #943d3b;
+        --tag-bg-hover: rgba(148, 61, 59, 0.10);
+        --tag-prefix-hover: #943d3b;
+      " href="/t/bash"><span class="crayons-tag__prefix">#</span>bash</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(0, 0, 0, 0.10);
+        --tag-prefix: #000000;
+        --tag-bg-hover: rgba(0, 0, 0, 0.10);
+        --tag-prefix-hover: #000000;
+      " href="/t/cli"><span class="crayons-tag__prefix">#</span>cli</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(0, 0, 0, 0.10);
+        --tag-prefix: #000000;
+        --tag-bg-hover: rgba(0, 0, 0, 0.10);
+        --tag-prefix-hover: #000000;
+      " href="/t/linux"><span class="crayons-tag__prefix">#</span>linux</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(86, 39, 101, 0.10);
+        --tag-prefix: #562765;
+        --tag-bg-hover: rgba(86, 39, 101, 0.10);
+        --tag-prefix-hover: #562765;
+      " href="/t/webdev"><span class="crayons-tag__prefix">#</span>webdev</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/neikiri/i-got-tired-of-editing-ps1-so-i-made-a-visual-prompt-generator-2e20" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3391874" aria-label="Add a comment to post - I got tired of editing PS1, so I made a visual prompt generator">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">1<span class="hidden s:inline"> reaction</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/neikiri/i-got-tired-of-editing-ps1-so-i-made-a-visual-prompt-generator-2e20#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - I got tired of editing PS1, so I made a visual prompt generator">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="an9pjjfrtsbmyyrbo167lljqakfb3rhv" class="crayons-icon"><title id="an9pjjfrtsbmyyrbo167lljqakfb3rhv">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            1 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3391874"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3391874"
+              data-article-author-id="2960810"
+              aria-label="Save post I got tired of editing PS1, so I made a visual prompt generator to reading list"
+              title="Save post I got tired of editing PS1, so I made a visual prompt generator to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3421740" data-content-user-id="248120">
+  <a href="https://dev.to/alsaheem/how-to-store-secrets-in-the-mac-keychain-and-use-them-like-environment-variables-1aj7" aria-labelledby="article-link-3421740" class="crayons-story__hidden-navigation-link">How to Store Secrets in the Mac Keychain (and Use Them Like Environment Variables)</a>
+    <div class="crayons-article__cover crayons-article__cover__image__feed" style="aspect-ratio: auto 1000 / 420;">
+              <a href="https://dev.to/alsaheem/how-to-store-secrets-in-the-mac-keychain-and-use-them-like-environment-variables-1aj7" title="How to Store Secrets in the Mac Keychain (and Use Them Like Environment Variables)" aria-label="article" class="crayons-article__cover__image__feed crayons-story__cover__image">
+        <img src="https://media2.dev.to/dynamic/image/width=1000,height=1000,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Ffhxiduurqreqonu51uzt.png" width="1000" height="420" style="background-color:#dddddd;" class="crayons-article__cover__image__feed" alt="Cover image for How to Store Secrets in the Mac Keychain (and Use Them Like Environment Variables)">
+      </a>
+    </div>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/alsaheem" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F248120%2F94fa93c9-e676-4daa-8e7f-b94e4c20a006.png" alt="alsaheem profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/alsaheem" class="crayons-story__secondary fw-medium m:hidden">
+              Ayomide Adebisi
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3421740" aria-controls="story-author-preview-content-3421740" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Ayomide Adebisi profile details">
+                Ayomide Adebisi
+                
+              </button>
+              <div
+                id="story-author-preview-content-3421740"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/alsaheem" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F248120%2F94fa93c9-e676-4daa-8e7f-b94e4c20a006.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Ayomide Adebisi</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:248120,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Ayomide Adebisi&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="248120"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/alsaheem/how-to-store-secrets-in-the-mac-keychain-and-use-them-like-environment-variables-1aj7" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-28T17:27:11Z">Mar 28</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774718831"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/alsaheem/how-to-store-secrets-in-the-mac-keychain-and-use-them-like-environment-variables-1aj7" data-preload-image="https://media2.dev.to/dynamic/image/width=1000,height=1000,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Ffhxiduurqreqonu51uzt.png" id="article-link-3421740">
+          How to Store Secrets in the Mac Keychain (and Use Them Like Environment Variables)
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/macos"><span class="crayons-tag__prefix">#</span>macos</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(27, 172, 128, 0.10);
+        --tag-prefix: #1bac80;
+        --tag-bg-hover: rgba(27, 172, 128, 0.10);
+        --tag-prefix-hover: #1bac80;
+      " href="/t/security"><span class="crayons-tag__prefix">#</span>security</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/keychain"><span class="crayons-tag__prefix">#</span>keychain</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(148, 61, 59, 0.10);
+        --tag-prefix: #943d3b;
+        --tag-bg-hover: rgba(148, 61, 59, 0.10);
+        --tag-prefix-hover: #943d3b;
+      " href="/t/bash"><span class="crayons-tag__prefix">#</span>bash</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/alsaheem/how-to-store-secrets-in-the-mac-keychain-and-use-them-like-environment-variables-1aj7" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3421740" aria-label="Add a comment to post - How to Store Secrets in the Mac Keychain (and Use Them Like Environment Variables)">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">6<span class="hidden s:inline"> reactions</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/alsaheem/how-to-store-secrets-in-the-mac-keychain-and-use-them-like-environment-variables-1aj7#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - How to Store Secrets in the Mac Keychain (and Use Them Like Environment Variables)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="arz637cldm1c6trr7rwnbo5s3wqcpv7p" class="crayons-icon"><title id="arz637cldm1c6trr7rwnbo5s3wqcpv7p">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            3 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3421740"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3421740"
+              data-article-author-id="248120"
+              aria-label="Save post How to Store Secrets in the Mac Keychain (and Use Them Like Environment Variables) to reading list"
+              title="Save post How to Store Secrets in the Mac Keychain (and Use Them Like Environment Variables) to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3422602" data-content-user-id="3848342">
+  <a href="https://dev.to/yuribe/advent-of-cyber-2025-day-1-linux-cli-shells-bells-2253" aria-labelledby="article-link-3422602" class="crayons-story__hidden-navigation-link">Advent of Cyber 2025 - Day 1: Linux CLI (Shell&#39;s Bells)</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/yuribe" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3848342%2F895f14d0-672e-420e-98ea-7a60b669ca2f.jpg" alt="yuribe profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/yuribe" class="crayons-story__secondary fw-medium m:hidden">
+              yuribe
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3422602" aria-controls="story-author-preview-content-3422602" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="yuribe profile details">
+                yuribe
+                
+              </button>
+              <div
+                id="story-author-preview-content-3422602"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/yuribe" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3848342%2F895f14d0-672e-420e-98ea-7a60b669ca2f.jpg"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">yuribe</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3848342,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;yuribe&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3848342"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/yuribe/advent-of-cyber-2025-day-1-linux-cli-shells-bells-2253" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-28T23:30:42Z">Mar 28</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774740642"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/yuribe/advent-of-cyber-2025-day-1-linux-cli-shells-bells-2253" data-preload-image="" id="article-link-3422602">
+          Advent of Cyber 2025 - Day 1: Linux CLI (Shell&#39;s Bells)
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/ctf"><span class="crayons-tag__prefix">#</span>ctf</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(0, 0, 0, 0.10);
+        --tag-prefix: #000000;
+        --tag-bg-hover: rgba(0, 0, 0, 0.10);
+        --tag-prefix-hover: #000000;
+      " href="/t/linux"><span class="crayons-tag__prefix">#</span>linux</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/tryhackme"><span class="crayons-tag__prefix">#</span>tryhackme</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(148, 61, 59, 0.10);
+        --tag-prefix: #943d3b;
+        --tag-bg-hover: rgba(148, 61, 59, 0.10);
+        --tag-prefix-hover: #943d3b;
+      " href="/t/bash"><span class="crayons-tag__prefix">#</span>bash</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/yuribe/advent-of-cyber-2025-day-1-linux-cli-shells-bells-2253" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3422602" aria-label="Add a comment to post - Advent of Cyber 2025 - Day 1: Linux CLI (Shell&#39;s Bells)">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">1<span class="hidden s:inline"> reaction</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/yuribe/advent-of-cyber-2025-day-1-linux-cli-shells-bells-2253#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Advent of Cyber 2025 - Day 1: Linux CLI (Shell&#39;s Bells)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a1h4knkugu30tdntrs680w2z59jp2otu" class="crayons-icon"><title id="a1h4knkugu30tdntrs680w2z59jp2otu">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            3 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3422602"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3422602"
+              data-article-author-id="3848342"
+              aria-label="Save post Advent of Cyber 2025 - Day 1: Linux CLI (Shell&#39;s Bells) to reading list"
+              title="Save post Advent of Cyber 2025 - Day 1: Linux CLI (Shell&#39;s Bells) to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3422508" data-content-user-id="3848195">
+  <a href="https://dev.to/lucasmdevdev/the-15-terminal-commands-i-use-every-day-and-how-they-actually-work-3kl7" aria-labelledby="article-link-3422508" class="crayons-story__hidden-navigation-link">The 15 Terminal Commands I Use Every Day (And How They Actually Work)</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/lucasmdevdev" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3848195%2F03e42168-205e-45e1-a047-e5d7d5488c92.png" alt="lucasmdevdev profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/lucasmdevdev" class="crayons-story__secondary fw-medium m:hidden">
+              Lucas M Dev
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3422508" aria-controls="story-author-preview-content-3422508" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Lucas M Dev profile details">
+                Lucas M Dev
+                
+              </button>
+              <div
+                id="story-author-preview-content-3422508"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/lucasmdevdev" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3848195%2F03e42168-205e-45e1-a047-e5d7d5488c92.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Lucas M Dev</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3848195,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Lucas M Dev&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3848195"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/lucasmdevdev/the-15-terminal-commands-i-use-every-day-and-how-they-actually-work-3kl7" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-28T22:28:49Z">Mar 28</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774736929"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/lucasmdevdev/the-15-terminal-commands-i-use-every-day-and-how-they-actually-work-3kl7" data-preload-image="" id="article-link-3422508">
+          The 15 Terminal Commands I Use Every Day (And How They Actually Work)
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(0, 0, 0, 0.10);
+        --tag-prefix: #000000;
+        --tag-bg-hover: rgba(0, 0, 0, 0.10);
+        --tag-prefix-hover: #000000;
+      " href="/t/linux"><span class="crayons-tag__prefix">#</span>linux</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/terminal"><span class="crayons-tag__prefix">#</span>terminal</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(42, 7, 152, 0.10);
+        --tag-prefix: #2A0798;
+        --tag-bg-hover: rgba(42, 7, 152, 0.10);
+        --tag-prefix-hover: #2A0798;
+      " href="/t/productivity"><span class="crayons-tag__prefix">#</span>productivity</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(148, 61, 59, 0.10);
+        --tag-prefix: #943d3b;
+        --tag-bg-hover: rgba(148, 61, 59, 0.10);
+        --tag-prefix-hover: #943d3b;
+      " href="/t/bash"><span class="crayons-tag__prefix">#</span>bash</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/lucasmdevdev/the-15-terminal-commands-i-use-every-day-and-how-they-actually-work-3kl7" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3422508" aria-label="Add a comment to post - The 15 Terminal Commands I Use Every Day (And How They Actually Work)">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">1<span class="hidden s:inline"> reaction</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/lucasmdevdev/the-15-terminal-commands-i-use-every-day-and-how-they-actually-work-3kl7#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - The 15 Terminal Commands I Use Every Day (And How They Actually Work)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="an5f6ukoq7a12eialbonk0kegc6nf9lj" class="crayons-icon"><title id="an5f6ukoq7a12eialbonk0kegc6nf9lj">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            3 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3422508"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3422508"
+              data-article-author-id="3848195"
+              aria-label="Save post The 15 Terminal Commands I Use Every Day (And How They Actually Work) to reading list"
+              title="Save post The 15 Terminal Commands I Use Every Day (And How They Actually Work) to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3415848" data-content-user-id="3824129">
+  <a href="https://dev.to/denesbeck/tmux-worktree-a-tmux-plugin-for-git-worktrees-kpm" aria-labelledby="article-link-3415848" class="crayons-story__hidden-navigation-link">🌳 tmux-worktree: A Tmux Plugin for Git Worktrees</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/denesbeck" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3824129%2Fd220f720-9b6c-4c2f-a535-9119b5fee060.png" alt="denesbeck profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/denesbeck" class="crayons-story__secondary fw-medium m:hidden">
+              denesbeck
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3415848" aria-controls="story-author-preview-content-3415848" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="denesbeck profile details">
+                denesbeck
+                
+              </button>
+              <div
+                id="story-author-preview-content-3415848"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/denesbeck" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3824129%2Fd220f720-9b6c-4c2f-a535-9119b5fee060.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">denesbeck</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3824129,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;denesbeck&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3824129"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/denesbeck/tmux-worktree-a-tmux-plugin-for-git-worktrees-kpm" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-27T15:32:04Z">Mar 27</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774625524"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/denesbeck/tmux-worktree-a-tmux-plugin-for-git-worktrees-kpm" data-preload-image="" id="article-link-3415848">
+          🌳 tmux-worktree: A Tmux Plugin for Git Worktrees
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/tmux"><span class="crayons-tag__prefix">#</span>tmux</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(148, 61, 59, 0.10);
+        --tag-prefix: #943d3b;
+        --tag-bg-hover: rgba(148, 61, 59, 0.10);
+        --tag-prefix-hover: #943d3b;
+      " href="/t/bash"><span class="crayons-tag__prefix">#</span>bash</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/fzf"><span class="crayons-tag__prefix">#</span>fzf</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(245, 77, 39, 0.10);
+        --tag-prefix: #F54D27;
+        --tag-bg-hover: rgba(245, 77, 39, 0.10);
+        --tag-prefix-hover: #F54D27;
+      " href="/t/git"><span class="crayons-tag__prefix">#</span>git</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/denesbeck/tmux-worktree-a-tmux-plugin-for-git-worktrees-kpm" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3415848" aria-label="Add a comment to post - 🌳 tmux-worktree: A Tmux Plugin for Git Worktrees">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">2<span class="hidden s:inline"> reactions</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/denesbeck/tmux-worktree-a-tmux-plugin-for-git-worktrees-kpm#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - 🌳 tmux-worktree: A Tmux Plugin for Git Worktrees">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a344d4l6qiki7711qunnlvofcrr3xsrd" class="crayons-icon"><title id="a344d4l6qiki7711qunnlvofcrr3xsrd">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            5 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3415848"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3415848"
+              data-article-author-id="3824129"
+              aria-label="Save post 🌳 tmux-worktree: A Tmux Plugin for Git Worktrees to reading list"
+              title="Save post 🌳 tmux-worktree: A Tmux Plugin for Git Worktrees to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3386443" data-content-user-id="2692158">
+  <a href="https://dev.to/codecoincognition/use-git-diff-claude-to-auto-generate-pr-descriptions-in-one-bash-alias-2do3" aria-labelledby="article-link-3386443" class="crayons-story__hidden-navigation-link">Use git diff + Claude to Auto-Generate PR Descriptions in One Bash Alias</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/codecoincognition" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F2692158%2Feb4994e6-f1b8-402f-8b3b-e13f950c3b88.png" alt="codecoincognition profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/codecoincognition" class="crayons-story__secondary fw-medium m:hidden">
+              Vikas Sah
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3386443" aria-controls="story-author-preview-content-3386443" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Vikas Sah profile details">
+                Vikas Sah
+                
+              </button>
+              <div
+                id="story-author-preview-content-3386443"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/codecoincognition" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F2692158%2Feb4994e6-f1b8-402f-8b3b-e13f950c3b88.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Vikas Sah</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:2692158,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Vikas Sah&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="2692158"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/codecoincognition/use-git-diff-claude-to-auto-generate-pr-descriptions-in-one-bash-alias-2do3" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-23T00:54:31Z">Mar 23</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774227271"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/codecoincognition/use-git-diff-claude-to-auto-generate-pr-descriptions-in-one-bash-alias-2do3" data-preload-image="" id="article-link-3386443">
+          Use git diff + Claude to Auto-Generate PR Descriptions in One Bash Alias
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(245, 77, 39, 0.10);
+        --tag-prefix: #F54D27;
+        --tag-bg-hover: rgba(245, 77, 39, 0.10);
+        --tag-prefix-hover: #F54D27;
+      " href="/t/git"><span class="crayons-tag__prefix">#</span>git</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(23, 253, 26, 0.10);
+        --tag-prefix: #17fd1a;
+        --tag-bg-hover: rgba(23, 253, 26, 0.10);
+        --tag-prefix-hover: #17fd1a;
+      " href="/t/ai"><span class="crayons-tag__prefix">#</span>ai</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(42, 7, 152, 0.10);
+        --tag-prefix: #2A0798;
+        --tag-bg-hover: rgba(42, 7, 152, 0.10);
+        --tag-prefix-hover: #2A0798;
+      " href="/t/productivity"><span class="crayons-tag__prefix">#</span>productivity</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(148, 61, 59, 0.10);
+        --tag-prefix: #943d3b;
+        --tag-bg-hover: rgba(148, 61, 59, 0.10);
+        --tag-prefix-hover: #943d3b;
+      " href="/t/bash"><span class="crayons-tag__prefix">#</span>bash</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/codecoincognition/use-git-diff-claude-to-auto-generate-pr-descriptions-in-one-bash-alias-2do3" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3386443" aria-label="Add a comment to post - Use git diff + Claude to Auto-Generate PR Descriptions in One Bash Alias">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">1<span class="hidden s:inline"> reaction</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/codecoincognition/use-git-diff-claude-to-auto-generate-pr-descriptions-in-one-bash-alias-2do3#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Use git diff + Claude to Auto-Generate PR Descriptions in One Bash Alias">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="ae4imby90g33uktkm09mtnmb34g9br05" class="crayons-icon"><title id="ae4imby90g33uktkm09mtnmb34g9br05">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            2 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3386443"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3386443"
+              data-article-author-id="2692158"
+              aria-label="Save post Use git diff + Claude to Auto-Generate PR Descriptions in One Bash Alias to reading list"
+              title="Save post Use git diff + Claude to Auto-Generate PR Descriptions in One Bash Alias to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3323300" data-content-user-id="3809977">
+  <a href="https://dev.to/boucle2026/bash-guard-stop-claude-code-from-running-dangerous-commands-95g" aria-labelledby="article-link-3323300" class="crayons-story__hidden-navigation-link">&quot;bash-guard: Stop Claude Code From Running Dangerous Commands&quot;</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/boucle2026" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3809977%2F4e985ce8-b121-49d1-b383-41f637632fd7.png" alt="boucle2026 profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/boucle2026" class="crayons-story__secondary fw-medium m:hidden">
+              Boucle
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3323300" aria-controls="story-author-preview-content-3323300" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Boucle profile details">
+                Boucle
+                
+              </button>
+              <div
+                id="story-author-preview-content-3323300"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/boucle2026" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3809977%2F4e985ce8-b121-49d1-b383-41f637632fd7.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Boucle</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3809977,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Boucle&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3809977"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/boucle2026/bash-guard-stop-claude-code-from-running-dangerous-commands-95g" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-07T16:17:42Z">Mar 7</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1772900262"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/boucle2026/bash-guard-stop-claude-code-from-running-dangerous-commands-95g" data-preload-image="" id="article-link-3323300">
+          &quot;bash-guard: Stop Claude Code From Running Dangerous Commands&quot;
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/claudecode"><span class="crayons-tag__prefix">#</span>claudecode</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(23, 253, 26, 0.10);
+        --tag-prefix: #17fd1a;
+        --tag-bg-hover: rgba(23, 253, 26, 0.10);
+        --tag-prefix-hover: #17fd1a;
+      " href="/t/ai"><span class="crayons-tag__prefix">#</span>ai</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(27, 172, 128, 0.10);
+        --tag-prefix: #1bac80;
+        --tag-bg-hover: rgba(27, 172, 128, 0.10);
+        --tag-prefix-hover: #1bac80;
+      " href="/t/security"><span class="crayons-tag__prefix">#</span>security</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(148, 61, 59, 0.10);
+        --tag-prefix: #943d3b;
+        --tag-bg-hover: rgba(148, 61, 59, 0.10);
+        --tag-prefix-hover: #943d3b;
+      " href="/t/bash"><span class="crayons-tag__prefix">#</span>bash</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/boucle2026/bash-guard-stop-claude-code-from-running-dangerous-commands-95g" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3323300" aria-label="Add a comment to post - &quot;bash-guard: Stop Claude Code From Running Dangerous Commands&quot;">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">1<span class="hidden s:inline"> reaction</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/boucle2026/bash-guard-stop-claude-code-from-running-dangerous-commands-95g#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - &quot;bash-guard: Stop Claude Code From Running Dangerous Commands&quot;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="afdw3tcve4zbhd82r1303ivcelibetpa" class="crayons-icon"><title id="afdw3tcve4zbhd82r1303ivcelibetpa">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              1<span class="hidden s:inline"> comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            3 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3323300"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3323300"
+              data-article-author-id="3809977"
+              aria-label="Save post &quot;bash-guard: Stop Claude Code From Running Dangerous Commands&quot; to reading list"
+              title="Save post &quot;bash-guard: Stop Claude Code From Running Dangerous Commands&quot; to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3271555" data-content-user-id="3473225">
+  <a href="https://dev.to/alanvarghese-dev/stop-reading-logs-manually-build-a-professional-log-analyzer-in-bash-5ee3" aria-labelledby="article-link-3271555" class="crayons-story__hidden-navigation-link">Stop Reading Logs Manually: Build a Professional Log Analyzer in Bash</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/alanvarghese-dev" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3473225%2Fd4a24b0c-64dc-4be2-9e74-648a7c105d75.png" alt="alanvarghese-dev profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/alanvarghese-dev" class="crayons-story__secondary fw-medium m:hidden">
+              Alan Varghese
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3271555" aria-controls="story-author-preview-content-3271555" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Alan Varghese profile details">
+                Alan Varghese
+                
+              </button>
+              <div
+                id="story-author-preview-content-3271555"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/alanvarghese-dev" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3473225%2Fd4a24b0c-64dc-4be2-9e74-648a7c105d75.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Alan Varghese</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3473225,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Alan Varghese&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3473225"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/alanvarghese-dev/stop-reading-logs-manually-build-a-professional-log-analyzer-in-bash-5ee3" class="crayons-story__tertiary fs-xs"><time datetime="2026-02-20T16:53:20Z">Feb 20</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1771606400"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/alanvarghese-dev/stop-reading-logs-manually-build-a-professional-log-analyzer-in-bash-5ee3" data-preload-image="" id="article-link-3271555">
+          Stop Reading Logs Manually: Build a Professional Log Analyzer in Bash
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(6, 181, 0, 0.10);
+        --tag-prefix: #06B500;
+        --tag-bg-hover: rgba(6, 181, 0, 0.10);
+        --tag-prefix-hover: #06B500;
+      " href="/t/devops"><span class="crayons-tag__prefix">#</span>devops</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/automation"><span class="crayons-tag__prefix">#</span>automation</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(148, 61, 59, 0.10);
+        --tag-prefix: #943d3b;
+        --tag-bg-hover: rgba(148, 61, 59, 0.10);
+        --tag-prefix-hover: #943d3b;
+      " href="/t/bash"><span class="crayons-tag__prefix">#</span>bash</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/scripting"><span class="crayons-tag__prefix">#</span>scripting</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+            <a href="https://dev.to/alanvarghese-dev/stop-reading-logs-manually-build-a-professional-log-analyzer-in-bash-5ee3#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Stop Reading Logs Manually: Build a Professional Log Analyzer in Bash">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a3qh28ats0fh43t6m4ipdj5qg7gf485h" class="crayons-icon"><title id="a3qh28ats0fh43t6m4ipdj5qg7gf485h">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            3 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3271555"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3271555"
+              data-article-author-id="3473225"
+              aria-label="Save post Stop Reading Logs Manually: Build a Professional Log Analyzer in Bash to reading list"
+              title="Save post Stop Reading Logs Manually: Build a Professional Log Analyzer in Bash to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3271552" data-content-user-id="3473225">
+  <a href="https://dev.to/alanvarghese-dev/automate-your-log-analysis-with-this-simple-bash-script-5857" aria-labelledby="article-link-3271552" class="crayons-story__hidden-navigation-link">Automate Your Log Analysis with This Simple Bash Script</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/alanvarghese-dev" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3473225%2Fd4a24b0c-64dc-4be2-9e74-648a7c105d75.png" alt="alanvarghese-dev profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/alanvarghese-dev" class="crayons-story__secondary fw-medium m:hidden">
+              Alan Varghese
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3271552" aria-controls="story-author-preview-content-3271552" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Alan Varghese profile details">
+                Alan Varghese
+                
+              </button>
+              <div
+                id="story-author-preview-content-3271552"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/alanvarghese-dev" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3473225%2Fd4a24b0c-64dc-4be2-9e74-648a7c105d75.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Alan Varghese</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3473225,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Alan Varghese&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3473225"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/alanvarghese-dev/automate-your-log-analysis-with-this-simple-bash-script-5857" class="crayons-story__tertiary fs-xs"><time datetime="2026-02-20T16:50:22Z">Feb 20</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1771606222"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/alanvarghese-dev/automate-your-log-analysis-with-this-simple-bash-script-5857" data-preload-image="" id="article-link-3271552">
+          Automate Your Log Analysis with This Simple Bash Script
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(148, 61, 59, 0.10);
+        --tag-prefix: #943d3b;
+        --tag-bg-hover: rgba(148, 61, 59, 0.10);
+        --tag-prefix-hover: #943d3b;
+      " href="/t/bash"><span class="crayons-tag__prefix">#</span>bash</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/scripting"><span class="crayons-tag__prefix">#</span>scripting</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/automation"><span class="crayons-tag__prefix">#</span>automation</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(6, 181, 0, 0.10);
+        --tag-prefix: #06B500;
+        --tag-bg-hover: rgba(6, 181, 0, 0.10);
+        --tag-prefix-hover: #06B500;
+      " href="/t/devops"><span class="crayons-tag__prefix">#</span>devops</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+            <a href="https://dev.to/alanvarghese-dev/automate-your-log-analysis-with-this-simple-bash-script-5857#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Automate Your Log Analysis with This Simple Bash Script">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="asr1xw651qslv3c3z3ofybivo46vovez" class="crayons-icon"><title id="asr1xw651qslv3c3z3ofybivo46vovez">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            2 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3271552"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3271552"
+              data-article-author-id="3473225"
+              aria-label="Save post Automate Your Log Analysis with This Simple Bash Script to reading list"
+              title="Save post Automate Your Log Analysis with This Simple Bash Script to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="placeholder-div"></div>
+<div class="single-article-small-pic" id="article-index-hidden-div" style="display:none"></div>
+
+    </div>
+      <div class="crayons-notice mt-4" aria-live="polite">
+        👋 <a href="https://forem.com/enter?signup_subforem=35">Sign in</a> for the ability to sort posts by <strong>relevant</strong>, <strong>latest</strong>, or <strong>top</strong>.
+      </div>
+  </main>
+    <div id="sidebar-wrapper-right" class="sidebar-wrapper sidebar-wrapper-right">
+    <div class="sidebar-bg" id="sidebar-bg-right"></div>
+    <aside class="side-bar sidebar-additional showing fs-s" id="sidebar-additional">
+            <div class="widget">
+              <header>
+                <h4 class="fs-base fw-medium">trending guides/resources</h4>
+              </header>
+              <div class="widget-body fs-s">
+                <div class="widget-link-list">
+                  
+
+<a class="crayons-link crayons-link--contentful" href="/marcosplusplus/como-otimizar-o-comando-cd-para-voltar-varias-pastas-de-uma-so-vez-28kh">
+  Como otimizar o comando cd para voltar várias pastas de uma só vez
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/jeremiahbarias/building-a-filesystem-bash-based-agentic-memory-system-part-1-4nan">
+  Building a Filesystem + Bash Based Agentic Memory System (Part 1)
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/parthiv_saikia_/learn-shell-scripting-by-building-a-project-scaffolding-cli-275g">
+  Learn Shell scripting by building a project scaffolding CLI
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/yurukusa/4-hooks-that-let-claude-code-run-autonomously-with-zero-babysitting-1748">
+  4 Hooks That Let Claude Code Run Autonomously (With Zero Babysitting)
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/coa00/how-i-built-a-mobile-approval-system-for-claude-code-so-i-can-finally-leave-my-desk-1ida">
+  How I Built a Mobile Approval System for Claude Code So I Can Finally Leave My Desk
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/alok38/connecting-to-an-ec2-instance-server-on-aws-using-ssh-from-the-windows-power-shell-d9o">
+  Connecting to an EC2 instance (server) on AWS using SSH from the windows power shell
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/francistrdev/i-used-google-gemini-for-the-first-time-a-deep-analysis-of-my-experience-so-far-2n12">
+  I used Google Gemini for the First Time. A Deep Analysis of my Experience so far! ✨
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/pawic/real-world-git-tips-1-updating-git-bash-on-windows-194d">
+  Git Full Speed Ahead Part 4 : TIP 1 # Updating Git Bash on Windows
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/odiong/why-openclaw-still-worked-after-i-uninstalled-it-528a">
+  Why OpenClaw Still Worked After I Uninstalled It
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/alsaheem/how-to-store-secrets-in-the-mac-keychain-and-use-them-like-environment-variables-1aj7">
+  How to Store Secrets in the Mac Keychain (and Use Them Like Environment Variables)
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/spencermarx/release-the-horde-multi-agent-orchestration-in-pure-bash-3oaf">
+  Release the Horde: Multi-Agent Orchestration in Pure Bash
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/karaniph/60-bash-commands-for-cloud-architects-engineers-aws-azure-gcp-more-lmm">
+  60+ Bash Commands for Cloud Architects &amp; Engineers (AWS, Azure, GCP &amp; More)
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/ajitkumar/why-your-images-fail-to-upload-on-imagekit-and-how-to-fix-it-with-ubuntu-shell-and-python-13j3">
+  Why Your Images Fail to Upload on ImageKit and How to Fix It (With Ubuntu, Shell, and Python Scri...
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/pirrezz/switching-from-powershell-to-bash-setting-up-wsl-and-running-azure-cli-in-visual-studio-code-1823">
+  Switching from PowerShell to Bash: Setting Up WSL and Running Azure CLI in Visual Studio Code
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/alanvarghese-dev/how-i-built-a-lightweight-cron-job-health-monitor-with-bash-and-docker-16mh">
+  How I Built a Lightweight Cron Job Health Monitor with Bash and Docker
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/wilddog64/how-i-keep-a-kubernetes-cli-lean-vault-jenkins-istio-loaded-only-on-demand-5031">
+  How I Keep a Kubernetes CLI Lean: Vault + Jenkins + Istio, Loaded Only On Demand
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/letstalkoss/bson-to-json-the-standard-tools-5c68">
+  BSON to JSON: The Standard Tools
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/marcosplusplus/how-to-optimize-the-cd-command-to-go-back-multiple-folders-at-once-1kl9">
+  How to optimize the cd command to go back multiple folders at once
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/ohugonnot/claude-code-statusline-monitoring-rate-limits-in-real-time-5015">
+  Claude Code Statusline: monitoring rate limits in real time
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/uthman_dev/stop-writing-bash-scripts-theres-a-better-way-50en">
+  Stop Writing Bash Scripts, There&#39;s a Better Way
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/_46ea277e677b888e0cd13/claude-code-loop-myeongryeongeo-tansaenggi-5jul-basheseo-gongsig-gineungggaji-2l3h">
+  Claude Code /loop 명령어 탄생기: 5줄 Bash에서 공식 기능까지
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/rahimah_dev/master-the-linux-terminal-for-modern-data-analytics-him">
+  Master the Linux Terminal for Modern Data Analytics
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/wilddog64/the-architecture-wasnt-designed-it-emerged-k3d-manager-part-2-518a">
+  The Architecture Wasn&#39;t Designed — It Emerged (k3d-manager, Part 2)
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/jerry_schneider/how-i-made-fzf-feel-snappy-again-in-large-repositories-208n">
+  How I Made fzf Feel Snappy Again in Large Repositories
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/sbkumbar024/scripting-for-devops-4mgb">
+  Scripting for DevOps
+</a>
+
+                </div>
+              </div>
+            </div>
+    </aside>
+  </div>
+
+</div>
+
+<script src="https://assets.dev.to/assets/storiesList-b9c50cbd898a3a64258a3a49db1c531651b0a4a11937be35ed4651111802b5b5.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/tagFollows-07a4928c795d6d74427628f275723d9c29def9bb2706cc45ccbb95c0054465fe.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/feedPreviewCards-8d16b0b656456a28c0a290f756cf6e21e19833111c4796f48c631bfea8323d51.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/hideBookmarkButtons-a5d5527593e7fcba1cba72db457b57f49f94bf2266c62db454b2c8a00e751d33.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/drawerSliders-823098a874684cfb50f32368b8dd1c7854954b83a588b8b6cfaef1e8fd30d858.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/localizeArticleDates-70147c5c6bfe350b42e020ebb2a3dd37419d83978982b5a67b6389119bf162ac.js" defer="defer"></script>
+
+    <div id="runtime-banner-container"></div>
+    <div id="i18n-translations" data-translations="{&quot;en&quot;:{&quot;core&quot;:{&quot;add_comment&quot;:&quot;Add comment&quot;,&quot;beta&quot;:&quot;beta&quot;,&quot;comment&quot;:&quot;Comment&quot;,&quot;copy_link&quot;:&quot;Copy link&quot;,&quot;edit_profile&quot;:&quot;Edit profile&quot;,&quot;follow&quot;:&quot;Follow&quot;,&quot;follow_back&quot;:&quot;Follow back&quot;,&quot;following&quot;:&quot;Following&quot;,&quot;like&quot;:&quot;Like&quot;,&quot;loading&quot;:&quot;loading...&quot;,&quot;reaction&quot;:&quot;Reaction&quot;,&quot;report_abuse&quot;:&quot;Report abuse&quot;,&quot;search&quot;:&quot;Search&quot;,&quot;success_settings&quot;:&quot;Successfully updated settings.&quot;,&quot;search_placeholder&quot;:&quot;Search...&quot;,&quot;search_find_related_posts&quot;:&quot;Find related posts...&quot;,&quot;search_powered_by&quot;:&quot;Powered by Algolia&quot;,&quot;search_submit_search&quot;:&quot;Submit search for advanced filtering.&quot;,&quot;search_displaying_recommendations&quot;:&quot;Displaying Algolia Recommendations — Start typing to search&quot;,&quot;article_form_save_changes&quot;:&quot;Save changes&quot;,&quot;article_form_schedule&quot;:&quot;Schedule&quot;,&quot;article_form_publish&quot;:&quot;Publish&quot;,&quot;article_form_loading_preview&quot;:&quot;Loading preview&quot;,&quot;article_form_preview_loaded&quot;:&quot;Preview loaded&quot;,&quot;comments_preview&quot;:&quot;Preview&quot;,&quot;comments_continue_editing&quot;:&quot;Continue editing&quot;,&quot;survey_enter_response&quot;:&quot;Enter your response here...&quot;,&quot;survey_thank_you_response&quot;:&quot;Thank you for your response.&quot;,&quot;survey_thank_you_completing&quot;:&quot;Thank you for completing the survey!&quot;,&quot;dashboard_analytics_readers&quot;:&quot;Readers&quot;,&quot;dashboard_analytics_comments&quot;:&quot;Comments&quot;,&quot;dashboard_analytics_reactions&quot;:&quot;Reactions&quot;,&quot;stats_by&quot;:&quot;by&quot;,&quot;editor_new_title&quot;:&quot;New post title here...&quot;,&quot;editor_body_placeholder&quot;:&quot;Write your post content here...&quot;,&quot;tags_field_label&quot;:&quot;Add up to 4 tags&quot;,&quot;tags_field_placeholder&quot;:&quot;Add up to 4 tags...&quot;,&quot;counted_organization&quot;:{&quot;one&quot;:&quot;%{count} organization&quot;,&quot;other&quot;:&quot;%{count} organizations&quot;},&quot;counted_user&quot;:{&quot;one&quot;:&quot;%{count} person&quot;,&quot;other&quot;:&quot;%{count} people&quot;},&quot;not_following&quot;:&quot;You&#39;re not following anyone&quot;,&quot;following_everyone&quot;:&quot;You&#39;re following %{details} (everyone)&quot;,&quot;you_are_following&quot;:&quot;You&#39;re following&quot;,&quot;and&quot;:&quot;and&quot;}}}"></div>
+  </div>
+</div>
+    
+
+<footer id="footer" class="crayons-footer print-hidden">
+  <div id="footer-container" class="crayons-footer__container">
+
+
+        <style>
+  .long-bb-body {
+    max-height: calc(100vh - 200px);
+    overflow: hidden;
+  }
+  .long-bb-bottom {
+    height: 180px;
+    background: linear-gradient(to top, var(--card-bg), transparent);
+    margin-top: -180px;
+    position:relative;
+    z-index: 5;
+  }
+</style>
+
+  <div
+    style=""
+    data-display-unit data-id="146443"
+    data-category-click="click"
+    data-category-impression="impression"
+    data-context-type="home"
+    data-special="nothing"
+    data-article-id="2462235"
+    data-type-of="in_house">
+          <div class="crayons-card crayons-card--secondary crayons-bb bb-placement js-billboard" style="display: inline-flex; flex-direction: column; align-items: center; margin: 0 auto 2rem auto; width: fit-content; padding: 2rem;">
+        <p style="font-weight: bold; margin: 0 0 1rem 0;">
+            💎 DEV Diamond Sponsors
+        </p>
+        <p style="font-size: 0.8em; margin: 0 0 2rem 0;">
+            Thank you to our Diamond Sponsors for supporting the DEV Community
+        </p>
+    
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://aistudio.google.com/?utm_source=partner&amp;utm_medium=partner&amp;utm_campaign=FY25-Global-DEVpartnership-sponsorship-AIS&amp;utm_content=-&amp;utm_term=-&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fxjlyhbdqehj3akhz166w.png" alt="Google AI - Official AI Model and Platform Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 54px; padding: 10px;" loading="lazy" width="2048" height="472">
+                </a>
+                <p style="text-align: center;">Google AI is the official AI Model and Platform Partner of DEV</p>
+            </div>
+
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://neon.tech/?ref=devto&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fbnl88cil6afxzmgwrgtt.png" alt="Neon - Official Database Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 60px; padding: 10px;" loading="lazy" width="2286" height="596">
+                </a>
+                <p style="text-align: center;">Neon is the official database partner of DEV</p>
+            </div>
+    
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://www.algolia.com/developers/?utm_source=devto&amp;utm_medium=referral&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fv30ephnolfvnlwgwm0yz.png" alt="Algolia - Official Search Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 60px; padding: 10px;" loading="lazy" width="2286" height="596">
+                </a>
+                <p style="text-align: center;">Algolia is the official search partner of DEV</p>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+    <p class="fs-s crayons-footer__description">
+      <a class="c-link c-link--branded fw-medium" aria-label="DEV Community Home" href="/">DEV Community</a> — A space to discuss and keep up software development and manage your software career
+    </p>
+
+    <ul class="footer__nav-links flex gap-2 justify-center flex-wrap fs-s p-0" style="" />
+        <li class="footer__nav-link flex items-center">
+    <a href="/">
+      Home
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/about">
+      About
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/contact">
+      Contact
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://mlh.io/">
+      MLH
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+
+    </ul>
+
+    <ul class="footer__nav-links flex gap-2 justify-center flex-wrap fs-s p-0" style="" />
+        <li class="footer__nav-link flex items-center">
+    <a href="/code-of-conduct">
+      Code of Conduct
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/privacy">
+      Privacy Policy
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/terms">
+      Terms of Use
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+
+    </ul>
+
+    <div class="fs-s">
+      <p>Built on <a class="c-link c-link--branded" target="_blank" rel="noopener" href="https://www.forem.com">Forem</a> — the <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/t/opensource">open source</a> software that powers <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to">DEV</a> and other inclusive communities.</p>
+      <p>Made with love and <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/t/rails">Ruby on Rails</a>. DEV Community <span title="copyright">&copy;</span> 2016 - 2026.</p>
+    </div>
+  </div>
+</footer>
+<div id="snack-zone"></div>
+
+    <div id="global-signup-modal" class="authentication-modal hidden">
+  <div class="authentication-modal__container">
+    <figure class="authentication-modal__image-container">
+      <img class="authentication-modal__image" src="https://media2.dev.to/dynamic/image/width=190,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+        alt="DEV Community" loading="lazy" />
+    </figure>
+    <div class="authentication-modal__content">
+      <p class="authentication-modal__description">
+          We&#39;re a place where coders share, stay up-to-date and grow their careers.
+      </p>
+    </div>
+    <div class="authentication-modal__actions">
+      <a href="https://dev.to/enter?signup_subforem=1" class="crayons-btn" aria-label="Log in" data-no-instant>
+        Log in
+      </a>
+      <a href="https://dev.to/enter?signup_subforem=1&amp;state=new-user" class="crayons-btn crayons-btn--ghost-brand js-global-signup-modal__create-account" aria-label="Create new account" data-no-instant>
+        Create account
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="https://assets.dev.to/assets/signupModalShortcuts-0b25469b985100a01e94cbd7fccaf7f0a4d776e129aac65c766aa32cb28ab29a.js" defer="defer"></script>
+
+    <div id="cookie-consent"></div>
+  <div id="reaction-category-resources" class="hidden" aria-hidden="true">
+    <img data-name="Like" data-slug="like" data-position="1" src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+    <img data-name="Unicorn" data-slug="unicorn" data-position="2" src="https://assets.dev.to/assets/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" width="18" height="18" />
+    <img data-name="Exploding Head" data-slug="exploding_head" data-position="3" src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" width="18" height="18" />
+    <img data-name="Raised Hands" data-slug="raised_hands" data-position="4" src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="18" height="18" />
+    <img data-name="Fire" data-slug="fire" data-position="5" src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+</div>
+
+    <script>
+  var userSignedIn = false;
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    initAuth();
+  } else {
+    document.addEventListener('DOMContentLoaded', initAuth);
+  }
+
+  function initAuth() {
+    var paramToken = new URLSearchParams(window.location.search).get('jwt');
+
+    if (paramToken && !userSignedIn) {
+      authenticateUser(paramToken);
+    } else {
+      var iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = 'https://dev.to/auth_pass/iframe';
+  
+      document.body.appendChild(iframe);
+  
+      window.addEventListener('message', function(event) {
+        if (event.origin !== 'https://dev.to' && event.origin !== window.location.origin) {
+          return;
+        }
+  
+        var data = event.data;
+  
+        if (data.authenticated && !userSignedIn) {
+          authenticateUser(data.token);
+        } else if(data.authenticated && window.ReactNativeWebView && window.ReactNativeWebView.postMessage) {
+          window.ReactNativeWebView.postMessage(JSON.stringify({
+            action: 'login',
+            token: data.token,
+          }));
+        }
+      });  
+    }
+
+    function authenticateUser(token) {
+      fetch('/auth_pass/token_login', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': getMetaContent('csrf-token'),
+        },
+        body: JSON.stringify({ token: token }),
+      })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        if (data.success) {
+          if (document.head.querySelector('meta[name="user-signed-in"][content="false"]')) {
+            // Reload the page to update the user's state
+            location.reload();
+          }
+        }
+      })
+      .catch(function(error) {
+        console.error('Error during authentication:', error);
+      });
+    }
+
+    function getMetaContent(name) {
+      var element = document.querySelector('meta[name="' + name + '"]');
+      return element ? element.getAttribute('content') : '';
+    }
+  }
+</script>
+
+  
+  
+  
+  </body>
+  </html>

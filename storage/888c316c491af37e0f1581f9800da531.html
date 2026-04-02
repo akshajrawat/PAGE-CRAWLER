@@ -1,0 +1,3117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>I Built an AI Event Butler So I&#39;d Never Miss Another Tech Meetup (And You Can Too) - DEV Community</title>
+    
+    <link rel="preload" href="/reactions?article_id=2803055" as="fetch" crossorigin="same-origin">
+    <link rel="canonical" href="https://dev.to/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io" />
+    <meta name="description" content="This is a submission for the AI Agents Challenge powered by n8n and Bright Data           What I... Tagged with devchallenge, n8nbrightdatachallenge, ai, webdev.">
+    <meta name="keywords" content="devchallenge, n8nbrightdatachallenge, ai, webdev, software, coding, development, engineering, inclusive, community">
+
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://dev.to/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io" />
+    <meta property="og:title" content="I Built an AI Event Butler So I&#39;d Never Miss Another Tech Meetup (And You Can Too)" />
+    <meta property="og:description" content="This is a submission for the AI Agents Challenge powered by n8n and Bright Data           What I..." />
+    <meta property="og:site_name" content="DEV Community" />
+    <meta name="twitter:site" content="@thepracticaldev">
+    <meta name="twitter:creator" content="@VarshithVhegde1">
+    <meta name="twitter:title" content="I Built an AI Event Butler So I&#39;d Never Miss Another Tech Meetup (And You Can Too)">
+    <meta name="twitter:description" content="This is a submission for the AI Agents Challenge powered by n8n and Bright Data           What I...">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:widgets:new-embed-design" content="on">
+    <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+      <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1000,height=500,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F9ni3dfp9h6ty4stp2aa0.png" />
+      <meta name="twitter:image:src" content="https://media2.dev.to/dynamic/image/width=1000,height=500,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F9ni3dfp9h6ty4stp2aa0.png">
+
+      <meta name="last-updated" content="2026-04-01 08:38:00 UTC">
+      <meta name="user-signed-in" content="false">
+      <meta name="head-cached-at" content="1775032680">
+      <meta name="environment" content="production">
+      <link rel="stylesheet" href="https://assets.dev.to/assets/minimal-102395aec70cbac5f7d0bd5bebb5b56f0459629c5d224dae16333f11604cbad3.css" media="all" id="main-minimal-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/views-daf614dcfafed4955d7758a6a86d63bfbb1e8d4eae8b6317b421e18a99bbe867.css" media="all" id="main-views-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/crayons-8fce708625aacc3ff4a4d4947252a1cfab954753bb082374c0bed738861b52f2.css" media="all" id="main-crayons-stylesheet" />
+
+      <script src="https://assets.dev.to/assets/base-0c748bbcdc30041261c326ef2ce931fbce46c58bc3c488da881ae35c4750941d.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/application-0b268684912bef9b0f23defff01cb608bfc5d5e5610287725e7b686139ae32d3.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/baseInitializers-2f0777a6d67046056f9f42665560ce072de3801292674358ddbad6e135c1891d.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/baseTracking-b6bf73e5ee66633e151e7d5b7c6bbccedfa4c59e3615be97b98c4c0f543ddae7.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/followButtons-a29380c2c88136b97b2b5e63e94614ff7458fc72e07cffa7b6153831c28a40d2.js" defer="defer"></script>
+
+        <meta name="search-script" content="https://assets.dev.to/assets/Search-b977aea0f2d7a5818b4ebd97f7d4aba8548099f84f5db5761f8fa67be76abc54.js">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+      <link rel="icon" type="image/x-icon" href="https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" />
+      <link rel="apple-touch-icon" href="https://media2.dev.to/dynamic/image/width=180,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="https://media2.dev.to/dynamic/image/width=152,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="https://media2.dev.to/dynamic/image/width=180,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="167x167" href="https://media2.dev.to/dynamic/image/width=167,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link href="https://media2.dev.to/dynamic/image/width=192,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" rel="icon" sizes="192x192" />
+      <link href="https://media2.dev.to/dynamic/image/width=128,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" rel="icon" sizes="128x128" />
+      <meta name="apple-mobile-web-app-title" content="dev.to">
+      <meta name="application-name" content="dev.to">
+      <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+      <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+      <link rel="search" href="https://dev.to/open-search.xml" type="application/opensearchdescription+xml" title="DEV Community" />
+
+      <meta property="forem:name" content="DEV Community" />
+      <meta property="forem:logo" content="https://media2.dev.to/dynamic/image/width=512,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" />
+      <meta property="forem:domain" content="dev.to" />
+    <style>
+.ltag__link--embedded img.subscription-icon {
+max-height: 13px !important;
+max-width: 21px !important;
+display: inline-block !important;
+border-radius: 0 !important;
+}
+.text-styles .crayons-article__context-note p {
+margin-bottom: 0 !important;
+}
+</style>
+  </head>
+    <body
+      class="sans-serif-article-body default-header"
+      data-user-status="logged-out"
+      data-is-root-subforem="false"
+        data-subforem-id="1"
+      data-side-nav-visible="true"
+      data-community-name="DEV Community"
+      data-subscription-icon="https://assets.dev.to/assets/subscription-icon-805dfa7ac7dd660f07ed8d654877270825b07a92a03841aa99a1093bd00431b2.png"
+      data-locale="en"
+      data-honeybadger-key="hbp_nqu4Y66HuEKlD6YRGssZuRQnPOjDm50J8Zkr"
+      data-deployed-at="2026-03-31T16:23:33Z"
+      data-latest-commit-id="786e25495afed32bb807645b48a724374606e51e"
+      data-ga-tracking="UA-71991109-1"
+      data-cookie-banner-user-context="logged_out_only"
+      data-cookie-banner-platform-context="off"
+      data-algolia-id="PRSOBFP46H"
+      data-algolia-search-key="9aa7d31610cba78851c9b1f63776a9dd"
+      data-algolia-display="true"
+      data-dynamic-url-component="bmar11"
+      data-ga4-tracking-id="G-TYEM8Y3JN3">
+      
+      <script>
+        if (navigator.userAgent === 'ForemWebView/1' || window.frameElement) {
+          document.body.classList.add("hidden-shell");
+        }
+          if (new Date() > new Date("2026-02-04T09:00:00-05:00")) {
+            document.body.dataset.sideNavVisible = "false";
+          } 
+      </script>
+
+      <link rel="stylesheet" href="https://assets.dev.to/assets/minimal-102395aec70cbac5f7d0bd5bebb5b56f0459629c5d224dae16333f11604cbad3.css" media="all" id="secondary-minimal-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/views-daf614dcfafed4955d7758a6a86d63bfbb1e8d4eae8b6317b421e18a99bbe867.css" media="all" id="secondary-views-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/crayons-8fce708625aacc3ff4a4d4947252a1cfab954753bb082374c0bed738861b52f2.css" media="all" id="secondary-crayons-stylesheet" />
+
+      <div id="body-styles">
+        <style>
+          :root {
+            --accent-brand-lighter-rgb: 80, 99, 301;
+            --accent-brand-rgb: 59, 73, 223;
+            --accent-brand-darker-rgb: 47, 58, 178;
+          }
+        </style>
+      </div>
+      <div id="audiocontent" data-podcast="">
+        
+      </div>
+      <div class="navigation-progress" id="navigation-progress"></div>
+
+<header id="topbar" class="crayons-header topbar print-hidden">
+  <span id="route-change-target" tabindex="-1"></span>
+  <a href="#main-content" class="skip-content-link">Skip to content</a>
+  <div class="crayons-header__container">
+    <span class="inline-block m:hidden ">
+      <button class="c-btn c-btn--icon-alone js-hamburger-trigger mx-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="ambkjvzxhnbx0bmxxwu1ufgvr6i5jxqv" class="crayons-icon"><title id="ambkjvzxhnbx0bmxxwu1ufgvr6i5jxqv">Navigation menu</title>
+    <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"></path>
+</svg>
+
+      </button>
+    </span>
+    <a href="/" class="site-logo" aria-label="DEV Community Home" >
+    <img class="site-logo__img"
+         src="https://media2.dev.to/dynamic/image/quality=100/https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png"
+         style="aspect-ratio: 10 / 8"
+         alt="DEV Community">
+</a>
+
+
+    <div class="crayons-header--search js-search-form" id="header-search">
+      <form accept-charset="UTF-8" method="get" action="/search" role="search">
+        <div class="crayons-fields crayons-fields--horizontal">
+          <div class="crayons-field flex-1 relative">
+            <input id="search-input" class="crayons-header--search-input crayons-textfield js-search-input" type="text" id="nav-search" name="q" placeholder="Find related posts..." autocomplete="off" />
+            <button type="submit" aria-label="Search" class="c-btn c-btn--icon-alone absolute inset-px right-auto mt-0 py-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="asy878do1iz97kd3ij3p7bg49m73g6w6" aria-hidden="true" class="crayons-icon"><title id="asy878do1iz97kd3ij3p7bg49m73g6w6">Search</title>
+    <path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0111 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 01-1.969 5.617zm-2.006-.742A6.977 6.977 0 0018 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 004.875-1.975l.15-.15z"></path>
+</svg>
+
+            </button>
+
+            <a class="crayons-header--search-brand-indicator" href="https://www.algolia.com/developers/?utm_source=devto&utm_medium=referral" target="_blank" rel="noopener noreferrer">
+                Powered by Algolia
+                <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" width="24" height="24" viewBox="0 0 500 500.34" role="img" aria-labelledby="a7r2cll4qoe6zuzztpn3mbyw7jcn80g4" aria-hidden="true" class="crayons-icon"><title id="a7r2cll4qoe6zuzztpn3mbyw7jcn80g4">Search</title>
+  <defs></defs><path class="cls-1" d="M250,0C113.38,0,2,110.16,.03,246.32c-2,138.29,110.19,252.87,248.49,253.67,42.71,.25,83.85-10.2,120.38-30.05,3.56-1.93,4.11-6.83,1.08-9.52l-23.39-20.74c-4.75-4.22-11.52-5.41-17.37-2.92-25.5,10.85-53.21,16.39-81.76,16.04-111.75-1.37-202.04-94.35-200.26-206.1,1.76-110.33,92.06-199.55,202.8-199.55h202.83V407.68l-115.08-102.25c-3.72-3.31-9.43-2.66-12.43,1.31-18.47,24.46-48.56,39.67-81.98,37.36-46.36-3.2-83.92-40.52-87.4-86.86-4.15-55.28,39.65-101.58,94.07-101.58,49.21,0,89.74,37.88,93.97,86.01,.38,4.28,2.31,8.28,5.53,11.13l29.97,26.57c3.4,3.01,8.8,1.17,9.63-3.3,2.16-11.55,2.92-23.6,2.07-35.95-4.83-70.39-61.84-127.01-132.26-131.35-80.73-4.98-148.23,58.18-150.37,137.35-2.09,77.15,61.12,143.66,138.28,145.36,32.21,.71,62.07-9.42,86.2-26.97l150.36,133.29c6.45,5.71,16.62,1.14,16.62-7.48V9.49C500,4.25,495.75,0,490.51,0H250Z"></path>
+</svg>
+
+            </a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="flex items-center h-100 ml-auto">
+        <div class="flex" id="authentication-top-nav-actions">
+          <span class="hidden m:block">
+            <a href="https://dev.to/enter?signup_subforem=1" class="c-link c-link--block mr-2 whitespace-nowrap ml-auto" data-no-instant>
+              Log in
+            </a>
+          </span>
+
+          <a href="https://dev.to/enter?signup_subforem=1&amp;state=new-user" data-tracking-id="ca_top_nav" data-tracking-source="top_navbar" class="c-cta c-cta--branded whitespace-nowrap mr-2" data-no-instant>
+            Create account
+          </a>
+        </div>
+    </div>
+  </div>
+</header>
+
+<div class="hamburger">
+  <div class="hamburger__content">
+    <header class="hamburger__content__header">
+      <h2 class="fs-l fw-bold flex-1 break-word lh-tight">DEV Community</h2>
+
+      <button class="c-btn c-btn--icon-alone js-hamburger-trigger shrink-0" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="apoh1yt1ykhro4fam7jb0060s4j2iyg2" aria-hidden="true" class="crayons-icon c-btn__icon"><title id="apoh1yt1ykhro4fam7jb0060s4j2iyg2">Close</title><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636l4.95 4.95z"></path></svg>
+
+      </button>
+    </header>
+
+    <div class="p-2 js-navigation-links-container" id="authentication-hamburger-actions">
+    </div>
+  </div>
+  <div class="hamburger__overlay js-hamburger-trigger"></div>
+</div>
+
+
+      <div id="active-broadcast" class="broadcast-wrapper"></div>
+<div id="page-content" class="wrapper stories stories-show articletag-devchallenge articletag-n8nbrightdatachallenge articletag-ai articletag-webdev articleuser-885064" data-current-page="stories-show">
+  <div id="page-content-inner" data-internal-nav="false">
+    <div id="page-route-change" class="screen-reader-only" aria-live="polite" aria-atomic="true"></div>
+
+    
+<style>
+  .html-variant-wrapper { display: none}
+</style>
+
+
+
+<script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.2.10/webcomponents-loader.js"
+        integrity="sha384-3HK5hxQbkFqOIxMbpROlRmRtYl2LBZ52t+tqcjzsmr9NJuOWQxl8RgQSyFvq2lhy"
+        crossorigin="anonymous" defer></script>
+
+  <script src="https://assets.dev.to/assets/webShare-0686f0b9ac40589694ef6ae6a6202c44119bc781c254f6cf6d52d8a008461156.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/articlePage-ed23d70916aed9a7fec41f94e64aac17438d3210c1bb1d6fceace80f15445213.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/commentDropdowns-7a28d130e5b78d38b30a9495a964003a66bd64fa455fc70b766d69cf06b9ba24.js" defer="defer"></script>
+
+  <script type="application/ld+json">
+    {"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://dev.to/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io"},"url":"https://dev.to/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io","image":["https://media2.dev.to/dynamic/image/width=1080,height=1080,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F9ni3dfp9h6ty4stp2aa0.png","https://media2.dev.to/dynamic/image/width=1280,height=720,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F9ni3dfp9h6ty4stp2aa0.png","https://media2.dev.to/dynamic/image/width=1600,height=900,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F9ni3dfp9h6ty4stp2aa0.png"],"publisher":{"@context":"http://schema.org","@type":"Organization","name":"DEV Community","logo":{"@context":"http://schema.org","@type":"ImageObject","url":"https://media2.dev.to/dynamic/image/width=192,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png","width":"192","height":"192"}},"headline":"I Built an AI Event Butler So I'd Never Miss Another Tech Meetup (And You Can Too)","author":{"@context":"http://schema.org","@type":"Person","url":"https://dev.to/varshithvhegde","name":"Varshith V Hegde"},"datePublished":"2025-08-27T13:27:30Z","dateModified":"2025-08-27T13:27:30Z","mainEntity":{"@type":"DiscussionForumPosting","@id":"#article-discussion-2803055","headline":"I Built an AI Event Butler So I'd Never Miss Another Tech Meetup (And You Can Too)","text":"\u003cp\u003e\u003cem\u003eThis is a submission for the \u003ca href=\"https://dev.to/challenges/brightdata-n8n-2025-08-13\"\u003eAI Agents Challenge powered by n8n and Bright Data\u003c/a\u003e\u003c/em\u003e\u003c/p\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"what-i-built\" href=\"#what-i-built\"\u003e\n  \u003c/a\u003e\n  What I Built\n\u003c/h2\u003e\n\n\u003cp\u003ePicture this: You're a developer in Bangalore (or any tech hub), and you're constantly hearing about \"that amazing meetup I missed last week\" or \"did you know there was a React conference yesterday?\" Sound familiar? Yeah, me too. \u003c/p\u003e\n\n\u003cp\u003eThat's when I decided to build my own AI-powered event discovery agent that I lovingly call the \"Event Butler\" - because who doesn't want a digital butler that's better at finding events than you are at finding matching socks?\u003c/p\u003e\n\n\u003cp\u003e\u003cstrong\u003eThe Problem:\u003c/strong\u003e Manually checking Eventbrite every morning is about as fun as debugging CSS in Internet Explorer. Plus, with the sheer volume of events posted daily, the good stuff often gets buried under \"Learn Blockchain in 2 Hours\" seminars.\u003c/p\u003e\n\n\u003cp\u003e\u003cstrong\u003eThe Solution:\u003c/strong\u003e An intelligent agent that:\u003c/p\u003e\n\n\u003cul\u003e\n\u003cli\u003e🕐 Wakes up at 8 AM every day (more reliable than me, honestly)\u003c/li\u003e\n\u003cli\u003e🕷️ Scrapes Eventbrite for fresh tech events in Bangalore\u003c/li\u003e\n\u003cli\u003e🧠 Uses Google Gemini AI to curate and create engaging newsletters\u003c/li\u003e\n\u003cli\u003e✨ Delivers beautifully formatted Morning Brew-style emails to my inbox\u003c/li\u003e\n\u003cli\u003e💡 Adds personality and wit to make event discovery actually \u003cem\u003eenjoyable\u003c/em\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003cp\u003eThink of it as having a super-enthusiastic friend who's really good at finding cool events, never sleeps, and has impeccable taste in tech meetups.\u003c/p\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"demo\" href=\"#demo\"\u003e\n  \u003c/a\u003e\n  Demo\n\u003c/h2\u003e\n\n\u003cp\u003eSince I'm rocking the n8n cloud free tier (hey, we all start somewhere! 💸), I can't make my workflow public. But I've got you covered with a full video walkthrough and all the code you need to build your own event-finding sidekick.\u003c/p\u003e\n\n\u003cp\u003e\u003cstrong\u003e📹 Full Demo Video:\u003c/strong\u003e \u003cbr\u003e\n  \u003ciframe src=\"https://www.youtube.com/embed/3jCf_rtZ7S4\" style=\"width: 100%; aspect-ratio: 16 / 9;\" allowfullscreen loading=\"lazy\"\u003e\n  \u003c/iframe\u003e\n\u003c/p\u003e\n\n\u003cp\u003eIn the video, you'll see the entire workflow in action - from the initial scrape to that satisfying moment when a perfectly formatted newsletter lands in my inbox. It's oddly therapeutic, like watching a really well-organized spreadsheet come to life.\u003c/p\u003e\n\n\u003cp\u003e\u003cstrong\u003e📧 Sample Newsletter Output:\u003c/strong\u003e\u003cbr\u003e\n\u003ca href=\"https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F2vk7a4u5ttidlhkgvbzp.png\" class=\"article-body-image-wrapper\"\u003e\u003cimg src=\"https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F2vk7a4u5ttidlhkgvbzp.png\" alt=\"AI Generated Newsle\" loading=\"lazy\"\u003e\u003c/a\u003e\u003c/p\u003e\n\n\u003cp\u003e\u003cem\u003eWhat lands in my inbox every morning - beautifully formatted and surprisingly witty\u003c/em\u003e\u003c/p\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"n8n-workflow\" href=\"#n8n-workflow\"\u003e\n  \u003c/a\u003e\n  n8n Workflow\n\u003c/h3\u003e\n\n\u003cp\u003e\u003ca href=\"https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fcm8xiocudewihwzwct4j.png\" class=\"article-body-image-wrapper\"\u003e\u003cimg src=\"https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fcm8xiocudewihwzwct4j.png\" alt=\"n8n workflow\" loading=\"lazy\"\u003e\u003c/a\u003e\u003c/p\u003e\n\n\u003cp\u003e\u003cstrong\u003e🔗 Complete Workflow JSON:\u003c/strong\u003e \u003ca href=\"https://gist.github.com/Varshithvhegde/a40820f639034bac181e93146a9a21a1\" target=\"_blank\" rel=\"noopener noreferrer\"\u003ehttps://gist.github.com/Varshithvhegde/a40820f639034bac181e93146a9a21a1\u003c/a\u003e\u003c/p\u003e\n\n\u003cp\u003eThe gist includes:\u003c/p\u003e\n\n\u003cul\u003e\n\u003cli\u003eComplete workflow configuration\u003c/li\u003e\n\u003cli\u003eAI agent system instructions\u003c/li\u003e\n\u003cli\u003eEmail template structure\n\u003c/li\u003e\n\u003cli\u003eCustom parsing logic for event data\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003cp\u003e\u003cem\u003ePro tip: The workflow JSON is like a recipe - you can totally customize the \"seasoning\" (prompts) to match your city, interests, or sense of humor!\u003c/em\u003e\u003c/p\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"technical-implementation\" href=\"#technical-implementation\"\u003e\n  \u003c/a\u003e\n  Technical Implementation\n\u003c/h2\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"the-ai-agent-my-digital-event-connoisseur\" href=\"#the-ai-agent-my-digital-event-connoisseur\"\u003e\n  \u003c/a\u003e\n  The AI Agent: My Digital Event Connoisseur\n\u003c/h3\u003e\n\n\u003cp\u003e\u003cstrong\u003eModel Choice:\u003c/strong\u003e Google Gemini (because it's chatty, smart, and doesn't judge my terrible event discovery skills)\u003c/p\u003e\n\n\u003cp\u003e\u003cstrong\u003eSystem Instructions:\u003c/strong\u003e I gave my AI agent a personality somewhere between a tech-savvy friend and a Morning Brew editor. The prompt instructs it to:\u003c/p\u003e\n\n\u003cul\u003e\n\u003cli\u003eDeduplicate similar events (because \"JavaScript Workshop #47\" doesn't need to appear 5 times)\u003c/li\u003e\n\u003cli\u003eCategorize by timing: Today, Tomorrow, This Week, Upcoming\u003c/li\u003e\n\u003cli\u003eAdd engaging commentary and subtle humor\u003c/li\u003e\n\u003cli\u003eFormat everything in beautiful HTML template that doesn't look like it was designed in 1995\u003c/li\u003e\n\u003cli\u003eDetailed System Prompt is here : \u003ca href=\"https://notepage.vercel.app/n8n-brightdata-challenge-system-prompt\" target=\"_blank\" rel=\"noopener noreferrer\"\u003ehttps://notepage.vercel.app/n8n-brightdata-challenge-system-prompt\u003c/a\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003cp\u003e\u003cstrong\u003eMemory:\u003c/strong\u003e The agent remembers event patterns within each session to avoid redundancy, though it starts fresh each day (like my motivation to go to the gym).\u003c/p\u003e\n\n\u003cp\u003e\u003cstrong\u003eTools Used:\u003c/strong\u003e\u003c/p\u003e\n\n\u003cul\u003e\n\u003cli\u003e\n\u003cstrong\u003eData Processing:\u003c/strong\u003e Custom JavaScript nodes for parsing messy HTML into structured gold\u003c/li\u003e\n\u003cli\u003e\n\u003cstrong\u003eEmail Generation:\u003c/strong\u003e AI agent with carefully crafted prompts\u003c/li\u003e\n\u003cli\u003e\n\u003cstrong\u003eDelivery:\u003c/strong\u003e Gmail integration (because who doesn't love getting good news in their inbox?)\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"bright-data-verified-node-the-mvp-of-this-operation\" href=\"#bright-data-verified-node-the-mvp-of-this-operation\"\u003e\n  \u003c/a\u003e\n  Bright Data Verified Node: The MVP of This Operation\n\u003c/h3\u003e\n\n\u003cp\u003eHere's where Bright Data really shines (pun intended ✨). Eventbrite is not exactly thrilled about bots scraping their content - they're quicker to block IPs than a Twitter user blocking trolls. \u003c/p\u003e\n\n\u003cp\u003e\u003cstrong\u003eHow I used Bright Data:\u003c/strong\u003e\u003c/p\u003e\n\n\u003cul\u003e\n\u003cli\u003e\n\u003cstrong\u003eReliable Access:\u003c/strong\u003e No more \"403 Forbidden\" errors ruining my morning routine\u003c/li\u003e\n\u003cli\u003e\n\u003cstrong\u003eResidential Proxies:\u003c/strong\u003e Appears as legitimate traffic (because it is!)\u003c/li\u003e\n\u003cli\u003e\n\u003cstrong\u003eRate Limit Handling:\u003c/strong\u003e Built-in throttling that plays nice with Eventbrite's servers\u003c/li\u003e\n\u003cli\u003e\n\u003cstrong\u003eGlobal Infrastructure:\u003c/strong\u003e Ensures consistent access even during peak traffic\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003cp\u003eThe Bright Data node basically turned my scraper from a sketchy back-alley operation into a legitimate, well-dressed data collection service. It's like upgrading from sneaking into events to having VIP passes.\u003c/p\u003e\n\n\u003cp\u003e\u003cstrong\u003eConfiguration Highlights:\u003c/strong\u003e\u003c/p\u003e\n\n\u003cul\u003e\n\u003cli\u003eTarget URL: Eventbrite's Bangalore tech events page\u003c/li\u003e\n\u003cli\u003eHeaders: Proper user-agent and browser fingerprinting\u003c/li\u003e\n\u003cli\u003eRetry Logic: Because sometimes the internet hiccups\u003c/li\u003e\n\u003cli\u003eData Extraction: Clean HTML ready for parsing\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"journey\" href=\"#journey\"\u003e\n  \u003c/a\u003e\n  Journey\n\u003c/h2\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"the-this-should-be-easy-phase\" href=\"#the-this-should-be-easy-phase\"\u003e\n  \u003c/a\u003e\n  The \"This Should Be Easy\" Phase 🤔\n\u003c/h3\u003e\n\n\u003cp\u003eStarted with the classic developer mindset: \"How hard could it be to scrape some events?\" \u003c/p\u003e\n\n\u003cp\u003e\u003cem\u003eNarrator: It was harder than expected.\u003c/em\u003e\u003c/p\u003e\n\n\u003cp\u003e\u003cstrong\u003eInitial Challenges:\u003c/strong\u003e\u003c/p\u003e\n\n\u003cul\u003e\n\u003cli\u003eEventbrite's anti-bot measures (they're surprisingly sophisticated)\u003c/li\u003e\n\u003cli\u003eInconsistent HTML structure (apparently not everyone follows semantic HTML practices)\u003c/li\u003e\n\u003cli\u003eData quality issues (turns out event descriptions can be... creative)\u003c/li\u003e\n\u003cli\u003eEmail formatting nightmares (CSS in emails is still terrible in 2025)\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"the-why-wont-this-work-phase\" href=\"#the-why-wont-this-work-phase\"\u003e\n  \u003c/a\u003e\n  The \"Why Won't This Work?!\" Phase 😤\n\u003c/h3\u003e\n\n\u003cp\u003eSpent way too many hours debugging CSS selectors that worked perfectly in the browser but failed spectacularly in the scraper. Also learned that Eventbrite returns different HTML structures depending on whether you're a logged-in user, mobile visitor, or bot.\u003c/p\u003e\n\n\u003cp\u003e\u003cstrong\u003eKey Breakthrough:\u003c/strong\u003e Bright Data's verified node solved 90% of my scraping headaches. Suddenly, consistent data! It was like finding out your code works on the first try - magical but slightly suspicious.\u003c/p\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"the-ai-makes-everything-better-phase\" href=\"#the-ai-makes-everything-better-phase\"\u003e\n  \u003c/a\u003e\n  The \"AI Makes Everything Better\" Phase 🤖\n\u003c/h3\u003e\n\n\u003cp\u003eInitially, I was just planning to send raw event data. But then I thought, \"What if the AI could make this actually \u003cem\u003einteresting\u003c/em\u003e to read?\"\u003c/p\u003e\n\n\u003cp\u003e\u003cstrong\u003eGame Changer:\u003c/strong\u003e Crafting the right prompt for Gemini. Getting the AI to:\u003c/p\u003e\n\n\u003cul\u003e\n\u003cli\u003eUnderstand event context and importance\u003c/li\u003e\n\u003cli\u003eAdd personality without being annoying\u003c/li\u003e\n\u003cli\u003eFormat HTML consistently\u003c/li\u003e\n\u003cli\u003eHandle edge cases gracefully\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003cp\u003eThe prompt engineering took longer than the scraping logic, but it was totally worth it. Now my newsletters read like they're written by a witty tech journalist who actually cares about my calendar.\u003c/p\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"the-it-actually-works-phase\" href=\"#the-it-actually-works-phase\"\u003e\n  \u003c/a\u003e\n  The \"It Actually Works!\" Phase 🎉\n\u003c/h3\u003e\n\n\u003cp\u003eThree months in, and I've:\u003c/p\u003e\n\n\u003cul\u003e\n\u003cli\u003eDiscovered 47 events I would have missed\u003c/li\u003e\n\u003cli\u003eSaved approximately 2 hours per week on event hunting\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003cp\u003e\u003cstrong\u003eUnexpected Bonus:\u003c/strong\u003e The AI's commentary often highlights events I wouldn't have considered. Turns out machine learning isn't just good at recognizing cats in photos - it's also pretty decent at understanding what makes events worth attending.\u003c/p\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"what-i-learned\" href=\"#what-i-learned\"\u003e\n  \u003c/a\u003e\n  What I Learned\n\u003c/h3\u003e\n\n\u003col\u003e\n\u003cli\u003e\n\u003cstrong\u003eGood prompts are worth their weight in gold\u003c/strong\u003e - Seriously, spend time on this\u003c/li\u003e\n\u003cli\u003e\n\u003cstrong\u003eReliable data sources matter more than perfect parsing\u003c/strong\u003e - Bright Data was a game-changer\u003c/li\u003e\n\u003cli\u003e\n\u003cstrong\u003eAutomation should enhance, not replace, human judgment\u003c/strong\u003e - The AI suggests, I decide\u003c/li\u003e\n\u003cli\u003e\n\u003cstrong\u003eSmall conveniences compound into big productivity gains\u003c/strong\u003e - 10 minutes saved daily = 60+ hours yearly\u003c/li\u003e\n\u003cli\u003e\n\u003cstrong\u003eBuilding for yourself often creates the best products\u003c/strong\u003e - I actually use this every day\u003c/li\u003e\n\u003c/ol\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"future-enhancements-because-were-never-done\" href=\"#future-enhancements-because-were-never-done\"\u003e\n  \u003c/a\u003e\n  Future Enhancements (Because We're Never Done)\n\u003c/h3\u003e\n\n\u003cul\u003e\n\u003cli\u003e\n\u003cstrong\u003eMulti-city support\u003c/strong\u003e (for when I travel or move)\u003c/li\u003e\n\u003cli\u003e\n\u003cstrong\u003eSmart filtering\u003c/strong\u003e based on past attendance and preferences\u003c/li\u003e\n\u003cli\u003e\n\u003cstrong\u003eCalendar integration\u003c/strong\u003e (one-click event adding)\u003c/li\u003e\n\u003cli\u003e\n\u003cstrong\u003eCommunity features\u003c/strong\u003e (share interesting finds with friends)\u003c/li\u003e\n\u003cli\u003e\n\u003cstrong\u003eAnalytics dashboard\u003c/strong\u003e (because data is beautiful)\u003c/li\u003e\n\u003c/ul\u003e\n\n\n\u003chr\u003e\n\n\u003cp\u003e\u003cstrong\u003eThe Bottom Line:\u003c/strong\u003e If you're tired of playing event discovery roulette, build yourself an AI assistant. Your future networking self will thank you, and you'll never have to hear \"Oh, you missed that amazing talk?\" ever again.\u003c/p\u003e\n\n\u003cp\u003e\u003cem\u003eNow if only I could build an AI agent to actually make me show up to the events... 🤷‍♂️\u003c/em\u003e\u003c/p\u003e\n\n\n\u003chr\u003e\n\n\u003cp\u003e\u003cem\u003eP.S. - If you build your own version, I'd love to see what events your AI discovers! Drop a comment with your city or any cool modifications you make. Let's make FOMO a thing of the past, one automated newsletter at a time.\u003c/em\u003e\u003c/p\u003e\n\n","author":{"@type":"Person","name":"Varshith V Hegde","url":"https://dev.to/varshithvhegde"},"datePublished":"2025-08-27T13:27:30Z","dateModified":"2025-08-27T13:27:30Z","url":"https://dev.to/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io","interactionStatistic":[{"@type":"InteractionCounter","interactionType":"https://schema.org/CommentAction","userInteractionCount":11},{"@type":"InteractionCounter","interactionType":"https://schema.org/LikeAction","userInteractionCount":61}],"comment":[{"@type":"Comment","@id":"#comment-1424113","text":"\u003cp\u003eThis is brilliant, clever, charming and immensely useful. Excellent work!\u003c/p\u003e\n\n","author":{"@type":"Person","name":"Devon Kelley","url":"https://dev.to/devon__kelley"},"datePublished":"2025-12-10T23:59:47Z","dateModified":"2025-12-10T23:59:47Z","url":"https://dev.to/devon__kelley/comment/330hf","interactionStatistic":[{"@type":"InteractionCounter","interactionType":"https://schema.org/LikeAction","userInteractionCount":3}]},{"@type":"Comment","@id":"#comment-1388065","text":"\u003cp\u003eThis is such a clever build  — love how you turned a boring daily chore into something fun and genuinely useful. The “Event Butler” idea with personality and wit makes it way more engaging than just another scraper + email combo.\u003c/p\u003e\n\n","author":{"@type":"Person","name":"LinceMathew","url":"https://dev.to/lincemathew"},"datePublished":"2025-08-31T18:41:32Z","dateModified":"2025-08-31T18:41:32Z","url":"https://dev.to/lincemathew/comment/30p93","interactionStatistic":[{"@type":"InteractionCounter","interactionType":"https://schema.org/LikeAction","userInteractionCount":5}],"comment":[{"@type":"Comment","@id":"#comment-1388136","text":"\u003cp\u003eThank you soo much . it means a lot\u003c/p\u003e\n\n","author":{"@type":"Person","name":"Varshith V Hegde","url":"https://dev.to/varshithvhegde"},"datePublished":"2025-09-01T04:01:01Z","dateModified":"2025-09-01T04:01:01Z","url":"https://dev.to/varshithvhegde/comment/30pbm","interactionStatistic":[{"@type":"InteractionCounter","interactionType":"https://schema.org/LikeAction","userInteractionCount":1}],"parentItem":{"@type":"Comment","@id":"#comment-1388065"}}]},{"@type":"Comment","@id":"#comment-1388912","text":"\u003cp\u003eI love everything, your project, the title itself,  and the whole article itself.\u003c/p\u003e\n\n\u003cp\u003eAll the best for never missing a hackathon/tech event or conference again 😁\u003c/p\u003e\n\n","author":{"@type":"Person","name":"Divya","url":"https://dev.to/divyasinghdev"},"datePublished":"2025-09-02T16:37:32Z","dateModified":"2025-09-02T16:37:32Z","url":"https://dev.to/divyasinghdev/comment/310fi","interactionStatistic":[{"@type":"InteractionCounter","interactionType":"https://schema.org/LikeAction","userInteractionCount":5}],"comment":[{"@type":"Comment","@id":"#comment-1389117","text":"\u003cp\u003eThank you for this ...\u003c/p\u003e\n\n","author":{"@type":"Person","name":"Varshith V Hegde","url":"https://dev.to/varshithvhegde"},"datePublished":"2025-09-03T07:03:10Z","dateModified":"2025-09-03T07:03:10Z","url":"https://dev.to/varshithvhegde/comment/310nf","interactionStatistic":[{"@type":"InteractionCounter","interactionType":"https://schema.org/LikeAction","userInteractionCount":2}],"parentItem":{"@type":"Comment","@id":"#comment-1388912"}}]},{"@type":"Comment","@id":"#comment-1388610","text":"\u003cp\u003eGood job on this \u003c/p\u003e\n\n","author":{"@type":"Person","name":"Super Jeo","url":"https://dev.to/suponova"},"datePublished":"2025-09-02T03:48:07Z","dateModified":"2025-09-02T03:48:07Z","url":"https://dev.to/suponova/comment/31042","interactionStatistic":[{"@type":"InteractionCounter","interactionType":"https://schema.org/LikeAction","userInteractionCount":2}]},{"@type":"Comment","@id":"#comment-1387346","text":"\u003cp\u003eNice one ... I could never miss an event now\u003c/p\u003e\n\n","author":{"@type":"Person","name":"Monkey D Luffy","url":"https://dev.to/oneluffychan"},"datePublished":"2025-08-29T16:04:58Z","dateModified":"2025-08-29T16:04:58Z","url":"https://dev.to/oneluffychan/comment/30o7c","interactionStatistic":[{"@type":"InteractionCounter","interactionType":"https://schema.org/LikeAction","userInteractionCount":2}]},{"@type":"Comment","@id":"#comment-1387938","text":"\u003cp\u003eCan we change location based on our input ?\u003c/p\u003e\n\n","author":{"@type":"Person","name":"Varsha V Hegde","url":"https://dev.to/varshavh"},"datePublished":"2025-08-31T11:57:26Z","dateModified":"2025-08-31T11:57:26Z","url":"https://dev.to/varshavh/comment/30p46","interactionStatistic":[{"@type":"InteractionCounter","interactionType":"https://schema.org/LikeAction","userInteractionCount":2}]}]}}
+  </script>
+
+  
+  <div class="crayons-layout crayons-layout--3-cols crayons-layout--article">
+    <aside class="crayons-layout__sidebar-left" aria-label="Article actions">
+      <script>
+  if (/Twitter for (iPhone|iPad|Android)/i.test(navigator.userAgent)) {
+    document.documentElement.classList.add('is-twitter-in-app');
+  }
+</script>
+<div class="crayons-article-actions print-hidden">
+  <div class="crayons-article-actions__inner">
+
+    
+<div class="reaction-drawer__outer hoverdown" style="">
+  <button
+    id="reaction-drawer-trigger"
+    aria-label="reaction-drawer-trigger"
+    aria-pressed="false"
+    class="hoverdown-trigger crayons-reaction pseudo-reaction crayons-tooltip__activator relative">
+      <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction--like crayons-reaction__icon--inactive" style="width: 40px; height: 40px">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" role="img" aria-hidden="true" class="crayons-icon">
+    <g clip-path="url(#clip0_988_3276)">
+        <path d="M19 14V17H22V19H18.999L19 22H17L16.999 19H14V17H17V14H19ZM20.243 4.75698C22.505 7.02498 22.583 10.637 20.479 12.992L19.059 11.574C20.39 10.05 20.32 7.65998 18.827 6.16998C17.324 4.67098 14.907 4.60698 13.337 6.01698L12.002 7.21498L10.666 6.01798C9.09103 4.60598 6.67503 4.66798 5.17203 6.17198C3.68203 7.66198 3.60703 10.047 4.98003 11.623L13.412 20.069L12 21.485L3.52003 12.993C1.41603 10.637 1.49503 7.01898 3.75603 4.75698C6.02103 2.49298 9.64403 2.41698 12 4.52898C14.349 2.41998 17.979 2.48998 20.242 4.75698H20.243Z" fill="#525252"></path>
+    </g>
+    <defs>
+        <clipPath id="clip0_988_3276">
+        <rect width="24" height="24" fill="white"></rect>
+        </clipPath>
+    </defs>
+</svg>
+
+      </span>
+      <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--active" style="width: 40px; height: 40px">
+        <img aria_hidden="true" height="24" width="24" src="https://assets.dev.to/assets/heart-plus-active-9ea3b22f2bc311281db911d416166c5f430636e76b15cd5df6b3b841d830eefa.svg" />
+      </span>
+      <span class="crayons-reaction__count" id="reaction_total_count">
+        <span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span>
+      </span>
+      <span class="crayons-tooltip__content">
+        Add reaction
+      </span>
+  </button>
+
+  <div class="reaction-drawer" aria-expanded="false">
+    <div class="reaction-drawer__container">
+        <button
+  id="reaction-butt-like"
+  name="Like"
+  aria-label="Like"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="like">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-like"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Like
+    </span>
+</button>
+
+        <button
+  id="reaction-butt-unicorn"
+  name="Unicorn"
+  aria-label="Unicorn"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="unicorn">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-unicorn"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Unicorn
+    </span>
+</button>
+
+        <button
+  id="reaction-butt-exploding_head"
+  name="Exploding Head"
+  aria-label="Exploding Head"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="exploding_head">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-exploding_head"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Exploding Head
+    </span>
+</button>
+
+        <button
+  id="reaction-butt-raised_hands"
+  name="Raised Hands"
+  aria-label="Raised Hands"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="raised_hands">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-raised_hands"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Raised Hands
+    </span>
+</button>
+
+        <button
+  id="reaction-butt-fire"
+  name="Fire"
+  aria-label="Fire"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="fire">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-fire"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Fire
+    </span>
+</button>
+
+    </div>
+  </div>
+</div>
+
+<button
+  id="reaction-butt-comment"
+  aria-label="Jump to Comments"
+  aria-pressed="false"
+  class="crayons-reaction crayons-reaction--comment crayons-tooltip__activator relative"
+  data-category="comment">
+    <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--inactive">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-hidden="true" class="crayons-icon">
+    <path d="M10 3h4a8 8 0 010 16v3.5c-5-2-12-5-12-11.5a8 8 0 018-8zm2 14h2a6 6 0 000-12h-4a6 6 0 00-6 6c0 3.61 2.462 5.966 8 8.48V17z"></path>
+</svg>
+
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-comment" data-count="11">
+      <span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span>
+    </span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Jump to Comments
+    </span>
+</button>
+
+<button
+  id="reaction-butt-readinglist"
+  aria-label="Add to reading list"
+  aria-pressed="false"
+  class="crayons-reaction crayons-reaction--readinglist crayons-tooltip__activator relative"
+  data-category="readinglist">
+    <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--inactive">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-hidden="true" class="crayons-icon">
+    <path d="M5 2h14a1 1 0 011 1v19.143a.5.5 0 01-.766.424L12 18.03l-7.234 4.536A.5.5 0 014 22.143V3a1 1 0 011-1zm13 2H6v15.432l6-3.761 6 3.761V4z"></path>
+</svg>
+
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-readinglist"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Save
+    </span>
+</button>
+
+
+<button
+  id="reaction-butt-boost"
+  aria-label="Boost"
+  aria-pressed="false"
+  class="crayons-reaction crayons-reaction--boost crayons-tooltip__activator relative">
+    <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--inactive">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" role="img" aria-hidden="true" class="crayons-icon" width="24" height="24">
+  <path transform="translate(24,0) scale(-1,1)" d="M6 4H21C21.5523 4 22 4.44772 22 5V12H20V6H6V9L1 5L6 1V4ZM18 20H3C2.44772 20 2 19.5523 2 19V12H4V18H18V15L23 19L18 23V20Z"></path>
+</svg>
+
+    </span>
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Boost
+    </span>
+</button>
+
+
+    <div class="only-sidebar-menu-item">
+      <div id="mod-actions-menu-btn-area" class="print-hidden trusted-visible-block align-center">
+      </div>
+    </div>
+    <div class="align-center m:relative">
+      <button id="article-show-more-button" aria-controls="article-show-more-dropdown" aria-expanded="false" aria-haspopup="true" class="dropbtn crayons-btn crayons-btn--ghost-dimmed crayons-btn--icon-rounded" aria-label="Share post options">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="acs6wi6nkv6j6ngvhrwl4ezo1cb2xif6" aria-hidden="true" class="crayons-icon dropdown-icon"><title id="acs6wi6nkv6j6ngvhrwl4ezo1cb2xif6">More...</title><path fill-rule="evenodd" clip-rule="evenodd" d="M7 12a2 2 0 11-4 0 2 2 0 014 0zm7 0a2 2 0 11-4 0 2 2 0 014 0zm5 2a2 2 0 100-4 2 2 0 000 4z"></path></svg>
+
+      </button>
+
+      <div id="article-show-more-dropdown" class="crayons-dropdown side-bar left-2 right-2 m:right-auto m:left-100 s:left-auto mb-1 m:mb-0 top-unset bottom-100 m:top-0 m:bottom-unset">
+        <div>
+          <button
+            id="copy-post-url-button"
+            class="flex justify-between crayons-link crayons-link--block w-100 bg-transparent border-0"
+            data-postUrl="https://dev.to/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io">
+            <span class="fw-bold">Copy link</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" id="article-copy-icon" role="img" aria-labelledby="a461f2f974ev8rbprg8cs0vgclekm281" aria-hidden="true" class="crayons-icon mx-2 shrink-0"><title id="a461f2f974ev8rbprg8cs0vgclekm281">Copy link</title>
+    <path d="M7 6V3a1 1 0 011-1h12a1 1 0 011 1v14a1 1 0 01-1 1h-3v3c0 .552-.45 1-1.007 1H4.007A1 1 0 013 21l.003-14c0-.552.45-1 1.007-1H7zm2 0h8v10h2V4H9v2zm-2 5v2h6v-2H7zm0 4v2h6v-2H7z"></path>
+</svg>
+
+          </button>
+          <div id="article-copy-link-announcer" aria-live="polite" class="crayons-notice crayons-notice--success my-2 p-1" aria-live="polite" hidden>Copied to Clipboard</div>
+        </div>
+
+        <div class="Desktop-only">
+          <a
+            target="_blank"
+            class="crayons-link crayons-link--block"
+            rel="noopener"
+            href='https://twitter.com/intent/tweet?text=%22I%20Built%20an%20AI%20Event%20Butler%20So%20I%27d%20Never%20Miss%20Another%20Tech%20Meetup%20%28And%20You%20Can%20Too%29%22%20by%20%40VarshithVhegde1%20%23DEVCommunity%20https%3A%2F%2Fdev.to%2Fvarshithvhegde%2Fi-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io'>
+            Share to X
+          </a>
+          <a
+            target="_blank"
+            class="crayons-link crayons-link--block"
+            rel="noopener"
+            href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fdev.to%2Fvarshithvhegde%2Fi-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io&title=I%20Built%20an%20AI%20Event%20Butler%20So%20I%27d%20Never%20Miss%20Another%20Tech%20Meetup%20%28And%20You%20Can%20Too%29&summary=This%20is%20a%20submission%20for%20the%20AI%20Agents%20Challenge%20powered%20by%20n8n%20and%20Bright%20Data%20%20%20%20%20%20%20%20%20%20%20What%20I...&source=DEV%20Community">
+            Share to LinkedIn
+          </a>
+          <a
+            target="_blank"
+            class="crayons-link crayons-link--block"
+            rel="noopener"
+            href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fdev.to%2Fvarshithvhegde%2Fi-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io">
+            Share to Facebook
+          </a>
+          <a
+            target="_blank"
+            class="crayons-link crayons-link--block"
+            rel="noopener"
+            href="https://s2f.kytta.dev/?text=https%3A%2F%2Fdev.to%2Fvarshithvhegde%2Fi-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io">
+            Share to Mastodon
+          </a>
+        </div>
+
+        <web-share-wrapper shareurl="https://dev.to/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io" sharetitle="I Built an AI Event Butler So I&#39;d Never Miss Another Tech Meetup (And You Can Too)" sharetext="This is a submission for the AI Agents Challenge powered by n8n and Bright Data           What I..." template="web-share-button">
+        </web-share-wrapper>
+        <template id="web-share-button">
+          <a href="#" class="dropdown-link-row crayons-link crayons-link--block">Share Post via...</a>
+        </template>
+
+        <a href="/report-abuse" class="crayons-link crayons-link--block" id="ReportButtonAuthor">Report Abuse</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </aside>
+
+    <main id="main-content" class="crayons-layout__content grid gap-4">
+      <div class="article-wrapper">
+
+
+        <article class="crayons-card crayons-article mb-4"
+          id="article-show-container"
+          data-article-id="2803055"
+          data-article-slug="i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io"
+          data-author-id="885064"
+          data-author-name="Varshith V Hegde"
+          data-author-username="varshithvhegde"
+          data-co-author-ids=""
+          data-path="/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io"
+          data-pin-path="/stories/feed/pinned_article"
+          data-pinned-article-id=""
+          data-published="true"
+          data-scheduled="false"
+          lang=en
+           >
+          <script>
+            try {
+              if(localStorage) {
+                let currentUser = localStorage.getItem('current_user');
+
+                if (currentUser) {
+                  currentUser = JSON.parse(currentUser);
+                  if (currentUser.id === 885064) {
+                    document.getElementById('article-show-container').classList.add('current-user-is-article-author');
+                  }
+                }
+              }
+            } catch (e) {
+              console.error(e);
+            }
+          </script>
+          <header class="crayons-article__header" id="main-title">
+              <a class="crayons-article__cover" href="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F9ni3dfp9h6ty4stp2aa0.png">
+                <img
+                  src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F9ni3dfp9h6ty4stp2aa0.png"
+                  style="aspect-ratio: auto 1000 / 420;"
+                  width="1000" height="420"
+                  class="crayons-article__cover__image" alt="Cover image for I Built an AI Event Butler So I&#39;d Never Miss Another Tech Meetup (And You Can Too)">
+              </a>
+
+            <div class="crayons-article__header__meta">
+              <div class="flex s:items-start flex-col s:flex-row">
+                <div id="action-space" class="crayons-article__actions mb-4 s:mb-0 s:order-last"></div>
+                <div class="flex flex-1 mb-5 items-start">
+                  <div class="relative">
+                      <a href="/varshithvhegde"><img class="radius-full align-middle" src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F885064%2F4ab304f4-a3f3-409c-8217-9ce130e57c18.jpeg" width="40" height="40" alt="Varshith V Hegde" /></a>
+                  </div>
+                  <div class="pl-3 flex-1">
+                    <a href="/varshithvhegde" class="crayons-link fw-bold">Varshith V Hegde</a>
+                    <a style="display: inline;" href="/++"><img alt="Subscriber" class="subscription-icon" src="https://assets.dev.to/assets/subscription-icon-805dfa7ac7dd660f07ed8d654877270825b07a92a03841aa99a1093bd00431b2.png" /></a>
+                    <p class="fs-xs color-base-60">
+                        Posted on <time datetime="2025-08-27T13:27:30Z" class="date">Aug 27, 2025</time>
+
+
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="multiple_reactions_engagement">
+    <button
+      class="reaction_engagement_like hidden crayons-reaction crayons-reaction--like"
+      data-category="like"
+      aria-label="Like"
+      type="button"
+    ><span class="crayons-reaction__icon crayons-reaction__icon--inactive p-1"><img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="24" height="24" /></span>
+      <span class="crayons-reaction__count" id="reaction_engagement_like_count">&nbsp;</span>
+    </button>    <button
+      class="reaction_engagement_unicorn hidden crayons-reaction crayons-reaction--unicorn"
+      data-category="unicorn"
+      aria-label="Unicorn"
+      type="button"
+    ><span class="crayons-reaction__icon crayons-reaction__icon--inactive p-1"><img src="https://assets.dev.to/assets/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" width="24" height="24" /></span>
+      <span class="crayons-reaction__count" id="reaction_engagement_unicorn_count">&nbsp;</span>
+    </button>    <button
+      class="reaction_engagement_exploding_head hidden crayons-reaction crayons-reaction--exploding_head"
+      data-category="exploding_head"
+      aria-label="Exploding Head"
+      type="button"
+    ><span class="crayons-reaction__icon crayons-reaction__icon--inactive p-1"><img src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" width="24" height="24" /></span>
+      <span class="crayons-reaction__count" id="reaction_engagement_exploding_head_count">&nbsp;</span>
+    </button>    <button
+      class="reaction_engagement_raised_hands hidden crayons-reaction crayons-reaction--raised_hands"
+      data-category="raised_hands"
+      aria-label="Raised Hands"
+      type="button"
+    ><span class="crayons-reaction__icon crayons-reaction__icon--inactive p-1"><img src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="24" height="24" /></span>
+      <span class="crayons-reaction__count" id="reaction_engagement_raised_hands_count">&nbsp;</span>
+    </button>    <button
+      class="reaction_engagement_fire hidden crayons-reaction crayons-reaction--fire"
+      data-category="fire"
+      aria-label="Fire"
+      type="button"
+    ><span class="crayons-reaction__icon crayons-reaction__icon--inactive p-1"><img src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="24" height="24" /></span>
+      <span class="crayons-reaction__count" id="reaction_engagement_fire_count">&nbsp;</span>
+    </button>
+</div>
+
+
+              <h1 class=" fs-3xl m:fs-4xl l:fs-5xl fw-bold s:fw-heavy lh-tight mb-2 longer">
+                I Built an AI Event Butler So I&#39;d Never Miss Another Tech Meetup (And You Can Too)
+              </h1>
+              
+                  <div class="spec__tags flex flex-wrap">
+                      <a class="crayons-tag   " style="
+        --tag-bg: rgba(234, 75, 113, 0.10);
+        --tag-prefix: #ea4b71;
+        --tag-bg-hover: rgba(234, 75, 113, 0.10);
+        --tag-prefix-hover: #ea4b71;
+      " href="/t/n8nbrightdatachallenge"><span class="crayons-tag__prefix">#</span>n8nbrightdatachallenge</a>
+                      <a class="crayons-tag   " style="
+        --tag-bg: rgba(86, 39, 101, 0.10);
+        --tag-prefix: #562765;
+        --tag-bg-hover: rgba(86, 39, 101, 0.10);
+        --tag-prefix-hover: #562765;
+      " href="/t/webdev"><span class="crayons-tag__prefix">#</span>webdev</a>
+                      <a class="crayons-tag   " style="
+        --tag-bg: rgba(23, 253, 26, 0.10);
+        --tag-prefix: #17fd1a;
+        --tag-bg-hover: rgba(23, 253, 26, 0.10);
+        --tag-prefix-hover: #17fd1a;
+      " href="/t/ai"><span class="crayons-tag__prefix">#</span>ai</a>
+                      <a class="crayons-tag   " style="
+        --tag-bg: rgba(132, 206, 249, 0.10);
+        --tag-prefix: #84CEF9;
+        --tag-bg-hover: rgba(132, 206, 249, 0.10);
+        --tag-prefix-hover: #84CEF9;
+      " href="/t/devchallenge"><span class="crayons-tag__prefix">#</span>devchallenge</a>
+                  </div>
+            </div>
+          </header>
+
+          <div class="crayons-article__main ">
+              <div class="crayons-article__context-note">
+                <p>n8n and Bright Challenge: Unstoppable Workflow</p>
+
+
+              </div>
+            <div class="crayons-article__body text-styles spec__body" data-article-id="2803055" id="article-body">
+                <p><em>This is a submission for the <a href="https://dev.to/challenges/brightdata-n8n-2025-08-13">AI Agents Challenge powered by n8n and Bright Data</a></em></p>
+
+<h2>
+  <a name="what-i-built" href="#what-i-built">
+  </a>
+  What I Built
+</h2>
+
+<p>Picture this: You're a developer in Bangalore (or any tech hub), and you're constantly hearing about "that amazing meetup I missed last week" or "did you know there was a React conference yesterday?" Sound familiar? Yeah, me too. </p>
+
+<p>That's when I decided to build my own AI-powered event discovery agent that I lovingly call the "Event Butler" - because who doesn't want a digital butler that's better at finding events than you are at finding matching socks?</p>
+
+<p><strong>The Problem:</strong> Manually checking Eventbrite every morning is about as fun as debugging CSS in Internet Explorer. Plus, with the sheer volume of events posted daily, the good stuff often gets buried under "Learn Blockchain in 2 Hours" seminars.</p>
+
+<p><strong>The Solution:</strong> An intelligent agent that:</p>
+
+<ul>
+<li>🕐 Wakes up at 8 AM every day (more reliable than me, honestly)</li>
+<li>🕷️ Scrapes Eventbrite for fresh tech events in Bangalore</li>
+<li>🧠 Uses Google Gemini AI to curate and create engaging newsletters</li>
+<li>✨ Delivers beautifully formatted Morning Brew-style emails to my inbox</li>
+<li>💡 Adds personality and wit to make event discovery actually <em>enjoyable</em>
+</li>
+</ul>
+
+<p>Think of it as having a super-enthusiastic friend who's really good at finding cool events, never sleeps, and has impeccable taste in tech meetups.</p>
+
+<h2>
+  <a name="demo" href="#demo">
+  </a>
+  Demo
+</h2>
+
+<p>Since I'm rocking the n8n cloud free tier (hey, we all start somewhere! 💸), I can't make my workflow public. But I've got you covered with a full video walkthrough and all the code you need to build your own event-finding sidekick.</p>
+
+<p><strong>📹 Full Demo Video:</strong> <br>
+  <iframe src="https://www.youtube.com/embed/3jCf_rtZ7S4" style="width: 100%; aspect-ratio: 16 / 9;" allowfullscreen loading="lazy">
+  </iframe>
+</p>
+
+<p>In the video, you'll see the entire workflow in action - from the initial scrape to that satisfying moment when a perfectly formatted newsletter lands in my inbox. It's oddly therapeutic, like watching a really well-organized spreadsheet come to life.</p>
+
+<p><strong>📧 Sample Newsletter Output:</strong><br>
+<a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F2vk7a4u5ttidlhkgvbzp.png" class="article-body-image-wrapper"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F2vk7a4u5ttidlhkgvbzp.png" alt="AI Generated Newsle" loading="lazy"></a></p>
+
+<p><em>What lands in my inbox every morning - beautifully formatted and surprisingly witty</em></p>
+
+<h3>
+  <a name="n8n-workflow" href="#n8n-workflow">
+  </a>
+  n8n Workflow
+</h3>
+
+<p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fcm8xiocudewihwzwct4j.png" class="article-body-image-wrapper"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fcm8xiocudewihwzwct4j.png" alt="n8n workflow" loading="lazy"></a></p>
+
+<p><strong>🔗 Complete Workflow JSON:</strong> <a href="https://gist.github.com/Varshithvhegde/a40820f639034bac181e93146a9a21a1" target="_blank" rel="noopener noreferrer">https://gist.github.com/Varshithvhegde/a40820f639034bac181e93146a9a21a1</a></p>
+
+<p>The gist includes:</p>
+
+<ul>
+<li>Complete workflow configuration</li>
+<li>AI agent system instructions</li>
+<li>Email template structure
+</li>
+<li>Custom parsing logic for event data</li>
+</ul>
+
+<p><em>Pro tip: The workflow JSON is like a recipe - you can totally customize the "seasoning" (prompts) to match your city, interests, or sense of humor!</em></p>
+
+<h2>
+  <a name="technical-implementation" href="#technical-implementation">
+  </a>
+  Technical Implementation
+</h2>
+
+<h3>
+  <a name="the-ai-agent-my-digital-event-connoisseur" href="#the-ai-agent-my-digital-event-connoisseur">
+  </a>
+  The AI Agent: My Digital Event Connoisseur
+</h3>
+
+<p><strong>Model Choice:</strong> Google Gemini (because it's chatty, smart, and doesn't judge my terrible event discovery skills)</p>
+
+<p><strong>System Instructions:</strong> I gave my AI agent a personality somewhere between a tech-savvy friend and a Morning Brew editor. The prompt instructs it to:</p>
+
+<ul>
+<li>Deduplicate similar events (because "JavaScript Workshop #47" doesn't need to appear 5 times)</li>
+<li>Categorize by timing: Today, Tomorrow, This Week, Upcoming</li>
+<li>Add engaging commentary and subtle humor</li>
+<li>Format everything in beautiful HTML template that doesn't look like it was designed in 1995</li>
+<li>Detailed System Prompt is here : <a href="https://notepage.vercel.app/n8n-brightdata-challenge-system-prompt" target="_blank" rel="noopener noreferrer">https://notepage.vercel.app/n8n-brightdata-challenge-system-prompt</a>
+</li>
+</ul>
+
+<p><strong>Memory:</strong> The agent remembers event patterns within each session to avoid redundancy, though it starts fresh each day (like my motivation to go to the gym).</p>
+
+<p><strong>Tools Used:</strong></p>
+
+<ul>
+<li>
+<strong>Data Processing:</strong> Custom JavaScript nodes for parsing messy HTML into structured gold</li>
+<li>
+<strong>Email Generation:</strong> AI agent with carefully crafted prompts</li>
+<li>
+<strong>Delivery:</strong> Gmail integration (because who doesn't love getting good news in their inbox?)</li>
+</ul>
+
+<h3>
+  <a name="bright-data-verified-node-the-mvp-of-this-operation" href="#bright-data-verified-node-the-mvp-of-this-operation">
+  </a>
+  Bright Data Verified Node: The MVP of This Operation
+</h3>
+
+<p>Here's where Bright Data really shines (pun intended ✨). Eventbrite is not exactly thrilled about bots scraping their content - they're quicker to block IPs than a Twitter user blocking trolls. </p>
+
+<p><strong>How I used Bright Data:</strong></p>
+
+<ul>
+<li>
+<strong>Reliable Access:</strong> No more "403 Forbidden" errors ruining my morning routine</li>
+<li>
+<strong>Residential Proxies:</strong> Appears as legitimate traffic (because it is!)</li>
+<li>
+<strong>Rate Limit Handling:</strong> Built-in throttling that plays nice with Eventbrite's servers</li>
+<li>
+<strong>Global Infrastructure:</strong> Ensures consistent access even during peak traffic</li>
+</ul>
+
+<p>The Bright Data node basically turned my scraper from a sketchy back-alley operation into a legitimate, well-dressed data collection service. It's like upgrading from sneaking into events to having VIP passes.</p>
+
+<p><strong>Configuration Highlights:</strong></p>
+
+<ul>
+<li>Target URL: Eventbrite's Bangalore tech events page</li>
+<li>Headers: Proper user-agent and browser fingerprinting</li>
+<li>Retry Logic: Because sometimes the internet hiccups</li>
+<li>Data Extraction: Clean HTML ready for parsing</li>
+</ul>
+
+<h2>
+  <a name="journey" href="#journey">
+  </a>
+  Journey
+</h2>
+
+<h3>
+  <a name="the-this-should-be-easy-phase" href="#the-this-should-be-easy-phase">
+  </a>
+  The "This Should Be Easy" Phase 🤔
+</h3>
+
+<p>Started with the classic developer mindset: "How hard could it be to scrape some events?" </p>
+
+<p><em>Narrator: It was harder than expected.</em></p>
+
+<p><strong>Initial Challenges:</strong></p>
+
+<ul>
+<li>Eventbrite's anti-bot measures (they're surprisingly sophisticated)</li>
+<li>Inconsistent HTML structure (apparently not everyone follows semantic HTML practices)</li>
+<li>Data quality issues (turns out event descriptions can be... creative)</li>
+<li>Email formatting nightmares (CSS in emails is still terrible in 2025)</li>
+</ul>
+
+<h3>
+  <a name="the-why-wont-this-work-phase" href="#the-why-wont-this-work-phase">
+  </a>
+  The "Why Won't This Work?!" Phase 😤
+</h3>
+
+<p>Spent way too many hours debugging CSS selectors that worked perfectly in the browser but failed spectacularly in the scraper. Also learned that Eventbrite returns different HTML structures depending on whether you're a logged-in user, mobile visitor, or bot.</p>
+
+<p><strong>Key Breakthrough:</strong> Bright Data's verified node solved 90% of my scraping headaches. Suddenly, consistent data! It was like finding out your code works on the first try - magical but slightly suspicious.</p>
+
+<h3>
+  <a name="the-ai-makes-everything-better-phase" href="#the-ai-makes-everything-better-phase">
+  </a>
+  The "AI Makes Everything Better" Phase 🤖
+</h3>
+
+<p>Initially, I was just planning to send raw event data. But then I thought, "What if the AI could make this actually <em>interesting</em> to read?"</p>
+
+<p><strong>Game Changer:</strong> Crafting the right prompt for Gemini. Getting the AI to:</p>
+
+<ul>
+<li>Understand event context and importance</li>
+<li>Add personality without being annoying</li>
+<li>Format HTML consistently</li>
+<li>Handle edge cases gracefully</li>
+</ul>
+
+<p>The prompt engineering took longer than the scraping logic, but it was totally worth it. Now my newsletters read like they're written by a witty tech journalist who actually cares about my calendar.</p>
+
+<h3>
+  <a name="the-it-actually-works-phase" href="#the-it-actually-works-phase">
+  </a>
+  The "It Actually Works!" Phase 🎉
+</h3>
+
+<p>Three months in, and I've:</p>
+
+<ul>
+<li>Discovered 47 events I would have missed</li>
+<li>Saved approximately 2 hours per week on event hunting</li>
+</ul>
+
+<p><strong>Unexpected Bonus:</strong> The AI's commentary often highlights events I wouldn't have considered. Turns out machine learning isn't just good at recognizing cats in photos - it's also pretty decent at understanding what makes events worth attending.</p>
+
+<h3>
+  <a name="what-i-learned" href="#what-i-learned">
+  </a>
+  What I Learned
+</h3>
+
+<ol>
+<li>
+<strong>Good prompts are worth their weight in gold</strong> - Seriously, spend time on this</li>
+<li>
+<strong>Reliable data sources matter more than perfect parsing</strong> - Bright Data was a game-changer</li>
+<li>
+<strong>Automation should enhance, not replace, human judgment</strong> - The AI suggests, I decide</li>
+<li>
+<strong>Small conveniences compound into big productivity gains</strong> - 10 minutes saved daily = 60+ hours yearly</li>
+<li>
+<strong>Building for yourself often creates the best products</strong> - I actually use this every day</li>
+</ol>
+
+<h3>
+  <a name="future-enhancements-because-were-never-done" href="#future-enhancements-because-were-never-done">
+  </a>
+  Future Enhancements (Because We're Never Done)
+</h3>
+
+<ul>
+<li>
+<strong>Multi-city support</strong> (for when I travel or move)</li>
+<li>
+<strong>Smart filtering</strong> based on past attendance and preferences</li>
+<li>
+<strong>Calendar integration</strong> (one-click event adding)</li>
+<li>
+<strong>Community features</strong> (share interesting finds with friends)</li>
+<li>
+<strong>Analytics dashboard</strong> (because data is beautiful)</li>
+</ul>
+
+
+<hr>
+
+<p><strong>The Bottom Line:</strong> If you're tired of playing event discovery roulette, build yourself an AI assistant. Your future networking self will thank you, and you'll never have to hear "Oh, you missed that amazing talk?" ever again.</p>
+
+<p><em>Now if only I could build an AI agent to actually make me show up to the events... 🤷‍♂️</em></p>
+
+
+<hr>
+
+<p><em>P.S. - If you build your own version, I'd love to see what events your AI discovers! Drop a comment with your city or any cool modifications you make. Let's make FOMO a thing of the past, one automated newsletter at a time.</em></p>
+
+
+            </div>
+
+              <div class="below-post-bb body-billboard-container" data-async-url="/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io/bmar11/post_body_bottom"></div>
+          </div>
+          <section id="comments" data-follow-button-container="true" data-updated-at="2026-04-01 08:38:00 UTC" class="text-padding mb-4 border-t-1 border-0 border-solid border-base-10">
+    <header class="relative flex justify-between items-center mb-6">
+      <div class="flex items-center">
+        <h2 class="crayons-subtitle-1">
+          Top comments <span class="js-comments-count" data-comments-count="11">(11)</span>
+        </h2>
+      </div>
+
+
+      <div id="comment-subscription" class="print-hidden">
+        <div class="crayons-btn-group">
+          <span class="crayons-btn crayons-btn--outlined">Subscribe</span>
+        </div>
+      </div>
+    </header>
+    <div id="billboard_delay_trigger"></div>
+    <div
+      id="comments-container"
+      data-testid="comments-container"
+      data-commentable-id="2803055"
+      data-commentable-type="Article"
+      data-has-recent-comment-activity="false">
+
+        <div id="response-templates-data" class="hidden"></div>
+
+
+<form class="comment-form print-hidden" id="new_comment" action="/comments" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" />
+
+  <input type="hidden" name="authenticity_token" value="NOTHING" id="new_comment_authenticity_token">
+
+    <input value="2803055" autocomplete="off" type="hidden" name="comment[commentable_id]" id="comment_commentable_id" />
+    <input value="Article" autocomplete="off" type="hidden" name="comment[commentable_type]" id="comment_commentable_type" />
+    
+
+  <span class="crayons-avatar m:crayons-avatar--l mr-2 shrink-0">
+    <img src="https://media2.dev.to/dynamic/image/width=256,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" width="32" height="32" alt="pic" class="crayons-avatar__image overflow-hidden" id="comment-primary-user-profile--avatar" loading="lazy" />
+  </span>
+  <div class="comment-form__inner">
+    <div class="comment-form__field" data-tracking-name="comment_form_textfield">
+      <textarea placeholder="Add to the discussion" onfocus="handleFocus(event)" onkeyup="handleKeyUp(event)" onkeydown="handleKeyDown(event)" oninput="handleChange(event)" id="text-area" required="required" class="crayons-textfield comment-textarea crayons-textfield--ghost" aria-label="Add a comment to the discussion" name="comment[body_markdown]">
+</textarea>
+
+    </div>
+
+    <div class="response-templates-container crayons-card crayons-card--secondary p-4 mb-4 comment-form__templates fs-base hidden">
+      <header class="mb-3">
+        <button type="button" class="crayons-btn personal-template-button active" data-target-type="personal" data-form-id="new_comment">Personal</button>
+        <button type="button" class="crayons-btn moderator-template-button hidden" data-target-type="moderator" data-form-id="new_comment">Trusted User</button>
+      </header>
+
+      <div class="personal-responses-container">
+      </div>
+      <div class="moderator-responses-container hidden">
+      </div>
+
+      <a target="_blank" rel="noopener nofollow" href="/settings/response-templates">
+        Create template
+      </a>
+      <p>Templates let you quickly answer FAQs or store snippets for re-use.</p>
+    </div>
+
+    <div class="comment-form__preview text-styles text-styles--secondary" id="preview-div"></div>
+
+    <div class="comment-form__buttons mb-4">
+      <button type="submit" class="crayons-btn mr-2 js-btn-enable" onclick="validateField(event)" data-tracking-name="comment_submit_button" disabled>Submit</button>
+      <button type="button" class="preview-toggle crayons-btn crayons-btn--secondary comment-action-preview js-btn-enable mr-2" data-tracking-name="comment_preview_button" disabled>Preview</button>
+      <a href="/404.html" class="dismiss-edit-comment crayons-btn crayons-btn--ghost js-btn-dismiss hidden">Dismiss</a>
+    </div>
+  </div>
+
+  <div class="code-of-conduct" id="toggle-code-of-conduct-checkbox"></div>
+</form>
+
+
+      <div class="comments" id="comment-trees-container">
+              <details class="comment-wrapper js-comment-wrapper comment-wrapper--deep-0
+                    root
+                    " open>
+      <summary aria-label="Toggle this comment (and replies)" data-tracking-name="expand_comment_toggle">
+        <span class="m:mx-1 inline-block align-middle">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="abjxl98arnrzljzrc0lsghgikjk60h1h" class="crayons-icon expanded"><title id="abjxl98arnrzljzrc0lsghgikjk60h1h">Collapse</title>
+    <path d="M12 10.677L8 6.935 9 6l3 2.807L15 6l1 .935-4 3.742zm0 4.517L9 18l-1-.935 4-3.742 4 3.742-1 .934-3-2.805z"></path>
+</svg>
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="abqa06butj4jat2p4p9b73gxt3j7n34" class="crayons-icon collapsed"><title id="abqa06butj4jat2p4p9b73gxt3j7n34">Expand</title>
+    <path d="M12 18l-4-3.771 1-.943 3 2.829 3-2.829 1 .943L12 18zm0-10.115l-3 2.829-1-.943L12 6l4 3.771-1 .942-3-2.828z"></path>
+</svg>
+
+        </span>
+        <span class="js-collapse-comment-content inline-block align-middle"></span>
+      </summary>
+  <div
+    id="comment-node-1424113"
+    class="
+      comment single-comment-node
+      
+      root
+      comment--deep-0
+      
+    "
+    data-comment-id="1424113"
+    data-path="/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io/comments/330hf"
+    data-comment-author-id="3656281"
+    data-content-user-id="3656281">
+    <a name="comment-330hf" style="position: absolute; top: -8px;">&nbsp;</a>
+    
+<div class="comment__inner">
+    <a href="https://dev.to/devon__kelley" class="shrink-0 crayons-avatar m:crayons-avatar--l mt-4 m:mt-3">
+    <img class="crayons-avatar__image" width="32" height="32" src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3656281%2Fcbdfcad6-cfe8-44cc-8575-fbe6d0c17f79.jpg" alt="devon__kelley profile image" loading="lazy" />
+  </a>
+
+
+  <div class="inner-comment comment__details">
+    <div class="comment__content crayons-card">
+        
+
+
+        <div class="comment__header">
+  <a href="https://dev.to/devon__kelley" class="crayons-link crayons-link--secondary flex items-center fw-medium m:hidden">
+    <span class="js-comment-username">
+      Devon Kelley
+    </span>
+  </a>
+  <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:block">
+    <button id="comment-profile-preview-trigger-1424113" aria-controls="comment-profile-preview-content-1424113" class="profile-preview-card__trigger p-1 -my-1 -ml-1 crayons-btn crayons-btn--ghost" aria-label="Devon Kelley profile details">
+      Devon Kelley
+      
+    </button>
+    <div id="comment-profile-preview-content-1424113" class="profile-preview-card__content p-4 pt-0 branded-7 crayons-dropdown" style="--card-color: #000000; border-top-color: var(--card-color);" data-testid="profile-preview-card" data-repositioning-dropdown="true">
+    <div class="gap-4 grid">
+        <div class="-mt-4">
+  <a href="/devon__kelley" class="flex">
+    <span class="crayons-avatar crayons-avatar--xl  mr-2 shrink-0">
+      <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3656281%2Fcbdfcad6-cfe8-44cc-8575-fbe6d0c17f79.jpg" class="crayons-avatar__image" alt="" loading="lazy" />
+    </span>
+    <span class="crayons-link crayons-subtitle-2 mt-5">
+      Devon Kelley
+      
+    </span>
+  </a>
+</div>
+
+<div class="print-hidden">
+  <button name="button" type="button" data-info="{&quot;className&quot;:&quot;User&quot;,&quot;style&quot;:&quot;&quot;,&quot;id&quot;:3656281,&quot;name&quot;:&quot;Devon Kelley&quot;}" class="crayons-btn follow-action-button whitespace-nowrap w-100 follow-user" aria-label="Follow user: Devon Kelley" aria-pressed="false">Follow</button>
+</div>
+  <div class="color-base-70">
+    Hi! I&#39;m Devon. Founder of Kalibr: Ship agents that fix themselves
+
+Join the Kalibr community on discord: https://discord.gg/dT9VXuaE
+  </div>
+
+  <div class="user-metadata-details">
+    <ul class="user-metadata-details-inner">
+        <li>
+          <div class="key">
+            Email
+          </div>
+          <div class="value">
+            <a href="mailto:devon@kalibr.systems">devon@kalibr.systems</a>
+          </div>
+        </li>
+        <li>
+          <div class="key">
+            Location
+          </div>
+          <div class="value">
+            San Francisco, CA
+          </div>
+        </li>
+          <li>
+            <div class="key">
+              Education
+            </div>
+            <div class="value">
+              Y Combinator
+            </div>
+          </li>
+          <li>
+            <div class="key">
+              Work
+            </div>
+            <div class="value">
+              Founder
+            </div>
+          </li>
+      <li>
+        <div class="key">
+          Joined
+        </div>
+        <div class="value">
+          <time datetime="2025-12-10T23:24:45Z" class="date">Dec 10, 2025</time>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+    </div>
+</div>
+
+
+  </div>
+
+  <span class="color-base-30 px-2 m:pl-0" role="presentation">&bull;</span>
+
+<a href="https://dev.to/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io#comment-330hf" class="comment-date crayons-link crayons-link--secondary fs-s">
+  <time datetime="2025-12-10T23:59:47Z" class=date-short-year>
+    Dec 10 &#39;25
+  </time>
+
+</a>
+
+
+  <div class="comment__dropdown" data-tracking-name="comment_dropdown">
+    <button id="comment-dropdown-trigger-1424113" aria-controls="comment-dropdown-1424113" aria-expanded="false"
+      class="dropbtn comment__dropdown-trigger crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon "
+      aria-label="Toggle dropdown menu" aria-haspopup="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="ahg98y06gpp63kw00n1jiax8lz5docnj" class="crayons-icon pointer-events-none"><title id="ahg98y06gpp63kw00n1jiax8lz5docnj">Dropdown menu</title>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.25 12a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm5.25 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm3.75 1.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
+</svg>
+
+    </button>
+    <div id="comment-dropdown-1424113" class="crayons-dropdown right-1 s:right-0 s:left-auto fs-base dropdown">
+      <ul class="m-0">
+        <li><a href="https://dev.to/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io#comment-330hf" class="crayons-link crayons-link--block permalink-copybtn" aria-label="Copy link to Devon Kelley&#39;s comment" data-no-instant>Copy link</a></li>
+        <li class="comment-actions hidden" data-user-id="3656281" data-action="settings-button" data-path="https://dev.to/devon__kelley/comment/330hf/settings" aria-label="Go to Devon Kelley&#39;s comment settings"></li>
+          <li class="comment-actions hidden" data-action="hide-button" data-commentable-user-id="885064" data-user-id="3656281">
+              <button
+                class="flex justify-between crayons-link crayons-link--block w-100 bg-transparent border-0 hide-comment"
+                data-hide-type="hide"
+                data-comment-id="1424113"
+                data-comment-url="https://dev.to/devon__kelley/comment/330hf"
+                aria-label="Hide Devon Kelley&#39;s comment">
+                Hide
+              </button>
+          </li>
+        <li class="mod-actions hidden mod-actions-comment-button" data-path="https://dev.to/devon__kelley/comment/330hf/mod" aria-label="Moderate Devon Kelley&#39;s comment"></li>
+        <li class="report-abuse-link-wrapper" data-path="/report-abuse?url=https://dev.to/devon__kelley/comment/330hf" aria-label="Report Devon Kelley&#39;s comment as abusive or violating our code of conduct and/or terms and conditions"></li>
+        <li class="current-user-actions"></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+        <div
+          class="
+            comment__body
+            text-styles
+            text-styles--secondary
+            body
+            
+            
+          ">
+          <p>This is brilliant, clever, charming and immensely useful. Excellent work!</p>
+
+
+        </div>
+
+    </div>
+
+    <script>
+    </script>
+
+    <footer class="comment__footer print-hidden">
+  <button
+    class="crayons-tooltip__activator relative crayons-btn crayons-btn--ghost crayons-btn--icon-left crayons-btn--s mr-1 reaction-like inline-flex reaction-button"
+    id="button-for-comment-1424113"
+    data-comment-id="1424113"
+    aria-label="like"
+    data-tracking-name="comment_heart_button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a2zs4s35jzmlogvho9q4154jzlt6di5n" class="crayons-icon reaction-icon not-reacted"><title id="a2zs4s35jzmlogvho9q4154jzlt6di5n">Like comment: </title><path d="M18.884 12.595l.01.011L12 19.5l-6.894-6.894.01-.01A4.875 4.875 0 0112 5.73a4.875 4.875 0 016.884 6.865zM6.431 7.037a3.375 3.375 0 000 4.773L12 17.38l5.569-5.569a3.375 3.375 0 10-4.773-4.773L9.613 10.22l-1.06-1.062 2.371-2.372a3.375 3.375 0 00-4.492.25v.001z"></path></svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="attudbdya2rc2s75eltdsuvm6rhsmvw5" class="crayons-icon crayons-icon reaction-icon--like reaction-icon reacted"><title id="attudbdya2rc2s75eltdsuvm6rhsmvw5">Like comment: </title>
+    <path d="M5.116 12.595a4.875 4.875 0 015.56-7.68h-.002L7.493 8.098l1.06 1.061 3.181-3.182a4.875 4.875 0 016.895 6.894L12 19.5l-6.894-6.894.01-.01z"></path>
+</svg>
+
+    <span class="reactions-count">3</span><span class="reactions-label hidden m:inline-block">&nbsp;likes</span>
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Like
+    </span>
+  </button>
+
+      <button
+        class="actions crayons-btn crayons-btn--ghost crayons-btn--s crayons-btn--icon-left toggle-reply-form mr-1 inline-flex"
+        data-comment-id="1424113"
+        data-path="/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io/comments/330hf"
+        data-tracking-name="comment_reply_button"
+        data-testid="reply-button-1424113"
+        rel="nofollow">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a3fd547rzvn853ivlbr49s8gvllz3xz1" class="crayons-icon reaction-icon not-reacted"><title id="a3fd547rzvn853ivlbr49s8gvllz3xz1">Comment button</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+        <span class="hidden m:inline-block">Reply</span>
+      </button>
+
+</footer>
+
+  </div>
+</div>
+
+
+  </div>
+    </details>
+
+    <details class="comment-wrapper js-comment-wrapper comment-wrapper--deep-0
+                    root
+                    " open>
+      <summary aria-label="Toggle this comment (and replies)" data-tracking-name="expand_comment_toggle">
+        <span class="m:mx-1 inline-block align-middle">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a3r2iefgtbmgvjlyq8jt9pk3jw24oqv6" class="crayons-icon expanded"><title id="a3r2iefgtbmgvjlyq8jt9pk3jw24oqv6">Collapse</title>
+    <path d="M12 10.677L8 6.935 9 6l3 2.807L15 6l1 .935-4 3.742zm0 4.517L9 18l-1-.935 4-3.742 4 3.742-1 .934-3-2.805z"></path>
+</svg>
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a5ndcqyuzruw6ey36pzm2n13tw7lbfoy" class="crayons-icon collapsed"><title id="a5ndcqyuzruw6ey36pzm2n13tw7lbfoy">Expand</title>
+    <path d="M12 18l-4-3.771 1-.943 3 2.829 3-2.829 1 .943L12 18zm0-10.115l-3 2.829-1-.943L12 6l4 3.771-1 .942-3-2.828z"></path>
+</svg>
+
+        </span>
+        <span class="js-collapse-comment-content inline-block align-middle"></span>
+      </summary>
+  <div
+    id="comment-node-1388065"
+    class="
+      comment single-comment-node
+      
+      root
+      comment--deep-0
+      
+    "
+    data-comment-id="1388065"
+    data-path="/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io/comments/30p93"
+    data-comment-author-id="1138237"
+    data-content-user-id="1138237">
+    <a name="comment-30p93" style="position: absolute; top: -8px;">&nbsp;</a>
+    
+<div class="comment__inner">
+    <a href="https://dev.to/lincemathew" class="shrink-0 crayons-avatar m:crayons-avatar--l mt-4 m:mt-3">
+    <img class="crayons-avatar__image" width="32" height="32" src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F1138237%2F84b2cb1c-8fe3-4f02-bbea-4edd8de7c7b7.jpeg" alt="lincemathew profile image" loading="lazy" />
+  </a>
+
+
+  <div class="inner-comment comment__details">
+    <div class="comment__content crayons-card">
+        
+
+
+        <div class="comment__header">
+  <a href="https://dev.to/lincemathew" class="crayons-link crayons-link--secondary flex items-center fw-medium m:hidden">
+    <span class="js-comment-username">
+      LinceMathew
+    </span>
+  </a>
+  <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:block">
+    <button id="comment-profile-preview-trigger-1388065" aria-controls="comment-profile-preview-content-1388065" class="profile-preview-card__trigger p-1 -my-1 -ml-1 crayons-btn crayons-btn--ghost" aria-label="LinceMathew profile details">
+      LinceMathew
+      
+    </button>
+    <div id="comment-profile-preview-content-1388065" class="profile-preview-card__content p-4 pt-0 branded-7 crayons-dropdown" style="--card-color: #000000; border-top-color: var(--card-color);" data-testid="profile-preview-card" data-repositioning-dropdown="true">
+    <div class="gap-4 grid">
+        <div class="-mt-4">
+  <a href="/lincemathew" class="flex">
+    <span class="crayons-avatar crayons-avatar--xl  mr-2 shrink-0">
+      <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F1138237%2F84b2cb1c-8fe3-4f02-bbea-4edd8de7c7b7.jpeg" class="crayons-avatar__image" alt="" loading="lazy" />
+    </span>
+    <span class="crayons-link crayons-subtitle-2 mt-5">
+      LinceMathew
+      
+    </span>
+  </a>
+</div>
+
+<div class="print-hidden">
+  <button name="button" type="button" data-info="{&quot;className&quot;:&quot;User&quot;,&quot;style&quot;:&quot;&quot;,&quot;id&quot;:1138237,&quot;name&quot;:&quot;LinceMathew&quot;}" class="crayons-btn follow-action-button whitespace-nowrap w-100 follow-user" aria-label="Follow user: LinceMathew" aria-pressed="false">Follow</button>
+</div>
+  <div class="color-base-70">
+    Software Developer | Building LiveReview— Private AI code review tool that runs on your LLM key (OpenAI, Gemini, etc.) | https://hexmos.com/livereview/
+  </div>
+
+  <div class="user-metadata-details">
+    <ul class="user-metadata-details-inner">
+        <li>
+          <div class="key">
+            Location
+          </div>
+          <div class="value">
+            India
+          </div>
+        </li>
+      <li>
+        <div class="key">
+          Joined
+        </div>
+        <div class="value">
+          <time datetime="2023-08-13T10:04:08Z" class="date">Aug 13, 2023</time>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+    </div>
+</div>
+
+
+  </div>
+
+  <span class="color-base-30 px-2 m:pl-0" role="presentation">&bull;</span>
+
+<a href="https://dev.to/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io#comment-30p93" class="comment-date crayons-link crayons-link--secondary fs-s">
+  <time datetime="2025-08-31T18:41:32Z" class=date-short-year>
+    Aug 31 &#39;25
+  </time>
+
+</a>
+
+
+  <div class="comment__dropdown" data-tracking-name="comment_dropdown">
+    <button id="comment-dropdown-trigger-1388065" aria-controls="comment-dropdown-1388065" aria-expanded="false"
+      class="dropbtn comment__dropdown-trigger crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon "
+      aria-label="Toggle dropdown menu" aria-haspopup="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="ar1jf4xzxmqie0rfpvvrmnpb2hbhwago" class="crayons-icon pointer-events-none"><title id="ar1jf4xzxmqie0rfpvvrmnpb2hbhwago">Dropdown menu</title>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.25 12a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm5.25 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm3.75 1.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
+</svg>
+
+    </button>
+    <div id="comment-dropdown-1388065" class="crayons-dropdown right-1 s:right-0 s:left-auto fs-base dropdown">
+      <ul class="m-0">
+        <li><a href="https://dev.to/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io#comment-30p93" class="crayons-link crayons-link--block permalink-copybtn" aria-label="Copy link to LinceMathew&#39;s comment" data-no-instant>Copy link</a></li>
+        <li class="comment-actions hidden" data-user-id="1138237" data-action="settings-button" data-path="https://dev.to/lincemathew/comment/30p93/settings" aria-label="Go to LinceMathew&#39;s comment settings"></li>
+          <li class="comment-actions hidden" data-action="hide-button" data-commentable-user-id="885064" data-user-id="1138237">
+              <button
+                class="flex justify-between crayons-link crayons-link--block w-100 bg-transparent border-0 hide-comment"
+                data-hide-type="hide"
+                data-comment-id="1388065"
+                data-comment-url="https://dev.to/lincemathew/comment/30p93"
+                aria-label="Hide LinceMathew&#39;s comment">
+                Hide
+              </button>
+          </li>
+        <li class="mod-actions hidden mod-actions-comment-button" data-path="https://dev.to/lincemathew/comment/30p93/mod" aria-label="Moderate LinceMathew&#39;s comment"></li>
+        <li class="report-abuse-link-wrapper" data-path="/report-abuse?url=https://dev.to/lincemathew/comment/30p93" aria-label="Report LinceMathew&#39;s comment as abusive or violating our code of conduct and/or terms and conditions"></li>
+        <li class="current-user-actions"></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+        <div
+          class="
+            comment__body
+            text-styles
+            text-styles--secondary
+            body
+            
+            
+          ">
+          <p>This is such a clever build  — love how you turned a boring daily chore into something fun and genuinely useful. The “Event Butler” idea with personality and wit makes it way more engaging than just another scraper + email combo.</p>
+
+
+        </div>
+
+    </div>
+
+    <script>
+    </script>
+
+    <footer class="comment__footer print-hidden">
+  <button
+    class="crayons-tooltip__activator relative crayons-btn crayons-btn--ghost crayons-btn--icon-left crayons-btn--s mr-1 reaction-like inline-flex reaction-button"
+    id="button-for-comment-1388065"
+    data-comment-id="1388065"
+    aria-label="like"
+    data-tracking-name="comment_heart_button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="arnq6f10zzie13ji313rmazinltsflc3" class="crayons-icon reaction-icon not-reacted"><title id="arnq6f10zzie13ji313rmazinltsflc3">Like comment: </title><path d="M18.884 12.595l.01.011L12 19.5l-6.894-6.894.01-.01A4.875 4.875 0 0112 5.73a4.875 4.875 0 016.884 6.865zM6.431 7.037a3.375 3.375 0 000 4.773L12 17.38l5.569-5.569a3.375 3.375 0 10-4.773-4.773L9.613 10.22l-1.06-1.062 2.371-2.372a3.375 3.375 0 00-4.492.25v.001z"></path></svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="arelumwfmri0t05gg4xiqqx1samh545d" class="crayons-icon crayons-icon reaction-icon--like reaction-icon reacted"><title id="arelumwfmri0t05gg4xiqqx1samh545d">Like comment: </title>
+    <path d="M5.116 12.595a4.875 4.875 0 015.56-7.68h-.002L7.493 8.098l1.06 1.061 3.181-3.182a4.875 4.875 0 016.895 6.894L12 19.5l-6.894-6.894.01-.01z"></path>
+</svg>
+
+    <span class="reactions-count">5</span><span class="reactions-label hidden m:inline-block">&nbsp;likes</span>
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Like
+    </span>
+  </button>
+
+      <button
+        class="actions crayons-btn crayons-btn--ghost crayons-btn--s crayons-btn--icon-left toggle-reply-form mr-1 inline-flex"
+        data-comment-id="1388065"
+        data-path="/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io/comments/30p93"
+        data-tracking-name="comment_reply_button"
+        data-testid="reply-button-1388065"
+        rel="nofollow">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a8nekpomd6cska00kiyn8w4qgnmqm07t" class="crayons-icon reaction-icon not-reacted"><title id="a8nekpomd6cska00kiyn8w4qgnmqm07t">Comment button</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+        <span class="hidden m:inline-block">Reply</span>
+      </button>
+
+</footer>
+
+  </div>
+</div>
+    <details class="comment-wrapper js-comment-wrapper comment-wrapper--deep-1
+                    child
+                    " open>
+      <summary aria-label="Toggle this comment (and replies)" data-tracking-name="expand_comment_toggle">
+        <span class="mx-0 inline-block align-middle">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="arbm7nnub4ure7ymp1ehf5cevwj7uvy3" class="crayons-icon expanded"><title id="arbm7nnub4ure7ymp1ehf5cevwj7uvy3">Collapse</title>
+    <path d="M12 10.677L8 6.935 9 6l3 2.807L15 6l1 .935-4 3.742zm0 4.517L9 18l-1-.935 4-3.742 4 3.742-1 .934-3-2.805z"></path>
+</svg>
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="asomqbp5135tnn0cihig9elj05cj9irq" class="crayons-icon collapsed"><title id="asomqbp5135tnn0cihig9elj05cj9irq">Expand</title>
+    <path d="M12 18l-4-3.771 1-.943 3 2.829 3-2.829 1 .943L12 18zm0-10.115l-3 2.829-1-.943L12 6l4 3.771-1 .942-3-2.828z"></path>
+</svg>
+
+        </span>
+        <span class="js-collapse-comment-content inline-block align-middle"></span>
+      </summary>
+  <div
+    id="comment-node-1388136"
+    class="
+      comment single-comment-node
+      
+      child
+      comment--deep-1
+      
+    "
+    data-comment-id="1388136"
+    data-path="/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io/comments/30pbm"
+    data-comment-author-id="885064"
+    data-content-user-id="885064">
+    <a name="comment-30pbm" style="position: absolute; top: -8px;">&nbsp;</a>
+    
+<div class="comment__inner">
+    <a href="https://dev.to/varshithvhegde" class="shrink-0 crayons-avatar mt-4">
+    <img class="crayons-avatar__image" width="32" height="32" src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F885064%2F4ab304f4-a3f3-409c-8217-9ce130e57c18.jpeg" alt="varshithvhegde profile image" loading="lazy" />
+  </a>
+
+
+  <div class="inner-comment comment__details">
+    <div class="comment__content crayons-card">
+        
+
+
+        <div class="comment__header">
+  <a href="https://dev.to/varshithvhegde" class="crayons-link crayons-link--secondary flex items-center fw-medium m:hidden">
+    <span class="js-comment-username">
+      Varshith V Hegde
+    </span>
+      <span class="crayons-hover-tooltip inline-block spec-op-author -mr-2" data-tooltip="Author">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" class="crayons-icon">
+    <path d="M12 8.25a6 6 0 110 12 6 6 0 010-12zm0 2.625l-.992 2.01-2.218.322 1.605 1.564-.379 2.21L12 15.937l1.984 1.043-.379-2.209 1.605-1.564-2.218-.323L12 10.875zm.75-6.376l3.75.001v2.25l-1.022.854a7.45 7.45 0 00-2.728-.817V4.5zm-1.5 0v2.288a7.451 7.451 0 00-2.727.816L7.5 6.75V4.5h3.75z"></path>
+</svg>
+
+      </span>
+  </a>
+  <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:block">
+    <button id="comment-profile-preview-trigger-1388136" aria-controls="comment-profile-preview-content-1388136" class="profile-preview-card__trigger p-1 -my-1 -ml-1 crayons-btn crayons-btn--ghost" aria-label="Varshith V Hegde profile details">
+      Varshith V Hegde
+      <a style="display: inline;" href="/++"><img alt="Subscriber" class="subscription-icon" src="https://assets.dev.to/assets/subscription-icon-805dfa7ac7dd660f07ed8d654877270825b07a92a03841aa99a1093bd00431b2.png" /></a>
+    </button>
+    <div id="comment-profile-preview-content-1388136" class="profile-preview-card__content p-4 pt-0 branded-7 crayons-dropdown" style="--card-color: #000000; border-top-color: var(--card-color);" data-testid="profile-preview-card" data-repositioning-dropdown="true">
+    <div class="gap-4 grid">
+        <div class="-mt-4">
+  <a href="/varshithvhegde" class="flex">
+    <span class="crayons-avatar crayons-avatar--xl  mr-2 shrink-0">
+      <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F885064%2F4ab304f4-a3f3-409c-8217-9ce130e57c18.jpeg" class="crayons-avatar__image" alt="" loading="lazy" />
+    </span>
+    <span class="crayons-link crayons-subtitle-2 mt-5">
+      Varshith V Hegde
+      <img class="subscription-icon" src="https://assets.dev.to/assets/subscription-icon-805dfa7ac7dd660f07ed8d654877270825b07a92a03841aa99a1093bd00431b2.png" />
+    </span>
+  </a>
+</div>
+
+<div class="print-hidden">
+  <button name="button" type="button" data-info="{&quot;className&quot;:&quot;User&quot;,&quot;style&quot;:&quot;&quot;,&quot;id&quot;:885064,&quot;name&quot;:&quot;Varshith V Hegde&quot;}" class="crayons-btn follow-action-button whitespace-nowrap w-100 follow-user" aria-label="Follow user: Varshith V Hegde" aria-pressed="false">Follow</button>
+</div>
+  <div class="color-base-70">
+    A simple programmer fond of learning
+  </div>
+
+  <div class="user-metadata-details">
+    <ul class="user-metadata-details-inner">
+        <li>
+          <div class="key">
+            Email
+          </div>
+          <div class="value">
+            <a href="mailto:varshithvh@gmail.com">varshithvh@gmail.com</a>
+          </div>
+        </li>
+        <li>
+          <div class="key">
+            Location
+          </div>
+          <div class="value">
+            Mangalore
+          </div>
+        </li>
+          <li>
+            <div class="key">
+              Education
+            </div>
+            <div class="value">
+              Mangalore Institute of Technology and Engineering 
+            </div>
+          </li>
+          <li>
+            <div class="key">
+              Work
+            </div>
+            <div class="value">
+              Software Engineer@KPIT
+            </div>
+          </li>
+      <li>
+        <div class="key">
+          Joined
+        </div>
+        <div class="value">
+          <time datetime="2022-06-30T11:09:59Z" class="date">Jun 30, 2022</time>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+    </div>
+</div>
+
+      <span class="crayons-hover-tooltip inline-block spec-op-author -ml-2" data-tooltip="Author">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" class="crayons-icon">
+    <path d="M12 8.25a6 6 0 110 12 6 6 0 010-12zm0 2.625l-.992 2.01-2.218.322 1.605 1.564-.379 2.21L12 15.937l1.984 1.043-.379-2.209 1.605-1.564-2.218-.323L12 10.875zm.75-6.376l3.75.001v2.25l-1.022.854a7.45 7.45 0 00-2.728-.817V4.5zm-1.5 0v2.288a7.451 7.451 0 00-2.727.816L7.5 6.75V4.5h3.75z"></path>
+</svg>
+
+      </span>
+
+  </div>
+
+  <span class="color-base-30 px-2 m:pl-0" role="presentation">&bull;</span>
+
+<a href="https://dev.to/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io#comment-30pbm" class="comment-date crayons-link crayons-link--secondary fs-s">
+  <time datetime="2025-09-01T04:01:01Z" class=date-short-year>
+    Sep 1 &#39;25
+  </time>
+
+</a>
+
+
+  <div class="comment__dropdown" data-tracking-name="comment_dropdown">
+    <button id="comment-dropdown-trigger-1388136" aria-controls="comment-dropdown-1388136" aria-expanded="false"
+      class="dropbtn comment__dropdown-trigger crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon "
+      aria-label="Toggle dropdown menu" aria-haspopup="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="aa2vxn21hmavw5j5ei8773bg8m7xe6nd" class="crayons-icon pointer-events-none"><title id="aa2vxn21hmavw5j5ei8773bg8m7xe6nd">Dropdown menu</title>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.25 12a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm5.25 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm3.75 1.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
+</svg>
+
+    </button>
+    <div id="comment-dropdown-1388136" class="crayons-dropdown right-1 s:right-0 s:left-auto fs-base dropdown">
+      <ul class="m-0">
+        <li><a href="https://dev.to/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io#comment-30pbm" class="crayons-link crayons-link--block permalink-copybtn" aria-label="Copy link to Varshith V Hegde&#39;s comment" data-no-instant>Copy link</a></li>
+        <li class="comment-actions hidden" data-user-id="885064" data-action="settings-button" data-path="https://dev.to/varshithvhegde/comment/30pbm/settings" aria-label="Go to Varshith V Hegde&#39;s comment settings"></li>
+          <li class="comment-actions hidden" data-action="hide-button" data-commentable-user-id="885064" data-user-id="885064">
+              <button
+                class="flex justify-between crayons-link crayons-link--block w-100 bg-transparent border-0 hide-comment"
+                data-hide-type="hide"
+                data-comment-id="1388136"
+                data-comment-url="https://dev.to/varshithvhegde/comment/30pbm"
+                aria-label="Hide Varshith V Hegde&#39;s comment">
+                Hide
+              </button>
+          </li>
+        <li class="mod-actions hidden mod-actions-comment-button" data-path="https://dev.to/varshithvhegde/comment/30pbm/mod" aria-label="Moderate Varshith V Hegde&#39;s comment"></li>
+        <li class="report-abuse-link-wrapper" data-path="/report-abuse?url=https://dev.to/varshithvhegde/comment/30pbm" aria-label="Report Varshith V Hegde&#39;s comment as abusive or violating our code of conduct and/or terms and conditions"></li>
+        <li class="current-user-actions"></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+        <div
+          class="
+            comment__body
+            text-styles
+            text-styles--secondary
+            body
+            
+            
+          ">
+          <p>Thank you soo much . it means a lot</p>
+
+
+        </div>
+
+    </div>
+
+    <script>
+    </script>
+
+    <footer class="comment__footer print-hidden">
+  <button
+    class="crayons-tooltip__activator relative crayons-btn crayons-btn--ghost crayons-btn--icon-left crayons-btn--s mr-1 reaction-like inline-flex reaction-button"
+    id="button-for-comment-1388136"
+    data-comment-id="1388136"
+    aria-label="like"
+    data-tracking-name="comment_heart_button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="agsjgtn2bkhoywun0tspljze2pvcjqww" class="crayons-icon reaction-icon not-reacted"><title id="agsjgtn2bkhoywun0tspljze2pvcjqww">Like comment: </title><path d="M18.884 12.595l.01.011L12 19.5l-6.894-6.894.01-.01A4.875 4.875 0 0112 5.73a4.875 4.875 0 016.884 6.865zM6.431 7.037a3.375 3.375 0 000 4.773L12 17.38l5.569-5.569a3.375 3.375 0 10-4.773-4.773L9.613 10.22l-1.06-1.062 2.371-2.372a3.375 3.375 0 00-4.492.25v.001z"></path></svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="ah8rnfbiu23e8n5lmnsvybozsrzb5imp" class="crayons-icon crayons-icon reaction-icon--like reaction-icon reacted"><title id="ah8rnfbiu23e8n5lmnsvybozsrzb5imp">Like comment: </title>
+    <path d="M5.116 12.595a4.875 4.875 0 015.56-7.68h-.002L7.493 8.098l1.06 1.061 3.181-3.182a4.875 4.875 0 016.895 6.894L12 19.5l-6.894-6.894.01-.01z"></path>
+</svg>
+
+    <span class="reactions-count">1</span><span class="reactions-label hidden m:inline-block">&nbsp;like</span>
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Like
+    </span>
+  </button>
+
+      <button
+        class="actions crayons-btn crayons-btn--ghost crayons-btn--s crayons-btn--icon-left toggle-reply-form mr-1 inline-flex"
+        data-comment-id="1388136"
+        data-path="/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io/comments/30pbm"
+        data-tracking-name="comment_reply_button"
+        data-testid="reply-button-1388136"
+        rel="nofollow">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="ajia361oqxkkkp58akk57ft444rm5fx0" class="crayons-icon reaction-icon not-reacted"><title id="ajia361oqxkkkp58akk57ft444rm5fx0">Comment button</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+        <span class="hidden m:inline-block">Reply</span>
+      </button>
+
+</footer>
+
+  </div>
+</div>
+
+
+  </div>
+    </details>
+
+
+  </div>
+    </details>
+
+    <details class="comment-wrapper js-comment-wrapper comment-wrapper--deep-0
+                    root
+                    " open>
+      <summary aria-label="Toggle this comment (and replies)" data-tracking-name="expand_comment_toggle">
+        <span class="m:mx-1 inline-block align-middle">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="ae1b65iidniy1xl1wr3v34s241n9mbwt" class="crayons-icon expanded"><title id="ae1b65iidniy1xl1wr3v34s241n9mbwt">Collapse</title>
+    <path d="M12 10.677L8 6.935 9 6l3 2.807L15 6l1 .935-4 3.742zm0 4.517L9 18l-1-.935 4-3.742 4 3.742-1 .934-3-2.805z"></path>
+</svg>
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="acg51rn70hmfqwxv0xuhxiyr8f4ljs0h" class="crayons-icon collapsed"><title id="acg51rn70hmfqwxv0xuhxiyr8f4ljs0h">Expand</title>
+    <path d="M12 18l-4-3.771 1-.943 3 2.829 3-2.829 1 .943L12 18zm0-10.115l-3 2.829-1-.943L12 6l4 3.771-1 .942-3-2.828z"></path>
+</svg>
+
+        </span>
+        <span class="js-collapse-comment-content inline-block align-middle"></span>
+      </summary>
+  <div
+    id="comment-node-1388912"
+    class="
+      comment single-comment-node
+      
+      root
+      comment--deep-0
+      
+    "
+    data-comment-id="1388912"
+    data-path="/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io/comments/310fi"
+    data-comment-author-id="889475"
+    data-content-user-id="889475">
+    <a name="comment-310fi" style="position: absolute; top: -8px;">&nbsp;</a>
+    
+<div class="comment__inner">
+    <a href="https://dev.to/divyasinghdev" class="shrink-0 crayons-avatar m:crayons-avatar--l mt-4 m:mt-3">
+    <img class="crayons-avatar__image" width="32" height="32" src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F889475%2F1165be61-6903-4b59-af67-c262acfb1c94.webp" alt="divyasinghdev profile image" loading="lazy" />
+  </a>
+
+
+  <div class="inner-comment comment__details">
+    <div class="comment__content crayons-card">
+        
+
+
+        <div class="comment__header">
+  <a href="https://dev.to/divyasinghdev" class="crayons-link crayons-link--secondary flex items-center fw-medium m:hidden">
+    <span class="js-comment-username">
+      Divya
+    </span>
+  </a>
+  <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:block">
+    <button id="comment-profile-preview-trigger-1388912" aria-controls="comment-profile-preview-content-1388912" class="profile-preview-card__trigger p-1 -my-1 -ml-1 crayons-btn crayons-btn--ghost" aria-label="Divya profile details">
+      Divya
+      <a style="display: inline;" href="/++"><img alt="Subscriber" class="subscription-icon" src="https://assets.dev.to/assets/subscription-icon-805dfa7ac7dd660f07ed8d654877270825b07a92a03841aa99a1093bd00431b2.png" /></a>
+    </button>
+    <div id="comment-profile-preview-content-1388912" class="profile-preview-card__content p-4 pt-0 branded-7 crayons-dropdown" style="--card-color: #2e043e; border-top-color: var(--card-color);" data-testid="profile-preview-card" data-repositioning-dropdown="true">
+    <div class="gap-4 grid">
+        <div class="-mt-4">
+  <a href="/divyasinghdev" class="flex">
+    <span class="crayons-avatar crayons-avatar--xl  mr-2 shrink-0">
+      <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F889475%2F1165be61-6903-4b59-af67-c262acfb1c94.webp" class="crayons-avatar__image" alt="" loading="lazy" />
+    </span>
+    <span class="crayons-link crayons-subtitle-2 mt-5">
+      Divya
+      <img class="subscription-icon" src="https://assets.dev.to/assets/subscription-icon-805dfa7ac7dd660f07ed8d654877270825b07a92a03841aa99a1093bd00431b2.png" />
+    </span>
+  </a>
+</div>
+
+<div class="print-hidden">
+  <button name="button" type="button" data-info="{&quot;className&quot;:&quot;User&quot;,&quot;style&quot;:&quot;&quot;,&quot;id&quot;:889475,&quot;name&quot;:&quot;Divya&quot;}" class="crayons-btn follow-action-button whitespace-nowrap w-100 follow-user" aria-label="Follow user: Divya" aria-pressed="false">Follow</button>
+</div>
+  <div class="color-base-70">
+    A curious lifelong learner, currently a full-time Masters student persuing Computer Science stream. Enthusiastic about development.
+  </div>
+
+  <div class="user-metadata-details">
+    <ul class="user-metadata-details-inner">
+      <li>
+        <div class="key">
+          Joined
+        </div>
+        <div class="value">
+          <time datetime="2022-07-09T13:47:55Z" class="date">Jul 9, 2022</time>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+    </div>
+</div>
+
+
+  </div>
+
+  <span class="color-base-30 px-2 m:pl-0" role="presentation">&bull;</span>
+
+<a href="https://dev.to/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io#comment-310fi" class="comment-date crayons-link crayons-link--secondary fs-s">
+  <time datetime="2025-09-02T16:37:32Z" class=date-short-year>
+    Sep 2 &#39;25
+  </time>
+
+</a>
+
+
+  <div class="comment__dropdown" data-tracking-name="comment_dropdown">
+    <button id="comment-dropdown-trigger-1388912" aria-controls="comment-dropdown-1388912" aria-expanded="false"
+      class="dropbtn comment__dropdown-trigger crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon "
+      aria-label="Toggle dropdown menu" aria-haspopup="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="adsjk3cg2wvkfz4ylp4qtz5givxev0a4" class="crayons-icon pointer-events-none"><title id="adsjk3cg2wvkfz4ylp4qtz5givxev0a4">Dropdown menu</title>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.25 12a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm5.25 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm3.75 1.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
+</svg>
+
+    </button>
+    <div id="comment-dropdown-1388912" class="crayons-dropdown right-1 s:right-0 s:left-auto fs-base dropdown">
+      <ul class="m-0">
+        <li><a href="https://dev.to/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io#comment-310fi" class="crayons-link crayons-link--block permalink-copybtn" aria-label="Copy link to Divya&#39;s comment" data-no-instant>Copy link</a></li>
+        <li class="comment-actions hidden" data-user-id="889475" data-action="settings-button" data-path="https://dev.to/divyasinghdev/comment/310fi/settings" aria-label="Go to Divya&#39;s comment settings"></li>
+          <li class="comment-actions hidden" data-action="hide-button" data-commentable-user-id="885064" data-user-id="889475">
+              <button
+                class="flex justify-between crayons-link crayons-link--block w-100 bg-transparent border-0 hide-comment"
+                data-hide-type="hide"
+                data-comment-id="1388912"
+                data-comment-url="https://dev.to/divyasinghdev/comment/310fi"
+                aria-label="Hide Divya&#39;s comment">
+                Hide
+              </button>
+          </li>
+        <li class="mod-actions hidden mod-actions-comment-button" data-path="https://dev.to/divyasinghdev/comment/310fi/mod" aria-label="Moderate Divya&#39;s comment"></li>
+        <li class="report-abuse-link-wrapper" data-path="/report-abuse?url=https://dev.to/divyasinghdev/comment/310fi" aria-label="Report Divya&#39;s comment as abusive or violating our code of conduct and/or terms and conditions"></li>
+        <li class="current-user-actions"></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+        <div
+          class="
+            comment__body
+            text-styles
+            text-styles--secondary
+            body
+            
+            
+          ">
+          <p>I love everything, your project, the title itself,  and the whole article itself.</p>
+
+<p>All the best for never missing a hackathon/tech event or conference again 😁</p>
+
+
+        </div>
+
+    </div>
+
+    <script>
+    </script>
+
+    <footer class="comment__footer print-hidden">
+  <button
+    class="crayons-tooltip__activator relative crayons-btn crayons-btn--ghost crayons-btn--icon-left crayons-btn--s mr-1 reaction-like inline-flex reaction-button"
+    id="button-for-comment-1388912"
+    data-comment-id="1388912"
+    aria-label="like"
+    data-tracking-name="comment_heart_button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a2f4tln7jwg3bbozwd6vx4eo9yc7o11l" class="crayons-icon reaction-icon not-reacted"><title id="a2f4tln7jwg3bbozwd6vx4eo9yc7o11l">Like comment: </title><path d="M18.884 12.595l.01.011L12 19.5l-6.894-6.894.01-.01A4.875 4.875 0 0112 5.73a4.875 4.875 0 016.884 6.865zM6.431 7.037a3.375 3.375 0 000 4.773L12 17.38l5.569-5.569a3.375 3.375 0 10-4.773-4.773L9.613 10.22l-1.06-1.062 2.371-2.372a3.375 3.375 0 00-4.492.25v.001z"></path></svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="akjqgnpj5usksf6qeub6mww6upufonum" class="crayons-icon crayons-icon reaction-icon--like reaction-icon reacted"><title id="akjqgnpj5usksf6qeub6mww6upufonum">Like comment: </title>
+    <path d="M5.116 12.595a4.875 4.875 0 015.56-7.68h-.002L7.493 8.098l1.06 1.061 3.181-3.182a4.875 4.875 0 016.895 6.894L12 19.5l-6.894-6.894.01-.01z"></path>
+</svg>
+
+    <span class="reactions-count">5</span><span class="reactions-label hidden m:inline-block">&nbsp;likes</span>
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Like
+    </span>
+  </button>
+
+      <button
+        class="actions crayons-btn crayons-btn--ghost crayons-btn--s crayons-btn--icon-left toggle-reply-form mr-1 inline-flex"
+        data-comment-id="1388912"
+        data-path="/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io/comments/310fi"
+        data-tracking-name="comment_reply_button"
+        data-testid="reply-button-1388912"
+        rel="nofollow">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="asormbl2n3u81nmkktvr1ef0g0r6368o" class="crayons-icon reaction-icon not-reacted"><title id="asormbl2n3u81nmkktvr1ef0g0r6368o">Comment button</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+        <span class="hidden m:inline-block">Reply</span>
+      </button>
+
+</footer>
+
+  </div>
+</div>
+    <details class="comment-wrapper js-comment-wrapper comment-wrapper--deep-1
+                    child
+                    " open>
+      <summary aria-label="Toggle this comment (and replies)" data-tracking-name="expand_comment_toggle">
+        <span class="mx-0 inline-block align-middle">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a5dxtiw7xbse1b14y33xka8s1praiyrq" class="crayons-icon expanded"><title id="a5dxtiw7xbse1b14y33xka8s1praiyrq">Collapse</title>
+    <path d="M12 10.677L8 6.935 9 6l3 2.807L15 6l1 .935-4 3.742zm0 4.517L9 18l-1-.935 4-3.742 4 3.742-1 .934-3-2.805z"></path>
+</svg>
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a64xvxjopbvr9kx7h4dr0a8irkoksmgc" class="crayons-icon collapsed"><title id="a64xvxjopbvr9kx7h4dr0a8irkoksmgc">Expand</title>
+    <path d="M12 18l-4-3.771 1-.943 3 2.829 3-2.829 1 .943L12 18zm0-10.115l-3 2.829-1-.943L12 6l4 3.771-1 .942-3-2.828z"></path>
+</svg>
+
+        </span>
+        <span class="js-collapse-comment-content inline-block align-middle"></span>
+      </summary>
+  <div
+    id="comment-node-1389117"
+    class="
+      comment single-comment-node
+      
+      child
+      comment--deep-1
+      
+    "
+    data-comment-id="1389117"
+    data-path="/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io/comments/310nf"
+    data-comment-author-id="885064"
+    data-content-user-id="885064">
+    <a name="comment-310nf" style="position: absolute; top: -8px;">&nbsp;</a>
+    
+<div class="comment__inner">
+    <a href="https://dev.to/varshithvhegde" class="shrink-0 crayons-avatar mt-4">
+    <img class="crayons-avatar__image" width="32" height="32" src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F885064%2F4ab304f4-a3f3-409c-8217-9ce130e57c18.jpeg" alt="varshithvhegde profile image" loading="lazy" />
+  </a>
+
+
+  <div class="inner-comment comment__details">
+    <div class="comment__content crayons-card">
+        
+
+
+        <div class="comment__header">
+  <a href="https://dev.to/varshithvhegde" class="crayons-link crayons-link--secondary flex items-center fw-medium m:hidden">
+    <span class="js-comment-username">
+      Varshith V Hegde
+    </span>
+      <span class="crayons-hover-tooltip inline-block spec-op-author -mr-2" data-tooltip="Author">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" class="crayons-icon">
+    <path d="M12 8.25a6 6 0 110 12 6 6 0 010-12zm0 2.625l-.992 2.01-2.218.322 1.605 1.564-.379 2.21L12 15.937l1.984 1.043-.379-2.209 1.605-1.564-2.218-.323L12 10.875zm.75-6.376l3.75.001v2.25l-1.022.854a7.45 7.45 0 00-2.728-.817V4.5zm-1.5 0v2.288a7.451 7.451 0 00-2.727.816L7.5 6.75V4.5h3.75z"></path>
+</svg>
+
+      </span>
+  </a>
+  <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:block">
+    <button id="comment-profile-preview-trigger-1389117" aria-controls="comment-profile-preview-content-1389117" class="profile-preview-card__trigger p-1 -my-1 -ml-1 crayons-btn crayons-btn--ghost" aria-label="Varshith V Hegde profile details">
+      Varshith V Hegde
+      <a style="display: inline;" href="/++"><img alt="Subscriber" class="subscription-icon" src="https://assets.dev.to/assets/subscription-icon-805dfa7ac7dd660f07ed8d654877270825b07a92a03841aa99a1093bd00431b2.png" /></a>
+    </button>
+    <div id="comment-profile-preview-content-1389117" class="profile-preview-card__content p-4 pt-0 branded-7 crayons-dropdown" style="--card-color: #000000; border-top-color: var(--card-color);" data-testid="profile-preview-card" data-repositioning-dropdown="true">
+    <div class="gap-4 grid">
+        <div class="-mt-4">
+  <a href="/varshithvhegde" class="flex">
+    <span class="crayons-avatar crayons-avatar--xl  mr-2 shrink-0">
+      <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F885064%2F4ab304f4-a3f3-409c-8217-9ce130e57c18.jpeg" class="crayons-avatar__image" alt="" loading="lazy" />
+    </span>
+    <span class="crayons-link crayons-subtitle-2 mt-5">
+      Varshith V Hegde
+      <img class="subscription-icon" src="https://assets.dev.to/assets/subscription-icon-805dfa7ac7dd660f07ed8d654877270825b07a92a03841aa99a1093bd00431b2.png" />
+    </span>
+  </a>
+</div>
+
+<div class="print-hidden">
+  <button name="button" type="button" data-info="{&quot;className&quot;:&quot;User&quot;,&quot;style&quot;:&quot;&quot;,&quot;id&quot;:885064,&quot;name&quot;:&quot;Varshith V Hegde&quot;}" class="crayons-btn follow-action-button whitespace-nowrap w-100 follow-user" aria-label="Follow user: Varshith V Hegde" aria-pressed="false">Follow</button>
+</div>
+  <div class="color-base-70">
+    A simple programmer fond of learning
+  </div>
+
+  <div class="user-metadata-details">
+    <ul class="user-metadata-details-inner">
+        <li>
+          <div class="key">
+            Email
+          </div>
+          <div class="value">
+            <a href="mailto:varshithvh@gmail.com">varshithvh@gmail.com</a>
+          </div>
+        </li>
+        <li>
+          <div class="key">
+            Location
+          </div>
+          <div class="value">
+            Mangalore
+          </div>
+        </li>
+          <li>
+            <div class="key">
+              Education
+            </div>
+            <div class="value">
+              Mangalore Institute of Technology and Engineering 
+            </div>
+          </li>
+          <li>
+            <div class="key">
+              Work
+            </div>
+            <div class="value">
+              Software Engineer@KPIT
+            </div>
+          </li>
+      <li>
+        <div class="key">
+          Joined
+        </div>
+        <div class="value">
+          <time datetime="2022-06-30T11:09:59Z" class="date">Jun 30, 2022</time>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+    </div>
+</div>
+
+      <span class="crayons-hover-tooltip inline-block spec-op-author -ml-2" data-tooltip="Author">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" class="crayons-icon">
+    <path d="M12 8.25a6 6 0 110 12 6 6 0 010-12zm0 2.625l-.992 2.01-2.218.322 1.605 1.564-.379 2.21L12 15.937l1.984 1.043-.379-2.209 1.605-1.564-2.218-.323L12 10.875zm.75-6.376l3.75.001v2.25l-1.022.854a7.45 7.45 0 00-2.728-.817V4.5zm-1.5 0v2.288a7.451 7.451 0 00-2.727.816L7.5 6.75V4.5h3.75z"></path>
+</svg>
+
+      </span>
+
+  </div>
+
+  <span class="color-base-30 px-2 m:pl-0" role="presentation">&bull;</span>
+
+<a href="https://dev.to/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io#comment-310nf" class="comment-date crayons-link crayons-link--secondary fs-s">
+  <time datetime="2025-09-03T07:03:10Z" class=date-short-year>
+    Sep 3 &#39;25
+  </time>
+
+</a>
+
+
+  <div class="comment__dropdown" data-tracking-name="comment_dropdown">
+    <button id="comment-dropdown-trigger-1389117" aria-controls="comment-dropdown-1389117" aria-expanded="false"
+      class="dropbtn comment__dropdown-trigger crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon "
+      aria-label="Toggle dropdown menu" aria-haspopup="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="aee7c3rx76hofbiqvchy15wzzotrs4gm" class="crayons-icon pointer-events-none"><title id="aee7c3rx76hofbiqvchy15wzzotrs4gm">Dropdown menu</title>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.25 12a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm5.25 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm3.75 1.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
+</svg>
+
+    </button>
+    <div id="comment-dropdown-1389117" class="crayons-dropdown right-1 s:right-0 s:left-auto fs-base dropdown">
+      <ul class="m-0">
+        <li><a href="https://dev.to/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io#comment-310nf" class="crayons-link crayons-link--block permalink-copybtn" aria-label="Copy link to Varshith V Hegde&#39;s comment" data-no-instant>Copy link</a></li>
+        <li class="comment-actions hidden" data-user-id="885064" data-action="settings-button" data-path="https://dev.to/varshithvhegde/comment/310nf/settings" aria-label="Go to Varshith V Hegde&#39;s comment settings"></li>
+          <li class="comment-actions hidden" data-action="hide-button" data-commentable-user-id="885064" data-user-id="885064">
+              <button
+                class="flex justify-between crayons-link crayons-link--block w-100 bg-transparent border-0 hide-comment"
+                data-hide-type="hide"
+                data-comment-id="1389117"
+                data-comment-url="https://dev.to/varshithvhegde/comment/310nf"
+                aria-label="Hide Varshith V Hegde&#39;s comment">
+                Hide
+              </button>
+          </li>
+        <li class="mod-actions hidden mod-actions-comment-button" data-path="https://dev.to/varshithvhegde/comment/310nf/mod" aria-label="Moderate Varshith V Hegde&#39;s comment"></li>
+        <li class="report-abuse-link-wrapper" data-path="/report-abuse?url=https://dev.to/varshithvhegde/comment/310nf" aria-label="Report Varshith V Hegde&#39;s comment as abusive or violating our code of conduct and/or terms and conditions"></li>
+        <li class="current-user-actions"></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+        <div
+          class="
+            comment__body
+            text-styles
+            text-styles--secondary
+            body
+            
+            
+          ">
+          <p>Thank you for this ...</p>
+
+
+        </div>
+
+    </div>
+
+    <script>
+    </script>
+
+    <footer class="comment__footer print-hidden">
+  <button
+    class="crayons-tooltip__activator relative crayons-btn crayons-btn--ghost crayons-btn--icon-left crayons-btn--s mr-1 reaction-like inline-flex reaction-button"
+    id="button-for-comment-1389117"
+    data-comment-id="1389117"
+    aria-label="like"
+    data-tracking-name="comment_heart_button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="ahfaptyeeew8rpli14zbigrb6v1sgupm" class="crayons-icon reaction-icon not-reacted"><title id="ahfaptyeeew8rpli14zbigrb6v1sgupm">Like comment: </title><path d="M18.884 12.595l.01.011L12 19.5l-6.894-6.894.01-.01A4.875 4.875 0 0112 5.73a4.875 4.875 0 016.884 6.865zM6.431 7.037a3.375 3.375 0 000 4.773L12 17.38l5.569-5.569a3.375 3.375 0 10-4.773-4.773L9.613 10.22l-1.06-1.062 2.371-2.372a3.375 3.375 0 00-4.492.25v.001z"></path></svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="apirtam0tabo8mnt1gjxp2iqlmopwzg2" class="crayons-icon crayons-icon reaction-icon--like reaction-icon reacted"><title id="apirtam0tabo8mnt1gjxp2iqlmopwzg2">Like comment: </title>
+    <path d="M5.116 12.595a4.875 4.875 0 015.56-7.68h-.002L7.493 8.098l1.06 1.061 3.181-3.182a4.875 4.875 0 016.895 6.894L12 19.5l-6.894-6.894.01-.01z"></path>
+</svg>
+
+    <span class="reactions-count">2</span><span class="reactions-label hidden m:inline-block">&nbsp;likes</span>
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Like
+    </span>
+  </button>
+
+      <button
+        class="actions crayons-btn crayons-btn--ghost crayons-btn--s crayons-btn--icon-left toggle-reply-form mr-1 inline-flex"
+        data-comment-id="1389117"
+        data-path="/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io/comments/310nf"
+        data-tracking-name="comment_reply_button"
+        data-testid="reply-button-1389117"
+        rel="nofollow">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="ahukywykt2hwfqerdesxxmq4w7lni9ha" class="crayons-icon reaction-icon not-reacted"><title id="ahukywykt2hwfqerdesxxmq4w7lni9ha">Comment button</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+        <span class="hidden m:inline-block">Reply</span>
+      </button>
+
+</footer>
+
+  </div>
+</div>
+
+
+  </div>
+    </details>
+
+
+  </div>
+    </details>
+
+    <details class="comment-wrapper js-comment-wrapper comment-wrapper--deep-0
+                    root
+                    " open>
+      <summary aria-label="Toggle this comment (and replies)" data-tracking-name="expand_comment_toggle">
+        <span class="m:mx-1 inline-block align-middle">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="adsc04v2kyj3sg21dvonkxtlxq22x5rr" class="crayons-icon expanded"><title id="adsc04v2kyj3sg21dvonkxtlxq22x5rr">Collapse</title>
+    <path d="M12 10.677L8 6.935 9 6l3 2.807L15 6l1 .935-4 3.742zm0 4.517L9 18l-1-.935 4-3.742 4 3.742-1 .934-3-2.805z"></path>
+</svg>
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="ag57mbv2tgoai5pmwd8fmr1nafpchn0g" class="crayons-icon collapsed"><title id="ag57mbv2tgoai5pmwd8fmr1nafpchn0g">Expand</title>
+    <path d="M12 18l-4-3.771 1-.943 3 2.829 3-2.829 1 .943L12 18zm0-10.115l-3 2.829-1-.943L12 6l4 3.771-1 .942-3-2.828z"></path>
+</svg>
+
+        </span>
+        <span class="js-collapse-comment-content inline-block align-middle"></span>
+      </summary>
+  <div
+    id="comment-node-1388610"
+    class="
+      comment single-comment-node
+      
+      root
+      comment--deep-0
+      
+    "
+    data-comment-id="1388610"
+    data-path="/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io/comments/31042"
+    data-comment-author-id="918638"
+    data-content-user-id="918638">
+    <a name="comment-31042" style="position: absolute; top: -8px;">&nbsp;</a>
+    
+<div class="comment__inner">
+    <a href="https://dev.to/suponova" class="shrink-0 crayons-avatar m:crayons-avatar--l mt-4 m:mt-3">
+    <img class="crayons-avatar__image" width="32" height="32" src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F918638%2F51bc358e-100c-452d-9de7-cbd13b4b7527.png" alt="suponova profile image" loading="lazy" />
+  </a>
+
+
+  <div class="inner-comment comment__details">
+    <div class="comment__content crayons-card">
+        
+
+
+        <div class="comment__header">
+  <a href="https://dev.to/suponova" class="crayons-link crayons-link--secondary flex items-center fw-medium m:hidden">
+    <span class="js-comment-username">
+      Super Jeo
+    </span>
+  </a>
+  <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:block">
+    <button id="comment-profile-preview-trigger-1388610" aria-controls="comment-profile-preview-content-1388610" class="profile-preview-card__trigger p-1 -my-1 -ml-1 crayons-btn crayons-btn--ghost" aria-label="Super Jeo profile details">
+      Super Jeo
+      
+    </button>
+    <div id="comment-profile-preview-content-1388610" class="profile-preview-card__content p-4 pt-0 branded-7 crayons-dropdown" style="--card-color: #000000; border-top-color: var(--card-color);" data-testid="profile-preview-card" data-repositioning-dropdown="true">
+    <div class="gap-4 grid">
+        <div class="-mt-4">
+  <a href="/suponova" class="flex">
+    <span class="crayons-avatar crayons-avatar--xl  mr-2 shrink-0">
+      <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F918638%2F51bc358e-100c-452d-9de7-cbd13b4b7527.png" class="crayons-avatar__image" alt="" loading="lazy" />
+    </span>
+    <span class="crayons-link crayons-subtitle-2 mt-5">
+      Super Jeo
+      
+    </span>
+  </a>
+</div>
+
+<div class="print-hidden">
+  <button name="button" type="button" data-info="{&quot;className&quot;:&quot;User&quot;,&quot;style&quot;:&quot;&quot;,&quot;id&quot;:918638,&quot;name&quot;:&quot;Super Jeo&quot;}" class="crayons-btn follow-action-button whitespace-nowrap w-100 follow-user" aria-label="Follow user: Super Jeo" aria-pressed="false">Follow</button>
+</div>
+
+  <div class="user-metadata-details">
+    <ul class="user-metadata-details-inner">
+      <li>
+        <div class="key">
+          Joined
+        </div>
+        <div class="value">
+          <time datetime="2022-08-31T13:19:31Z" class="date">Aug 31, 2022</time>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+    </div>
+</div>
+
+
+  </div>
+
+  <span class="color-base-30 px-2 m:pl-0" role="presentation">&bull;</span>
+
+<a href="https://dev.to/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io#comment-31042" class="comment-date crayons-link crayons-link--secondary fs-s">
+  <time datetime="2025-09-02T03:48:07Z" class=date-short-year>
+    Sep 2 &#39;25
+  </time>
+
+</a>
+
+
+  <div class="comment__dropdown" data-tracking-name="comment_dropdown">
+    <button id="comment-dropdown-trigger-1388610" aria-controls="comment-dropdown-1388610" aria-expanded="false"
+      class="dropbtn comment__dropdown-trigger crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon "
+      aria-label="Toggle dropdown menu" aria-haspopup="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="agum0zvuq0bnmkx2mic2lgl7e8lt1sod" class="crayons-icon pointer-events-none"><title id="agum0zvuq0bnmkx2mic2lgl7e8lt1sod">Dropdown menu</title>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.25 12a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm5.25 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm3.75 1.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
+</svg>
+
+    </button>
+    <div id="comment-dropdown-1388610" class="crayons-dropdown right-1 s:right-0 s:left-auto fs-base dropdown">
+      <ul class="m-0">
+        <li><a href="https://dev.to/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io#comment-31042" class="crayons-link crayons-link--block permalink-copybtn" aria-label="Copy link to Super Jeo&#39;s comment" data-no-instant>Copy link</a></li>
+        <li class="comment-actions hidden" data-user-id="918638" data-action="settings-button" data-path="https://dev.to/suponova/comment/31042/settings" aria-label="Go to Super Jeo&#39;s comment settings"></li>
+          <li class="comment-actions hidden" data-action="hide-button" data-commentable-user-id="885064" data-user-id="918638">
+              <button
+                class="flex justify-between crayons-link crayons-link--block w-100 bg-transparent border-0 hide-comment"
+                data-hide-type="hide"
+                data-comment-id="1388610"
+                data-comment-url="https://dev.to/suponova/comment/31042"
+                aria-label="Hide Super Jeo&#39;s comment">
+                Hide
+              </button>
+          </li>
+        <li class="mod-actions hidden mod-actions-comment-button" data-path="https://dev.to/suponova/comment/31042/mod" aria-label="Moderate Super Jeo&#39;s comment"></li>
+        <li class="report-abuse-link-wrapper" data-path="/report-abuse?url=https://dev.to/suponova/comment/31042" aria-label="Report Super Jeo&#39;s comment as abusive or violating our code of conduct and/or terms and conditions"></li>
+        <li class="current-user-actions"></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+        <div
+          class="
+            comment__body
+            text-styles
+            text-styles--secondary
+            body
+            
+            
+          ">
+          <p>Good job on this </p>
+
+
+        </div>
+
+    </div>
+
+    <script>
+    </script>
+
+    <footer class="comment__footer print-hidden">
+  <button
+    class="crayons-tooltip__activator relative crayons-btn crayons-btn--ghost crayons-btn--icon-left crayons-btn--s mr-1 reaction-like inline-flex reaction-button"
+    id="button-for-comment-1388610"
+    data-comment-id="1388610"
+    aria-label="like"
+    data-tracking-name="comment_heart_button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a1nfs8oncd5jpi6fnw48xg2h1wm1o60c" class="crayons-icon reaction-icon not-reacted"><title id="a1nfs8oncd5jpi6fnw48xg2h1wm1o60c">Like comment: </title><path d="M18.884 12.595l.01.011L12 19.5l-6.894-6.894.01-.01A4.875 4.875 0 0112 5.73a4.875 4.875 0 016.884 6.865zM6.431 7.037a3.375 3.375 0 000 4.773L12 17.38l5.569-5.569a3.375 3.375 0 10-4.773-4.773L9.613 10.22l-1.06-1.062 2.371-2.372a3.375 3.375 0 00-4.492.25v.001z"></path></svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="ao5lusqy3br1i9on39znkw5lep7gesrm" class="crayons-icon crayons-icon reaction-icon--like reaction-icon reacted"><title id="ao5lusqy3br1i9on39znkw5lep7gesrm">Like comment: </title>
+    <path d="M5.116 12.595a4.875 4.875 0 015.56-7.68h-.002L7.493 8.098l1.06 1.061 3.181-3.182a4.875 4.875 0 016.895 6.894L12 19.5l-6.894-6.894.01-.01z"></path>
+</svg>
+
+    <span class="reactions-count">2</span><span class="reactions-label hidden m:inline-block">&nbsp;likes</span>
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Like
+    </span>
+  </button>
+
+      <button
+        class="actions crayons-btn crayons-btn--ghost crayons-btn--s crayons-btn--icon-left toggle-reply-form mr-1 inline-flex"
+        data-comment-id="1388610"
+        data-path="/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io/comments/31042"
+        data-tracking-name="comment_reply_button"
+        data-testid="reply-button-1388610"
+        rel="nofollow">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="amgdnqqtdeq02d04uywlgorzws7jhxlm" class="crayons-icon reaction-icon not-reacted"><title id="amgdnqqtdeq02d04uywlgorzws7jhxlm">Comment button</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+        <span class="hidden m:inline-block">Reply</span>
+      </button>
+
+</footer>
+
+  </div>
+</div>
+
+
+  </div>
+    </details>
+
+    <details class="comment-wrapper js-comment-wrapper comment-wrapper--deep-0
+                    root
+                    " open>
+      <summary aria-label="Toggle this comment (and replies)" data-tracking-name="expand_comment_toggle">
+        <span class="m:mx-1 inline-block align-middle">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="as37r1jdtglkm9fbplk7ccw519b0hrcv" class="crayons-icon expanded"><title id="as37r1jdtglkm9fbplk7ccw519b0hrcv">Collapse</title>
+    <path d="M12 10.677L8 6.935 9 6l3 2.807L15 6l1 .935-4 3.742zm0 4.517L9 18l-1-.935 4-3.742 4 3.742-1 .934-3-2.805z"></path>
+</svg>
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="acccfmw8up5aemdfyhkdsrmeiej5wy65" class="crayons-icon collapsed"><title id="acccfmw8up5aemdfyhkdsrmeiej5wy65">Expand</title>
+    <path d="M12 18l-4-3.771 1-.943 3 2.829 3-2.829 1 .943L12 18zm0-10.115l-3 2.829-1-.943L12 6l4 3.771-1 .942-3-2.828z"></path>
+</svg>
+
+        </span>
+        <span class="js-collapse-comment-content inline-block align-middle"></span>
+      </summary>
+  <div
+    id="comment-node-1387346"
+    class="
+      comment single-comment-node
+      
+      root
+      comment--deep-0
+      
+    "
+    data-comment-id="1387346"
+    data-path="/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io/comments/30o7c"
+    data-comment-author-id="3417627"
+    data-content-user-id="3417627">
+    <a name="comment-30o7c" style="position: absolute; top: -8px;">&nbsp;</a>
+    
+<div class="comment__inner">
+    <a href="https://dev.to/oneluffychan" class="shrink-0 crayons-avatar m:crayons-avatar--l mt-4 m:mt-3">
+    <img class="crayons-avatar__image" width="32" height="32" src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3417627%2F3e87ff22-7743-4e81-b5a9-864b02d8aad9.png" alt="oneluffychan profile image" loading="lazy" />
+  </a>
+
+
+  <div class="inner-comment comment__details">
+    <div class="comment__content crayons-card">
+        
+
+
+        <div class="comment__header">
+  <a href="https://dev.to/oneluffychan" class="crayons-link crayons-link--secondary flex items-center fw-medium m:hidden">
+    <span class="js-comment-username">
+      Monkey D Luffy
+    </span>
+  </a>
+  <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:block">
+    <button id="comment-profile-preview-trigger-1387346" aria-controls="comment-profile-preview-content-1387346" class="profile-preview-card__trigger p-1 -my-1 -ml-1 crayons-btn crayons-btn--ghost" aria-label="Monkey D Luffy profile details">
+      Monkey D Luffy
+      
+    </button>
+    <div id="comment-profile-preview-content-1387346" class="profile-preview-card__content p-4 pt-0 branded-7 crayons-dropdown" style="--card-color: #000000; border-top-color: var(--card-color);" data-testid="profile-preview-card" data-repositioning-dropdown="true">
+    <div class="gap-4 grid">
+        <div class="-mt-4">
+  <a href="/oneluffychan" class="flex">
+    <span class="crayons-avatar crayons-avatar--xl  mr-2 shrink-0">
+      <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3417627%2F3e87ff22-7743-4e81-b5a9-864b02d8aad9.png" class="crayons-avatar__image" alt="" loading="lazy" />
+    </span>
+    <span class="crayons-link crayons-subtitle-2 mt-5">
+      Monkey D Luffy
+      
+    </span>
+  </a>
+</div>
+
+<div class="print-hidden">
+  <button name="button" type="button" data-info="{&quot;className&quot;:&quot;User&quot;,&quot;style&quot;:&quot;&quot;,&quot;id&quot;:3417627,&quot;name&quot;:&quot;Monkey D Luffy&quot;}" class="crayons-btn follow-action-button whitespace-nowrap w-100 follow-user" aria-label="Follow user: Monkey D Luffy" aria-pressed="false">Follow</button>
+</div>
+
+  <div class="user-metadata-details">
+    <ul class="user-metadata-details-inner">
+      <li>
+        <div class="key">
+          Joined
+        </div>
+        <div class="value">
+          <time datetime="2025-08-06T16:29:30Z" class="date">Aug 6, 2025</time>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+    </div>
+</div>
+
+
+  </div>
+
+  <span class="color-base-30 px-2 m:pl-0" role="presentation">&bull;</span>
+
+<a href="https://dev.to/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io#comment-30o7c" class="comment-date crayons-link crayons-link--secondary fs-s">
+  <time datetime="2025-08-29T16:04:58Z" class=date-short-year>
+    Aug 29 &#39;25
+  </time>
+
+</a>
+
+
+  <div class="comment__dropdown" data-tracking-name="comment_dropdown">
+    <button id="comment-dropdown-trigger-1387346" aria-controls="comment-dropdown-1387346" aria-expanded="false"
+      class="dropbtn comment__dropdown-trigger crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon "
+      aria-label="Toggle dropdown menu" aria-haspopup="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="aabir1nwk5b7xrxe0jnrlig5biszi1uy" class="crayons-icon pointer-events-none"><title id="aabir1nwk5b7xrxe0jnrlig5biszi1uy">Dropdown menu</title>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.25 12a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm5.25 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm3.75 1.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
+</svg>
+
+    </button>
+    <div id="comment-dropdown-1387346" class="crayons-dropdown right-1 s:right-0 s:left-auto fs-base dropdown">
+      <ul class="m-0">
+        <li><a href="https://dev.to/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io#comment-30o7c" class="crayons-link crayons-link--block permalink-copybtn" aria-label="Copy link to Monkey D Luffy&#39;s comment" data-no-instant>Copy link</a></li>
+        <li class="comment-actions hidden" data-user-id="3417627" data-action="settings-button" data-path="https://dev.to/oneluffychan/comment/30o7c/settings" aria-label="Go to Monkey D Luffy&#39;s comment settings"></li>
+          <li class="comment-actions hidden" data-action="hide-button" data-commentable-user-id="885064" data-user-id="3417627">
+              <button
+                class="flex justify-between crayons-link crayons-link--block w-100 bg-transparent border-0 hide-comment"
+                data-hide-type="hide"
+                data-comment-id="1387346"
+                data-comment-url="https://dev.to/oneluffychan/comment/30o7c"
+                aria-label="Hide Monkey D Luffy&#39;s comment">
+                Hide
+              </button>
+          </li>
+        <li class="mod-actions hidden mod-actions-comment-button" data-path="https://dev.to/oneluffychan/comment/30o7c/mod" aria-label="Moderate Monkey D Luffy&#39;s comment"></li>
+        <li class="report-abuse-link-wrapper" data-path="/report-abuse?url=https://dev.to/oneluffychan/comment/30o7c" aria-label="Report Monkey D Luffy&#39;s comment as abusive or violating our code of conduct and/or terms and conditions"></li>
+        <li class="current-user-actions"></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+        <div
+          class="
+            comment__body
+            text-styles
+            text-styles--secondary
+            body
+            
+            
+          ">
+          <p>Nice one ... I could never miss an event now</p>
+
+
+        </div>
+
+    </div>
+
+    <script>
+    </script>
+
+    <footer class="comment__footer print-hidden">
+  <button
+    class="crayons-tooltip__activator relative crayons-btn crayons-btn--ghost crayons-btn--icon-left crayons-btn--s mr-1 reaction-like inline-flex reaction-button"
+    id="button-for-comment-1387346"
+    data-comment-id="1387346"
+    aria-label="like"
+    data-tracking-name="comment_heart_button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a3fkciim7l0jxkvtcx6w5nm5eu65hxm3" class="crayons-icon reaction-icon not-reacted"><title id="a3fkciim7l0jxkvtcx6w5nm5eu65hxm3">Like comment: </title><path d="M18.884 12.595l.01.011L12 19.5l-6.894-6.894.01-.01A4.875 4.875 0 0112 5.73a4.875 4.875 0 016.884 6.865zM6.431 7.037a3.375 3.375 0 000 4.773L12 17.38l5.569-5.569a3.375 3.375 0 10-4.773-4.773L9.613 10.22l-1.06-1.062 2.371-2.372a3.375 3.375 0 00-4.492.25v.001z"></path></svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a5b6knr3dq223s7ukf7mzjfwl2ldegly" class="crayons-icon crayons-icon reaction-icon--like reaction-icon reacted"><title id="a5b6knr3dq223s7ukf7mzjfwl2ldegly">Like comment: </title>
+    <path d="M5.116 12.595a4.875 4.875 0 015.56-7.68h-.002L7.493 8.098l1.06 1.061 3.181-3.182a4.875 4.875 0 016.895 6.894L12 19.5l-6.894-6.894.01-.01z"></path>
+</svg>
+
+    <span class="reactions-count">2</span><span class="reactions-label hidden m:inline-block">&nbsp;likes</span>
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Like
+    </span>
+  </button>
+
+      <button
+        class="actions crayons-btn crayons-btn--ghost crayons-btn--s crayons-btn--icon-left toggle-reply-form mr-1 inline-flex"
+        data-comment-id="1387346"
+        data-path="/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io/comments/30o7c"
+        data-tracking-name="comment_reply_button"
+        data-testid="reply-button-1387346"
+        rel="nofollow">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a150ikowpc39bkgxu8mjsi2r2jeyv6pf" class="crayons-icon reaction-icon not-reacted"><title id="a150ikowpc39bkgxu8mjsi2r2jeyv6pf">Comment button</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+        <span class="hidden m:inline-block">Reply</span>
+      </button>
+
+</footer>
+
+  </div>
+</div>
+
+
+  </div>
+    </details>
+
+    <div class="js-billboard-container mid-comments-billboard-container pb-6" data-async-url="/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io/bmar11/post_comments_mid"></div>
+    <details class="comment-wrapper js-comment-wrapper comment-wrapper--deep-0
+                    root
+                    " open>
+      <summary aria-label="Toggle this comment (and replies)" data-tracking-name="expand_comment_toggle">
+        <span class="m:mx-1 inline-block align-middle">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="at8mh25njkyf26d816nz3ais9kngfkfx" class="crayons-icon expanded"><title id="at8mh25njkyf26d816nz3ais9kngfkfx">Collapse</title>
+    <path d="M12 10.677L8 6.935 9 6l3 2.807L15 6l1 .935-4 3.742zm0 4.517L9 18l-1-.935 4-3.742 4 3.742-1 .934-3-2.805z"></path>
+</svg>
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="ag8pfjwt0mwpsljxgm4ym4hdq5egub5p" class="crayons-icon collapsed"><title id="ag8pfjwt0mwpsljxgm4ym4hdq5egub5p">Expand</title>
+    <path d="M12 18l-4-3.771 1-.943 3 2.829 3-2.829 1 .943L12 18zm0-10.115l-3 2.829-1-.943L12 6l4 3.771-1 .942-3-2.828z"></path>
+</svg>
+
+        </span>
+        <span class="js-collapse-comment-content inline-block align-middle"></span>
+      </summary>
+  <div
+    id="comment-node-1387938"
+    class="
+      comment single-comment-node
+      
+      root
+      comment--deep-0
+      
+    "
+    data-comment-id="1387938"
+    data-path="/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io/comments/30p46"
+    data-comment-author-id="3417640"
+    data-content-user-id="3417640">
+    <a name="comment-30p46" style="position: absolute; top: -8px;">&nbsp;</a>
+    
+<div class="comment__inner">
+    <a href="https://dev.to/varshavh" class="shrink-0 crayons-avatar m:crayons-avatar--l mt-4 m:mt-3">
+    <img class="crayons-avatar__image" width="32" height="32" src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3417640%2Fa74460f8-eb7d-491e-943a-ade58bd8210a.png" alt="varshavh profile image" loading="lazy" />
+  </a>
+
+
+  <div class="inner-comment comment__details">
+    <div class="comment__content crayons-card">
+        
+
+
+        <div class="comment__header">
+  <a href="https://dev.to/varshavh" class="crayons-link crayons-link--secondary flex items-center fw-medium m:hidden">
+    <span class="js-comment-username">
+      Varsha V Hegde
+    </span>
+  </a>
+  <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:block">
+    <button id="comment-profile-preview-trigger-1387938" aria-controls="comment-profile-preview-content-1387938" class="profile-preview-card__trigger p-1 -my-1 -ml-1 crayons-btn crayons-btn--ghost" aria-label="Varsha V Hegde profile details">
+      Varsha V Hegde
+      
+    </button>
+    <div id="comment-profile-preview-content-1387938" class="profile-preview-card__content p-4 pt-0 branded-7 crayons-dropdown" style="--card-color: #000000; border-top-color: var(--card-color);" data-testid="profile-preview-card" data-repositioning-dropdown="true">
+    <div class="gap-4 grid">
+        <div class="-mt-4">
+  <a href="/varshavh" class="flex">
+    <span class="crayons-avatar crayons-avatar--xl  mr-2 shrink-0">
+      <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3417640%2Fa74460f8-eb7d-491e-943a-ade58bd8210a.png" class="crayons-avatar__image" alt="" loading="lazy" />
+    </span>
+    <span class="crayons-link crayons-subtitle-2 mt-5">
+      Varsha V Hegde
+      
+    </span>
+  </a>
+</div>
+
+<div class="print-hidden">
+  <button name="button" type="button" data-info="{&quot;className&quot;:&quot;User&quot;,&quot;style&quot;:&quot;&quot;,&quot;id&quot;:3417640,&quot;name&quot;:&quot;Varsha V Hegde&quot;}" class="crayons-btn follow-action-button whitespace-nowrap w-100 follow-user" aria-label="Follow user: Varsha V Hegde" aria-pressed="false">Follow</button>
+</div>
+
+  <div class="user-metadata-details">
+    <ul class="user-metadata-details-inner">
+      <li>
+        <div class="key">
+          Joined
+        </div>
+        <div class="value">
+          <time datetime="2025-08-06T16:34:04Z" class="date">Aug 6, 2025</time>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+    </div>
+</div>
+
+
+  </div>
+
+  <span class="color-base-30 px-2 m:pl-0" role="presentation">&bull;</span>
+
+<a href="https://dev.to/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io#comment-30p46" class="comment-date crayons-link crayons-link--secondary fs-s">
+  <time datetime="2025-08-31T11:57:26Z" class=date-short-year>
+    Aug 31 &#39;25
+  </time>
+
+</a>
+
+
+  <div class="comment__dropdown" data-tracking-name="comment_dropdown">
+    <button id="comment-dropdown-trigger-1387938" aria-controls="comment-dropdown-1387938" aria-expanded="false"
+      class="dropbtn comment__dropdown-trigger crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon "
+      aria-label="Toggle dropdown menu" aria-haspopup="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="atipof2ywc74hdv9s4allpyhdptzc0at" class="crayons-icon pointer-events-none"><title id="atipof2ywc74hdv9s4allpyhdptzc0at">Dropdown menu</title>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.25 12a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm5.25 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm3.75 1.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
+</svg>
+
+    </button>
+    <div id="comment-dropdown-1387938" class="crayons-dropdown right-1 s:right-0 s:left-auto fs-base dropdown">
+      <ul class="m-0">
+        <li><a href="https://dev.to/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io#comment-30p46" class="crayons-link crayons-link--block permalink-copybtn" aria-label="Copy link to Varsha V Hegde&#39;s comment" data-no-instant>Copy link</a></li>
+        <li class="comment-actions hidden" data-user-id="3417640" data-action="settings-button" data-path="https://dev.to/varshavh/comment/30p46/settings" aria-label="Go to Varsha V Hegde&#39;s comment settings"></li>
+          <li class="comment-actions hidden" data-action="hide-button" data-commentable-user-id="885064" data-user-id="3417640">
+              <button
+                class="flex justify-between crayons-link crayons-link--block w-100 bg-transparent border-0 hide-comment"
+                data-hide-type="hide"
+                data-comment-id="1387938"
+                data-comment-url="https://dev.to/varshavh/comment/30p46"
+                aria-label="Hide Varsha V Hegde&#39;s comment">
+                Hide
+              </button>
+          </li>
+        <li class="mod-actions hidden mod-actions-comment-button" data-path="https://dev.to/varshavh/comment/30p46/mod" aria-label="Moderate Varsha V Hegde&#39;s comment"></li>
+        <li class="report-abuse-link-wrapper" data-path="/report-abuse?url=https://dev.to/varshavh/comment/30p46" aria-label="Report Varsha V Hegde&#39;s comment as abusive or violating our code of conduct and/or terms and conditions"></li>
+        <li class="current-user-actions"></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+        <div
+          class="
+            comment__body
+            text-styles
+            text-styles--secondary
+            body
+            
+            
+          ">
+          <p>Can we change location based on our input ?</p>
+
+
+        </div>
+
+    </div>
+
+    <script>
+    </script>
+
+    <footer class="comment__footer print-hidden">
+  <button
+    class="crayons-tooltip__activator relative crayons-btn crayons-btn--ghost crayons-btn--icon-left crayons-btn--s mr-1 reaction-like inline-flex reaction-button"
+    id="button-for-comment-1387938"
+    data-comment-id="1387938"
+    aria-label="like"
+    data-tracking-name="comment_heart_button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a4us7uh2sphkxh99apligy45rp99rpbe" class="crayons-icon reaction-icon not-reacted"><title id="a4us7uh2sphkxh99apligy45rp99rpbe">Like comment: </title><path d="M18.884 12.595l.01.011L12 19.5l-6.894-6.894.01-.01A4.875 4.875 0 0112 5.73a4.875 4.875 0 016.884 6.865zM6.431 7.037a3.375 3.375 0 000 4.773L12 17.38l5.569-5.569a3.375 3.375 0 10-4.773-4.773L9.613 10.22l-1.06-1.062 2.371-2.372a3.375 3.375 0 00-4.492.25v.001z"></path></svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="ajra2tzlu59pannzqegocruk0ctj3gtb" class="crayons-icon crayons-icon reaction-icon--like reaction-icon reacted"><title id="ajra2tzlu59pannzqegocruk0ctj3gtb">Like comment: </title>
+    <path d="M5.116 12.595a4.875 4.875 0 015.56-7.68h-.002L7.493 8.098l1.06 1.061 3.181-3.182a4.875 4.875 0 016.895 6.894L12 19.5l-6.894-6.894.01-.01z"></path>
+</svg>
+
+    <span class="reactions-count">2</span><span class="reactions-label hidden m:inline-block">&nbsp;likes</span>
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Like
+    </span>
+  </button>
+
+      <button
+        class="actions crayons-btn crayons-btn--ghost crayons-btn--s crayons-btn--icon-left toggle-reply-form mr-1 inline-flex"
+        data-comment-id="1387938"
+        data-path="/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io/comments/30p46"
+        data-tracking-name="comment_reply_button"
+        data-testid="reply-button-1387938"
+        rel="nofollow">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a3a1aea0zoie3ux1ifxog70sompw1ilf" class="crayons-icon reaction-icon not-reacted"><title id="a3a1aea0zoie3ux1ifxog70sompw1ilf">Comment button</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+        <span class="hidden m:inline-block">Reply</span>
+      </button>
+
+</footer>
+
+  </div>
+</div>
+
+
+  </div>
+    </details>
+
+
+      </div>
+    </div>
+
+    <div class="align-center">
+    <div class="mb-4">
+      <a class="crayons-btn crayons-btn--secondary w-100" href="/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io/comments">
+        View full discussion (11 comments)
+      </a>
+    </div>
+
+    <p class="fs-s color-base-60 mb-4">
+      Some comments may only be visible to logged-in visitors. <a href="/enter">Sign in</a> to view all comments.
+      
+    </p>
+
+  <nav class="fs-s align-center block" aria-label="Conduct controls">
+  <a href="/code-of-conduct" class="crayons-link crayons-link--secondary">Code of Conduct</a>
+  <span class="opacity-25 px-2" role="presentation">&bull;</span>
+  <a href="/report-abuse" class="crayons-link crayons-link--secondary">Report abuse</a>
+</nav>
+
+</div>
+
+</section>
+<div id="hide-comments-modal" class="hidden">
+  <form id="hide-comments-modal__form" class="hide-comments-modal__form" data-type="json" action="/comments/hide" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="_method" value="patch" autocomplete="off" /><input type="hidden" name="authenticity_token" value="jhj5UX5BXgCk5VIrwDqrjZY-bW8Wve5wdA_xi_l_RJJojgI4IrLeiL_w8CqOHKrdzCNBBxr2E0_fI6w863LVdQ" autocomplete="off" />
+    <div class="hide-comments-modal__content">
+      <p class="pb-2">
+        Are you sure you want to hide this comment? It will become hidden in your post, but will still be visible via the comment's <a id="hide-comments-modal__comment-permalink" href="#">permalink</a>.
+      </p>
+      <label class="crayons-field crayons-field--checkbox my-2">
+        <input name="hide_children" type="hidden" value="0" autocomplete="off" /><input class="hide_children crayons-checkbox" type="checkbox" value="1" name="hide_children" id="hide_children" />
+        <p class="crayons-field__label">Hide child comments as well</p>
+      </label>
+      <p class="pb-4 pt-2">
+        <button type="submit" class="crayons-btn">
+          Confirm
+        </button>
+      </p>
+    </div>
+</form>  <p class="fs-s color-base-60">For further actions, you may consider blocking this person and/or <a id="hide-comments-modal__report-link" href="/report-abuse">reporting abuse</a></p>
+</div>
+
+
+
+        </article>
+
+        <div class="pb-4 crayons-layout__comments-billboard">
+          <div class="new-bb-container pb-4 crayons-layout__comments-billboard" data-async-url="/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io/bmar11/post_comments"></div>
+        </div>
+
+          <!-- Bottom content skipped via SKIP_BOTTOM_CONTENT config -->
+      </div>
+    </main>
+
+    <aside class="crayons-layout__sidebar-right" aria-label="Author details">
+      <div class="crayons-article-sticky grid gap-4 pb-4 break-word" id="article-show-primary-sticky-nav">
+  <div class="crayons-card crayons-card--secondary branded-7 p-4 pt-0 gap-4 grid" style="border-top-color: #000000;">
+    <div class="-mt-4">
+  <a href="/varshithvhegde" class="flex">
+    <span class="crayons-avatar crayons-avatar--xl  mr-2 shrink-0">
+      <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F885064%2F4ab304f4-a3f3-409c-8217-9ce130e57c18.jpeg" class="crayons-avatar__image" alt="" loading="lazy" />
+    </span>
+    <span class="crayons-link crayons-subtitle-2 mt-5">
+      Varshith V Hegde
+      <img class="subscription-icon" src="https://assets.dev.to/assets/subscription-icon-805dfa7ac7dd660f07ed8d654877270825b07a92a03841aa99a1093bd00431b2.png" />
+    </span>
+  </a>
+</div>
+
+<div class="print-hidden">
+  <button name="button" type="button" data-info="{&quot;className&quot;:&quot;User&quot;,&quot;style&quot;:&quot;&quot;,&quot;id&quot;:885064,&quot;name&quot;:&quot;Varshith V Hegde&quot;}" class="crayons-btn follow-action-button whitespace-nowrap w-100 follow-user" aria-label="Follow user: Varshith V Hegde" aria-pressed="false">Follow</button>
+</div>
+  <div class="color-base-70">
+    A simple programmer fond of learning
+  </div>
+
+  <div class="user-metadata-details">
+    <ul class="user-metadata-details-inner">
+        <li>
+          <div class="key">
+            Location
+          </div>
+          <div class="value">
+            Mangalore
+          </div>
+        </li>
+          <li>
+            <div class="key">
+              Education
+            </div>
+            <div class="value">
+              Mangalore Institute of Technology and Engineering 
+            </div>
+          </li>
+          <li>
+            <div class="key">
+              Work
+            </div>
+            <div class="value">
+              Software Engineer@KPIT
+            </div>
+          </li>
+      <li>
+        <div class="key">
+          Joined
+        </div>
+        <div class="value">
+          <time datetime="2022-06-30T11:09:59Z" class="date">Jun 30, 2022</time>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  </div>
+
+      <div class="crayons-card crayons-card--secondary">
+        <header class="crayons-card__header">
+          <h3 class="crayons-subtitle-2">
+            More from <a href="/varshithvhegde">Varshith V Hegde</a>
+          </h3>
+        </header>
+        <div>
+            <a class="crayons-link crayons-link--contentful" href="/varshithvhegde/the-great-claude-code-leak-of-2026-accident-incompetence-or-the-best-pr-stunt-in-ai-history-3igm">
+              The Great Claude Code Leak of 2026: Accident, Incompetence, or the Best PR Stunt in AI History?
+              <div class="crayons-link__secondary -ml-1">
+                  <span class="mr-1"><span class="opacity-50">#</span>webdev</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>ai</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>programming</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>productivity</span>
+              </div>
+            </a>
+            <a class="crayons-link crayons-link--contentful" href="/varshithvhegde/using-claude-code-with-any-llm-why-a-gateway-changes-everything-4a0c">
+              Using Claude Code with Any LLM: Why a Gateway Changes Everything
+              <div class="crayons-link__secondary -ml-1">
+                  <span class="mr-1"><span class="opacity-50">#</span>ai</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>cli</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>llm</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>tooling</span>
+              </div>
+            </a>
+            <a class="crayons-link crayons-link--contentful" href="/varshithvhegde/contractcompass-your-ai-contract-analyst-that-actually-speaks-human-nfo">
+              ContractCompass: Your AI Contract Analyst That Actually Speaks Human
+              <div class="crayons-link__secondary -ml-1">
+                  <span class="mr-1"><span class="opacity-50">#</span>devchallenge</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>algoliachallenge</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>ai</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>agents</span>
+              </div>
+            </a>
+        </div>
+      </div>
+</div>
+
+<div class="crayons-article-sticky grid gap-4 break-word sidebar-bb" data-async-url="/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io/bmar11/post_sidebar"></div>
+
+    </aside>
+  </div>
+
+  <div class="mod-actions-menu print-hidden"></div>
+  <div data-testid="unpublish-post-modal-container" class="unpublish-post-modal-container hidden"></div>
+
+  <div class="fullscreen-code js-fullscreen-code"></div>
+  <script src="https://assets.dev.to/assets/billboard-365f8f60fc3506e63bc54cc5b0a2e36f4c11024ff6a30dccd5462467f24b5215.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/localizeArticleDates-70147c5c6bfe350b42e020ebb2a3dd37419d83978982b5a67b6389119bf162ac.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/articleReactions-1f2220b03b8ee48f0e9196d07b123ad5c5d942328819c33728eab4a4ff83150b.js" defer="defer"></script>
+
+  <script>
+      if (document.getElementsByClassName('fluidvids').length === 0) {
+        window.Fluidvids=function(a,b){"use strict";var c,d,e=b.head||b.head,f=".fluidvids-elem{position:absolute;top:0px;left:0px;width:100%;height:100%;border:none;}.fluidvids{width:100%;position:relative;}",g=function(a){return c=new RegExp("^(https?:)?//(?:"+d.join("|")+").*$","i"),c.test(a)},h=function(a){var c=b.createElement("div"),d=a.parentNode,e=100*(parseInt(a.height?a.height:a.offsetHeight,10)/parseInt(a.width?a.width:a.offsetWidth,10));d.insertBefore(c,a),a.className+=" fluidvids-elem",c.className+=" fluidvids",c.style.paddingTop=e+"%",c.appendChild(a)},i=function(){var a=b.createElement("div");a.innerHTML="<p>x</p><style>"+f+"</style>",e.appendChild(a.childNodes[1])},j=function(a){var c=a||{},e=c.selector||"iframe";d=c.players||["www.youtube.com","player.vimeo.com","clips.twitch.tv"];for(var f=b.querySelectorAll(e),j=0;j<f.length;j++){var k=f[j];g(k.src)&&h(k)}i()};return{init:j}}(window,document);
+        Fluidvids.init({
+          selector: ['iframe', 'object'], // runs querySelectorAll()
+          players: ['www.youtube.com', 'player.vimeo.com', 'clips.twitch.tv'] // players to support
+        });
+      }
+    function activateRunkitTags() {
+  if (!areAnyRunkitTagsPresent())
+    return
+
+  var checkRunkit = setInterval(function() {
+    try {
+      dynamicallyLoadRunkitLibrary()
+
+      if (typeof(RunKit) === 'undefined') {
+        return
+      }
+
+      replaceTagContentsWithRunkitWidget()
+      clearInterval(checkRunkit);
+    } catch(e) {
+      console.error(e);
+      clearInterval(checkRunkit);
+    }
+  }, 200);
+}
+
+function isRunkitTagAlreadyActive(runkitTag) {
+  return runkitTag.querySelector("iframe") !== null;
+};
+
+function areAnyRunkitTagsPresent() {
+  var presentRunkitTags = document.getElementsByClassName("runkit-element");
+
+  return presentRunkitTags.length > 0
+}
+
+function replaceTagContentsWithRunkitWidget() {
+  var targets = document.getElementsByClassName("runkit-element");
+  for (var i = 0; i < targets.length; i++) {
+    if (isRunkitTagAlreadyActive(targets[i])) {
+      continue;
+    }
+
+    var wrapperContent = targets[i].textContent;
+    if (/^(<iframe src)/.test(wrapperContent) === false) {
+      if (targets[i].children.length > 0) {
+        var preamble = targets[i].children[0].textContent;
+        var content = targets[i].children[1].textContent;
+        targets[i].innerHTML = "";
+        var notebook = RunKit.createNotebook({
+          element: targets[i],
+          source: content,
+          preamble: preamble
+        });
+      }
+    }
+  }
+};
+
+function dynamicallyLoadRunkitLibrary() {
+  if (typeof(dynamicallyLoadScript) === "undefined")
+    return
+
+  dynamicallyLoadScript("//embed.runkit.com")
+}
+
+activateRunkitTags();
+
+  </script>
+  <div class="js-billboard-container pb-4 crayons-layout__comments-billboard" data-async-url="/varshithvhegde/i-built-an-ai-event-butler-so-id-never-miss-another-tech-meetup-and-you-can-too-37io/bmar11/post_fixed_bottom"></div>
+
+
+    <div id="runtime-banner-container"></div>
+    <div id="i18n-translations" data-translations="{&quot;en&quot;:{&quot;core&quot;:{&quot;add_comment&quot;:&quot;Add comment&quot;,&quot;beta&quot;:&quot;beta&quot;,&quot;comment&quot;:&quot;Comment&quot;,&quot;copy_link&quot;:&quot;Copy link&quot;,&quot;edit_profile&quot;:&quot;Edit profile&quot;,&quot;follow&quot;:&quot;Follow&quot;,&quot;follow_back&quot;:&quot;Follow back&quot;,&quot;following&quot;:&quot;Following&quot;,&quot;like&quot;:&quot;Like&quot;,&quot;loading&quot;:&quot;loading...&quot;,&quot;reaction&quot;:&quot;Reaction&quot;,&quot;report_abuse&quot;:&quot;Report abuse&quot;,&quot;search&quot;:&quot;Search&quot;,&quot;success_settings&quot;:&quot;Successfully updated settings.&quot;,&quot;search_placeholder&quot;:&quot;Search...&quot;,&quot;search_find_related_posts&quot;:&quot;Find related posts...&quot;,&quot;search_powered_by&quot;:&quot;Powered by Algolia&quot;,&quot;search_submit_search&quot;:&quot;Submit search for advanced filtering.&quot;,&quot;search_displaying_recommendations&quot;:&quot;Displaying Algolia Recommendations — Start typing to search&quot;,&quot;article_form_save_changes&quot;:&quot;Save changes&quot;,&quot;article_form_schedule&quot;:&quot;Schedule&quot;,&quot;article_form_publish&quot;:&quot;Publish&quot;,&quot;article_form_loading_preview&quot;:&quot;Loading preview&quot;,&quot;article_form_preview_loaded&quot;:&quot;Preview loaded&quot;,&quot;comments_preview&quot;:&quot;Preview&quot;,&quot;comments_continue_editing&quot;:&quot;Continue editing&quot;,&quot;survey_enter_response&quot;:&quot;Enter your response here...&quot;,&quot;survey_thank_you_response&quot;:&quot;Thank you for your response.&quot;,&quot;survey_thank_you_completing&quot;:&quot;Thank you for completing the survey!&quot;,&quot;dashboard_analytics_readers&quot;:&quot;Readers&quot;,&quot;dashboard_analytics_comments&quot;:&quot;Comments&quot;,&quot;dashboard_analytics_reactions&quot;:&quot;Reactions&quot;,&quot;stats_by&quot;:&quot;by&quot;,&quot;editor_new_title&quot;:&quot;New post title here...&quot;,&quot;editor_body_placeholder&quot;:&quot;Write your post content here...&quot;,&quot;tags_field_label&quot;:&quot;Add up to 4 tags&quot;,&quot;tags_field_placeholder&quot;:&quot;Add up to 4 tags...&quot;,&quot;counted_organization&quot;:{&quot;one&quot;:&quot;%{count} organization&quot;,&quot;other&quot;:&quot;%{count} organizations&quot;},&quot;counted_user&quot;:{&quot;one&quot;:&quot;%{count} person&quot;,&quot;other&quot;:&quot;%{count} people&quot;},&quot;not_following&quot;:&quot;You&#39;re not following anyone&quot;,&quot;following_everyone&quot;:&quot;You&#39;re following %{details} (everyone)&quot;,&quot;you_are_following&quot;:&quot;You&#39;re following&quot;,&quot;and&quot;:&quot;and&quot;}}}"></div>
+  </div>
+</div>
+    
+
+<footer id="footer" class="crayons-footer print-hidden">
+  <div id="footer-container" class="crayons-footer__container">
+
+
+        <style>
+  .long-bb-body {
+    max-height: calc(100vh - 200px);
+    overflow: hidden;
+  }
+  .long-bb-bottom {
+    height: 180px;
+    background: linear-gradient(to top, var(--card-bg), transparent);
+    margin-top: -180px;
+    position:relative;
+    z-index: 5;
+  }
+</style>
+
+  <div
+    style=""
+    data-display-unit data-id="146443"
+    data-category-click="click"
+    data-category-impression="impression"
+    data-context-type="home"
+    data-special="nothing"
+    data-article-id=""
+    data-type-of="in_house">
+          <div class="crayons-card crayons-card--secondary crayons-bb bb-placement js-billboard" style="display: inline-flex; flex-direction: column; align-items: center; margin: 0 auto 2rem auto; width: fit-content; padding: 2rem;">
+        <p style="font-weight: bold; margin: 0 0 1rem 0;">
+            💎 DEV Diamond Sponsors
+        </p>
+        <p style="font-size: 0.8em; margin: 0 0 2rem 0;">
+            Thank you to our Diamond Sponsors for supporting the DEV Community
+        </p>
+    
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://aistudio.google.com/?utm_source=partner&amp;utm_medium=partner&amp;utm_campaign=FY25-Global-DEVpartnership-sponsorship-AIS&amp;utm_content=-&amp;utm_term=-&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fxjlyhbdqehj3akhz166w.png" alt="Google AI - Official AI Model and Platform Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 54px; padding: 10px;" loading="lazy" width="2048" height="472">
+                </a>
+                <p style="text-align: center;">Google AI is the official AI Model and Platform Partner of DEV</p>
+            </div>
+
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://neon.tech/?ref=devto&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fbnl88cil6afxzmgwrgtt.png" alt="Neon - Official Database Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 60px; padding: 10px;" loading="lazy" width="2286" height="596">
+                </a>
+                <p style="text-align: center;">Neon is the official database partner of DEV</p>
+            </div>
+    
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://www.algolia.com/developers/?utm_source=devto&amp;utm_medium=referral&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fv30ephnolfvnlwgwm0yz.png" alt="Algolia - Official Search Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 60px; padding: 10px;" loading="lazy" width="2286" height="596">
+                </a>
+                <p style="text-align: center;">Algolia is the official search partner of DEV</p>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+    <p class="fs-s crayons-footer__description">
+      <a class="c-link c-link--branded fw-medium" aria-label="DEV Community Home" href="/">DEV Community</a> — Your community HQ
+    </p>
+
+    <ul class="footer__nav-links flex gap-2 justify-center flex-wrap fs-s p-0" style="" />
+        <li class="footer__nav-link flex items-center">
+    <a href="/">
+      Home
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/about">
+      About
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/contact">
+      Contact
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://mlh.io/">
+      MLH
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+
+    </ul>
+
+    <ul class="footer__nav-links flex gap-2 justify-center flex-wrap fs-s p-0" style="" />
+        <li class="footer__nav-link flex items-center">
+    <a href="/code-of-conduct">
+      Code of Conduct
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/privacy">
+      Privacy Policy
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/terms">
+      Terms of Use
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+
+    </ul>
+
+    <div class="fs-s">
+      <p>Built on <a class="c-link c-link--branded" target="_blank" rel="noopener" href="https://www.forem.com">Forem</a> — the <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/t/opensource">open source</a> software that powers <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to">DEV</a> and other inclusive communities.</p>
+      <p>Made with love and <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/t/rails">Ruby on Rails</a>. DEV Community <span title="copyright">&copy;</span> 2016 - 2026.</p>
+    </div>
+  </div>
+</footer>
+<div id="snack-zone"></div>
+
+    <div id="global-signup-modal" class="authentication-modal hidden">
+  <div class="authentication-modal__container">
+    <figure class="authentication-modal__image-container">
+      <img class="authentication-modal__image" src="https://media2.dev.to/dynamic/image/width=190,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+        alt="DEV Community" loading="lazy" />
+    </figure>
+    <div class="authentication-modal__content">
+      <p class="authentication-modal__description">
+          We&#39;re a place where coders share, stay up-to-date and grow their careers.
+      </p>
+    </div>
+    <div class="authentication-modal__actions">
+      <a href="https://dev.to/enter?signup_subforem=1" class="crayons-btn" aria-label="Log in" data-no-instant>
+        Log in
+      </a>
+      <a href="https://dev.to/enter?signup_subforem=1&amp;state=new-user" class="crayons-btn crayons-btn--ghost-brand js-global-signup-modal__create-account" aria-label="Create new account" data-no-instant>
+        Create account
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="https://assets.dev.to/assets/signupModalShortcuts-0b25469b985100a01e94cbd7fccaf7f0a4d776e129aac65c766aa32cb28ab29a.js" defer="defer"></script>
+
+    <div id="cookie-consent"></div>
+  <div id="reaction-category-resources" class="hidden" aria-hidden="true">
+    <img data-name="Like" data-slug="like" data-position="1" src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+    <img data-name="Unicorn" data-slug="unicorn" data-position="2" src="https://assets.dev.to/assets/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" width="18" height="18" />
+    <img data-name="Exploding Head" data-slug="exploding_head" data-position="3" src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" width="18" height="18" />
+    <img data-name="Raised Hands" data-slug="raised_hands" data-position="4" src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="18" height="18" />
+    <img data-name="Fire" data-slug="fire" data-position="5" src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+</div>
+
+    <script>
+  var userSignedIn = false;
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    initAuth();
+  } else {
+    document.addEventListener('DOMContentLoaded', initAuth);
+  }
+
+  function initAuth() {
+    var paramToken = new URLSearchParams(window.location.search).get('jwt');
+
+    if (paramToken && !userSignedIn) {
+      authenticateUser(paramToken);
+    } else {
+      var iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = 'https://forem.com/auth_pass/iframe';
+  
+      document.body.appendChild(iframe);
+  
+      window.addEventListener('message', function(event) {
+        if (event.origin !== 'https://forem.com' && event.origin !== window.location.origin) {
+          return;
+        }
+  
+        var data = event.data;
+  
+        if (data.authenticated && !userSignedIn) {
+          authenticateUser(data.token);
+        } else if(data.authenticated && window.ReactNativeWebView && window.ReactNativeWebView.postMessage) {
+          window.ReactNativeWebView.postMessage(JSON.stringify({
+            action: 'login',
+            token: data.token,
+          }));
+        }
+      });  
+    }
+
+    function authenticateUser(token) {
+      fetch('/auth_pass/token_login', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': getMetaContent('csrf-token'),
+        },
+        body: JSON.stringify({ token: token }),
+      })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        if (data.success) {
+          if (document.head.querySelector('meta[name="user-signed-in"][content="false"]')) {
+            // Reload the page to update the user's state
+            location.reload();
+          }
+        }
+      })
+      .catch(function(error) {
+        console.error('Error during authentication:', error);
+      });
+    }
+
+    function getMetaContent(name) {
+      var element = document.querySelector('meta[name="' + name + '"]');
+      return element ? element.getAttribute('content') : '';
+    }
+  }
+</script>
+
+  
+  
+  
+  </body>
+  </html>

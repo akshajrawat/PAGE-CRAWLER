@@ -1,0 +1,223 @@
+<!DOCTYPE html><html lang="en"> <head><script>
+    (() => {
+      const root = document.documentElement;
+      const themeClasses = ["theme-light", "theme-high-contrast", "theme-colorblind"];
+
+      function clearThemeClasses() {
+        root.classList.remove(...themeClasses);
+      }
+
+      try {
+        const theme = localStorage.getItem("cx_theme");
+        const contrast = localStorage.getItem("cx_contrast");
+        const cbm = localStorage.getItem("cx_cbm");
+
+        clearThemeClasses();
+
+        if (theme === "light") {
+          root.classList.add("theme-light");
+        }
+
+        if (contrast === "high") {
+          root.classList.add("theme-high-contrast");
+        }
+
+        if (cbm) {
+          root.classList.add("theme-colorblind");
+          root.dataset.cbm = cbm;
+        } else {
+          delete root.dataset.cbm;
+        }
+      } catch {
+        clearThemeClasses();
+        delete root.dataset.cbm;
+      }
+    })();
+  </script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Cx</title><meta name="description" content="A systems language built for the real cost of building things."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/_astro/_slug_.C757Lhrk.css">
+<style>.sec-head[data-astro-cid-wk2votdk]{display:grid;grid-template-columns:80px minmax(0,1fr);gap:14px;padding-bottom:12px;border-bottom:1px solid var(--cx-border);margin-bottom:16px}.sec-n[data-astro-cid-wk2votdk]{font-family:var(--cx-mono);font-size:42px;line-height:1;color:var(--cx-text-ghost);letter-spacing:.04em}.sec-title[data-astro-cid-wk2votdk]{font-family:var(--cx-display);font-size:44px;line-height:1;color:var(--cx-text);margin:0}.sec-sub[data-astro-cid-wk2votdk]{margin-top:6px;font-size:14px;color:var(--cx-text-2);max-width:70ch}
+</style>
+<link rel="stylesheet" href="/_astro/index.Ca8HN_w3.css"></head> <body class="min-h-screen antialiased"> <!-- Atmosphere overlays --> <div class="cx-noise"></div> <!-- Uncomment if you want scanlines globally --> <!-- <div class="cx-scanlines"></div> --> <div class="relative z-10"> <nav class="sticky top-0 z-50 border-b" style="border-color: var(--cx-border);"> <div class="backdrop-blur-md" style="background: color-mix(in srgb, var(--cx-surface) 78%, transparent); box-shadow: 0 0 0 1px color-mix(in srgb, var(--cx-border) 70%, transparent) inset;"> <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3"> <a href="/" class="flex items-center gap-3"> <span class="cx-display text-2xl leading-none" style="color: var(--cx-accent);">CX</span> <span class="cx-mono text-xs tracking-wide" style="color: var(--cx-text-2);">
+ship://language/<span style="color: var(--cx-text);">home</span> </span> <span class="cx-mono hidden rounded-full px-2 py-1 text-[10px] md:inline" style="border: 1px solid var(--cx-border); color: var(--cx-text-2);">
+v0.0.x
+</span> </a> <div class="flex items-center gap-5"> <a href="/docs" class="cx-mono text-xs tracking-wide transition opacity-70 hover:opacity-100" style="color: var(--cx-text-2);"> Docs </a><a href="/blog" class="cx-mono text-xs tracking-wide transition opacity-70 hover:opacity-100" style="color: var(--cx-text-2);"> Blog </a> <a href="/docs" class="cx-mono rounded-full px-3 py-1 text-xs" style="
+            border: 1px solid var(--cx-border);
+            color: var(--cx-text);
+            background: color-mix(in srgb, var(--cx-surface) 84%, transparent);
+          ">
+OPEN DOCS
+</a> <div class="a11y" id="a11y_a6d26eb77d5f18" data-astro-cid-zpvmv55a> <button class="a11y-btn" type="button" aria-haspopup="menu" aria-expanded="false" title="Accessibility settings" data-astro-cid-zpvmv55a> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" data-astro-cid-zpvmv55a> <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" stroke="currentColor" stroke-width="1.8" data-astro-cid-zpvmv55a></path> <path d="M19.4 13a7.7 7.7 0 0 0 .05-2l2-1.2-2-3.5-2.3.7a7.4 7.4 0 0 0-1.7-1l-.3-2.4H9.8L9.5 6a7.4 7.4 0 0 0-1.7 1l-2.3-.7-2 3.5 2 1.2a7.7 7.7 0 0 0 0 2l-2 1.2 2 3.5 2.3-.7a7.4 7.4 0 0 0 1.7 1l.3 2.4h4.4l.3-2.4a7.4 7.4 0 0 0 1.7-1l2.3.7 2-3.5-2-1.2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" data-astro-cid-zpvmv55a></path> </svg> </button> <div class="a11y-menu acc-menu" role="menu" aria-label="Accessibility" data-astro-cid-zpvmv55a> <div class="a11y-title" data-astro-cid-zpvmv55a>ACCESSIBILITY</div> <div class="a11y-group" data-astro-cid-zpvmv55a> <div class="a11y-label" data-astro-cid-zpvmv55a>Theme</div> <div class="a11y-row" data-astro-cid-zpvmv55a> <button class="a11y-chip acc-pill" data-theme="default" type="button" aria-pressed="false" data-astro-cid-zpvmv55a>Default</button> <button class="a11y-chip acc-pill" data-theme="light" type="button" aria-pressed="false" data-astro-cid-zpvmv55a>Light</button> </div> </div> <div class="a11y-group" data-astro-cid-zpvmv55a> <div class="a11y-row a11y-row-split" data-astro-cid-zpvmv55a> <div data-astro-cid-zpvmv55a> <div class="a11y-label" data-astro-cid-zpvmv55a>High contrast</div> <div class="a11y-hint" data-astro-cid-zpvmv55a>Boost text & borders</div> </div> <button class="a11y-toggle" type="button" data-contrast-toggle data-astro-cid-zpvmv55a> <span class="knob" data-astro-cid-zpvmv55a></span> </button> </div> </div> <div class="a11y-group" data-astro-cid-zpvmv55a> <div class="a11y-label" data-astro-cid-zpvmv55a>Color-blind mode</div> <div class="a11y-row" data-astro-cid-zpvmv55a> <select class="a11y-select" data-cbm data-astro-cid-zpvmv55a> <option value="" data-astro-cid-zpvmv55a>Off</option> <option value="protanopia" data-astro-cid-zpvmv55a>Protanopia</option> <option value="deuteranopia" data-astro-cid-zpvmv55a>Deuteranopia</option> <option value="tritanopia" data-astro-cid-zpvmv55a>Tritanopia</option> </select> </div> </div> <div class="a11y-foot" data-astro-cid-zpvmv55a> <button class="a11y-reset" type="button" data-reset data-astro-cid-zpvmv55a>Reset</button> </div> </div> </div> <script>(function(){const id = "a11y_a6d26eb77d5f18";
+
+  const root = document.documentElement;
+  const themeKey = "cx_theme";
+  const contrastKey = "cx_contrast";
+  const cbmKey = "cx_cbm";
+  const themeClasses = ["theme-light", "theme-high-contrast", "theme-colorblind"];
+
+  function clearInlineThemeVars() {
+    root.style.removeProperty("--cx-accent");
+    root.style.removeProperty("--cx-ring");
+    root.style.removeProperty("--cx-border");
+  }
+
+  function apply(state) {
+    root.classList.remove(...themeClasses);
+
+    if (state.theme === "light") {
+      root.classList.add("theme-light");
+    }
+
+    if (state.contrast === "high") {
+      root.classList.add("theme-high-contrast");
+    }
+
+    if (state.cbm) root.dataset.cbm = state.cbm;
+    else delete root.dataset.cbm;
+
+    if (state.cbm) {
+      root.classList.add("theme-colorblind");
+    }
+
+    if (state.theme === "default" && state.contrast !== "high" && !state.cbm) {
+      clearInlineThemeVars();
+    }
+
+    localStorage.setItem(themeKey, state.theme || "default");
+    localStorage.setItem(contrastKey, state.contrast || "normal");
+    localStorage.setItem(cbmKey, state.cbm || "");
+  }
+
+  function load() {
+    try {
+      return {
+        theme: localStorage.getItem(themeKey) || "default",
+        contrast: localStorage.getItem(contrastKey) || "normal",
+        cbm: localStorage.getItem(cbmKey) || "",
+      };
+    } catch {
+      return { theme: "default", contrast: "normal", cbm: "" };
+    }
+  }
+
+  const state = { theme: "default", contrast: "normal", cbm: "", ...load() };
+
+  apply(state);
+
+  const wrap = document.getElementById(id);
+  const btn = wrap?.querySelector(".a11y-btn");
+  const menu = wrap?.querySelector(".a11y-menu");
+
+  if (wrap && btn && menu) {
+    function setOpen(v) {
+      menu.dataset.open = v ? "true" : "false";
+      btn.setAttribute("aria-expanded", v ? "true" : "false");
+    }
+
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      setOpen(menu.dataset.open !== "true");
+    });
+
+    document.addEventListener("click", () => setOpen(false));
+    menu.addEventListener("click", (e) => e.stopPropagation());
+
+    const themeButtons = [...menu.querySelectorAll("[data-theme]")];
+
+    function syncThemeButtons() {
+      const s = load();
+      themeButtons.forEach((b) => {
+        b.setAttribute("aria-pressed", b.getAttribute("data-theme") === s.theme ? "true" : "false");
+      });
+    }
+
+    menu.querySelectorAll("[data-theme]").forEach((b) => {
+      b.addEventListener("click", () => {
+        const s = load();
+        s.theme = b.getAttribute("data-theme");
+        apply(s);
+        syncThemeButtons();
+      });
+    });
+
+    const toggle = menu.querySelector("[data-contrast-toggle]");
+    const sel = menu.querySelector("[data-cbm]");
+    const reset = menu.querySelector("[data-reset]");
+
+    function syncToggle() {
+      const s = load();
+      toggle.dataset.on = s.contrast === "high" ? "true" : "false";
+    }
+
+    toggle.addEventListener("click", () => {
+      const s = load();
+      s.contrast = s.contrast === "high" ? "normal" : "high";
+      apply(s);
+      syncToggle();
+      syncThemeButtons();
+    });
+
+    sel.addEventListener("change", () => {
+      const s = load();
+      s.cbm = sel.value;
+      apply(s);
+      syncThemeButtons();
+    });
+
+    reset.addEventListener("click", () => {
+      const s = { theme: "default", contrast: "normal", cbm: "" };
+      apply(s);
+      sel.value = "";
+      syncToggle();
+      syncThemeButtons();
+    });
+
+    sel.value = load().cbm || "";
+    syncToggle();
+    syncThemeButtons();
+    setOpen(false);
+  }
+})();</script>  </div> </div> </div> </nav> <main class="mx-auto max-w-6xl px-4 py-10">  <div class="home-shell" data-astro-cid-j7pv25f6> <!-- HERO --> <section class="hero" data-astro-cid-j7pv25f6> <div class="exp-banner" data-astro-cid-36er7gek> <div class="exp-left" data-astro-cid-36er7gek> <span class="exp-pill" data-astro-cid-36er7gek>EXPERIMENTAL</span> <span class="exp-text" data-astro-cid-36er7gek>
+Early stage. Build from source only. Not production-ready.
+</span> </div> <div class="exp-right" data-astro-cid-36er7gek> <span class="exp-ver" data-astro-cid-36er7gek>v0.0.x</span> </div> </div>  <div class="hero-grid" data-astro-cid-j7pv25f6> <div data-astro-cid-j7pv25f6> <div class="hero-kicker cx-mono" data-astro-cid-j7pv25f6>SYSTEMS LANGUAGE • ENGINE-FIRST</div> <h1 class="hero-title" data-astro-cid-j7pv25f6>
+A systems language for the real cost of building things.
+</h1> <p class="hero-sub" data-astro-cid-j7pv25f6>
+No GC. No runtime pauses. Costs stay visible: memory, time, and behavior.
+</p> <div class="hero-ctas" data-astro-cid-j7pv25f6> <a class="btn btn-primary" href="/docs" data-astro-cid-j7pv25f6>Read Docs</a> <a class="btn btn-ghost" href="https://github.com/COMMENTERTHE9/Cx_lang" target="_blank" rel="noreferrer" data-astro-cid-j7pv25f6>GitHub</a> </div> <div class="hero-meta" data-astro-cid-j7pv25f6> <div class="meta-chip" data-astro-cid-j7pv25f6> <span class="cx-mono text-[11px]" style="color: var(--cx-text-2);" data-astro-cid-j7pv25f6>STATUS</span> <span class="cx-mono text-[11px]" style="color: var(--cx-text);" data-astro-cid-j7pv25f6>Experimental</span> </div> <div class="meta-chip" data-astro-cid-j7pv25f6> <span class="cx-mono text-[11px]" style="color: var(--cx-text-2);" data-astro-cid-j7pv25f6>VERSION</span> <span class="cx-mono text-[11px]" style="color: var(--cx-text);" data-astro-cid-j7pv25f6>v0.0.x</span> </div> <div class="meta-chip" data-astro-cid-j7pv25f6> <span class="cx-mono text-[11px]" style="color: var(--cx-text-2);" data-astro-cid-j7pv25f6>FOCUS</span> <span class="cx-mono text-[11px]" style="color: var(--cx-text);" data-astro-cid-j7pv25f6>Engines</span> </div> </div> </div> <div class="hero-card" data-astro-cid-j7pv25f6> <div class="code-head" data-astro-cid-j7pv25f6> <div class="dots" data-astro-cid-j7pv25f6> <span class="dot red" data-astro-cid-j7pv25f6></span> <span class="dot yellow" data-astro-cid-j7pv25f6></span> <span class="dot green" data-astro-cid-j7pv25f6></span> </div> <div class="cx-mono text-[11px]" style="color: var(--cx-text-2);" data-astro-cid-j7pv25f6>hello.cx</div> </div> <pre class="code" data-astro-cid-j7pv25f6><code data-astro-cid-j7pv25f6>fnc: main() {
+    print(&quot;hello world&quot;)
+}</code></pre> <div class="hero-card-footer" data-astro-cid-j7pv25f6> <div class="cx-mono text-[11px]" style="color: var(--cx-text-2);" data-astro-cid-j7pv25f6>
+Build from source only.
+</div> <a class="cx-mono text-[11px]" style="color: var(--cx-accent);" href="/docs" data-astro-cid-j7pv25f6>
+docs://getting-started →
+</a> </div> </div> </div> </section> <!-- WHY --> <section class="home-sec" data-astro-cid-j7pv25f6> <div class="sec-head" data-astro-cid-wk2votdk> <div class="sec-n" data-astro-cid-wk2votdk>01</div> <div class="sec-meta" data-astro-cid-wk2votdk> <h2 class="sec-title" data-astro-cid-wk2votdk>Why Cx</h2> <div class="sec-sub" data-astro-cid-wk2votdk>Sharp, deliberate, honest. Built for real-time work where performance, memory behavior, and tooling cost all matter.</div> </div> </div>  <div class="two-col" data-astro-cid-j7pv25f6> <div class="card" data-astro-cid-j7pv25f6> <div class="card-title cx-mono" data-astro-cid-j7pv25f6>THE PROBLEM</div> <p class="card-body" data-astro-cid-j7pv25f6>
+Real-time code can't afford surprises: unclear ownership, invisible overhead, unpredictable slow paths.
+            Cx is built to make behavior and cost easy to see.
+</p> </div> <div class="card" data-astro-cid-j7pv25f6> <div class="card-title cx-mono" data-astro-cid-j7pv25f6>THE BET</div> <p class="card-body" data-astro-cid-j7pv25f6>
+Cx is trying to make the hard parts explicit: memory, lifetime, and cost - without requiring a
+            heavyweight workflow. It's early and will change, but the direction is deliberate.
+</p> </div> </div> </section> <!-- FEATURES --> <section class="home-sec" data-astro-cid-j7pv25f6> <div class="sec-head" data-astro-cid-wk2votdk> <div class="sec-n" data-astro-cid-wk2votdk>02</div> <div class="sec-meta" data-astro-cid-wk2votdk> <h2 class="sec-title" data-astro-cid-wk2votdk>Features</h2> <div class="sec-sub" data-astro-cid-wk2votdk>Implemented vs planned - kept separate on purpose.</div> </div> </div>  <div class="feature-grid" data-astro-cid-j7pv25f6> <div class="card" data-astro-cid-j7pv25f6> <div class="card-title cx-mono" data-astro-cid-j7pv25f6>NOW</div> <div class="feat-list" data-astro-cid-j7pv25f6> <div class="feat" data-astro-cid-j7pv25f6> <div class="feat-name" data-astro-cid-j7pv25f6>Functions</div> <div class="feat-desc" data-astro-cid-j7pv25f6>Direct, predictable function model.</div> </div><div class="feat" data-astro-cid-j7pv25f6> <div class="feat-name" data-astro-cid-j7pv25f6>Structs &amp; grouped enums</div> <div class="feat-desc" data-astro-cid-j7pv25f6>Data types designed for engines.</div> </div><div class="feat" data-astro-cid-j7pv25f6> <div class="feat-name" data-astro-cid-j7pv25f6>Unified numeric types (t8-t128)</div> <div class="feat-desc" data-astro-cid-j7pv25f6>One numeric family. Fewer keyword fights.</div> </div><div class="feat" data-astro-cid-j7pv25f6> <div class="feat-name" data-astro-cid-j7pv25f6>Ternary values</div> <div class="feat-desc" data-astro-cid-j7pv25f6>Resolved / Unknown / Absent - data is honest.</div> </div><div class="feat" data-astro-cid-j7pv25f6> <div class="feat-name" data-astro-cid-j7pv25f6>Pattern matching (when blocks)</div> <div class="feat-desc" data-astro-cid-j7pv25f6>Branching that reads like intent.</div> </div><div class="feat" data-astro-cid-j7pv25f6> <div class="feat-name" data-astro-cid-j7pv25f6>Error messages</div> <div class="feat-desc" data-astro-cid-j7pv25f6>Clear errors. No guesswork.</div> </div> </div> </div> <div class="card" data-astro-cid-j7pv25f6> <div class="card-title cx-mono" data-astro-cid-j7pv25f6>LATER / IN PROGRESS</div> <div class="feat-list" data-astro-cid-j7pv25f6> <div class="feat" data-astro-cid-j7pv25f6> <div class="feat-name" data-astro-cid-j7pv25f6>Type inference</div> <div class="feat-desc" data-astro-cid-j7pv25f6>In progress - will stay readable and explicit-first.</div> </div><div class="feat" data-astro-cid-j7pv25f6> <div class="feat-name" data-astro-cid-j7pv25f6>Modules / imports</div> <div class="feat-desc" data-astro-cid-j7pv25f6>Later - no premature architecture locks.</div> </div><div class="feat" data-astro-cid-j7pv25f6> <div class="feat-name" data-astro-cid-j7pv25f6>Generics</div> <div class="feat-desc" data-astro-cid-j7pv25f6>Later - only when the design is worth the complexity.</div> </div><div class="feat" data-astro-cid-j7pv25f6> <div class="feat-name" data-astro-cid-j7pv25f6>VM / bytecode</div> <div class="feat-desc" data-astro-cid-j7pv25f6>Later - not the current goal.</div> </div><div class="feat" data-astro-cid-j7pv25f6> <div class="feat-name" data-astro-cid-j7pv25f6>C interop</div> <div class="feat-desc" data-astro-cid-j7pv25f6>Later - planned, but not promised early.</div> </div><div class="feat" data-astro-cid-j7pv25f6> <div class="feat-name" data-astro-cid-j7pv25f6>Standard library</div> <div class="feat-desc" data-astro-cid-j7pv25f6>Later - minimal core first.</div> </div> </div> </div> </div> </section> <!-- INSTALL --> <section class="home-sec" data-astro-cid-j7pv25f6> <div class="sec-head" data-astro-cid-wk2votdk> <div class="sec-n" data-astro-cid-wk2votdk>03</div> <div class="sec-meta" data-astro-cid-wk2votdk> <h2 class="sec-title" data-astro-cid-wk2votdk>Build From Source</h2> <div class="sec-sub" data-astro-cid-wk2votdk>Cx is early. Expect breaks.</div> </div> </div>  <div class="card" data-astro-cid-j7pv25f6> <div class="install-head" data-astro-cid-j7pv25f6> <div class="cx-mono text-[11px]" style="color: var(--cx-text-2);" data-astro-cid-j7pv25f6> git clone https://github.com/COMMENTERTHE9/Cx_lang.git </div> <button class="copy-btn" type="button" data-copy-id="copy_b2504016269f08" data-copy-value="git clone https://github.com/COMMENTERTHE9/Cx_lang.git" data-astro-cid-74lkg7sv> <span class="cx-mono text-[11px]" style="color: var(--cx-text-2);" data-astro-cid-74lkg7sv>COPY</span> </button> <script type="module">const e=document.querySelectorAll("[data-copy-id]");e.forEach(t=>{t.addEventListener("click",async()=>{const a=t.getAttribute("data-copy-value")||"";try{await navigator.clipboard.writeText(a),t.classList.add("copied"),setTimeout(()=>t.classList.remove("copied"),900)}catch{}})});</script>  </div> <pre class="code" data-astro-cid-j7pv25f6><code data-astro-cid-j7pv25f6># clone
+git clone https://github.com/COMMENTERTHE9/Cx_lang.git
+cd Cx_lang
+
+# build (Rust/Cargo project)
+cargo build --release
+
+# run
+cargo run --release
+
+# optional direct binary run
+# Linux/macOS: ./target/release/Cx_0V
+# Windows: .\target\release\Cx_0V.exe</code></pre> <div class="mt-3 text-sm" style="color: var(--cx-text-2);" data-astro-cid-j7pv25f6>
+Matches current repo structure (Cargo.toml: Cx_0V).
+</div> </div> </section> <!-- ROADMAP + GITHUB --> <section class="home-sec" data-astro-cid-j7pv25f6> <div class="sec-head" data-astro-cid-wk2votdk> <div class="sec-n" data-astro-cid-wk2votdk>04</div> <div class="sec-meta" data-astro-cid-wk2votdk> <h2 class="sec-title" data-astro-cid-wk2votdk>Roadmap &amp; GitHub</h2> <div class="sec-sub" data-astro-cid-wk2votdk>The repo is the roadmap.</div> </div> </div>  <div class="two-col" data-astro-cid-j7pv25f6> <div class="card" data-astro-cid-j7pv25f6> <div class="card-title cx-mono" data-astro-cid-j7pv25f6>ROADMAP</div> <ul class="road" data-astro-cid-j7pv25f6> <li data-astro-cid-j7pv25f6><span class="road-dot" data-astro-cid-j7pv25f6></span> Type inference (in progress)</li> <li data-astro-cid-j7pv25f6><span class="road-dot" data-astro-cid-j7pv25f6></span> Module/import system</li> <li data-astro-cid-j7pv25f6><span class="road-dot" data-astro-cid-j7pv25f6></span> Generics (only if worth it)</li> <li data-astro-cid-j7pv25f6><span class="road-dot" data-astro-cid-j7pv25f6></span> C interop + tooling hardening</li> <li data-astro-cid-j7pv25f6><span class="road-dot" data-astro-cid-j7pv25f6></span> Minimal standard library</li> </ul> </div> <div class="card" data-astro-cid-j7pv25f6> <div class="card-title cx-mono" data-astro-cid-j7pv25f6>GITHUB</div> <p class="card-body" data-astro-cid-j7pv25f6>
+Repo is the source of truth: commits, issues, and what's implemented.
+</p> <div class="mt-4 flex flex-wrap gap-3" data-astro-cid-j7pv25f6> <a class="btn btn-primary" href="https://github.com/COMMENTERTHE9/Cx_lang" target="_blank" rel="noreferrer" data-astro-cid-j7pv25f6>Open Repo</a> <button class="copy-btn" type="button" data-copy-id="copy_ec887ff014b678" data-copy-value="git clone https://github.com/COMMENTERTHE9/Cx_lang.git" data-astro-cid-74lkg7sv> <span class="cx-mono text-[11px]" style="color: var(--cx-text-2);" data-astro-cid-74lkg7sv>COPY CLONE</span> </button>   </div> <div class="mt-4 cx-mono text-[11px]" style="color: var(--cx-text-2);" data-astro-cid-j7pv25f6> https://github.com/COMMENTERTHE9/Cx_lang </div> </div> </div> </section> <footer class="home-foot" data-astro-cid-j7pv25f6> <div class="cx-mono text-[11px]" style="color: var(--cx-text-2);" data-astro-cid-j7pv25f6>
+Cx: sharp, deliberate, honest.
+</div> <div class="foot-links" data-astro-cid-j7pv25f6> <a href="/docs" data-astro-cid-j7pv25f6>Docs</a> <a href="/blog" data-astro-cid-j7pv25f6>Blog</a> <a href="https://github.com/COMMENTERTHE9/Cx_lang" target="_blank" rel="noreferrer" data-astro-cid-j7pv25f6>GitHub</a> </div> </footer> </div>   </main> </div> <svg width="0" height="0" style="position:absolute"> <filter id="cb-protanopia"> <feColorMatrix type="matrix" values="0.567 0.433 0     0 0
+              0.558 0.442 0     0 0
+              0     0.242 0.758 0 0
+              0     0     0     1 0"></feColorMatrix> </filter> <filter id="cb-deuteranopia"> <feColorMatrix type="matrix" values="0.625 0.375 0     0 0
+              0.70  0.30  0     0 0
+              0     0.30  0.70  0 0
+              0     0     0     1 0"></feColorMatrix> </filter> <filter id="cb-tritanopia"> <feColorMatrix type="matrix" values="0.95  0.05  0     0 0
+              0     0.433 0.567 0 0
+              0     0.475 0.525 0 0
+              0     0     0     1 0"></feColorMatrix> </filter> </svg> </body></html>

@@ -1,0 +1,2428 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>I Tested Every Browser Automation Tool for Claude Code — Here&#39;s My Final Verdict - DEV Community</title>
+    
+    <link rel="preload" href="/reactions?article_id=3336241" as="fetch" crossorigin="same-origin">
+    <link rel="canonical" href="https://dev.to/minatoplanb/i-tested-every-browser-automation-tool-for-claude-code-heres-my-final-verdict-3hb7" />
+    <meta name="description" content="Chrome DevTools MCP, Claude in Chrome, WebFetch, agent-browser, PinchTab, browser-use. 6 tools tested over months of daily use. Complete comparison and final recommendation. Tagged with ai, browser, automation, devtools.">
+    <meta name="keywords" content="ai, browser, automation, devtools, software, coding, development, engineering, inclusive, community">
+
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://dev.to/minatoplanb/i-tested-every-browser-automation-tool-for-claude-code-heres-my-final-verdict-3hb7" />
+    <meta property="og:title" content="I Tested Every Browser Automation Tool for Claude Code — Here&#39;s My Final Verdict" />
+    <meta property="og:description" content="Chrome DevTools MCP, Claude in Chrome, WebFetch, agent-browser, PinchTab, browser-use. 6 tools tested over months of daily use. Complete comparison and final recommendation." />
+    <meta property="og:site_name" content="DEV Community" />
+    <meta name="twitter:site" content="@thepracticaldev">
+    <meta name="twitter:creator" content="@">
+    <meta name="twitter:title" content="I Tested Every Browser Automation Tool for Claude Code — Here&#39;s My Final Verdict">
+    <meta name="twitter:description" content="Chrome DevTools MCP, Claude in Chrome, WebFetch, agent-browser, PinchTab, browser-use. 6 tools tested over months of daily use. Complete comparison and final recommendation.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:widgets:new-embed-design" content="on">
+    <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+      <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Faqj7xcbak0zvxugtt6lu.png" />
+      <meta name="twitter:image:src" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Faqj7xcbak0zvxugtt6lu.png">
+
+      <meta name="last-updated" content="2026-03-31 17:19:54 UTC">
+      <meta name="user-signed-in" content="false">
+      <meta name="head-cached-at" content="1774977594">
+      <meta name="environment" content="production">
+      <link rel="stylesheet" href="https://assets.dev.to/assets/minimal-102395aec70cbac5f7d0bd5bebb5b56f0459629c5d224dae16333f11604cbad3.css" media="all" id="main-minimal-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/views-daf614dcfafed4955d7758a6a86d63bfbb1e8d4eae8b6317b421e18a99bbe867.css" media="all" id="main-views-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/crayons-8fce708625aacc3ff4a4d4947252a1cfab954753bb082374c0bed738861b52f2.css" media="all" id="main-crayons-stylesheet" />
+
+      <script src="https://assets.dev.to/assets/base-0c748bbcdc30041261c326ef2ce931fbce46c58bc3c488da881ae35c4750941d.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/application-0b268684912bef9b0f23defff01cb608bfc5d5e5610287725e7b686139ae32d3.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/baseInitializers-2f0777a6d67046056f9f42665560ce072de3801292674358ddbad6e135c1891d.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/baseTracking-b6bf73e5ee66633e151e7d5b7c6bbccedfa4c59e3615be97b98c4c0f543ddae7.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/followButtons-a29380c2c88136b97b2b5e63e94614ff7458fc72e07cffa7b6153831c28a40d2.js" defer="defer"></script>
+
+        <meta name="search-script" content="https://assets.dev.to/assets/Search-b977aea0f2d7a5818b4ebd97f7d4aba8548099f84f5db5761f8fa67be76abc54.js">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+      <link rel="icon" type="image/x-icon" href="https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" />
+      <link rel="apple-touch-icon" href="https://media2.dev.to/dynamic/image/width=180,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="https://media2.dev.to/dynamic/image/width=152,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="https://media2.dev.to/dynamic/image/width=180,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="167x167" href="https://media2.dev.to/dynamic/image/width=167,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link href="https://media2.dev.to/dynamic/image/width=192,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" rel="icon" sizes="192x192" />
+      <link href="https://media2.dev.to/dynamic/image/width=128,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" rel="icon" sizes="128x128" />
+      <meta name="apple-mobile-web-app-title" content="dev.to">
+      <meta name="application-name" content="dev.to">
+      <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+      <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+      <link rel="search" href="https://dev.to/open-search.xml" type="application/opensearchdescription+xml" title="DEV Community" />
+
+      <meta property="forem:name" content="DEV Community" />
+      <meta property="forem:logo" content="https://media2.dev.to/dynamic/image/width=512,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" />
+      <meta property="forem:domain" content="dev.to" />
+    <style>
+.ltag__link--embedded img.subscription-icon {
+max-height: 13px !important;
+max-width: 21px !important;
+display: inline-block !important;
+border-radius: 0 !important;
+}
+.text-styles .crayons-article__context-note p {
+margin-bottom: 0 !important;
+}
+</style>
+  </head>
+    <body
+      class="sans-serif-article-body default-header"
+      data-user-status="logged-out"
+      data-is-root-subforem="false"
+        data-subforem-id="1"
+      data-side-nav-visible="true"
+      data-community-name="DEV Community"
+      data-subscription-icon="https://assets.dev.to/assets/subscription-icon-805dfa7ac7dd660f07ed8d654877270825b07a92a03841aa99a1093bd00431b2.png"
+      data-locale="en"
+      data-honeybadger-key="hbp_nqu4Y66HuEKlD6YRGssZuRQnPOjDm50J8Zkr"
+      data-deployed-at="2026-03-31T16:23:33Z"
+      data-latest-commit-id="786e25495afed32bb807645b48a724374606e51e"
+      data-ga-tracking="UA-71991109-1"
+      data-cookie-banner-user-context="logged_out_only"
+      data-cookie-banner-platform-context="off"
+      data-algolia-id="PRSOBFP46H"
+      data-algolia-search-key="9aa7d31610cba78851c9b1f63776a9dd"
+      data-algolia-display="true"
+      data-dynamic-url-component="bmar11"
+      data-ga4-tracking-id="G-TYEM8Y3JN3">
+      
+      <script>
+        if (navigator.userAgent === 'ForemWebView/1' || window.frameElement) {
+          document.body.classList.add("hidden-shell");
+        }
+          if (new Date() > new Date("2026-02-04T09:00:00-05:00")) {
+            document.body.dataset.sideNavVisible = "false";
+          } 
+      </script>
+
+      <link rel="stylesheet" href="https://assets.dev.to/assets/minimal-102395aec70cbac5f7d0bd5bebb5b56f0459629c5d224dae16333f11604cbad3.css" media="all" id="secondary-minimal-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/views-daf614dcfafed4955d7758a6a86d63bfbb1e8d4eae8b6317b421e18a99bbe867.css" media="all" id="secondary-views-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/crayons-8fce708625aacc3ff4a4d4947252a1cfab954753bb082374c0bed738861b52f2.css" media="all" id="secondary-crayons-stylesheet" />
+
+      <div id="body-styles">
+        <style>
+          :root {
+            --accent-brand-lighter-rgb: 80, 99, 301;
+            --accent-brand-rgb: 59, 73, 223;
+            --accent-brand-darker-rgb: 47, 58, 178;
+          }
+        </style>
+      </div>
+      <div id="audiocontent" data-podcast="">
+        
+      </div>
+      <div class="navigation-progress" id="navigation-progress"></div>
+
+<header id="topbar" class="crayons-header topbar print-hidden">
+  <span id="route-change-target" tabindex="-1"></span>
+  <a href="#main-content" class="skip-content-link">Skip to content</a>
+  <div class="crayons-header__container">
+    <span class="inline-block m:hidden ">
+      <button class="c-btn c-btn--icon-alone js-hamburger-trigger mx-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a42i70jje7be36xdrvllz5t1qtom9f1z" class="crayons-icon"><title id="a42i70jje7be36xdrvllz5t1qtom9f1z">Navigation menu</title>
+    <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"></path>
+</svg>
+
+      </button>
+    </span>
+    <a href="/" class="site-logo" aria-label="DEV Community Home" >
+    <img class="site-logo__img"
+         src="https://media2.dev.to/dynamic/image/quality=100/https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png"
+         style="aspect-ratio: 10 / 8"
+         alt="DEV Community">
+</a>
+
+
+    <div class="crayons-header--search js-search-form" id="header-search">
+      <form accept-charset="UTF-8" method="get" action="/search" role="search">
+        <div class="crayons-fields crayons-fields--horizontal">
+          <div class="crayons-field flex-1 relative">
+            <input id="search-input" class="crayons-header--search-input crayons-textfield js-search-input" type="text" id="nav-search" name="q" placeholder="Find related posts..." autocomplete="off" />
+            <button type="submit" aria-label="Search" class="c-btn c-btn--icon-alone absolute inset-px right-auto mt-0 py-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="asygjwneo7as0u2wtsqp3dg481v479t2" aria-hidden="true" class="crayons-icon"><title id="asygjwneo7as0u2wtsqp3dg481v479t2">Search</title>
+    <path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0111 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 01-1.969 5.617zm-2.006-.742A6.977 6.977 0 0018 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 004.875-1.975l.15-.15z"></path>
+</svg>
+
+            </button>
+
+            <a class="crayons-header--search-brand-indicator" href="https://www.algolia.com/developers/?utm_source=devto&utm_medium=referral" target="_blank" rel="noopener noreferrer">
+                Powered by Algolia
+                <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" width="24" height="24" viewBox="0 0 500 500.34" role="img" aria-labelledby="a4milae7dbtmwc4631jyyjp8b09n7q4e" aria-hidden="true" class="crayons-icon"><title id="a4milae7dbtmwc4631jyyjp8b09n7q4e">Search</title>
+  <defs></defs><path class="cls-1" d="M250,0C113.38,0,2,110.16,.03,246.32c-2,138.29,110.19,252.87,248.49,253.67,42.71,.25,83.85-10.2,120.38-30.05,3.56-1.93,4.11-6.83,1.08-9.52l-23.39-20.74c-4.75-4.22-11.52-5.41-17.37-2.92-25.5,10.85-53.21,16.39-81.76,16.04-111.75-1.37-202.04-94.35-200.26-206.1,1.76-110.33,92.06-199.55,202.8-199.55h202.83V407.68l-115.08-102.25c-3.72-3.31-9.43-2.66-12.43,1.31-18.47,24.46-48.56,39.67-81.98,37.36-46.36-3.2-83.92-40.52-87.4-86.86-4.15-55.28,39.65-101.58,94.07-101.58,49.21,0,89.74,37.88,93.97,86.01,.38,4.28,2.31,8.28,5.53,11.13l29.97,26.57c3.4,3.01,8.8,1.17,9.63-3.3,2.16-11.55,2.92-23.6,2.07-35.95-4.83-70.39-61.84-127.01-132.26-131.35-80.73-4.98-148.23,58.18-150.37,137.35-2.09,77.15,61.12,143.66,138.28,145.36,32.21,.71,62.07-9.42,86.2-26.97l150.36,133.29c6.45,5.71,16.62,1.14,16.62-7.48V9.49C500,4.25,495.75,0,490.51,0H250Z"></path>
+</svg>
+
+            </a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="flex items-center h-100 ml-auto">
+        <div class="flex" id="authentication-top-nav-actions">
+          <span class="hidden m:block">
+            <a href="https://dev.to/enter?signup_subforem=1" class="c-link c-link--block mr-2 whitespace-nowrap ml-auto" data-no-instant>
+              Log in
+            </a>
+          </span>
+
+          <a href="https://dev.to/enter?signup_subforem=1&amp;state=new-user" data-tracking-id="ca_top_nav" data-tracking-source="top_navbar" class="c-cta c-cta--branded whitespace-nowrap mr-2" data-no-instant>
+            Create account
+          </a>
+        </div>
+    </div>
+  </div>
+</header>
+
+<div class="hamburger">
+  <div class="hamburger__content">
+    <header class="hamburger__content__header">
+      <h2 class="fs-l fw-bold flex-1 break-word lh-tight">DEV Community</h2>
+
+      <button class="c-btn c-btn--icon-alone js-hamburger-trigger shrink-0" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a6mb70tlh7qbzemd8ktcrpp270tegpnl" aria-hidden="true" class="crayons-icon c-btn__icon"><title id="a6mb70tlh7qbzemd8ktcrpp270tegpnl">Close</title><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636l4.95 4.95z"></path></svg>
+
+      </button>
+    </header>
+
+    <div class="p-2 js-navigation-links-container" id="authentication-hamburger-actions">
+    </div>
+  </div>
+  <div class="hamburger__overlay js-hamburger-trigger"></div>
+</div>
+
+
+      <div id="active-broadcast" class="broadcast-wrapper"></div>
+<div id="page-content" class="wrapper stories stories-show articletag-ai articletag-browser articletag-automation articletag-devtools articleuser-3801330" data-current-page="stories-show">
+  <div id="page-content-inner" data-internal-nav="false">
+    <div id="page-route-change" class="screen-reader-only" aria-live="polite" aria-atomic="true"></div>
+
+    
+<style>
+  .html-variant-wrapper { display: none}
+</style>
+
+
+
+<script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.2.10/webcomponents-loader.js"
+        integrity="sha384-3HK5hxQbkFqOIxMbpROlRmRtYl2LBZ52t+tqcjzsmr9NJuOWQxl8RgQSyFvq2lhy"
+        crossorigin="anonymous" defer></script>
+
+  <script src="https://assets.dev.to/assets/webShare-0686f0b9ac40589694ef6ae6a6202c44119bc781c254f6cf6d52d8a008461156.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/articlePage-ed23d70916aed9a7fec41f94e64aac17438d3210c1bb1d6fceace80f15445213.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/commentDropdowns-7a28d130e5b78d38b30a9495a964003a66bd64fa455fc70b766d69cf06b9ba24.js" defer="defer"></script>
+
+  <script type="application/ld+json">
+    {"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://dev.to/minatoplanb/i-tested-every-browser-automation-tool-for-claude-code-heres-my-final-verdict-3hb7"},"url":"https://dev.to/minatoplanb/i-tested-every-browser-automation-tool-for-claude-code-heres-my-final-verdict-3hb7","image":["https://media2.dev.to/dynamic/image/width=1080,height=1080,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Faqj7xcbak0zvxugtt6lu.png","https://media2.dev.to/dynamic/image/width=1280,height=720,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Faqj7xcbak0zvxugtt6lu.png","https://media2.dev.to/dynamic/image/width=1600,height=900,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Faqj7xcbak0zvxugtt6lu.png"],"publisher":{"@context":"http://schema.org","@type":"Organization","name":"DEV Community","logo":{"@context":"http://schema.org","@type":"ImageObject","url":"https://media2.dev.to/dynamic/image/width=192,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png","width":"192","height":"192"}},"headline":"I Tested Every Browser Automation Tool for Claude Code — Here's My Final Verdict","author":{"@context":"http://schema.org","@type":"Person","url":"https://dev.to/minatoplanb","name":"DavidAI311"},"datePublished":"2026-03-10T20:11:06Z","dateModified":"2026-03-10T20:11:06Z","mainEntity":{"@type":"DiscussionForumPosting","@id":"#article-discussion-3336241","headline":"I Tested Every Browser Automation Tool for Claude Code — Here's My Final Verdict","text":"\u003cp\u003eI use Claude Code 12+ hours a day.\u003c/p\u003e\n\n\u003cp\u003eAn AI that lives in the terminal has no eyes. It can't see websites. It can't click buttons. It can't fill forms. It can't even verify what a page looks like after deployment.\u003c/p\u003e\n\n\u003cp\u003e\u003cstrong\u003eAn AI without browser access is like a chef who can't taste their own food.\u003c/strong\u003e\u003c/p\u003e\n\n\u003cp\u003eSo from February to March 2026, I tested every browser automation tool available for Claude Code. Chrome DevTools MCP, Claude in Chrome extension, WebFetch, agent-browser, PinchTab, browser-use.\u003c/p\u003e\n\n\u003cp\u003eHonestly, I had to try all of them before I could reach a conclusion.\u003c/p\u003e\n\n\u003cp\u003eThis article is a record of that journey and the final verdict.\u003c/p\u003e\n\n\n\u003chr\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"why-does-an-ai-even-need-a-browser\" href=\"#why-does-an-ai-even-need-a-browser\"\u003e\n  \u003c/a\u003e\n  Why Does an AI Even Need a Browser?\n\u003c/h2\u003e\n\n\u003cp\u003eClaude Code runs in the terminal. It can read and write files, execute commands, manage Git — all good.\u003c/p\u003e\n\n\u003cp\u003e\u003cstrong\u003eBut it can't see the web.\u003c/strong\u003e\u003c/p\u003e\n\n\u003cdiv class=\"table-wrapper-paragraph\"\u003e\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth\u003eTask\u003c/th\u003e\n\u003cth\u003eTerminal Only\u003c/th\u003e\n\u003cth\u003eWith a Browser\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n\u003ctr\u003e\n\u003ctd\u003ePost-deploy verification\u003c/td\u003e\n\u003ctd\u003eRead logs and guess\u003c/td\u003e\n\u003ctd\u003e\u003cstrong\u003eSee the actual page\u003c/strong\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eRead Twitter/Instagram posts\u003c/td\u003e\n\u003ctd\u003eImpossible\u003c/td\u003e\n\u003ctd\u003e\u003cstrong\u003eExtract text\u003c/strong\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eTest a web app\u003c/td\u003e\n\u003ctd\u003ecurl the API only\u003c/td\u003e\n\u003ctd\u003e\u003cstrong\u003eClick buttons and verify\u003c/strong\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eFill forms (job applications, etc.)\u003c/td\u003e\n\u003ctd\u003eImpossible\u003c/td\u003e\n\u003ctd\u003e\u003cstrong\u003eAuto-fill\u003c/strong\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eTake screenshots\u003c/td\u003e\n\u003ctd\u003eImpossible\u003c/td\u003e\n\u003ctd\u003e\u003cstrong\u003eCapture and visually confirm\u003c/strong\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eAccess auth-gated pages\u003c/td\u003e\n\u003ctd\u003eImpossible\u003c/td\u003e\n\u003ctd\u003e\u003cstrong\u003eUse cookies\u003c/strong\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\u003c/div\u003e\n\n\u003cp\u003eYou might think \"logs are enough.\" But when you're using it 12 hours a day, \u003cstrong\u003ethe frustration of having no eyes compounds fast.\u003c/strong\u003e\u003c/p\u003e\n\n\n\u003chr\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"phase-1-chrome-devtools-mcp-february-2026\" href=\"#phase-1-chrome-devtools-mcp-february-2026\"\u003e\n  \u003c/a\u003e\n  Phase 1: Chrome DevTools MCP (February 2026)\n\u003c/h2\u003e\n\n\u003cp\u003eThe first thing I tried was the official approach.\u003c/p\u003e\n\n\u003cp\u003eLaunch Chrome with the \u003ccode\u003e--remote-debugging-port=9222\u003c/code\u003e flag, then control it from Claude Code through an MCP server. Built by the official Chrome DevTools team.\u003c/p\u003e\n\n\u003cp\u003e\u003cstrong\u003ePerfect in theory. Brutal in practice.\u003c/strong\u003e\u003c/p\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"the-pitfalls\" href=\"#the-pitfalls\"\u003e\n  \u003c/a\u003e\n  The Pitfalls\n\u003c/h3\u003e\n\n\u003cdiv class=\"table-wrapper-paragraph\"\u003e\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth\u003eProblem\u003c/th\u003e\n\u003cth\u003eDetails\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n\u003ctr\u003e\n\u003ctd\u003eWindows \u003ccode\u003enpx\u003c/code\u003e\n\u003c/td\u003e\n\u003ctd\u003eDoesn't work. Needs a \u003ccode\u003ecmd /c\u003c/code\u003e wrapper\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eSeparate profile\u003c/td\u003e\n\u003ctd\u003eLaunches a debug Chrome. No cookies, no logins, re-authenticate everything\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eContext consumption\u003c/td\u003e\n\u003ctd\u003eMCP JSON payloads are massive. 10,000+ tokens per page\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eText input bug\u003c/td\u003e\n\u003ctd\u003e\n\u003ccode\u003efill\u003c/code\u003e tool \u003cstrong\u003edrops the first character\u003c/strong\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eMulti-line text\u003c/td\u003e\n\u003ctd\u003eCompletely broken\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eStartup overhead\u003c/td\u003e\n\u003ctd\u003eClose Chrome and relaunch with the debug flag every time\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\u003c/div\u003e\n\n\u003cp\u003e\u003cstrong\u003eWhen you use Claude Code 12 hours a day, relaunching Chrome with special flags every session is torture.\u003c/strong\u003e\u003c/p\u003e\n\n\n\u003chr\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"phase-2-claude-in-chrome-extension-february-2026\" href=\"#phase-2-claude-in-chrome-extension-february-2026\"\u003e\n  \u003c/a\u003e\n  Phase 2: Claude in Chrome Extension (February 2026)\n\u003c/h2\u003e\n\n\u003cp\u003eI tried v1.0.54 Beta.\u003c/p\u003e\n\n\u003cp\u003eIt runs as a Chrome extension, so \u003cstrong\u003eit uses your actual browser profile\u003c/strong\u003e. Cookies and login sessions carry over. Setup is just installing the extension.\u003c/p\u003e\n\n\u003cp\u003e\u003cstrong\u003eGood idea. Beta quality.\u003c/strong\u003e\u003c/p\u003e\n\n\u003cdiv class=\"table-wrapper-paragraph\"\u003e\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth\u003ePros\u003c/th\u003e\n\u003cth\u003eCons\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n\u003ctr\u003e\n\u003ctd\u003eUses real browser cookies\u003c/td\u003e\n\u003ctd\u003eDisconnects mid-session randomly\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eZero config\u003c/td\u003e\n\u003ctd\u003eText input bug still present\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eIntuitive to use\u003c/td\u003e\n\u003ctd\u003eMulti-line text breaks\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\u003c/div\u003e\n\n\u003cp\u003eIt could become something great if stabilized. But as of February 2026, it wasn't production-ready.\u003c/p\u003e\n\n\n\u003chr\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"phase-3-webfetch-hell\" href=\"#phase-3-webfetch-hell\"\u003e\n  \u003c/a\u003e\n  Phase 3: WebFetch Hell\n\u003c/h2\u003e\n\n\u003cp\u003e\"Maybe an existing built-in tool can handle this.\"\u003c/p\u003e\n\n\u003cp\u003eClaude Code has a built-in tool called \u003ccode\u003eWebFetch\u003c/code\u003e. Give it a URL and it fetches the HTML.\u003c/p\u003e\n\n\u003cp\u003e\u003cstrong\u003eFor static documentation pages, it works fine.\u003c/strong\u003e\u003c/p\u003e\n\n\u003cp\u003e\u003cstrong\u003eFor social media, it's hell.\u003c/strong\u003e\u003c/p\u003e\n\n\u003cp\u003eWhen I tried reading Instagram with WebFetch, I got CSS and JavaScript garbage back. Almost no usable text. Twitter was the same. Any dynamically rendered page was a total loss.\u003c/p\u003e\n\n\u003cp\u003eI told Claude \"\u003cstrong\u003edon't use WebFetch for SNS\u003c/strong\u003e\" over and over. Literally, across multiple sessions.\u003c/p\u003e\n\n\u003cp\u003e\u003cstrong\u003eUsing WebFetch for Instagram is like trying to grill a steak in a microwave.\u003c/strong\u003e\u003c/p\u003e\n\n\n\u003chr\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"phase-4-agentbrowser-late-february-2026\" href=\"#phase-4-agentbrowser-late-february-2026\"\u003e\n  \u003c/a\u003e\n  Phase 4: agent-browser (Late February 2026)\n\u003c/h2\u003e\n\n\u003cp\u003eBuilt by Vercel Labs. Rust CLI + Playwright backend.\u003c/p\u003e\n\n\u003cp\u003e\u003cstrong\u003eThis was the first time I saw light.\u003c/strong\u003e\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight shell\"\u003e\u003ccode\u003enpm \u003cspan class=\"nb\"\u003einstall\u003c/span\u003e \u003cspan class=\"nt\"\u003e-g\u003c/span\u003e agent-browser\nagent-browser \u003cspan class=\"nb\"\u003einstall\u003c/span\u003e\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003cp\u003eContext consumption dropped \u003cstrong\u003e93% compared to Chrome DevTools MCP\u003c/strong\u003e. Instead of heavy MCP JSON, it outputs compact text. Operated via shell commands.\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight shell\"\u003e\u003ccode\u003eagent-browser open https://example.com\nagent-browser snapshot \u003cspan class=\"nt\"\u003e-i\u003c/span\u003e\nagent-browser click @e1\nagent-browser close\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003cp\u003eAuth Vault for saving credentials. Network mocking. Visual diffs.\u003c/p\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"windows-gotcha\" href=\"#windows-gotcha\"\u003e\n  \u003c/a\u003e\n  Windows Gotcha\n\u003c/h3\u003e\n\n\u003cp\u003eIt wasn't smooth on Windows though.\u003c/p\u003e\n\n\u003cp\u003eRust's \u003ccode\u003ecanonicalize()\u003c/code\u003e generates \u003ccode\u003e\\\\?\\\u003c/code\u003e UNC paths, which crash Node.js. You need to set the \u003ccode\u003eAGENT_BROWSER_HOME\u003c/code\u003e environment variable as a workaround.\u003c/p\u003e\n\n\u003cp\u003eI wrote about this in detail in a \u003ca href=\"https://zenn.dev/davidai311/articles/agent-browser-replace-chrome-devtools-mcp\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eprevious article\u003c/a\u003e.\u003c/p\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"agentbrowsers-limitations\" href=\"#agentbrowsers-limitations\"\u003e\n  \u003c/a\u003e\n  agent-browser's Limitations\n\u003c/h3\u003e\n\n\u003cp\u003eI used it as my main tool for a while. But frustrations remained.\u003c/p\u003e\n\n\u003cul\u003e\n\u003cli\u003e3,000-5,000 tokens per page. Light enough, but could be lighter\u003c/li\u003e\n\u003cli\u003eLaunches Chromium every time. Cookies don't persist across sessions (Auth Vault helps but adds friction)\u003c/li\u003e\n\u003cli\u003eStill too heavy for SNS text extraction\u003c/li\u003e\n\u003c/ul\u003e\n\n\n\u003chr\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"phase-5-pinchtab-the-game-changer-march-2026\" href=\"#phase-5-pinchtab-the-game-changer-march-2026\"\u003e\n  \u003c/a\u003e\n  Phase 5: PinchTab — The Game Changer (March 2026)\n\u003c/h2\u003e\n\n\u003cp\u003ePinchTab changed my standards for browser automation.\u003c/p\u003e\n\n\u003cp\u003eIt runs as a local HTTP server and uses Chrome's accessibility tree to parse pages.\u003c/p\u003e\n\n\u003cp\u003e\u003cstrong\u003eAbout 800 tokens per page.\u003c/strong\u003e\u003c/p\u003e\n\n\u003cp\u003eCompare that to agent-browser's 3,000-5,000 — several times lighter. Compared to Chrome DevTools MCP's 10,000+, that's a \u003cstrong\u003e12x difference\u003c/strong\u003e.\u003c/p\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"setup\" href=\"#setup\"\u003e\n  \u003c/a\u003e\n  Setup\n\u003c/h3\u003e\n\n\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight shell\"\u003e\u003ccode\u003e\u003cspan class=\"c\"\u003e# Headless mode (background daemon)\u003c/span\u003e\npinchtab \u0026amp;\n\n\u003cspan class=\"c\"\u003e# Headed mode (see the browser)\u003c/span\u003e\n\u003cspan class=\"nv\"\u003eBRIDGE_HEADLESS\u003c/span\u003e\u003cspan class=\"o\"\u003e=\u003c/span\u003e\u003cspan class=\"nb\"\u003efalse \u003c/span\u003epinchtab \u0026amp;\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003cp\u003eLaunch once and it stays running for the entire session. HTTP server on port 9867. No restarts needed.\u003c/p\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"basic-workflow\" href=\"#basic-workflow\"\u003e\n  \u003c/a\u003e\n  Basic Workflow\n\u003c/h3\u003e\n\n\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight shell\"\u003e\u003ccode\u003epinchtab nav https://example.com\n\u003cspan class=\"nb\"\u003esleep \u003c/span\u003e3\npinchtab snap \u003cspan class=\"nt\"\u003e-i\u003c/span\u003e \u003cspan class=\"nt\"\u003e-c\u003c/span\u003e    \u003cspan class=\"c\"\u003e# Compact view of interactive elements\u003c/span\u003e\npinchtab click e5       \u003cspan class=\"c\"\u003e# Click element e5\u003c/span\u003e\npinchtab \u003cspan class=\"nb\"\u003etype \u003c/span\u003ee12 \u003cspan class=\"s2\"\u003e\"text\"\u003c/span\u003e  \u003cspan class=\"c\"\u003e# Type into element e12\u003c/span\u003e\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003ch3\u003e\n  \u003ca name=\"why-its-fast\" href=\"#why-its-fast\"\u003e\n  \u003c/a\u003e\n  Why It's Fast\n\u003c/h3\u003e\n\n\u003cdiv class=\"table-wrapper-paragraph\"\u003e\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth\u003eMethod\u003c/th\u003e\n\u003cth\u003eTokens\u003c/th\u003e\n\u003cth\u003eUse Case\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n\u003ctr\u003e\n\u003ctd\u003e\u003ccode\u003epinchtab text\u003c/code\u003e\u003c/td\u003e\n\u003ctd\u003e\u003cstrong\u003e~800\u003c/strong\u003e\u003c/td\u003e\n\u003ctd\u003eText extraction (SNS, articles)\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e\u003ccode\u003epinchtab snap -i -c\u003c/code\u003e\u003c/td\u003e\n\u003ctd\u003e~2,000\u003c/td\u003e\n\u003ctd\u003eButton/link interaction\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e\u003ccode\u003epinchtab snap --diff\u003c/code\u003e\u003c/td\u003e\n\u003ctd\u003eDiff only\u003c/td\u003e\n\u003ctd\u003eMulti-step sequential operations\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e\n\u003ccode\u003epinchtab snap\u003c/code\u003e (full)\u003c/td\u003e\n\u003ctd\u003e~10,500\u003c/td\u003e\n\u003ctd\u003eFull page understanding\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e\n\u003ccode\u003epinchtab ss\u003c/code\u003e (screenshot)\u003c/td\u003e\n\u003ctd\u003e~2,000 (Vision)\u003c/td\u003e\n\u003ctd\u003eVisual verification\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\u003c/div\u003e\n\n\u003cp\u003e\u003cstrong\u003eReading SNS with \u003ccode\u003epinchtab text\u003c/code\u003e costs 800 tokens.\u003c/strong\u003e This changed everything.\u003c/p\u003e\n\n\u003cp\u003eReading Twitter posts. Checking Instagram profiles. Verifying pages after deployment. All done in 800 tokens.\u003c/p\u003e\n\n\u003cp\u003e\u003cstrong\u003eContext is a battery.\u003c/strong\u003e A tool that burns 10,000 tokens is a space heater. PinchTab at 800 tokens is an LED bulb. Same battery, 12x the runtime.\u003c/p\u003e\n\n\u003cp\u003eThe HTTP API (port 9867) also means you can integrate it into bots and automation pipelines.\u003c/p\u003e\n\n\n\u003chr\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"phase-6-browseruse-the-missing-piece-march-2026\" href=\"#phase-6-browseruse-the-missing-piece-march-2026\"\u003e\n  \u003c/a\u003e\n  Phase 6: browser-use — The Missing Piece (March 2026)\n\u003c/h2\u003e\n\n\u003cp\u003ePinchTab solved everyday browser tasks.\u003c/p\u003e\n\n\u003cp\u003eBut there was one thing PinchTab made tedious: \u003cstrong\u003ecomplex form filling\u003c/strong\u003e.\u003c/p\u003e\n\n\u003cp\u003eJob application forms. 10+ fields. Dropdowns, radio buttons, textareas. PinchTab can do it, but repeating \u003ccode\u003esnap\u003c/code\u003e -\u0026gt; \u003ccode\u003etype\u003c/code\u003e -\u0026gt; \u003ccode\u003eclick\u003c/code\u003e for each field gets laborious.\u003c/p\u003e\n\n\u003cp\u003e\u003ca href=\"https://github.com/browser-use/browser-use\" target=\"_blank\" rel=\"noopener noreferrer\"\u003ebrowser-use\u003c/a\u003e is a Python framework. 80,000+ stars on GitHub. MIT license.\u003c/p\u003e\n\n\u003cp\u003e\u003cstrong\u003eIts biggest weapon over PinchTab: autonomous agent mode.\u003c/strong\u003e\u003c/p\u003e\n\n\u003cp\u003eGive it a task and the AI figures out the steps and executes them. Say \"fill out this job application with my info\" and it finds the fields, selects the right values, and types them in.\u003c/p\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"how-i-actually-used-it\" href=\"#how-i-actually-used-it\"\u003e\n  \u003c/a\u003e\n  How I Actually Used It\n\u003c/h3\u003e\n\n\u003cp\u003eI used browser-use to fill out application forms on Greenhouse and Ashby (recruiting platforms). Claude Code orchestrated while browser-use handled field-by-field input. I watched in headed mode and only clicked the final submit button myself.\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight shell\"\u003e\u003ccode\u003epip \u003cspan class=\"nb\"\u003einstall \u003c/span\u003ebrowser-use\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003cp\u003eCLI mode:\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight shell\"\u003e\u003ccode\u003ebrowser-use open https://example.com\nbrowser-use input \u003cspan class=\"s2\"\u003e\"field name\"\u003c/span\u003e \u003cspan class=\"s2\"\u003e\"value\"\u003c/span\u003e\nbrowser-use state    \u003cspan class=\"c\"\u003e# Check current state\u003c/span\u003e\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003cp\u003eMCP server mode is also available, providing 17 tools.\u003c/p\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"tradeoffs\" href=\"#tradeoffs\"\u003e\n  \u003c/a\u003e\n  Tradeoffs\n\u003c/h3\u003e\n\n\u003cp\u003e\u003cstrong\u003eIt consumes far more tokens than PinchTab.\u003c/strong\u003e The autonomous agent calls an LLM at each step. Per-page token count is also higher.\u003c/p\u003e\n\n\u003cp\u003e\u003cstrong\u003eBut for complex multi-step tasks, autonomy \u0026gt; efficiency.\u003c/strong\u003e\u003c/p\u003e\n\n\u003cp\u003eManually running \u003ccode\u003esnap\u003c/code\u003e -\u0026gt; \u003ccode\u003etype\u003c/code\u003e for 10 form fields takes 20 minutes. Telling browser-use \"fill this out\" takes 3 minutes. More tokens consumed, but human time saved.\u003c/p\u003e\n\n\n\u003chr\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"full-tool-comparison-the-final-showdown\" href=\"#full-tool-comparison-the-final-showdown\"\u003e\n  \u003c/a\u003e\n  Full Tool Comparison — The Final Showdown\n\u003c/h2\u003e\n\n\u003cp\u003eHere's everything laid out in one table.\u003c/p\u003e\n\n\u003cdiv class=\"table-wrapper-paragraph\"\u003e\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth\u003eFeature\u003c/th\u003e\n\u003cth\u003eChrome DevTools MCP\u003c/th\u003e\n\u003cth\u003eClaude in Chrome\u003c/th\u003e\n\u003cth\u003eagent-browser\u003c/th\u003e\n\u003cth\u003ePinchTab\u003c/th\u003e\n\u003cth\u003ebrowser-use\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n\u003ctr\u003e\n\u003ctd\u003e\u003cstrong\u003eTokens/page\u003c/strong\u003e\u003c/td\u003e\n\u003ctd\u003e10,000+\u003c/td\u003e\n\u003ctd\u003e10,000+\u003c/td\u003e\n\u003ctd\u003e3,000-5,000\u003c/td\u003e\n\u003ctd\u003e\u003cstrong\u003e~800\u003c/strong\u003e\u003c/td\u003e\n\u003ctd\u003e10,000+\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e\u003cstrong\u003eSetup\u003c/strong\u003e\u003c/td\u003e\n\u003ctd\u003eDebug flag launch\u003c/td\u003e\n\u003ctd\u003eExtension\u003c/td\u003e\n\u003ctd\u003e\u003ccode\u003enpm install\u003c/code\u003e\u003c/td\u003e\n\u003ctd\u003eLaunch once\u003c/td\u003e\n\u003ctd\u003e\u003ccode\u003epip install\u003c/code\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e\u003cstrong\u003eWindows support\u003c/strong\u003e\u003c/td\u003e\n\u003ctd\u003e\n\u003ccode\u003ecmd /c\u003c/code\u003e hack needed\u003c/td\u003e\n\u003ctd\u003eOK\u003c/td\u003e\n\u003ctd\u003eUNC path bug\u003c/td\u003e\n\u003ctd\u003e\u003cstrong\u003eOK\u003c/strong\u003e\u003c/td\u003e\n\u003ctd\u003eOK\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e\u003cstrong\u003eAuth/cookies\u003c/strong\u003e\u003c/td\u003e\n\u003ctd\u003eSeparate profile\u003c/td\u003e\n\u003ctd\u003eReal browser\u003c/td\u003e\n\u003ctd\u003eAuth Vault\u003c/td\u003e\n\u003ctd\u003e\u003cstrong\u003eReal browser\u003c/strong\u003e\u003c/td\u003e\n\u003ctd\u003eReal browser\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e\u003cstrong\u003eStability\u003c/strong\u003e\u003c/td\u003e\n\u003ctd\u003eStable\u003c/td\u003e\n\u003ctd\u003eBeta, disconnects\u003c/td\u003e\n\u003ctd\u003eStable\u003c/td\u003e\n\u003ctd\u003e\u003cstrong\u003eStable\u003c/strong\u003e\u003c/td\u003e\n\u003ctd\u003eStable\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e\u003cstrong\u003eSpeed\u003c/strong\u003e\u003c/td\u003e\n\u003ctd\u003eMedium\u003c/td\u003e\n\u003ctd\u003eMedium\u003c/td\u003e\n\u003ctd\u003eMedium\u003c/td\u003e\n\u003ctd\u003e\u003cstrong\u003eFast\u003c/strong\u003e\u003c/td\u003e\n\u003ctd\u003eSlow (LLM calls)\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e\u003cstrong\u003eSNS reading\u003c/strong\u003e\u003c/td\u003e\n\u003ctd\u003eHeavy JSON\u003c/td\u003e\n\u003ctd\u003eHeavy JSON\u003c/td\u003e\n\u003ctd\u003eHeavy\u003c/td\u003e\n\u003ctd\u003e\u003cstrong\u003e800 tokens\u003c/strong\u003e\u003c/td\u003e\n\u003ctd\u003eHeavy\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e\u003cstrong\u003eForm filling\u003c/strong\u003e\u003c/td\u003e\n\u003ctd\u003eDrops first char\u003c/td\u003e\n\u003ctd\u003eDrops first char\u003c/td\u003e\n\u003ctd\u003eOK\u003c/td\u003e\n\u003ctd\u003eOK\u003c/td\u003e\n\u003ctd\u003e\u003cstrong\u003eBest (autonomous)\u003c/strong\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e\u003cstrong\u003eAutonomous agent\u003c/strong\u003e\u003c/td\u003e\n\u003ctd\u003eNo\u003c/td\u003e\n\u003ctd\u003eNo\u003c/td\u003e\n\u003ctd\u003eNo\u003c/td\u003e\n\u003ctd\u003eNo\u003c/td\u003e\n\u003ctd\u003e\u003cstrong\u003eYes\u003c/strong\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e\u003cstrong\u003eBackground daemon\u003c/strong\u003e\u003c/td\u003e\n\u003ctd\u003eNo\u003c/td\u003e\n\u003ctd\u003eNo\u003c/td\u003e\n\u003ctd\u003eNo\u003c/td\u003e\n\u003ctd\u003e\u003cstrong\u003eHTTP server\u003c/strong\u003e\u003c/td\u003e\n\u003ctd\u003eNo\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e\u003cstrong\u003eCost\u003c/strong\u003e\u003c/td\u003e\n\u003ctd\u003eFree\u003c/td\u003e\n\u003ctd\u003eFree\u003c/td\u003e\n\u003ctd\u003eFree\u003c/td\u003e\n\u003ctd\u003eFree\u003c/td\u003e\n\u003ctd\u003eFree\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\u003c/div\u003e\n\n\n\u003chr\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"final-verdict-the-priority-chain\" href=\"#final-verdict-the-priority-chain\"\u003e\n  \u003c/a\u003e\n  Final Verdict: The Priority Chain\n\u003c/h2\u003e\n\n\u003cp\u003e\u003cstrong\u003eNo perfect tool exists. The answer is a combination.\u003c/strong\u003e\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight plaintext\"\u003e\u003ccode\u003eBrowser automation priority chain:\n\n1. PinchTab       -\u0026gt; Everything daily (reading, scraping, testing, screenshots)\n2. browser-use    -\u0026gt; Complex multi-step tasks (form filling, autonomous workflows)\n3. agent-browser  -\u0026gt; When PinchTab isn't available, or you need video recording / Auth Vault\n4. WebFetch       -\u0026gt; Static docs / API references ONLY. Never use it for SNS.\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003ch3\u003e\n  \u003ca name=\"the-vehicle-analogy\" href=\"#the-vehicle-analogy\"\u003e\n  \u003c/a\u003e\n  The Vehicle Analogy\n\u003c/h3\u003e\n\n\u003cdiv class=\"table-wrapper-paragraph\"\u003e\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth\u003eTool\u003c/th\u003e\n\u003cth\u003eVehicle\u003c/th\u003e\n\u003cth\u003eCharacteristics\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n\u003ctr\u003e\n\u003ctd\u003e\u003cstrong\u003ePinchTab\u003c/strong\u003e\u003c/td\u003e\n\u003ctd\u003eBicycle\u003c/td\u003e\n\u003ctd\u003eFast, best fuel efficiency, daily commute\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e\u003cstrong\u003ebrowser-use\u003c/strong\u003e\u003c/td\u003e\n\u003ctd\u003eCar\u003c/td\u003e\n\u003ctd\u003eGoes the distance, carries cargo, burns more fuel\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e\u003cstrong\u003eagent-browser\u003c/strong\u003e\u003c/td\u003e\n\u003ctd\u003eMotorcycle\u003c/td\u003e\n\u003ctd\u003eBackup, special purposes\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e\u003cstrong\u003eWebFetch\u003c/strong\u003e\u003c/td\u003e\n\u003ctd\u003eWalking\u003c/td\u003e\n\u003ctd\u003eSlow, can't carry much, last resort\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\u003c/div\u003e\n\n\n\u003chr\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"recommendations\" href=\"#recommendations\"\u003e\n  \u003c/a\u003e\n  Recommendations\n\u003c/h2\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"if-you-use-claude-code-daily\" href=\"#if-you-use-claude-code-daily\"\u003e\n  \u003c/a\u003e\n  If You Use Claude Code Daily\n\u003c/h3\u003e\n\n\u003cp\u003e\u003cstrong\u003eInstall PinchTab first.\u003c/strong\u003e Highest ROI. Read a page for 800 tokens. Your session lifespan extends dramatically.\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight shell\"\u003e\u003ccode\u003epinchtab \u0026amp;\npinchtab nav https://your-app.com\n\u003cspan class=\"nb\"\u003esleep \u003c/span\u003e3\npinchtab text\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003cp\u003eThat alone changes everything.\u003c/p\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"if-you-need-form-automation\" href=\"#if-you-need-form-automation\"\u003e\n  \u003c/a\u003e\n  If You Need Form Automation\n\u003c/h3\u003e\n\n\u003cp\u003e\u003cstrong\u003eAdd browser-use.\u003c/strong\u003e Job applications, data entry, multi-page workflows. Let the autonomous agent handle it while you supervise.\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight shell\"\u003e\u003ccode\u003epip \u003cspan class=\"nb\"\u003einstall \u003c/span\u003ebrowser-use\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003ch3\u003e\n  \u003ca name=\"if-you-need-auth-vault-video-recording\" href=\"#if-you-need-auth-vault-video-recording\"\u003e\n  \u003c/a\u003e\n  If You Need Auth Vault / Video Recording\n\u003c/h3\u003e\n\n\u003cp\u003e\u003cstrong\u003eUse agent-browser.\u003c/strong\u003e \u003ccode\u003enpm install -g agent-browser \u0026amp;\u0026amp; agent-browser install\u003c/code\u003e and you're set.\u003c/p\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"for-dynamic-sites\" href=\"#for-dynamic-sites\"\u003e\n  \u003c/a\u003e\n  For Dynamic Sites\n\u003c/h3\u003e\n\n\u003cp\u003e\u003cstrong\u003eDon't use WebFetch.\u003c/strong\u003e No matter what. Especially not for SNS.\u003c/p\u003e\n\n\n\u003chr\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"5-things-i-learned\" href=\"#5-things-i-learned\"\u003e\n  \u003c/a\u003e\n  5 Things I Learned\n\u003c/h2\u003e\n\n\u003cdiv class=\"table-wrapper-paragraph\"\u003e\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth\u003e#\u003c/th\u003e\n\u003cth\u003eLesson\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n\u003ctr\u003e\n\u003ctd\u003e1\u003c/td\u003e\n\u003ctd\u003e\"Browser access for AI\" is \u003cstrong\u003estill an unsolved problem\u003c/strong\u003e as of March 2026\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e2\u003c/td\u003e\n\u003ctd\u003eNo perfect tool exists. \u003cstrong\u003eThe answer is a combination\u003c/strong\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e3\u003c/td\u003e\n\u003ctd\u003eToken efficiency is everything. 800 vs 10,000 = \u003cstrong\u003e12x difference\u003c/strong\u003e. Session lifespan is completely different\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e4\u003c/td\u003e\n\u003ctd\u003eSNS requires dedicated tools. \u003cstrong\u003eDon't use WebFetch\u003c/strong\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e5\u003c/td\u003e\n\u003ctd\u003eForm filling is best handled by autonomous agents. \u003cstrong\u003eAI fills, human supervises\u003c/strong\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\u003c/div\u003e\n\n\n\u003chr\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"conclusion\" href=\"#conclusion\"\u003e\n  \u003c/a\u003e\n  Conclusion\n\u003c/h2\u003e\n\n\u003cp\u003eI tried all 6 tools. It took months.\u003c/p\u003e\n\n\u003cp\u003eIt started with the ordeal of relaunching Chrome with debug flags for Chrome DevTools MCP, continued through Claude in Chrome's beta disconnections, the CSS garbage wars with WebFetch, seeing the light with agent-browser, finding daily peace with PinchTab, and finally filling the last gap with browser-use.\u003c/p\u003e\n\n\u003cp\u003eHonestly, \u003cstrong\u003eI'm glad I tried them all.\u003c/strong\u003e\u003c/p\u003e\n\n\u003cp\u003eBecause this isn't a problem one tool can solve. You commute by bicycle, take the car for long trips, and grab the motorcycle in a pinch. Same idea.\u003c/p\u003e\n\n\u003cp\u003e\u003cstrong\u003eNow that AI can use a browser, the chef can finally taste their own cooking.\u003c/strong\u003e\u003c/p\u003e\n\n\u003cp\u003eThe question now is: what will they cook?\u003c/p\u003e\n\n\n\u003chr\u003e\n\n\u003cp\u003e\u003cem\u003eThis article was written in Tokyo, with PinchTab reading the preview for a final check before publishing.\u003c/em\u003e\u003cbr\u003e\n\u003cem\u003eQuestions or feedback welcome on X (\u003ca href=\"https://x.com/DavidAi311\" target=\"_blank\" rel=\"noopener noreferrer\"\u003e@DavidAi311\u003c/a\u003e).\u003c/em\u003e\u003c/p\u003e\n\n","author":{"@type":"Person","name":"DavidAI311","url":"https://dev.to/minatoplanb"},"datePublished":"2026-03-10T20:11:06Z","dateModified":"2026-03-10T20:11:06Z","url":"https://dev.to/minatoplanb/i-tested-every-browser-automation-tool-for-claude-code-heres-my-final-verdict-3hb7","interactionStatistic":[{"@type":"InteractionCounter","interactionType":"https://schema.org/CommentAction","userInteractionCount":3},{"@type":"InteractionCounter","interactionType":"https://schema.org/LikeAction","userInteractionCount":3}],"comment":[{"@type":"Comment","@id":"#comment-1480884","text":"\u003cp\u003eGreat comparison! One option worth adding for macOS users: \u003cstrong\u003eSafari MCP\u003c/strong\u003e — the only MCP server that uses native Safari instead of Chromium.\u003c/p\u003e\n\n\u003cp\u003eI built it because Chrome was eating 15-25% idle CPU on my M4 MacBook while Safari sat right there with all my sessions loaded.\u003c/p\u003e\n\n\u003cp\u003eKey differences:\u003c/p\u003e\n\n\u003cul\u003e\n\u003cli\u003eUses your real Safari with all existing logins (no re-auth)\u003c/li\u003e\n\u003cli\u003e~5ms per command via AppleScript + Swift daemon\u003c/li\u003e\n\u003cli\u003e80 tools (more than Chrome DevTools MCP or Playwright MCP)\u003c/li\u003e\n\u003cli\u003eZero Chrome process = zero overhead\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003cp\u003e\u003ccode\u003enpm install safari-mcp\u003c/code\u003e\u003c/p\u003e\n\n\u003cp\u003eGitHub: \u003ca href=\"https://github.com/achiya-automation/safari-mcp\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003eachiya-automation/safari-mcp\u003c/a\u003e\u003c/p\u003e\n\n","author":{"@type":"Person","name":"אחיה כהן","url":"https://dev.to/achiya-automation"},"datePublished":"2026-03-29T16:30:40Z","dateModified":"2026-03-29T16:30:40Z","url":"https://dev.to/achiya-automation/comment/366h2","interactionStatistic":[{"@type":"InteractionCounter","interactionType":"https://schema.org/LikeAction","userInteractionCount":1}]},{"@type":"Comment","@id":"#comment-1468384","text":"\u003cp\u003eAllow me to suggest a third architecture: proxy-based session virtualization.\u003c/p\u003e\n\n\u003cp\u003eInstead of controlling a local browser instance, the agent operates within a server-managed session that rewrites and streams the target application.\u003cbr\u003e\nThis model changes the state management problem. Session state (cookies, local storage) is managed server-side within the virtualized session. When paired with a custom domain, all cookies become first-party, which bypasses the re-authentication loop you experienced - essentially providing AI agents ability to control live web sessions. \u003c/p\u003e\n\n\u003cp\u003eThe control mechanism uses a dedicated Automation API. For instance, webfuse exposes an API like browser.webfuseSession.automation.left_click(selector) and browser.webfuseSession.automation.type(text, selector). More importantly, it addresses the token problem at the source. The proxy can pre-process the DOM before serialization using take_dom_snapshot({ modifier: 'AdaptiveD2Snap', params: { maxTokens: 8192 } }), reducing it to a specified token budget before it ever hits the LLM.\u003c/p\u003e\n\n","author":{"@type":"Person","name":"Salome koshadze","url":"https://dev.to/salome_koshadze_feeb58784"},"datePublished":"2026-03-11T10:03:21Z","dateModified":"2026-03-11T10:03:21Z","url":"https://dev.to/salome_koshadze_feeb58784/comment/35e48","interactionStatistic":[{"@type":"InteractionCounter","interactionType":"https://schema.org/LikeAction","userInteractionCount":1}]}]}}
+  </script>
+
+  
+  <div class="crayons-layout crayons-layout--3-cols crayons-layout--article">
+    <aside class="crayons-layout__sidebar-left" aria-label="Article actions">
+      <script>
+  if (/Twitter for (iPhone|iPad|Android)/i.test(navigator.userAgent)) {
+    document.documentElement.classList.add('is-twitter-in-app');
+  }
+</script>
+<div class="crayons-article-actions print-hidden">
+  <div class="crayons-article-actions__inner">
+
+    
+<div class="reaction-drawer__outer hoverdown" style="">
+  <button
+    id="reaction-drawer-trigger"
+    aria-label="reaction-drawer-trigger"
+    aria-pressed="false"
+    class="hoverdown-trigger crayons-reaction pseudo-reaction crayons-tooltip__activator relative">
+      <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction--like crayons-reaction__icon--inactive" style="width: 40px; height: 40px">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" role="img" aria-hidden="true" class="crayons-icon">
+    <g clip-path="url(#clip0_988_3276)">
+        <path d="M19 14V17H22V19H18.999L19 22H17L16.999 19H14V17H17V14H19ZM20.243 4.75698C22.505 7.02498 22.583 10.637 20.479 12.992L19.059 11.574C20.39 10.05 20.32 7.65998 18.827 6.16998C17.324 4.67098 14.907 4.60698 13.337 6.01698L12.002 7.21498L10.666 6.01798C9.09103 4.60598 6.67503 4.66798 5.17203 6.17198C3.68203 7.66198 3.60703 10.047 4.98003 11.623L13.412 20.069L12 21.485L3.52003 12.993C1.41603 10.637 1.49503 7.01898 3.75603 4.75698C6.02103 2.49298 9.64403 2.41698 12 4.52898C14.349 2.41998 17.979 2.48998 20.242 4.75698H20.243Z" fill="#525252"></path>
+    </g>
+    <defs>
+        <clipPath id="clip0_988_3276">
+        <rect width="24" height="24" fill="white"></rect>
+        </clipPath>
+    </defs>
+</svg>
+
+      </span>
+      <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--active" style="width: 40px; height: 40px">
+        <img aria_hidden="true" height="24" width="24" src="https://assets.dev.to/assets/heart-plus-active-9ea3b22f2bc311281db911d416166c5f430636e76b15cd5df6b3b841d830eefa.svg" />
+      </span>
+      <span class="crayons-reaction__count" id="reaction_total_count">
+        <span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span>
+      </span>
+      <span class="crayons-tooltip__content">
+        Add reaction
+      </span>
+  </button>
+
+  <div class="reaction-drawer" aria-expanded="false">
+    <div class="reaction-drawer__container">
+        <button
+  id="reaction-butt-like"
+  name="Like"
+  aria-label="Like"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="like">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-like"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Like
+    </span>
+</button>
+
+        <button
+  id="reaction-butt-unicorn"
+  name="Unicorn"
+  aria-label="Unicorn"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="unicorn">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-unicorn"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Unicorn
+    </span>
+</button>
+
+        <button
+  id="reaction-butt-exploding_head"
+  name="Exploding Head"
+  aria-label="Exploding Head"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="exploding_head">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-exploding_head"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Exploding Head
+    </span>
+</button>
+
+        <button
+  id="reaction-butt-raised_hands"
+  name="Raised Hands"
+  aria-label="Raised Hands"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="raised_hands">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-raised_hands"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Raised Hands
+    </span>
+</button>
+
+        <button
+  id="reaction-butt-fire"
+  name="Fire"
+  aria-label="Fire"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="fire">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-fire"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Fire
+    </span>
+</button>
+
+    </div>
+  </div>
+</div>
+
+<button
+  id="reaction-butt-comment"
+  aria-label="Jump to Comments"
+  aria-pressed="false"
+  class="crayons-reaction crayons-reaction--comment crayons-tooltip__activator relative"
+  data-category="comment">
+    <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--inactive">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-hidden="true" class="crayons-icon">
+    <path d="M10 3h4a8 8 0 010 16v3.5c-5-2-12-5-12-11.5a8 8 0 018-8zm2 14h2a6 6 0 000-12h-4a6 6 0 00-6 6c0 3.61 2.462 5.966 8 8.48V17z"></path>
+</svg>
+
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-comment" data-count="3">
+      <span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span>
+    </span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Jump to Comments
+    </span>
+</button>
+
+<button
+  id="reaction-butt-readinglist"
+  aria-label="Add to reading list"
+  aria-pressed="false"
+  class="crayons-reaction crayons-reaction--readinglist crayons-tooltip__activator relative"
+  data-category="readinglist">
+    <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--inactive">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-hidden="true" class="crayons-icon">
+    <path d="M5 2h14a1 1 0 011 1v19.143a.5.5 0 01-.766.424L12 18.03l-7.234 4.536A.5.5 0 014 22.143V3a1 1 0 011-1zm13 2H6v15.432l6-3.761 6 3.761V4z"></path>
+</svg>
+
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-readinglist"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Save
+    </span>
+</button>
+
+
+<button
+  id="reaction-butt-boost"
+  aria-label="Boost"
+  aria-pressed="false"
+  class="crayons-reaction crayons-reaction--boost crayons-tooltip__activator relative">
+    <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--inactive">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" role="img" aria-hidden="true" class="crayons-icon" width="24" height="24">
+  <path transform="translate(24,0) scale(-1,1)" d="M6 4H21C21.5523 4 22 4.44772 22 5V12H20V6H6V9L1 5L6 1V4ZM18 20H3C2.44772 20 2 19.5523 2 19V12H4V18H18V15L23 19L18 23V20Z"></path>
+</svg>
+
+    </span>
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Boost
+    </span>
+</button>
+
+
+    <div class="only-sidebar-menu-item">
+      <div id="mod-actions-menu-btn-area" class="print-hidden trusted-visible-block align-center">
+      </div>
+    </div>
+    <div class="align-center m:relative">
+      <button id="article-show-more-button" aria-controls="article-show-more-dropdown" aria-expanded="false" aria-haspopup="true" class="dropbtn crayons-btn crayons-btn--ghost-dimmed crayons-btn--icon-rounded" aria-label="Share post options">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a88pshxt7tce2idgf3j513eucdooykvk" aria-hidden="true" class="crayons-icon dropdown-icon"><title id="a88pshxt7tce2idgf3j513eucdooykvk">More...</title><path fill-rule="evenodd" clip-rule="evenodd" d="M7 12a2 2 0 11-4 0 2 2 0 014 0zm7 0a2 2 0 11-4 0 2 2 0 014 0zm5 2a2 2 0 100-4 2 2 0 000 4z"></path></svg>
+
+      </button>
+
+      <div id="article-show-more-dropdown" class="crayons-dropdown side-bar left-2 right-2 m:right-auto m:left-100 s:left-auto mb-1 m:mb-0 top-unset bottom-100 m:top-0 m:bottom-unset">
+        <div>
+          <button
+            id="copy-post-url-button"
+            class="flex justify-between crayons-link crayons-link--block w-100 bg-transparent border-0"
+            data-postUrl="https://dev.to/minatoplanb/i-tested-every-browser-automation-tool-for-claude-code-heres-my-final-verdict-3hb7">
+            <span class="fw-bold">Copy link</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" id="article-copy-icon" role="img" aria-labelledby="arnl7esk9m0jvki3i9agr9ue10gi8n2" aria-hidden="true" class="crayons-icon mx-2 shrink-0"><title id="arnl7esk9m0jvki3i9agr9ue10gi8n2">Copy link</title>
+    <path d="M7 6V3a1 1 0 011-1h12a1 1 0 011 1v14a1 1 0 01-1 1h-3v3c0 .552-.45 1-1.007 1H4.007A1 1 0 013 21l.003-14c0-.552.45-1 1.007-1H7zm2 0h8v10h2V4H9v2zm-2 5v2h6v-2H7zm0 4v2h6v-2H7z"></path>
+</svg>
+
+          </button>
+          <div id="article-copy-link-announcer" aria-live="polite" class="crayons-notice crayons-notice--success my-2 p-1" aria-live="polite" hidden>Copied to Clipboard</div>
+        </div>
+
+        <div class="Desktop-only">
+          <a
+            target="_blank"
+            class="crayons-link crayons-link--block"
+            rel="noopener"
+            href='https://twitter.com/intent/tweet?text=%22I%20Tested%20Every%20Browser%20Automation%20Tool%20for%20Claude%20Code%20%E2%80%94%20Here%27s%20My%20Final%20Verdict%22%20by%20DavidAI311%20%23DEVCommunity%20https%3A%2F%2Fdev.to%2Fminatoplanb%2Fi-tested-every-browser-automation-tool-for-claude-code-heres-my-final-verdict-3hb7'>
+            Share to X
+          </a>
+          <a
+            target="_blank"
+            class="crayons-link crayons-link--block"
+            rel="noopener"
+            href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fdev.to%2Fminatoplanb%2Fi-tested-every-browser-automation-tool-for-claude-code-heres-my-final-verdict-3hb7&title=I%20Tested%20Every%20Browser%20Automation%20Tool%20for%20Claude%20Code%20%E2%80%94%20Here%27s%20My%20Final%20Verdict&summary=Chrome%20DevTools%20MCP%2C%20Claude%20in%20Chrome%2C%20WebFetch%2C%20agent-browser%2C%20PinchTab%2C%20browser-use.%206%20tools%20tested%20over%20months%20of%20daily%20use.%20Complete%20comparison%20and%20final%20recommendation.&source=DEV%20Community">
+            Share to LinkedIn
+          </a>
+          <a
+            target="_blank"
+            class="crayons-link crayons-link--block"
+            rel="noopener"
+            href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fdev.to%2Fminatoplanb%2Fi-tested-every-browser-automation-tool-for-claude-code-heres-my-final-verdict-3hb7">
+            Share to Facebook
+          </a>
+          <a
+            target="_blank"
+            class="crayons-link crayons-link--block"
+            rel="noopener"
+            href="https://s2f.kytta.dev/?text=https%3A%2F%2Fdev.to%2Fminatoplanb%2Fi-tested-every-browser-automation-tool-for-claude-code-heres-my-final-verdict-3hb7">
+            Share to Mastodon
+          </a>
+        </div>
+
+        <web-share-wrapper shareurl="https://dev.to/minatoplanb/i-tested-every-browser-automation-tool-for-claude-code-heres-my-final-verdict-3hb7" sharetitle="I Tested Every Browser Automation Tool for Claude Code — Here&#39;s My Final Verdict" sharetext="Chrome DevTools MCP, Claude in Chrome, WebFetch, agent-browser, PinchTab, browser-use. 6 tools tested over months of daily use. Complete comparison and final recommendation." template="web-share-button">
+        </web-share-wrapper>
+        <template id="web-share-button">
+          <a href="#" class="dropdown-link-row crayons-link crayons-link--block">Share Post via...</a>
+        </template>
+
+        <a href="/report-abuse" class="crayons-link crayons-link--block" id="ReportButtonAuthor">Report Abuse</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </aside>
+
+    <main id="main-content" class="crayons-layout__content grid gap-4">
+      <div class="article-wrapper">
+
+
+        <article class="crayons-card crayons-article mb-4"
+          id="article-show-container"
+          data-article-id="3336241"
+          data-article-slug="i-tested-every-browser-automation-tool-for-claude-code-heres-my-final-verdict-3hb7"
+          data-author-id="3801330"
+          data-author-name="DavidAI311"
+          data-author-username="minatoplanb"
+          data-co-author-ids=""
+          data-path="/minatoplanb/i-tested-every-browser-automation-tool-for-claude-code-heres-my-final-verdict-3hb7"
+          data-pin-path="/stories/feed/pinned_article"
+          data-pinned-article-id=""
+          data-published="true"
+          data-scheduled="false"
+          lang=en
+           >
+          <script>
+            try {
+              if(localStorage) {
+                let currentUser = localStorage.getItem('current_user');
+
+                if (currentUser) {
+                  currentUser = JSON.parse(currentUser);
+                  if (currentUser.id === 3801330) {
+                    document.getElementById('article-show-container').classList.add('current-user-is-article-author');
+                  }
+                }
+              }
+            } catch (e) {
+              console.error(e);
+            }
+          </script>
+          <header class="crayons-article__header" id="main-title">
+
+            <div class="crayons-article__header__meta">
+              <div class="flex s:items-start flex-col s:flex-row">
+                <div id="action-space" class="crayons-article__actions mb-4 s:mb-0 s:order-last"></div>
+                <div class="flex flex-1 mb-5 items-start">
+                  <div class="relative">
+                      <a href="/minatoplanb"><img class="radius-full align-middle" src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3801330%2Fb05dd9ed-c0da-4fba-8dfc-01e64c203e4c.jpeg" width="40" height="40" alt="DavidAI311" /></a>
+                  </div>
+                  <div class="pl-3 flex-1">
+                    <a href="/minatoplanb" class="crayons-link fw-bold">DavidAI311</a>
+                    
+                    <p class="fs-xs color-base-60">
+                        Posted on <time datetime="2026-03-10T20:11:06Z" class="date-no-year">Mar 10</time>
+
+
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="multiple_reactions_engagement">
+    <button
+      class="reaction_engagement_like hidden crayons-reaction crayons-reaction--like"
+      data-category="like"
+      aria-label="Like"
+      type="button"
+    ><span class="crayons-reaction__icon crayons-reaction__icon--inactive p-1"><img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="24" height="24" /></span>
+      <span class="crayons-reaction__count" id="reaction_engagement_like_count">&nbsp;</span>
+    </button>    <button
+      class="reaction_engagement_unicorn hidden crayons-reaction crayons-reaction--unicorn"
+      data-category="unicorn"
+      aria-label="Unicorn"
+      type="button"
+    ><span class="crayons-reaction__icon crayons-reaction__icon--inactive p-1"><img src="https://assets.dev.to/assets/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" width="24" height="24" /></span>
+      <span class="crayons-reaction__count" id="reaction_engagement_unicorn_count">&nbsp;</span>
+    </button>    <button
+      class="reaction_engagement_exploding_head hidden crayons-reaction crayons-reaction--exploding_head"
+      data-category="exploding_head"
+      aria-label="Exploding Head"
+      type="button"
+    ><span class="crayons-reaction__icon crayons-reaction__icon--inactive p-1"><img src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" width="24" height="24" /></span>
+      <span class="crayons-reaction__count" id="reaction_engagement_exploding_head_count">&nbsp;</span>
+    </button>    <button
+      class="reaction_engagement_raised_hands hidden crayons-reaction crayons-reaction--raised_hands"
+      data-category="raised_hands"
+      aria-label="Raised Hands"
+      type="button"
+    ><span class="crayons-reaction__icon crayons-reaction__icon--inactive p-1"><img src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="24" height="24" /></span>
+      <span class="crayons-reaction__count" id="reaction_engagement_raised_hands_count">&nbsp;</span>
+    </button>    <button
+      class="reaction_engagement_fire hidden crayons-reaction crayons-reaction--fire"
+      data-category="fire"
+      aria-label="Fire"
+      type="button"
+    ><span class="crayons-reaction__icon crayons-reaction__icon--inactive p-1"><img src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="24" height="24" /></span>
+      <span class="crayons-reaction__count" id="reaction_engagement_fire_count">&nbsp;</span>
+    </button>
+</div>
+
+
+              <h1 class=" fs-3xl m:fs-4xl l:fs-5xl fw-bold s:fw-heavy lh-tight mb-2 long">
+                I Tested Every Browser Automation Tool for Claude Code — Here&#39;s My Final Verdict
+              </h1>
+              
+                  <div class="spec__tags flex flex-wrap">
+                      <a class="crayons-tag   " style="
+        --tag-bg: rgba(23, 253, 26, 0.10);
+        --tag-prefix: #17fd1a;
+        --tag-bg-hover: rgba(23, 253, 26, 0.10);
+        --tag-prefix-hover: #17fd1a;
+      " href="/t/ai"><span class="crayons-tag__prefix">#</span>ai</a>
+                      <a class="crayons-tag   " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/browser"><span class="crayons-tag__prefix">#</span>browser</a>
+                      <a class="crayons-tag   " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/automation"><span class="crayons-tag__prefix">#</span>automation</a>
+                      <a class="crayons-tag   " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/devtools"><span class="crayons-tag__prefix">#</span>devtools</a>
+                  </div>
+            </div>
+          </header>
+
+          <div class="crayons-article__main ">
+            <div class="crayons-article__body text-styles spec__body" data-article-id="3336241" id="article-body">
+                <p>I use Claude Code 12+ hours a day.</p>
+
+<p>An AI that lives in the terminal has no eyes. It can't see websites. It can't click buttons. It can't fill forms. It can't even verify what a page looks like after deployment.</p>
+
+<p><strong>An AI without browser access is like a chef who can't taste their own food.</strong></p>
+
+<p>So from February to March 2026, I tested every browser automation tool available for Claude Code. Chrome DevTools MCP, Claude in Chrome extension, WebFetch, agent-browser, PinchTab, browser-use.</p>
+
+<p>Honestly, I had to try all of them before I could reach a conclusion.</p>
+
+<p>This article is a record of that journey and the final verdict.</p>
+
+
+<hr>
+
+<h2>
+  <a name="why-does-an-ai-even-need-a-browser" href="#why-does-an-ai-even-need-a-browser">
+  </a>
+  Why Does an AI Even Need a Browser?
+</h2>
+
+<p>Claude Code runs in the terminal. It can read and write files, execute commands, manage Git — all good.</p>
+
+<p><strong>But it can't see the web.</strong></p>
+
+<div class="table-wrapper-paragraph"><table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Terminal Only</th>
+<th>With a Browser</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Post-deploy verification</td>
+<td>Read logs and guess</td>
+<td><strong>See the actual page</strong></td>
+</tr>
+<tr>
+<td>Read Twitter/Instagram posts</td>
+<td>Impossible</td>
+<td><strong>Extract text</strong></td>
+</tr>
+<tr>
+<td>Test a web app</td>
+<td>curl the API only</td>
+<td><strong>Click buttons and verify</strong></td>
+</tr>
+<tr>
+<td>Fill forms (job applications, etc.)</td>
+<td>Impossible</td>
+<td><strong>Auto-fill</strong></td>
+</tr>
+<tr>
+<td>Take screenshots</td>
+<td>Impossible</td>
+<td><strong>Capture and visually confirm</strong></td>
+</tr>
+<tr>
+<td>Access auth-gated pages</td>
+<td>Impossible</td>
+<td><strong>Use cookies</strong></td>
+</tr>
+</tbody>
+</table></div>
+
+<p>You might think "logs are enough." But when you're using it 12 hours a day, <strong>the frustration of having no eyes compounds fast.</strong></p>
+
+
+<hr>
+
+<h2>
+  <a name="phase-1-chrome-devtools-mcp-february-2026" href="#phase-1-chrome-devtools-mcp-february-2026">
+  </a>
+  Phase 1: Chrome DevTools MCP (February 2026)
+</h2>
+
+<p>The first thing I tried was the official approach.</p>
+
+<p>Launch Chrome with the <code>--remote-debugging-port=9222</code> flag, then control it from Claude Code through an MCP server. Built by the official Chrome DevTools team.</p>
+
+<p><strong>Perfect in theory. Brutal in practice.</strong></p>
+
+<h3>
+  <a name="the-pitfalls" href="#the-pitfalls">
+  </a>
+  The Pitfalls
+</h3>
+
+<div class="table-wrapper-paragraph"><table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows <code>npx</code>
+</td>
+<td>Doesn't work. Needs a <code>cmd /c</code> wrapper</td>
+</tr>
+<tr>
+<td>Separate profile</td>
+<td>Launches a debug Chrome. No cookies, no logins, re-authenticate everything</td>
+</tr>
+<tr>
+<td>Context consumption</td>
+<td>MCP JSON payloads are massive. 10,000+ tokens per page</td>
+</tr>
+<tr>
+<td>Text input bug</td>
+<td>
+<code>fill</code> tool <strong>drops the first character</strong>
+</td>
+</tr>
+<tr>
+<td>Multi-line text</td>
+<td>Completely broken</td>
+</tr>
+<tr>
+<td>Startup overhead</td>
+<td>Close Chrome and relaunch with the debug flag every time</td>
+</tr>
+</tbody>
+</table></div>
+
+<p><strong>When you use Claude Code 12 hours a day, relaunching Chrome with special flags every session is torture.</strong></p>
+
+
+<hr>
+
+<h2>
+  <a name="phase-2-claude-in-chrome-extension-february-2026" href="#phase-2-claude-in-chrome-extension-february-2026">
+  </a>
+  Phase 2: Claude in Chrome Extension (February 2026)
+</h2>
+
+<p>I tried v1.0.54 Beta.</p>
+
+<p>It runs as a Chrome extension, so <strong>it uses your actual browser profile</strong>. Cookies and login sessions carry over. Setup is just installing the extension.</p>
+
+<p><strong>Good idea. Beta quality.</strong></p>
+
+<div class="table-wrapper-paragraph"><table>
+<thead>
+<tr>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Uses real browser cookies</td>
+<td>Disconnects mid-session randomly</td>
+</tr>
+<tr>
+<td>Zero config</td>
+<td>Text input bug still present</td>
+</tr>
+<tr>
+<td>Intuitive to use</td>
+<td>Multi-line text breaks</td>
+</tr>
+</tbody>
+</table></div>
+
+<p>It could become something great if stabilized. But as of February 2026, it wasn't production-ready.</p>
+
+
+<hr>
+
+<h2>
+  <a name="phase-3-webfetch-hell" href="#phase-3-webfetch-hell">
+  </a>
+  Phase 3: WebFetch Hell
+</h2>
+
+<p>"Maybe an existing built-in tool can handle this."</p>
+
+<p>Claude Code has a built-in tool called <code>WebFetch</code>. Give it a URL and it fetches the HTML.</p>
+
+<p><strong>For static documentation pages, it works fine.</strong></p>
+
+<p><strong>For social media, it's hell.</strong></p>
+
+<p>When I tried reading Instagram with WebFetch, I got CSS and JavaScript garbage back. Almost no usable text. Twitter was the same. Any dynamically rendered page was a total loss.</p>
+
+<p>I told Claude "<strong>don't use WebFetch for SNS</strong>" over and over. Literally, across multiple sessions.</p>
+
+<p><strong>Using WebFetch for Instagram is like trying to grill a steak in a microwave.</strong></p>
+
+
+<hr>
+
+<h2>
+  <a name="phase-4-agentbrowser-late-february-2026" href="#phase-4-agentbrowser-late-february-2026">
+  </a>
+  Phase 4: agent-browser (Late February 2026)
+</h2>
+
+<p>Built by Vercel Labs. Rust CLI + Playwright backend.</p>
+
+<p><strong>This was the first time I saw light.</strong><br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight shell"><code>npm <span class="nb">install</span> <span class="nt">-g</span> agent-browser
+agent-browser <span class="nb">install</span>
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>Context consumption dropped <strong>93% compared to Chrome DevTools MCP</strong>. Instead of heavy MCP JSON, it outputs compact text. Operated via shell commands.<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight shell"><code>agent-browser open https://example.com
+agent-browser snapshot <span class="nt">-i</span>
+agent-browser click @e1
+agent-browser close
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>Auth Vault for saving credentials. Network mocking. Visual diffs.</p>
+
+<h3>
+  <a name="windows-gotcha" href="#windows-gotcha">
+  </a>
+  Windows Gotcha
+</h3>
+
+<p>It wasn't smooth on Windows though.</p>
+
+<p>Rust's <code>canonicalize()</code> generates <code>\\?\</code> UNC paths, which crash Node.js. You need to set the <code>AGENT_BROWSER_HOME</code> environment variable as a workaround.</p>
+
+<p>I wrote about this in detail in a <a href="https://zenn.dev/davidai311/articles/agent-browser-replace-chrome-devtools-mcp" target="_blank" rel="noopener noreferrer">previous article</a>.</p>
+
+<h3>
+  <a name="agentbrowsers-limitations" href="#agentbrowsers-limitations">
+  </a>
+  agent-browser's Limitations
+</h3>
+
+<p>I used it as my main tool for a while. But frustrations remained.</p>
+
+<ul>
+<li>3,000-5,000 tokens per page. Light enough, but could be lighter</li>
+<li>Launches Chromium every time. Cookies don't persist across sessions (Auth Vault helps but adds friction)</li>
+<li>Still too heavy for SNS text extraction</li>
+</ul>
+
+
+<hr>
+
+<h2>
+  <a name="phase-5-pinchtab-the-game-changer-march-2026" href="#phase-5-pinchtab-the-game-changer-march-2026">
+  </a>
+  Phase 5: PinchTab — The Game Changer (March 2026)
+</h2>
+
+<p>PinchTab changed my standards for browser automation.</p>
+
+<p>It runs as a local HTTP server and uses Chrome's accessibility tree to parse pages.</p>
+
+<p><strong>About 800 tokens per page.</strong></p>
+
+<p>Compare that to agent-browser's 3,000-5,000 — several times lighter. Compared to Chrome DevTools MCP's 10,000+, that's a <strong>12x difference</strong>.</p>
+
+<h3>
+  <a name="setup" href="#setup">
+  </a>
+  Setup
+</h3>
+
+
+
+<div class="highlight js-code-highlight">
+<pre class="highlight shell"><code><span class="c"># Headless mode (background daemon)</span>
+pinchtab &amp;
+
+<span class="c"># Headed mode (see the browser)</span>
+<span class="nv">BRIDGE_HEADLESS</span><span class="o">=</span><span class="nb">false </span>pinchtab &amp;
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>Launch once and it stays running for the entire session. HTTP server on port 9867. No restarts needed.</p>
+
+<h3>
+  <a name="basic-workflow" href="#basic-workflow">
+  </a>
+  Basic Workflow
+</h3>
+
+
+
+<div class="highlight js-code-highlight">
+<pre class="highlight shell"><code>pinchtab nav https://example.com
+<span class="nb">sleep </span>3
+pinchtab snap <span class="nt">-i</span> <span class="nt">-c</span>    <span class="c"># Compact view of interactive elements</span>
+pinchtab click e5       <span class="c"># Click element e5</span>
+pinchtab <span class="nb">type </span>e12 <span class="s2">"text"</span>  <span class="c"># Type into element e12</span>
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="why-its-fast" href="#why-its-fast">
+  </a>
+  Why It's Fast
+</h3>
+
+<div class="table-wrapper-paragraph"><table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Tokens</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pinchtab text</code></td>
+<td><strong>~800</strong></td>
+<td>Text extraction (SNS, articles)</td>
+</tr>
+<tr>
+<td><code>pinchtab snap -i -c</code></td>
+<td>~2,000</td>
+<td>Button/link interaction</td>
+</tr>
+<tr>
+<td><code>pinchtab snap --diff</code></td>
+<td>Diff only</td>
+<td>Multi-step sequential operations</td>
+</tr>
+<tr>
+<td>
+<code>pinchtab snap</code> (full)</td>
+<td>~10,500</td>
+<td>Full page understanding</td>
+</tr>
+<tr>
+<td>
+<code>pinchtab ss</code> (screenshot)</td>
+<td>~2,000 (Vision)</td>
+<td>Visual verification</td>
+</tr>
+</tbody>
+</table></div>
+
+<p><strong>Reading SNS with <code>pinchtab text</code> costs 800 tokens.</strong> This changed everything.</p>
+
+<p>Reading Twitter posts. Checking Instagram profiles. Verifying pages after deployment. All done in 800 tokens.</p>
+
+<p><strong>Context is a battery.</strong> A tool that burns 10,000 tokens is a space heater. PinchTab at 800 tokens is an LED bulb. Same battery, 12x the runtime.</p>
+
+<p>The HTTP API (port 9867) also means you can integrate it into bots and automation pipelines.</p>
+
+
+<hr>
+
+<h2>
+  <a name="phase-6-browseruse-the-missing-piece-march-2026" href="#phase-6-browseruse-the-missing-piece-march-2026">
+  </a>
+  Phase 6: browser-use — The Missing Piece (March 2026)
+</h2>
+
+<p>PinchTab solved everyday browser tasks.</p>
+
+<p>But there was one thing PinchTab made tedious: <strong>complex form filling</strong>.</p>
+
+<p>Job application forms. 10+ fields. Dropdowns, radio buttons, textareas. PinchTab can do it, but repeating <code>snap</code> -&gt; <code>type</code> -&gt; <code>click</code> for each field gets laborious.</p>
+
+<p><a href="https://github.com/browser-use/browser-use" target="_blank" rel="noopener noreferrer">browser-use</a> is a Python framework. 80,000+ stars on GitHub. MIT license.</p>
+
+<p><strong>Its biggest weapon over PinchTab: autonomous agent mode.</strong></p>
+
+<p>Give it a task and the AI figures out the steps and executes them. Say "fill out this job application with my info" and it finds the fields, selects the right values, and types them in.</p>
+
+<h3>
+  <a name="how-i-actually-used-it" href="#how-i-actually-used-it">
+  </a>
+  How I Actually Used It
+</h3>
+
+<p>I used browser-use to fill out application forms on Greenhouse and Ashby (recruiting platforms). Claude Code orchestrated while browser-use handled field-by-field input. I watched in headed mode and only clicked the final submit button myself.<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight shell"><code>pip <span class="nb">install </span>browser-use
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>CLI mode:<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight shell"><code>browser-use open https://example.com
+browser-use input <span class="s2">"field name"</span> <span class="s2">"value"</span>
+browser-use state    <span class="c"># Check current state</span>
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>MCP server mode is also available, providing 17 tools.</p>
+
+<h3>
+  <a name="tradeoffs" href="#tradeoffs">
+  </a>
+  Tradeoffs
+</h3>
+
+<p><strong>It consumes far more tokens than PinchTab.</strong> The autonomous agent calls an LLM at each step. Per-page token count is also higher.</p>
+
+<p><strong>But for complex multi-step tasks, autonomy &gt; efficiency.</strong></p>
+
+<p>Manually running <code>snap</code> -&gt; <code>type</code> for 10 form fields takes 20 minutes. Telling browser-use "fill this out" takes 3 minutes. More tokens consumed, but human time saved.</p>
+
+
+<hr>
+
+<h2>
+  <a name="full-tool-comparison-the-final-showdown" href="#full-tool-comparison-the-final-showdown">
+  </a>
+  Full Tool Comparison — The Final Showdown
+</h2>
+
+<p>Here's everything laid out in one table.</p>
+
+<div class="table-wrapper-paragraph"><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Chrome DevTools MCP</th>
+<th>Claude in Chrome</th>
+<th>agent-browser</th>
+<th>PinchTab</th>
+<th>browser-use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tokens/page</strong></td>
+<td>10,000+</td>
+<td>10,000+</td>
+<td>3,000-5,000</td>
+<td><strong>~800</strong></td>
+<td>10,000+</td>
+</tr>
+<tr>
+<td><strong>Setup</strong></td>
+<td>Debug flag launch</td>
+<td>Extension</td>
+<td><code>npm install</code></td>
+<td>Launch once</td>
+<td><code>pip install</code></td>
+</tr>
+<tr>
+<td><strong>Windows support</strong></td>
+<td>
+<code>cmd /c</code> hack needed</td>
+<td>OK</td>
+<td>UNC path bug</td>
+<td><strong>OK</strong></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><strong>Auth/cookies</strong></td>
+<td>Separate profile</td>
+<td>Real browser</td>
+<td>Auth Vault</td>
+<td><strong>Real browser</strong></td>
+<td>Real browser</td>
+</tr>
+<tr>
+<td><strong>Stability</strong></td>
+<td>Stable</td>
+<td>Beta, disconnects</td>
+<td>Stable</td>
+<td><strong>Stable</strong></td>
+<td>Stable</td>
+</tr>
+<tr>
+<td><strong>Speed</strong></td>
+<td>Medium</td>
+<td>Medium</td>
+<td>Medium</td>
+<td><strong>Fast</strong></td>
+<td>Slow (LLM calls)</td>
+</tr>
+<tr>
+<td><strong>SNS reading</strong></td>
+<td>Heavy JSON</td>
+<td>Heavy JSON</td>
+<td>Heavy</td>
+<td><strong>800 tokens</strong></td>
+<td>Heavy</td>
+</tr>
+<tr>
+<td><strong>Form filling</strong></td>
+<td>Drops first char</td>
+<td>Drops first char</td>
+<td>OK</td>
+<td>OK</td>
+<td><strong>Best (autonomous)</strong></td>
+</tr>
+<tr>
+<td><strong>Autonomous agent</strong></td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td><strong>Yes</strong></td>
+</tr>
+<tr>
+<td><strong>Background daemon</strong></td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td><strong>HTTP server</strong></td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td>Free</td>
+<td>Free</td>
+<td>Free</td>
+<td>Free</td>
+<td>Free</td>
+</tr>
+</tbody>
+</table></div>
+
+
+<hr>
+
+<h2>
+  <a name="final-verdict-the-priority-chain" href="#final-verdict-the-priority-chain">
+  </a>
+  Final Verdict: The Priority Chain
+</h2>
+
+<p><strong>No perfect tool exists. The answer is a combination.</strong><br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>Browser automation priority chain:
+
+1. PinchTab       -&gt; Everything daily (reading, scraping, testing, screenshots)
+2. browser-use    -&gt; Complex multi-step tasks (form filling, autonomous workflows)
+3. agent-browser  -&gt; When PinchTab isn't available, or you need video recording / Auth Vault
+4. WebFetch       -&gt; Static docs / API references ONLY. Never use it for SNS.
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="the-vehicle-analogy" href="#the-vehicle-analogy">
+  </a>
+  The Vehicle Analogy
+</h3>
+
+<div class="table-wrapper-paragraph"><table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Vehicle</th>
+<th>Characteristics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PinchTab</strong></td>
+<td>Bicycle</td>
+<td>Fast, best fuel efficiency, daily commute</td>
+</tr>
+<tr>
+<td><strong>browser-use</strong></td>
+<td>Car</td>
+<td>Goes the distance, carries cargo, burns more fuel</td>
+</tr>
+<tr>
+<td><strong>agent-browser</strong></td>
+<td>Motorcycle</td>
+<td>Backup, special purposes</td>
+</tr>
+<tr>
+<td><strong>WebFetch</strong></td>
+<td>Walking</td>
+<td>Slow, can't carry much, last resort</td>
+</tr>
+</tbody>
+</table></div>
+
+
+<hr>
+
+<h2>
+  <a name="recommendations" href="#recommendations">
+  </a>
+  Recommendations
+</h2>
+
+<h3>
+  <a name="if-you-use-claude-code-daily" href="#if-you-use-claude-code-daily">
+  </a>
+  If You Use Claude Code Daily
+</h3>
+
+<p><strong>Install PinchTab first.</strong> Highest ROI. Read a page for 800 tokens. Your session lifespan extends dramatically.<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight shell"><code>pinchtab &amp;
+pinchtab nav https://your-app.com
+<span class="nb">sleep </span>3
+pinchtab text
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>That alone changes everything.</p>
+
+<h3>
+  <a name="if-you-need-form-automation" href="#if-you-need-form-automation">
+  </a>
+  If You Need Form Automation
+</h3>
+
+<p><strong>Add browser-use.</strong> Job applications, data entry, multi-page workflows. Let the autonomous agent handle it while you supervise.<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight shell"><code>pip <span class="nb">install </span>browser-use
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="if-you-need-auth-vault-video-recording" href="#if-you-need-auth-vault-video-recording">
+  </a>
+  If You Need Auth Vault / Video Recording
+</h3>
+
+<p><strong>Use agent-browser.</strong> <code>npm install -g agent-browser &amp;&amp; agent-browser install</code> and you're set.</p>
+
+<h3>
+  <a name="for-dynamic-sites" href="#for-dynamic-sites">
+  </a>
+  For Dynamic Sites
+</h3>
+
+<p><strong>Don't use WebFetch.</strong> No matter what. Especially not for SNS.</p>
+
+
+<hr>
+
+<h2>
+  <a name="5-things-i-learned" href="#5-things-i-learned">
+  </a>
+  5 Things I Learned
+</h2>
+
+<div class="table-wrapper-paragraph"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Lesson</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>"Browser access for AI" is <strong>still an unsolved problem</strong> as of March 2026</td>
+</tr>
+<tr>
+<td>2</td>
+<td>No perfect tool exists. <strong>The answer is a combination</strong>
+</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Token efficiency is everything. 800 vs 10,000 = <strong>12x difference</strong>. Session lifespan is completely different</td>
+</tr>
+<tr>
+<td>4</td>
+<td>SNS requires dedicated tools. <strong>Don't use WebFetch</strong>
+</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Form filling is best handled by autonomous agents. <strong>AI fills, human supervises</strong>
+</td>
+</tr>
+</tbody>
+</table></div>
+
+
+<hr>
+
+<h2>
+  <a name="conclusion" href="#conclusion">
+  </a>
+  Conclusion
+</h2>
+
+<p>I tried all 6 tools. It took months.</p>
+
+<p>It started with the ordeal of relaunching Chrome with debug flags for Chrome DevTools MCP, continued through Claude in Chrome's beta disconnections, the CSS garbage wars with WebFetch, seeing the light with agent-browser, finding daily peace with PinchTab, and finally filling the last gap with browser-use.</p>
+
+<p>Honestly, <strong>I'm glad I tried them all.</strong></p>
+
+<p>Because this isn't a problem one tool can solve. You commute by bicycle, take the car for long trips, and grab the motorcycle in a pinch. Same idea.</p>
+
+<p><strong>Now that AI can use a browser, the chef can finally taste their own cooking.</strong></p>
+
+<p>The question now is: what will they cook?</p>
+
+
+<hr>
+
+<p><em>This article was written in Tokyo, with PinchTab reading the preview for a final check before publishing.</em><br>
+<em>Questions or feedback welcome on X (<a href="https://x.com/DavidAi311" target="_blank" rel="noopener noreferrer">@DavidAi311</a>).</em></p>
+
+
+            </div>
+
+              <div class="below-post-bb body-billboard-container" data-async-url="/minatoplanb/i-tested-every-browser-automation-tool-for-claude-code-heres-my-final-verdict-3hb7/bmar11/post_body_bottom"></div>
+          </div>
+          <section id="comments" data-follow-button-container="true" data-updated-at="2026-03-31 17:19:54 UTC" class="text-padding mb-4 border-t-1 border-0 border-solid border-base-10">
+    <header class="relative flex justify-between items-center mb-6">
+      <div class="flex items-center">
+        <h2 class="crayons-subtitle-1">
+          Top comments <span class="js-comments-count" data-comments-count="3">(3)</span>
+        </h2>
+      </div>
+
+
+      <div id="comment-subscription" class="print-hidden">
+        <div class="crayons-btn-group">
+          <span class="crayons-btn crayons-btn--outlined">Subscribe</span>
+        </div>
+      </div>
+    </header>
+    <div id="billboard_delay_trigger"></div>
+    <div
+      id="comments-container"
+      data-testid="comments-container"
+      data-commentable-id="3336241"
+      data-commentable-type="Article"
+      data-has-recent-comment-activity="true">
+
+        <div id="response-templates-data" class="hidden"></div>
+
+
+<form class="comment-form print-hidden" id="new_comment" action="/comments" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" />
+
+  <input type="hidden" name="authenticity_token" value="NOTHING" id="new_comment_authenticity_token">
+
+    <input value="3336241" autocomplete="off" type="hidden" name="comment[commentable_id]" id="comment_commentable_id" />
+    <input value="Article" autocomplete="off" type="hidden" name="comment[commentable_type]" id="comment_commentable_type" />
+    
+
+  <span class="crayons-avatar m:crayons-avatar--l mr-2 shrink-0">
+    <img src="https://media2.dev.to/dynamic/image/width=256,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" width="32" height="32" alt="pic" class="crayons-avatar__image overflow-hidden" id="comment-primary-user-profile--avatar" loading="lazy" />
+  </span>
+  <div class="comment-form__inner">
+    <div class="comment-form__field" data-tracking-name="comment_form_textfield">
+      <textarea placeholder="Add to the discussion" onfocus="handleFocus(event)" onkeyup="handleKeyUp(event)" onkeydown="handleKeyDown(event)" oninput="handleChange(event)" id="text-area" required="required" class="crayons-textfield comment-textarea crayons-textfield--ghost" aria-label="Add a comment to the discussion" name="comment[body_markdown]">
+</textarea>
+
+    </div>
+
+    <div class="response-templates-container crayons-card crayons-card--secondary p-4 mb-4 comment-form__templates fs-base hidden">
+      <header class="mb-3">
+        <button type="button" class="crayons-btn personal-template-button active" data-target-type="personal" data-form-id="new_comment">Personal</button>
+        <button type="button" class="crayons-btn moderator-template-button hidden" data-target-type="moderator" data-form-id="new_comment">Trusted User</button>
+      </header>
+
+      <div class="personal-responses-container">
+      </div>
+      <div class="moderator-responses-container hidden">
+      </div>
+
+      <a target="_blank" rel="noopener nofollow" href="/settings/response-templates">
+        Create template
+      </a>
+      <p>Templates let you quickly answer FAQs or store snippets for re-use.</p>
+    </div>
+
+    <div class="comment-form__preview text-styles text-styles--secondary" id="preview-div"></div>
+
+    <div class="comment-form__buttons mb-4">
+      <button type="submit" class="crayons-btn mr-2 js-btn-enable" onclick="validateField(event)" data-tracking-name="comment_submit_button" disabled>Submit</button>
+      <button type="button" class="preview-toggle crayons-btn crayons-btn--secondary comment-action-preview js-btn-enable mr-2" data-tracking-name="comment_preview_button" disabled>Preview</button>
+      <a href="/404.html" class="dismiss-edit-comment crayons-btn crayons-btn--ghost js-btn-dismiss hidden">Dismiss</a>
+    </div>
+  </div>
+
+  <div class="code-of-conduct" id="toggle-code-of-conduct-checkbox"></div>
+</form>
+
+
+      <div class="comments" id="comment-trees-container">
+              <details class="comment-wrapper js-comment-wrapper comment-wrapper--deep-0
+                    root
+                    " open>
+      <summary aria-label="Toggle this comment (and replies)" data-tracking-name="expand_comment_toggle">
+        <span class="m:mx-1 inline-block align-middle">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="aaczteoq4k7is7zshlib3znwxgbkd3a7" class="crayons-icon expanded"><title id="aaczteoq4k7is7zshlib3znwxgbkd3a7">Collapse</title>
+    <path d="M12 10.677L8 6.935 9 6l3 2.807L15 6l1 .935-4 3.742zm0 4.517L9 18l-1-.935 4-3.742 4 3.742-1 .934-3-2.805z"></path>
+</svg>
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="ahvt05ktf175jjlbjxtn04e5jtb2oduy" class="crayons-icon collapsed"><title id="ahvt05ktf175jjlbjxtn04e5jtb2oduy">Expand</title>
+    <path d="M12 18l-4-3.771 1-.943 3 2.829 3-2.829 1 .943L12 18zm0-10.115l-3 2.829-1-.943L12 6l4 3.771-1 .942-3-2.828z"></path>
+</svg>
+
+        </span>
+        <span class="js-collapse-comment-content inline-block align-middle"></span>
+      </summary>
+  <div
+    id="comment-node-1480884"
+    class="
+      comment single-comment-node
+      
+      root
+      comment--deep-0
+      
+    "
+    data-comment-id="1480884"
+    data-path="/minatoplanb/i-tested-every-browser-automation-tool-for-claude-code-heres-my-final-verdict-3hb7/comments/366h2"
+    data-comment-author-id="3810102"
+    data-content-user-id="3810102">
+    <a name="comment-366h2" style="position: absolute; top: -8px;">&nbsp;</a>
+    
+<div class="comment__inner">
+    <a href="https://dev.to/achiya-automation" class="shrink-0 crayons-avatar m:crayons-avatar--l mt-4 m:mt-3">
+    <img class="crayons-avatar__image" width="32" height="32" src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3810102%2Fefb43e59-992c-4f8b-91df-ee602c7c853f.jpg" alt="achiya-automation profile image" loading="lazy" />
+  </a>
+
+
+  <div class="inner-comment comment__details">
+    <div class="comment__content crayons-card">
+        
+
+
+        <div class="comment__header">
+  <a href="https://dev.to/achiya-automation" class="crayons-link crayons-link--secondary flex items-center fw-medium m:hidden">
+    <span class="js-comment-username">
+      אחיה כהן
+    </span>
+  </a>
+  <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:block">
+    <button id="comment-profile-preview-trigger-1480884" aria-controls="comment-profile-preview-content-1480884" class="profile-preview-card__trigger p-1 -my-1 -ml-1 crayons-btn crayons-btn--ghost" aria-label="אחיה כהן profile details">
+      אחיה כהן
+      
+    </button>
+    <div id="comment-profile-preview-content-1480884" class="profile-preview-card__content p-4 pt-0 branded-7 crayons-dropdown" style="--card-color: #000000; border-top-color: var(--card-color);" data-testid="profile-preview-card" data-repositioning-dropdown="true">
+    <div class="gap-4 grid">
+        <div class="-mt-4">
+  <a href="/achiya-automation" class="flex">
+    <span class="crayons-avatar crayons-avatar--xl  mr-2 shrink-0">
+      <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3810102%2Fefb43e59-992c-4f8b-91df-ee602c7c853f.jpg" class="crayons-avatar__image" alt="" loading="lazy" />
+    </span>
+    <span class="crayons-link crayons-subtitle-2 mt-5">
+      אחיה כהן
+      
+    </span>
+  </a>
+</div>
+
+<div class="print-hidden">
+  <button name="button" type="button" data-info="{&quot;className&quot;:&quot;User&quot;,&quot;style&quot;:&quot;&quot;,&quot;id&quot;:3810102,&quot;name&quot;:&quot;אחיה כהן&quot;}" class="crayons-btn follow-action-button whitespace-nowrap w-100 follow-user" aria-label="Follow user: אחיה כהן" aria-pressed="false">Follow</button>
+</div>
+  <div class="color-base-70">
+    WhatsApp bot developer &amp; business automation expert. Building custom bots and workflows with n8n, Make, and WhatsApp API (official &amp; WAHA). 50+ happy clients.
+  </div>
+
+  <div class="user-metadata-details">
+    <ul class="user-metadata-details-inner">
+          <li>
+            <div class="key">
+              Work
+            </div>
+            <div class="value">
+              Founder at Achiya Automation — WhatsApp bots &amp; business automation
+            </div>
+          </li>
+      <li>
+        <div class="key">
+          Joined
+        </div>
+        <div class="value">
+          <time datetime="2026-03-06T15:06:08Z" class="date">Mar 6, 2026</time>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+    </div>
+</div>
+
+
+  </div>
+
+  <span class="color-base-30 px-2 m:pl-0" role="presentation">&bull;</span>
+
+<a href="https://dev.to/minatoplanb/i-tested-every-browser-automation-tool-for-claude-code-heres-my-final-verdict-3hb7#comment-366h2" class="comment-date crayons-link crayons-link--secondary fs-s">
+  <time datetime="2026-03-29T16:30:40Z" class=date-no-year>
+    Mar 29
+  </time>
+
+</a>
+
+
+  <div class="comment__dropdown" data-tracking-name="comment_dropdown">
+    <button id="comment-dropdown-trigger-1480884" aria-controls="comment-dropdown-1480884" aria-expanded="false"
+      class="dropbtn comment__dropdown-trigger crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon "
+      aria-label="Toggle dropdown menu" aria-haspopup="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="amopyj96y9zrsgrb7pephwxsul9ymi8v" class="crayons-icon pointer-events-none"><title id="amopyj96y9zrsgrb7pephwxsul9ymi8v">Dropdown menu</title>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.25 12a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm5.25 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm3.75 1.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
+</svg>
+
+    </button>
+    <div id="comment-dropdown-1480884" class="crayons-dropdown right-1 s:right-0 s:left-auto fs-base dropdown">
+      <ul class="m-0">
+        <li><a href="https://dev.to/minatoplanb/i-tested-every-browser-automation-tool-for-claude-code-heres-my-final-verdict-3hb7#comment-366h2" class="crayons-link crayons-link--block permalink-copybtn" aria-label="Copy link to אחיה כהן&#39;s comment" data-no-instant>Copy link</a></li>
+        <li class="comment-actions hidden" data-user-id="3810102" data-action="settings-button" data-path="https://dev.to/achiya-automation/comment/366h2/settings" aria-label="Go to אחיה כהן&#39;s comment settings"></li>
+          <li class="comment-actions hidden" data-action="hide-button" data-commentable-user-id="3801330" data-user-id="3810102">
+              <button
+                class="flex justify-between crayons-link crayons-link--block w-100 bg-transparent border-0 hide-comment"
+                data-hide-type="hide"
+                data-comment-id="1480884"
+                data-comment-url="https://dev.to/achiya-automation/comment/366h2"
+                aria-label="Hide אחיה כהן&#39;s comment">
+                Hide
+              </button>
+          </li>
+        <li class="mod-actions hidden mod-actions-comment-button" data-path="https://dev.to/achiya-automation/comment/366h2/mod" aria-label="Moderate אחיה כהן&#39;s comment"></li>
+        <li class="report-abuse-link-wrapper" data-path="/report-abuse?url=https://dev.to/achiya-automation/comment/366h2" aria-label="Report אחיה כהן&#39;s comment as abusive or violating our code of conduct and/or terms and conditions"></li>
+        <li class="current-user-actions"></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+        <div
+          class="
+            comment__body
+            text-styles
+            text-styles--secondary
+            body
+            
+            
+          ">
+          <p>Great comparison! One option worth adding for macOS users: <strong>Safari MCP</strong> — the only MCP server that uses native Safari instead of Chromium.</p>
+
+<p>I built it because Chrome was eating 15-25% idle CPU on my M4 MacBook while Safari sat right there with all my sessions loaded.</p>
+
+<p>Key differences:</p>
+
+<ul>
+<li>Uses your real Safari with all existing logins (no re-auth)</li>
+<li>~5ms per command via AppleScript + Swift daemon</li>
+<li>80 tools (more than Chrome DevTools MCP or Playwright MCP)</li>
+<li>Zero Chrome process = zero overhead</li>
+</ul>
+
+<p><code>npm install safari-mcp</code></p>
+
+<p>GitHub: <a href="https://github.com/achiya-automation/safari-mcp" rel="nofollow noopener noreferrer" target="_blank">achiya-automation/safari-mcp</a></p>
+
+
+        </div>
+
+    </div>
+
+    <script>
+    </script>
+
+    <footer class="comment__footer print-hidden">
+  <button
+    class="crayons-tooltip__activator relative crayons-btn crayons-btn--ghost crayons-btn--icon-left crayons-btn--s mr-1 reaction-like inline-flex reaction-button"
+    id="button-for-comment-1480884"
+    data-comment-id="1480884"
+    aria-label="like"
+    data-tracking-name="comment_heart_button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="ar0rvola07qfdtn3tp80v906c4p3u6d2" class="crayons-icon reaction-icon not-reacted"><title id="ar0rvola07qfdtn3tp80v906c4p3u6d2">Like comment: </title><path d="M18.884 12.595l.01.011L12 19.5l-6.894-6.894.01-.01A4.875 4.875 0 0112 5.73a4.875 4.875 0 016.884 6.865zM6.431 7.037a3.375 3.375 0 000 4.773L12 17.38l5.569-5.569a3.375 3.375 0 10-4.773-4.773L9.613 10.22l-1.06-1.062 2.371-2.372a3.375 3.375 0 00-4.492.25v.001z"></path></svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="ajj26eq1340dg0xmkvnvygx31myjcbn" class="crayons-icon crayons-icon reaction-icon--like reaction-icon reacted"><title id="ajj26eq1340dg0xmkvnvygx31myjcbn">Like comment: </title>
+    <path d="M5.116 12.595a4.875 4.875 0 015.56-7.68h-.002L7.493 8.098l1.06 1.061 3.181-3.182a4.875 4.875 0 016.895 6.894L12 19.5l-6.894-6.894.01-.01z"></path>
+</svg>
+
+    <span class="reactions-count">1</span><span class="reactions-label hidden m:inline-block">&nbsp;like</span>
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Like
+    </span>
+  </button>
+
+      <button
+        class="actions crayons-btn crayons-btn--ghost crayons-btn--s crayons-btn--icon-left toggle-reply-form mr-1 inline-flex"
+        data-comment-id="1480884"
+        data-path="/minatoplanb/i-tested-every-browser-automation-tool-for-claude-code-heres-my-final-verdict-3hb7/comments/366h2"
+        data-tracking-name="comment_reply_button"
+        data-testid="reply-button-1480884"
+        rel="nofollow">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="abfng024dzdkgepcx4j1mhzpx2xm6xq2" class="crayons-icon reaction-icon not-reacted"><title id="abfng024dzdkgepcx4j1mhzpx2xm6xq2">Comment button</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+        <span class="hidden m:inline-block">Reply</span>
+      </button>
+
+</footer>
+
+  </div>
+</div>
+
+
+  </div>
+    </details>
+
+    <details class="comment-wrapper js-comment-wrapper comment-wrapper--deep-0
+                    root
+                    " open>
+      <summary aria-label="Toggle this comment (and replies)" data-tracking-name="expand_comment_toggle">
+        <span class="m:mx-1 inline-block align-middle">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a9xupvh8m9pvqv1bs2zfjvlnl4bqp9y2" class="crayons-icon expanded"><title id="a9xupvh8m9pvqv1bs2zfjvlnl4bqp9y2">Collapse</title>
+    <path d="M12 10.677L8 6.935 9 6l3 2.807L15 6l1 .935-4 3.742zm0 4.517L9 18l-1-.935 4-3.742 4 3.742-1 .934-3-2.805z"></path>
+</svg>
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="alnces6tik96nbnl10njztof1rgnb70f" class="crayons-icon collapsed"><title id="alnces6tik96nbnl10njztof1rgnb70f">Expand</title>
+    <path d="M12 18l-4-3.771 1-.943 3 2.829 3-2.829 1 .943L12 18zm0-10.115l-3 2.829-1-.943L12 6l4 3.771-1 .942-3-2.828z"></path>
+</svg>
+
+        </span>
+        <span class="js-collapse-comment-content inline-block align-middle"></span>
+      </summary>
+  <div
+    id="comment-node-1468384"
+    class="
+      comment single-comment-node
+      
+      root
+      comment--deep-0
+      
+    "
+    data-comment-id="1468384"
+    data-path="/minatoplanb/i-tested-every-browser-automation-tool-for-claude-code-heres-my-final-verdict-3hb7/comments/35e48"
+    data-comment-author-id="3568626"
+    data-content-user-id="3568626">
+    <a name="comment-35e48" style="position: absolute; top: -8px;">&nbsp;</a>
+    
+<div class="comment__inner">
+    <a href="https://dev.to/salome_koshadze_feeb58784" class="shrink-0 crayons-avatar m:crayons-avatar--l mt-4 m:mt-3">
+    <img class="crayons-avatar__image" width="32" height="32" src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3568626%2F59ab1a53-5e90-4709-9736-b6af019a066c.jpg" alt="salome_koshadze_feeb58784 profile image" loading="lazy" />
+  </a>
+
+
+  <div class="inner-comment comment__details">
+    <div class="comment__content crayons-card">
+        
+
+
+        <div class="comment__header">
+  <a href="https://dev.to/salome_koshadze_feeb58784" class="crayons-link crayons-link--secondary flex items-center fw-medium m:hidden">
+    <span class="js-comment-username">
+      Salome koshadze
+    </span>
+  </a>
+  <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:block">
+    <button id="comment-profile-preview-trigger-1468384" aria-controls="comment-profile-preview-content-1468384" class="profile-preview-card__trigger p-1 -my-1 -ml-1 crayons-btn crayons-btn--ghost" aria-label="Salome koshadze profile details">
+      Salome koshadze
+      
+    </button>
+    <div id="comment-profile-preview-content-1468384" class="profile-preview-card__content p-4 pt-0 branded-7 crayons-dropdown" style="--card-color: #000000; border-top-color: var(--card-color);" data-testid="profile-preview-card" data-repositioning-dropdown="true">
+    <div class="gap-4 grid">
+        <div class="-mt-4">
+  <a href="/salome_koshadze_feeb58784" class="flex">
+    <span class="crayons-avatar crayons-avatar--xl  mr-2 shrink-0">
+      <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3568626%2F59ab1a53-5e90-4709-9736-b6af019a066c.jpg" class="crayons-avatar__image" alt="" loading="lazy" />
+    </span>
+    <span class="crayons-link crayons-subtitle-2 mt-5">
+      Salome koshadze
+      
+    </span>
+  </a>
+</div>
+
+<div class="print-hidden">
+  <button name="button" type="button" data-info="{&quot;className&quot;:&quot;User&quot;,&quot;style&quot;:&quot;&quot;,&quot;id&quot;:3568626,&quot;name&quot;:&quot;Salome koshadze&quot;}" class="crayons-btn follow-action-button whitespace-nowrap w-100 follow-user" aria-label="Follow user: Salome koshadze" aria-pressed="false">Follow</button>
+</div>
+
+  <div class="user-metadata-details">
+    <ul class="user-metadata-details-inner">
+      <li>
+        <div class="key">
+          Joined
+        </div>
+        <div class="value">
+          <time datetime="2025-10-16T09:56:52Z" class="date">Oct 16, 2025</time>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+    </div>
+</div>
+
+
+  </div>
+
+  <span class="color-base-30 px-2 m:pl-0" role="presentation">&bull;</span>
+
+<a href="https://dev.to/minatoplanb/i-tested-every-browser-automation-tool-for-claude-code-heres-my-final-verdict-3hb7#comment-35e48" class="comment-date crayons-link crayons-link--secondary fs-s">
+  <time datetime="2026-03-11T10:03:21Z" class=date-no-year>
+    Mar 11
+  </time>
+
+</a>
+
+
+  <div class="comment__dropdown" data-tracking-name="comment_dropdown">
+    <button id="comment-dropdown-trigger-1468384" aria-controls="comment-dropdown-1468384" aria-expanded="false"
+      class="dropbtn comment__dropdown-trigger crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon "
+      aria-label="Toggle dropdown menu" aria-haspopup="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="af4bml3ut4bjbsv1h3ciflpnj94stwg9" class="crayons-icon pointer-events-none"><title id="af4bml3ut4bjbsv1h3ciflpnj94stwg9">Dropdown menu</title>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.25 12a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm5.25 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm3.75 1.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
+</svg>
+
+    </button>
+    <div id="comment-dropdown-1468384" class="crayons-dropdown right-1 s:right-0 s:left-auto fs-base dropdown">
+      <ul class="m-0">
+        <li><a href="https://dev.to/minatoplanb/i-tested-every-browser-automation-tool-for-claude-code-heres-my-final-verdict-3hb7#comment-35e48" class="crayons-link crayons-link--block permalink-copybtn" aria-label="Copy link to Salome koshadze&#39;s comment" data-no-instant>Copy link</a></li>
+        <li class="comment-actions hidden" data-user-id="3568626" data-action="settings-button" data-path="https://dev.to/salome_koshadze_feeb58784/comment/35e48/settings" aria-label="Go to Salome koshadze&#39;s comment settings"></li>
+          <li class="comment-actions hidden" data-action="hide-button" data-commentable-user-id="3801330" data-user-id="3568626">
+              <button
+                class="flex justify-between crayons-link crayons-link--block w-100 bg-transparent border-0 hide-comment"
+                data-hide-type="hide"
+                data-comment-id="1468384"
+                data-comment-url="https://dev.to/salome_koshadze_feeb58784/comment/35e48"
+                aria-label="Hide Salome koshadze&#39;s comment">
+                Hide
+              </button>
+          </li>
+        <li class="mod-actions hidden mod-actions-comment-button" data-path="https://dev.to/salome_koshadze_feeb58784/comment/35e48/mod" aria-label="Moderate Salome koshadze&#39;s comment"></li>
+        <li class="report-abuse-link-wrapper" data-path="/report-abuse?url=https://dev.to/salome_koshadze_feeb58784/comment/35e48" aria-label="Report Salome koshadze&#39;s comment as abusive or violating our code of conduct and/or terms and conditions"></li>
+        <li class="current-user-actions"></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+        <div
+          class="
+            comment__body
+            text-styles
+            text-styles--secondary
+            body
+            
+            
+          ">
+          <p>Allow me to suggest a third architecture: proxy-based session virtualization.</p>
+
+<p>Instead of controlling a local browser instance, the agent operates within a server-managed session that rewrites and streams the target application.<br>
+This model changes the state management problem. Session state (cookies, local storage) is managed server-side within the virtualized session. When paired with a custom domain, all cookies become first-party, which bypasses the re-authentication loop you experienced - essentially providing AI agents ability to control live web sessions. </p>
+
+<p>The control mechanism uses a dedicated Automation API. For instance, webfuse exposes an API like browser.webfuseSession.automation.left_click(selector) and browser.webfuseSession.automation.type(text, selector). More importantly, it addresses the token problem at the source. The proxy can pre-process the DOM before serialization using take_dom_snapshot({ modifier: 'AdaptiveD2Snap', params: { maxTokens: 8192 } }), reducing it to a specified token budget before it ever hits the LLM.</p>
+
+
+        </div>
+
+    </div>
+
+    <script>
+    </script>
+
+    <footer class="comment__footer print-hidden">
+  <button
+    class="crayons-tooltip__activator relative crayons-btn crayons-btn--ghost crayons-btn--icon-left crayons-btn--s mr-1 reaction-like inline-flex reaction-button"
+    id="button-for-comment-1468384"
+    data-comment-id="1468384"
+    aria-label="like"
+    data-tracking-name="comment_heart_button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="auk1rx7x518bz3ea4elf8u0gihmzehg" class="crayons-icon reaction-icon not-reacted"><title id="auk1rx7x518bz3ea4elf8u0gihmzehg">Like comment: </title><path d="M18.884 12.595l.01.011L12 19.5l-6.894-6.894.01-.01A4.875 4.875 0 0112 5.73a4.875 4.875 0 016.884 6.865zM6.431 7.037a3.375 3.375 0 000 4.773L12 17.38l5.569-5.569a3.375 3.375 0 10-4.773-4.773L9.613 10.22l-1.06-1.062 2.371-2.372a3.375 3.375 0 00-4.492.25v.001z"></path></svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a9tyeob50ldbhmsqo08iv23s7slx2tbd" class="crayons-icon crayons-icon reaction-icon--like reaction-icon reacted"><title id="a9tyeob50ldbhmsqo08iv23s7slx2tbd">Like comment: </title>
+    <path d="M5.116 12.595a4.875 4.875 0 015.56-7.68h-.002L7.493 8.098l1.06 1.061 3.181-3.182a4.875 4.875 0 016.895 6.894L12 19.5l-6.894-6.894.01-.01z"></path>
+</svg>
+
+    <span class="reactions-count">1</span><span class="reactions-label hidden m:inline-block">&nbsp;like</span>
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Like
+    </span>
+  </button>
+
+      <button
+        class="actions crayons-btn crayons-btn--ghost crayons-btn--s crayons-btn--icon-left toggle-reply-form mr-1 inline-flex"
+        data-comment-id="1468384"
+        data-path="/minatoplanb/i-tested-every-browser-automation-tool-for-claude-code-heres-my-final-verdict-3hb7/comments/35e48"
+        data-tracking-name="comment_reply_button"
+        data-testid="reply-button-1468384"
+        rel="nofollow">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="ae22bmug9dotmcloo603c3x7ideuzx7a" class="crayons-icon reaction-icon not-reacted"><title id="ae22bmug9dotmcloo603c3x7ideuzx7a">Comment button</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+        <span class="hidden m:inline-block">Reply</span>
+      </button>
+
+</footer>
+
+  </div>
+</div>
+
+
+  </div>
+    </details>
+
+
+      </div>
+    </div>
+
+    <div class="align-center">
+
+    <p class="fs-s color-base-60 mb-4">
+      Some comments may only be visible to logged-in visitors. <a href="/enter">Sign in</a> to view all comments.
+      
+    </p>
+
+  <nav class="fs-s align-center block" aria-label="Conduct controls">
+  <a href="/code-of-conduct" class="crayons-link crayons-link--secondary">Code of Conduct</a>
+  <span class="opacity-25 px-2" role="presentation">&bull;</span>
+  <a href="/report-abuse" class="crayons-link crayons-link--secondary">Report abuse</a>
+</nav>
+
+</div>
+
+</section>
+<div id="hide-comments-modal" class="hidden">
+  <form id="hide-comments-modal__form" class="hide-comments-modal__form" data-type="json" action="/comments/hide" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="_method" value="patch" autocomplete="off" /><input type="hidden" name="authenticity_token" value="VCbvfTkaA5eIfS7zS6y4kNaTBfjJPNZMLehYVhKmc0ytq_8dEFlf_-Y-sutLs_TsoTgMYfWSBmd1Wx5G5Y_sVw" autocomplete="off" />
+    <div class="hide-comments-modal__content">
+      <p class="pb-2">
+        Are you sure you want to hide this comment? It will become hidden in your post, but will still be visible via the comment's <a id="hide-comments-modal__comment-permalink" href="#">permalink</a>.
+      </p>
+      <label class="crayons-field crayons-field--checkbox my-2">
+        <input name="hide_children" type="hidden" value="0" autocomplete="off" /><input class="hide_children crayons-checkbox" type="checkbox" value="1" name="hide_children" id="hide_children" />
+        <p class="crayons-field__label">Hide child comments as well</p>
+      </label>
+      <p class="pb-4 pt-2">
+        <button type="submit" class="crayons-btn">
+          Confirm
+        </button>
+      </p>
+    </div>
+</form>  <p class="fs-s color-base-60">For further actions, you may consider blocking this person and/or <a id="hide-comments-modal__report-link" href="/report-abuse">reporting abuse</a></p>
+</div>
+
+
+
+        </article>
+
+        <div class="pb-4 crayons-layout__comments-billboard">
+          <div class="new-bb-container pb-4 crayons-layout__comments-billboard" data-async-url="/minatoplanb/i-tested-every-browser-automation-tool-for-claude-code-heres-my-final-verdict-3hb7/bmar11/post_comments"></div>
+        </div>
+
+          <!-- Bottom content skipped via SKIP_BOTTOM_CONTENT config -->
+      </div>
+    </main>
+
+    <aside class="crayons-layout__sidebar-right" aria-label="Author details">
+      <div class="crayons-article-sticky grid gap-4 pb-4 break-word" id="article-show-primary-sticky-nav">
+  <div class="crayons-card crayons-card--secondary branded-7 p-4 pt-0 gap-4 grid" style="border-top-color: #000000;">
+    <div class="-mt-4">
+  <a href="/minatoplanb" class="flex">
+    <span class="crayons-avatar crayons-avatar--xl  mr-2 shrink-0">
+      <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3801330%2Fb05dd9ed-c0da-4fba-8dfc-01e64c203e4c.jpeg" class="crayons-avatar__image" alt="" loading="lazy" />
+    </span>
+    <span class="crayons-link crayons-subtitle-2 mt-5">
+      DavidAI311
+      
+    </span>
+  </a>
+</div>
+
+<div class="print-hidden">
+  <button name="button" type="button" data-info="{&quot;className&quot;:&quot;User&quot;,&quot;style&quot;:&quot;&quot;,&quot;id&quot;:3801330,&quot;name&quot;:&quot;DavidAI311&quot;}" class="crayons-btn follow-action-button whitespace-nowrap w-100 follow-user" aria-label="Follow user: DavidAI311" aria-pressed="false">Follow</button>
+</div>
+  <div class="color-base-70">
+    AI-powered developer building 27+ projects with Claude Code. Writing about developer workflows, AI tools, and productivity — in English, Japanese, and Chinese.
+  </div>
+
+  <div class="user-metadata-details">
+    <ul class="user-metadata-details-inner">
+        <li>
+          <div class="key">
+            Location
+          </div>
+          <div class="value">
+            Tokyo
+          </div>
+        </li>
+          <li>
+            <div class="key">
+              Education
+            </div>
+            <div class="value">
+              University of British Columbia
+            </div>
+          </li>
+          <li>
+            <div class="key">
+              Pronouns
+            </div>
+            <div class="value">
+              AI Developer &amp; Technical Writer
+            </div>
+          </li>
+          <li>
+            <div class="key">
+              Work
+            </div>
+            <div class="value">
+              AI Developer &amp; Technical Writer
+            </div>
+          </li>
+      <li>
+        <div class="key">
+          Joined
+        </div>
+        <div class="value">
+          <time datetime="2026-03-02T09:09:48Z" class="date">Mar 2, 2026</time>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  </div>
+
+      <div class="crayons-card crayons-card--secondary">
+        <header class="crayons-card__header">
+          <h3 class="crayons-subtitle-2">
+            More from <a href="/minatoplanb">DavidAI311</a>
+          </h3>
+        </header>
+        <div>
+            <a class="crayons-link crayons-link--contentful" href="/minatoplanb/i-made-5-custom-skills-to-stop-claude-code-from-ignoring-its-own-rules-4m79">
+              I Made 5 Custom Skills to Stop Claude Code from Ignoring Its Own Rules
+              <div class="crayons-link__secondary -ml-1">
+                  <span class="mr-1"><span class="opacity-50">#</span>claudecode</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>ai</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>workflow</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>productivity</span>
+              </div>
+            </a>
+            <a class="crayons-link crayons-link--contentful" href="/minatoplanb/the-hook-experiment-failed-why-ai-self-correction-is-structurally-impossible-33fe">
+              The Hook Experiment Failed — Why AI Self-Correction Is Structurally Impossible
+              <div class="crayons-link__secondary -ml-1">
+                  <span class="mr-1"><span class="opacity-50">#</span>ai</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>security</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>anthropic</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>devtools</span>
+              </div>
+            </a>
+            <a class="crayons-link crayons-link--contentful" href="/minatoplanb/ai-can-lie-and-you-cant-tell-bf8">
+              AI Can Lie. And You Can&#39;t Tell.
+              <div class="crayons-link__secondary -ml-1">
+                  <span class="mr-1"><span class="opacity-50">#</span>ai</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>llm</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>trust</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>machinelearning</span>
+              </div>
+            </a>
+        </div>
+      </div>
+</div>
+
+<div class="crayons-article-sticky grid gap-4 break-word sidebar-bb" data-async-url="/minatoplanb/i-tested-every-browser-automation-tool-for-claude-code-heres-my-final-verdict-3hb7/bmar11/post_sidebar"></div>
+
+    </aside>
+  </div>
+
+  <div class="mod-actions-menu print-hidden"></div>
+  <div data-testid="unpublish-post-modal-container" class="unpublish-post-modal-container hidden"></div>
+
+  <div class="fullscreen-code js-fullscreen-code"></div>
+  <script src="https://assets.dev.to/assets/billboard-365f8f60fc3506e63bc54cc5b0a2e36f4c11024ff6a30dccd5462467f24b5215.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/localizeArticleDates-70147c5c6bfe350b42e020ebb2a3dd37419d83978982b5a67b6389119bf162ac.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/articleReactions-1f2220b03b8ee48f0e9196d07b123ad5c5d942328819c33728eab4a4ff83150b.js" defer="defer"></script>
+
+  <script>
+    function activateRunkitTags() {
+  if (!areAnyRunkitTagsPresent())
+    return
+
+  var checkRunkit = setInterval(function() {
+    try {
+      dynamicallyLoadRunkitLibrary()
+
+      if (typeof(RunKit) === 'undefined') {
+        return
+      }
+
+      replaceTagContentsWithRunkitWidget()
+      clearInterval(checkRunkit);
+    } catch(e) {
+      console.error(e);
+      clearInterval(checkRunkit);
+    }
+  }, 200);
+}
+
+function isRunkitTagAlreadyActive(runkitTag) {
+  return runkitTag.querySelector("iframe") !== null;
+};
+
+function areAnyRunkitTagsPresent() {
+  var presentRunkitTags = document.getElementsByClassName("runkit-element");
+
+  return presentRunkitTags.length > 0
+}
+
+function replaceTagContentsWithRunkitWidget() {
+  var targets = document.getElementsByClassName("runkit-element");
+  for (var i = 0; i < targets.length; i++) {
+    if (isRunkitTagAlreadyActive(targets[i])) {
+      continue;
+    }
+
+    var wrapperContent = targets[i].textContent;
+    if (/^(<iframe src)/.test(wrapperContent) === false) {
+      if (targets[i].children.length > 0) {
+        var preamble = targets[i].children[0].textContent;
+        var content = targets[i].children[1].textContent;
+        targets[i].innerHTML = "";
+        var notebook = RunKit.createNotebook({
+          element: targets[i],
+          source: content,
+          preamble: preamble
+        });
+      }
+    }
+  }
+};
+
+function dynamicallyLoadRunkitLibrary() {
+  if (typeof(dynamicallyLoadScript) === "undefined")
+    return
+
+  dynamicallyLoadScript("//embed.runkit.com")
+}
+
+activateRunkitTags();
+
+  </script>
+  <div class="js-billboard-container pb-4 crayons-layout__comments-billboard" data-async-url="/minatoplanb/i-tested-every-browser-automation-tool-for-claude-code-heres-my-final-verdict-3hb7/bmar11/post_fixed_bottom"></div>
+
+
+    <div id="runtime-banner-container"></div>
+    <div id="i18n-translations" data-translations="{&quot;en&quot;:{&quot;core&quot;:{&quot;add_comment&quot;:&quot;Add comment&quot;,&quot;beta&quot;:&quot;beta&quot;,&quot;comment&quot;:&quot;Comment&quot;,&quot;copy_link&quot;:&quot;Copy link&quot;,&quot;edit_profile&quot;:&quot;Edit profile&quot;,&quot;follow&quot;:&quot;Follow&quot;,&quot;follow_back&quot;:&quot;Follow back&quot;,&quot;following&quot;:&quot;Following&quot;,&quot;like&quot;:&quot;Like&quot;,&quot;loading&quot;:&quot;loading...&quot;,&quot;reaction&quot;:&quot;Reaction&quot;,&quot;report_abuse&quot;:&quot;Report abuse&quot;,&quot;search&quot;:&quot;Search&quot;,&quot;success_settings&quot;:&quot;Successfully updated settings.&quot;,&quot;search_placeholder&quot;:&quot;Search...&quot;,&quot;search_find_related_posts&quot;:&quot;Find related posts...&quot;,&quot;search_powered_by&quot;:&quot;Powered by Algolia&quot;,&quot;search_submit_search&quot;:&quot;Submit search for advanced filtering.&quot;,&quot;search_displaying_recommendations&quot;:&quot;Displaying Algolia Recommendations — Start typing to search&quot;,&quot;article_form_save_changes&quot;:&quot;Save changes&quot;,&quot;article_form_schedule&quot;:&quot;Schedule&quot;,&quot;article_form_publish&quot;:&quot;Publish&quot;,&quot;article_form_loading_preview&quot;:&quot;Loading preview&quot;,&quot;article_form_preview_loaded&quot;:&quot;Preview loaded&quot;,&quot;comments_preview&quot;:&quot;Preview&quot;,&quot;comments_continue_editing&quot;:&quot;Continue editing&quot;,&quot;survey_enter_response&quot;:&quot;Enter your response here...&quot;,&quot;survey_thank_you_response&quot;:&quot;Thank you for your response.&quot;,&quot;survey_thank_you_completing&quot;:&quot;Thank you for completing the survey!&quot;,&quot;dashboard_analytics_readers&quot;:&quot;Readers&quot;,&quot;dashboard_analytics_comments&quot;:&quot;Comments&quot;,&quot;dashboard_analytics_reactions&quot;:&quot;Reactions&quot;,&quot;stats_by&quot;:&quot;by&quot;,&quot;editor_new_title&quot;:&quot;New post title here...&quot;,&quot;editor_body_placeholder&quot;:&quot;Write your post content here...&quot;,&quot;tags_field_label&quot;:&quot;Add up to 4 tags&quot;,&quot;tags_field_placeholder&quot;:&quot;Add up to 4 tags...&quot;,&quot;counted_organization&quot;:{&quot;one&quot;:&quot;%{count} organization&quot;,&quot;other&quot;:&quot;%{count} organizations&quot;},&quot;counted_user&quot;:{&quot;one&quot;:&quot;%{count} person&quot;,&quot;other&quot;:&quot;%{count} people&quot;},&quot;not_following&quot;:&quot;You&#39;re not following anyone&quot;,&quot;following_everyone&quot;:&quot;You&#39;re following %{details} (everyone)&quot;,&quot;you_are_following&quot;:&quot;You&#39;re following&quot;,&quot;and&quot;:&quot;and&quot;}}}"></div>
+  </div>
+</div>
+    
+
+<footer id="footer" class="crayons-footer print-hidden">
+  <div id="footer-container" class="crayons-footer__container">
+
+
+        <style>
+  .long-bb-body {
+    max-height: calc(100vh - 200px);
+    overflow: hidden;
+  }
+  .long-bb-bottom {
+    height: 180px;
+    background: linear-gradient(to top, var(--card-bg), transparent);
+    margin-top: -180px;
+    position:relative;
+    z-index: 5;
+  }
+</style>
+
+  <div
+    style=""
+    data-display-unit data-id="146443"
+    data-category-click="click"
+    data-category-impression="impression"
+    data-context-type="home"
+    data-special="nothing"
+    data-article-id=""
+    data-type-of="in_house">
+          <div class="crayons-card crayons-card--secondary crayons-bb bb-placement js-billboard" style="display: inline-flex; flex-direction: column; align-items: center; margin: 0 auto 2rem auto; width: fit-content; padding: 2rem;">
+        <p style="font-weight: bold; margin: 0 0 1rem 0;">
+            💎 DEV Diamond Sponsors
+        </p>
+        <p style="font-size: 0.8em; margin: 0 0 2rem 0;">
+            Thank you to our Diamond Sponsors for supporting the DEV Community
+        </p>
+    
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://aistudio.google.com/?utm_source=partner&amp;utm_medium=partner&amp;utm_campaign=FY25-Global-DEVpartnership-sponsorship-AIS&amp;utm_content=-&amp;utm_term=-&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fxjlyhbdqehj3akhz166w.png" alt="Google AI - Official AI Model and Platform Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 54px; padding: 10px;" loading="lazy" width="2048" height="472">
+                </a>
+                <p style="text-align: center;">Google AI is the official AI Model and Platform Partner of DEV</p>
+            </div>
+
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://neon.tech/?ref=devto&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fbnl88cil6afxzmgwrgtt.png" alt="Neon - Official Database Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 60px; padding: 10px;" loading="lazy" width="2286" height="596">
+                </a>
+                <p style="text-align: center;">Neon is the official database partner of DEV</p>
+            </div>
+    
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://www.algolia.com/developers/?utm_source=devto&amp;utm_medium=referral&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fv30ephnolfvnlwgwm0yz.png" alt="Algolia - Official Search Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 60px; padding: 10px;" loading="lazy" width="2286" height="596">
+                </a>
+                <p style="text-align: center;">Algolia is the official search partner of DEV</p>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+    <p class="fs-s crayons-footer__description">
+      <a class="c-link c-link--branded fw-medium" aria-label="DEV Community Home" href="/">DEV Community</a> — Your community HQ
+    </p>
+
+    <ul class="footer__nav-links flex gap-2 justify-center flex-wrap fs-s p-0" style="" />
+        <li class="footer__nav-link flex items-center">
+    <a href="/">
+      Home
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/about">
+      About
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/contact">
+      Contact
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://mlh.io/">
+      MLH
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+
+    </ul>
+
+    <ul class="footer__nav-links flex gap-2 justify-center flex-wrap fs-s p-0" style="" />
+        <li class="footer__nav-link flex items-center">
+    <a href="/code-of-conduct">
+      Code of Conduct
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/privacy">
+      Privacy Policy
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/terms">
+      Terms of Use
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+
+    </ul>
+
+    <div class="fs-s">
+      <p>Built on <a class="c-link c-link--branded" target="_blank" rel="noopener" href="https://www.forem.com">Forem</a> — the <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/t/opensource">open source</a> software that powers <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to">DEV</a> and other inclusive communities.</p>
+      <p>Made with love and <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/t/rails">Ruby on Rails</a>. DEV Community <span title="copyright">&copy;</span> 2016 - 2026.</p>
+    </div>
+  </div>
+</footer>
+<div id="snack-zone"></div>
+
+    <div id="global-signup-modal" class="authentication-modal hidden">
+  <div class="authentication-modal__container">
+    <figure class="authentication-modal__image-container">
+      <img class="authentication-modal__image" src="https://media2.dev.to/dynamic/image/width=190,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+        alt="DEV Community" loading="lazy" />
+    </figure>
+    <div class="authentication-modal__content">
+      <p class="authentication-modal__description">
+          We&#39;re a place where coders share, stay up-to-date and grow their careers.
+      </p>
+    </div>
+    <div class="authentication-modal__actions">
+      <a href="https://dev.to/enter?signup_subforem=1" class="crayons-btn" aria-label="Log in" data-no-instant>
+        Log in
+      </a>
+      <a href="https://dev.to/enter?signup_subforem=1&amp;state=new-user" class="crayons-btn crayons-btn--ghost-brand js-global-signup-modal__create-account" aria-label="Create new account" data-no-instant>
+        Create account
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="https://assets.dev.to/assets/signupModalShortcuts-0b25469b985100a01e94cbd7fccaf7f0a4d776e129aac65c766aa32cb28ab29a.js" defer="defer"></script>
+
+    <div id="cookie-consent"></div>
+  <div id="reaction-category-resources" class="hidden" aria-hidden="true">
+    <img data-name="Like" data-slug="like" data-position="1" src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+    <img data-name="Unicorn" data-slug="unicorn" data-position="2" src="https://assets.dev.to/assets/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" width="18" height="18" />
+    <img data-name="Exploding Head" data-slug="exploding_head" data-position="3" src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" width="18" height="18" />
+    <img data-name="Raised Hands" data-slug="raised_hands" data-position="4" src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="18" height="18" />
+    <img data-name="Fire" data-slug="fire" data-position="5" src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+</div>
+
+    <script>
+  var userSignedIn = false;
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    initAuth();
+  } else {
+    document.addEventListener('DOMContentLoaded', initAuth);
+  }
+
+  function initAuth() {
+    var paramToken = new URLSearchParams(window.location.search).get('jwt');
+
+    if (paramToken && !userSignedIn) {
+      authenticateUser(paramToken);
+    } else {
+      var iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = 'https://forem.com/auth_pass/iframe';
+  
+      document.body.appendChild(iframe);
+  
+      window.addEventListener('message', function(event) {
+        if (event.origin !== 'https://forem.com' && event.origin !== window.location.origin) {
+          return;
+        }
+  
+        var data = event.data;
+  
+        if (data.authenticated && !userSignedIn) {
+          authenticateUser(data.token);
+        } else if(data.authenticated && window.ReactNativeWebView && window.ReactNativeWebView.postMessage) {
+          window.ReactNativeWebView.postMessage(JSON.stringify({
+            action: 'login',
+            token: data.token,
+          }));
+        }
+      });  
+    }
+
+    function authenticateUser(token) {
+      fetch('/auth_pass/token_login', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': getMetaContent('csrf-token'),
+        },
+        body: JSON.stringify({ token: token }),
+      })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        if (data.success) {
+          if (document.head.querySelector('meta[name="user-signed-in"][content="false"]')) {
+            // Reload the page to update the user's state
+            location.reload();
+          }
+        }
+      })
+      .catch(function(error) {
+        console.error('Error during authentication:', error);
+      });
+    }
+
+    function getMetaContent(name) {
+      var element = document.querySelector('meta[name="' + name + '"]');
+      return element ? element.getAttribute('content') : '';
+    }
+  }
+</script>
+
+  
+  
+  
+  </body>
+  </html>

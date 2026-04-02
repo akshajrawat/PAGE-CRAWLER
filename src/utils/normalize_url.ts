@@ -25,7 +25,20 @@ export function getNormalizedUrl(
       path = path.slice(0, -1);
     }
 
-    return `${protocol}//${host}${path}`;
+    // Remove fragments (#)
+    urlObj.hash = "";
+
+    // Strip tracking parameters, but keep content parameters (like ?id=123)
+    const trackingParams = [
+      "utm_source", "utm_medium", "utm_campaign", 
+      "utm_term", "utm_content", "ref", "source", "affiliate"
+    ];
+    trackingParams.forEach(param => urlObj.searchParams.delete(param));
+
+    // re-construct the search
+    const search = urlObj.search;
+
+    return `${protocol}//${host}${path}${search}`;
   } catch (error) {
     return null;
   }

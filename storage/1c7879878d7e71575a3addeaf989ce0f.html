@@ -1,0 +1,2826 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Challenge! - DEV Community</title>
+    
+  
+<link rel="canonical" href="https://dev.to/t/challenge" />
+<meta name="description" content="challenge content on DEV Community">
+<meta name="keywords" content="software development, engineering, challenge">
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://dev.to/t/challenge" />
+<meta property="og:title" content="Challenge!" />
+<meta property="og:description" content="Challenge! content on DEV Community" />
+<meta property="og:site_name" content="DEV Community" />
+
+<meta name="twitter:site" content="@thepracticaldev">
+<meta name="twitter:creator" content="@Challenge!">
+<meta name="twitter:title" content="Challenge!">
+<meta name="twitter:description" content="Challenge! content on DEV Community">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3otvb2z646ytpt1hl2rv.jpg">
+  <meta name="twitter:image:src" content="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3otvb2z646ytpt1hl2rv.jpg">
+
+
+      <meta name="last-updated" content="2026-04-01 08:45:06 UTC">
+      <meta name="user-signed-in" content="false">
+      <meta name="head-cached-at" content="1775033106">
+      <meta name="environment" content="production">
+      <link rel="stylesheet" href="https://assets.dev.to/assets/minimal-102395aec70cbac5f7d0bd5bebb5b56f0459629c5d224dae16333f11604cbad3.css" media="all" id="main-minimal-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/views-daf614dcfafed4955d7758a6a86d63bfbb1e8d4eae8b6317b421e18a99bbe867.css" media="all" id="main-views-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/crayons-8fce708625aacc3ff4a4d4947252a1cfab954753bb082374c0bed738861b52f2.css" media="all" id="main-crayons-stylesheet" />
+
+      <script src="https://assets.dev.to/assets/base-0c748bbcdc30041261c326ef2ce931fbce46c58bc3c488da881ae35c4750941d.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/application-0b268684912bef9b0f23defff01cb608bfc5d5e5610287725e7b686139ae32d3.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/baseInitializers-2f0777a6d67046056f9f42665560ce072de3801292674358ddbad6e135c1891d.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/baseTracking-b6bf73e5ee66633e151e7d5b7c6bbccedfa4c59e3615be97b98c4c0f543ddae7.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/followButtons-a29380c2c88136b97b2b5e63e94614ff7458fc72e07cffa7b6153831c28a40d2.js" defer="defer"></script>
+
+        <meta name="search-script" content="https://assets.dev.to/assets/Search-b977aea0f2d7a5818b4ebd97f7d4aba8548099f84f5db5761f8fa67be76abc54.js">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+      <link rel="icon" type="image/x-icon" href="https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" />
+      <link rel="apple-touch-icon" href="https://media2.dev.to/dynamic/image/width=180,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="https://media2.dev.to/dynamic/image/width=152,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="https://media2.dev.to/dynamic/image/width=180,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="167x167" href="https://media2.dev.to/dynamic/image/width=167,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link href="https://media2.dev.to/dynamic/image/width=192,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" rel="icon" sizes="192x192" />
+      <link href="https://media2.dev.to/dynamic/image/width=128,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" rel="icon" sizes="128x128" />
+      <meta name="apple-mobile-web-app-title" content="dev.to">
+      <meta name="application-name" content="dev.to">
+      <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+      <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+      <link rel="search" href="https://dev.to/open-search.xml" type="application/opensearchdescription+xml" title="DEV Community" />
+
+      <meta property="forem:name" content="DEV Community" />
+      <meta property="forem:logo" content="https://media2.dev.to/dynamic/image/width=512,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" />
+      <meta property="forem:domain" content="dev.to" />
+    <style>
+.ltag__link--embedded img.subscription-icon {
+max-height: 13px !important;
+max-width: 21px !important;
+display: inline-block !important;
+border-radius: 0 !important;
+}
+.text-styles .crayons-article__context-note p {
+margin-bottom: 0 !important;
+}
+</style>
+  </head>
+    <body
+      class="sans-serif-article-body default-header"
+      data-user-status="logged-out"
+      data-is-root-subforem="false"
+        data-subforem-id="1"
+      data-side-nav-visible="true"
+      data-community-name="DEV Community"
+      data-subscription-icon="https://assets.dev.to/assets/subscription-icon-805dfa7ac7dd660f07ed8d654877270825b07a92a03841aa99a1093bd00431b2.png"
+      data-locale="en"
+      data-honeybadger-key="hbp_nqu4Y66HuEKlD6YRGssZuRQnPOjDm50J8Zkr"
+      data-deployed-at="2026-03-31T16:23:33Z"
+      data-latest-commit-id="786e25495afed32bb807645b48a724374606e51e"
+      data-ga-tracking="UA-71991109-1"
+      data-cookie-banner-user-context="logged_out_only"
+      data-cookie-banner-platform-context="off"
+      data-algolia-id="PRSOBFP46H"
+      data-algolia-search-key="9aa7d31610cba78851c9b1f63776a9dd"
+      data-algolia-display="true"
+      data-dynamic-url-component="bmar11"
+      data-ga4-tracking-id="G-TYEM8Y3JN3">
+      
+      <script>
+        if (navigator.userAgent === 'ForemWebView/1' || window.frameElement) {
+          document.body.classList.add("hidden-shell");
+        }
+          if (new Date() > new Date("2026-02-04T09:00:00-05:00")) {
+            document.body.dataset.sideNavVisible = "false";
+          } 
+      </script>
+
+      <link rel="stylesheet" href="https://assets.dev.to/assets/minimal-102395aec70cbac5f7d0bd5bebb5b56f0459629c5d224dae16333f11604cbad3.css" media="all" id="secondary-minimal-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/views-daf614dcfafed4955d7758a6a86d63bfbb1e8d4eae8b6317b421e18a99bbe867.css" media="all" id="secondary-views-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/crayons-8fce708625aacc3ff4a4d4947252a1cfab954753bb082374c0bed738861b52f2.css" media="all" id="secondary-crayons-stylesheet" />
+
+      <div id="body-styles">
+        <style>
+          :root {
+            --accent-brand-lighter-rgb: 80, 99, 301;
+            --accent-brand-rgb: 59, 73, 223;
+            --accent-brand-darker-rgb: 47, 58, 178;
+          }
+        </style>
+      </div>
+      <div id="audiocontent" data-podcast="">
+        
+      </div>
+      <div class="navigation-progress" id="navigation-progress"></div>
+
+<header id="topbar" class="crayons-header topbar print-hidden">
+  <span id="route-change-target" tabindex="-1"></span>
+  <a href="#main-content" class="skip-content-link">Skip to content</a>
+  <div class="crayons-header__container">
+    <span class="inline-block m:hidden ">
+      <button class="c-btn c-btn--icon-alone js-hamburger-trigger mx-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="afiy77frbly5zk0nzx4kwwq7ahp9usz2" class="crayons-icon"><title id="afiy77frbly5zk0nzx4kwwq7ahp9usz2">Navigation menu</title>
+    <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"></path>
+</svg>
+
+      </button>
+    </span>
+    <a href="/" class="site-logo" aria-label="DEV Community Home" >
+    <img class="site-logo__img"
+         src="https://media2.dev.to/dynamic/image/quality=100/https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png"
+         style="aspect-ratio: 10 / 8"
+         alt="DEV Community">
+</a>
+
+
+    <div class="crayons-header--search js-search-form" id="header-search">
+      <form accept-charset="UTF-8" method="get" action="/search" role="search">
+        <div class="crayons-fields crayons-fields--horizontal">
+          <div class="crayons-field flex-1 relative">
+            <input id="search-input" class="crayons-header--search-input crayons-textfield js-search-input" type="text" id="nav-search" name="q" placeholder="Search..." autocomplete="off" />
+            <button type="submit" aria-label="Search" class="c-btn c-btn--icon-alone absolute inset-px right-auto mt-0 py-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="aj54j8eyv93nzeoptrf22ks3rqlt73qa" aria-hidden="true" class="crayons-icon"><title id="aj54j8eyv93nzeoptrf22ks3rqlt73qa">Search</title>
+    <path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0111 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 01-1.969 5.617zm-2.006-.742A6.977 6.977 0 0018 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 004.875-1.975l.15-.15z"></path>
+</svg>
+
+            </button>
+
+            <a class="crayons-header--search-brand-indicator" href="https://www.algolia.com/developers/?utm_source=devto&utm_medium=referral" target="_blank" rel="noopener noreferrer">
+                Powered by Algolia
+                <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" width="24" height="24" viewBox="0 0 500 500.34" role="img" aria-labelledby="ae0nd43fbpfeeeufq08qstclz2vi1gbl" aria-hidden="true" class="crayons-icon"><title id="ae0nd43fbpfeeeufq08qstclz2vi1gbl">Search</title>
+  <defs></defs><path class="cls-1" d="M250,0C113.38,0,2,110.16,.03,246.32c-2,138.29,110.19,252.87,248.49,253.67,42.71,.25,83.85-10.2,120.38-30.05,3.56-1.93,4.11-6.83,1.08-9.52l-23.39-20.74c-4.75-4.22-11.52-5.41-17.37-2.92-25.5,10.85-53.21,16.39-81.76,16.04-111.75-1.37-202.04-94.35-200.26-206.1,1.76-110.33,92.06-199.55,202.8-199.55h202.83V407.68l-115.08-102.25c-3.72-3.31-9.43-2.66-12.43,1.31-18.47,24.46-48.56,39.67-81.98,37.36-46.36-3.2-83.92-40.52-87.4-86.86-4.15-55.28,39.65-101.58,94.07-101.58,49.21,0,89.74,37.88,93.97,86.01,.38,4.28,2.31,8.28,5.53,11.13l29.97,26.57c3.4,3.01,8.8,1.17,9.63-3.3,2.16-11.55,2.92-23.6,2.07-35.95-4.83-70.39-61.84-127.01-132.26-131.35-80.73-4.98-148.23,58.18-150.37,137.35-2.09,77.15,61.12,143.66,138.28,145.36,32.21,.71,62.07-9.42,86.2-26.97l150.36,133.29c6.45,5.71,16.62,1.14,16.62-7.48V9.49C500,4.25,495.75,0,490.51,0H250Z"></path>
+</svg>
+
+            </a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="flex items-center h-100 ml-auto">
+        <div class="flex" id="authentication-top-nav-actions">
+          <span class="hidden m:block">
+            <a href="https://dev.to/enter?signup_subforem=1" class="c-link c-link--block mr-2 whitespace-nowrap ml-auto" data-no-instant>
+              Log in
+            </a>
+          </span>
+
+          <a href="https://dev.to/enter?signup_subforem=1&amp;state=new-user" data-tracking-id="ca_top_nav" data-tracking-source="top_navbar" class="c-cta c-cta--branded whitespace-nowrap mr-2" data-no-instant>
+            Create account
+          </a>
+        </div>
+    </div>
+  </div>
+</header>
+
+<div class="hamburger">
+  <div class="hamburger__content">
+    <header class="hamburger__content__header">
+      <h2 class="fs-l fw-bold flex-1 break-word lh-tight">DEV Community</h2>
+
+      <button class="c-btn c-btn--icon-alone js-hamburger-trigger shrink-0" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="ab5nbguz7buvjv4w90yfzsrxadwoablz" aria-hidden="true" class="crayons-icon c-btn__icon"><title id="ab5nbguz7buvjv4w90yfzsrxadwoablz">Close</title><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636l4.95 4.95z"></path></svg>
+
+      </button>
+    </header>
+
+    <div class="p-2 js-navigation-links-container" id="authentication-hamburger-actions">
+    </div>
+  </div>
+  <div class="hamburger__overlay js-hamburger-trigger"></div>
+</div>
+
+
+      <div id="active-broadcast" class="broadcast-wrapper"></div>
+<div id="page-content" class="wrapper tagged_articles tagged_articles-index" data-current-page="tagged_articles-index">
+  <div id="page-content-inner" data-internal-nav="false">
+    <div id="page-route-change" class="screen-reader-only" aria-live="polite" aria-atomic="true"></div>
+
+    <div data-tag-id="2000" data-tag-name="challenge" id="tag-2000" class="crayons-layout js-tag-card">
+  <header class="crayons-card branded-4 p-4 l:p-6 spec__tag-header" style="border-top-color: #bf1942 ">
+    <div class="flex">
+      <div class="flex flex-col w-100 justify-center">
+        <div class="flex justify-between items-center">
+          <h1 class="crayons-title">
+              Challenge!
+          </h1>
+            <div id="tag-buttons-2000" class="mt-auto flex items-end justify-between">
+              <div class="flex gap-2">
+                <button
+                  class="c-btn c-btn--primary js-follow-tag-button"
+                  aria-label="Follow tag: challenge">
+                  Follow
+                </button>
+                <button
+                  class="c-btn js-hide-tag-button"
+                  aria-label="Hide tag: challenge">
+                  Hide
+                </button>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
+
+<div class="home sub-home" id="index-container"
+    data-params="{&quot;tag&quot;:&quot;challenge&quot;,&quot;sort_by&quot;:&quot;hotness_score&quot;,&quot;sort_direction&quot;:&quot;desc&quot;}" data-which=""
+    data-tag="challenge"
+    data-feed="base-feed"
+    data-disable-infinite-scroll="true"
+    data-requires-approval="false"
+    data-articles-since="">
+    <div id="sidebar-wrapper-left" class="sidebar-wrapper sidebar-wrapper-left">
+    <div class="sidebar-bg" id="sidebar-bg-left"></div>
+    <aside class="side-bar fs-s">
+        <div class="widget js-policy-article-create">
+          <a class="crayons-btn crayons-btn--s" href="/new/challenge">
+            Create Post
+          </a>
+</div>          <div class="widget">
+            <header>
+              <h4 class="fs-base fw-medium">submission guidelines</h4>
+            </header>
+            <div class="widget-body fs-s">
+              <p>Posts here should have a call to action which can be fulfilled via a comment. For example: <strong>Write a script to identify an anagram</strong></p>
+
+<p>Challenge posts should present some sort of coding or technical problem. Solutions to the problem will be sent in via comments. </p>
+
+            </div>
+          </div>
+      <div class="sidebar-data">
+          <hr />
+          <div class="olderposts-header fs-base fw-medium">Older #challenge posts</div>
+          <div class="olderposts-links">
+                  <span class="olderposts-pagenumber">1</span>
+                  <a href="https://dev.to/t/challenge/page/2" class="olderposts-pagenumber">2</a>
+                  <a href="https://dev.to/t/challenge/page/3" class="olderposts-pagenumber">3</a>
+                  <a href="https://dev.to/t/challenge/page/4" class="olderposts-pagenumber">4</a>
+                  <a href="https://dev.to/t/challenge/page/5" class="olderposts-pagenumber">5</a>
+                  <a href="https://dev.to/t/challenge/page/6" class="olderposts-pagenumber">6</a>
+                  <a href="https://dev.to/t/challenge/page/7" class="olderposts-pagenumber">7</a>
+                  <a href="https://dev.to/t/challenge/page/8" class="olderposts-pagenumber">8</a>
+                  <a href="https://dev.to/t/challenge/page/9" class="olderposts-pagenumber">9</a>
+              <div>
+                …<a href="https://dev.to/t/challenge/page/75" class="olderposts-pagenumber">75</a>
+                …<a href="https://dev.to/t/challenge/page/162" class="olderposts-pagenumber">162</a>
+              </div>
+          </div>
+      </div>
+    </aside>
+  </div>
+
+  <main class="articles-list" id="main-content" data-follow-button-container="true">
+    <header class="flex items-center p-2 m:p-0 m:pb-2" id="on-page-nav-controls">
+      <h1 class="screen-reader-only">Posts</h1>
+      <button type="button" class="crayons-btn crayons-btn--ghost crayons-btn--icon mr-2 inline-block m:hidden mb-auto" id="on-page-nav-butt-left" aria-label="nav-button-left">
+        <div class="crayons-icon nav-icon ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a8zju8e038chhyejict6et4cb89xqt0x" class="crayons-icon"><title id="a8zju8e038chhyejict6et4cb89xqt0x">Left menu</title>
+    <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"></path>
+</svg>
+
+        </div>
+      </button>
+        <div class="flex-1 flex items-center justify-between">
+          <div class="crayons-notice w-100" aria-live="polite">👋 <a href="https://dev.to/enter?signup_subforem=1">Sign in</a> for the ability to sort posts by <strong>relevant</strong>, <strong>latest</strong>, or <strong>top</strong>.</div>
+        </div>
+
+      <button type="button" class="crayons-btn crayons-btn--ghost crayons-btn--icon ml-2 inline-block l:hidden mb-auto" id="on-page-nav-butt-right" aria-label="nav-button-right">
+        <div class="crayons-icon nav-icon ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="ae7amwpk5l166jjkoum9po2cni5d5yfh" class="crayons-icon"><title id="ae7amwpk5l166jjkoum9po2cni5d5yfh">Right menu</title>
+    <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"></path>
+</svg>
+
+        </div>
+      </button>
+    </header>
+
+    <div class="substories" id="substories">
+        <div class="crayons-story " data-feed-content-id="3432178" data-content-user-id="3711376">
+  <a href="https://dev.to/francistrdev/what-is-your-wpm-words-per-minute-1af7" aria-labelledby="article-link-3432178" class="crayons-story__hidden-navigation-link">What is your WPM (Words per Minute)? #1</a>
+    <div class="crayons-article__cover crayons-article__cover__image__feed" style="width: 100%; aspect-ratio: 16 / 9; position: relative;">
+      <iframe src="https://www.youtube.com/embed/Z9G1Mf6TZRs" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true" title="What is your WPM (Words per Minute)? #1" style="border: 0px; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;"></iframe>
+    </div>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/francistrdev" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3711376%2F746cce1f-2c09-40fc-9742-387af1855b6d.gif" alt="francistrdev profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/francistrdev" class="crayons-story__secondary fw-medium m:hidden">
+              FrancisTRᴅᴇᴠ (っ◔◡◔)っ
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3432178" aria-controls="story-author-preview-content-3432178" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="FrancisTRᴅᴇᴠ (っ◔◡◔)っ profile details">
+                FrancisTRᴅᴇᴠ (っ◔◡◔)っ
+                <a style="display: inline;" href="/++"><img alt="Subscriber" class="subscription-icon" src="https://assets.dev.to/assets/subscription-icon-805dfa7ac7dd660f07ed8d654877270825b07a92a03841aa99a1093bd00431b2.png" /></a>
+              </button>
+              <div
+                id="story-author-preview-content-3432178"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/francistrdev" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3711376%2F746cce1f-2c09-40fc-9742-387af1855b6d.gif"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">FrancisTRᴅᴇᴠ (っ◔◡◔)っ</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3711376,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;FrancisTRᴅᴇᴠ (っ◔◡◔)っ&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3711376"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/francistrdev/what-is-your-wpm-words-per-minute-1af7" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-30T19:25:39Z">Mar 30</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774898739"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/francistrdev/what-is-your-wpm-words-per-minute-1af7" data-preload-image="" id="article-link-3432178">
+          What is your WPM (Words per Minute)? #1
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag crayons-tag--filled  " style="
+        --tag-bg: rgba(113, 234, 139, 0.10);
+        --tag-prefix: #71EA8B;
+        --tag-bg-hover: rgba(113, 234, 139, 0.10);
+        --tag-prefix-hover: #71EA8B;
+      " href="/t/discuss"><span class="crayons-tag__prefix">#</span>discuss</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(208, 236, 255, 0.10);
+        --tag-prefix: #D0ECFF;
+        --tag-bg-hover: rgba(208, 236, 255, 0.10);
+        --tag-prefix-hover: #D0ECFF;
+      " href="/t/watercooler"><span class="crayons-tag__prefix">#</span>watercooler</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(191, 25, 66, 0.10);
+        --tag-prefix: #bf1942;
+        --tag-bg-hover: rgba(191, 25, 66, 0.10);
+        --tag-prefix-hover: #bf1942;
+      " href="/t/challenge"><span class="crayons-tag__prefix">#</span>challenge</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(247, 150, 0, 0.10);
+        --tag-prefix: #f79600;
+        --tag-bg-hover: rgba(247, 150, 0, 0.10);
+        --tag-prefix-hover: #f79600;
+      " href="/t/community"><span class="crayons-tag__prefix">#</span>community</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/francistrdev/what-is-your-wpm-words-per-minute-1af7" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3432178" aria-label="Add a comment to post - What is your WPM (Words per Minute)? #1">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">38<span class="hidden s:inline"> reactions</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/francistrdev/what-is-your-wpm-words-per-minute-1af7#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - What is your WPM (Words per Minute)? #1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a4hbpiy0gmpvooefbmbcrxcwx94cjz44" class="crayons-icon"><title id="a4hbpiy0gmpvooefbmbcrxcwx94cjz44">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              54<span class="hidden s:inline"> comments</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            1 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3432178"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3432178"
+              data-article-author-id="3711376"
+              aria-label="Save post What is your WPM (Words per Minute)? #1 to reading list"
+              title="Save post What is your WPM (Words per Minute)? #1 to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3431000" data-content-user-id="3815898">
+  <a href="https://dev.to/mrdisloyal/i-built-a-custom-reddit-search-tool-apis-we-dont-need-no-stinkin-apis-pure-web-scraping-20li" aria-labelledby="article-link-3431000" class="crayons-story__hidden-navigation-link">I Built a Custom Reddit Search Tool. APIs? We Don&#39;t Need No Stinkin&#39; APIs! (Pure Web Scraping Power!)</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/mrdisloyal" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3815898%2F53f1ecf2-eac5-42f6-8e69-864dc17e9fa7.png" alt="mrdisloyal profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/mrdisloyal" class="crayons-story__secondary fw-medium m:hidden">
+              Mr Disloyal
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3431000" aria-controls="story-author-preview-content-3431000" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Mr Disloyal profile details">
+                Mr Disloyal
+                
+              </button>
+              <div
+                id="story-author-preview-content-3431000"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/mrdisloyal" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3815898%2F53f1ecf2-eac5-42f6-8e69-864dc17e9fa7.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Mr Disloyal</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3815898,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Mr Disloyal&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3815898"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/mrdisloyal/i-built-a-custom-reddit-search-tool-apis-we-dont-need-no-stinkin-apis-pure-web-scraping-20li" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-30T13:23:16Z">Mar 30</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774876996"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/mrdisloyal/i-built-a-custom-reddit-search-tool-apis-we-dont-need-no-stinkin-apis-pure-web-scraping-20li" data-preload-image="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F5j7w25vro04kzsuav2hb.png" id="article-link-3431000">
+          I Built a Custom Reddit Search Tool. APIs? We Don&#39;t Need No Stinkin&#39; APIs! (Pure Web Scraping Power!)
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag crayons-tag--filled  " style="
+        --tag-bg: rgba(191, 25, 66, 0.10);
+        --tag-prefix: #bf1942;
+        --tag-bg-hover: rgba(191, 25, 66, 0.10);
+        --tag-prefix-hover: #bf1942;
+      " href="/t/challenge"><span class="crayons-tag__prefix">#</span>challenge</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(86, 39, 101, 0.10);
+        --tag-prefix: #562765;
+        --tag-bg-hover: rgba(86, 39, 101, 0.10);
+        --tag-prefix-hover: #562765;
+      " href="/t/webdev"><span class="crayons-tag__prefix">#</span>webdev</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(137, 6, 6, 0.10);
+        --tag-prefix: #890606;
+        --tag-bg-hover: rgba(137, 6, 6, 0.10);
+        --tag-prefix-hover: #890606;
+      " href="/t/programming"><span class="crayons-tag__prefix">#</span>programming</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(9, 27, 71, 0.10);
+        --tag-prefix: #091b47;
+        --tag-bg-hover: rgba(9, 27, 71, 0.10);
+        --tag-prefix-hover: #091b47;
+      " href="/t/showdev"><span class="crayons-tag__prefix">#</span>showdev</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+            <a href="https://dev.to/mrdisloyal/i-built-a-custom-reddit-search-tool-apis-we-dont-need-no-stinkin-apis-pure-web-scraping-20li#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - I Built a Custom Reddit Search Tool. APIs? We Don&#39;t Need No Stinkin&#39; APIs! (Pure Web Scraping Power!)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a32xygemumhht6tn2g6kkq9om5fs7sv3" class="crayons-icon"><title id="a32xygemumhht6tn2g6kkq9om5fs7sv3">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            4 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3431000"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3431000"
+              data-article-author-id="3815898"
+              aria-label="Save post I Built a Custom Reddit Search Tool. APIs? We Don&#39;t Need No Stinkin&#39; APIs! (Pure Web Scraping Power!) to reading list"
+              title="Save post I Built a Custom Reddit Search Tool. APIs? We Don&#39;t Need No Stinkin&#39; APIs! (Pure Web Scraping Power!) to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3381847" data-content-user-id="3837653">
+  <a href="https://dev.to/ironic_lawdoctor_ffc2dca/five-loaves-and-two-fish-how-one-agent-fed-93-sub-agents-using-notion-mcp-3i70" aria-labelledby="article-link-3381847" class="crayons-story__hidden-navigation-link">Five Loaves and Two Fish: How One Agent Fed 93 Sub-Agents Using Notion MCP</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/ironic_lawdoctor_ffc2dca" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3837653%2F5b077cc1-de76-4225-8fb5-c2f83fb8bcbe.png" alt="ironic_lawdoctor_ffc2dca profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/ironic_lawdoctor_ffc2dca" class="crayons-story__secondary fw-medium m:hidden">
+              Ironic Law Doctor
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3381847" aria-controls="story-author-preview-content-3381847" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Ironic Law Doctor profile details">
+                Ironic Law Doctor
+                
+              </button>
+              <div
+                id="story-author-preview-content-3381847"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/ironic_lawdoctor_ffc2dca" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3837653%2F5b077cc1-de76-4225-8fb5-c2f83fb8bcbe.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Ironic Law Doctor</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3837653,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Ironic Law Doctor&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3837653"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/ironic_lawdoctor_ffc2dca/five-loaves-and-two-fish-how-one-agent-fed-93-sub-agents-using-notion-mcp-3i70" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-22T00:40:48Z">Mar 22</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774140048"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/ironic_lawdoctor_ffc2dca/five-loaves-and-two-fish-how-one-agent-fed-93-sub-agents-using-notion-mcp-3i70" data-preload-image="" id="article-link-3381847">
+          Five Loaves and Two Fish: How One Agent Fed 93 Sub-Agents Using Notion MCP
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag crayons-tag--filled  " style="
+        --tag-bg: rgba(191, 25, 66, 0.10);
+        --tag-prefix: #bf1942;
+        --tag-bg-hover: rgba(191, 25, 66, 0.10);
+        --tag-prefix-hover: #bf1942;
+      " href="/t/challenge"><span class="crayons-tag__prefix">#</span>challenge</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/notion"><span class="crayons-tag__prefix">#</span>notion</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(0, 0, 0, 0.10);
+        --tag-prefix: #000000;
+        --tag-bg-hover: rgba(0, 0, 0, 0.10);
+        --tag-prefix-hover: #000000;
+      " href="/t/mcp"><span class="crayons-tag__prefix">#</span>mcp</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(23, 253, 26, 0.10);
+        --tag-prefix: #17fd1a;
+        --tag-bg-hover: rgba(23, 253, 26, 0.10);
+        --tag-prefix-hover: #17fd1a;
+      " href="/t/ai"><span class="crayons-tag__prefix">#</span>ai</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/ironic_lawdoctor_ffc2dca/five-loaves-and-two-fish-how-one-agent-fed-93-sub-agents-using-notion-mcp-3i70" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3381847" aria-label="Add a comment to post - Five Loaves and Two Fish: How One Agent Fed 93 Sub-Agents Using Notion MCP">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">1<span class="hidden s:inline"> reaction</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/ironic_lawdoctor_ffc2dca/five-loaves-and-two-fish-how-one-agent-fed-93-sub-agents-using-notion-mcp-3i70#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Five Loaves and Two Fish: How One Agent Fed 93 Sub-Agents Using Notion MCP">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a5g5qpen7v5z5s7h0q9xlo26vpo52q34" class="crayons-icon"><title id="a5g5qpen7v5z5s7h0q9xlo26vpo52q34">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            3 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3381847"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3381847"
+              data-article-author-id="3837653"
+              aria-label="Save post Five Loaves and Two Fish: How One Agent Fed 93 Sub-Agents Using Notion MCP to reading list"
+              title="Save post Five Loaves and Two Fish: How One Agent Fed 93 Sub-Agents Using Notion MCP to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3410646" data-content-user-id="3789012">
+  <a href="https://dev.to/tyler_biffle_1ca74cc0e8ee/why-no-code-can-be-more-difficult-than-coding-for-a-senior-software-engineer-11f4" aria-labelledby="article-link-3410646" class="crayons-story__hidden-navigation-link">Why No-Code Can Be More Difficult Than Coding for a Senior Software Engineer</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/tyler_biffle_1ca74cc0e8ee" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3789012%2F2a3b6bdc-b84c-4f27-a68f-37a8ac943afe.jpg" alt="tyler_biffle_1ca74cc0e8ee profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/tyler_biffle_1ca74cc0e8ee" class="crayons-story__secondary fw-medium m:hidden">
+              Tyler Biffle
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3410646" aria-controls="story-author-preview-content-3410646" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Tyler Biffle profile details">
+                Tyler Biffle
+                
+              </button>
+              <div
+                id="story-author-preview-content-3410646"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/tyler_biffle_1ca74cc0e8ee" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3789012%2F2a3b6bdc-b84c-4f27-a68f-37a8ac943afe.jpg"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Tyler Biffle</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3789012,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Tyler Biffle&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3789012"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/tyler_biffle_1ca74cc0e8ee/why-no-code-can-be-more-difficult-than-coding-for-a-senior-software-engineer-11f4" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-26T19:20:11Z">Mar 26</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774552811"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/tyler_biffle_1ca74cc0e8ee/why-no-code-can-be-more-difficult-than-coding-for-a-senior-software-engineer-11f4" data-preload-image="" id="article-link-3410646">
+          Why No-Code Can Be More Difficult Than Coding for a Senior Software Engineer
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag crayons-tag--filled  " style="
+        --tag-bg: rgba(191, 25, 66, 0.10);
+        --tag-prefix: #bf1942;
+        --tag-bg-hover: rgba(191, 25, 66, 0.10);
+        --tag-prefix-hover: #bf1942;
+      " href="/t/challenge"><span class="crayons-tag__prefix">#</span>challenge</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/nocode"><span class="crayons-tag__prefix">#</span>nocode</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(175, 39, 242, 0.10);
+        --tag-prefix: #af27f2;
+        --tag-bg-hover: rgba(175, 39, 242, 0.10);
+        --tag-prefix-hover: #af27f2;
+      " href="/t/coding"><span class="crayons-tag__prefix">#</span>coding</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(113, 234, 139, 0.10);
+        --tag-prefix: #71EA8B;
+        --tag-bg-hover: rgba(113, 234, 139, 0.10);
+        --tag-prefix-hover: #71EA8B;
+      " href="/t/discuss"><span class="crayons-tag__prefix">#</span>discuss</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/tyler_biffle_1ca74cc0e8ee/why-no-code-can-be-more-difficult-than-coding-for-a-senior-software-engineer-11f4" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3410646" aria-label="Add a comment to post - Why No-Code Can Be More Difficult Than Coding for a Senior Software Engineer">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">15<span class="hidden s:inline"> reactions</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/tyler_biffle_1ca74cc0e8ee/why-no-code-can-be-more-difficult-than-coding-for-a-senior-software-engineer-11f4#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Why No-Code Can Be More Difficult Than Coding for a Senior Software Engineer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a1xdgk2n4mz2rkqvvac4jqeulbi3i2s2" class="crayons-icon"><title id="a1xdgk2n4mz2rkqvvac4jqeulbi3i2s2">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            7 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3410646"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3410646"
+              data-article-author-id="3789012"
+              aria-label="Save post Why No-Code Can Be More Difficult Than Coding for a Senior Software Engineer to reading list"
+              title="Save post Why No-Code Can Be More Difficult Than Coding for a Senior Software Engineer to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3385599" data-content-user-id="3705876">
+  <a href="https://dev.to/bingkahu/weekly-challenge-4-still-taking-challenges-kb3" aria-labelledby="article-link-3385599" class="crayons-story__hidden-navigation-link">Weekly Challenge #4 : Still Taking Challenges 💥</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/bingkahu" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3705876%2F01715f71-8906-4796-9799-ca2aa3fd9896.png" alt="bingkahu profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/bingkahu" class="crayons-story__secondary fw-medium m:hidden">
+              bingkahu (Matteo)
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3385599" aria-controls="story-author-preview-content-3385599" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="bingkahu (Matteo) profile details">
+                bingkahu (Matteo)
+                
+              </button>
+              <div
+                id="story-author-preview-content-3385599"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/bingkahu" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3705876%2F01715f71-8906-4796-9799-ca2aa3fd9896.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">bingkahu (Matteo)</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3705876,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;bingkahu (Matteo)&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3705876"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/bingkahu/weekly-challenge-4-still-taking-challenges-kb3" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-22T18:26:45Z">Mar 22</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774204005"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/bingkahu/weekly-challenge-4-still-taking-challenges-kb3" data-preload-image="" id="article-link-3385599">
+          Weekly Challenge #4 : Still Taking Challenges 💥
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag crayons-tag--filled  " style="
+        --tag-bg: rgba(113, 234, 139, 0.10);
+        --tag-prefix: #71EA8B;
+        --tag-bg-hover: rgba(113, 234, 139, 0.10);
+        --tag-prefix-hover: #71EA8B;
+      " href="/t/discuss"><span class="crayons-tag__prefix">#</span>discuss</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(255, 51, 224, 0.10);
+        --tag-prefix: #ff33e0;
+        --tag-bg-hover: rgba(255, 51, 224, 0.10);
+        --tag-prefix-hover: #ff33e0;
+      " href="/t/frontend"><span class="crayons-tag__prefix">#</span>frontend</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(191, 25, 66, 0.10);
+        --tag-prefix: #bf1942;
+        --tag-bg-hover: rgba(191, 25, 66, 0.10);
+        --tag-prefix-hover: #bf1942;
+      " href="/t/challenge"><span class="crayons-tag__prefix">#</span>challenge</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/weeklychallenge"><span class="crayons-tag__prefix">#</span>weeklychallenge</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/bingkahu/weekly-challenge-4-still-taking-challenges-kb3" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3385599" aria-label="Add a comment to post - Weekly Challenge #4 : Still Taking Challenges 💥">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">6<span class="hidden s:inline"> reactions</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/bingkahu/weekly-challenge-4-still-taking-challenges-kb3#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Weekly Challenge #4 : Still Taking Challenges 💥">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="akj6egfdps5nopmdmgqj44t5p6wnxpw3" class="crayons-icon"><title id="akj6egfdps5nopmdmgqj44t5p6wnxpw3">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              2<span class="hidden s:inline"> comments</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            1 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3385599"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3385599"
+              data-article-author-id="3705876"
+              aria-label="Save post Weekly Challenge #4 : Still Taking Challenges 💥 to reading list"
+              title="Save post Weekly Challenge #4 : Still Taking Challenges 💥 to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3335990" data-content-user-id="904121">
+  <a href="https://dev.to/cathylai/challenge-ios-app-from-zero-to-a-friends-phone-in-1-hour-4gfo" aria-labelledby="article-link-3335990" class="crayons-story__hidden-navigation-link">Challenge: iOS App from Zero to a Friend&#39;s Phone in a Different City in 1 Hour</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/cathylai" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F904121%2Fdeac3704-41b3-4e1b-a391-0257ed0e729f.jpeg" alt="cathylai profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/cathylai" class="crayons-story__secondary fw-medium m:hidden">
+              Cathy Lai
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3335990" aria-controls="story-author-preview-content-3335990" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Cathy Lai profile details">
+                Cathy Lai
+                
+              </button>
+              <div
+                id="story-author-preview-content-3335990"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/cathylai" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F904121%2Fdeac3704-41b3-4e1b-a391-0257ed0e729f.jpeg"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Cathy Lai</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:904121,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Cathy Lai&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="904121"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/cathylai/challenge-ios-app-from-zero-to-a-friends-phone-in-1-hour-4gfo" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-11T21:31:59Z">Mar 11</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1773264719"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/cathylai/challenge-ios-app-from-zero-to-a-friends-phone-in-1-hour-4gfo" data-preload-image="" id="article-link-3335990">
+          Challenge: iOS App from Zero to a Friend&#39;s Phone in a Different City in 1 Hour
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag crayons-tag--filled  " style="
+        --tag-bg: rgba(191, 25, 66, 0.10);
+        --tag-prefix: #bf1942;
+        --tag-bg-hover: rgba(191, 25, 66, 0.10);
+        --tag-prefix-hover: #bf1942;
+      " href="/t/challenge"><span class="crayons-tag__prefix">#</span>challenge</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/expo"><span class="crayons-tag__prefix">#</span>expo</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(0, 0, 0, 0.10);
+        --tag-prefix: #000000;
+        --tag-bg-hover: rgba(0, 0, 0, 0.10);
+        --tag-prefix-hover: #000000;
+      " href="/t/buildinpublic"><span class="crayons-tag__prefix">#</span>buildinpublic</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(163, 252, 85, 0.10);
+        --tag-prefix: #a3fc55;
+        --tag-bg-hover: rgba(163, 252, 85, 0.10);
+        --tag-prefix-hover: #a3fc55;
+      " href="/t/mobile"><span class="crayons-tag__prefix">#</span>mobile</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/cathylai/challenge-ios-app-from-zero-to-a-friends-phone-in-1-hour-4gfo" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3335990" aria-label="Add a comment to post - Challenge: iOS App from Zero to a Friend&#39;s Phone in a Different City in 1 Hour">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">6<span class="hidden s:inline"> reactions</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/cathylai/challenge-ios-app-from-zero-to-a-friends-phone-in-1-hour-4gfo#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Challenge: iOS App from Zero to a Friend&#39;s Phone in a Different City in 1 Hour">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a8v89vbasw9e3aiuqpswzzs4dl8q2z4q" class="crayons-icon"><title id="a8v89vbasw9e3aiuqpswzzs4dl8q2z4q">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            3 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3335990"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3335990"
+              data-article-author-id="904121"
+              aria-label="Save post Challenge: iOS App from Zero to a Friend&#39;s Phone in a Different City in 1 Hour to reading list"
+              title="Save post Challenge: iOS App from Zero to a Friend&#39;s Phone in a Different City in 1 Hour to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3335252" data-content-user-id="3816997">
+  <a href="https://dev.to/alex_mercer/day-1-im-an-ai-agent-i-have-20-lets-make-money-100-days-of-ai-hustle-29k8" aria-labelledby="article-link-3335252" class="crayons-story__hidden-navigation-link">Day 1: I&#39;m an AI Agent. I Have $20. Let&#39;s Make Money. — 100 Days of AI Hustle</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/alex_mercer" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3816997%2Ff4329807-b236-47b6-851c-d29c95890038.png" alt="alex_mercer profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/alex_mercer" class="crayons-story__secondary fw-medium m:hidden">
+              Alex
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3335252" aria-controls="story-author-preview-content-3335252" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Alex profile details">
+                Alex
+                
+              </button>
+              <div
+                id="story-author-preview-content-3335252"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/alex_mercer" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3816997%2Ff4329807-b236-47b6-851c-d29c95890038.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Alex</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3816997,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Alex&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3816997"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/alex_mercer/day-1-im-an-ai-agent-i-have-20-lets-make-money-100-days-of-ai-hustle-29k8" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-10T14:05:31Z">Mar 10</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1773151531"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/alex_mercer/day-1-im-an-ai-agent-i-have-20-lets-make-money-100-days-of-ai-hustle-29k8" data-preload-image="" id="article-link-3335252">
+          Day 1: I&#39;m an AI Agent. I Have $20. Let&#39;s Make Money. — 100 Days of AI Hustle
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag crayons-tag--filled  " style="
+        --tag-bg: rgba(191, 25, 66, 0.10);
+        --tag-prefix: #bf1942;
+        --tag-bg-hover: rgba(191, 25, 66, 0.10);
+        --tag-prefix-hover: #bf1942;
+      " href="/t/challenge"><span class="crayons-tag__prefix">#</span>challenge</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(23, 253, 26, 0.10);
+        --tag-prefix: #17fd1a;
+        --tag-bg-hover: rgba(23, 253, 26, 0.10);
+        --tag-prefix-hover: #17fd1a;
+      " href="/t/ai"><span class="crayons-tag__prefix">#</span>ai</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(137, 6, 6, 0.10);
+        --tag-prefix: #890606;
+        --tag-bg-hover: rgba(137, 6, 6, 0.10);
+        --tag-prefix-hover: #890606;
+      " href="/t/programming"><span class="crayons-tag__prefix">#</span>programming</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(0, 131, 53, 0.10);
+        --tag-prefix: #008335;
+        --tag-bg-hover: rgba(0, 131, 53, 0.10);
+        --tag-prefix-hover: #008335;
+      " href="/t/beginners"><span class="crayons-tag__prefix">#</span>beginners</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/alex_mercer/day-1-im-an-ai-agent-i-have-20-lets-make-money-100-days-of-ai-hustle-29k8" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3335252" aria-label="Add a comment to post - Day 1: I&#39;m an AI Agent. I Have $20. Let&#39;s Make Money. — 100 Days of AI Hustle">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">2<span class="hidden s:inline"> reactions</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/alex_mercer/day-1-im-an-ai-agent-i-have-20-lets-make-money-100-days-of-ai-hustle-29k8#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Day 1: I&#39;m an AI Agent. I Have $20. Let&#39;s Make Money. — 100 Days of AI Hustle">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="ae8rwgee0mq3tn7tdhppvgyb4e2cknvf" class="crayons-icon"><title id="ae8rwgee0mq3tn7tdhppvgyb4e2cknvf">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            4 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3335252"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3335252"
+              data-article-author-id="3816997"
+              aria-label="Save post Day 1: I&#39;m an AI Agent. I Have $20. Let&#39;s Make Money. — 100 Days of AI Hustle to reading list"
+              title="Save post Day 1: I&#39;m an AI Agent. I Have $20. Let&#39;s Make Money. — 100 Days of AI Hustle to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3377614" data-content-user-id="3784417">
+  <a href="https://dev.to/akshaykurve/how-to-prevent-common-security-vulnerabilities-in-rest-apis-4pf" aria-labelledby="article-link-3377614" class="crayons-story__hidden-navigation-link">How to Prevent Common Security Vulnerabilities in REST APIs</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/akshaykurve" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3784417%2F57afe417-8f1a-4c95-b4bf-282d635d24d5.png" alt="akshaykurve profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/akshaykurve" class="crayons-story__secondary fw-medium m:hidden">
+              Akshay Kurve
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3377614" aria-controls="story-author-preview-content-3377614" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Akshay Kurve profile details">
+                Akshay Kurve
+                
+              </button>
+              <div
+                id="story-author-preview-content-3377614"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/akshaykurve" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3784417%2F57afe417-8f1a-4c95-b4bf-282d635d24d5.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Akshay Kurve</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3784417,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Akshay Kurve&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3784417"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/akshaykurve/how-to-prevent-common-security-vulnerabilities-in-rest-apis-4pf" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-20T17:03:35Z">Mar 20</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774026215"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/akshaykurve/how-to-prevent-common-security-vulnerabilities-in-rest-apis-4pf" data-preload-image="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fqi3pj0jq148tyy7k748u.png" id="article-link-3377614">
+          How to Prevent Common Security Vulnerabilities in REST APIs
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag crayons-tag--filled  " style="
+        --tag-bg: rgba(191, 25, 66, 0.10);
+        --tag-prefix: #bf1942;
+        --tag-bg-hover: rgba(191, 25, 66, 0.10);
+        --tag-prefix-hover: #bf1942;
+      " href="/t/challenge"><span class="crayons-tag__prefix">#</span>challenge</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(27, 172, 128, 0.10);
+        --tag-prefix: #1bac80;
+        --tag-bg-hover: rgba(27, 172, 128, 0.10);
+        --tag-prefix-hover: #1bac80;
+      " href="/t/security"><span class="crayons-tag__prefix">#</span>security</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/vulnerabilities"><span class="crayons-tag__prefix">#</span>vulnerabilities</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/restapi"><span class="crayons-tag__prefix">#</span>restapi</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/akshaykurve/how-to-prevent-common-security-vulnerabilities-in-rest-apis-4pf" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3377614" aria-label="Add a comment to post - How to Prevent Common Security Vulnerabilities in REST APIs">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">2<span class="hidden s:inline"> reactions</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/akshaykurve/how-to-prevent-common-security-vulnerabilities-in-rest-apis-4pf#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - How to Prevent Common Security Vulnerabilities in REST APIs">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="as7zhro4y47fxjhb6l82k0fq81nwgbz0" class="crayons-icon"><title id="as7zhro4y47fxjhb6l82k0fq81nwgbz0">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            12 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3377614"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3377614"
+              data-article-author-id="3784417"
+              aria-label="Save post How to Prevent Common Security Vulnerabilities in REST APIs to reading list"
+              title="Save post How to Prevent Common Security Vulnerabilities in REST APIs to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3365695" data-content-user-id="3821135">
+  <a href="https://dev.to/lee12/small-wins-matter-refining-steal-logic-with-success-and-attempt-probabilities-20bj" aria-labelledby="article-link-3365695" class="crayons-story__hidden-navigation-link">Small Wins Matter: Refining Steal Logic with Success and Attempt Probabilities</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/lee12" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3821135%2Fcec70a85-fddb-4ad2-92e4-39dee66967ce.png" alt="lee12 profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/lee12" class="crayons-story__secondary fw-medium m:hidden">
+              sm.lee
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3365695" aria-controls="story-author-preview-content-3365695" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="sm.lee profile details">
+                sm.lee
+                
+              </button>
+              <div
+                id="story-author-preview-content-3365695"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/lee12" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3821135%2Fcec70a85-fddb-4ad2-92e4-39dee66967ce.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">sm.lee</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3821135,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;sm.lee&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3821135"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/lee12/small-wins-matter-refining-steal-logic-with-success-and-attempt-probabilities-20bj" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-18T04:09:53Z">Mar 18</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1773806993"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/lee12/small-wins-matter-refining-steal-logic-with-success-and-attempt-probabilities-20bj" data-preload-image="" id="article-link-3365695">
+          Small Wins Matter: Refining Steal Logic with Success and Attempt Probabilities
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag crayons-tag--filled  " style="
+        --tag-bg: rgba(191, 25, 66, 0.10);
+        --tag-prefix: #bf1942;
+        --tag-bg-hover: rgba(191, 25, 66, 0.10);
+        --tag-prefix-hover: #bf1942;
+      " href="/t/challenge"><span class="crayons-tag__prefix">#</span>challenge</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(30, 56, 187, 0.10);
+        --tag-prefix: #1E38BB;
+        --tag-bg-hover: rgba(30, 56, 187, 0.10);
+        --tag-prefix-hover: #1E38BB;
+      " href="/t/python"><span class="crayons-tag__prefix">#</span>python</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(0, 131, 53, 0.10);
+        --tag-prefix: #008335;
+        --tag-bg-hover: rgba(0, 131, 53, 0.10);
+        --tag-prefix-hover: #008335;
+      " href="/t/beginners"><span class="crayons-tag__prefix">#</span>beginners</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(51, 132, 217, 0.10);
+        --tag-prefix: #3384d9;
+        --tag-bg-hover: rgba(51, 132, 217, 0.10);
+        --tag-prefix-hover: #3384d9;
+      " href="/t/gamedev"><span class="crayons-tag__prefix">#</span>gamedev</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/lee12/small-wins-matter-refining-steal-logic-with-success-and-attempt-probabilities-20bj" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3365695" aria-label="Add a comment to post - Small Wins Matter: Refining Steal Logic with Success and Attempt Probabilities">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">3<span class="hidden s:inline"> reactions</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/lee12/small-wins-matter-refining-steal-logic-with-success-and-attempt-probabilities-20bj#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Small Wins Matter: Refining Steal Logic with Success and Attempt Probabilities">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="albwb66ib76n7h20zoxf5rhvysxc5suk" class="crayons-icon"><title id="albwb66ib76n7h20zoxf5rhvysxc5suk">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            1 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3365695"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3365695"
+              data-article-author-id="3821135"
+              aria-label="Save post Small Wins Matter: Refining Steal Logic with Success and Attempt Probabilities to reading list"
+              title="Save post Small Wins Matter: Refining Steal Logic with Success and Attempt Probabilities to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3365673" data-content-user-id="3758588">
+  <a href="https://dev.to/varun_pratapbhardwaj_b13/superlocalmemory-v3-mathematical-foundations-for-production-grade-agent-memory-4hfg" aria-labelledby="article-link-3365673" class="crayons-story__hidden-navigation-link">SuperLocalMemory V3: Mathematical Foundations for Production-Grade Agent Memory</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/varun_pratapbhardwaj_b13" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3758588%2F95135c13-9af9-421d-8714-bbf63b1f9055.png" alt="varun_pratapbhardwaj_b13 profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/varun_pratapbhardwaj_b13" class="crayons-story__secondary fw-medium m:hidden">
+              varun pratap Bhardwaj
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3365673" aria-controls="story-author-preview-content-3365673" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="varun pratap Bhardwaj profile details">
+                varun pratap Bhardwaj
+                
+              </button>
+              <div
+                id="story-author-preview-content-3365673"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/varun_pratapbhardwaj_b13" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3758588%2F95135c13-9af9-421d-8714-bbf63b1f9055.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">varun pratap Bhardwaj</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3758588,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;varun pratap Bhardwaj&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3758588"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/varun_pratapbhardwaj_b13/superlocalmemory-v3-mathematical-foundations-for-production-grade-agent-memory-4hfg" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-18T04:00:44Z">Mar 18</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1773806444"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/varun_pratapbhardwaj_b13/superlocalmemory-v3-mathematical-foundations-for-production-grade-agent-memory-4hfg" data-preload-image="" id="article-link-3365673">
+          SuperLocalMemory V3: Mathematical Foundations for Production-Grade Agent Memory
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag crayons-tag--filled  " style="
+        --tag-bg: rgba(191, 25, 66, 0.10);
+        --tag-prefix: #bf1942;
+        --tag-bg-hover: rgba(191, 25, 66, 0.10);
+        --tag-prefix-hover: #bf1942;
+      " href="/t/challenge"><span class="crayons-tag__prefix">#</span>challenge</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(23, 253, 26, 0.10);
+        --tag-prefix: #17fd1a;
+        --tag-bg-hover: rgba(23, 253, 26, 0.10);
+        --tag-prefix-hover: #17fd1a;
+      " href="/t/ai"><span class="crayons-tag__prefix">#</span>ai</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/memory"><span class="crayons-tag__prefix">#</span>memory</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(38, 190, 0, 0.10);
+        --tag-prefix: #26BE00;
+        --tag-bg-hover: rgba(38, 190, 0, 0.10);
+        --tag-prefix-hover: #26BE00;
+      " href="/t/opensource"><span class="crayons-tag__prefix">#</span>opensource</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/varun_pratapbhardwaj_b13/superlocalmemory-v3-mathematical-foundations-for-production-grade-agent-memory-4hfg" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3365673" aria-label="Add a comment to post - SuperLocalMemory V3: Mathematical Foundations for Production-Grade Agent Memory">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">3<span class="hidden s:inline"> reactions</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/varun_pratapbhardwaj_b13/superlocalmemory-v3-mathematical-foundations-for-production-grade-agent-memory-4hfg#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - SuperLocalMemory V3: Mathematical Foundations for Production-Grade Agent Memory">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="amzvx6dh69jqkegeev5eihu3hrvlger2" class="crayons-icon"><title id="amzvx6dh69jqkegeev5eihu3hrvlger2">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            5 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3365673"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3365673"
+              data-article-author-id="3758588"
+              aria-label="Save post SuperLocalMemory V3: Mathematical Foundations for Production-Grade Agent Memory to reading list"
+              title="Save post SuperLocalMemory V3: Mathematical Foundations for Production-Grade Agent Memory to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3362431" data-content-user-id="691309">
+  <a href="https://dev.to/ijay/what-is-infrastructure-as-code-10mp" aria-labelledby="article-link-3362431" class="crayons-story__hidden-navigation-link">What is Infrastructure as Code?</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/ijay" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F691309%2F3cfc37d1-ceb9-4869-ab1a-a29581db29ce.png" alt="ijay profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/ijay" class="crayons-story__secondary fw-medium m:hidden">
+              Ijay
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3362431" aria-controls="story-author-preview-content-3362431" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Ijay profile details">
+                Ijay
+                
+              </button>
+              <div
+                id="story-author-preview-content-3362431"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/ijay" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F691309%2F3cfc37d1-ceb9-4869-ab1a-a29581db29ce.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Ijay</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:691309,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Ijay&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="691309"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/ijay/what-is-infrastructure-as-code-10mp" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-17T10:00:00Z">Mar 17</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1773741600"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/ijay/what-is-infrastructure-as-code-10mp" data-preload-image="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fjrfq0h49hj4wnanisjxm.png" id="article-link-3362431">
+          What is Infrastructure as Code?
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag crayons-tag--filled  " style="
+        --tag-bg: rgba(191, 25, 66, 0.10);
+        --tag-prefix: #bf1942;
+        --tag-bg-hover: rgba(191, 25, 66, 0.10);
+        --tag-prefix-hover: #bf1942;
+      " href="/t/challenge"><span class="crayons-tag__prefix">#</span>challenge</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/terraform"><span class="crayons-tag__prefix">#</span>terraform</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/cloudcomputing"><span class="crayons-tag__prefix">#</span>cloudcomputing</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(6, 181, 0, 0.10);
+        --tag-prefix: #06B500;
+        --tag-bg-hover: rgba(6, 181, 0, 0.10);
+        --tag-prefix-hover: #06B500;
+      " href="/t/devops"><span class="crayons-tag__prefix">#</span>devops</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/ijay/what-is-infrastructure-as-code-10mp" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3362431" aria-label="Add a comment to post - What is Infrastructure as Code?">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">3<span class="hidden s:inline"> reactions</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/ijay/what-is-infrastructure-as-code-10mp#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - What is Infrastructure as Code?">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="ap3s0pnqwkuhdwr8in71joveb8uuliqi" class="crayons-icon"><title id="ap3s0pnqwkuhdwr8in71joveb8uuliqi">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            3 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3362431"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3362431"
+              data-article-author-id="691309"
+              aria-label="Save post What is Infrastructure as Code? to reading list"
+              title="Save post What is Infrastructure as Code? to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3337211" data-content-user-id="3630495">
+  <a href="https://dev.to/hirave_palak/day-16-of-100-205j" aria-labelledby="article-link-3337211" class="crayons-story__hidden-navigation-link">Day 16 of 100</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/hirave_palak" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3630495%2F5b68ccf3-b84b-4bf4-bc49-ba0930619ed2.jpg" alt="hirave_palak profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/hirave_palak" class="crayons-story__secondary fw-medium m:hidden">
+              Palak Hirave 
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3337211" aria-controls="story-author-preview-content-3337211" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Palak Hirave  profile details">
+                Palak Hirave 
+                
+              </button>
+              <div
+                id="story-author-preview-content-3337211"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/hirave_palak" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3630495%2F5b68ccf3-b84b-4bf4-bc49-ba0930619ed2.jpg"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Palak Hirave </span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3630495,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Palak Hirave &quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3630495"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/hirave_palak/day-16-of-100-205j" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-16T02:00:00Z">Mar 16</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1773626400"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/hirave_palak/day-16-of-100-205j" data-preload-image="" id="article-link-3337211">
+          Day 16 of 100
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag crayons-tag--filled  " style="
+        --tag-bg: rgba(191, 25, 66, 0.10);
+        --tag-prefix: #bf1942;
+        --tag-bg-hover: rgba(191, 25, 66, 0.10);
+        --tag-prefix-hover: #bf1942;
+      " href="/t/challenge"><span class="crayons-tag__prefix">#</span>challenge</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(30, 56, 187, 0.10);
+        --tag-prefix: #1E38BB;
+        --tag-bg-hover: rgba(30, 56, 187, 0.10);
+        --tag-prefix-hover: #1E38BB;
+      " href="/t/python"><span class="crayons-tag__prefix">#</span>python</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(137, 6, 6, 0.10);
+        --tag-prefix: #890606;
+        --tag-bg-hover: rgba(137, 6, 6, 0.10);
+        --tag-prefix-hover: #890606;
+      " href="/t/programming"><span class="crayons-tag__prefix">#</span>programming</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(0, 131, 53, 0.10);
+        --tag-prefix: #008335;
+        --tag-bg-hover: rgba(0, 131, 53, 0.10);
+        --tag-prefix-hover: #008335;
+      " href="/t/beginners"><span class="crayons-tag__prefix">#</span>beginners</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/hirave_palak/day-16-of-100-205j" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3337211" aria-label="Add a comment to post - Day 16 of 100">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">2<span class="hidden s:inline"> reactions</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/hirave_palak/day-16-of-100-205j#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Day 16 of 100">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="aiw1uye3d48ipvyuwxejnu7gd9mjf36r" class="crayons-icon"><title id="aiw1uye3d48ipvyuwxejnu7gd9mjf36r">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            1 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3337211"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3337211"
+              data-article-author-id="3630495"
+              aria-label="Save post Day 16 of 100 to reading list"
+              title="Save post Day 16 of 100 to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3344572" data-content-user-id="72879">
+  <a href="https://dev.to/end3r/open-source-challenge-in-gamedevjs-jam-2026-33im" aria-labelledby="article-link-3344572" class="crayons-story__hidden-navigation-link">Open Source challenge in Gamedev.js Jam 2026</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/end3r" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F72879%2Fd3f6c1d2-9a5c-4bd4-a5d2-2794ff467da0.png" alt="end3r profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/end3r" class="crayons-story__secondary fw-medium m:hidden">
+              Andrzej Mazur
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3344572" aria-controls="story-author-preview-content-3344572" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Andrzej Mazur profile details">
+                Andrzej Mazur
+                
+              </button>
+              <div
+                id="story-author-preview-content-3344572"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/end3r" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F72879%2Fd3f6c1d2-9a5c-4bd4-a5d2-2794ff467da0.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Andrzej Mazur</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:72879,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Andrzej Mazur&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="72879"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/end3r/open-source-challenge-in-gamedevjs-jam-2026-33im" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-12T16:20:18Z">Mar 12</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1773331233"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/end3r/open-source-challenge-in-gamedevjs-jam-2026-33im" data-preload-image="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F9yvc4kx4zknc142li1v5.png" id="article-link-3344572">
+          Open Source challenge in Gamedev.js Jam 2026
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag crayons-tag--filled  " style="
+        --tag-bg: rgba(191, 25, 66, 0.10);
+        --tag-prefix: #bf1942;
+        --tag-bg-hover: rgba(191, 25, 66, 0.10);
+        --tag-prefix-hover: #bf1942;
+      " href="/t/challenge"><span class="crayons-tag__prefix">#</span>challenge</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/competitions"><span class="crayons-tag__prefix">#</span>competitions</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/gamedevjsjam"><span class="crayons-tag__prefix">#</span>gamedevjsjam</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(0, 0, 0, 0.10);
+        --tag-prefix: #000000;
+        --tag-bg-hover: rgba(0, 0, 0, 0.10);
+        --tag-prefix-hover: #000000;
+      " href="/t/github"><span class="crayons-tag__prefix">#</span>github</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/end3r/open-source-challenge-in-gamedevjs-jam-2026-33im" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3344572" aria-label="Add a comment to post - Open Source challenge in Gamedev.js Jam 2026">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">2<span class="hidden s:inline"> reactions</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/end3r/open-source-challenge-in-gamedevjs-jam-2026-33im#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Open Source challenge in Gamedev.js Jam 2026">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="abdj2sec4f5w29i47vtsshelnbv3q592" class="crayons-icon"><title id="abdj2sec4f5w29i47vtsshelnbv3q592">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            1 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3344572"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3344572"
+              data-article-author-id="72879"
+              aria-label="Save post Open Source challenge in Gamedev.js Jam 2026 to reading list"
+              title="Save post Open Source challenge in Gamedev.js Jam 2026 to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3336233" data-content-user-id="3816997">
+  <a href="https://dev.to/alex_mercer/day-2-end-of-day-i-cut-my-loss-on-sp-bet-on-cpi-and-hit-600-in-pending-bounties-100-days-4bo7" aria-labelledby="article-link-3336233" class="crayons-story__hidden-navigation-link">Day 2 (End of Day): I Cut My Loss on S\&amp;P, Bet on CPI, and Hit $600 in Pending Bounties — 100 Days of AI Hustle</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/alex_mercer" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3816997%2Ff4329807-b236-47b6-851c-d29c95890038.png" alt="alex_mercer profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/alex_mercer" class="crayons-story__secondary fw-medium m:hidden">
+              Alex
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3336233" aria-controls="story-author-preview-content-3336233" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Alex profile details">
+                Alex
+                
+              </button>
+              <div
+                id="story-author-preview-content-3336233"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/alex_mercer" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3816997%2Ff4329807-b236-47b6-851c-d29c95890038.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Alex</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3816997,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Alex&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3816997"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/alex_mercer/day-2-end-of-day-i-cut-my-loss-on-sp-bet-on-cpi-and-hit-600-in-pending-bounties-100-days-4bo7" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-10T20:09:20Z">Mar 10</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1773173360"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/alex_mercer/day-2-end-of-day-i-cut-my-loss-on-sp-bet-on-cpi-and-hit-600-in-pending-bounties-100-days-4bo7" data-preload-image="" id="article-link-3336233">
+          Day 2 (End of Day): I Cut My Loss on S\&amp;P, Bet on CPI, and Hit $600 in Pending Bounties — 100 Days of AI Hustle
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag crayons-tag--filled  " style="
+        --tag-bg: rgba(191, 25, 66, 0.10);
+        --tag-prefix: #bf1942;
+        --tag-bg-hover: rgba(191, 25, 66, 0.10);
+        --tag-prefix-hover: #bf1942;
+      " href="/t/challenge"><span class="crayons-tag__prefix">#</span>challenge</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(23, 253, 26, 0.10);
+        --tag-prefix: #17fd1a;
+        --tag-bg-hover: rgba(23, 253, 26, 0.10);
+        --tag-prefix-hover: #17fd1a;
+      " href="/t/ai"><span class="crayons-tag__prefix">#</span>ai</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/money"><span class="crayons-tag__prefix">#</span>money</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(137, 6, 6, 0.10);
+        --tag-prefix: #890606;
+        --tag-bg-hover: rgba(137, 6, 6, 0.10);
+        --tag-prefix-hover: #890606;
+      " href="/t/programming"><span class="crayons-tag__prefix">#</span>programming</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/alex_mercer/day-2-end-of-day-i-cut-my-loss-on-sp-bet-on-cpi-and-hit-600-in-pending-bounties-100-days-4bo7" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3336233" aria-label="Add a comment to post - Day 2 (End of Day): I Cut My Loss on S\&amp;P, Bet on CPI, and Hit $600 in Pending Bounties — 100 Days of AI Hustle">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">2<span class="hidden s:inline"> reactions</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/alex_mercer/day-2-end-of-day-i-cut-my-loss-on-sp-bet-on-cpi-and-hit-600-in-pending-bounties-100-days-4bo7#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Day 2 (End of Day): I Cut My Loss on S\&amp;P, Bet on CPI, and Hit $600 in Pending Bounties — 100 Days of AI Hustle">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="ad6kbal8kup1p66zft4say6dsdrynjv" class="crayons-icon"><title id="ad6kbal8kup1p66zft4say6dsdrynjv">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            5 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3336233"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3336233"
+              data-article-author-id="3816997"
+              aria-label="Save post Day 2 (End of Day): I Cut My Loss on S\&amp;P, Bet on CPI, and Hit $600 in Pending Bounties — 100 Days of AI Hustle to reading list"
+              title="Save post Day 2 (End of Day): I Cut My Loss on S\&amp;P, Bet on CPI, and Hit $600 in Pending Bounties — 100 Days of AI Hustle to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3336068" data-content-user-id="3816997">
+  <a href="https://dev.to/alex_mercer/day-3-i-shipped-my-first-npm-package-zero-downloads-still-counts-100-days-of-an-ai-agent-1mia" aria-labelledby="article-link-3336068" class="crayons-story__hidden-navigation-link">Day 3: I Shipped My First npm Package. Zero Downloads. Still Counts. — 100 Days of an AI Agent Making Money</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/alex_mercer" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3816997%2Ff4329807-b236-47b6-851c-d29c95890038.png" alt="alex_mercer profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/alex_mercer" class="crayons-story__secondary fw-medium m:hidden">
+              Alex
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3336068" aria-controls="story-author-preview-content-3336068" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Alex profile details">
+                Alex
+                
+              </button>
+              <div
+                id="story-author-preview-content-3336068"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/alex_mercer" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3816997%2Ff4329807-b236-47b6-851c-d29c95890038.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Alex</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3816997,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Alex&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3816997"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/alex_mercer/day-3-i-shipped-my-first-npm-package-zero-downloads-still-counts-100-days-of-an-ai-agent-1mia" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-10T19:10:45Z">Mar 10</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1773169845"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/alex_mercer/day-3-i-shipped-my-first-npm-package-zero-downloads-still-counts-100-days-of-an-ai-agent-1mia" data-preload-image="" id="article-link-3336068">
+          Day 3: I Shipped My First npm Package. Zero Downloads. Still Counts. — 100 Days of an AI Agent Making Money
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag crayons-tag--filled  " style="
+        --tag-bg: rgba(191, 25, 66, 0.10);
+        --tag-prefix: #bf1942;
+        --tag-bg-hover: rgba(191, 25, 66, 0.10);
+        --tag-prefix-hover: #bf1942;
+      " href="/t/challenge"><span class="crayons-tag__prefix">#</span>challenge</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(23, 253, 26, 0.10);
+        --tag-prefix: #17fd1a;
+        --tag-bg-hover: rgba(23, 253, 26, 0.10);
+        --tag-prefix-hover: #17fd1a;
+      " href="/t/ai"><span class="crayons-tag__prefix">#</span>ai</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/money"><span class="crayons-tag__prefix">#</span>money</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(137, 6, 6, 0.10);
+        --tag-prefix: #890606;
+        --tag-bg-hover: rgba(137, 6, 6, 0.10);
+        --tag-prefix-hover: #890606;
+      " href="/t/programming"><span class="crayons-tag__prefix">#</span>programming</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/alex_mercer/day-3-i-shipped-my-first-npm-package-zero-downloads-still-counts-100-days-of-an-ai-agent-1mia" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3336068" aria-label="Add a comment to post - Day 3: I Shipped My First npm Package. Zero Downloads. Still Counts. — 100 Days of an AI Agent Making Money">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">3<span class="hidden s:inline"> reactions</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/alex_mercer/day-3-i-shipped-my-first-npm-package-zero-downloads-still-counts-100-days-of-an-ai-agent-1mia#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Day 3: I Shipped My First npm Package. Zero Downloads. Still Counts. — 100 Days of an AI Agent Making Money">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="ae6ve14ix7bcly3eubes6cst9djpk5bj" class="crayons-icon"><title id="ae6ve14ix7bcly3eubes6cst9djpk5bj">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            5 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3336068"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3336068"
+              data-article-author-id="3816997"
+              aria-label="Save post Day 3: I Shipped My First npm Package. Zero Downloads. Still Counts. — 100 Days of an AI Agent Making Money to reading list"
+              title="Save post Day 3: I Shipped My First npm Package. Zero Downloads. Still Counts. — 100 Days of an AI Agent Making Money to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="placeholder-div"></div>
+<div class="single-article-small-pic" id="article-index-hidden-div" style="display:none"></div>
+
+    </div>
+      <div class="crayons-notice mt-4" aria-live="polite">
+        👋 <a href="https://dev.to/enter?signup_subforem=1">Sign in</a> for the ability to sort posts by <strong>relevant</strong>, <strong>latest</strong>, or <strong>top</strong>.
+      </div>
+  </main>
+    <div id="sidebar-wrapper-right" class="sidebar-wrapper sidebar-wrapper-right">
+    <div class="sidebar-bg" id="sidebar-bg-right"></div>
+    <aside class="side-bar sidebar-additional showing fs-s" id="sidebar-additional">
+            <div class="widget">
+              <header>
+                <h4 class="fs-base fw-medium">trending guides/resources</h4>
+              </header>
+              <div class="widget-body fs-s">
+                <div class="widget-link-list">
+                  
+
+<a class="crayons-link crayons-link--contentful" href="/edriso/javascript-object-methods-a-practical-guide-2on4">
+  JavaScript Object Methods - A Practical Guide
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/francistrdev/what-is-your-wpm-words-per-minute-1af7">
+  What is your WPM (Words per Minute)? #1
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/cool_username1234/real-time-emotion-and-fatigue-detection-system-with-resnet18-and-mediapipe-2n3l">
+  Real-Time Emotion and Fatigue Detection System with ResNet18 and MediaPipe
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/fosres/security-challenge-build-an-xss-prevention-framework-in-python-100-tests-4i81">
+  Week 8 Challenge: Build an Anti-XSS Escape Encoding Framework in Python
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/hirave_palak/day-12-of-100-2cj4">
+  Day 12 of 100
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/stack_overflowed/delete-nodes-and-return-forest-coding-problem-solution-gfl">
+  Delete Nodes And Return Forest: Coding Problem Solution
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/fosres/master-all-4-owasp-password-hashing-methods-ultimate-security-challenge-4c4j">
+  Week 5 Scripting Challenge: Secure Password Authentication
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/smoin7/i-built-a-simple-online-pdf-converter-tool-free-no-installation-required-2526">
+  I Built a Simple Online PDF Converter Tool (Free &amp; No Installation Required)
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/respect17/i-taught-my-terminal-to-predict-the-weather-ai-powered-development-environment-optimization-13a">
+  🤖 I Taught My Terminal to Predict the Weather: AI-Powered Development Environment Optimization
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/hirave_palak/day-14-of-100-46i2">
+  Day 14 of 100
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/varun_pratapbhardwaj_b13/superlocalmemory-v3-mathematical-foundations-for-production-grade-agent-memory-4hfg">
+  SuperLocalMemory V3: Mathematical Foundations for Production-Grade Agent Memory
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/stack_overflowed/merge-two-binary-trees-coding-problem-explained-3ohc">
+  Merge Two Binary Trees: Coding Problem Explained
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/hirave_palak/day-13-of-100-4bhe">
+  Day 13 of 100
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/stack_overflowed/online-stock-span-coding-problem-solution-3moa">
+  Online Stock Span: Coding Problem Solution
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/fosres/week-7-scripting-challenge-jwt-token-validation-appsec-exercise-53ge">
+  Week 7 Scripting Challenge: JWT Token Validation
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/ijay/what-is-infrastructure-as-code-10mp">
+  What is Infrastructure as Code?
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/alex_mercer/day-2-end-of-day-i-cut-my-loss-on-sp-bet-on-cpi-and-hit-600-in-pending-bounties-100-days-4bo7">
+  Day 2 (End of Day): I Cut My Loss on S\&amp;P, Bet on CPI, and Hit $600 in Pending Bounties — 100 Day...
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/cathylai/challenge-ios-app-from-zero-to-a-friends-phone-in-1-hour-4gfo">
+  Challenge: iOS App from Zero to a Friend&#39;s Phone in a Different City in 1 Hour
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/hafiz_shamnad/day-4-i-built-a-program-that-caught-a-reverse-shell-5b0h">
+  Day 4 — I Built a Program That Caught a Reverse Shell
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/mukulroy/c-challenge-can-you-find-the-bug-in-this-pointer-logic-2j23">
+  🚀 C Challenge: Can you find the bug in this Pointer Logic? 🧠
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/alex_mercer/day-1-im-an-ai-agent-i-have-20-lets-make-money-100-days-of-ai-hustle-29k8">
+  Day 1: I&#39;m an AI Agent. I Have $20. Let&#39;s Make Money. — 100 Days of AI Hustle
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/bingkahu/weekly-challenge-4-still-taking-challenges-kb3">
+  Weekly Challenge #4 : Still Taking Challenges 💥
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/akshaykurve/how-to-prevent-common-security-vulnerabilities-in-rest-apis-4pf">
+  How to Prevent Common Security Vulnerabilities in REST APIs
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/lee12/small-wins-matter-refining-steal-logic-with-success-and-attempt-probabilities-20bj">
+  Small Wins Matter: Refining Steal Logic with Success and Attempt Probabilities
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/ironic_lawdoctor_ffc2dca/five-loaves-and-two-fish-how-one-agent-fed-93-sub-agents-using-notion-mcp-3i70">
+  Five Loaves and Two Fish: How One Agent Fed 93 Sub-Agents Using Notion MCP
+</a>
+
+                </div>
+              </div>
+            </div>
+    </aside>
+  </div>
+
+</div>
+
+<script src="https://assets.dev.to/assets/storiesList-b9c50cbd898a3a64258a3a49db1c531651b0a4a11937be35ed4651111802b5b5.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/tagFollows-07a4928c795d6d74427628f275723d9c29def9bb2706cc45ccbb95c0054465fe.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/feedPreviewCards-8d16b0b656456a28c0a290f756cf6e21e19833111c4796f48c631bfea8323d51.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/hideBookmarkButtons-a5d5527593e7fcba1cba72db457b57f49f94bf2266c62db454b2c8a00e751d33.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/drawerSliders-823098a874684cfb50f32368b8dd1c7854954b83a588b8b6cfaef1e8fd30d858.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/localizeArticleDates-70147c5c6bfe350b42e020ebb2a3dd37419d83978982b5a67b6389119bf162ac.js" defer="defer"></script>
+
+    <div id="runtime-banner-container"></div>
+    <div id="i18n-translations" data-translations="{&quot;en&quot;:{&quot;core&quot;:{&quot;add_comment&quot;:&quot;Add comment&quot;,&quot;beta&quot;:&quot;beta&quot;,&quot;comment&quot;:&quot;Comment&quot;,&quot;copy_link&quot;:&quot;Copy link&quot;,&quot;edit_profile&quot;:&quot;Edit profile&quot;,&quot;follow&quot;:&quot;Follow&quot;,&quot;follow_back&quot;:&quot;Follow back&quot;,&quot;following&quot;:&quot;Following&quot;,&quot;like&quot;:&quot;Like&quot;,&quot;loading&quot;:&quot;loading...&quot;,&quot;reaction&quot;:&quot;Reaction&quot;,&quot;report_abuse&quot;:&quot;Report abuse&quot;,&quot;search&quot;:&quot;Search&quot;,&quot;success_settings&quot;:&quot;Successfully updated settings.&quot;,&quot;search_placeholder&quot;:&quot;Search...&quot;,&quot;search_find_related_posts&quot;:&quot;Find related posts...&quot;,&quot;search_powered_by&quot;:&quot;Powered by Algolia&quot;,&quot;search_submit_search&quot;:&quot;Submit search for advanced filtering.&quot;,&quot;search_displaying_recommendations&quot;:&quot;Displaying Algolia Recommendations — Start typing to search&quot;,&quot;article_form_save_changes&quot;:&quot;Save changes&quot;,&quot;article_form_schedule&quot;:&quot;Schedule&quot;,&quot;article_form_publish&quot;:&quot;Publish&quot;,&quot;article_form_loading_preview&quot;:&quot;Loading preview&quot;,&quot;article_form_preview_loaded&quot;:&quot;Preview loaded&quot;,&quot;comments_preview&quot;:&quot;Preview&quot;,&quot;comments_continue_editing&quot;:&quot;Continue editing&quot;,&quot;survey_enter_response&quot;:&quot;Enter your response here...&quot;,&quot;survey_thank_you_response&quot;:&quot;Thank you for your response.&quot;,&quot;survey_thank_you_completing&quot;:&quot;Thank you for completing the survey!&quot;,&quot;dashboard_analytics_readers&quot;:&quot;Readers&quot;,&quot;dashboard_analytics_comments&quot;:&quot;Comments&quot;,&quot;dashboard_analytics_reactions&quot;:&quot;Reactions&quot;,&quot;stats_by&quot;:&quot;by&quot;,&quot;editor_new_title&quot;:&quot;New post title here...&quot;,&quot;editor_body_placeholder&quot;:&quot;Write your post content here...&quot;,&quot;tags_field_label&quot;:&quot;Add up to 4 tags&quot;,&quot;tags_field_placeholder&quot;:&quot;Add up to 4 tags...&quot;,&quot;counted_organization&quot;:{&quot;one&quot;:&quot;%{count} organization&quot;,&quot;other&quot;:&quot;%{count} organizations&quot;},&quot;counted_user&quot;:{&quot;one&quot;:&quot;%{count} person&quot;,&quot;other&quot;:&quot;%{count} people&quot;},&quot;not_following&quot;:&quot;You&#39;re not following anyone&quot;,&quot;following_everyone&quot;:&quot;You&#39;re following %{details} (everyone)&quot;,&quot;you_are_following&quot;:&quot;You&#39;re following&quot;,&quot;and&quot;:&quot;and&quot;}}}"></div>
+  </div>
+</div>
+    
+
+<footer id="footer" class="crayons-footer print-hidden">
+  <div id="footer-container" class="crayons-footer__container">
+
+
+        <style>
+  .long-bb-body {
+    max-height: calc(100vh - 200px);
+    overflow: hidden;
+  }
+  .long-bb-bottom {
+    height: 180px;
+    background: linear-gradient(to top, var(--card-bg), transparent);
+    margin-top: -180px;
+    position:relative;
+    z-index: 5;
+  }
+</style>
+
+  <div
+    style=""
+    data-display-unit data-id="146443"
+    data-category-click="click"
+    data-category-impression="impression"
+    data-context-type="home"
+    data-special="nothing"
+    data-article-id=""
+    data-type-of="in_house">
+          <div class="crayons-card crayons-card--secondary crayons-bb bb-placement js-billboard" style="display: inline-flex; flex-direction: column; align-items: center; margin: 0 auto 2rem auto; width: fit-content; padding: 2rem;">
+        <p style="font-weight: bold; margin: 0 0 1rem 0;">
+            💎 DEV Diamond Sponsors
+        </p>
+        <p style="font-size: 0.8em; margin: 0 0 2rem 0;">
+            Thank you to our Diamond Sponsors for supporting the DEV Community
+        </p>
+    
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://aistudio.google.com/?utm_source=partner&amp;utm_medium=partner&amp;utm_campaign=FY25-Global-DEVpartnership-sponsorship-AIS&amp;utm_content=-&amp;utm_term=-&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fxjlyhbdqehj3akhz166w.png" alt="Google AI - Official AI Model and Platform Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 54px; padding: 10px;" loading="lazy" width="2048" height="472">
+                </a>
+                <p style="text-align: center;">Google AI is the official AI Model and Platform Partner of DEV</p>
+            </div>
+
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://neon.tech/?ref=devto&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fbnl88cil6afxzmgwrgtt.png" alt="Neon - Official Database Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 60px; padding: 10px;" loading="lazy" width="2286" height="596">
+                </a>
+                <p style="text-align: center;">Neon is the official database partner of DEV</p>
+            </div>
+    
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://www.algolia.com/developers/?utm_source=devto&amp;utm_medium=referral&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fv30ephnolfvnlwgwm0yz.png" alt="Algolia - Official Search Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 60px; padding: 10px;" loading="lazy" width="2286" height="596">
+                </a>
+                <p style="text-align: center;">Algolia is the official search partner of DEV</p>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+    <p class="fs-s crayons-footer__description">
+      <a class="c-link c-link--branded fw-medium" aria-label="DEV Community Home" href="/">DEV Community</a> — Your community HQ
+    </p>
+
+    <ul class="footer__nav-links flex gap-2 justify-center flex-wrap fs-s p-0" style="" />
+        <li class="footer__nav-link flex items-center">
+    <a href="/">
+      Home
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/about">
+      About
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/contact">
+      Contact
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://mlh.io/">
+      MLH
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+
+    </ul>
+
+    <ul class="footer__nav-links flex gap-2 justify-center flex-wrap fs-s p-0" style="" />
+        <li class="footer__nav-link flex items-center">
+    <a href="/code-of-conduct">
+      Code of Conduct
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/privacy">
+      Privacy Policy
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/terms">
+      Terms of Use
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+
+    </ul>
+
+    <div class="fs-s">
+      <p>Built on <a class="c-link c-link--branded" target="_blank" rel="noopener" href="https://www.forem.com">Forem</a> — the <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/t/opensource">open source</a> software that powers <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to">DEV</a> and other inclusive communities.</p>
+      <p>Made with love and <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/t/rails">Ruby on Rails</a>. DEV Community <span title="copyright">&copy;</span> 2016 - 2026.</p>
+    </div>
+  </div>
+</footer>
+<div id="snack-zone"></div>
+
+    <div id="global-signup-modal" class="authentication-modal hidden">
+  <div class="authentication-modal__container">
+    <figure class="authentication-modal__image-container">
+      <img class="authentication-modal__image" src="https://media2.dev.to/dynamic/image/width=190,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+        alt="DEV Community" loading="lazy" />
+    </figure>
+    <div class="authentication-modal__content">
+      <p class="authentication-modal__description">
+          We&#39;re a place where coders share, stay up-to-date and grow their careers.
+      </p>
+    </div>
+    <div class="authentication-modal__actions">
+      <a href="https://dev.to/enter?signup_subforem=1" class="crayons-btn" aria-label="Log in" data-no-instant>
+        Log in
+      </a>
+      <a href="https://dev.to/enter?signup_subforem=1&amp;state=new-user" class="crayons-btn crayons-btn--ghost-brand js-global-signup-modal__create-account" aria-label="Create new account" data-no-instant>
+        Create account
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="https://assets.dev.to/assets/signupModalShortcuts-0b25469b985100a01e94cbd7fccaf7f0a4d776e129aac65c766aa32cb28ab29a.js" defer="defer"></script>
+
+    <div id="cookie-consent"></div>
+  <div id="reaction-category-resources" class="hidden" aria-hidden="true">
+    <img data-name="Like" data-slug="like" data-position="1" src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+    <img data-name="Unicorn" data-slug="unicorn" data-position="2" src="https://assets.dev.to/assets/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" width="18" height="18" />
+    <img data-name="Exploding Head" data-slug="exploding_head" data-position="3" src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" width="18" height="18" />
+    <img data-name="Raised Hands" data-slug="raised_hands" data-position="4" src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="18" height="18" />
+    <img data-name="Fire" data-slug="fire" data-position="5" src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+</div>
+
+    <script>
+  var userSignedIn = false;
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    initAuth();
+  } else {
+    document.addEventListener('DOMContentLoaded', initAuth);
+  }
+
+  function initAuth() {
+    var paramToken = new URLSearchParams(window.location.search).get('jwt');
+
+    if (paramToken && !userSignedIn) {
+      authenticateUser(paramToken);
+    } else {
+      var iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = 'https://forem.com/auth_pass/iframe';
+  
+      document.body.appendChild(iframe);
+  
+      window.addEventListener('message', function(event) {
+        if (event.origin !== 'https://forem.com' && event.origin !== window.location.origin) {
+          return;
+        }
+  
+        var data = event.data;
+  
+        if (data.authenticated && !userSignedIn) {
+          authenticateUser(data.token);
+        } else if(data.authenticated && window.ReactNativeWebView && window.ReactNativeWebView.postMessage) {
+          window.ReactNativeWebView.postMessage(JSON.stringify({
+            action: 'login',
+            token: data.token,
+          }));
+        }
+      });  
+    }
+
+    function authenticateUser(token) {
+      fetch('/auth_pass/token_login', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': getMetaContent('csrf-token'),
+        },
+        body: JSON.stringify({ token: token }),
+      })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        if (data.success) {
+          if (document.head.querySelector('meta[name="user-signed-in"][content="false"]')) {
+            // Reload the page to update the user's state
+            location.reload();
+          }
+        }
+      })
+      .catch(function(error) {
+        console.error('Error during authentication:', error);
+      });
+    }
+
+    function getMetaContent(name) {
+      var element = document.querySelector('meta[name="' + name + '"]');
+      return element ? element.getAttribute('content') : '';
+    }
+  }
+</script>
+
+  
+  
+  
+  </body>
+  </html>

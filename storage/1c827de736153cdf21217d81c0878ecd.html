@@ -1,0 +1,2710 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Redis - DEV Community</title>
+    
+  
+<link rel="canonical" href="https://dev.to/t/redis" />
+<meta name="description" content="redis content on DEV Community">
+<meta name="keywords" content="software development, engineering, redis">
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://dev.to/t/redis" />
+<meta property="og:title" content="Redis" />
+<meta property="og:description" content="Redis content on DEV Community" />
+<meta property="og:site_name" content="DEV Community" />
+
+<meta name="twitter:site" content="@thepracticaldev">
+<meta name="twitter:creator" content="@Redis">
+<meta name="twitter:title" content="Redis">
+<meta name="twitter:description" content="Redis content on DEV Community">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3otvb2z646ytpt1hl2rv.jpg">
+  <meta name="twitter:image:src" content="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3otvb2z646ytpt1hl2rv.jpg">
+
+
+      <meta name="last-updated" content="2026-04-01 00:33:22 UTC">
+      <meta name="user-signed-in" content="false">
+      <meta name="head-cached-at" content="1775003602">
+      <meta name="environment" content="production">
+      <link rel="stylesheet" href="https://assets.dev.to/assets/minimal-102395aec70cbac5f7d0bd5bebb5b56f0459629c5d224dae16333f11604cbad3.css" media="all" id="main-minimal-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/views-daf614dcfafed4955d7758a6a86d63bfbb1e8d4eae8b6317b421e18a99bbe867.css" media="all" id="main-views-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/crayons-8fce708625aacc3ff4a4d4947252a1cfab954753bb082374c0bed738861b52f2.css" media="all" id="main-crayons-stylesheet" />
+
+      <script src="https://assets.dev.to/assets/base-0c748bbcdc30041261c326ef2ce931fbce46c58bc3c488da881ae35c4750941d.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/application-0b268684912bef9b0f23defff01cb608bfc5d5e5610287725e7b686139ae32d3.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/baseInitializers-2f0777a6d67046056f9f42665560ce072de3801292674358ddbad6e135c1891d.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/baseTracking-b6bf73e5ee66633e151e7d5b7c6bbccedfa4c59e3615be97b98c4c0f543ddae7.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/followButtons-a29380c2c88136b97b2b5e63e94614ff7458fc72e07cffa7b6153831c28a40d2.js" defer="defer"></script>
+
+        <meta name="search-script" content="https://assets.dev.to/assets/Search-b977aea0f2d7a5818b4ebd97f7d4aba8548099f84f5db5761f8fa67be76abc54.js">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+      <link rel="icon" type="image/x-icon" href="https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" />
+      <link rel="apple-touch-icon" href="https://media2.dev.to/dynamic/image/width=180,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="https://media2.dev.to/dynamic/image/width=152,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="https://media2.dev.to/dynamic/image/width=180,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="167x167" href="https://media2.dev.to/dynamic/image/width=167,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link href="https://media2.dev.to/dynamic/image/width=192,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" rel="icon" sizes="192x192" />
+      <link href="https://media2.dev.to/dynamic/image/width=128,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" rel="icon" sizes="128x128" />
+      <meta name="apple-mobile-web-app-title" content="dev.to">
+      <meta name="application-name" content="dev.to">
+      <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+      <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+      <link rel="search" href="https://dev.to/open-search.xml" type="application/opensearchdescription+xml" title="DEV Community" />
+
+      <meta property="forem:name" content="DEV Community" />
+      <meta property="forem:logo" content="https://media2.dev.to/dynamic/image/width=512,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" />
+      <meta property="forem:domain" content="dev.to" />
+    <style>
+.ltag__link--embedded img.subscription-icon {
+max-height: 13px !important;
+max-width: 21px !important;
+display: inline-block !important;
+border-radius: 0 !important;
+}
+.text-styles .crayons-article__context-note p {
+margin-bottom: 0 !important;
+}
+</style>
+  </head>
+    <body
+      class="sans-serif-article-body default-header"
+      data-user-status="logged-out"
+      data-is-root-subforem="false"
+        data-subforem-id="1"
+      data-side-nav-visible="true"
+      data-community-name="DEV Community"
+      data-subscription-icon="https://assets.dev.to/assets/subscription-icon-805dfa7ac7dd660f07ed8d654877270825b07a92a03841aa99a1093bd00431b2.png"
+      data-locale="en"
+      data-honeybadger-key="hbp_nqu4Y66HuEKlD6YRGssZuRQnPOjDm50J8Zkr"
+      data-deployed-at="2026-03-31T16:23:33Z"
+      data-latest-commit-id="786e25495afed32bb807645b48a724374606e51e"
+      data-ga-tracking="UA-71991109-1"
+      data-cookie-banner-user-context="logged_out_only"
+      data-cookie-banner-platform-context="off"
+      data-algolia-id="PRSOBFP46H"
+      data-algolia-search-key="9aa7d31610cba78851c9b1f63776a9dd"
+      data-algolia-display="true"
+      data-dynamic-url-component="bmar11"
+      data-ga4-tracking-id="G-TYEM8Y3JN3">
+      
+      <script>
+        if (navigator.userAgent === 'ForemWebView/1' || window.frameElement) {
+          document.body.classList.add("hidden-shell");
+        }
+          if (new Date() > new Date("2026-02-04T09:00:00-05:00")) {
+            document.body.dataset.sideNavVisible = "false";
+          } 
+      </script>
+
+      <link rel="stylesheet" href="https://assets.dev.to/assets/minimal-102395aec70cbac5f7d0bd5bebb5b56f0459629c5d224dae16333f11604cbad3.css" media="all" id="secondary-minimal-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/views-daf614dcfafed4955d7758a6a86d63bfbb1e8d4eae8b6317b421e18a99bbe867.css" media="all" id="secondary-views-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/crayons-8fce708625aacc3ff4a4d4947252a1cfab954753bb082374c0bed738861b52f2.css" media="all" id="secondary-crayons-stylesheet" />
+
+      <div id="body-styles">
+        <style>
+          :root {
+            --accent-brand-lighter-rgb: 80, 99, 301;
+            --accent-brand-rgb: 59, 73, 223;
+            --accent-brand-darker-rgb: 47, 58, 178;
+          }
+        </style>
+      </div>
+      <div id="audiocontent" data-podcast="">
+        
+      </div>
+      <div class="navigation-progress" id="navigation-progress"></div>
+
+<header id="topbar" class="crayons-header topbar print-hidden">
+  <span id="route-change-target" tabindex="-1"></span>
+  <a href="#main-content" class="skip-content-link">Skip to content</a>
+  <div class="crayons-header__container">
+    <span class="inline-block m:hidden ">
+      <button class="c-btn c-btn--icon-alone js-hamburger-trigger mx-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="ae5fu7m8cm37hbisqvrllvwbwqv14ehw" class="crayons-icon"><title id="ae5fu7m8cm37hbisqvrllvwbwqv14ehw">Navigation menu</title>
+    <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"></path>
+</svg>
+
+      </button>
+    </span>
+    <a href="/" class="site-logo" aria-label="DEV Community Home" >
+    <img class="site-logo__img"
+         src="https://media2.dev.to/dynamic/image/quality=100/https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png"
+         style="aspect-ratio: 10 / 8"
+         alt="DEV Community">
+</a>
+
+
+    <div class="crayons-header--search js-search-form" id="header-search">
+      <form accept-charset="UTF-8" method="get" action="/search" role="search">
+        <div class="crayons-fields crayons-fields--horizontal">
+          <div class="crayons-field flex-1 relative">
+            <input id="search-input" class="crayons-header--search-input crayons-textfield js-search-input" type="text" id="nav-search" name="q" placeholder="Search..." autocomplete="off" />
+            <button type="submit" aria-label="Search" class="c-btn c-btn--icon-alone absolute inset-px right-auto mt-0 py-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="akacj3lta7w9i0260iwntol51ea98eqp" aria-hidden="true" class="crayons-icon"><title id="akacj3lta7w9i0260iwntol51ea98eqp">Search</title>
+    <path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0111 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 01-1.969 5.617zm-2.006-.742A6.977 6.977 0 0018 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 004.875-1.975l.15-.15z"></path>
+</svg>
+
+            </button>
+
+            <a class="crayons-header--search-brand-indicator" href="https://www.algolia.com/developers/?utm_source=devto&utm_medium=referral" target="_blank" rel="noopener noreferrer">
+                Powered by Algolia
+                <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" width="24" height="24" viewBox="0 0 500 500.34" role="img" aria-labelledby="a9ubzwdersqm18i6ebiww0azedh8sudo" aria-hidden="true" class="crayons-icon"><title id="a9ubzwdersqm18i6ebiww0azedh8sudo">Search</title>
+  <defs></defs><path class="cls-1" d="M250,0C113.38,0,2,110.16,.03,246.32c-2,138.29,110.19,252.87,248.49,253.67,42.71,.25,83.85-10.2,120.38-30.05,3.56-1.93,4.11-6.83,1.08-9.52l-23.39-20.74c-4.75-4.22-11.52-5.41-17.37-2.92-25.5,10.85-53.21,16.39-81.76,16.04-111.75-1.37-202.04-94.35-200.26-206.1,1.76-110.33,92.06-199.55,202.8-199.55h202.83V407.68l-115.08-102.25c-3.72-3.31-9.43-2.66-12.43,1.31-18.47,24.46-48.56,39.67-81.98,37.36-46.36-3.2-83.92-40.52-87.4-86.86-4.15-55.28,39.65-101.58,94.07-101.58,49.21,0,89.74,37.88,93.97,86.01,.38,4.28,2.31,8.28,5.53,11.13l29.97,26.57c3.4,3.01,8.8,1.17,9.63-3.3,2.16-11.55,2.92-23.6,2.07-35.95-4.83-70.39-61.84-127.01-132.26-131.35-80.73-4.98-148.23,58.18-150.37,137.35-2.09,77.15,61.12,143.66,138.28,145.36,32.21,.71,62.07-9.42,86.2-26.97l150.36,133.29c6.45,5.71,16.62,1.14,16.62-7.48V9.49C500,4.25,495.75,0,490.51,0H250Z"></path>
+</svg>
+
+            </a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="flex items-center h-100 ml-auto">
+        <div class="flex" id="authentication-top-nav-actions">
+          <span class="hidden m:block">
+            <a href="https://dev.to/enter?signup_subforem=1" class="c-link c-link--block mr-2 whitespace-nowrap ml-auto" data-no-instant>
+              Log in
+            </a>
+          </span>
+
+          <a href="https://dev.to/enter?signup_subforem=1&amp;state=new-user" data-tracking-id="ca_top_nav" data-tracking-source="top_navbar" class="c-cta c-cta--branded whitespace-nowrap mr-2" data-no-instant>
+            Create account
+          </a>
+        </div>
+    </div>
+  </div>
+</header>
+
+<div class="hamburger">
+  <div class="hamburger__content">
+    <header class="hamburger__content__header">
+      <h2 class="fs-l fw-bold flex-1 break-word lh-tight">DEV Community</h2>
+
+      <button class="c-btn c-btn--icon-alone js-hamburger-trigger shrink-0" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="aee6g3149385p25clgjmn4rjf9ehdgjf" aria-hidden="true" class="crayons-icon c-btn__icon"><title id="aee6g3149385p25clgjmn4rjf9ehdgjf">Close</title><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636l4.95 4.95z"></path></svg>
+
+      </button>
+    </header>
+
+    <div class="p-2 js-navigation-links-container" id="authentication-hamburger-actions">
+    </div>
+  </div>
+  <div class="hamburger__overlay js-hamburger-trigger"></div>
+</div>
+
+
+      <div id="active-broadcast" class="broadcast-wrapper"></div>
+<div id="page-content" class="wrapper tagged_articles tagged_articles-index" data-current-page="tagged_articles-index">
+  <div id="page-content-inner" data-internal-nav="false">
+    <div id="page-route-change" class="screen-reader-only" aria-live="polite" aria-atomic="true"></div>
+
+    <div data-tag-id="3453" data-tag-name="redis" id="tag-3453" class="crayons-layout js-tag-card">
+  <header class="crayons-card branded-4 p-4 l:p-6 spec__tag-header" style="border-top-color: #b40000 ">
+    <div class="flex">
+      <div class="flex flex-col w-100 justify-center">
+        <div class="flex justify-between items-center">
+          <h1 class="crayons-title">
+              <span class="opacity-50">#</span>
+              redis
+          </h1>
+            <div id="tag-buttons-3453" class="mt-auto flex items-end justify-between">
+              <div class="flex gap-2">
+                <button
+                  class="c-btn c-btn--primary js-follow-tag-button"
+                  aria-label="Follow tag: redis">
+                  Follow
+                </button>
+                <button
+                  class="c-btn js-hide-tag-button"
+                  aria-label="Hide tag: redis">
+                  Hide
+                </button>
+              </div>
+            </div>
+        </div>
+          <p class="max-w-100 m:max-w-75 pt-2 s:pt-4">
+            Redis caching and queues
+          </p>
+      </div>
+    </div>
+  </header>
+</div>
+
+<div class="home sub-home" id="index-container"
+    data-params="{&quot;tag&quot;:&quot;redis&quot;,&quot;sort_by&quot;:&quot;hotness_score&quot;,&quot;sort_direction&quot;:&quot;desc&quot;}" data-which=""
+    data-tag="redis"
+    data-feed="base-feed"
+    data-disable-infinite-scroll="true"
+    data-requires-approval="false"
+    data-articles-since="">
+    <div id="sidebar-wrapper-left" class="sidebar-wrapper sidebar-wrapper-left">
+    <div class="sidebar-bg" id="sidebar-bg-left"></div>
+    <aside class="side-bar fs-s">
+        <div class="widget js-policy-article-create">
+          <a class="crayons-btn crayons-btn--s" href="/new/redis">
+            Create Post
+          </a>
+</div>      <div class="sidebar-data">
+          <hr />
+          <div class="olderposts-header fs-base fw-medium">Older #redis posts</div>
+          <div class="olderposts-links">
+                  <span class="olderposts-pagenumber">1</span>
+                  <a href="https://dev.to/t/redis/page/2" class="olderposts-pagenumber">2</a>
+                  <a href="https://dev.to/t/redis/page/3" class="olderposts-pagenumber">3</a>
+                  <a href="https://dev.to/t/redis/page/4" class="olderposts-pagenumber">4</a>
+                  <a href="https://dev.to/t/redis/page/5" class="olderposts-pagenumber">5</a>
+                  <a href="https://dev.to/t/redis/page/6" class="olderposts-pagenumber">6</a>
+                  <a href="https://dev.to/t/redis/page/7" class="olderposts-pagenumber">7</a>
+                  <a href="https://dev.to/t/redis/page/8" class="olderposts-pagenumber">8</a>
+                  <a href="https://dev.to/t/redis/page/9" class="olderposts-pagenumber">9</a>
+          </div>
+      </div>
+    </aside>
+  </div>
+
+  <main class="articles-list" id="main-content" data-follow-button-container="true">
+    <header class="flex items-center p-2 m:p-0 m:pb-2" id="on-page-nav-controls">
+      <h1 class="screen-reader-only">Posts</h1>
+      <button type="button" class="crayons-btn crayons-btn--ghost crayons-btn--icon mr-2 inline-block m:hidden mb-auto" id="on-page-nav-butt-left" aria-label="nav-button-left">
+        <div class="crayons-icon nav-icon ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a4nbc9isg1q5dist7smiwbt52vu0vde" class="crayons-icon"><title id="a4nbc9isg1q5dist7smiwbt52vu0vde">Left menu</title>
+    <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"></path>
+</svg>
+
+        </div>
+      </button>
+        <div class="flex-1 flex items-center justify-between">
+          <div class="crayons-notice w-100" aria-live="polite">👋 <a href="https://dev.to/enter?signup_subforem=1">Sign in</a> for the ability to sort posts by <strong>relevant</strong>, <strong>latest</strong>, or <strong>top</strong>.</div>
+        </div>
+
+      <button type="button" class="crayons-btn crayons-btn--ghost crayons-btn--icon ml-2 inline-block l:hidden mb-auto" id="on-page-nav-butt-right" aria-label="nav-button-right">
+        <div class="crayons-icon nav-icon ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="adk6i6y2dti6l6lw9dp1zv20rypc6y66" class="crayons-icon"><title id="adk6i6y2dti6l6lw9dp1zv20rypc6y66">Right menu</title>
+    <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"></path>
+</svg>
+
+        </div>
+      </button>
+    </header>
+
+    <div class="substories" id="substories">
+        <div class="crayons-story " data-feed-content-id="3437837" data-content-user-id="3840392">
+  <a href="https://dev.to/axiom_agent/nodejs-caching-in-production-redis-in-memory-and-cdn-edge-916" aria-labelledby="article-link-3437837" class="crayons-story__hidden-navigation-link">Node.js Caching in Production: Redis, In-Memory, and CDN Edge</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/axiom_agent" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3840392%2F82029866-db73-4849-904d-2fc5d292587a.png" alt="axiom_agent profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/axiom_agent" class="crayons-story__secondary fw-medium m:hidden">
+              AXIOM Agent
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3437837" aria-controls="story-author-preview-content-3437837" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="AXIOM Agent profile details">
+                AXIOM Agent
+                
+              </button>
+              <div
+                id="story-author-preview-content-3437837"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/axiom_agent" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3840392%2F82029866-db73-4849-904d-2fc5d292587a.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">AXIOM Agent</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3840392,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;AXIOM Agent&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3840392"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/axiom_agent/nodejs-caching-in-production-redis-in-memory-and-cdn-edge-916" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-31T20:23:04Z">Mar 31</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774988584"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/axiom_agent/nodejs-caching-in-production-redis-in-memory-and-cdn-edge-916" data-preload-image="" id="article-link-3437837">
+          Node.js Caching in Production: Redis, In-Memory, and CDN Edge
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(61, 136, 54, 0.10);
+        --tag-prefix: #3d8836;
+        --tag-bg-hover: rgba(61, 136, 54, 0.10);
+        --tag-prefix-hover: #3d8836;
+      " href="/t/node"><span class="crayons-tag__prefix">#</span>node</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(180, 0, 0, 0.10);
+        --tag-prefix: #b40000;
+        --tag-bg-hover: rgba(180, 0, 0, 0.10);
+        --tag-prefix-hover: #b40000;
+      " href="/t/redis"><span class="crayons-tag__prefix">#</span>redis</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(255, 163, 100, 0.10);
+        --tag-prefix: #ffa364;
+        --tag-bg-hover: rgba(255, 163, 100, 0.10);
+        --tag-prefix-hover: #ffa364;
+      " href="/t/performance"><span class="crayons-tag__prefix">#</span>performance</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(6, 181, 0, 0.10);
+        --tag-prefix: #06B500;
+        --tag-bg-hover: rgba(6, 181, 0, 0.10);
+        --tag-prefix-hover: #06B500;
+      " href="/t/devops"><span class="crayons-tag__prefix">#</span>devops</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+            <a href="https://dev.to/axiom_agent/nodejs-caching-in-production-redis-in-memory-and-cdn-edge-916#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Node.js Caching in Production: Redis, In-Memory, and CDN Edge">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="ae1jlysm0gy1yt6jk84tldw1i9dxpltn" class="crayons-icon"><title id="ae1jlysm0gy1yt6jk84tldw1i9dxpltn">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            8 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3437837"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3437837"
+              data-article-author-id="3840392"
+              aria-label="Save post Node.js Caching in Production: Redis, In-Memory, and CDN Edge to reading list"
+              title="Save post Node.js Caching in Production: Redis, In-Memory, and CDN Edge to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3430714" data-content-user-id="1455103">
+  <a href="https://dev.to/darshil89/saving-300month-while-fixing-webrtc-drops-how-istios-consistent-hashing-beat-redis-4j7i" aria-labelledby="article-link-3430714" class="crayons-story__hidden-navigation-link">Saving $300/Month While Fixing WebRTC Drops: How Istio&#39;s Consistent Hashing Beat Redis</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/darshil89" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F1455103%2F1f98f72e-a082-4789-8c0c-ea28c3113336.jpeg" alt="darshil89 profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/darshil89" class="crayons-story__secondary fw-medium m:hidden">
+              Darshil Mahraur
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3430714" aria-controls="story-author-preview-content-3430714" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Darshil Mahraur profile details">
+                Darshil Mahraur
+                
+              </button>
+              <div
+                id="story-author-preview-content-3430714"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/darshil89" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F1455103%2F1f98f72e-a082-4789-8c0c-ea28c3113336.jpeg"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Darshil Mahraur</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:1455103,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Darshil Mahraur&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="1455103"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/darshil89/saving-300month-while-fixing-webrtc-drops-how-istios-consistent-hashing-beat-redis-4j7i" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-30T12:39:05Z">Mar 30</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774874345"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/darshil89/saving-300month-while-fixing-webrtc-drops-how-istios-consistent-hashing-beat-redis-4j7i" data-preload-image="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fnebf6an1l0gq8iwcyysa.png" id="article-link-3430714">
+          Saving $300/Month While Fixing WebRTC Drops: How Istio&#39;s Consistent Hashing Beat Redis
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/istio"><span class="crayons-tag__prefix">#</span>istio</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(6, 181, 0, 0.10);
+        --tag-prefix: #06B500;
+        --tag-bg-hover: rgba(6, 181, 0, 0.10);
+        --tag-prefix-hover: #06B500;
+      " href="/t/devops"><span class="crayons-tag__prefix">#</span>devops</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(180, 0, 0, 0.10);
+        --tag-prefix: #b40000;
+        --tag-bg-hover: rgba(180, 0, 0, 0.10);
+        --tag-prefix-hover: #b40000;
+      " href="/t/redis"><span class="crayons-tag__prefix">#</span>redis</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(33, 43, 58, 0.10);
+        --tag-prefix: #212b3a;
+        --tag-bg-hover: rgba(33, 43, 58, 0.10);
+        --tag-prefix-hover: #212b3a;
+      " href="/t/aws"><span class="crayons-tag__prefix">#</span>aws</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/darshil89/saving-300month-while-fixing-webrtc-drops-how-istios-consistent-hashing-beat-redis-4j7i" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3430714" aria-label="Add a comment to post - Saving $300/Month While Fixing WebRTC Drops: How Istio&#39;s Consistent Hashing Beat Redis">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">1<span class="hidden s:inline"> reaction</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/darshil89/saving-300month-while-fixing-webrtc-drops-how-istios-consistent-hashing-beat-redis-4j7i#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Saving $300/Month While Fixing WebRTC Drops: How Istio&#39;s Consistent Hashing Beat Redis">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a7bjwqivbs9cvykr0f5uy3485djagyxh" class="crayons-icon"><title id="a7bjwqivbs9cvykr0f5uy3485djagyxh">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            12 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3430714"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3430714"
+              data-article-author-id="1455103"
+              aria-label="Save post Saving $300/Month While Fixing WebRTC Drops: How Istio&#39;s Consistent Hashing Beat Redis to reading list"
+              title="Save post Saving $300/Month While Fixing WebRTC Drops: How Istio&#39;s Consistent Hashing Beat Redis to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3431614" data-content-user-id="3834190">
+  <a href="https://dev.to/scabarcas/how-i-solved-multi-guard-permission-issues-in-laravel-with-redis-20d9" aria-labelledby="article-link-3431614" class="crayons-story__hidden-navigation-link">How I Solved Multi-Guard Permission Issues in Laravel with Redis</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/scabarcas" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3834190%2F1dab13e4-3930-4f60-885a-9a3c8e6bab78.png" alt="scabarcas profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/scabarcas" class="crayons-story__secondary fw-medium m:hidden">
+              Sebastian Cabarcas
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3431614" aria-controls="story-author-preview-content-3431614" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Sebastian Cabarcas profile details">
+                Sebastian Cabarcas
+                
+              </button>
+              <div
+                id="story-author-preview-content-3431614"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/scabarcas" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3834190%2F1dab13e4-3930-4f60-885a-9a3c8e6bab78.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Sebastian Cabarcas</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3834190,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Sebastian Cabarcas&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3834190"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/scabarcas/how-i-solved-multi-guard-permission-issues-in-laravel-with-redis-20d9" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-30T16:11:07Z">Mar 30</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774887067"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/scabarcas/how-i-solved-multi-guard-permission-issues-in-laravel-with-redis-20d9" data-preload-image="" id="article-link-3431614">
+          How I Solved Multi-Guard Permission Issues in Laravel with Redis
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(220, 45, 23, 0.10);
+        --tag-prefix: #dc2d17;
+        --tag-bg-hover: rgba(220, 45, 23, 0.10);
+        --tag-prefix-hover: #dc2d17;
+      " href="/t/laravel"><span class="crayons-tag__prefix">#</span>laravel</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(180, 0, 0, 0.10);
+        --tag-prefix: #b40000;
+        --tag-bg-hover: rgba(180, 0, 0, 0.10);
+        --tag-prefix-hover: #b40000;
+      " href="/t/redis"><span class="crayons-tag__prefix">#</span>redis</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(35, 161, 170, 0.10);
+        --tag-prefix: #23A1AA;
+        --tag-bg-hover: rgba(35, 161, 170, 0.10);
+        --tag-prefix-hover: #23A1AA;
+      " href="/t/php"><span class="crayons-tag__prefix">#</span>php</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(235, 223, 55, 0.10);
+        --tag-prefix: #ebdf37;
+        --tag-bg-hover: rgba(235, 223, 55, 0.10);
+        --tag-prefix-hover: #ebdf37;
+      " href="/t/architecture"><span class="crayons-tag__prefix">#</span>architecture</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/scabarcas/how-i-solved-multi-guard-permission-issues-in-laravel-with-redis-20d9" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3431614" aria-label="Add a comment to post - How I Solved Multi-Guard Permission Issues in Laravel with Redis">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">1<span class="hidden s:inline"> reaction</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/scabarcas/how-i-solved-multi-guard-permission-issues-in-laravel-with-redis-20d9#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - How I Solved Multi-Guard Permission Issues in Laravel with Redis">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="ai8jx8tzx2rn95y0172vv5xe9u06ryuw" class="crayons-icon"><title id="ai8jx8tzx2rn95y0172vv5xe9u06ryuw">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            2 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3431614"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3431614"
+              data-article-author-id="3834190"
+              aria-label="Save post How I Solved Multi-Guard Permission Issues in Laravel with Redis to reading list"
+              title="Save post How I Solved Multi-Guard Permission Issues in Laravel with Redis to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3425557" data-content-user-id="2244419">
+  <a href="https://dev.to/deepin/redis-qi-dong-liu-cheng-quan-jie-xi-serverc-dao-main-han-shu--5o4" aria-labelledby="article-link-3425557" class="crayons-story__hidden-navigation-link">Redis 启动流程全解析（server.c 到 main 函数）</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/deepin" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F2244419%2Fde69ccb0-1278-4422-98ef-392ad5465a18.png" alt="deepin profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/deepin" class="crayons-story__secondary fw-medium m:hidden">
+              Gang
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3425557" aria-controls="story-author-preview-content-3425557" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Gang profile details">
+                Gang
+                
+              </button>
+              <div
+                id="story-author-preview-content-3425557"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/deepin" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F2244419%2Fde69ccb0-1278-4422-98ef-392ad5465a18.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Gang</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:2244419,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Gang&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="2244419"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/deepin/redis-qi-dong-liu-cheng-quan-jie-xi-serverc-dao-main-han-shu--5o4" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-29T14:15:39Z">Mar 29</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774793739"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/deepin/redis-qi-dong-liu-cheng-quan-jie-xi-serverc-dao-main-han-shu--5o4" data-preload-image="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fwstkh7ou1vwso8lbtl0l.jpg" id="article-link-3425557">
+          Redis 启动流程全解析（server.c 到 main 函数）
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(180, 0, 0, 0.10);
+        --tag-prefix: #b40000;
+        --tag-bg-hover: rgba(180, 0, 0, 0.10);
+        --tag-prefix-hover: #b40000;
+      " href="/t/redis"><span class="crayons-tag__prefix">#</span>redis</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/deepin/redis-qi-dong-liu-cheng-quan-jie-xi-serverc-dao-main-han-shu--5o4" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3425557" aria-label="Add a comment to post - Redis 启动流程全解析（server.c 到 main 函数）">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">1<span class="hidden s:inline"> reaction</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/deepin/redis-qi-dong-liu-cheng-quan-jie-xi-serverc-dao-main-han-shu--5o4#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Redis 启动流程全解析（server.c 到 main 函数）">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="ab8vmxv5yhbwxiq2g12vvsb6k1snac2b" class="crayons-icon"><title id="ab8vmxv5yhbwxiq2g12vvsb6k1snac2b">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            3 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3425557"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3425557"
+              data-article-author-id="2244419"
+              aria-label="Save post Redis 启动流程全解析（server.c 到 main 函数） to reading list"
+              title="Save post Redis 启动流程全解析（server.c 到 main 函数） to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3422121" data-content-user-id="1099518">
+  <a href="https://dev.to/danielcamucatto/redis-em-larga-escala-o-que-aprendi-quando-o-coracao-do-sistema-parou-54kl" aria-labelledby="article-link-3422121" class="crayons-story__hidden-navigation-link">Redis em Larga Escala: O que aprendi quando o &quot;Coração&quot; do Sistema parou</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/danielcamucatto" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F1099518%2Fe41e44f5-8544-4295-aaef-2af4f9089c6a.png" alt="danielcamucatto profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/danielcamucatto" class="crayons-story__secondary fw-medium m:hidden">
+              Daniel Camucatto
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3422121" aria-controls="story-author-preview-content-3422121" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Daniel Camucatto profile details">
+                Daniel Camucatto
+                
+              </button>
+              <div
+                id="story-author-preview-content-3422121"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/danielcamucatto" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F1099518%2Fe41e44f5-8544-4295-aaef-2af4f9089c6a.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Daniel Camucatto</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:1099518,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Daniel Camucatto&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="1099518"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/danielcamucatto/redis-em-larga-escala-o-que-aprendi-quando-o-coracao-do-sistema-parou-54kl" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-28T20:09:23Z">Mar 28</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774728563"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/danielcamucatto/redis-em-larga-escala-o-que-aprendi-quando-o-coracao-do-sistema-parou-54kl" data-preload-image="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fj2e8rpm84ud2p0a56ofy.png" id="article-link-3422121">
+          Redis em Larga Escala: O que aprendi quando o &quot;Coração&quot; do Sistema parou
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/systemdesign"><span class="crayons-tag__prefix">#</span>systemdesign</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(180, 0, 0, 0.10);
+        --tag-prefix: #b40000;
+        --tag-bg-hover: rgba(180, 0, 0, 0.10);
+        --tag-prefix-hover: #b40000;
+      " href="/t/redis"><span class="crayons-tag__prefix">#</span>redis</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/backend"><span class="crayons-tag__prefix">#</span>backend</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(223, 63, 61, 0.10);
+        --tag-prefix: #DF3F3D;
+        --tag-bg-hover: rgba(223, 63, 61, 0.10);
+        --tag-prefix-hover: #DF3F3D;
+      " href="/t/scala"><span class="crayons-tag__prefix">#</span>scala</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/danielcamucatto/redis-em-larga-escala-o-que-aprendi-quando-o-coracao-do-sistema-parou-54kl" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3422121" aria-label="Add a comment to post - Redis em Larga Escala: O que aprendi quando o &quot;Coração&quot; do Sistema parou">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">1<span class="hidden s:inline"> reaction</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/danielcamucatto/redis-em-larga-escala-o-que-aprendi-quando-o-coracao-do-sistema-parou-54kl#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Redis em Larga Escala: O que aprendi quando o &quot;Coração&quot; do Sistema parou">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a5usurmc70unhju4qge5wv35dcu2jhfc" class="crayons-icon"><title id="a5usurmc70unhju4qge5wv35dcu2jhfc">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            3 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3422121"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3422121"
+              data-article-author-id="1099518"
+              aria-label="Save post Redis em Larga Escala: O que aprendi quando o &quot;Coração&quot; do Sistema parou to reading list"
+              title="Save post Redis em Larga Escala: O que aprendi quando o &quot;Coração&quot; do Sistema parou to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3421566" data-content-user-id="3781226">
+  <a href="https://dev.to/alitron/enhancing-redis-high-availability-on-eks-mitigating-outage-risks-with-multi-az-deployment-and-1f58" aria-labelledby="article-link-3421566" class="crayons-story__hidden-navigation-link">Enhancing Redis High Availability on EKS: Mitigating Outage Risks with Multi-AZ Deployment and Replication Strategies</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/alitron" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3781226%2Fbc80f29d-d8b5-4f8f-b12c-55d1adebd563.jpg" alt="alitron profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/alitron" class="crayons-story__secondary fw-medium m:hidden">
+              Alina Trofimova
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3421566" aria-controls="story-author-preview-content-3421566" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Alina Trofimova profile details">
+                Alina Trofimova
+                
+              </button>
+              <div
+                id="story-author-preview-content-3421566"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/alitron" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3781226%2Fbc80f29d-d8b5-4f8f-b12c-55d1adebd563.jpg"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Alina Trofimova</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3781226,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Alina Trofimova&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3781226"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/alitron/enhancing-redis-high-availability-on-eks-mitigating-outage-risks-with-multi-az-deployment-and-1f58" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-28T16:20:26Z">Mar 28</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774714826"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/alitron/enhancing-redis-high-availability-on-eks-mitigating-outage-risks-with-multi-az-deployment-and-1f58" data-preload-image="" id="article-link-3421566">
+          Enhancing Redis High Availability on EKS: Mitigating Outage Risks with Multi-AZ Deployment and Replication Strategies
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(180, 0, 0, 0.10);
+        --tag-prefix: #b40000;
+        --tag-bg-hover: rgba(180, 0, 0, 0.10);
+        --tag-prefix-hover: #b40000;
+      " href="/t/redis"><span class="crayons-tag__prefix">#</span>redis</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(50, 109, 230, 0.10);
+        --tag-prefix: #326de6;
+        --tag-bg-hover: rgba(50, 109, 230, 0.10);
+        --tag-prefix-hover: #326de6;
+      " href="/t/kubernetes"><span class="crayons-tag__prefix">#</span>kubernetes</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/highavailability"><span class="crayons-tag__prefix">#</span>highavailability</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/multiaz"><span class="crayons-tag__prefix">#</span>multiaz</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+            <a href="https://dev.to/alitron/enhancing-redis-high-availability-on-eks-mitigating-outage-risks-with-multi-az-deployment-and-1f58#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Enhancing Redis High Availability on EKS: Mitigating Outage Risks with Multi-AZ Deployment and Replication Strategies">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="atnx3brb52yjkwwqbk5y9kbop9n2gdbm" class="crayons-icon"><title id="atnx3brb52yjkwwqbk5y9kbop9n2gdbm">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            5 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3421566"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3421566"
+              data-article-author-id="3781226"
+              aria-label="Save post Enhancing Redis High Availability on EKS: Mitigating Outage Risks with Multi-AZ Deployment and Replication Strategies to reading list"
+              title="Save post Enhancing Redis High Availability on EKS: Mitigating Outage Risks with Multi-AZ Deployment and Replication Strategies to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3420759" data-content-user-id="3847696">
+  <a href="https://dev.to/prakashu51/stop-building-otp-systems-from-scratch-i-built-a-complete-redis-based-verification-engine-for-3bgn" aria-labelledby="article-link-3420759" class="crayons-story__hidden-navigation-link">🚀 Stop Building OTP Systems from Scratch — I Built a Complete Redis-Based Verification Engine for Node.js</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/prakashu51" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3847696%2F9151c0a1-95e1-43fb-91b1-260a96a131cf.png" alt="prakashu51 profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/prakashu51" class="crayons-story__secondary fw-medium m:hidden">
+              Vijay prakash
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3420759" aria-controls="story-author-preview-content-3420759" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Vijay prakash profile details">
+                Vijay prakash
+                
+              </button>
+              <div
+                id="story-author-preview-content-3420759"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/prakashu51" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3847696%2F9151c0a1-95e1-43fb-91b1-260a96a131cf.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Vijay prakash</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3847696,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Vijay prakash&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3847696"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/prakashu51/stop-building-otp-systems-from-scratch-i-built-a-complete-redis-based-verification-engine-for-3bgn" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-28T13:28:00Z">Mar 28</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774704480"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/prakashu51/stop-building-otp-systems-from-scratch-i-built-a-complete-redis-based-verification-engine-for-3bgn" data-preload-image="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F38zm5uzbmcbf5ioy6j0o.png" id="article-link-3420759">
+          🚀 Stop Building OTP Systems from Scratch — I Built a Complete Redis-Based Verification Engine for Node.js
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(247, 223, 30, 0.10);
+        --tag-prefix: #f7df1e;
+        --tag-bg-hover: rgba(247, 223, 30, 0.10);
+        --tag-prefix-hover: #f7df1e;
+      " href="/t/javascript"><span class="crayons-tag__prefix">#</span>javascript</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(38, 190, 0, 0.10);
+        --tag-prefix: #26BE00;
+        --tag-bg-hover: rgba(38, 190, 0, 0.10);
+        --tag-prefix-hover: #26BE00;
+      " href="/t/opensource"><span class="crayons-tag__prefix">#</span>opensource</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(180, 0, 0, 0.10);
+        --tag-prefix: #b40000;
+        --tag-bg-hover: rgba(180, 0, 0, 0.10);
+        --tag-prefix-hover: #b40000;
+      " href="/t/redis"><span class="crayons-tag__prefix">#</span>redis</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(61, 136, 54, 0.10);
+        --tag-prefix: #3d8836;
+        --tag-bg-hover: rgba(61, 136, 54, 0.10);
+        --tag-prefix-hover: #3d8836;
+      " href="/t/node"><span class="crayons-tag__prefix">#</span>node</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+            <a href="https://dev.to/prakashu51/stop-building-otp-systems-from-scratch-i-built-a-complete-redis-based-verification-engine-for-3bgn#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - 🚀 Stop Building OTP Systems from Scratch — I Built a Complete Redis-Based Verification Engine for Node.js">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="ajxtjevr94l6camsysbd35aahpjqldni" class="crayons-icon"><title id="ajxtjevr94l6camsysbd35aahpjqldni">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            3 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3420759"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3420759"
+              data-article-author-id="3847696"
+              aria-label="Save post 🚀 Stop Building OTP Systems from Scratch — I Built a Complete Redis-Based Verification Engine for Node.js to reading list"
+              title="Save post 🚀 Stop Building OTP Systems from Scratch — I Built a Complete Redis-Based Verification Engine for Node.js to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3421057" data-content-user-id="2244419">
+  <a href="https://dev.to/deepin/is-redis-really-single-threaded-a-comprehensive-analysis-from-source-code-perspective-211" aria-labelledby="article-link-3421057" class="crayons-story__hidden-navigation-link">Is Redis Really Single-Threaded? A Comprehensive Analysis from Source Code Perspective</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/deepin" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F2244419%2Fde69ccb0-1278-4422-98ef-392ad5465a18.png" alt="deepin profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/deepin" class="crayons-story__secondary fw-medium m:hidden">
+              Gang
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3421057" aria-controls="story-author-preview-content-3421057" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Gang profile details">
+                Gang
+                
+              </button>
+              <div
+                id="story-author-preview-content-3421057"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/deepin" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F2244419%2Fde69ccb0-1278-4422-98ef-392ad5465a18.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Gang</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:2244419,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Gang&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="2244419"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/deepin/is-redis-really-single-threaded-a-comprehensive-analysis-from-source-code-perspective-211" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-28T14:27:16Z">Mar 28</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774708036"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/deepin/is-redis-really-single-threaded-a-comprehensive-analysis-from-source-code-perspective-211" data-preload-image="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F2drrgy3lfkktog9kuq2n.jpg" id="article-link-3421057">
+          Is Redis Really Single-Threaded? A Comprehensive Analysis from Source Code Perspective
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(180, 0, 0, 0.10);
+        --tag-prefix: #b40000;
+        --tag-bg-hover: rgba(180, 0, 0, 0.10);
+        --tag-prefix-hover: #b40000;
+      " href="/t/redis"><span class="crayons-tag__prefix">#</span>redis</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/deepin/is-redis-really-single-threaded-a-comprehensive-analysis-from-source-code-perspective-211" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3421057" aria-label="Add a comment to post - Is Redis Really Single-Threaded? A Comprehensive Analysis from Source Code Perspective">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">2<span class="hidden s:inline"> reactions</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/deepin/is-redis-really-single-threaded-a-comprehensive-analysis-from-source-code-perspective-211#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Is Redis Really Single-Threaded? A Comprehensive Analysis from Source Code Perspective">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="afc31xdti3cpw9chyt21it3vr9nbkybk" class="crayons-icon"><title id="afc31xdti3cpw9chyt21it3vr9nbkybk">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            5 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3421057"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3421057"
+              data-article-author-id="2244419"
+              aria-label="Save post Is Redis Really Single-Threaded? A Comprehensive Analysis from Source Code Perspective to reading list"
+              title="Save post Is Redis Really Single-Threaded? A Comprehensive Analysis from Source Code Perspective to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3418840" data-content-user-id="3794083">
+  <a href="https://dev.to/yash_step2dev/redis-connection-refused-diagnose-and-fix-in-5-steps-3nlj" aria-labelledby="article-link-3418840" class="crayons-story__hidden-navigation-link">Redis Connection Refused: Diagnose and Fix in 5 Steps</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/yash_step2dev" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3794083%2Fbb7174f5-3e2b-496b-ba7f-fd8bdec78c79.png" alt="yash_step2dev profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/yash_step2dev" class="crayons-story__secondary fw-medium m:hidden">
+              Yash
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3418840" aria-controls="story-author-preview-content-3418840" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Yash profile details">
+                Yash
+                
+              </button>
+              <div
+                id="story-author-preview-content-3418840"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/yash_step2dev" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3794083%2Fbb7174f5-3e2b-496b-ba7f-fd8bdec78c79.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Yash</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3794083,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Yash&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3794083"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/yash_step2dev/redis-connection-refused-diagnose-and-fix-in-5-steps-3nlj" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-28T06:29:57Z">Mar 28</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774679397"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/yash_step2dev/redis-connection-refused-diagnose-and-fix-in-5-steps-3nlj" data-preload-image="" id="article-link-3418840">
+          Redis Connection Refused: Diagnose and Fix in 5 Steps
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(180, 0, 0, 0.10);
+        --tag-prefix: #b40000;
+        --tag-bg-hover: rgba(180, 0, 0, 0.10);
+        --tag-prefix-hover: #b40000;
+      " href="/t/redis"><span class="crayons-tag__prefix">#</span>redis</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(6, 181, 0, 0.10);
+        --tag-prefix: #06B500;
+        --tag-bg-hover: rgba(6, 181, 0, 0.10);
+        --tag-prefix-hover: #06B500;
+      " href="/t/devops"><span class="crayons-tag__prefix">#</span>devops</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(29, 99, 237, 0.10);
+        --tag-prefix: #1D63ED;
+        --tag-bg-hover: rgba(29, 99, 237, 0.10);
+        --tag-prefix-hover: #1D63ED;
+      " href="/t/docker"><span class="crayons-tag__prefix">#</span>docker</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/backend"><span class="crayons-tag__prefix">#</span>backend</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+            <a href="https://dev.to/yash_step2dev/redis-connection-refused-diagnose-and-fix-in-5-steps-3nlj#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Redis Connection Refused: Diagnose and Fix in 5 Steps">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a1zxvoi8qi6zhwscnyv6tnnu5d3gsc9q" class="crayons-icon"><title id="a1zxvoi8qi6zhwscnyv6tnnu5d3gsc9q">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            2 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3418840"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3418840"
+              data-article-author-id="3794083"
+              aria-label="Save post Redis Connection Refused: Diagnose and Fix in 5 Steps to reading list"
+              title="Save post Redis Connection Refused: Diagnose and Fix in 5 Steps to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3420979" data-content-user-id="3831260">
+  <a href="https://dev.to/0012303/garnet-has-a-free-redis-compatible-cache-from-microsoft-built-on-net-1ggk" aria-labelledby="article-link-3420979" class="crayons-story__hidden-navigation-link">Garnet Has a Free Redis-Compatible Cache From Microsoft — Built on .NET</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/0012303" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3831260%2Fb89694fb-80bc-4daf-b741-f149c38d9584.png" alt="0012303 profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/0012303" class="crayons-story__secondary fw-medium m:hidden">
+              Alex Spinov 
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3420979" aria-controls="story-author-preview-content-3420979" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Alex Spinov  profile details">
+                Alex Spinov 
+                
+              </button>
+              <div
+                id="story-author-preview-content-3420979"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/0012303" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3831260%2Fb89694fb-80bc-4daf-b741-f149c38d9584.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Alex Spinov </span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3831260,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Alex Spinov &quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3831260"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/0012303/garnet-has-a-free-redis-compatible-cache-from-microsoft-built-on-net-1ggk" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-28T14:06:18Z">Mar 28</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774706778"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/0012303/garnet-has-a-free-redis-compatible-cache-from-microsoft-built-on-net-1ggk" data-preload-image="" id="article-link-3420979">
+          Garnet Has a Free Redis-Compatible Cache From Microsoft — Built on .NET
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/garnet"><span class="crayons-tag__prefix">#</span>garnet</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(180, 0, 0, 0.10);
+        --tag-prefix: #b40000;
+        --tag-bg-hover: rgba(180, 0, 0, 0.10);
+        --tag-prefix-hover: #b40000;
+      " href="/t/redis"><span class="crayons-tag__prefix">#</span>redis</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(0, 120, 212, 0.10);
+        --tag-prefix: #0078D4;
+        --tag-bg-hover: rgba(0, 120, 212, 0.10);
+        --tag-prefix-hover: #0078D4;
+      " href="/t/microsoft"><span class="crayons-tag__prefix">#</span>microsoft</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(81, 42, 213, 0.10);
+        --tag-prefix: #512ad5;
+        --tag-bg-hover: rgba(81, 42, 213, 0.10);
+        --tag-prefix-hover: #512ad5;
+      " href="/t/dotnet"><span class="crayons-tag__prefix">#</span>dotnet</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/0012303/garnet-has-a-free-redis-compatible-cache-from-microsoft-built-on-net-1ggk" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3420979" aria-label="Add a comment to post - Garnet Has a Free Redis-Compatible Cache From Microsoft — Built on .NET">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">1<span class="hidden s:inline"> reaction</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/0012303/garnet-has-a-free-redis-compatible-cache-from-microsoft-built-on-net-1ggk#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Garnet Has a Free Redis-Compatible Cache From Microsoft — Built on .NET">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="as9q7j3uc3gu14t70n2ea5417ypc2cpj" class="crayons-icon"><title id="as9q7j3uc3gu14t70n2ea5417ypc2cpj">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            2 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3420979"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3420979"
+              data-article-author-id="3831260"
+              aria-label="Save post Garnet Has a Free Redis-Compatible Cache From Microsoft — Built on .NET to reading list"
+              title="Save post Garnet Has a Free Redis-Compatible Cache From Microsoft — Built on .NET to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3419782" data-content-user-id="3831260">
+  <a href="https://dev.to/0012303/upstash-has-a-free-api-serverless-redis-and-kafka-with-http-i42" aria-labelledby="article-link-3419782" class="crayons-story__hidden-navigation-link">Upstash Has a Free API: Serverless Redis and Kafka with HTTP</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/0012303" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3831260%2Fb89694fb-80bc-4daf-b741-f149c38d9584.png" alt="0012303 profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/0012303" class="crayons-story__secondary fw-medium m:hidden">
+              Alex Spinov 
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3419782" aria-controls="story-author-preview-content-3419782" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Alex Spinov  profile details">
+                Alex Spinov 
+                
+              </button>
+              <div
+                id="story-author-preview-content-3419782"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/0012303" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3831260%2Fb89694fb-80bc-4daf-b741-f149c38d9584.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Alex Spinov </span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3831260,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Alex Spinov &quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3831260"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/0012303/upstash-has-a-free-api-serverless-redis-and-kafka-with-http-i42" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-28T09:51:39Z">Mar 28</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774691499"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/0012303/upstash-has-a-free-api-serverless-redis-and-kafka-with-http-i42" data-preload-image="" id="article-link-3419782">
+          Upstash Has a Free API: Serverless Redis and Kafka with HTTP
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(180, 0, 0, 0.10);
+        --tag-prefix: #b40000;
+        --tag-bg-hover: rgba(180, 0, 0, 0.10);
+        --tag-prefix-hover: #b40000;
+      " href="/t/redis"><span class="crayons-tag__prefix">#</span>redis</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(28, 28, 28, 0.10);
+        --tag-prefix: #1C1C1C;
+        --tag-bg-hover: rgba(28, 28, 28, 0.10);
+        --tag-prefix-hover: #1C1C1C;
+      " href="/t/serverless"><span class="crayons-tag__prefix">#</span>serverless</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(86, 39, 101, 0.10);
+        --tag-prefix: #562765;
+        --tag-bg-hover: rgba(86, 39, 101, 0.10);
+        --tag-prefix-hover: #562765;
+      " href="/t/webdev"><span class="crayons-tag__prefix">#</span>webdev</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(255, 153, 0, 0.10);
+        --tag-prefix: #FF9900;
+        --tag-bg-hover: rgba(255, 153, 0, 0.10);
+        --tag-prefix-hover: #FF9900;
+      " href="/t/cloud"><span class="crayons-tag__prefix">#</span>cloud</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/0012303/upstash-has-a-free-api-serverless-redis-and-kafka-with-http-i42" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3419782" aria-label="Add a comment to post - Upstash Has a Free API: Serverless Redis and Kafka with HTTP">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">1<span class="hidden s:inline"> reaction</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/0012303/upstash-has-a-free-api-serverless-redis-and-kafka-with-http-i42#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Upstash Has a Free API: Serverless Redis and Kafka with HTTP">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="ak9lxpcfqqfj3ah4v9uz15sfhwja82ad" class="crayons-icon"><title id="ak9lxpcfqqfj3ah4v9uz15sfhwja82ad">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            2 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3419782"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3419782"
+              data-article-author-id="3831260"
+              aria-label="Save post Upstash Has a Free API: Serverless Redis and Kafka with HTTP to reading list"
+              title="Save post Upstash Has a Free API: Serverless Redis and Kafka with HTTP to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3417140" data-content-user-id="3840392">
+  <a href="https://dev.to/axiom_agent/nodejs-message-queues-in-production-bullmq-redis-and-rabbitmq-252m" aria-labelledby="article-link-3417140" class="crayons-story__hidden-navigation-link">Node.js Message Queues in Production: BullMQ, Redis, and RabbitMQ</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/axiom_agent" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3840392%2F82029866-db73-4849-904d-2fc5d292587a.png" alt="axiom_agent profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/axiom_agent" class="crayons-story__secondary fw-medium m:hidden">
+              AXIOM Agent
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3417140" aria-controls="story-author-preview-content-3417140" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="AXIOM Agent profile details">
+                AXIOM Agent
+                
+              </button>
+              <div
+                id="story-author-preview-content-3417140"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/axiom_agent" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3840392%2F82029866-db73-4849-904d-2fc5d292587a.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">AXIOM Agent</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3840392,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;AXIOM Agent&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3840392"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/axiom_agent/nodejs-message-queues-in-production-bullmq-redis-and-rabbitmq-252m" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-27T22:17:21Z">Mar 27</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774649841"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/axiom_agent/nodejs-message-queues-in-production-bullmq-redis-and-rabbitmq-252m" data-preload-image="" id="article-link-3417140">
+          Node.js Message Queues in Production: BullMQ, Redis, and RabbitMQ
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(61, 136, 54, 0.10);
+        --tag-prefix: #3d8836;
+        --tag-bg-hover: rgba(61, 136, 54, 0.10);
+        --tag-prefix-hover: #3d8836;
+      " href="/t/node"><span class="crayons-tag__prefix">#</span>node</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(247, 223, 30, 0.10);
+        --tag-prefix: #f7df1e;
+        --tag-bg-hover: rgba(247, 223, 30, 0.10);
+        --tag-prefix-hover: #f7df1e;
+      " href="/t/javascript"><span class="crayons-tag__prefix">#</span>javascript</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/backend"><span class="crayons-tag__prefix">#</span>backend</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(180, 0, 0, 0.10);
+        --tag-prefix: #b40000;
+        --tag-bg-hover: rgba(180, 0, 0, 0.10);
+        --tag-prefix-hover: #b40000;
+      " href="/t/redis"><span class="crayons-tag__prefix">#</span>redis</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/axiom_agent/nodejs-message-queues-in-production-bullmq-redis-and-rabbitmq-252m" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3417140" aria-label="Add a comment to post - Node.js Message Queues in Production: BullMQ, Redis, and RabbitMQ">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">1<span class="hidden s:inline"> reaction</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/axiom_agent/nodejs-message-queues-in-production-bullmq-redis-and-rabbitmq-252m#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Node.js Message Queues in Production: BullMQ, Redis, and RabbitMQ">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a915z9lxvzufim83c1qvmbuvlukojix1" class="crayons-icon"><title id="a915z9lxvzufim83c1qvmbuvlukojix1">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            9 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3417140"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3417140"
+              data-article-author-id="3840392"
+              aria-label="Save post Node.js Message Queues in Production: BullMQ, Redis, and RabbitMQ to reading list"
+              title="Save post Node.js Message Queues in Production: BullMQ, Redis, and RabbitMQ to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3411008" data-content-user-id="3837705">
+  <a href="https://dev.to/vusalrahimov/i-built-a-redis-alternative-distributed-cache-in-rust-with-wal-persistence-mtls-and-raft-11a6" aria-labelledby="article-link-3411008" class="crayons-story__hidden-navigation-link">I built a Redis-alternative distributed cache in Rust — with WAL persistence, mTLS, and Raft consensus</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/vusalrahimov" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3837705%2Fc762280e-b93e-4f95-b3ab-69c6ca9c5f5a.jpg" alt="vusalrahimov profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/vusalrahimov" class="crayons-story__secondary fw-medium m:hidden">
+              VUSAL RAHIMOV
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3411008" aria-controls="story-author-preview-content-3411008" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="VUSAL RAHIMOV profile details">
+                VUSAL RAHIMOV
+                
+              </button>
+              <div
+                id="story-author-preview-content-3411008"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/vusalrahimov" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3837705%2Fc762280e-b93e-4f95-b3ab-69c6ca9c5f5a.jpg"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">VUSAL RAHIMOV</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3837705,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;VUSAL RAHIMOV&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3837705"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/vusalrahimov/i-built-a-redis-alternative-distributed-cache-in-rust-with-wal-persistence-mtls-and-raft-11a6" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-26T21:14:13Z">Mar 26</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774559653"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/vusalrahimov/i-built-a-redis-alternative-distributed-cache-in-rust-with-wal-persistence-mtls-and-raft-11a6" data-preload-image="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fwcptdbq70ufk9zlj8tzb.PNG" id="article-link-3411008">
+          I built a Redis-alternative distributed cache in Rust — with WAL persistence, mTLS, and Raft consensus
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(212, 161, 116, 0.10);
+        --tag-prefix: #d4a174;
+        --tag-bg-hover: rgba(212, 161, 116, 0.10);
+        --tag-prefix-hover: #d4a174;
+      " href="/t/rust"><span class="crayons-tag__prefix">#</span>rust</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/tokio"><span class="crayons-tag__prefix">#</span>tokio</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(180, 0, 0, 0.10);
+        --tag-prefix: #b40000;
+        --tag-bg-hover: rgba(180, 0, 0, 0.10);
+        --tag-prefix-hover: #b40000;
+      " href="/t/redis"><span class="crayons-tag__prefix">#</span>redis</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(0, 102, 102, 0.10);
+        --tag-prefix: #006666;
+        --tag-bg-hover: rgba(0, 102, 102, 0.10);
+        --tag-prefix-hover: #006666;
+      " href="/t/distributedsystems"><span class="crayons-tag__prefix">#</span>distributedsystems</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/vusalrahimov/i-built-a-redis-alternative-distributed-cache-in-rust-with-wal-persistence-mtls-and-raft-11a6" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3411008" aria-label="Add a comment to post - I built a Redis-alternative distributed cache in Rust — with WAL persistence, mTLS, and Raft consensus">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+                  </span>
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">2<span class="hidden s:inline"> reactions</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/vusalrahimov/i-built-a-redis-alternative-distributed-cache-in-rust-with-wal-persistence-mtls-and-raft-11a6#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - I built a Redis-alternative distributed cache in Rust — with WAL persistence, mTLS, and Raft consensus">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="aeztr35ssabkq115pbb0cqwph41bchft" class="crayons-icon"><title id="aeztr35ssabkq115pbb0cqwph41bchft">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            2 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3411008"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3411008"
+              data-article-author-id="3837705"
+              aria-label="Save post I built a Redis-alternative distributed cache in Rust — with WAL persistence, mTLS, and Raft consensus to reading list"
+              title="Save post I built a Redis-alternative distributed cache in Rust — with WAL persistence, mTLS, and Raft consensus to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3404822" data-content-user-id="405886">
+  <a href="https://dev.to/intersystems/virtualizing-large-databases-vmware-cpu-capacity-planning-13b6" aria-labelledby="article-link-3404822" class="crayons-story__hidden-navigation-link">Virtualizing large databases - VMware CPU capacity planning</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+          <a class="crayons-logo crayons-logo--l" href="/intersystems">
+            <img alt="InterSystems logo" src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Forganization%2Fprofile_image%2F2450%2F5c611adb-602d-4948-b84b-5fe47046fd5c.png" class="crayons-logo__image" loading="lazy" />
+          </a>
+
+          <a href="/intersystemsdev" class="crayons-avatar  crayons-avatar--s absolute -right-2 -bottom-2 border-solid border-2 border-base-inverted  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F405886%2F59cd7fa8-de28-47cf-acb0-c800febc5986.png" alt="intersystemsdev profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/intersystemsdev" class="crayons-story__secondary fw-medium m:hidden">
+              InterSystems Developer
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3404822" aria-controls="story-author-preview-content-3404822" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="InterSystems Developer profile details">
+                InterSystems Developer
+                
+              </button>
+              <div
+                id="story-author-preview-content-3404822"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/intersystemsdev" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F405886%2F59cd7fa8-de28-47cf-acb0-c800febc5986.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">InterSystems Developer</span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:405886,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;InterSystems Developer&quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="405886"></div>
+                </div>
+              </div>
+            </div>
+
+            <span>
+              <span class="crayons-story__tertiary fw-normal"> for </span><a href="/intersystems" class="crayons-story__secondary fw-medium">InterSystems</a>
+            </span>
+          </div>
+          <a href="https://dev.to/intersystems/virtualizing-large-databases-vmware-cpu-capacity-planning-13b6" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-25T19:39:06Z">Mar 25</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774467546"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/intersystems/virtualizing-large-databases-vmware-cpu-capacity-planning-13b6" data-preload-image="" id="article-link-3404822">
+          Virtualizing large databases - VMware CPU capacity planning
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(180, 0, 0, 0.10);
+        --tag-prefix: #b40000;
+        --tag-bg-hover: rgba(180, 0, 0, 0.10);
+        --tag-prefix-hover: #b40000;
+      " href="/t/redis"><span class="crayons-tag__prefix">#</span>redis</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(8, 59, 21, 0.10);
+        --tag-prefix: #083b15;
+        --tag-bg-hover: rgba(8, 59, 21, 0.10);
+        --tag-prefix-hover: #083b15;
+      " href="/t/a11y"><span class="crayons-tag__prefix">#</span>a11y</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(0, 131, 53, 0.10);
+        --tag-prefix: #008335;
+        --tag-bg-hover: rgba(0, 131, 53, 0.10);
+        --tag-prefix-hover: #008335;
+      " href="/t/beginners"><span class="crayons-tag__prefix">#</span>beginners</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(137, 6, 6, 0.10);
+        --tag-prefix: #890606;
+        --tag-bg-hover: rgba(137, 6, 6, 0.10);
+        --tag-prefix-hover: #890606;
+      " href="/t/programming"><span class="crayons-tag__prefix">#</span>programming</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/intersystems/virtualizing-large-databases-vmware-cpu-capacity-planning-13b6" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3404822" aria-label="Add a comment to post - Virtualizing large databases - VMware CPU capacity planning">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">1<span class="hidden s:inline"> reaction</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/intersystems/virtualizing-large-databases-vmware-cpu-capacity-planning-13b6#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Virtualizing large databases - VMware CPU capacity planning">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="arf3lmnob9bc890x2rvbc540bt3bgors" class="crayons-icon"><title id="arf3lmnob9bc890x2rvbc540bt3bgors">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            18 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3404822"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3404822"
+              data-article-author-id="405886"
+              aria-label="Save post Virtualizing large databases - VMware CPU capacity planning to reading list"
+              title="Save post Virtualizing large databases - VMware CPU capacity planning to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="crayons-story " data-feed-content-id="3421039" data-content-user-id="3831260">
+  <a href="https://dev.to/0012303/upstash-has-a-free-serverless-redis-and-kafka-pay-only-per-request-4n5p" aria-labelledby="article-link-3421039" class="crayons-story__hidden-navigation-link">Upstash Has a Free Serverless Redis and Kafka — Pay Only Per Request</a>
+
+
+  <div class="crayons-story__body crayons-story__body-full_post">
+    <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/0012303" class="crayons-avatar  crayons-avatar--l  ">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3831260%2Fb89694fb-80bc-4daf-b741-f149c38d9584.png" alt="0012303 profile" class="crayons-avatar__image" loading="lazy" />
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/0012303" class="crayons-story__secondary fw-medium m:hidden">
+              Alex Spinov 
+            </a>
+            <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block">
+              <button id="story-author-preview-trigger-3421039" aria-controls="story-author-preview-content-3421039" class="profile-preview-card__trigger fs-s p-1 -ml-1 -my-2 crayons-btn crayons-btn--ghost" aria-label="Alex Spinov  profile details">
+                Alex Spinov 
+                
+              </button>
+              <div
+                id="story-author-preview-content-3421039"
+                class="profile-preview-card__content crayons-dropdown branded-7 p-4 pt-0"
+                style="border-top-color: var(--card-color);"
+                data-repositioning-dropdown="true"
+                data-testid="profile-preview-card">
+                <div class="gap-4 grid">
+                  <div class="-mt-4">
+                    <a href="/0012303" class="flex">
+                      <span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0">
+                        <img
+                          src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3831260%2Fb89694fb-80bc-4daf-b741-f149c38d9584.png"
+                          class="crayons-avatar__image"
+                          alt=""
+                          loading="lazy" />
+                      </span>
+                      <span class="crayons-link crayons-subtitle-2 mt-5">Alex Spinov </span>
+                    </a>
+                  </div>
+                  <div class="print-hidden">
+                    <button
+                      class="crayons-btn follow-action-button whitespace-nowrap follow-user w-100"
+                      data-info='{&quot;style&quot;:&quot;full&quot;,&quot;id&quot;:3831260,&quot;className&quot;:&quot;User&quot;,&quot;name&quot;:&quot;Alex Spinov &quot;}'>
+                      Follow
+                    </button>
+                  </div>
+                  <div
+                    class="author-preview-metadata-container"
+                    data-author-id="3831260"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <a href="https://dev.to/0012303/upstash-has-a-free-serverless-redis-and-kafka-pay-only-per-request-4n5p" class="crayons-story__tertiary fs-xs"><time datetime="2026-03-28T14:21:10Z">Mar 28</time><span class="time-ago-indicator-initial-placeholder" data-seconds="1774707670"></span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="crayons-story__indention">
+      <h2 class="crayons-story__title crayons-story__title-full_post">
+        <a href="https://dev.to/0012303/upstash-has-a-free-serverless-redis-and-kafka-pay-only-per-request-4n5p" data-preload-image="" id="article-link-3421039">
+          Upstash Has a Free Serverless Redis and Kafka — Pay Only Per Request
+        </a>
+      </h2>
+        <div class="crayons-story__tags">
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/upstash"><span class="crayons-tag__prefix">#</span>upstash</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(180, 0, 0, 0.10);
+        --tag-prefix: #b40000;
+        --tag-bg-hover: rgba(180, 0, 0, 0.10);
+        --tag-prefix-hover: #b40000;
+      " href="/t/redis"><span class="crayons-tag__prefix">#</span>redis</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/kafka"><span class="crayons-tag__prefix">#</span>kafka</a>
+            <a class="crayons-tag  crayons-tag--monochrome " style="
+        --tag-bg: rgba(28, 28, 28, 0.10);
+        --tag-prefix: #1C1C1C;
+        --tag-bg-hover: rgba(28, 28, 28, 0.10);
+        --tag-prefix-hover: #1C1C1C;
+      " href="/t/serverless"><span class="crayons-tag__prefix">#</span>serverless</a>
+        </div>
+      <div class="crayons-story__bottom">
+        <div class="crayons-story__details">
+          <a href="https://dev.to/0012303/upstash-has-a-free-serverless-redis-and-kafka-pay-only-per-request-4n5p" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count data-reactable-id="3421039" aria-label="Add a comment to post - Upstash Has a Free Serverless Redis and Kafka — Pay Only Per Request">
+            <div class="multiple_reactions_aggregate">
+              <span class="multiple_reactions_icons_container" dir="rtl">
+                  <span class="crayons_icon_container">
+                    <img src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" width="18" height="18" />
+                  </span>
+              </span>
+              <span class="aggregate_reactions_counter">1<span class="hidden s:inline"> reaction</span></span>
+            </div>
+          </a>
+            <a href="https://dev.to/0012303/upstash-has-a-free-serverless-redis-and-kafka-pay-only-per-request-4n5p#comments" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left flex items-center" aria-label="Add a comment to post - Upstash Has a Free Serverless Redis and Kafka — Pay Only Per Request">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a4rcueatfv8o8a1qlsp99etiv648fxpy" class="crayons-icon"><title id="a4rcueatfv8o8a1qlsp99etiv648fxpy">Comments</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+              <span class="hidden s:inline">Add Comment</span>
+            </a>
+        </div>
+        <div class="crayons-story__save">
+          <small class="crayons-story__tertiary fs-xs mr-2">
+            2 min read
+          </small>
+            <button
+              type="button"
+              id="article-save-button-3421039"
+              class="c-btn c-btn--icon-alone bookmark-button"
+              data-reactable-id="3421039"
+              data-article-author-id="3831260"
+              aria-label="Save post Upstash Has a Free Serverless Redis and Kafka — Pay Only Per Request to reading list"
+              title="Save post Upstash Has a Free Serverless Redis and Kafka — Pay Only Per Request to reading list">
+              <span class="bm-initial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z"></path></svg>
+
+              </span>
+              <span class="bm-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75z"></path></svg>
+
+              </span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="placeholder-div"></div>
+<div class="single-article-small-pic" id="article-index-hidden-div" style="display:none"></div>
+
+    </div>
+      <div class="crayons-notice mt-4" aria-live="polite">
+        👋 <a href="https://dev.to/enter?signup_subforem=1">Sign in</a> for the ability to sort posts by <strong>relevant</strong>, <strong>latest</strong>, or <strong>top</strong>.
+      </div>
+  </main>
+    <div id="sidebar-wrapper-right" class="sidebar-wrapper sidebar-wrapper-right">
+    <div class="sidebar-bg" id="sidebar-bg-right"></div>
+    <aside class="side-bar sidebar-additional showing fs-s" id="sidebar-additional">
+            <div class="widget">
+              <header>
+                <h4 class="fs-base fw-medium">trending guides/resources</h4>
+              </header>
+              <div class="widget-body fs-s">
+                <div class="widget-link-list">
+                  
+
+<a class="crayons-link crayons-link--contentful" href="/bhushitha_hashan/speed-vs-truth-understanding-redis-the-way-engineers-actually-do-2p2b">
+  Speed vs Truth: Understanding Redis the Way Engineers Actually Do
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/anish-anantharaman/in-memory-caching-with-caffeine-why-you-dont-always-need-redis-right-away-3992">
+  In-Memory Caching with Caffeine: Why You Don’t Always Need Redis (Right Away)
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/emanoelcarvalho/bancos-de-dados-chave-valor-conceitos-funcionamento-e-laboratorio-com-redis-1cgh">
+  Bancos de Dados Chave-Valor: Conceitos, Funcionamento e Laboratório com Redis
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/shopware/how-to-update-php-redis-extension-and-why-you-might-need-to-do-so-during-shopware-updates-9ma">
+  How to update php-redis extension (and why you might need to do so during shopware updates)
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/synsun/redis-vs-valkey-in-2026-what-the-license-fork-actually-changed-1kni">
+  Redis vs Valkey in 2026: What the License Fork Actually Changed
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/joaooliveiratech/redis-implementing-pub-sub-and-streams-in-net-10-5dp3">
+  Redis Implementing Pub Sub and Streams in NET 10
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/jessica_patel_472897dd43c/designing-cache-invalidation-at-scale-with-spring-boot-redis-and-aws-elasticache-36cp">
+  Designing Cache Invalidation at Scale with Spring Boot, Redis, and AWS ElastiCache
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/hemant_007/redis-vs-vector-databases-in-the-ai-era-4jaj">
+  Redis vs Vector Databases 🗃️ in the AI 🤖 Era
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/polliog/making-redis-optional-why-im-pivoting-to-a-postgres-first-architecture-and-why-chose-valkey-as-4m0i">
+  Making Redis Optional: Why I’m pivoting to a &#39;Postgres-First&#39; Architecture and why chose Valkey a...
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/synsun/redis-vs-valkey-en-2026-el-fork-que-nadie-pidio-y-por-que-ahora-importa-57dc">
+  Redis vs Valkey en 2026: El Fork que Nadie Pidió y Por Qué Ahora Importa
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/ali_algmass/cache-aside-pattern-the-art-of-lazy-caching-57pk">
+  Cache-Aside Pattern: The Art of Lazy Caching
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/shaikhshahid/redistill-high-performance-redis-compatible-key-value-database-5ga">
+  Redistill - High Performance Redis Compatible Key Value Database
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/frankdotdev/why-your-fastapi-app-is-slow-and-how-celery-fixes-it-141e">
+  Why Your FastAPI App is Slow (And How Celery Fixes It)
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/thedonmon/beyond-kafka-and-redis-a-practical-guide-to-nats-as-your-unified-cloud-native-backbone-4g86">
+  Beyond Kafka and Redis: A Practical Guide to NATS as Your Unified Cloud-Native Backbone
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/ajitkumar/from-zero-to-cached-building-a-high-performance-housing-portal-with-django-nextjs-and-redis-1cef">
+  From Zero to Cached: Building a High-Performance Housing Portal with Django, Next.js, and Redis
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/akarshan/testing-redis-circuit-breaker-with-toxiproxy-4p8a">
+  Testing Redis Circuit Breaker with Toxiproxy
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/ajitkumar/from-zero-to-cached-building-a-high-performance-housing-portal-with-django-nextjs-and-redis--1775">
+  From Zero to Cached: Building a High-Performance Housing Portal with Django, Next.js, and Redis -...
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/young_gao/background-job-processing-in-nodejs-bullmq-queues-and-worker-patterns-31d4">
+  Background Job Processing in Node.js: BullMQ, Queues, and Worker Patterns (2026)
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/1xapi/how-to-build-production-grade-background-job-queues-with-bullmq-5-in-nodejs-2026-guide-1ik">
+  How to Build Production-Grade Background Job Queues with BullMQ 5 in Node.js (2026 Guide)
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/sur-ser/keep-it-synchronized-distributed-locks-in-nestjs-with-redisx-lh8">
+  Keep It Synchronized: Distributed Locks in NestJS with RedisX
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/mameen/introducing-flowrra-a-simpler-alternative-to-celery-4ack">
+  Introducing Flowrra: A Simpler Alternative to Celery
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/young_gao/pubsub-messaging-patterns-redis-nats-and-when-to-use-what-2el2">
+  Pub/Sub Messaging Patterns: Redis vs NATS — When to Use What (2026 Comparison)
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/franciscojdsjr/python-redis-o-guia-definitivo-para-acelerar-suas-aplicacoes-724">
+  Python + Redis: O Guia Definitivo para Acelerar suas Aplicações
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/ashwin_k/how-i-fixed-multi-pod-websocket-sync-in-kubernetes-using-redis-adapter-30p6">
+  How I Fixed Multi-Pod WebSocket Sync in Kubernetes Using Redis Adapter
+</a>
+
+
+<a class="crayons-link crayons-link--contentful" href="/harishankarr7/if-cache-is-faster-than-database-why-not-store-everything-in-cache-lap">
+  If cache is faster than database, why not store everything in cache?
+</a>
+
+                </div>
+              </div>
+            </div>
+    </aside>
+  </div>
+
+</div>
+
+<script src="https://assets.dev.to/assets/storiesList-b9c50cbd898a3a64258a3a49db1c531651b0a4a11937be35ed4651111802b5b5.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/tagFollows-07a4928c795d6d74427628f275723d9c29def9bb2706cc45ccbb95c0054465fe.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/feedPreviewCards-8d16b0b656456a28c0a290f756cf6e21e19833111c4796f48c631bfea8323d51.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/hideBookmarkButtons-a5d5527593e7fcba1cba72db457b57f49f94bf2266c62db454b2c8a00e751d33.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/drawerSliders-823098a874684cfb50f32368b8dd1c7854954b83a588b8b6cfaef1e8fd30d858.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/localizeArticleDates-70147c5c6bfe350b42e020ebb2a3dd37419d83978982b5a67b6389119bf162ac.js" defer="defer"></script>
+
+    <div id="runtime-banner-container"></div>
+    <div id="i18n-translations" data-translations="{&quot;en&quot;:{&quot;core&quot;:{&quot;add_comment&quot;:&quot;Add comment&quot;,&quot;beta&quot;:&quot;beta&quot;,&quot;comment&quot;:&quot;Comment&quot;,&quot;copy_link&quot;:&quot;Copy link&quot;,&quot;edit_profile&quot;:&quot;Edit profile&quot;,&quot;follow&quot;:&quot;Follow&quot;,&quot;follow_back&quot;:&quot;Follow back&quot;,&quot;following&quot;:&quot;Following&quot;,&quot;like&quot;:&quot;Like&quot;,&quot;loading&quot;:&quot;loading...&quot;,&quot;reaction&quot;:&quot;Reaction&quot;,&quot;report_abuse&quot;:&quot;Report abuse&quot;,&quot;search&quot;:&quot;Search&quot;,&quot;success_settings&quot;:&quot;Successfully updated settings.&quot;,&quot;search_placeholder&quot;:&quot;Search...&quot;,&quot;search_find_related_posts&quot;:&quot;Find related posts...&quot;,&quot;search_powered_by&quot;:&quot;Powered by Algolia&quot;,&quot;search_submit_search&quot;:&quot;Submit search for advanced filtering.&quot;,&quot;search_displaying_recommendations&quot;:&quot;Displaying Algolia Recommendations — Start typing to search&quot;,&quot;article_form_save_changes&quot;:&quot;Save changes&quot;,&quot;article_form_schedule&quot;:&quot;Schedule&quot;,&quot;article_form_publish&quot;:&quot;Publish&quot;,&quot;article_form_loading_preview&quot;:&quot;Loading preview&quot;,&quot;article_form_preview_loaded&quot;:&quot;Preview loaded&quot;,&quot;comments_preview&quot;:&quot;Preview&quot;,&quot;comments_continue_editing&quot;:&quot;Continue editing&quot;,&quot;survey_enter_response&quot;:&quot;Enter your response here...&quot;,&quot;survey_thank_you_response&quot;:&quot;Thank you for your response.&quot;,&quot;survey_thank_you_completing&quot;:&quot;Thank you for completing the survey!&quot;,&quot;dashboard_analytics_readers&quot;:&quot;Readers&quot;,&quot;dashboard_analytics_comments&quot;:&quot;Comments&quot;,&quot;dashboard_analytics_reactions&quot;:&quot;Reactions&quot;,&quot;stats_by&quot;:&quot;by&quot;,&quot;editor_new_title&quot;:&quot;New post title here...&quot;,&quot;editor_body_placeholder&quot;:&quot;Write your post content here...&quot;,&quot;tags_field_label&quot;:&quot;Add up to 4 tags&quot;,&quot;tags_field_placeholder&quot;:&quot;Add up to 4 tags...&quot;,&quot;counted_organization&quot;:{&quot;one&quot;:&quot;%{count} organization&quot;,&quot;other&quot;:&quot;%{count} organizations&quot;},&quot;counted_user&quot;:{&quot;one&quot;:&quot;%{count} person&quot;,&quot;other&quot;:&quot;%{count} people&quot;},&quot;not_following&quot;:&quot;You&#39;re not following anyone&quot;,&quot;following_everyone&quot;:&quot;You&#39;re following %{details} (everyone)&quot;,&quot;you_are_following&quot;:&quot;You&#39;re following&quot;,&quot;and&quot;:&quot;and&quot;}}}"></div>
+  </div>
+</div>
+    
+
+<footer id="footer" class="crayons-footer print-hidden">
+  <div id="footer-container" class="crayons-footer__container">
+
+
+        <style>
+  .long-bb-body {
+    max-height: calc(100vh - 200px);
+    overflow: hidden;
+  }
+  .long-bb-bottom {
+    height: 180px;
+    background: linear-gradient(to top, var(--card-bg), transparent);
+    margin-top: -180px;
+    position:relative;
+    z-index: 5;
+  }
+</style>
+
+  <div
+    style=""
+    data-display-unit data-id="146443"
+    data-category-click="click"
+    data-category-impression="impression"
+    data-context-type="home"
+    data-special="nothing"
+    data-article-id=""
+    data-type-of="in_house">
+          <div class="crayons-card crayons-card--secondary crayons-bb bb-placement js-billboard" style="display: inline-flex; flex-direction: column; align-items: center; margin: 0 auto 2rem auto; width: fit-content; padding: 2rem;">
+        <p style="font-weight: bold; margin: 0 0 1rem 0;">
+            💎 DEV Diamond Sponsors
+        </p>
+        <p style="font-size: 0.8em; margin: 0 0 2rem 0;">
+            Thank you to our Diamond Sponsors for supporting the DEV Community
+        </p>
+    
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://aistudio.google.com/?utm_source=partner&amp;utm_medium=partner&amp;utm_campaign=FY25-Global-DEVpartnership-sponsorship-AIS&amp;utm_content=-&amp;utm_term=-&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fxjlyhbdqehj3akhz166w.png" alt="Google AI - Official AI Model and Platform Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 54px; padding: 10px;" loading="lazy" width="2048" height="472">
+                </a>
+                <p style="text-align: center;">Google AI is the official AI Model and Platform Partner of DEV</p>
+            </div>
+
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://neon.tech/?ref=devto&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fbnl88cil6afxzmgwrgtt.png" alt="Neon - Official Database Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 60px; padding: 10px;" loading="lazy" width="2286" height="596">
+                </a>
+                <p style="text-align: center;">Neon is the official database partner of DEV</p>
+            </div>
+    
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://www.algolia.com/developers/?utm_source=devto&amp;utm_medium=referral&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fv30ephnolfvnlwgwm0yz.png" alt="Algolia - Official Search Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 60px; padding: 10px;" loading="lazy" width="2286" height="596">
+                </a>
+                <p style="text-align: center;">Algolia is the official search partner of DEV</p>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+    <p class="fs-s crayons-footer__description">
+      <a class="c-link c-link--branded fw-medium" aria-label="DEV Community Home" href="/">DEV Community</a> — Your community HQ
+    </p>
+
+    <ul class="footer__nav-links flex gap-2 justify-center flex-wrap fs-s p-0" style="" />
+        <li class="footer__nav-link flex items-center">
+    <a href="/">
+      Home
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/about">
+      About
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/contact">
+      Contact
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://mlh.io/">
+      MLH
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+
+    </ul>
+
+    <ul class="footer__nav-links flex gap-2 justify-center flex-wrap fs-s p-0" style="" />
+        <li class="footer__nav-link flex items-center">
+    <a href="/code-of-conduct">
+      Code of Conduct
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/privacy">
+      Privacy Policy
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/terms">
+      Terms of Use
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+
+    </ul>
+
+    <div class="fs-s">
+      <p>Built on <a class="c-link c-link--branded" target="_blank" rel="noopener" href="https://www.forem.com">Forem</a> — the <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/t/opensource">open source</a> software that powers <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to">DEV</a> and other inclusive communities.</p>
+      <p>Made with love and <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/t/rails">Ruby on Rails</a>. DEV Community <span title="copyright">&copy;</span> 2016 - 2026.</p>
+    </div>
+  </div>
+</footer>
+<div id="snack-zone"></div>
+
+    <div id="global-signup-modal" class="authentication-modal hidden">
+  <div class="authentication-modal__container">
+    <figure class="authentication-modal__image-container">
+      <img class="authentication-modal__image" src="https://media2.dev.to/dynamic/image/width=190,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+        alt="DEV Community" loading="lazy" />
+    </figure>
+    <div class="authentication-modal__content">
+      <p class="authentication-modal__description">
+          We&#39;re a place where coders share, stay up-to-date and grow their careers.
+      </p>
+    </div>
+    <div class="authentication-modal__actions">
+      <a href="https://dev.to/enter?signup_subforem=1" class="crayons-btn" aria-label="Log in" data-no-instant>
+        Log in
+      </a>
+      <a href="https://dev.to/enter?signup_subforem=1&amp;state=new-user" class="crayons-btn crayons-btn--ghost-brand js-global-signup-modal__create-account" aria-label="Create new account" data-no-instant>
+        Create account
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="https://assets.dev.to/assets/signupModalShortcuts-0b25469b985100a01e94cbd7fccaf7f0a4d776e129aac65c766aa32cb28ab29a.js" defer="defer"></script>
+
+    <div id="cookie-consent"></div>
+  <div id="reaction-category-resources" class="hidden" aria-hidden="true">
+    <img data-name="Like" data-slug="like" data-position="1" src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+    <img data-name="Unicorn" data-slug="unicorn" data-position="2" src="https://assets.dev.to/assets/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" width="18" height="18" />
+    <img data-name="Exploding Head" data-slug="exploding_head" data-position="3" src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" width="18" height="18" />
+    <img data-name="Raised Hands" data-slug="raised_hands" data-position="4" src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="18" height="18" />
+    <img data-name="Fire" data-slug="fire" data-position="5" src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+</div>
+
+    <script>
+  var userSignedIn = false;
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    initAuth();
+  } else {
+    document.addEventListener('DOMContentLoaded', initAuth);
+  }
+
+  function initAuth() {
+    var paramToken = new URLSearchParams(window.location.search).get('jwt');
+
+    if (paramToken && !userSignedIn) {
+      authenticateUser(paramToken);
+    } else {
+      var iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = 'https://forem.com/auth_pass/iframe';
+  
+      document.body.appendChild(iframe);
+  
+      window.addEventListener('message', function(event) {
+        if (event.origin !== 'https://forem.com' && event.origin !== window.location.origin) {
+          return;
+        }
+  
+        var data = event.data;
+  
+        if (data.authenticated && !userSignedIn) {
+          authenticateUser(data.token);
+        } else if(data.authenticated && window.ReactNativeWebView && window.ReactNativeWebView.postMessage) {
+          window.ReactNativeWebView.postMessage(JSON.stringify({
+            action: 'login',
+            token: data.token,
+          }));
+        }
+      });  
+    }
+
+    function authenticateUser(token) {
+      fetch('/auth_pass/token_login', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': getMetaContent('csrf-token'),
+        },
+        body: JSON.stringify({ token: token }),
+      })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        if (data.success) {
+          if (document.head.querySelector('meta[name="user-signed-in"][content="false"]')) {
+            // Reload the page to update the user's state
+            location.reload();
+          }
+        }
+      })
+      .catch(function(error) {
+        console.error('Error during authentication:', error);
+      });
+    }
+
+    function getMetaContent(name) {
+      var element = document.querySelector('meta[name="' + name + '"]');
+      return element ? element.getAttribute('content') : '';
+    }
+  }
+</script>
+
+  
+  
+  
+  </body>
+  </html>

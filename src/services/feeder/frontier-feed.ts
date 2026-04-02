@@ -1,16 +1,23 @@
 import { supabase } from "../../db/supabase";
 import { createQueue, QUEUE_NAMES } from "../../lib/queue";
 import crypto from "crypto";
+import { isAllowedForCrawl } from "../../utils/url_filter";
 
 const frontierQueue = createQueue(QUEUE_NAMES.FRONTIER);
 
-export const addUrlToFrontier = async (url: string) => {
+export const addUrlToFrontier = async (url: string, depth: number = 0) => {
+  if (!isAllowedForCrawl(url)) {
+    console.log(`🚫 [Queue] Blocked Blacklisted URL: ${url}`);
+    return; // Silently drop it, do not add to Redis
+  }
+
   console.log(`📥 Adding to Frontier: ${url}`);
   const safeId = crypto.createHash("md5").update(url).digest("hex");
   await frontierQueue.add(
     "crawl-job",
     {
       url: url,
+      depth: depth,
     },
     {
       jobId: safeId,
@@ -25,14 +32,23 @@ export const addUrlToFrontier = async (url: string) => {
 // RUNNER
 if (require.main === module) {
   const seedUrls = [
-    "https://react.dev",
-    "https://nextjs.org/docs",
-    "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-    "https://tailwindcss.com/docs",
+    // --- TECH PILLAR ---
+    "https://news.ycombinator.com", 
+    "https://dev.to", 
+    "https://techcrunch.com",
+
+    // --- KNOWLEDGE & NEWS PILLAR ---
+    "https://www.bbc.com/news",
+    "https://www.theverge.com", 
+    "https://medium.com", 
+    "https://www.wired.com",
+
+    // --- DOCUMENTATION PILLAR (Keep your favorites) ---
+    "https://developer.mozilla.org/en-US/docs/Web",
     "https://python.org",
-    "https://nodejs.org/en/docs",
-    "https://supabase.com/docs",
-    "https://www.docker.com", // Added 'www' (canonical usually better)
+
+    // --- OPEN DIRECTORIES ---
+    "https://www.dmoz-odp.org", 
   ];
 
   const run = async () => {

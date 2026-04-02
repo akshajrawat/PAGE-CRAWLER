@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Sistema Gado</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/auth.css">
+</head>
+<body>
+    <div class="auth-card login-mode">
+        <h2>🤠 Acesso ao Rebanho</h2>
+
+        
+
+        <form method="POST" action="/login">
+            <div class="form-group">
+                <label>Usuário</label>
+                <input type="text" name="username" required placeholder="Digite seu usuário">
+            </div>
+            <div class="form-group">
+                <label>Senha</label>
+                <input type="password" name="password" required placeholder="Digite sua senha">
+            </div>
+            <button type="submit" class="btn-primary">ENTRAR NO SISTEMA</button>
+            <a href="/novo_usuario" class="btn btn-secondary" style="margin-top: 10px; display: block; text-align: center;">
+                👤 Não Tenho Conta
+            </a>
+        </form>
+    </div>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const formularios = document.querySelectorAll("form");
+        
+        formularios.forEach(form => {
+            form.addEventListener("submit", function(event) {
+                const botaoSubmit = form.querySelector("button[type='submit']");
+                
+                if (botaoSubmit) {
+                    if (botaoSubmit.classList.contains("btn-loading")) {
+                        event.preventDefault();
+                        return;
+                    }
+                    botaoSubmit.classList.add("btn-loading");
+                    botaoSubmit.setAttribute("disabled", "true");
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

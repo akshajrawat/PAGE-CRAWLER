@@ -7,6 +7,7 @@ import path from "path";
 
 interface FetchJobData {
   url: string;
+  depth?: number;
 }
 
 // 1. Setup the "Output" Queue
@@ -14,7 +15,7 @@ const parseQueue = createQueue(QUEUE_NAMES.PARSE);
 
 // 2. Define the "Fetcher" Logic
 const fetchProcessor = async (job: Job<FetchJobData>) => {
-  const { url } = job.data;
+  const { url, depth = 0 } = job.data;
   console.log(`[FETCH] Downloading... ${url}`);
 
   try {
@@ -40,6 +41,7 @@ const fetchProcessor = async (job: Job<FetchJobData>) => {
     await parseQueue.add("parse-job", {
       url: url,
       filePath: filePath,
+      depth: depth,
     });
 
     console.log(` [FETCH] Saved to ${filename}`);

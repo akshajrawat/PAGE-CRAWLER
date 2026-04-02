@@ -1,0 +1,1789 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Introducing GPT-OSS: Run Your Own Open-Source GPT Model Locally - DEV Community</title>
+    
+    <link rel="preload" href="/reactions?article_id=2756498" as="fetch" crossorigin="same-origin">
+    <link rel="canonical" href="https://dev.to/varshithvhegde/introducing-gpt-oss-run-your-own-open-source-gpt-model-locally-3b4j" />
+    <meta name="description" content="Ever wondered what it feels like to have your own ChatGPT running locally? Let me take you on a... Tagged with openai, opensource, gptoss, ai.">
+    <meta name="keywords" content="openai, opensource, gptoss, ai, software, coding, development, engineering, inclusive, community">
+
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://dev.to/varshithvhegde/introducing-gpt-oss-run-your-own-open-source-gpt-model-locally-3b4j" />
+    <meta property="og:title" content="Introducing GPT-OSS: Run Your Own Open-Source GPT Model Locally" />
+    <meta property="og:description" content="Ever wondered what it feels like to have your own ChatGPT running locally? Let me take you on a..." />
+    <meta property="og:site_name" content="DEV Community" />
+    <meta name="twitter:site" content="@thepracticaldev">
+    <meta name="twitter:creator" content="@VarshithVhegde1">
+    <meta name="twitter:title" content="Introducing GPT-OSS: Run Your Own Open-Source GPT Model Locally">
+    <meta name="twitter:description" content="Ever wondered what it feels like to have your own ChatGPT running locally? Let me take you on a...">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:widgets:new-embed-design" content="on">
+    <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+      <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1000,height=500,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fckckw7a5xqqao2yzp5cl.png" />
+      <meta name="twitter:image:src" content="https://media2.dev.to/dynamic/image/width=1000,height=500,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fckckw7a5xqqao2yzp5cl.png">
+
+      <meta name="last-updated" content="2026-04-01 09:02:05 UTC">
+      <meta name="user-signed-in" content="false">
+      <meta name="head-cached-at" content="1775034125">
+      <meta name="environment" content="production">
+      <link rel="stylesheet" href="https://assets.dev.to/assets/minimal-102395aec70cbac5f7d0bd5bebb5b56f0459629c5d224dae16333f11604cbad3.css" media="all" id="main-minimal-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/views-daf614dcfafed4955d7758a6a86d63bfbb1e8d4eae8b6317b421e18a99bbe867.css" media="all" id="main-views-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/crayons-8fce708625aacc3ff4a4d4947252a1cfab954753bb082374c0bed738861b52f2.css" media="all" id="main-crayons-stylesheet" />
+
+      <script src="https://assets.dev.to/assets/base-0c748bbcdc30041261c326ef2ce931fbce46c58bc3c488da881ae35c4750941d.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/application-0b268684912bef9b0f23defff01cb608bfc5d5e5610287725e7b686139ae32d3.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/baseInitializers-2f0777a6d67046056f9f42665560ce072de3801292674358ddbad6e135c1891d.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/baseTracking-b6bf73e5ee66633e151e7d5b7c6bbccedfa4c59e3615be97b98c4c0f543ddae7.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/followButtons-a29380c2c88136b97b2b5e63e94614ff7458fc72e07cffa7b6153831c28a40d2.js" defer="defer"></script>
+
+        <meta name="search-script" content="https://assets.dev.to/assets/Search-b977aea0f2d7a5818b4ebd97f7d4aba8548099f84f5db5761f8fa67be76abc54.js">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+      <link rel="icon" type="image/x-icon" href="https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" />
+      <link rel="apple-touch-icon" href="https://media2.dev.to/dynamic/image/width=180,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="https://media2.dev.to/dynamic/image/width=152,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="https://media2.dev.to/dynamic/image/width=180,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="167x167" href="https://media2.dev.to/dynamic/image/width=167,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link href="https://media2.dev.to/dynamic/image/width=192,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" rel="icon" sizes="192x192" />
+      <link href="https://media2.dev.to/dynamic/image/width=128,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" rel="icon" sizes="128x128" />
+      <meta name="apple-mobile-web-app-title" content="dev.to">
+      <meta name="application-name" content="dev.to">
+      <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+      <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+      <link rel="search" href="https://dev.to/open-search.xml" type="application/opensearchdescription+xml" title="DEV Community" />
+
+      <meta property="forem:name" content="DEV Community" />
+      <meta property="forem:logo" content="https://media2.dev.to/dynamic/image/width=512,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" />
+      <meta property="forem:domain" content="dev.to" />
+    <style>
+.ltag__link--embedded img.subscription-icon {
+max-height: 13px !important;
+max-width: 21px !important;
+display: inline-block !important;
+border-radius: 0 !important;
+}
+.text-styles .crayons-article__context-note p {
+margin-bottom: 0 !important;
+}
+</style>
+  </head>
+    <body
+      class="sans-serif-article-body default-header"
+      data-user-status="logged-out"
+      data-is-root-subforem="false"
+        data-subforem-id="1"
+      data-side-nav-visible="true"
+      data-community-name="DEV Community"
+      data-subscription-icon="https://assets.dev.to/assets/subscription-icon-805dfa7ac7dd660f07ed8d654877270825b07a92a03841aa99a1093bd00431b2.png"
+      data-locale="en"
+      data-honeybadger-key="hbp_nqu4Y66HuEKlD6YRGssZuRQnPOjDm50J8Zkr"
+      data-deployed-at="2026-03-31T16:23:33Z"
+      data-latest-commit-id="786e25495afed32bb807645b48a724374606e51e"
+      data-ga-tracking="UA-71991109-1"
+      data-cookie-banner-user-context="logged_out_only"
+      data-cookie-banner-platform-context="off"
+      data-algolia-id="PRSOBFP46H"
+      data-algolia-search-key="9aa7d31610cba78851c9b1f63776a9dd"
+      data-algolia-display="true"
+      data-dynamic-url-component="bmar11"
+      data-ga4-tracking-id="G-TYEM8Y3JN3">
+      
+      <script>
+        if (navigator.userAgent === 'ForemWebView/1' || window.frameElement) {
+          document.body.classList.add("hidden-shell");
+        }
+          if (new Date() > new Date("2026-02-04T09:00:00-05:00")) {
+            document.body.dataset.sideNavVisible = "false";
+          } 
+      </script>
+
+      <link rel="stylesheet" href="https://assets.dev.to/assets/minimal-102395aec70cbac5f7d0bd5bebb5b56f0459629c5d224dae16333f11604cbad3.css" media="all" id="secondary-minimal-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/views-daf614dcfafed4955d7758a6a86d63bfbb1e8d4eae8b6317b421e18a99bbe867.css" media="all" id="secondary-views-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/crayons-8fce708625aacc3ff4a4d4947252a1cfab954753bb082374c0bed738861b52f2.css" media="all" id="secondary-crayons-stylesheet" />
+
+      <div id="body-styles">
+        <style>
+          :root {
+            --accent-brand-lighter-rgb: 80, 99, 301;
+            --accent-brand-rgb: 59, 73, 223;
+            --accent-brand-darker-rgb: 47, 58, 178;
+          }
+        </style>
+      </div>
+      <div id="audiocontent" data-podcast="">
+        
+      </div>
+      <div class="navigation-progress" id="navigation-progress"></div>
+
+<header id="topbar" class="crayons-header topbar print-hidden">
+  <span id="route-change-target" tabindex="-1"></span>
+  <a href="#main-content" class="skip-content-link">Skip to content</a>
+  <div class="crayons-header__container">
+    <span class="inline-block m:hidden ">
+      <button class="c-btn c-btn--icon-alone js-hamburger-trigger mx-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="agosvjx73pcvd3bsqjf81cptjr5ybz4t" class="crayons-icon"><title id="agosvjx73pcvd3bsqjf81cptjr5ybz4t">Navigation menu</title>
+    <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"></path>
+</svg>
+
+      </button>
+    </span>
+    <a href="/" class="site-logo" aria-label="DEV Community Home" >
+    <img class="site-logo__img"
+         src="https://media2.dev.to/dynamic/image/quality=100/https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png"
+         style="aspect-ratio: 10 / 8"
+         alt="DEV Community">
+</a>
+
+
+    <div class="crayons-header--search js-search-form" id="header-search">
+      <form accept-charset="UTF-8" method="get" action="/search" role="search">
+        <div class="crayons-fields crayons-fields--horizontal">
+          <div class="crayons-field flex-1 relative">
+            <input id="search-input" class="crayons-header--search-input crayons-textfield js-search-input" type="text" id="nav-search" name="q" placeholder="Find related posts..." autocomplete="off" />
+            <button type="submit" aria-label="Search" class="c-btn c-btn--icon-alone absolute inset-px right-auto mt-0 py-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="ac3i00wugk9vfits68r08a5u1wgjah7z" aria-hidden="true" class="crayons-icon"><title id="ac3i00wugk9vfits68r08a5u1wgjah7z">Search</title>
+    <path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0111 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 01-1.969 5.617zm-2.006-.742A6.977 6.977 0 0018 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 004.875-1.975l.15-.15z"></path>
+</svg>
+
+            </button>
+
+            <a class="crayons-header--search-brand-indicator" href="https://www.algolia.com/developers/?utm_source=devto&utm_medium=referral" target="_blank" rel="noopener noreferrer">
+                Powered by Algolia
+                <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" width="24" height="24" viewBox="0 0 500 500.34" role="img" aria-labelledby="a8s6hmlarlg6wsefgko4j8guukmpc63" aria-hidden="true" class="crayons-icon"><title id="a8s6hmlarlg6wsefgko4j8guukmpc63">Search</title>
+  <defs></defs><path class="cls-1" d="M250,0C113.38,0,2,110.16,.03,246.32c-2,138.29,110.19,252.87,248.49,253.67,42.71,.25,83.85-10.2,120.38-30.05,3.56-1.93,4.11-6.83,1.08-9.52l-23.39-20.74c-4.75-4.22-11.52-5.41-17.37-2.92-25.5,10.85-53.21,16.39-81.76,16.04-111.75-1.37-202.04-94.35-200.26-206.1,1.76-110.33,92.06-199.55,202.8-199.55h202.83V407.68l-115.08-102.25c-3.72-3.31-9.43-2.66-12.43,1.31-18.47,24.46-48.56,39.67-81.98,37.36-46.36-3.2-83.92-40.52-87.4-86.86-4.15-55.28,39.65-101.58,94.07-101.58,49.21,0,89.74,37.88,93.97,86.01,.38,4.28,2.31,8.28,5.53,11.13l29.97,26.57c3.4,3.01,8.8,1.17,9.63-3.3,2.16-11.55,2.92-23.6,2.07-35.95-4.83-70.39-61.84-127.01-132.26-131.35-80.73-4.98-148.23,58.18-150.37,137.35-2.09,77.15,61.12,143.66,138.28,145.36,32.21,.71,62.07-9.42,86.2-26.97l150.36,133.29c6.45,5.71,16.62,1.14,16.62-7.48V9.49C500,4.25,495.75,0,490.51,0H250Z"></path>
+</svg>
+
+            </a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="flex items-center h-100 ml-auto">
+        <div class="flex" id="authentication-top-nav-actions">
+          <span class="hidden m:block">
+            <a href="https://dev.to/enter?signup_subforem=1" class="c-link c-link--block mr-2 whitespace-nowrap ml-auto" data-no-instant>
+              Log in
+            </a>
+          </span>
+
+          <a href="https://dev.to/enter?signup_subforem=1&amp;state=new-user" data-tracking-id="ca_top_nav" data-tracking-source="top_navbar" class="c-cta c-cta--branded whitespace-nowrap mr-2" data-no-instant>
+            Create account
+          </a>
+        </div>
+    </div>
+  </div>
+</header>
+
+<div class="hamburger">
+  <div class="hamburger__content">
+    <header class="hamburger__content__header">
+      <h2 class="fs-l fw-bold flex-1 break-word lh-tight">DEV Community</h2>
+
+      <button class="c-btn c-btn--icon-alone js-hamburger-trigger shrink-0" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="aflcftthjukp95rtmtvpuwk0dmbx1yd7" aria-hidden="true" class="crayons-icon c-btn__icon"><title id="aflcftthjukp95rtmtvpuwk0dmbx1yd7">Close</title><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636l4.95 4.95z"></path></svg>
+
+      </button>
+    </header>
+
+    <div class="p-2 js-navigation-links-container" id="authentication-hamburger-actions">
+    </div>
+  </div>
+  <div class="hamburger__overlay js-hamburger-trigger"></div>
+</div>
+
+
+      <div id="active-broadcast" class="broadcast-wrapper"></div>
+<div id="page-content" class="wrapper stories stories-show articletag-openai articletag-opensource articletag-gptoss articletag-ai articleuser-885064" data-current-page="stories-show">
+  <div id="page-content-inner" data-internal-nav="false">
+    <div id="page-route-change" class="screen-reader-only" aria-live="polite" aria-atomic="true"></div>
+
+    
+<style>
+  .html-variant-wrapper { display: none}
+</style>
+
+
+
+<script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.2.10/webcomponents-loader.js"
+        integrity="sha384-3HK5hxQbkFqOIxMbpROlRmRtYl2LBZ52t+tqcjzsmr9NJuOWQxl8RgQSyFvq2lhy"
+        crossorigin="anonymous" defer></script>
+
+  <script src="https://assets.dev.to/assets/webShare-0686f0b9ac40589694ef6ae6a6202c44119bc781c254f6cf6d52d8a008461156.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/articlePage-ed23d70916aed9a7fec41f94e64aac17438d3210c1bb1d6fceace80f15445213.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/commentDropdowns-7a28d130e5b78d38b30a9495a964003a66bd64fa455fc70b766d69cf06b9ba24.js" defer="defer"></script>
+
+  <script type="application/ld+json">
+    {"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://dev.to/varshithvhegde/introducing-gpt-oss-run-your-own-open-source-gpt-model-locally-3b4j"},"url":"https://dev.to/varshithvhegde/introducing-gpt-oss-run-your-own-open-source-gpt-model-locally-3b4j","image":["https://media2.dev.to/dynamic/image/width=1080,height=1080,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fckckw7a5xqqao2yzp5cl.png","https://media2.dev.to/dynamic/image/width=1280,height=720,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fckckw7a5xqqao2yzp5cl.png","https://media2.dev.to/dynamic/image/width=1600,height=900,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fckckw7a5xqqao2yzp5cl.png"],"publisher":{"@context":"http://schema.org","@type":"Organization","name":"DEV Community","logo":{"@context":"http://schema.org","@type":"ImageObject","url":"https://media2.dev.to/dynamic/image/width=192,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png","width":"192","height":"192"}},"headline":"Introducing GPT-OSS: Run Your Own Open-Source GPT Model Locally","author":{"@context":"http://schema.org","@type":"Person","url":"https://dev.to/varshithvhegde","name":"Varshith V Hegde"},"datePublished":"2025-08-06T17:33:15Z","dateModified":"2025-08-06T17:33:15Z","mainEntity":{"@type":"DiscussionForumPosting","@id":"#article-discussion-2756498","headline":"Introducing GPT-OSS: Run Your Own Open-Source GPT Model Locally","text":"\u003cp\u003e\u003cem\u003eEver wondered what it feels like to have your own ChatGPT running locally? Let me take you on a journey from being completely dependent on cloud APIs to having my own AI assistant running on my laptop.\u003c/em\u003e\u003c/p\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"the-aha-moment\" href=\"#the-aha-moment\"\u003e\n  \u003c/a\u003e\n  The \"Aha!\" Moment 💡\n\u003c/h2\u003e\n\n\u003cp\u003ePicture this: You're deep in a coding session at 2 AM, your OpenAI credits just ran out, and you desperately need help debugging that stubborn piece of code. Sound familiar? This exact scenario pushed me to explore local AI solutions, and boy, was I in for a treat!\u003c/p\u003e\n\n\u003cp\u003eEnter \u003cstrong\u003eGPT-OSS\u003c/strong\u003e - an open-source language model that you can actually run on consumer hardware. No more API limits, no more internet dependency, and definitely no more surprise bills!\u003c/p\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"why-go-local\" href=\"#why-go-local\"\u003e\n  \u003c/a\u003e\n  Why Go Local? 🏠\n\u003c/h2\u003e\n\n\u003cp\u003eBefore we dive into the technical bits, let me share why running AI locally changed my development workflow:\u003c/p\u003e\n\n\u003cul\u003e\n\u003cli\u003e\n\u003cstrong\u003ePrivacy First\u003c/strong\u003e: Your code and conversations never leave your machine\u003c/li\u003e\n\u003cli\u003e\n\u003cstrong\u003eCost Control\u003c/strong\u003e: No more surprise API bills (looking at you, OpenAI 👀)\u003c/li\u003e\n\u003cli\u003e\n\u003cstrong\u003eOffline Capability\u003c/strong\u003e: Code on planes, trains, or that coffee shop with terrible WiFi\u003c/li\u003e\n\u003cli\u003e\n\u003cstrong\u003eLearning Experience\u003c/strong\u003e: Understanding how these models actually work under the hood\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"the-hardware-reality-check\" href=\"#the-hardware-reality-check\"\u003e\n  \u003c/a\u003e\n  The Hardware Reality Check 📊\n\u003c/h2\u003e\n\n\u003cp\u003eLet's be real about hardware requirements. GPT-OSS comes in two flavors:\u003c/p\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"gptoss20b-the-laptop-friendly\" href=\"#gptoss20b-the-laptop-friendly\"\u003e\n  \u003c/a\u003e\n  GPT-OSS-20B (The Laptop Friendly)\n\u003c/h3\u003e\n\n\u003cul\u003e\n\u003cli\u003e\n\u003cstrong\u003eMemory needed\u003c/strong\u003e: ≥16GB VRAM or unified memory\u003c/li\u003e\n\u003cli\u003e\n\u003cstrong\u003eSweet spot\u003c/strong\u003e: RTX 4070/4080, Apple M1/M2/M3 Macs\u003c/li\u003e\n\u003cli\u003e\n\u003cstrong\u003eMy experience\u003c/strong\u003e: Runs smoothly on my MacBook Pro M2 with 32GB\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"gptoss120b-the-workstation-beast\" href=\"#gptoss120b-the-workstation-beast\"\u003e\n  \u003c/a\u003e\n  GPT-OSS-120B (The Workstation Beast)\n\u003c/h3\u003e\n\n\u003cul\u003e\n\u003cli\u003e\n\u003cstrong\u003eMemory needed\u003c/strong\u003e: ≥60GB VRAM or unified memory\n\u003c/li\u003e\n\u003cli\u003e\n\u003cstrong\u003eTarget\u003c/strong\u003e: Multi-GPU setups, workstations, or that gaming rig you justified for \"development\"\u003c/li\u003e\n\u003cli\u003e\n\u003cstrong\u003eReality check\u003c/strong\u003e: This is serious hardware territory\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003cblockquote\u003e\n\u003cp\u003e💡 \u003cstrong\u003ePro tip\u003c/strong\u003e: Both models come MXFP4 quantized out of the box. You can offload to CPU if you're short on VRAM, but expect slower responses.\u003c/p\u003e\n\u003c/blockquote\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"setting-up-your-local-ai-assistant\" href=\"#setting-up-your-local-ai-assistant\"\u003e\n  \u003c/a\u003e\n  Setting Up Your Local AI Assistant 🛠️\n\u003c/h2\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"step-1-get-ollama-your-new-best-friend\" href=\"#step-1-get-ollama-your-new-best-friend\"\u003e\n  \u003c/a\u003e\n  Step 1: Get Ollama (Your New Best Friend)\n\u003c/h3\u003e\n\n\u003cp\u003e\u003ca href=\"https://ollama.com/\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eOllama\u003c/a\u003e is like Docker for AI models - it makes everything stupidly simple.\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight shell\"\u003e\u003ccode\u003e\u003cspan class=\"c\"\u003e# Install Ollama (check their website for your OS)\u003c/span\u003e\n\u003cspan class=\"c\"\u003e# Then pull your model of choice\u003c/span\u003e\n\n\u003cspan class=\"c\"\u003e# For the 20B model (recommended for most setups)\u003c/span\u003e\nollama pull gpt-oss:20b\n\n\u003cspan class=\"c\"\u003e# For the 120B model (if you've got the hardware)\u003c/span\u003e\nollama pull gpt-oss:120b\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003ch3\u003e\n  \u003ca name=\"step-2-your-first-conversation\" href=\"#step-2-your-first-conversation\"\u003e\n  \u003c/a\u003e\n  Step 2: Your First Conversation\n\u003c/h3\u003e\n\n\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight shell\"\u003e\u003ccode\u003eollama run gpt-oss:20b\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003cp\u003eAnd just like that, you're chatting with AI running entirely on your machine! The first time I saw this work, I literally said \"No way!\" out loud.\u003c/p\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"making-it-pretty-enter-open-webui\" href=\"#making-it-pretty-enter-open-webui\"\u003e\n  \u003c/a\u003e\n  Making It Pretty: Enter Open WebUI 🎨\n\u003c/h2\u003e\n\n\u003cp\u003eNow, terminal chat is cool and all, but let's be honest - sometimes we want that sleek ChatGPT-like interface. This is where \u003cstrong\u003eOpen WebUI\u003c/strong\u003e becomes your new favorite tool.\u003c/p\u003e\n\n\u003cp\u003eThink of Open WebUI as your personal ChatGPT interface, but for local models. It supports multiple models, has RAG capabilities, and honestly looks better than some paid services I've used.\u003c/p\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"quick-setup-options\" href=\"#quick-setup-options\"\u003e\n  \u003c/a\u003e\n  Quick Setup Options:\n\u003c/h3\u003e\n\n\u003cp\u003e\u003cstrong\u003eThe Python Way (My Preferred Method):\u003c/strong\u003e\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight shell\"\u003e\u003ccode\u003epip \u003cspan class=\"nb\"\u003einstall \u003c/span\u003eopen-webui\nopen-webui serve\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003cp\u003e\u003cstrong\u003eThe Docker Way (For the Container Enthusiasts):\u003c/strong\u003e\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight shell\"\u003e\u003ccode\u003edocker run \u003cspan class=\"nt\"\u003e-d\u003c/span\u003e \u003cspan class=\"nt\"\u003e-p\u003c/span\u003e 3000:8080 \u003cspan class=\"se\"\u003e\\\u003c/span\u003e\n  \u003cspan class=\"nt\"\u003e--add-host\u003c/span\u003e\u003cspan class=\"o\"\u003e=\u003c/span\u003ehost.docker.internal:host-gateway \u003cspan class=\"se\"\u003e\\\u003c/span\u003e\n  \u003cspan class=\"nt\"\u003e-v\u003c/span\u003e open-webui:/app/backend/data \u003cspan class=\"se\"\u003e\\\u003c/span\u003e\n  \u003cspan class=\"nt\"\u003e--name\u003c/span\u003e open-webui \u003cspan class=\"se\"\u003e\\\u003c/span\u003e\n  \u003cspan class=\"nt\"\u003e--restart\u003c/span\u003e always \u003cspan class=\"se\"\u003e\\\u003c/span\u003e\n  ghcr.io/open-webui/open-webui:main\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003cp\u003eOnce it's running, open your browser to \u003ccode\u003ehttp://localhost:3000\u003c/code\u003e and boom - you've got your own ChatGPT-like interface! Select your GPT-OSS model from the dropdown and start chatting.\u003c/p\u003e\n\n\u003cp\u003e\u003cem\u003eIf you're more of a visual learner, I found this fantastic tutorial that walks through the entire Ollama and Open WebUI setup process:\u003c/em\u003e\u003c/p\u003e\n\n\u003cp\u003e  \u003ciframe src=\"https://www.youtube.com/embed/CVeZfM0pVyU\" style=\"width: 100%; aspect-ratio: 16 / 9;\" allowfullscreen loading=\"lazy\"\u003e\n  \u003c/iframe\u003e\n\u003c/p\u003e\n\n\u003cp\u003eThe video covers everything from installation to getting your first chat session running - perfect if you prefer following along visually!\u003c/p\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"for-the-api-lovers-seamless-integration\" href=\"#for-the-api-lovers-seamless-integration\"\u003e\n  \u003c/a\u003e\n  For the API Lovers: Seamless Integration 🔌\n\u003c/h2\u003e\n\n\u003cp\u003eHere's where it gets really exciting. Ollama exposes a Chat Completions-compatible API, which means minimal code changes if you're already using OpenAI's SDK.\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight python\"\u003e\u003ccode\u003e\u003cspan class=\"kn\"\u003efrom\u003c/span\u003e \u003cspan class=\"n\"\u003eopenai\u003c/span\u003e \u003cspan class=\"kn\"\u003eimport\u003c/span\u003e \u003cspan class=\"n\"\u003eOpenAI\u003c/span\u003e\n\n\u003cspan class=\"c1\"\u003e# Just point to your local Ollama instance\n\u003c/span\u003e\u003cspan class=\"n\"\u003eclient\u003c/span\u003e \u003cspan class=\"o\"\u003e=\u003c/span\u003e \u003cspan class=\"nc\"\u003eOpenAI\u003c/span\u003e\u003cspan class=\"p\"\u003e(\u003c/span\u003e\n    \u003cspan class=\"n\"\u003ebase_url\u003c/span\u003e\u003cspan class=\"o\"\u003e=\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003ehttp://localhost:11434/v1\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e,\u003c/span\u003e\n    \u003cspan class=\"n\"\u003eapi_key\u003c/span\u003e\u003cspan class=\"o\"\u003e=\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003eollama\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e  \u003cspan class=\"c1\"\u003e# Dummy key, but required\n\u003c/span\u003e\u003cspan class=\"p\"\u003e)\u003c/span\u003e\n\n\u003cspan class=\"n\"\u003eresponse\u003c/span\u003e \u003cspan class=\"o\"\u003e=\u003c/span\u003e \u003cspan class=\"n\"\u003eclient\u003c/span\u003e\u003cspan class=\"p\"\u003e.\u003c/span\u003e\u003cspan class=\"n\"\u003echat\u003c/span\u003e\u003cspan class=\"p\"\u003e.\u003c/span\u003e\u003cspan class=\"n\"\u003ecompletions\u003c/span\u003e\u003cspan class=\"p\"\u003e.\u003c/span\u003e\u003cspan class=\"nf\"\u003ecreate\u003c/span\u003e\u003cspan class=\"p\"\u003e(\u003c/span\u003e\n    \u003cspan class=\"n\"\u003emodel\u003c/span\u003e\u003cspan class=\"o\"\u003e=\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003egpt-oss:20b\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e,\u003c/span\u003e\n    \u003cspan class=\"n\"\u003emessages\u003c/span\u003e\u003cspan class=\"o\"\u003e=\u003c/span\u003e\u003cspan class=\"p\"\u003e[\u003c/span\u003e\n        \u003cspan class=\"p\"\u003e{\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003erole\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003esystem\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e,\u003c/span\u003e \u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003econtent\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003eYou\u003c/span\u003e\u003cspan class=\"sh\"\u003e'\u003c/span\u003e\u003cspan class=\"s\"\u003ere a helpful coding assistant.\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e},\u003c/span\u003e\n        \u003cspan class=\"p\"\u003e{\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003erole\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003euser\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e,\u003c/span\u003e \u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003econtent\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003eExplain async/await in JavaScript like I\u003c/span\u003e\u003cspan class=\"sh\"\u003e'\u003c/span\u003e\u003cspan class=\"s\"\u003em 5\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e}\u003c/span\u003e\n    \u003cspan class=\"p\"\u003e]\u003c/span\u003e\n\u003cspan class=\"p\"\u003e)\u003c/span\u003e\n\n\u003cspan class=\"nf\"\u003eprint\u003c/span\u003e\u003cspan class=\"p\"\u003e(\u003c/span\u003e\u003cspan class=\"n\"\u003eresponse\u003c/span\u003e\u003cspan class=\"p\"\u003e.\u003c/span\u003e\u003cspan class=\"n\"\u003echoices\u003c/span\u003e\u003cspan class=\"p\"\u003e[\u003c/span\u003e\u003cspan class=\"mi\"\u003e0\u003c/span\u003e\u003cspan class=\"p\"\u003e].\u003c/span\u003e\u003cspan class=\"n\"\u003emessage\u003c/span\u003e\u003cspan class=\"p\"\u003e.\u003c/span\u003e\u003cspan class=\"n\"\u003econtent\u003c/span\u003e\u003cspan class=\"p\"\u003e)\u003c/span\u003e\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003cp\u003eThe first time I ran this code and realized I was getting responses from my own hardware instead of OpenAI's servers... \u003cem\u003echef's kiss\u003c/em\u003e 👨‍🍳💋\u003c/p\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"function-calling-because-why-not\" href=\"#function-calling-because-why-not\"\u003e\n  \u003c/a\u003e\n  Function Calling: Because Why Not? 🛠️\n\u003c/h2\u003e\n\n\u003cp\u003eGPT-OSS supports function calling out of the box. Here's a simple weather example:\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight python\"\u003e\u003ccode\u003e\u003cspan class=\"n\"\u003etools\u003c/span\u003e \u003cspan class=\"o\"\u003e=\u003c/span\u003e \u003cspan class=\"p\"\u003e[\u003c/span\u003e\n    \u003cspan class=\"p\"\u003e{\u003c/span\u003e\n        \u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003etype\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003efunction\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e,\u003c/span\u003e\n        \u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003efunction\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"p\"\u003e{\u003c/span\u003e\n            \u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003ename\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003eget_current_weather\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e,\u003c/span\u003e\n            \u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003edescription\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003eGet the current weather in a city\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e,\u003c/span\u003e\n            \u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003eparameters\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"p\"\u003e{\u003c/span\u003e\n                \u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003etype\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003eobject\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e,\u003c/span\u003e\n                \u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003eproperties\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"p\"\u003e{\u003c/span\u003e\n                    \u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003ecity\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"p\"\u003e{\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003etype\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003estring\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e,\u003c/span\u003e \u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003edescription\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003eThe city name\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e}\u003c/span\u003e\n                \u003cspan class=\"p\"\u003e},\u003c/span\u003e\n                \u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003erequired\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"p\"\u003e[\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003ecity\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e]\u003c/span\u003e\n            \u003cspan class=\"p\"\u003e},\u003c/span\u003e\n        \u003cspan class=\"p\"\u003e},\u003c/span\u003e\n    \u003cspan class=\"p\"\u003e}\u003c/span\u003e\n\u003cspan class=\"p\"\u003e]\u003c/span\u003e\n\n\u003cspan class=\"n\"\u003eresponse\u003c/span\u003e \u003cspan class=\"o\"\u003e=\u003c/span\u003e \u003cspan class=\"n\"\u003eclient\u003c/span\u003e\u003cspan class=\"p\"\u003e.\u003c/span\u003e\u003cspan class=\"n\"\u003echat\u003c/span\u003e\u003cspan class=\"p\"\u003e.\u003c/span\u003e\u003cspan class=\"n\"\u003ecompletions\u003c/span\u003e\u003cspan class=\"p\"\u003e.\u003c/span\u003e\u003cspan class=\"nf\"\u003ecreate\u003c/span\u003e\u003cspan class=\"p\"\u003e(\u003c/span\u003e\n    \u003cspan class=\"n\"\u003emodel\u003c/span\u003e\u003cspan class=\"o\"\u003e=\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003egpt-oss:20b\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e,\u003c/span\u003e\n    \u003cspan class=\"n\"\u003emessages\u003c/span\u003e\u003cspan class=\"o\"\u003e=\u003c/span\u003e\u003cspan class=\"p\"\u003e[{\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003erole\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003euser\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e,\u003c/span\u003e \u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003econtent\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003eWhat\u003c/span\u003e\u003cspan class=\"sh\"\u003e'\u003c/span\u003e\u003cspan class=\"s\"\u003es the weather like in Tokyo?\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e}],\u003c/span\u003e\n    \u003cspan class=\"n\"\u003etools\u003c/span\u003e\u003cspan class=\"o\"\u003e=\u003c/span\u003e\u003cspan class=\"n\"\u003etools\u003c/span\u003e\n\u003cspan class=\"p\"\u003e)\u003c/span\u003e\n\n\u003cspan class=\"nf\"\u003eprint\u003c/span\u003e\u003cspan class=\"p\"\u003e(\u003c/span\u003e\u003cspan class=\"n\"\u003eresponse\u003c/span\u003e\u003cspan class=\"p\"\u003e.\u003c/span\u003e\u003cspan class=\"n\"\u003echoices\u003c/span\u003e\u003cspan class=\"p\"\u003e[\u003c/span\u003e\u003cspan class=\"mi\"\u003e0\u003c/span\u003e\u003cspan class=\"p\"\u003e].\u003c/span\u003e\u003cspan class=\"n\"\u003emessage\u003c/span\u003e\u003cspan class=\"p\"\u003e)\u003c/span\u003e\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003ch2\u003e\n  \u003ca name=\"advanced-agents-sdk-integration\" href=\"#advanced-agents-sdk-integration\"\u003e\n  \u003c/a\u003e\n  Advanced: Agents SDK Integration 🤖\n\u003c/h2\u003e\n\n\u003cp\u003eFor those wanting to build more complex AI applications, GPT-OSS plays nicely with OpenAI's Agents SDK through LiteLLM:\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight python\"\u003e\u003ccode\u003e\u003cspan class=\"kn\"\u003eimport\u003c/span\u003e \u003cspan class=\"n\"\u003easyncio\u003c/span\u003e\n\u003cspan class=\"kn\"\u003efrom\u003c/span\u003e \u003cspan class=\"n\"\u003eagents\u003c/span\u003e \u003cspan class=\"kn\"\u003eimport\u003c/span\u003e \u003cspan class=\"n\"\u003eAgent\u003c/span\u003e\u003cspan class=\"p\"\u003e,\u003c/span\u003e \u003cspan class=\"n\"\u003eRunner\u003c/span\u003e\u003cspan class=\"p\"\u003e,\u003c/span\u003e \u003cspan class=\"n\"\u003efunction_tool\u003c/span\u003e\n\u003cspan class=\"kn\"\u003efrom\u003c/span\u003e \u003cspan class=\"n\"\u003eagents.extensions.models.litellm_model\u003c/span\u003e \u003cspan class=\"kn\"\u003eimport\u003c/span\u003e \u003cspan class=\"n\"\u003eLitellmModel\u003c/span\u003e\n\n\u003cspan class=\"nd\"\u003e@function_tool\u003c/span\u003e\n\u003cspan class=\"k\"\u003edef\u003c/span\u003e \u003cspan class=\"nf\"\u003eget_weather\u003c/span\u003e\u003cspan class=\"p\"\u003e(\u003c/span\u003e\u003cspan class=\"n\"\u003ecity\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"nb\"\u003estr\u003c/span\u003e\u003cspan class=\"p\"\u003e):\u003c/span\u003e\n    \u003cspan class=\"k\"\u003ereturn\u003c/span\u003e \u003cspan class=\"sa\"\u003ef\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003eThe weather in \u003c/span\u003e\u003cspan class=\"si\"\u003e{\u003c/span\u003e\u003cspan class=\"n\"\u003ecity\u003c/span\u003e\u003cspan class=\"si\"\u003e}\u003c/span\u003e\u003cspan class=\"s\"\u003e is sunny and 72°F.\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\n\n\u003cspan class=\"k\"\u003easync\u003c/span\u003e \u003cspan class=\"k\"\u003edef\u003c/span\u003e \u003cspan class=\"nf\"\u003emain\u003c/span\u003e\u003cspan class=\"p\"\u003e():\u003c/span\u003e\n    \u003cspan class=\"n\"\u003eagent\u003c/span\u003e \u003cspan class=\"o\"\u003e=\u003c/span\u003e \u003cspan class=\"nc\"\u003eAgent\u003c/span\u003e\u003cspan class=\"p\"\u003e(\u003c/span\u003e\n        \u003cspan class=\"n\"\u003ename\u003c/span\u003e\u003cspan class=\"o\"\u003e=\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003eWeatherBot\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e,\u003c/span\u003e\n        \u003cspan class=\"n\"\u003einstructions\u003c/span\u003e\u003cspan class=\"o\"\u003e=\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003eYou\u003c/span\u003e\u003cspan class=\"sh\"\u003e'\u003c/span\u003e\u003cspan class=\"s\"\u003ere a helpful weather assistant.\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e,\u003c/span\u003e\n        \u003cspan class=\"n\"\u003emodel\u003c/span\u003e\u003cspan class=\"o\"\u003e=\u003c/span\u003e\u003cspan class=\"nc\"\u003eLitellmModel\u003c/span\u003e\u003cspan class=\"p\"\u003e(\u003c/span\u003e\u003cspan class=\"n\"\u003emodel\u003c/span\u003e\u003cspan class=\"o\"\u003e=\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003eollama/gpt-oss:20b\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e),\u003c/span\u003e\n        \u003cspan class=\"n\"\u003etools\u003c/span\u003e\u003cspan class=\"o\"\u003e=\u003c/span\u003e\u003cspan class=\"p\"\u003e[\u003c/span\u003e\u003cspan class=\"n\"\u003eget_weather\u003c/span\u003e\u003cspan class=\"p\"\u003e],\u003c/span\u003e\n    \u003cspan class=\"p\"\u003e)\u003c/span\u003e\n\n    \u003cspan class=\"n\"\u003eresult\u003c/span\u003e \u003cspan class=\"o\"\u003e=\u003c/span\u003e \u003cspan class=\"k\"\u003eawait\u003c/span\u003e \u003cspan class=\"n\"\u003eRunner\u003c/span\u003e\u003cspan class=\"p\"\u003e.\u003c/span\u003e\u003cspan class=\"nf\"\u003erun\u003c/span\u003e\u003cspan class=\"p\"\u003e(\u003c/span\u003e\u003cspan class=\"n\"\u003eagent\u003c/span\u003e\u003cspan class=\"p\"\u003e,\u003c/span\u003e \u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003eWhat\u003c/span\u003e\u003cspan class=\"sh\"\u003e'\u003c/span\u003e\u003cspan class=\"s\"\u003es the weather in San Francisco?\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e)\u003c/span\u003e\n    \u003cspan class=\"nf\"\u003eprint\u003c/span\u003e\u003cspan class=\"p\"\u003e(\u003c/span\u003e\u003cspan class=\"n\"\u003eresult\u003c/span\u003e\u003cspan class=\"p\"\u003e.\u003c/span\u003e\u003cspan class=\"n\"\u003efinal_output\u003c/span\u003e\u003cspan class=\"p\"\u003e)\u003c/span\u003e\n\n\u003cspan class=\"k\"\u003eif\u003c/span\u003e \u003cspan class=\"n\"\u003e__name__\u003c/span\u003e \u003cspan class=\"o\"\u003e==\u003c/span\u003e \u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"s\"\u003e__main__\u003c/span\u003e\u003cspan class=\"sh\"\u003e\"\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e\n    \u003cspan class=\"n\"\u003easyncio\u003c/span\u003e\u003cspan class=\"p\"\u003e.\u003c/span\u003e\u003cspan class=\"nf\"\u003erun\u003c/span\u003e\u003cspan class=\"p\"\u003e(\u003c/span\u003e\u003cspan class=\"nf\"\u003emain\u003c/span\u003e\u003cspan class=\"p\"\u003e())\u003c/span\u003e\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003ch2\u003e\n  \u003ca name=\"my-realworld-experience\" href=\"#my-realworld-experience\"\u003e\n  \u003c/a\u003e\n  My Real-World Experience 📈\n\u003c/h2\u003e\n\n\u003cp\u003eAfter running GPT-OSS locally for a few months, here's what I've noticed:\u003c/p\u003e\n\n\u003cp\u003e\u003cstrong\u003eThe Good:\u003c/strong\u003e\u003c/p\u003e\n\n\u003cul\u003e\n\u003cli\u003eResponse times are actually pretty decent (especially on Apple Silicon)\u003c/li\u003e\n\u003cli\u003eNo more worrying about API costs during experimentation\u003c/li\u003e\n\u003cli\u003ePerfect for code review and debugging sessions\u003c/li\u003e\n\u003cli\u003eGreat for learning and understanding how these models work\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003cp\u003e\u003cstrong\u003eThe Challenges:\u003c/strong\u003e\u003c/p\u003e\n\n\u003cul\u003e\n\u003cli\u003eInitial setup requires some technical know-how\u003c/li\u003e\n\u003cli\u003eQuality isn't quite GPT-4 level (but getting close!)\u003c/li\u003e\n\u003cli\u003eHardware requirements can be limiting\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003cp\u003e\u003cstrong\u003eThe Surprising:\u003c/strong\u003e\u003c/p\u003e\n\n\u003cul\u003e\n\u003cli\u003eThe model \"personality\" feels different but equally helpful\u003c/li\u003e\n\u003cli\u003ePerfect for when you need AI help but don't want your code leaving your machine\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"wrapping-up\" href=\"#wrapping-up\"\u003e\n  \u003c/a\u003e\n  Wrapping Up 🎬\n\u003c/h2\u003e\n\n\u003cp\u003eRunning your own AI locally isn't just about saving money or working offline - it's about understanding the technology, maintaining privacy, and having complete control over your tools.\u003c/p\u003e\n\n\u003cp\u003eIs it perfect? No. Is it worth trying? Absolutely.\u003c/p\u003e\n\n\u003cp\u003eWhether you're a privacy-conscious developer, a cost-conscious startup, or just someone who loves playing with cutting-edge tech, GPT-OSS with Ollama and Open WebUI is definitely worth your time.\u003c/p\u003e\n\n\u003cp\u003eHave you tried running AI models locally? What's been your experience? Drop your thoughts in the comments below!\u003c/p\u003e\n\n\n\u003chr\u003e\n\n\u003cp\u003e\u003cem\u003eFound this helpful? Give it a ❤️ and follow for more AI and development content!\u003c/em\u003e\u003c/p\u003e\n\n","author":{"@type":"Person","name":"Varshith V Hegde","url":"https://dev.to/varshithvhegde"},"datePublished":"2025-08-06T17:33:15Z","dateModified":"2025-08-06T17:33:15Z","url":"https://dev.to/varshithvhegde/introducing-gpt-oss-run-your-own-open-source-gpt-model-locally-3b4j","interactionStatistic":[{"@type":"InteractionCounter","interactionType":"https://schema.org/CommentAction","userInteractionCount":1},{"@type":"InteractionCounter","interactionType":"https://schema.org/LikeAction","userInteractionCount":7}],"comment":[{"@type":"Comment","@id":"#comment-1379241","text":"\u003cp\u003eI've been meaning to explore local AI setups, and your breakdown just gave me the push I needed. The way you laid out the trade-offs between the 20B and 120B models, the role of Ollama, and the seamless pairing with Open WebUI super clear and practical.\u003c/p\u003e\n\n","author":{"@type":"Person","name":"Anik Sikder","url":"https://dev.to/anik_sikder_313"},"datePublished":"2025-08-07T06:44:22Z","dateModified":"2025-08-07T06:44:22Z","url":"https://dev.to/anik_sikder_313/comment/30c7j","interactionStatistic":[{"@type":"InteractionCounter","interactionType":"https://schema.org/LikeAction","userInteractionCount":2}]}]}}
+  </script>
+
+  
+  <div class="crayons-layout crayons-layout--3-cols crayons-layout--article">
+    <aside class="crayons-layout__sidebar-left" aria-label="Article actions">
+      <script>
+  if (/Twitter for (iPhone|iPad|Android)/i.test(navigator.userAgent)) {
+    document.documentElement.classList.add('is-twitter-in-app');
+  }
+</script>
+<div class="crayons-article-actions print-hidden">
+  <div class="crayons-article-actions__inner">
+
+    
+<div class="reaction-drawer__outer hoverdown" style="">
+  <button
+    id="reaction-drawer-trigger"
+    aria-label="reaction-drawer-trigger"
+    aria-pressed="false"
+    class="hoverdown-trigger crayons-reaction pseudo-reaction crayons-tooltip__activator relative">
+      <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction--like crayons-reaction__icon--inactive" style="width: 40px; height: 40px">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" role="img" aria-hidden="true" class="crayons-icon">
+    <g clip-path="url(#clip0_988_3276)">
+        <path d="M19 14V17H22V19H18.999L19 22H17L16.999 19H14V17H17V14H19ZM20.243 4.75698C22.505 7.02498 22.583 10.637 20.479 12.992L19.059 11.574C20.39 10.05 20.32 7.65998 18.827 6.16998C17.324 4.67098 14.907 4.60698 13.337 6.01698L12.002 7.21498L10.666 6.01798C9.09103 4.60598 6.67503 4.66798 5.17203 6.17198C3.68203 7.66198 3.60703 10.047 4.98003 11.623L13.412 20.069L12 21.485L3.52003 12.993C1.41603 10.637 1.49503 7.01898 3.75603 4.75698C6.02103 2.49298 9.64403 2.41698 12 4.52898C14.349 2.41998 17.979 2.48998 20.242 4.75698H20.243Z" fill="#525252"></path>
+    </g>
+    <defs>
+        <clipPath id="clip0_988_3276">
+        <rect width="24" height="24" fill="white"></rect>
+        </clipPath>
+    </defs>
+</svg>
+
+      </span>
+      <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--active" style="width: 40px; height: 40px">
+        <img aria_hidden="true" height="24" width="24" src="https://assets.dev.to/assets/heart-plus-active-9ea3b22f2bc311281db911d416166c5f430636e76b15cd5df6b3b841d830eefa.svg" />
+      </span>
+      <span class="crayons-reaction__count" id="reaction_total_count">
+        <span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span>
+      </span>
+      <span class="crayons-tooltip__content">
+        Add reaction
+      </span>
+  </button>
+
+  <div class="reaction-drawer" aria-expanded="false">
+    <div class="reaction-drawer__container">
+        <button
+  id="reaction-butt-like"
+  name="Like"
+  aria-label="Like"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="like">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-like"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Like
+    </span>
+</button>
+
+        <button
+  id="reaction-butt-unicorn"
+  name="Unicorn"
+  aria-label="Unicorn"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="unicorn">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-unicorn"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Unicorn
+    </span>
+</button>
+
+        <button
+  id="reaction-butt-exploding_head"
+  name="Exploding Head"
+  aria-label="Exploding Head"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="exploding_head">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-exploding_head"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Exploding Head
+    </span>
+</button>
+
+        <button
+  id="reaction-butt-raised_hands"
+  name="Raised Hands"
+  aria-label="Raised Hands"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="raised_hands">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-raised_hands"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Raised Hands
+    </span>
+</button>
+
+        <button
+  id="reaction-butt-fire"
+  name="Fire"
+  aria-label="Fire"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="fire">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-fire"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Fire
+    </span>
+</button>
+
+    </div>
+  </div>
+</div>
+
+<button
+  id="reaction-butt-comment"
+  aria-label="Jump to Comments"
+  aria-pressed="false"
+  class="crayons-reaction crayons-reaction--comment crayons-tooltip__activator relative"
+  data-category="comment">
+    <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--inactive">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-hidden="true" class="crayons-icon">
+    <path d="M10 3h4a8 8 0 010 16v3.5c-5-2-12-5-12-11.5a8 8 0 018-8zm2 14h2a6 6 0 000-12h-4a6 6 0 00-6 6c0 3.61 2.462 5.966 8 8.48V17z"></path>
+</svg>
+
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-comment" data-count="1">
+      <span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span>
+    </span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Jump to Comments
+    </span>
+</button>
+
+<button
+  id="reaction-butt-readinglist"
+  aria-label="Add to reading list"
+  aria-pressed="false"
+  class="crayons-reaction crayons-reaction--readinglist crayons-tooltip__activator relative"
+  data-category="readinglist">
+    <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--inactive">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-hidden="true" class="crayons-icon">
+    <path d="M5 2h14a1 1 0 011 1v19.143a.5.5 0 01-.766.424L12 18.03l-7.234 4.536A.5.5 0 014 22.143V3a1 1 0 011-1zm13 2H6v15.432l6-3.761 6 3.761V4z"></path>
+</svg>
+
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-readinglist"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Save
+    </span>
+</button>
+
+
+<button
+  id="reaction-butt-boost"
+  aria-label="Boost"
+  aria-pressed="false"
+  class="crayons-reaction crayons-reaction--boost crayons-tooltip__activator relative">
+    <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--inactive">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" role="img" aria-hidden="true" class="crayons-icon" width="24" height="24">
+  <path transform="translate(24,0) scale(-1,1)" d="M6 4H21C21.5523 4 22 4.44772 22 5V12H20V6H6V9L1 5L6 1V4ZM18 20H3C2.44772 20 2 19.5523 2 19V12H4V18H18V15L23 19L18 23V20Z"></path>
+</svg>
+
+    </span>
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Boost
+    </span>
+</button>
+
+
+    <div class="only-sidebar-menu-item">
+      <div id="mod-actions-menu-btn-area" class="print-hidden trusted-visible-block align-center">
+      </div>
+    </div>
+    <div class="align-center m:relative">
+      <button id="article-show-more-button" aria-controls="article-show-more-dropdown" aria-expanded="false" aria-haspopup="true" class="dropbtn crayons-btn crayons-btn--ghost-dimmed crayons-btn--icon-rounded" aria-label="Share post options">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="alup7armgdc27tq3jnsufjrp427w1z2y" aria-hidden="true" class="crayons-icon dropdown-icon"><title id="alup7armgdc27tq3jnsufjrp427w1z2y">More...</title><path fill-rule="evenodd" clip-rule="evenodd" d="M7 12a2 2 0 11-4 0 2 2 0 014 0zm7 0a2 2 0 11-4 0 2 2 0 014 0zm5 2a2 2 0 100-4 2 2 0 000 4z"></path></svg>
+
+      </button>
+
+      <div id="article-show-more-dropdown" class="crayons-dropdown side-bar left-2 right-2 m:right-auto m:left-100 s:left-auto mb-1 m:mb-0 top-unset bottom-100 m:top-0 m:bottom-unset">
+        <div>
+          <button
+            id="copy-post-url-button"
+            class="flex justify-between crayons-link crayons-link--block w-100 bg-transparent border-0"
+            data-postUrl="https://dev.to/varshithvhegde/introducing-gpt-oss-run-your-own-open-source-gpt-model-locally-3b4j">
+            <span class="fw-bold">Copy link</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" id="article-copy-icon" role="img" aria-labelledby="a99b4qpmarjppqi6bxkoe5kfkq8m8q86" aria-hidden="true" class="crayons-icon mx-2 shrink-0"><title id="a99b4qpmarjppqi6bxkoe5kfkq8m8q86">Copy link</title>
+    <path d="M7 6V3a1 1 0 011-1h12a1 1 0 011 1v14a1 1 0 01-1 1h-3v3c0 .552-.45 1-1.007 1H4.007A1 1 0 013 21l.003-14c0-.552.45-1 1.007-1H7zm2 0h8v10h2V4H9v2zm-2 5v2h6v-2H7zm0 4v2h6v-2H7z"></path>
+</svg>
+
+          </button>
+          <div id="article-copy-link-announcer" aria-live="polite" class="crayons-notice crayons-notice--success my-2 p-1" aria-live="polite" hidden>Copied to Clipboard</div>
+        </div>
+
+        <div class="Desktop-only">
+          <a
+            target="_blank"
+            class="crayons-link crayons-link--block"
+            rel="noopener"
+            href='https://twitter.com/intent/tweet?text=%22Introducing%20GPT-OSS%3A%20Run%20Your%20Own%20Open-Source%20GPT%20Model%20Locally%22%20by%20%40VarshithVhegde1%20%23DEVCommunity%20https%3A%2F%2Fdev.to%2Fvarshithvhegde%2Fintroducing-gpt-oss-run-your-own-open-source-gpt-model-locally-3b4j'>
+            Share to X
+          </a>
+          <a
+            target="_blank"
+            class="crayons-link crayons-link--block"
+            rel="noopener"
+            href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fdev.to%2Fvarshithvhegde%2Fintroducing-gpt-oss-run-your-own-open-source-gpt-model-locally-3b4j&title=Introducing%20GPT-OSS%3A%20Run%20Your%20Own%20Open-Source%20GPT%20Model%20Locally&summary=Ever%20wondered%20what%20it%20feels%20like%20to%20have%20your%20own%20ChatGPT%20running%20locally%3F%20Let%20me%20take%20you%20on%20a...&source=DEV%20Community">
+            Share to LinkedIn
+          </a>
+          <a
+            target="_blank"
+            class="crayons-link crayons-link--block"
+            rel="noopener"
+            href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fdev.to%2Fvarshithvhegde%2Fintroducing-gpt-oss-run-your-own-open-source-gpt-model-locally-3b4j">
+            Share to Facebook
+          </a>
+          <a
+            target="_blank"
+            class="crayons-link crayons-link--block"
+            rel="noopener"
+            href="https://s2f.kytta.dev/?text=https%3A%2F%2Fdev.to%2Fvarshithvhegde%2Fintroducing-gpt-oss-run-your-own-open-source-gpt-model-locally-3b4j">
+            Share to Mastodon
+          </a>
+        </div>
+
+        <web-share-wrapper shareurl="https://dev.to/varshithvhegde/introducing-gpt-oss-run-your-own-open-source-gpt-model-locally-3b4j" sharetitle="Introducing GPT-OSS: Run Your Own Open-Source GPT Model Locally" sharetext="Ever wondered what it feels like to have your own ChatGPT running locally? Let me take you on a..." template="web-share-button">
+        </web-share-wrapper>
+        <template id="web-share-button">
+          <a href="#" class="dropdown-link-row crayons-link crayons-link--block">Share Post via...</a>
+        </template>
+
+        <a href="/report-abuse" class="crayons-link crayons-link--block" id="ReportButtonAuthor">Report Abuse</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </aside>
+
+    <main id="main-content" class="crayons-layout__content grid gap-4">
+      <div class="article-wrapper">
+
+
+        <article class="crayons-card crayons-article mb-4"
+          id="article-show-container"
+          data-article-id="2756498"
+          data-article-slug="introducing-gpt-oss-run-your-own-open-source-gpt-model-locally-3b4j"
+          data-author-id="885064"
+          data-author-name="Varshith V Hegde"
+          data-author-username="varshithvhegde"
+          data-co-author-ids=""
+          data-path="/varshithvhegde/introducing-gpt-oss-run-your-own-open-source-gpt-model-locally-3b4j"
+          data-pin-path="/stories/feed/pinned_article"
+          data-pinned-article-id=""
+          data-published="true"
+          data-scheduled="false"
+          lang=en
+           >
+          <script>
+            try {
+              if(localStorage) {
+                let currentUser = localStorage.getItem('current_user');
+
+                if (currentUser) {
+                  currentUser = JSON.parse(currentUser);
+                  if (currentUser.id === 885064) {
+                    document.getElementById('article-show-container').classList.add('current-user-is-article-author');
+                  }
+                }
+              }
+            } catch (e) {
+              console.error(e);
+            }
+          </script>
+          <header class="crayons-article__header" id="main-title">
+              <a class="crayons-article__cover" href="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fckckw7a5xqqao2yzp5cl.png">
+                <img
+                  src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fckckw7a5xqqao2yzp5cl.png"
+                  style="aspect-ratio: auto 1000 / 420;"
+                  width="1000" height="420"
+                  class="crayons-article__cover__image" alt="Cover image for Introducing GPT-OSS: Run Your Own Open-Source GPT Model Locally">
+              </a>
+
+            <div class="crayons-article__header__meta">
+              <div class="flex s:items-start flex-col s:flex-row">
+                <div id="action-space" class="crayons-article__actions mb-4 s:mb-0 s:order-last"></div>
+                <div class="flex flex-1 mb-5 items-start">
+                  <div class="relative">
+                      <a href="/varshithvhegde"><img class="radius-full align-middle" src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F885064%2F4ab304f4-a3f3-409c-8217-9ce130e57c18.jpeg" width="40" height="40" alt="Varshith V Hegde" /></a>
+                  </div>
+                  <div class="pl-3 flex-1">
+                    <a href="/varshithvhegde" class="crayons-link fw-bold">Varshith V Hegde</a>
+                    <a style="display: inline;" href="/++"><img alt="Subscriber" class="subscription-icon" src="https://assets.dev.to/assets/subscription-icon-805dfa7ac7dd660f07ed8d654877270825b07a92a03841aa99a1093bd00431b2.png" /></a>
+                    <p class="fs-xs color-base-60">
+                        Posted on <time datetime="2025-08-06T17:33:15Z" class="date">Aug 6, 2025</time>
+
+
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="multiple_reactions_engagement">
+    <button
+      class="reaction_engagement_like hidden crayons-reaction crayons-reaction--like"
+      data-category="like"
+      aria-label="Like"
+      type="button"
+    ><span class="crayons-reaction__icon crayons-reaction__icon--inactive p-1"><img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="24" height="24" /></span>
+      <span class="crayons-reaction__count" id="reaction_engagement_like_count">&nbsp;</span>
+    </button>    <button
+      class="reaction_engagement_unicorn hidden crayons-reaction crayons-reaction--unicorn"
+      data-category="unicorn"
+      aria-label="Unicorn"
+      type="button"
+    ><span class="crayons-reaction__icon crayons-reaction__icon--inactive p-1"><img src="https://assets.dev.to/assets/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" width="24" height="24" /></span>
+      <span class="crayons-reaction__count" id="reaction_engagement_unicorn_count">&nbsp;</span>
+    </button>    <button
+      class="reaction_engagement_exploding_head hidden crayons-reaction crayons-reaction--exploding_head"
+      data-category="exploding_head"
+      aria-label="Exploding Head"
+      type="button"
+    ><span class="crayons-reaction__icon crayons-reaction__icon--inactive p-1"><img src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" width="24" height="24" /></span>
+      <span class="crayons-reaction__count" id="reaction_engagement_exploding_head_count">&nbsp;</span>
+    </button>    <button
+      class="reaction_engagement_raised_hands hidden crayons-reaction crayons-reaction--raised_hands"
+      data-category="raised_hands"
+      aria-label="Raised Hands"
+      type="button"
+    ><span class="crayons-reaction__icon crayons-reaction__icon--inactive p-1"><img src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="24" height="24" /></span>
+      <span class="crayons-reaction__count" id="reaction_engagement_raised_hands_count">&nbsp;</span>
+    </button>    <button
+      class="reaction_engagement_fire hidden crayons-reaction crayons-reaction--fire"
+      data-category="fire"
+      aria-label="Fire"
+      type="button"
+    ><span class="crayons-reaction__icon crayons-reaction__icon--inactive p-1"><img src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="24" height="24" /></span>
+      <span class="crayons-reaction__count" id="reaction_engagement_fire_count">&nbsp;</span>
+    </button>
+</div>
+
+
+              <h1 class=" fs-3xl m:fs-4xl l:fs-5xl fw-bold s:fw-heavy lh-tight mb-2 long">
+                Introducing GPT-OSS: Run Your Own Open-Source GPT Model Locally
+              </h1>
+              
+                  <div class="spec__tags flex flex-wrap">
+                      <a class="crayons-tag   " style="
+        --tag-bg: rgba(31, 109, 245, 0.10);
+        --tag-prefix: #1F6DF5;
+        --tag-bg-hover: rgba(31, 109, 245, 0.10);
+        --tag-prefix-hover: #1F6DF5;
+      " href="/t/openai"><span class="crayons-tag__prefix">#</span>openai</a>
+                      <a class="crayons-tag   " style="
+        --tag-bg: rgba(38, 190, 0, 0.10);
+        --tag-prefix: #26BE00;
+        --tag-bg-hover: rgba(38, 190, 0, 0.10);
+        --tag-prefix-hover: #26BE00;
+      " href="/t/opensource"><span class="crayons-tag__prefix">#</span>opensource</a>
+                      <a class="crayons-tag   " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/gptoss"><span class="crayons-tag__prefix">#</span>gptoss</a>
+                      <a class="crayons-tag   " style="
+        --tag-bg: rgba(23, 253, 26, 0.10);
+        --tag-prefix: #17fd1a;
+        --tag-bg-hover: rgba(23, 253, 26, 0.10);
+        --tag-prefix-hover: #17fd1a;
+      " href="/t/ai"><span class="crayons-tag__prefix">#</span>ai</a>
+                  </div>
+            </div>
+          </header>
+
+          <div class="crayons-article__main ">
+            <div class="crayons-article__body text-styles spec__body" data-article-id="2756498" id="article-body">
+                <p><em>Ever wondered what it feels like to have your own ChatGPT running locally? Let me take you on a journey from being completely dependent on cloud APIs to having my own AI assistant running on my laptop.</em></p>
+
+<h2>
+  <a name="the-aha-moment" href="#the-aha-moment">
+  </a>
+  The "Aha!" Moment 💡
+</h2>
+
+<p>Picture this: You're deep in a coding session at 2 AM, your OpenAI credits just ran out, and you desperately need help debugging that stubborn piece of code. Sound familiar? This exact scenario pushed me to explore local AI solutions, and boy, was I in for a treat!</p>
+
+<p>Enter <strong>GPT-OSS</strong> - an open-source language model that you can actually run on consumer hardware. No more API limits, no more internet dependency, and definitely no more surprise bills!</p>
+
+<h2>
+  <a name="why-go-local" href="#why-go-local">
+  </a>
+  Why Go Local? 🏠
+</h2>
+
+<p>Before we dive into the technical bits, let me share why running AI locally changed my development workflow:</p>
+
+<ul>
+<li>
+<strong>Privacy First</strong>: Your code and conversations never leave your machine</li>
+<li>
+<strong>Cost Control</strong>: No more surprise API bills (looking at you, OpenAI 👀)</li>
+<li>
+<strong>Offline Capability</strong>: Code on planes, trains, or that coffee shop with terrible WiFi</li>
+<li>
+<strong>Learning Experience</strong>: Understanding how these models actually work under the hood</li>
+</ul>
+
+<h2>
+  <a name="the-hardware-reality-check" href="#the-hardware-reality-check">
+  </a>
+  The Hardware Reality Check 📊
+</h2>
+
+<p>Let's be real about hardware requirements. GPT-OSS comes in two flavors:</p>
+
+<h3>
+  <a name="gptoss20b-the-laptop-friendly" href="#gptoss20b-the-laptop-friendly">
+  </a>
+  GPT-OSS-20B (The Laptop Friendly)
+</h3>
+
+<ul>
+<li>
+<strong>Memory needed</strong>: ≥16GB VRAM or unified memory</li>
+<li>
+<strong>Sweet spot</strong>: RTX 4070/4080, Apple M1/M2/M3 Macs</li>
+<li>
+<strong>My experience</strong>: Runs smoothly on my MacBook Pro M2 with 32GB</li>
+</ul>
+
+<h3>
+  <a name="gptoss120b-the-workstation-beast" href="#gptoss120b-the-workstation-beast">
+  </a>
+  GPT-OSS-120B (The Workstation Beast)
+</h3>
+
+<ul>
+<li>
+<strong>Memory needed</strong>: ≥60GB VRAM or unified memory
+</li>
+<li>
+<strong>Target</strong>: Multi-GPU setups, workstations, or that gaming rig you justified for "development"</li>
+<li>
+<strong>Reality check</strong>: This is serious hardware territory</li>
+</ul>
+
+<blockquote>
+<p>💡 <strong>Pro tip</strong>: Both models come MXFP4 quantized out of the box. You can offload to CPU if you're short on VRAM, but expect slower responses.</p>
+</blockquote>
+
+<h2>
+  <a name="setting-up-your-local-ai-assistant" href="#setting-up-your-local-ai-assistant">
+  </a>
+  Setting Up Your Local AI Assistant 🛠️
+</h2>
+
+<h3>
+  <a name="step-1-get-ollama-your-new-best-friend" href="#step-1-get-ollama-your-new-best-friend">
+  </a>
+  Step 1: Get Ollama (Your New Best Friend)
+</h3>
+
+<p><a href="https://ollama.com/" target="_blank" rel="noopener noreferrer">Ollama</a> is like Docker for AI models - it makes everything stupidly simple.<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight shell"><code><span class="c"># Install Ollama (check their website for your OS)</span>
+<span class="c"># Then pull your model of choice</span>
+
+<span class="c"># For the 20B model (recommended for most setups)</span>
+ollama pull gpt-oss:20b
+
+<span class="c"># For the 120B model (if you've got the hardware)</span>
+ollama pull gpt-oss:120b
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="step-2-your-first-conversation" href="#step-2-your-first-conversation">
+  </a>
+  Step 2: Your First Conversation
+</h3>
+
+
+
+<div class="highlight js-code-highlight">
+<pre class="highlight shell"><code>ollama run gpt-oss:20b
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>And just like that, you're chatting with AI running entirely on your machine! The first time I saw this work, I literally said "No way!" out loud.</p>
+
+<h2>
+  <a name="making-it-pretty-enter-open-webui" href="#making-it-pretty-enter-open-webui">
+  </a>
+  Making It Pretty: Enter Open WebUI 🎨
+</h2>
+
+<p>Now, terminal chat is cool and all, but let's be honest - sometimes we want that sleek ChatGPT-like interface. This is where <strong>Open WebUI</strong> becomes your new favorite tool.</p>
+
+<p>Think of Open WebUI as your personal ChatGPT interface, but for local models. It supports multiple models, has RAG capabilities, and honestly looks better than some paid services I've used.</p>
+
+<h3>
+  <a name="quick-setup-options" href="#quick-setup-options">
+  </a>
+  Quick Setup Options:
+</h3>
+
+<p><strong>The Python Way (My Preferred Method):</strong><br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight shell"><code>pip <span class="nb">install </span>open-webui
+open-webui serve
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p><strong>The Docker Way (For the Container Enthusiasts):</strong><br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight shell"><code>docker run <span class="nt">-d</span> <span class="nt">-p</span> 3000:8080 <span class="se">\</span>
+  <span class="nt">--add-host</span><span class="o">=</span>host.docker.internal:host-gateway <span class="se">\</span>
+  <span class="nt">-v</span> open-webui:/app/backend/data <span class="se">\</span>
+  <span class="nt">--name</span> open-webui <span class="se">\</span>
+  <span class="nt">--restart</span> always <span class="se">\</span>
+  ghcr.io/open-webui/open-webui:main
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>Once it's running, open your browser to <code>http://localhost:3000</code> and boom - you've got your own ChatGPT-like interface! Select your GPT-OSS model from the dropdown and start chatting.</p>
+
+<p><em>If you're more of a visual learner, I found this fantastic tutorial that walks through the entire Ollama and Open WebUI setup process:</em></p>
+
+<p>  <iframe src="https://www.youtube.com/embed/CVeZfM0pVyU" style="width: 100%; aspect-ratio: 16 / 9;" allowfullscreen loading="lazy">
+  </iframe>
+</p>
+
+<p>The video covers everything from installation to getting your first chat session running - perfect if you prefer following along visually!</p>
+
+<h2>
+  <a name="for-the-api-lovers-seamless-integration" href="#for-the-api-lovers-seamless-integration">
+  </a>
+  For the API Lovers: Seamless Integration 🔌
+</h2>
+
+<p>Here's where it gets really exciting. Ollama exposes a Chat Completions-compatible API, which means minimal code changes if you're already using OpenAI's SDK.<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight python"><code><span class="kn">from</span> <span class="n">openai</span> <span class="kn">import</span> <span class="n">OpenAI</span>
+
+<span class="c1"># Just point to your local Ollama instance
+</span><span class="n">client</span> <span class="o">=</span> <span class="nc">OpenAI</span><span class="p">(</span>
+    <span class="n">base_url</span><span class="o">=</span><span class="sh">"</span><span class="s">http://localhost:11434/v1</span><span class="sh">"</span><span class="p">,</span>
+    <span class="n">api_key</span><span class="o">=</span><span class="sh">"</span><span class="s">ollama</span><span class="sh">"</span>  <span class="c1"># Dummy key, but required
+</span><span class="p">)</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">chat</span><span class="p">.</span><span class="n">completions</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="sh">"</span><span class="s">gpt-oss:20b</span><span class="sh">"</span><span class="p">,</span>
+    <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">{</span><span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">system</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">You</span><span class="sh">'</span><span class="s">re a helpful coding assistant.</span><span class="sh">"</span><span class="p">},</span>
+        <span class="p">{</span><span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">user</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">Explain async/await in JavaScript like I</span><span class="sh">'</span><span class="s">m 5</span><span class="sh">"</span><span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">message</span><span class="p">.</span><span class="n">content</span><span class="p">)</span>
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>The first time I ran this code and realized I was getting responses from my own hardware instead of OpenAI's servers... <em>chef's kiss</em> 👨‍🍳💋</p>
+
+<h2>
+  <a name="function-calling-because-why-not" href="#function-calling-because-why-not">
+  </a>
+  Function Calling: Because Why Not? 🛠️
+</h2>
+
+<p>GPT-OSS supports function calling out of the box. Here's a simple weather example:<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight python"><code><span class="n">tools</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="sh">"</span><span class="s">type</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">function</span><span class="sh">"</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">function</span><span class="sh">"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="sh">"</span><span class="s">name</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">get_current_weather</span><span class="sh">"</span><span class="p">,</span>
+            <span class="sh">"</span><span class="s">description</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">Get the current weather in a city</span><span class="sh">"</span><span class="p">,</span>
+            <span class="sh">"</span><span class="s">parameters</span><span class="sh">"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="sh">"</span><span class="s">type</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">object</span><span class="sh">"</span><span class="p">,</span>
+                <span class="sh">"</span><span class="s">properties</span><span class="sh">"</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="sh">"</span><span class="s">city</span><span class="sh">"</span><span class="p">:</span> <span class="p">{</span><span class="sh">"</span><span class="s">type</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">string</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">description</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">The city name</span><span class="sh">"</span><span class="p">}</span>
+                <span class="p">},</span>
+                <span class="sh">"</span><span class="s">required</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="sh">"</span><span class="s">city</span><span class="sh">"</span><span class="p">]</span>
+            <span class="p">},</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">chat</span><span class="p">.</span><span class="n">completions</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="sh">"</span><span class="s">gpt-oss:20b</span><span class="sh">"</span><span class="p">,</span>
+    <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">user</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">What</span><span class="sh">'</span><span class="s">s the weather like in Tokyo?</span><span class="sh">"</span><span class="p">}],</span>
+    <span class="n">tools</span><span class="o">=</span><span class="n">tools</span>
+<span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">message</span><span class="p">)</span>
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<h2>
+  <a name="advanced-agents-sdk-integration" href="#advanced-agents-sdk-integration">
+  </a>
+  Advanced: Agents SDK Integration 🤖
+</h2>
+
+<p>For those wanting to build more complex AI applications, GPT-OSS plays nicely with OpenAI's Agents SDK through LiteLLM:<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight python"><code><span class="kn">import</span> <span class="n">asyncio</span>
+<span class="kn">from</span> <span class="n">agents</span> <span class="kn">import</span> <span class="n">Agent</span><span class="p">,</span> <span class="n">Runner</span><span class="p">,</span> <span class="n">function_tool</span>
+<span class="kn">from</span> <span class="n">agents.extensions.models.litellm_model</span> <span class="kn">import</span> <span class="n">LitellmModel</span>
+
+<span class="nd">@function_tool</span>
+<span class="k">def</span> <span class="nf">get_weather</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="sh">"</span><span class="s">The weather in </span><span class="si">{</span><span class="n">city</span><span class="si">}</span><span class="s"> is sunny and 72°F.</span><span class="sh">"</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">agent</span> <span class="o">=</span> <span class="nc">Agent</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="sh">"</span><span class="s">WeatherBot</span><span class="sh">"</span><span class="p">,</span>
+        <span class="n">instructions</span><span class="o">=</span><span class="sh">"</span><span class="s">You</span><span class="sh">'</span><span class="s">re a helpful weather assistant.</span><span class="sh">"</span><span class="p">,</span>
+        <span class="n">model</span><span class="o">=</span><span class="nc">LitellmModel</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="sh">"</span><span class="s">ollama/gpt-oss:20b</span><span class="sh">"</span><span class="p">),</span>
+        <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">get_weather</span><span class="p">],</span>
+    <span class="p">)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Runner</span><span class="p">.</span><span class="nf">run</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span> <span class="sh">"</span><span class="s">What</span><span class="sh">'</span><span class="s">s the weather in San Francisco?</span><span class="sh">"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">final_output</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
+    <span class="n">asyncio</span><span class="p">.</span><span class="nf">run</span><span class="p">(</span><span class="nf">main</span><span class="p">())</span>
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<h2>
+  <a name="my-realworld-experience" href="#my-realworld-experience">
+  </a>
+  My Real-World Experience 📈
+</h2>
+
+<p>After running GPT-OSS locally for a few months, here's what I've noticed:</p>
+
+<p><strong>The Good:</strong></p>
+
+<ul>
+<li>Response times are actually pretty decent (especially on Apple Silicon)</li>
+<li>No more worrying about API costs during experimentation</li>
+<li>Perfect for code review and debugging sessions</li>
+<li>Great for learning and understanding how these models work</li>
+</ul>
+
+<p><strong>The Challenges:</strong></p>
+
+<ul>
+<li>Initial setup requires some technical know-how</li>
+<li>Quality isn't quite GPT-4 level (but getting close!)</li>
+<li>Hardware requirements can be limiting</li>
+</ul>
+
+<p><strong>The Surprising:</strong></p>
+
+<ul>
+<li>The model "personality" feels different but equally helpful</li>
+<li>Perfect for when you need AI help but don't want your code leaving your machine</li>
+</ul>
+
+<h2>
+  <a name="wrapping-up" href="#wrapping-up">
+  </a>
+  Wrapping Up 🎬
+</h2>
+
+<p>Running your own AI locally isn't just about saving money or working offline - it's about understanding the technology, maintaining privacy, and having complete control over your tools.</p>
+
+<p>Is it perfect? No. Is it worth trying? Absolutely.</p>
+
+<p>Whether you're a privacy-conscious developer, a cost-conscious startup, or just someone who loves playing with cutting-edge tech, GPT-OSS with Ollama and Open WebUI is definitely worth your time.</p>
+
+<p>Have you tried running AI models locally? What's been your experience? Drop your thoughts in the comments below!</p>
+
+
+<hr>
+
+<p><em>Found this helpful? Give it a ❤️ and follow for more AI and development content!</em></p>
+
+
+            </div>
+
+              <div class="below-post-bb body-billboard-container" data-async-url="/varshithvhegde/introducing-gpt-oss-run-your-own-open-source-gpt-model-locally-3b4j/bmar11/post_body_bottom"></div>
+          </div>
+          <section id="comments" data-follow-button-container="true" data-updated-at="2026-04-01 09:02:05 UTC" class="text-padding mb-4 border-t-1 border-0 border-solid border-base-10">
+    <header class="relative flex justify-between items-center mb-6">
+      <div class="flex items-center">
+        <h2 class="crayons-subtitle-1">
+          Top comments <span class="js-comments-count" data-comments-count="1">(1)</span>
+        </h2>
+      </div>
+
+
+      <div id="comment-subscription" class="print-hidden">
+        <div class="crayons-btn-group">
+          <span class="crayons-btn crayons-btn--outlined">Subscribe</span>
+        </div>
+      </div>
+    </header>
+    <div id="billboard_delay_trigger"></div>
+    <div
+      id="comments-container"
+      data-testid="comments-container"
+      data-commentable-id="2756498"
+      data-commentable-type="Article"
+      data-has-recent-comment-activity="false">
+
+        <div id="response-templates-data" class="hidden"></div>
+
+
+<form class="comment-form print-hidden" id="new_comment" action="/comments" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" />
+
+  <input type="hidden" name="authenticity_token" value="NOTHING" id="new_comment_authenticity_token">
+
+    <input value="2756498" autocomplete="off" type="hidden" name="comment[commentable_id]" id="comment_commentable_id" />
+    <input value="Article" autocomplete="off" type="hidden" name="comment[commentable_type]" id="comment_commentable_type" />
+    
+
+  <span class="crayons-avatar m:crayons-avatar--l mr-2 shrink-0">
+    <img src="https://media2.dev.to/dynamic/image/width=256,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" width="32" height="32" alt="pic" class="crayons-avatar__image overflow-hidden" id="comment-primary-user-profile--avatar" loading="lazy" />
+  </span>
+  <div class="comment-form__inner">
+    <div class="comment-form__field" data-tracking-name="comment_form_textfield">
+      <textarea placeholder="Add to the discussion" onfocus="handleFocus(event)" onkeyup="handleKeyUp(event)" onkeydown="handleKeyDown(event)" oninput="handleChange(event)" id="text-area" required="required" class="crayons-textfield comment-textarea crayons-textfield--ghost" aria-label="Add a comment to the discussion" name="comment[body_markdown]">
+</textarea>
+
+    </div>
+
+    <div class="response-templates-container crayons-card crayons-card--secondary p-4 mb-4 comment-form__templates fs-base hidden">
+      <header class="mb-3">
+        <button type="button" class="crayons-btn personal-template-button active" data-target-type="personal" data-form-id="new_comment">Personal</button>
+        <button type="button" class="crayons-btn moderator-template-button hidden" data-target-type="moderator" data-form-id="new_comment">Trusted User</button>
+      </header>
+
+      <div class="personal-responses-container">
+      </div>
+      <div class="moderator-responses-container hidden">
+      </div>
+
+      <a target="_blank" rel="noopener nofollow" href="/settings/response-templates">
+        Create template
+      </a>
+      <p>Templates let you quickly answer FAQs or store snippets for re-use.</p>
+    </div>
+
+    <div class="comment-form__preview text-styles text-styles--secondary" id="preview-div"></div>
+
+    <div class="comment-form__buttons mb-4">
+      <button type="submit" class="crayons-btn mr-2 js-btn-enable" onclick="validateField(event)" data-tracking-name="comment_submit_button" disabled>Submit</button>
+      <button type="button" class="preview-toggle crayons-btn crayons-btn--secondary comment-action-preview js-btn-enable mr-2" data-tracking-name="comment_preview_button" disabled>Preview</button>
+      <a href="/404.html" class="dismiss-edit-comment crayons-btn crayons-btn--ghost js-btn-dismiss hidden">Dismiss</a>
+    </div>
+  </div>
+
+  <div class="code-of-conduct" id="toggle-code-of-conduct-checkbox"></div>
+</form>
+
+
+      <div class="comments" id="comment-trees-container">
+              <details class="comment-wrapper js-comment-wrapper comment-wrapper--deep-0
+                    root
+                    " open>
+      <summary aria-label="Toggle this comment (and replies)" data-tracking-name="expand_comment_toggle">
+        <span class="m:mx-1 inline-block align-middle">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="alevlox8nckm8393unb55v8unldadx86" class="crayons-icon expanded"><title id="alevlox8nckm8393unb55v8unldadx86">Collapse</title>
+    <path d="M12 10.677L8 6.935 9 6l3 2.807L15 6l1 .935-4 3.742zm0 4.517L9 18l-1-.935 4-3.742 4 3.742-1 .934-3-2.805z"></path>
+</svg>
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="afas1r8un7mbfl3w6qhsm7kgz4wslgyw" class="crayons-icon collapsed"><title id="afas1r8un7mbfl3w6qhsm7kgz4wslgyw">Expand</title>
+    <path d="M12 18l-4-3.771 1-.943 3 2.829 3-2.829 1 .943L12 18zm0-10.115l-3 2.829-1-.943L12 6l4 3.771-1 .942-3-2.828z"></path>
+</svg>
+
+        </span>
+        <span class="js-collapse-comment-content inline-block align-middle"></span>
+      </summary>
+  <div
+    id="comment-node-1379241"
+    class="
+      comment single-comment-node
+      
+      root
+      comment--deep-0
+      
+    "
+    data-comment-id="1379241"
+    data-path="/varshithvhegde/introducing-gpt-oss-run-your-own-open-source-gpt-model-locally-3b4j/comments/30c7j"
+    data-comment-author-id="3417201"
+    data-content-user-id="3417201">
+    <a name="comment-30c7j" style="position: absolute; top: -8px;">&nbsp;</a>
+    
+<div class="comment__inner">
+    <a href="https://dev.to/anik_sikder_313" class="shrink-0 crayons-avatar m:crayons-avatar--l mt-4 m:mt-3">
+    <img class="crayons-avatar__image" width="32" height="32" src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3417201%2F3ad6397f-b407-4335-9b09-8c5494b55d53.jpg" alt="anik_sikder_313 profile image" loading="lazy" />
+  </a>
+
+
+  <div class="inner-comment comment__details">
+    <div class="comment__content crayons-card">
+        
+
+
+        <div class="comment__header">
+  <a href="https://dev.to/anik_sikder_313" class="crayons-link crayons-link--secondary flex items-center fw-medium m:hidden">
+    <span class="js-comment-username">
+      Anik Sikder
+    </span>
+  </a>
+  <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:block">
+    <button id="comment-profile-preview-trigger-1379241" aria-controls="comment-profile-preview-content-1379241" class="profile-preview-card__trigger p-1 -my-1 -ml-1 crayons-btn crayons-btn--ghost" aria-label="Anik Sikder profile details">
+      Anik Sikder
+      
+    </button>
+    <div id="comment-profile-preview-content-1379241" class="profile-preview-card__content p-4 pt-0 branded-7 crayons-dropdown" style="--card-color: #000000; border-top-color: var(--card-color);" data-testid="profile-preview-card" data-repositioning-dropdown="true">
+    <div class="gap-4 grid">
+        <div class="-mt-4">
+  <a href="/anik_sikder_313" class="flex">
+    <span class="crayons-avatar crayons-avatar--xl  mr-2 shrink-0">
+      <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3417201%2F3ad6397f-b407-4335-9b09-8c5494b55d53.jpg" class="crayons-avatar__image" alt="" loading="lazy" />
+    </span>
+    <span class="crayons-link crayons-subtitle-2 mt-5">
+      Anik Sikder
+      
+    </span>
+  </a>
+</div>
+
+<div class="print-hidden">
+  <button name="button" type="button" data-info="{&quot;className&quot;:&quot;User&quot;,&quot;style&quot;:&quot;&quot;,&quot;id&quot;:3417201,&quot;name&quot;:&quot;Anik Sikder&quot;}" class="crayons-btn follow-action-button whitespace-nowrap w-100 follow-user" aria-label="Follow user: Anik Sikder" aria-pressed="false">Follow</button>
+</div>
+  <div class="color-base-70">
+    Full-Stack Dev &amp; Tech Writer | Python (Django, FastAPI), JS (React, Next.js) | I build fast, scalable apps &amp; write on backend, frontend, APIs &amp; Web3 | Open to freelance/remote roles
+  </div>
+
+  <div class="user-metadata-details">
+    <ul class="user-metadata-details-inner">
+        <li>
+          <div class="key">
+            Location
+          </div>
+          <div class="value">
+            Dhaka, Bangladesh
+          </div>
+        </li>
+      <li>
+        <div class="key">
+          Joined
+        </div>
+        <div class="value">
+          <time datetime="2025-08-06T12:44:15Z" class="date">Aug 6, 2025</time>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+    </div>
+</div>
+
+
+  </div>
+
+  <span class="color-base-30 px-2 m:pl-0" role="presentation">&bull;</span>
+
+<a href="https://dev.to/varshithvhegde/introducing-gpt-oss-run-your-own-open-source-gpt-model-locally-3b4j#comment-30c7j" class="comment-date crayons-link crayons-link--secondary fs-s">
+  <time datetime="2025-08-07T06:44:22Z" class=date-short-year>
+    Aug 7 &#39;25
+  </time>
+
+</a>
+
+
+  <div class="comment__dropdown" data-tracking-name="comment_dropdown">
+    <button id="comment-dropdown-trigger-1379241" aria-controls="comment-dropdown-1379241" aria-expanded="false"
+      class="dropbtn comment__dropdown-trigger crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon "
+      aria-label="Toggle dropdown menu" aria-haspopup="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="apkvglc8in6yk1xtvjfp2kvbkc9sl2ic" class="crayons-icon pointer-events-none"><title id="apkvglc8in6yk1xtvjfp2kvbkc9sl2ic">Dropdown menu</title>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.25 12a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm5.25 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm3.75 1.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
+</svg>
+
+    </button>
+    <div id="comment-dropdown-1379241" class="crayons-dropdown right-1 s:right-0 s:left-auto fs-base dropdown">
+      <ul class="m-0">
+        <li><a href="https://dev.to/varshithvhegde/introducing-gpt-oss-run-your-own-open-source-gpt-model-locally-3b4j#comment-30c7j" class="crayons-link crayons-link--block permalink-copybtn" aria-label="Copy link to Anik Sikder&#39;s comment" data-no-instant>Copy link</a></li>
+        <li class="comment-actions hidden" data-user-id="3417201" data-action="settings-button" data-path="https://dev.to/anik_sikder_313/comment/30c7j/settings" aria-label="Go to Anik Sikder&#39;s comment settings"></li>
+          <li class="comment-actions hidden" data-action="hide-button" data-commentable-user-id="885064" data-user-id="3417201">
+              <button
+                class="flex justify-between crayons-link crayons-link--block w-100 bg-transparent border-0 hide-comment"
+                data-hide-type="hide"
+                data-comment-id="1379241"
+                data-comment-url="https://dev.to/anik_sikder_313/comment/30c7j"
+                aria-label="Hide Anik Sikder&#39;s comment">
+                Hide
+              </button>
+          </li>
+        <li class="mod-actions hidden mod-actions-comment-button" data-path="https://dev.to/anik_sikder_313/comment/30c7j/mod" aria-label="Moderate Anik Sikder&#39;s comment"></li>
+        <li class="report-abuse-link-wrapper" data-path="/report-abuse?url=https://dev.to/anik_sikder_313/comment/30c7j" aria-label="Report Anik Sikder&#39;s comment as abusive or violating our code of conduct and/or terms and conditions"></li>
+        <li class="current-user-actions"></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+        <div
+          class="
+            comment__body
+            text-styles
+            text-styles--secondary
+            body
+            
+            
+          ">
+          <p>I've been meaning to explore local AI setups, and your breakdown just gave me the push I needed. The way you laid out the trade-offs between the 20B and 120B models, the role of Ollama, and the seamless pairing with Open WebUI super clear and practical.</p>
+
+
+        </div>
+
+    </div>
+
+    <script>
+    </script>
+
+    <footer class="comment__footer print-hidden">
+  <button
+    class="crayons-tooltip__activator relative crayons-btn crayons-btn--ghost crayons-btn--icon-left crayons-btn--s mr-1 reaction-like inline-flex reaction-button"
+    id="button-for-comment-1379241"
+    data-comment-id="1379241"
+    aria-label="like"
+    data-tracking-name="comment_heart_button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a5qby785vm9ui7mzxb1q979m42mriln3" class="crayons-icon reaction-icon not-reacted"><title id="a5qby785vm9ui7mzxb1q979m42mriln3">Like comment: </title><path d="M18.884 12.595l.01.011L12 19.5l-6.894-6.894.01-.01A4.875 4.875 0 0112 5.73a4.875 4.875 0 016.884 6.865zM6.431 7.037a3.375 3.375 0 000 4.773L12 17.38l5.569-5.569a3.375 3.375 0 10-4.773-4.773L9.613 10.22l-1.06-1.062 2.371-2.372a3.375 3.375 0 00-4.492.25v.001z"></path></svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="ai6r7oza8mxfvfqgem47fg6avvufb8k8" class="crayons-icon crayons-icon reaction-icon--like reaction-icon reacted"><title id="ai6r7oza8mxfvfqgem47fg6avvufb8k8">Like comment: </title>
+    <path d="M5.116 12.595a4.875 4.875 0 015.56-7.68h-.002L7.493 8.098l1.06 1.061 3.181-3.182a4.875 4.875 0 016.895 6.894L12 19.5l-6.894-6.894.01-.01z"></path>
+</svg>
+
+    <span class="reactions-count">2</span><span class="reactions-label hidden m:inline-block">&nbsp;likes</span>
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Like
+    </span>
+  </button>
+
+      <button
+        class="actions crayons-btn crayons-btn--ghost crayons-btn--s crayons-btn--icon-left toggle-reply-form mr-1 inline-flex"
+        data-comment-id="1379241"
+        data-path="/varshithvhegde/introducing-gpt-oss-run-your-own-open-source-gpt-model-locally-3b4j/comments/30c7j"
+        data-tracking-name="comment_reply_button"
+        data-testid="reply-button-1379241"
+        rel="nofollow">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="agj7vsohipn44nsupp7itexgm8425n13" class="crayons-icon reaction-icon not-reacted"><title id="agj7vsohipn44nsupp7itexgm8425n13">Comment button</title><path d="M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z"></path></svg>
+
+        <span class="hidden m:inline-block">Reply</span>
+      </button>
+
+</footer>
+
+  </div>
+</div>
+
+
+  </div>
+    </details>
+
+
+      </div>
+    </div>
+
+    <div class="align-center">
+
+
+  <nav class="fs-s align-center block" aria-label="Conduct controls">
+  <a href="/code-of-conduct" class="crayons-link crayons-link--secondary">Code of Conduct</a>
+  <span class="opacity-25 px-2" role="presentation">&bull;</span>
+  <a href="/report-abuse" class="crayons-link crayons-link--secondary">Report abuse</a>
+</nav>
+
+</div>
+
+</section>
+<div id="hide-comments-modal" class="hidden">
+  <form id="hide-comments-modal__form" class="hide-comments-modal__form" data-type="json" action="/comments/hide" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="_method" value="patch" autocomplete="off" /><input type="hidden" name="authenticity_token" value="pZXqMJSB7NcNhnv6meSMmYZobIzcNIF4ZZsnvveJmekA7ltkDdx06tMtdRr9bHwLTywwNfB3jiGkgnjx1cZVlg" autocomplete="off" />
+    <div class="hide-comments-modal__content">
+      <p class="pb-2">
+        Are you sure you want to hide this comment? It will become hidden in your post, but will still be visible via the comment's <a id="hide-comments-modal__comment-permalink" href="#">permalink</a>.
+      </p>
+      <label class="crayons-field crayons-field--checkbox my-2">
+        <input name="hide_children" type="hidden" value="0" autocomplete="off" /><input class="hide_children crayons-checkbox" type="checkbox" value="1" name="hide_children" id="hide_children" />
+        <p class="crayons-field__label">Hide child comments as well</p>
+      </label>
+      <p class="pb-4 pt-2">
+        <button type="submit" class="crayons-btn">
+          Confirm
+        </button>
+      </p>
+    </div>
+</form>  <p class="fs-s color-base-60">For further actions, you may consider blocking this person and/or <a id="hide-comments-modal__report-link" href="/report-abuse">reporting abuse</a></p>
+</div>
+
+
+
+        </article>
+
+        <div class="pb-4 crayons-layout__comments-billboard">
+          <div class="new-bb-container pb-4 crayons-layout__comments-billboard" data-async-url="/varshithvhegde/introducing-gpt-oss-run-your-own-open-source-gpt-model-locally-3b4j/bmar11/post_comments"></div>
+        </div>
+
+          <!-- Bottom content skipped via SKIP_BOTTOM_CONTENT config -->
+      </div>
+    </main>
+
+    <aside class="crayons-layout__sidebar-right" aria-label="Author details">
+      <div class="crayons-article-sticky grid gap-4 pb-4 break-word" id="article-show-primary-sticky-nav">
+  <div class="crayons-card crayons-card--secondary branded-7 p-4 pt-0 gap-4 grid" style="border-top-color: #000000;">
+    <div class="-mt-4">
+  <a href="/varshithvhegde" class="flex">
+    <span class="crayons-avatar crayons-avatar--xl  mr-2 shrink-0">
+      <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F885064%2F4ab304f4-a3f3-409c-8217-9ce130e57c18.jpeg" class="crayons-avatar__image" alt="" loading="lazy" />
+    </span>
+    <span class="crayons-link crayons-subtitle-2 mt-5">
+      Varshith V Hegde
+      <img class="subscription-icon" src="https://assets.dev.to/assets/subscription-icon-805dfa7ac7dd660f07ed8d654877270825b07a92a03841aa99a1093bd00431b2.png" />
+    </span>
+  </a>
+</div>
+
+<div class="print-hidden">
+  <button name="button" type="button" data-info="{&quot;className&quot;:&quot;User&quot;,&quot;style&quot;:&quot;&quot;,&quot;id&quot;:885064,&quot;name&quot;:&quot;Varshith V Hegde&quot;}" class="crayons-btn follow-action-button whitespace-nowrap w-100 follow-user" aria-label="Follow user: Varshith V Hegde" aria-pressed="false">Follow</button>
+</div>
+  <div class="color-base-70">
+    A simple programmer fond of learning
+  </div>
+
+  <div class="user-metadata-details">
+    <ul class="user-metadata-details-inner">
+        <li>
+          <div class="key">
+            Location
+          </div>
+          <div class="value">
+            Mangalore
+          </div>
+        </li>
+          <li>
+            <div class="key">
+              Education
+            </div>
+            <div class="value">
+              Mangalore Institute of Technology and Engineering 
+            </div>
+          </li>
+          <li>
+            <div class="key">
+              Work
+            </div>
+            <div class="value">
+              Software Engineer@KPIT
+            </div>
+          </li>
+      <li>
+        <div class="key">
+          Joined
+        </div>
+        <div class="value">
+          <time datetime="2022-06-30T11:09:59Z" class="date">Jun 30, 2022</time>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  </div>
+
+      <div class="crayons-card crayons-card--secondary">
+        <header class="crayons-card__header">
+          <h3 class="crayons-subtitle-2">
+            More from <a href="/varshithvhegde">Varshith V Hegde</a>
+          </h3>
+        </header>
+        <div>
+            <a class="crayons-link crayons-link--contentful" href="/varshithvhegde/the-great-claude-code-leak-of-2026-accident-incompetence-or-the-best-pr-stunt-in-ai-history-3igm">
+              The Great Claude Code Leak of 2026: Accident, Incompetence, or the Best PR Stunt in AI History?
+              <div class="crayons-link__secondary -ml-1">
+                  <span class="mr-1"><span class="opacity-50">#</span>webdev</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>ai</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>programming</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>productivity</span>
+              </div>
+            </a>
+            <a class="crayons-link crayons-link--contentful" href="/varshithvhegde/using-claude-code-with-any-llm-why-a-gateway-changes-everything-4a0c">
+              Using Claude Code with Any LLM: Why a Gateway Changes Everything
+              <div class="crayons-link__secondary -ml-1">
+                  <span class="mr-1"><span class="opacity-50">#</span>ai</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>cli</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>llm</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>tooling</span>
+              </div>
+            </a>
+            <a class="crayons-link crayons-link--contentful" href="/varshithvhegde/contractcompass-your-ai-contract-analyst-that-actually-speaks-human-nfo">
+              ContractCompass: Your AI Contract Analyst That Actually Speaks Human
+              <div class="crayons-link__secondary -ml-1">
+                  <span class="mr-1"><span class="opacity-50">#</span>devchallenge</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>algoliachallenge</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>ai</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>agents</span>
+              </div>
+            </a>
+        </div>
+      </div>
+</div>
+
+<div class="crayons-article-sticky grid gap-4 break-word sidebar-bb" data-async-url="/varshithvhegde/introducing-gpt-oss-run-your-own-open-source-gpt-model-locally-3b4j/bmar11/post_sidebar"></div>
+
+    </aside>
+  </div>
+
+  <div class="mod-actions-menu print-hidden"></div>
+  <div data-testid="unpublish-post-modal-container" class="unpublish-post-modal-container hidden"></div>
+
+  <div class="fullscreen-code js-fullscreen-code"></div>
+  <script src="https://assets.dev.to/assets/billboard-365f8f60fc3506e63bc54cc5b0a2e36f4c11024ff6a30dccd5462467f24b5215.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/localizeArticleDates-70147c5c6bfe350b42e020ebb2a3dd37419d83978982b5a67b6389119bf162ac.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/articleReactions-1f2220b03b8ee48f0e9196d07b123ad5c5d942328819c33728eab4a4ff83150b.js" defer="defer"></script>
+
+  <script>
+      if (document.getElementsByClassName('fluidvids').length === 0) {
+        window.Fluidvids=function(a,b){"use strict";var c,d,e=b.head||b.head,f=".fluidvids-elem{position:absolute;top:0px;left:0px;width:100%;height:100%;border:none;}.fluidvids{width:100%;position:relative;}",g=function(a){return c=new RegExp("^(https?:)?//(?:"+d.join("|")+").*$","i"),c.test(a)},h=function(a){var c=b.createElement("div"),d=a.parentNode,e=100*(parseInt(a.height?a.height:a.offsetHeight,10)/parseInt(a.width?a.width:a.offsetWidth,10));d.insertBefore(c,a),a.className+=" fluidvids-elem",c.className+=" fluidvids",c.style.paddingTop=e+"%",c.appendChild(a)},i=function(){var a=b.createElement("div");a.innerHTML="<p>x</p><style>"+f+"</style>",e.appendChild(a.childNodes[1])},j=function(a){var c=a||{},e=c.selector||"iframe";d=c.players||["www.youtube.com","player.vimeo.com","clips.twitch.tv"];for(var f=b.querySelectorAll(e),j=0;j<f.length;j++){var k=f[j];g(k.src)&&h(k)}i()};return{init:j}}(window,document);
+        Fluidvids.init({
+          selector: ['iframe', 'object'], // runs querySelectorAll()
+          players: ['www.youtube.com', 'player.vimeo.com', 'clips.twitch.tv'] // players to support
+        });
+      }
+    function activateRunkitTags() {
+  if (!areAnyRunkitTagsPresent())
+    return
+
+  var checkRunkit = setInterval(function() {
+    try {
+      dynamicallyLoadRunkitLibrary()
+
+      if (typeof(RunKit) === 'undefined') {
+        return
+      }
+
+      replaceTagContentsWithRunkitWidget()
+      clearInterval(checkRunkit);
+    } catch(e) {
+      console.error(e);
+      clearInterval(checkRunkit);
+    }
+  }, 200);
+}
+
+function isRunkitTagAlreadyActive(runkitTag) {
+  return runkitTag.querySelector("iframe") !== null;
+};
+
+function areAnyRunkitTagsPresent() {
+  var presentRunkitTags = document.getElementsByClassName("runkit-element");
+
+  return presentRunkitTags.length > 0
+}
+
+function replaceTagContentsWithRunkitWidget() {
+  var targets = document.getElementsByClassName("runkit-element");
+  for (var i = 0; i < targets.length; i++) {
+    if (isRunkitTagAlreadyActive(targets[i])) {
+      continue;
+    }
+
+    var wrapperContent = targets[i].textContent;
+    if (/^(<iframe src)/.test(wrapperContent) === false) {
+      if (targets[i].children.length > 0) {
+        var preamble = targets[i].children[0].textContent;
+        var content = targets[i].children[1].textContent;
+        targets[i].innerHTML = "";
+        var notebook = RunKit.createNotebook({
+          element: targets[i],
+          source: content,
+          preamble: preamble
+        });
+      }
+    }
+  }
+};
+
+function dynamicallyLoadRunkitLibrary() {
+  if (typeof(dynamicallyLoadScript) === "undefined")
+    return
+
+  dynamicallyLoadScript("//embed.runkit.com")
+}
+
+activateRunkitTags();
+
+  </script>
+  <div class="js-billboard-container pb-4 crayons-layout__comments-billboard" data-async-url="/varshithvhegde/introducing-gpt-oss-run-your-own-open-source-gpt-model-locally-3b4j/bmar11/post_fixed_bottom"></div>
+
+
+    <div id="runtime-banner-container"></div>
+    <div id="i18n-translations" data-translations="{&quot;en&quot;:{&quot;core&quot;:{&quot;add_comment&quot;:&quot;Add comment&quot;,&quot;beta&quot;:&quot;beta&quot;,&quot;comment&quot;:&quot;Comment&quot;,&quot;copy_link&quot;:&quot;Copy link&quot;,&quot;edit_profile&quot;:&quot;Edit profile&quot;,&quot;follow&quot;:&quot;Follow&quot;,&quot;follow_back&quot;:&quot;Follow back&quot;,&quot;following&quot;:&quot;Following&quot;,&quot;like&quot;:&quot;Like&quot;,&quot;loading&quot;:&quot;loading...&quot;,&quot;reaction&quot;:&quot;Reaction&quot;,&quot;report_abuse&quot;:&quot;Report abuse&quot;,&quot;search&quot;:&quot;Search&quot;,&quot;success_settings&quot;:&quot;Successfully updated settings.&quot;,&quot;search_placeholder&quot;:&quot;Search...&quot;,&quot;search_find_related_posts&quot;:&quot;Find related posts...&quot;,&quot;search_powered_by&quot;:&quot;Powered by Algolia&quot;,&quot;search_submit_search&quot;:&quot;Submit search for advanced filtering.&quot;,&quot;search_displaying_recommendations&quot;:&quot;Displaying Algolia Recommendations — Start typing to search&quot;,&quot;article_form_save_changes&quot;:&quot;Save changes&quot;,&quot;article_form_schedule&quot;:&quot;Schedule&quot;,&quot;article_form_publish&quot;:&quot;Publish&quot;,&quot;article_form_loading_preview&quot;:&quot;Loading preview&quot;,&quot;article_form_preview_loaded&quot;:&quot;Preview loaded&quot;,&quot;comments_preview&quot;:&quot;Preview&quot;,&quot;comments_continue_editing&quot;:&quot;Continue editing&quot;,&quot;survey_enter_response&quot;:&quot;Enter your response here...&quot;,&quot;survey_thank_you_response&quot;:&quot;Thank you for your response.&quot;,&quot;survey_thank_you_completing&quot;:&quot;Thank you for completing the survey!&quot;,&quot;dashboard_analytics_readers&quot;:&quot;Readers&quot;,&quot;dashboard_analytics_comments&quot;:&quot;Comments&quot;,&quot;dashboard_analytics_reactions&quot;:&quot;Reactions&quot;,&quot;stats_by&quot;:&quot;by&quot;,&quot;editor_new_title&quot;:&quot;New post title here...&quot;,&quot;editor_body_placeholder&quot;:&quot;Write your post content here...&quot;,&quot;tags_field_label&quot;:&quot;Add up to 4 tags&quot;,&quot;tags_field_placeholder&quot;:&quot;Add up to 4 tags...&quot;,&quot;counted_organization&quot;:{&quot;one&quot;:&quot;%{count} organization&quot;,&quot;other&quot;:&quot;%{count} organizations&quot;},&quot;counted_user&quot;:{&quot;one&quot;:&quot;%{count} person&quot;,&quot;other&quot;:&quot;%{count} people&quot;},&quot;not_following&quot;:&quot;You&#39;re not following anyone&quot;,&quot;following_everyone&quot;:&quot;You&#39;re following %{details} (everyone)&quot;,&quot;you_are_following&quot;:&quot;You&#39;re following&quot;,&quot;and&quot;:&quot;and&quot;}}}"></div>
+  </div>
+</div>
+    
+
+<footer id="footer" class="crayons-footer print-hidden">
+  <div id="footer-container" class="crayons-footer__container">
+
+
+        <style>
+  .long-bb-body {
+    max-height: calc(100vh - 200px);
+    overflow: hidden;
+  }
+  .long-bb-bottom {
+    height: 180px;
+    background: linear-gradient(to top, var(--card-bg), transparent);
+    margin-top: -180px;
+    position:relative;
+    z-index: 5;
+  }
+</style>
+
+  <div
+    style=""
+    data-display-unit data-id="146443"
+    data-category-click="click"
+    data-category-impression="impression"
+    data-context-type="home"
+    data-special="nothing"
+    data-article-id=""
+    data-type-of="in_house">
+          <div class="crayons-card crayons-card--secondary crayons-bb bb-placement js-billboard" style="display: inline-flex; flex-direction: column; align-items: center; margin: 0 auto 2rem auto; width: fit-content; padding: 2rem;">
+        <p style="font-weight: bold; margin: 0 0 1rem 0;">
+            💎 DEV Diamond Sponsors
+        </p>
+        <p style="font-size: 0.8em; margin: 0 0 2rem 0;">
+            Thank you to our Diamond Sponsors for supporting the DEV Community
+        </p>
+    
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://aistudio.google.com/?utm_source=partner&amp;utm_medium=partner&amp;utm_campaign=FY25-Global-DEVpartnership-sponsorship-AIS&amp;utm_content=-&amp;utm_term=-&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fxjlyhbdqehj3akhz166w.png" alt="Google AI - Official AI Model and Platform Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 54px; padding: 10px;" loading="lazy" width="2048" height="472">
+                </a>
+                <p style="text-align: center;">Google AI is the official AI Model and Platform Partner of DEV</p>
+            </div>
+
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://neon.tech/?ref=devto&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fbnl88cil6afxzmgwrgtt.png" alt="Neon - Official Database Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 60px; padding: 10px;" loading="lazy" width="2286" height="596">
+                </a>
+                <p style="text-align: center;">Neon is the official database partner of DEV</p>
+            </div>
+    
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://www.algolia.com/developers/?utm_source=devto&amp;utm_medium=referral&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fv30ephnolfvnlwgwm0yz.png" alt="Algolia - Official Search Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 60px; padding: 10px;" loading="lazy" width="2286" height="596">
+                </a>
+                <p style="text-align: center;">Algolia is the official search partner of DEV</p>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+    <p class="fs-s crayons-footer__description">
+      <a class="c-link c-link--branded fw-medium" aria-label="DEV Community Home" href="/">DEV Community</a> — Your community HQ
+    </p>
+
+    <ul class="footer__nav-links flex gap-2 justify-center flex-wrap fs-s p-0" style="" />
+        <li class="footer__nav-link flex items-center">
+    <a href="/">
+      Home
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/about">
+      About
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/contact">
+      Contact
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://mlh.io/">
+      MLH
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+
+    </ul>
+
+    <ul class="footer__nav-links flex gap-2 justify-center flex-wrap fs-s p-0" style="" />
+        <li class="footer__nav-link flex items-center">
+    <a href="/code-of-conduct">
+      Code of Conduct
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/privacy">
+      Privacy Policy
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/terms">
+      Terms of Use
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+
+    </ul>
+
+    <div class="fs-s">
+      <p>Built on <a class="c-link c-link--branded" target="_blank" rel="noopener" href="https://www.forem.com">Forem</a> — the <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/t/opensource">open source</a> software that powers <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to">DEV</a> and other inclusive communities.</p>
+      <p>Made with love and <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/t/rails">Ruby on Rails</a>. DEV Community <span title="copyright">&copy;</span> 2016 - 2026.</p>
+    </div>
+  </div>
+</footer>
+<div id="snack-zone"></div>
+
+    <div id="global-signup-modal" class="authentication-modal hidden">
+  <div class="authentication-modal__container">
+    <figure class="authentication-modal__image-container">
+      <img class="authentication-modal__image" src="https://media2.dev.to/dynamic/image/width=190,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+        alt="DEV Community" loading="lazy" />
+    </figure>
+    <div class="authentication-modal__content">
+      <p class="authentication-modal__description">
+          We&#39;re a place where coders share, stay up-to-date and grow their careers.
+      </p>
+    </div>
+    <div class="authentication-modal__actions">
+      <a href="https://dev.to/enter?signup_subforem=1" class="crayons-btn" aria-label="Log in" data-no-instant>
+        Log in
+      </a>
+      <a href="https://dev.to/enter?signup_subforem=1&amp;state=new-user" class="crayons-btn crayons-btn--ghost-brand js-global-signup-modal__create-account" aria-label="Create new account" data-no-instant>
+        Create account
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="https://assets.dev.to/assets/signupModalShortcuts-0b25469b985100a01e94cbd7fccaf7f0a4d776e129aac65c766aa32cb28ab29a.js" defer="defer"></script>
+
+    <div id="cookie-consent"></div>
+  <div id="reaction-category-resources" class="hidden" aria-hidden="true">
+    <img data-name="Like" data-slug="like" data-position="1" src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+    <img data-name="Unicorn" data-slug="unicorn" data-position="2" src="https://assets.dev.to/assets/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" width="18" height="18" />
+    <img data-name="Exploding Head" data-slug="exploding_head" data-position="3" src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" width="18" height="18" />
+    <img data-name="Raised Hands" data-slug="raised_hands" data-position="4" src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="18" height="18" />
+    <img data-name="Fire" data-slug="fire" data-position="5" src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+</div>
+
+    <script>
+  var userSignedIn = false;
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    initAuth();
+  } else {
+    document.addEventListener('DOMContentLoaded', initAuth);
+  }
+
+  function initAuth() {
+    var paramToken = new URLSearchParams(window.location.search).get('jwt');
+
+    if (paramToken && !userSignedIn) {
+      authenticateUser(paramToken);
+    } else {
+      var iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = 'https://forem.com/auth_pass/iframe';
+  
+      document.body.appendChild(iframe);
+  
+      window.addEventListener('message', function(event) {
+        if (event.origin !== 'https://forem.com' && event.origin !== window.location.origin) {
+          return;
+        }
+  
+        var data = event.data;
+  
+        if (data.authenticated && !userSignedIn) {
+          authenticateUser(data.token);
+        } else if(data.authenticated && window.ReactNativeWebView && window.ReactNativeWebView.postMessage) {
+          window.ReactNativeWebView.postMessage(JSON.stringify({
+            action: 'login',
+            token: data.token,
+          }));
+        }
+      });  
+    }
+
+    function authenticateUser(token) {
+      fetch('/auth_pass/token_login', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': getMetaContent('csrf-token'),
+        },
+        body: JSON.stringify({ token: token }),
+      })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        if (data.success) {
+          if (document.head.querySelector('meta[name="user-signed-in"][content="false"]')) {
+            // Reload the page to update the user's state
+            location.reload();
+          }
+        }
+      })
+      .catch(function(error) {
+        console.error('Error during authentication:', error);
+      });
+    }
+
+    function getMetaContent(name) {
+      var element = document.querySelector('meta[name="' + name + '"]');
+      return element ? element.getAttribute('content') : '';
+    }
+  }
+</script>
+
+  
+  
+  
+  </body>
+  </html>

@@ -1,0 +1,2864 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>The AI Exploit Agent: How Autonomous AI Discovers DeFi Vulnerabilities at $0.50/Attempt — And 6 Defense Patterns - DEV Community</title>
+    
+    <link rel="preload" href="/reactions?article_id=3428341" as="fetch" crossorigin="same-origin">
+    <link rel="canonical" href="https://dev.to/ohmygod/the-ai-exploit-agent-how-autonomous-ai-discovers-defi-vulnerabilities-at-050attempt-and-6-30m4" />
+    <meta name="description" content="TL;DR   AI agents can now autonomously discover and exploit DeFi vulnerabilities at scale.... Tagged with security, ai, defi, web3.">
+    <meta name="keywords" content="security, ai, defi, web3, software, coding, development, engineering, inclusive, community">
+
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://dev.to/ohmygod/the-ai-exploit-agent-how-autonomous-ai-discovers-defi-vulnerabilities-at-050attempt-and-6-30m4" />
+    <meta property="og:title" content="The AI Exploit Agent: How Autonomous AI Discovers DeFi Vulnerabilities at $0.50/Attempt — And 6 Defense Patterns" />
+    <meta property="og:description" content="TL;DR   AI agents can now autonomously discover and exploit DeFi vulnerabilities at scale...." />
+    <meta property="og:site_name" content="DEV Community" />
+    <meta name="twitter:site" content="@thepracticaldev">
+    <meta name="twitter:creator" content="@">
+    <meta name="twitter:title" content="The AI Exploit Agent: How Autonomous AI Discovers DeFi Vulnerabilities at $0.50/Attempt — And 6 Defense Patterns">
+    <meta name="twitter:description" content="TL;DR   AI agents can now autonomously discover and exploit DeFi vulnerabilities at scale....">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:widgets:new-embed-design" content="on">
+    <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+      <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Ft4k6raueibjykzkumsrm.png" />
+      <meta name="twitter:image:src" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Ft4k6raueibjykzkumsrm.png">
+
+      <meta name="last-updated" content="2026-04-01 04:16:07 UTC">
+      <meta name="user-signed-in" content="false">
+      <meta name="head-cached-at" content="1775016967">
+      <meta name="environment" content="production">
+      <link rel="stylesheet" href="https://assets.dev.to/assets/minimal-102395aec70cbac5f7d0bd5bebb5b56f0459629c5d224dae16333f11604cbad3.css" media="all" id="main-minimal-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/views-daf614dcfafed4955d7758a6a86d63bfbb1e8d4eae8b6317b421e18a99bbe867.css" media="all" id="main-views-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/crayons-8fce708625aacc3ff4a4d4947252a1cfab954753bb082374c0bed738861b52f2.css" media="all" id="main-crayons-stylesheet" />
+
+      <script src="https://assets.dev.to/assets/base-0c748bbcdc30041261c326ef2ce931fbce46c58bc3c488da881ae35c4750941d.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/application-0b268684912bef9b0f23defff01cb608bfc5d5e5610287725e7b686139ae32d3.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/baseInitializers-2f0777a6d67046056f9f42665560ce072de3801292674358ddbad6e135c1891d.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/baseTracking-b6bf73e5ee66633e151e7d5b7c6bbccedfa4c59e3615be97b98c4c0f543ddae7.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/followButtons-a29380c2c88136b97b2b5e63e94614ff7458fc72e07cffa7b6153831c28a40d2.js" defer="defer"></script>
+
+        <meta name="search-script" content="https://assets.dev.to/assets/Search-b977aea0f2d7a5818b4ebd97f7d4aba8548099f84f5db5761f8fa67be76abc54.js">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+      <link rel="icon" type="image/x-icon" href="https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" />
+      <link rel="apple-touch-icon" href="https://media2.dev.to/dynamic/image/width=180,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="https://media2.dev.to/dynamic/image/width=152,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="https://media2.dev.to/dynamic/image/width=180,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="167x167" href="https://media2.dev.to/dynamic/image/width=167,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link href="https://media2.dev.to/dynamic/image/width=192,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" rel="icon" sizes="192x192" />
+      <link href="https://media2.dev.to/dynamic/image/width=128,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" rel="icon" sizes="128x128" />
+      <meta name="apple-mobile-web-app-title" content="dev.to">
+      <meta name="application-name" content="dev.to">
+      <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+      <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+      <link rel="search" href="https://dev.to/open-search.xml" type="application/opensearchdescription+xml" title="DEV Community" />
+
+      <meta property="forem:name" content="DEV Community" />
+      <meta property="forem:logo" content="https://media2.dev.to/dynamic/image/width=512,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" />
+      <meta property="forem:domain" content="dev.to" />
+    <style>
+.ltag__link--embedded img.subscription-icon {
+max-height: 13px !important;
+max-width: 21px !important;
+display: inline-block !important;
+border-radius: 0 !important;
+}
+.text-styles .crayons-article__context-note p {
+margin-bottom: 0 !important;
+}
+</style>
+  </head>
+    <body
+      class="sans-serif-article-body default-header"
+      data-user-status="logged-out"
+      data-is-root-subforem="false"
+        data-subforem-id="1"
+      data-side-nav-visible="true"
+      data-community-name="DEV Community"
+      data-subscription-icon="https://assets.dev.to/assets/subscription-icon-805dfa7ac7dd660f07ed8d654877270825b07a92a03841aa99a1093bd00431b2.png"
+      data-locale="en"
+      data-honeybadger-key="hbp_nqu4Y66HuEKlD6YRGssZuRQnPOjDm50J8Zkr"
+      data-deployed-at="2026-03-31T16:23:33Z"
+      data-latest-commit-id="786e25495afed32bb807645b48a724374606e51e"
+      data-ga-tracking="UA-71991109-1"
+      data-cookie-banner-user-context="logged_out_only"
+      data-cookie-banner-platform-context="off"
+      data-algolia-id="PRSOBFP46H"
+      data-algolia-search-key="9aa7d31610cba78851c9b1f63776a9dd"
+      data-algolia-display="true"
+      data-dynamic-url-component="bmar11"
+      data-ga4-tracking-id="G-TYEM8Y3JN3">
+      
+      <script>
+        if (navigator.userAgent === 'ForemWebView/1' || window.frameElement) {
+          document.body.classList.add("hidden-shell");
+        }
+          if (new Date() > new Date("2026-02-04T09:00:00-05:00")) {
+            document.body.dataset.sideNavVisible = "false";
+          } 
+      </script>
+
+      <link rel="stylesheet" href="https://assets.dev.to/assets/minimal-102395aec70cbac5f7d0bd5bebb5b56f0459629c5d224dae16333f11604cbad3.css" media="all" id="secondary-minimal-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/views-daf614dcfafed4955d7758a6a86d63bfbb1e8d4eae8b6317b421e18a99bbe867.css" media="all" id="secondary-views-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/crayons-8fce708625aacc3ff4a4d4947252a1cfab954753bb082374c0bed738861b52f2.css" media="all" id="secondary-crayons-stylesheet" />
+
+      <div id="body-styles">
+        <style>
+          :root {
+            --accent-brand-lighter-rgb: 80, 99, 301;
+            --accent-brand-rgb: 59, 73, 223;
+            --accent-brand-darker-rgb: 47, 58, 178;
+          }
+        </style>
+      </div>
+      <div id="audiocontent" data-podcast="">
+        
+      </div>
+      <div class="navigation-progress" id="navigation-progress"></div>
+
+<header id="topbar" class="crayons-header topbar print-hidden">
+  <span id="route-change-target" tabindex="-1"></span>
+  <a href="#main-content" class="skip-content-link">Skip to content</a>
+  <div class="crayons-header__container">
+    <span class="inline-block m:hidden ">
+      <button class="c-btn c-btn--icon-alone js-hamburger-trigger mx-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="as1oum66ftizw3gr0gmp09gp07iyskhh" class="crayons-icon"><title id="as1oum66ftizw3gr0gmp09gp07iyskhh">Navigation menu</title>
+    <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"></path>
+</svg>
+
+      </button>
+    </span>
+    <a href="/" class="site-logo" aria-label="DEV Community Home" >
+    <img class="site-logo__img"
+         src="https://media2.dev.to/dynamic/image/quality=100/https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png"
+         style="aspect-ratio: 10 / 8"
+         alt="DEV Community">
+</a>
+
+
+    <div class="crayons-header--search js-search-form" id="header-search">
+      <form accept-charset="UTF-8" method="get" action="/search" role="search">
+        <div class="crayons-fields crayons-fields--horizontal">
+          <div class="crayons-field flex-1 relative">
+            <input id="search-input" class="crayons-header--search-input crayons-textfield js-search-input" type="text" id="nav-search" name="q" placeholder="Find related posts..." autocomplete="off" />
+            <button type="submit" aria-label="Search" class="c-btn c-btn--icon-alone absolute inset-px right-auto mt-0 py-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="ah3g88z5u2611d6a162dxb3sply9f8xz" aria-hidden="true" class="crayons-icon"><title id="ah3g88z5u2611d6a162dxb3sply9f8xz">Search</title>
+    <path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0111 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 01-1.969 5.617zm-2.006-.742A6.977 6.977 0 0018 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 004.875-1.975l.15-.15z"></path>
+</svg>
+
+            </button>
+
+            <a class="crayons-header--search-brand-indicator" href="https://www.algolia.com/developers/?utm_source=devto&utm_medium=referral" target="_blank" rel="noopener noreferrer">
+                Powered by Algolia
+                <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" width="24" height="24" viewBox="0 0 500 500.34" role="img" aria-labelledby="ajp806w97rcv0rbky4jwiv1efucf0nxj" aria-hidden="true" class="crayons-icon"><title id="ajp806w97rcv0rbky4jwiv1efucf0nxj">Search</title>
+  <defs></defs><path class="cls-1" d="M250,0C113.38,0,2,110.16,.03,246.32c-2,138.29,110.19,252.87,248.49,253.67,42.71,.25,83.85-10.2,120.38-30.05,3.56-1.93,4.11-6.83,1.08-9.52l-23.39-20.74c-4.75-4.22-11.52-5.41-17.37-2.92-25.5,10.85-53.21,16.39-81.76,16.04-111.75-1.37-202.04-94.35-200.26-206.1,1.76-110.33,92.06-199.55,202.8-199.55h202.83V407.68l-115.08-102.25c-3.72-3.31-9.43-2.66-12.43,1.31-18.47,24.46-48.56,39.67-81.98,37.36-46.36-3.2-83.92-40.52-87.4-86.86-4.15-55.28,39.65-101.58,94.07-101.58,49.21,0,89.74,37.88,93.97,86.01,.38,4.28,2.31,8.28,5.53,11.13l29.97,26.57c3.4,3.01,8.8,1.17,9.63-3.3,2.16-11.55,2.92-23.6,2.07-35.95-4.83-70.39-61.84-127.01-132.26-131.35-80.73-4.98-148.23,58.18-150.37,137.35-2.09,77.15,61.12,143.66,138.28,145.36,32.21,.71,62.07-9.42,86.2-26.97l150.36,133.29c6.45,5.71,16.62,1.14,16.62-7.48V9.49C500,4.25,495.75,0,490.51,0H250Z"></path>
+</svg>
+
+            </a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="flex items-center h-100 ml-auto">
+        <div class="flex" id="authentication-top-nav-actions">
+          <span class="hidden m:block">
+            <a href="https://dev.to/enter?signup_subforem=1" class="c-link c-link--block mr-2 whitespace-nowrap ml-auto" data-no-instant>
+              Log in
+            </a>
+          </span>
+
+          <a href="https://dev.to/enter?signup_subforem=1&amp;state=new-user" data-tracking-id="ca_top_nav" data-tracking-source="top_navbar" class="c-cta c-cta--branded whitespace-nowrap mr-2" data-no-instant>
+            Create account
+          </a>
+        </div>
+    </div>
+  </div>
+</header>
+
+<div class="hamburger">
+  <div class="hamburger__content">
+    <header class="hamburger__content__header">
+      <h2 class="fs-l fw-bold flex-1 break-word lh-tight">DEV Community</h2>
+
+      <button class="c-btn c-btn--icon-alone js-hamburger-trigger shrink-0" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a6yjw1sdrf0l568ch8azfooq5t7vp4fh" aria-hidden="true" class="crayons-icon c-btn__icon"><title id="a6yjw1sdrf0l568ch8azfooq5t7vp4fh">Close</title><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636l4.95 4.95z"></path></svg>
+
+      </button>
+    </header>
+
+    <div class="p-2 js-navigation-links-container" id="authentication-hamburger-actions">
+    </div>
+  </div>
+  <div class="hamburger__overlay js-hamburger-trigger"></div>
+</div>
+
+
+      <div id="active-broadcast" class="broadcast-wrapper"></div>
+<div id="page-content" class="wrapper stories stories-show articletag-security articletag-ai articletag-defi articletag-web3 articleuser-3750445" data-current-page="stories-show">
+  <div id="page-content-inner" data-internal-nav="false">
+    <div id="page-route-change" class="screen-reader-only" aria-live="polite" aria-atomic="true"></div>
+
+    
+<style>
+  .html-variant-wrapper { display: none}
+</style>
+
+
+
+<script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.2.10/webcomponents-loader.js"
+        integrity="sha384-3HK5hxQbkFqOIxMbpROlRmRtYl2LBZ52t+tqcjzsmr9NJuOWQxl8RgQSyFvq2lhy"
+        crossorigin="anonymous" defer></script>
+
+  <script src="https://assets.dev.to/assets/webShare-0686f0b9ac40589694ef6ae6a6202c44119bc781c254f6cf6d52d8a008461156.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/articlePage-ed23d70916aed9a7fec41f94e64aac17438d3210c1bb1d6fceace80f15445213.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/commentDropdowns-7a28d130e5b78d38b30a9495a964003a66bd64fa455fc70b766d69cf06b9ba24.js" defer="defer"></script>
+
+  <script type="application/ld+json">
+    {"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://dev.to/ohmygod/the-ai-exploit-agent-how-autonomous-ai-discovers-defi-vulnerabilities-at-050attempt-and-6-30m4"},"url":"https://dev.to/ohmygod/the-ai-exploit-agent-how-autonomous-ai-discovers-defi-vulnerabilities-at-050attempt-and-6-30m4","image":["https://media2.dev.to/dynamic/image/width=1080,height=1080,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Ft4k6raueibjykzkumsrm.png","https://media2.dev.to/dynamic/image/width=1280,height=720,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Ft4k6raueibjykzkumsrm.png","https://media2.dev.to/dynamic/image/width=1600,height=900,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Ft4k6raueibjykzkumsrm.png"],"publisher":{"@context":"http://schema.org","@type":"Organization","name":"DEV Community","logo":{"@context":"http://schema.org","@type":"ImageObject","url":"https://media2.dev.to/dynamic/image/width=192,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png","width":"192","height":"192"}},"headline":"The AI Exploit Agent: How Autonomous AI Discovers DeFi Vulnerabilities at $0.50/Attempt — And 6 Defense Patterns","author":{"@context":"http://schema.org","@type":"Person","url":"https://dev.to/ohmygod","name":"ohmygod"},"datePublished":"2026-03-30T03:59:48Z","dateModified":"2026-03-30T03:59:48Z"}
+  </script>
+
+  
+  <div class="crayons-layout crayons-layout--3-cols crayons-layout--article">
+    <aside class="crayons-layout__sidebar-left" aria-label="Article actions">
+      <script>
+  if (/Twitter for (iPhone|iPad|Android)/i.test(navigator.userAgent)) {
+    document.documentElement.classList.add('is-twitter-in-app');
+  }
+</script>
+<div class="crayons-article-actions print-hidden">
+  <div class="crayons-article-actions__inner">
+
+    
+<div class="reaction-drawer__outer hoverdown" style="">
+  <button
+    id="reaction-drawer-trigger"
+    aria-label="reaction-drawer-trigger"
+    aria-pressed="false"
+    class="hoverdown-trigger crayons-reaction pseudo-reaction crayons-tooltip__activator relative">
+      <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction--like crayons-reaction__icon--inactive" style="width: 40px; height: 40px">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" role="img" aria-hidden="true" class="crayons-icon">
+    <g clip-path="url(#clip0_988_3276)">
+        <path d="M19 14V17H22V19H18.999L19 22H17L16.999 19H14V17H17V14H19ZM20.243 4.75698C22.505 7.02498 22.583 10.637 20.479 12.992L19.059 11.574C20.39 10.05 20.32 7.65998 18.827 6.16998C17.324 4.67098 14.907 4.60698 13.337 6.01698L12.002 7.21498L10.666 6.01798C9.09103 4.60598 6.67503 4.66798 5.17203 6.17198C3.68203 7.66198 3.60703 10.047 4.98003 11.623L13.412 20.069L12 21.485L3.52003 12.993C1.41603 10.637 1.49503 7.01898 3.75603 4.75698C6.02103 2.49298 9.64403 2.41698 12 4.52898C14.349 2.41998 17.979 2.48998 20.242 4.75698H20.243Z" fill="#525252"></path>
+    </g>
+    <defs>
+        <clipPath id="clip0_988_3276">
+        <rect width="24" height="24" fill="white"></rect>
+        </clipPath>
+    </defs>
+</svg>
+
+      </span>
+      <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--active" style="width: 40px; height: 40px">
+        <img aria_hidden="true" height="24" width="24" src="https://assets.dev.to/assets/heart-plus-active-9ea3b22f2bc311281db911d416166c5f430636e76b15cd5df6b3b841d830eefa.svg" />
+      </span>
+      <span class="crayons-reaction__count" id="reaction_total_count">
+        <span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span>
+      </span>
+      <span class="crayons-tooltip__content">
+        Add reaction
+      </span>
+  </button>
+
+  <div class="reaction-drawer" aria-expanded="false">
+    <div class="reaction-drawer__container">
+        <button
+  id="reaction-butt-like"
+  name="Like"
+  aria-label="Like"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="like">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-like"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Like
+    </span>
+</button>
+
+        <button
+  id="reaction-butt-unicorn"
+  name="Unicorn"
+  aria-label="Unicorn"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="unicorn">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-unicorn"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Unicorn
+    </span>
+</button>
+
+        <button
+  id="reaction-butt-exploding_head"
+  name="Exploding Head"
+  aria-label="Exploding Head"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="exploding_head">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-exploding_head"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Exploding Head
+    </span>
+</button>
+
+        <button
+  id="reaction-butt-raised_hands"
+  name="Raised Hands"
+  aria-label="Raised Hands"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="raised_hands">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-raised_hands"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Raised Hands
+    </span>
+</button>
+
+        <button
+  id="reaction-butt-fire"
+  name="Fire"
+  aria-label="Fire"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="fire">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-fire"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Fire
+    </span>
+</button>
+
+    </div>
+  </div>
+</div>
+
+<button
+  id="reaction-butt-comment"
+  aria-label="Jump to Comments"
+  aria-pressed="false"
+  class="crayons-reaction crayons-reaction--comment crayons-tooltip__activator relative"
+  data-category="comment">
+    <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--inactive">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-hidden="true" class="crayons-icon">
+    <path d="M10 3h4a8 8 0 010 16v3.5c-5-2-12-5-12-11.5a8 8 0 018-8zm2 14h2a6 6 0 000-12h-4a6 6 0 00-6 6c0 3.61 2.462 5.966 8 8.48V17z"></path>
+</svg>
+
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-comment" data-count="0">
+      <span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span>
+    </span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Jump to Comments
+    </span>
+</button>
+
+<button
+  id="reaction-butt-readinglist"
+  aria-label="Add to reading list"
+  aria-pressed="false"
+  class="crayons-reaction crayons-reaction--readinglist crayons-tooltip__activator relative"
+  data-category="readinglist">
+    <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--inactive">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-hidden="true" class="crayons-icon">
+    <path d="M5 2h14a1 1 0 011 1v19.143a.5.5 0 01-.766.424L12 18.03l-7.234 4.536A.5.5 0 014 22.143V3a1 1 0 011-1zm13 2H6v15.432l6-3.761 6 3.761V4z"></path>
+</svg>
+
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-readinglist"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Save
+    </span>
+</button>
+
+
+<button
+  id="reaction-butt-boost"
+  aria-label="Boost"
+  aria-pressed="false"
+  class="crayons-reaction crayons-reaction--boost crayons-tooltip__activator relative">
+    <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--inactive">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" role="img" aria-hidden="true" class="crayons-icon" width="24" height="24">
+  <path transform="translate(24,0) scale(-1,1)" d="M6 4H21C21.5523 4 22 4.44772 22 5V12H20V6H6V9L1 5L6 1V4ZM18 20H3C2.44772 20 2 19.5523 2 19V12H4V18H18V15L23 19L18 23V20Z"></path>
+</svg>
+
+    </span>
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Boost
+    </span>
+</button>
+
+
+    <div class="only-sidebar-menu-item">
+      <div id="mod-actions-menu-btn-area" class="print-hidden trusted-visible-block align-center">
+      </div>
+    </div>
+    <div class="align-center m:relative">
+      <button id="article-show-more-button" aria-controls="article-show-more-dropdown" aria-expanded="false" aria-haspopup="true" class="dropbtn crayons-btn crayons-btn--ghost-dimmed crayons-btn--icon-rounded" aria-label="Share post options">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="afzpq47d7qp3sbrp1z32ipwdt0iqw0om" aria-hidden="true" class="crayons-icon dropdown-icon"><title id="afzpq47d7qp3sbrp1z32ipwdt0iqw0om">More...</title><path fill-rule="evenodd" clip-rule="evenodd" d="M7 12a2 2 0 11-4 0 2 2 0 014 0zm7 0a2 2 0 11-4 0 2 2 0 014 0zm5 2a2 2 0 100-4 2 2 0 000 4z"></path></svg>
+
+      </button>
+
+      <div id="article-show-more-dropdown" class="crayons-dropdown side-bar left-2 right-2 m:right-auto m:left-100 s:left-auto mb-1 m:mb-0 top-unset bottom-100 m:top-0 m:bottom-unset">
+        <div>
+          <button
+            id="copy-post-url-button"
+            class="flex justify-between crayons-link crayons-link--block w-100 bg-transparent border-0"
+            data-postUrl="https://dev.to/ohmygod/the-ai-exploit-agent-how-autonomous-ai-discovers-defi-vulnerabilities-at-050attempt-and-6-30m4">
+            <span class="fw-bold">Copy link</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" id="article-copy-icon" role="img" aria-labelledby="a696g7809jnpv35kvztfe99uj305o9uy" aria-hidden="true" class="crayons-icon mx-2 shrink-0"><title id="a696g7809jnpv35kvztfe99uj305o9uy">Copy link</title>
+    <path d="M7 6V3a1 1 0 011-1h12a1 1 0 011 1v14a1 1 0 01-1 1h-3v3c0 .552-.45 1-1.007 1H4.007A1 1 0 013 21l.003-14c0-.552.45-1 1.007-1H7zm2 0h8v10h2V4H9v2zm-2 5v2h6v-2H7zm0 4v2h6v-2H7z"></path>
+</svg>
+
+          </button>
+          <div id="article-copy-link-announcer" aria-live="polite" class="crayons-notice crayons-notice--success my-2 p-1" aria-live="polite" hidden>Copied to Clipboard</div>
+        </div>
+
+        <div class="Desktop-only">
+          <a
+            target="_blank"
+            class="crayons-link crayons-link--block"
+            rel="noopener"
+            href='https://twitter.com/intent/tweet?text=%22The%20AI%20Exploit%20Agent%3A%20How%20Autonomous%20AI%20Discovers%20DeFi%20Vulnerabilities%20at%20%240.50%2FAttempt%20%E2%80%94%20And%206%20Defense%20Patterns%22%20by%20ohmygod%20%23DEVCommunity%20https%3A%2F%2Fdev.to%2Fohmygod%2Fthe-ai-exploit-agent-how-autonomous-ai-discovers-defi-vulnerabilities-at-050attempt-and-6-30m4'>
+            Share to X
+          </a>
+          <a
+            target="_blank"
+            class="crayons-link crayons-link--block"
+            rel="noopener"
+            href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fdev.to%2Fohmygod%2Fthe-ai-exploit-agent-how-autonomous-ai-discovers-defi-vulnerabilities-at-050attempt-and-6-30m4&title=The%20AI%20Exploit%20Agent%3A%20How%20Autonomous%20AI%20Discovers%20DeFi%20Vulnerabilities%20at%20%240.50%2FAttempt%20%E2%80%94%20And%206%20Defense%20Patterns&summary=TL%3BDR%20%20%20AI%20agents%20can%20now%20autonomously%20discover%20and%20exploit%20DeFi%20vulnerabilities%20at%20scale....&source=DEV%20Community">
+            Share to LinkedIn
+          </a>
+          <a
+            target="_blank"
+            class="crayons-link crayons-link--block"
+            rel="noopener"
+            href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fdev.to%2Fohmygod%2Fthe-ai-exploit-agent-how-autonomous-ai-discovers-defi-vulnerabilities-at-050attempt-and-6-30m4">
+            Share to Facebook
+          </a>
+          <a
+            target="_blank"
+            class="crayons-link crayons-link--block"
+            rel="noopener"
+            href="https://s2f.kytta.dev/?text=https%3A%2F%2Fdev.to%2Fohmygod%2Fthe-ai-exploit-agent-how-autonomous-ai-discovers-defi-vulnerabilities-at-050attempt-and-6-30m4">
+            Share to Mastodon
+          </a>
+        </div>
+
+        <web-share-wrapper shareurl="https://dev.to/ohmygod/the-ai-exploit-agent-how-autonomous-ai-discovers-defi-vulnerabilities-at-050attempt-and-6-30m4" sharetitle="The AI Exploit Agent: How Autonomous AI Discovers DeFi Vulnerabilities at $0.50/Attempt — And 6 Defense Patterns" sharetext="TL;DR   AI agents can now autonomously discover and exploit DeFi vulnerabilities at scale...." template="web-share-button">
+        </web-share-wrapper>
+        <template id="web-share-button">
+          <a href="#" class="dropdown-link-row crayons-link crayons-link--block">Share Post via...</a>
+        </template>
+
+        <a href="/report-abuse" class="crayons-link crayons-link--block" id="ReportButtonAuthor">Report Abuse</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </aside>
+
+    <main id="main-content" class="crayons-layout__content grid gap-4">
+      <div class="article-wrapper">
+
+
+        <article class="crayons-card crayons-article mb-4"
+          id="article-show-container"
+          data-article-id="3428341"
+          data-article-slug="the-ai-exploit-agent-how-autonomous-ai-discovers-defi-vulnerabilities-at-050attempt-and-6-30m4"
+          data-author-id="3750445"
+          data-author-name="ohmygod"
+          data-author-username="ohmygod"
+          data-co-author-ids=""
+          data-path="/ohmygod/the-ai-exploit-agent-how-autonomous-ai-discovers-defi-vulnerabilities-at-050attempt-and-6-30m4"
+          data-pin-path="/stories/feed/pinned_article"
+          data-pinned-article-id=""
+          data-published="true"
+          data-scheduled="false"
+          lang=en
+           >
+          <script>
+            try {
+              if(localStorage) {
+                let currentUser = localStorage.getItem('current_user');
+
+                if (currentUser) {
+                  currentUser = JSON.parse(currentUser);
+                  if (currentUser.id === 3750445) {
+                    document.getElementById('article-show-container').classList.add('current-user-is-article-author');
+                  }
+                }
+              }
+            } catch (e) {
+              console.error(e);
+            }
+          </script>
+          <header class="crayons-article__header" id="main-title">
+
+            <div class="crayons-article__header__meta">
+              <div class="flex s:items-start flex-col s:flex-row">
+                <div id="action-space" class="crayons-article__actions mb-4 s:mb-0 s:order-last"></div>
+                <div class="flex flex-1 mb-5 items-start">
+                  <div class="relative">
+                      <a href="/ohmygod"><img class="radius-full align-middle" src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3750445%2F38ad506e-4cd9-4f3c-b848-9391167fb580.png" width="40" height="40" alt="ohmygod" /></a>
+                  </div>
+                  <div class="pl-3 flex-1">
+                    <a href="/ohmygod" class="crayons-link fw-bold">ohmygod</a>
+                    
+                    <p class="fs-xs color-base-60">
+                        Posted on <time datetime="2026-03-30T03:59:48Z" class="date-no-year">Mar 30</time>
+
+
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              
+
+              <h1 class=" fs-3xl m:fs-4xl l:fs-5xl fw-bold s:fw-heavy lh-tight mb-2 longest">
+                The AI Exploit Agent: How Autonomous AI Discovers DeFi Vulnerabilities at $0.50/Attempt — And 6 Defense Patterns
+              </h1>
+              
+                  <div class="spec__tags flex flex-wrap">
+                      <a class="crayons-tag   " style="
+        --tag-bg: rgba(27, 172, 128, 0.10);
+        --tag-prefix: #1bac80;
+        --tag-bg-hover: rgba(27, 172, 128, 0.10);
+        --tag-prefix-hover: #1bac80;
+      " href="/t/security"><span class="crayons-tag__prefix">#</span>security</a>
+                      <a class="crayons-tag   " style="
+        --tag-bg: rgba(23, 253, 26, 0.10);
+        --tag-prefix: #17fd1a;
+        --tag-bg-hover: rgba(23, 253, 26, 0.10);
+        --tag-prefix-hover: #17fd1a;
+      " href="/t/ai"><span class="crayons-tag__prefix">#</span>ai</a>
+                      <a class="crayons-tag   " style="
+        --tag-bg: rgba(0, 255, 220, 0.10);
+        --tag-prefix: #00ffdc;
+        --tag-bg-hover: rgba(0, 255, 220, 0.10);
+        --tag-prefix-hover: #00ffdc;
+      " href="/t/web3"><span class="crayons-tag__prefix">#</span>web3</a>
+                      <a class="crayons-tag   " style="
+        --tag-bg: rgba(59, 73, 223, 0.10);
+        --tag-prefix: #3b49df;
+        --tag-bg-hover: rgba(59, 73, 223, 0.10);
+        --tag-prefix-hover: #3b49df;
+      " href="/t/defi"><span class="crayons-tag__prefix">#</span>defi</a>
+                  </div>
+            </div>
+          </header>
+
+          <div class="crayons-article__main ">
+              
+  <nav class="series-switcher crayons-card crayons-card--secondary">
+    <header class="crayons-card__header">
+      <h2 class="crayons-subtitle-2">
+        <a href="/ohmygod/series/36984">DeFi Security Deep Dives (44 Part Series)</a>
+      </h2>
+    </header>
+
+    <div class="series-switcher__list">
+
+          <a
+            href="/ohmygod/anatomy-of-a-50m-defi-slippage-disaster-how-mev-bots-ate-a-whales-lunch-on-aave-4ncf"
+            class="crayons-link crayons-link--contentful series-switcher__link  "
+            data-preload-image=""
+            title="Published Mar 13">
+            <span class="series-switcher__num">1</span>
+            <span class="series-switcher__title">Anatomy of a $50M DeFi Slippage Disaster: How MEV Bots Ate a Whale&#39;s Lunch on Aave</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-upgradeable-contract-kill-chain-how-uninitialized-proxies-became-defis-200m-recurring-357e"
+            class="crayons-link crayons-link--contentful series-switcher__link  "
+            data-preload-image=""
+            title="Published Mar 14">
+            <span class="series-switcher__num">2</span>
+            <span class="series-switcher__title">The Upgradeable Contract Kill Chain: How Uninitialized Proxies Became DeFi&#39;s $200M+ Recurring Nightmare</span>
+          </a>
+            <a
+              href="/ohmygod/eip-7702-and-the-crimeenjoyor-epidemic-how-ethereums-account-abstraction-upgrade-became-an-2ide"
+              class="crayons-link crayons-link--contentful series-switcher__link series-switcher__link--active series-switcher__link--inbetween"
+              data-preload-image=""
+              id="collection-link-inbetween"
+              data-no-instant
+              title="View more">
+              <span class="series-switcher__num">...</span>
+              <span class="series-switcher__title">40 more parts...</span>
+            </a>
+
+          <a
+            href="/ohmygod/eip-7702-and-the-crimeenjoyor-epidemic-how-ethereums-account-abstraction-upgrade-became-an-2ide"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 15">
+            <span class="series-switcher__num">3</span>
+            <span class="series-switcher__title">EIP-7702 and the CrimeEnjoyor Epidemic: How Ethereum&#39;s Account Abstraction Upgrade Became an Attacker&#39;s Dream</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-step-finance-autopsy-how-a-40m-solana-protocol-died-from-compromised-laptops-not-buggy-code-4ce3"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 15">
+            <span class="series-switcher__num">4</span>
+            <span class="series-switcher__title">The Step Finance Autopsy: How a $40M Solana Protocol Died From Compromised Laptops, Not Buggy Code</span>
+          </a>
+
+          <a
+            href="/ohmygod/collateral-manipulation-in-defi-lending-how-venus-protocol-lost-37m-to-an-illiquid-token-exploit-2ppf"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 15">
+            <span class="series-switcher__num">5</span>
+            <span class="series-switcher__title">Collateral Manipulation in DeFi Lending: How Venus Protocol Lost $3.7M to an Illiquid Token Exploit</span>
+          </a>
+
+          <a
+            href="/ohmygod/beyond-property-testing-how-coverage-guided-fuzzing-is-rewriting-the-smart-contract-security-1efh"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 16">
+            <span class="series-switcher__num">6</span>
+            <span class="series-switcher__title">Beyond Property Testing: How Coverage-Guided Fuzzing Is Rewriting the Smart Contract Security Playbook in 2026</span>
+          </a>
+
+          <a
+            href="/ohmygod/solana-restaking-security-in-2026-the-hidden-risk-surface-of-ncns-vrts-and-the-coming-slashing-5ci4"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 16">
+            <span class="series-switcher__num">7</span>
+            <span class="series-switcher__title">Solana Restaking Security in 2026: The Hidden Risk Surface of NCNs, VRTs, and the Coming Slashing Era</span>
+          </a>
+
+          <a
+            href="/ohmygod/mev-protection-on-solana-in-2026-a-developers-complete-guide-to-defending-users-against-sandwich-3ci1"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 17">
+            <span class="series-switcher__num">8</span>
+            <span class="series-switcher__title">MEV Protection on Solana in 2026: A Developer&#39;s Complete Guide to Defending Users Against Sandwich Attacks</span>
+          </a>
+
+          <a
+            href="/ohmygod/inherited-poison-how-sagaevm-lost-7m-to-an-ethermint-precompile-bug-it-didnt-write-2plb"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 17">
+            <span class="series-switcher__num">9</span>
+            <span class="series-switcher__title">Inherited Poison: How SagaEVM Lost $7M to an Ethermint Precompile Bug It Didn&#39;t Write</span>
+          </a>
+
+          <a
+            href="/ohmygod/mcpwned-how-the-model-context-protocol-is-becoming-defis-newest-attack-surface-3cch"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 17">
+            <span class="series-switcher__num">10</span>
+            <span class="series-switcher__title">MCPwned: How the Model Context Protocol Is Becoming DeFi&#39;s Newest Attack Surface</span>
+          </a>
+
+          <a
+            href="/ohmygod/defi-circuit-breakers-in-2026-from-erc-7265-to-aave-shield-five-patterns-that-actually-work-4650"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 18">
+            <span class="series-switcher__num">11</span>
+            <span class="series-switcher__title">DeFi Circuit Breakers in 2026: From ERC-7265 to Aave Shield — Five Patterns That Actually Work</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-dtrinity-index-anomaly-how-772-usdc-became-48m-in-collateral-and-drained-a-defi-lending-2639"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 18">
+            <span class="series-switcher__num">12</span>
+            <span class="series-switcher__title">The dTRINITY Index Anomaly: How 772 USDC Became $4.8M in Collateral and Drained a DeFi Lending Protocol</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-solana-cpi-security-playbook-7-cross-program-invocation-patterns-that-prevent-nine-figure-7j6"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 18">
+            <span class="series-switcher__num">13</span>
+            <span class="series-switcher__title">The Solana CPI Security Playbook: 7 Cross-Program Invocation Patterns That Prevent Nine-Figure Exploits</span>
+          </a>
+
+          <a
+            href="/ohmygod/inside-the-venus-protocol-exploit-how-9-months-of-patience-and-a-donation-attack-bypassed-supply-42e7"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 18">
+            <span class="series-switcher__num">14</span>
+            <span class="series-switcher__title">Inside the Venus Protocol Exploit: How 9 Months of Patience and a Donation Attack Bypassed Supply Caps to Drain $3.7M</span>
+          </a>
+
+          <a
+            href="/ohmygod/eip-1153-transient-storage-security-traps-how-a-gas-optimization-killed-sirtrading-and-what-your-4ogi"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 19">
+            <span class="series-switcher__num">15</span>
+            <span class="series-switcher__title">EIP-1153 Transient Storage Security Traps: How a Gas Optimization Killed SIR.trading and What Your Reentrancy Guard Is Missing</span>
+          </a>
+
+          <a
+            href="/ohmygod/cpi-reentrancy-is-back-a-solana-developers-defense-playbook-for-token-2022-transfer-hooks-4p5m"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 19">
+            <span class="series-switcher__num">16</span>
+            <span class="series-switcher__title">CPI Reentrancy Is Back: A Solana Developer&#39;s Defense Playbook for Token-2022 Transfer Hooks</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-50m-swap-disaster-why-defi-frontends-need-circuit-breakers-not-just-checkboxes-j48"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 19">
+            <span class="series-switcher__num">17</span>
+            <span class="series-switcher__title">The $50M Swap Disaster: Why DeFi Frontends Need Circuit Breakers, Not Just Checkboxes</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-venus-protocol-donation-attack-how-9-months-of-patience-and-3-lines-of-missing-code-led-to-a-33of"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 20">
+            <span class="series-switcher__num">18</span>
+            <span class="series-switcher__title">The Venus Protocol Donation Attack: How 9 Months of Patience and 3 Lines of Missing Code Led to a $3.7M Extraction</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-transient-storage-trap-why-eip-1153-gas-savings-are-creating-a-new-generation-of-smart-2f57"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 22">
+            <span class="series-switcher__num">19</span>
+            <span class="series-switcher__title">The Transient Storage Trap: Why EIP-1153 Gas Savings Are Creating a New Generation of Smart Contract Vulnerabilities</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-venus-protocol-donation-attack-how-9-months-of-patience-bypassed-three-lines-of-defense-2cb8"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 23">
+            <span class="series-switcher__num">20</span>
+            <span class="series-switcher__title">The Venus Protocol Donation Attack: How 9 Months of Patience Bypassed Three Lines of Defense</span>
+          </a>
+
+          <a
+            href="/ohmygod/evmbench-and-the-arms-race-how-ai-agents-are-rewriting-smart-contract-security-and-what-44a"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 23">
+            <span class="series-switcher__num">21</span>
+            <span class="series-switcher__title">EVMbench and the Arms Race: How AI Agents Are Rewriting Smart Contract Security — And What Defenders Must Do Now</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-venus-protocol-donation-attack-how-an-attacker-turned-027-the-tokens-into-a-36m-payday-2712"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 23">
+            <span class="series-switcher__num">22</span>
+            <span class="series-switcher__title">The Venus Protocol Donation Attack: How an Attacker Turned $0.27 THE Tokens Into a $3.6M Payday</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-venus-protocol-donation-attack-how-a-9-month-setup-broke-three-lines-of-defense-313j"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 24">
+            <span class="series-switcher__num">23</span>
+            <span class="series-switcher__title">The Venus Protocol Donation Attack: How a 9-Month Setup Broke Three Lines of Defense</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-approval-paradox-how-swapnets-134m-arbitrary-call-exploit-exposes-defis-infinite-allowance-1nf9"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 24">
+            <span class="series-switcher__num">24</span>
+            <span class="series-switcher__title">The Approval Paradox: How SwapNet&#39;s $13.4M Arbitrary Call Exploit Exposes DeFi&#39;s Infinite Allowance Time Bomb</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-truebit-integer-overflow-how-a-forgotten-safemath-gap-turned-a-2021-contract-into-a-26m-atm-3f15"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 24">
+            <span class="series-switcher__num">25</span>
+            <span class="series-switcher__title">The Truebit Integer Overflow: How a Forgotten SafeMath Gap Turned a 2021 Contract Into a $26M ATM</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-makina-finance-exploit-how-280m-in-flash-loans-turned-a-curve-pool-oracle-into-a-4m-atm-22b9"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 24">
+            <span class="series-switcher__num">26</span>
+            <span class="series-switcher__title">The Makina Finance Exploit: How $280M in Flash Loans Turned a Curve Pool Oracle Into a $4M ATM</span>
+          </a>
+
+          <a
+            href="/ohmygod/owasp-smart-contract-top-10-2026-reentrancy-falls-to-8-proxy-bugs-enter-and-your-new-audit-57l"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 25">
+            <span class="series-switcher__num">27</span>
+            <span class="series-switcher__title">OWASP Smart Contract Top 10: 2026 — Reentrancy Falls to #8, Proxy Bugs Enter, and Your New Audit Priorities</span>
+          </a>
+
+          <a
+            href="/ohmygod/evmbench-openai-and-paradigms-new-benchmark-proves-ai-agents-can-exploit-71-of-smart-contract-1o8i"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 25">
+            <span class="series-switcher__num">28</span>
+            <span class="series-switcher__title">EVMbench: OpenAI and Paradigm&#39;s New Benchmark Proves AI Agents Can Exploit 71% of Smart Contract Vulns</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-venus-protocol-donation-attack-how-a-9-month-ambush-turned-a-145m-supply-cap-into-a-53m-3ef1"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 26">
+            <span class="series-switcher__num">29</span>
+            <span class="series-switcher__title">The Venus Protocol Donation Attack: How a 9-Month Ambush Turned a $14.5M Supply Cap Into a $53M Trojan Horse — And How to Donation-Proof Your Lending Fork</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-resolv-usr-stablecoin-exploit-how-a-compromised-off-chain-signer-let-an-attacker-mint-80m-97"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 26">
+            <span class="series-switcher__num">30</span>
+            <span class="series-switcher__title">The Resolv USR Stablecoin Exploit: How a Compromised Off-Chain Signer Let an Attacker Mint 80M Unbacked Tokens and Steal $25M</span>
+          </a>
+
+          <a
+            href="/ohmygod/mutation-testing-for-solidity-the-audit-quality-metric-your-protocol-is-ignoring-4bnc"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 28">
+            <span class="series-switcher__num">31</span>
+            <span class="series-switcher__title">Mutation Testing for Solidity: The Audit Quality Metric Your Protocol Is Ignoring</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-aave-capo-oracle-misfire-how-a-timestamp-ratio-desync-liquidated-26m-in-wsteth-a-deep-dive-c0n"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 28">
+            <span class="series-switcher__num">32</span>
+            <span class="series-switcher__title">The Aave CAPO Oracle Misfire: How a Timestamp-Ratio Desync Liquidated $26M in wstETH — A Deep Dive for DeFi Builders</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-7m-sagaevm-precompile-exploit-how-a-cross-chain-validation-bypass-minted-stablecoins-from-khn"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 29">
+            <span class="series-switcher__num">33</span>
+            <span class="series-switcher__title">The $7M SagaEVM Precompile Exploit: How a Cross-Chain Validation Bypass Minted Stablecoins From Thin Air</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-40m-step-finance-kill-how-compromised-executive-devices-bypassed-every-on-chain-defense-and-1bb"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 29">
+            <span class="series-switcher__num">34</span>
+            <span class="series-switcher__title">The $40M Step Finance Kill: How Compromised Executive Devices Bypassed Every On-Chain Defense — And a 7-Layer OpSec Playbook for Solana Treasury Teams</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-custom-detector-arms-race-building-slither-aderyn-and-semgrep-rules-that-catch-the-3jcg"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 29">
+            <span class="series-switcher__num">35</span>
+            <span class="series-switcher__title">The Custom Detector Arms Race: Building Slither, Aderyn, and Semgrep Rules That Catch the Vulnerability Patterns Default Scanners Miss</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-aave-v3-fork-vulnerability-epidemic-rounding-bugs-index-desync-and-a-260m-attack-surface-584c"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 29">
+            <span class="series-switcher__num">36</span>
+            <span class="series-switcher__title">The Aave V3 Fork Vulnerability Epidemic: Rounding Bugs, Index Desync, and a $260M Attack Surface</span>
+          </a>
+
+          <a
+            href="/ohmygod/omnistealer-how-blockchain-embedded-malware-turns-tron-aptos-and-bsc-into-an-unkillable-c2-2kee"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 30">
+            <span class="series-switcher__num">37</span>
+            <span class="series-switcher__title">Omnistealer: How Blockchain-Embedded Malware Turns TRON, Aptos, and BSC Into an Unkillable C2</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-composability-tax-how-defi-protocol-interactions-create-emergent-vulnerabilities-neither-f9o"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 30">
+            <span class="series-switcher__num">38</span>
+            <span class="series-switcher__title">The Composability Tax: How DeFi Protocol Interactions Create Emergent Vulnerabilities Neither Protocol Can Detect Alone</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-ai-exploit-agent-how-autonomous-ai-discovers-defi-vulnerabilities-at-050attempt-and-6-30m4"
+            class="crayons-link crayons-link--contentful series-switcher__link series-switcher__link--active series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 30">
+            <span class="series-switcher__num">39</span>
+            <span class="series-switcher__title">The AI Exploit Agent: How Autonomous AI Discovers DeFi Vulnerabilities at $0.50/Attempt — And 6 Defense Patterns</span>
+          </a>
+
+          <a
+            href="/ohmygod/read-only-reentrancy-the-silent-price-oracle-killer-every-defi-protocol-still-gets-wrong-2fb8"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 30">
+            <span class="series-switcher__num">40</span>
+            <span class="series-switcher__title">Read-Only Reentrancy: The Silent Price Oracle Killer Every DeFi Protocol Still Gets Wrong</span>
+          </a>
+
+          <a
+            href="/ohmygod/defi-time-bomb-vulnerabilities-how-forked-code-with-hidden-assumptions-has-cost-85m-in-2026--291"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 30">
+            <span class="series-switcher__num">41</span>
+            <span class="series-switcher__title">DeFi Time-Bomb Vulnerabilities: How Forked Code With Hidden Assumptions Has Cost $85M+ in 2026 — And a 5-Layer Detection Framework</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-679k-bce-burn-exploit-how-a-defective-burn-mechanism-drained-a-pancakeswap-pool-4g00"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 30">
+            <span class="series-switcher__num">42</span>
+            <span class="series-switcher__title">The $679K BCE Burn Exploit: How a Defective Burn Mechanism Drained a PancakeSwap Pool</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-proxy-upgrade-kill-switch-why-owasp-sc10-means-your-upgradeable-contract-is-exploitable-4o32"
+            class="crayons-link crayons-link--contentful series-switcher__link  "
+            data-preload-image=""
+            title="Published Mar 30">
+            <span class="series-switcher__num">43</span>
+            <span class="series-switcher__title">The Proxy Upgrade Kill Switch: Why OWASP SC10 Means Your Upgradeable Contract Is Exploitable</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-phantom-approval-how-erc-2612-permit-signatures-are-being-weaponized-to-drain-defi-wallets-31bf"
+            class="crayons-link crayons-link--contentful series-switcher__link  "
+            data-preload-image=""
+            title="Published Mar 30">
+            <span class="series-switcher__num">44</span>
+            <span class="series-switcher__title">The Phantom Approval: How ERC-2612 Permit Signatures Are Being Weaponized to Drain DeFi Wallets Without On-Chain Traces</span>
+          </a>
+    </div>
+  </nav>
+
+            <div class="crayons-article__body text-styles spec__body" data-article-id="3428341" id="article-body">
+                <h2>
+  <a name="tldr" href="#tldr">
+  </a>
+  TL;DR
+</h2>
+
+<p>AI agents can now autonomously discover and exploit DeFi vulnerabilities at scale. In controlled tests, frontier models like GPT-5 and Claude Opus 4.5 successfully exploited 55-65% of known smart contract bugs — without human guidance. This article maps the 4 autonomous attack patterns AI agents use, analyzes the offense-defense economics ($6K attacker break-even vs $60K defender break-even), and provides 6 defensive patterns that make your protocol AI-exploitation-resistant.</p>
+
+
+<hr>
+
+<h2>
+  <a name="the-6000-threshold-when-ai-exploitation-becomes-profitable" href="#the-6000-threshold-when-ai-exploitation-becomes-profitable">
+  </a>
+  The $6,000 Threshold: When AI Exploitation Becomes Profitable
+</h2>
+
+<p>A 2025 paper from researchers at UIUC and collaborating institutions established the economic tipping point: <strong>AI-driven exploit agents become profitable at approximately $6,000 in extractable value</strong>. Defenders, by contrast, need around $60,000 to break even against the same class of AI-driven exploitation.</p>
+
+<p>This 10:1 offense-defense asymmetry is unprecedented. Traditional DeFi exploits required weeks of reverse engineering, deep Solidity/Rust expertise, and custom tooling. AI agents compress this to minutes.</p>
+
+<p>Here's what changed in Q1 2026:</p>
+
+<div class="table-wrapper-paragraph"><table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Human Attacker</th>
+<th>AI Agent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Time to identify vulnerability</td>
+<td>Days-weeks</td>
+<td>Minutes-hours</td>
+</tr>
+<tr>
+<td>Cost to attempt exploit</td>
+<td>$10K+ (researcher time)</td>
+<td>$0.50-$50 (API calls)</td>
+</tr>
+<tr>
+<td>Success rate on known bug classes</td>
+<td>80-90% (skilled)</td>
+<td>55-65% (autonomous)</td>
+</tr>
+<tr>
+<td>Can chain multi-step exploits</td>
+<td>Yes (with planning)</td>
+<td>Yes (emergent reasoning)</td>
+</tr>
+<tr>
+<td>Scales across protocols</td>
+<td>No (manual effort)</td>
+<td>Yes (parallel execution)</td>
+</tr>
+</tbody>
+</table></div>
+
+<p>The critical insight: AI agents don't need to be <em>better</em> than human attackers. They need to be <em>cheaper</em> and <em>faster</em>. At $0.50 per exploit attempt across thousands of protocols simultaneously, even a 5% success rate is devastating.</p>
+
+
+<hr>
+
+<h2>
+  <a name="attack-pattern-1-autonomous-contract-reconnaissance" href="#attack-pattern-1-autonomous-contract-reconnaissance">
+  </a>
+  Attack Pattern 1: Autonomous Contract Reconnaissance
+</h2>
+
+<p>The first stage of an AI-driven exploit is automated vulnerability scanning. Unlike traditional static analyzers (Slither, Aderyn) that match known patterns, AI agents perform <strong>semantic reasoning</strong> about contract logic.<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight python"><code><span class="c1"># Simplified reconstruction of an AI agent's recon flow
+# Based on published research methodologies
+</span>
+<span class="kn">import</span> <span class="n">openai</span>
+<span class="kn">from</span> <span class="n">web3</span> <span class="kn">import</span> <span class="n">Web3</span>
+
+<span class="k">class</span> <span class="nc">ExploitReconAgent</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="sh">"</span><span class="s">gpt-5</span><span class="sh">"</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">openai</span><span class="p">.</span><span class="nc">Client</span><span class="p">()</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">w3</span> <span class="o">=</span> <span class="nc">Web3</span><span class="p">(</span><span class="n">Web3</span><span class="p">.</span><span class="nc">HTTPProvider</span><span class="p">(</span><span class="sh">"</span><span class="s">https://eth-mainnet.g.alchemy.com/v2/...</span><span class="sh">"</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">analyze_contract</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">address</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="c1"># Step 1: Fetch verified source from block explorer
+</span>        <span class="n">source</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">fetch_verified_source</span><span class="p">(</span><span class="n">address</span><span class="p">)</span>
+
+        <span class="c1"># Step 2: AI reasons about the contract's invariants
+</span>        <span class="n">analysis</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">chat</span><span class="p">.</span><span class="n">completions</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span>
+            <span class="n">model</span><span class="o">=</span><span class="sh">"</span><span class="s">gpt-5</span><span class="sh">"</span><span class="p">,</span>
+            <span class="n">messages</span><span class="o">=</span><span class="p">[{</span>
+                <span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">system</span><span class="sh">"</span><span class="p">,</span>
+                <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"""</span><span class="s">You are a smart contract security researcher.
+                Analyze this contract for:
+                1. State variables that can be manipulated atomically
+                2. External calls before state updates (CEI violations)
+                3. Oracle dependencies that can be flash-loan manipulated
+                4. Access control gaps in privileged functions
+                5. Arithmetic edge cases (rounding, overflow, precision loss)
+                Return a structured vulnerability assessment.</span><span class="sh">"""</span>
+            <span class="p">},</span> <span class="p">{</span>
+                <span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">user</span><span class="sh">"</span><span class="p">,</span> 
+                <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="n">source</span>
+            <span class="p">}]</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Step 3: AI generates candidate exploit transactions
+</span>        <span class="k">if</span> <span class="n">analysis</span><span class="p">.</span><span class="n">contains_vulnerabilities</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="nf">generate_exploit_candidates</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">analysis</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="sh">"</span><span class="s">status</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">no_vulnerabilities_found</span><span class="sh">"</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">generate_exploit_candidates</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">analysis</span><span class="p">):</span>
+        <span class="c1"># AI reasons about transaction sequences
+</span>        <span class="c1"># that would violate the identified invariants
+</span>        <span class="n">exploit_plan</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">chat</span><span class="p">.</span><span class="n">completions</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span>
+            <span class="n">model</span><span class="o">=</span><span class="sh">"</span><span class="s">gpt-5</span><span class="sh">"</span><span class="p">,</span>
+            <span class="n">messages</span><span class="o">=</span><span class="p">[{</span>
+                <span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">system</span><span class="sh">"</span><span class="p">,</span>
+                <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"""</span><span class="s">Given the vulnerability analysis, construct
+                a concrete exploit transaction sequence. Include:
+                - Flash loan sourcing (Aave, Balancer, dYdX)
+                - Price manipulation steps
+                - State exploitation steps  
+                - Profit extraction and loan repayment
+                Output as executable transaction calldata.</span><span class="sh">"""</span>
+            <span class="p">},</span> <span class="p">{</span>
+                <span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">user</span><span class="sh">"</span><span class="p">,</span>
+                <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="sa">f</span><span class="sh">"</span><span class="s">Source:</span><span class="se">\n</span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="se">\n\n</span><span class="s">Analysis:</span><span class="se">\n</span><span class="si">{</span><span class="n">analysis</span><span class="si">}</span><span class="sh">"</span>
+            <span class="p">}]</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">exploit_plan</span>
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p><strong>What makes this different from existing tools:</strong> Slither finds patterns. AI agents find <em>logic</em>. A traditional analyzer can detect "unchecked return value" — an AI agent can reason that "if oracle.getPrice() returns 0 during a network congestion event, the liquidation threshold calculation divides by zero, and the entire collateral pool becomes borrowable."</p>
+
+<h3>
+  <a name="realworld-validation" href="#realworld-validation">
+  </a>
+  Real-World Validation
+</h3>
+
+<p>In a controlled study published in early 2026, researchers deployed 50 previously-exploited DeFi contracts (with known vulnerabilities) onto a test network. AI agents were given only the contract address and ABI — no vulnerability hints.</p>
+
+<p>Results:</p>
+
+<ul>
+<li>
+<strong>GPT-5</strong>: Successfully exploited 32/50 contracts (64%)</li>
+<li>
+<strong>Claude Opus 4.5</strong>: Successfully exploited 28/50 contracts (56%)</li>
+<li>
+<strong>Gemini Ultra</strong>: Successfully exploited 25/50 contracts (50%)</li>
+</ul>
+
+<p>The agents independently discovered flash loan attack paths, reentrancy chains, and oracle manipulation sequences that matched (and sometimes improved upon) the original human exploits.</p>
+
+
+<hr>
+
+<h2>
+  <a name="attack-pattern-2-multiprotocol-exploit-chaining" href="#attack-pattern-2-multiprotocol-exploit-chaining">
+  </a>
+  Attack Pattern 2: Multi-Protocol Exploit Chaining
+</h2>
+
+<p>The most dangerous AI capability is <strong>cross-protocol reasoning</strong> — understanding how Protocol A's state change affects Protocol B's security assumptions.<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight python"><code><span class="k">class</span> <span class="nc">CrossProtocolExploitAgent</span><span class="p">:</span>
+    <span class="sh">"""</span><span class="s">
+    AI agent that maps composability dependencies
+    and identifies cross-protocol attack paths.
+    </span><span class="sh">"""</span>
+
+    <span class="k">def</span> <span class="nf">map_protocol_graph</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">target_address</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="sh">"""</span><span class="s">Build a dependency graph of all protocols
+        the target interacts with.</span><span class="sh">"""</span>
+
+        <span class="c1"># Trace all external calls from the target contract
+</span>        <span class="n">external_calls</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">trace_external_calls</span><span class="p">(</span><span class="n">target_address</span><span class="p">)</span>
+
+        <span class="c1"># For each dependency, analyze its own vulnerabilities
+</span>        <span class="c1"># and how they propagate to the target
+</span>        <span class="n">graph</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">call</span> <span class="ow">in</span> <span class="n">external_calls</span><span class="p">:</span>
+            <span class="n">dep_analysis</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">analyze_contract</span><span class="p">(</span><span class="n">call</span><span class="p">.</span><span class="n">target</span><span class="p">)</span>
+            <span class="n">graph</span><span class="p">[</span><span class="n">call</span><span class="p">.</span><span class="n">target</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="sh">"</span><span class="s">function</span><span class="sh">"</span><span class="p">:</span> <span class="n">call</span><span class="p">.</span><span class="n">selector</span><span class="p">,</span>
+                <span class="sh">"</span><span class="s">can_manipulate</span><span class="sh">"</span><span class="p">:</span> <span class="n">dep_analysis</span><span class="p">.</span><span class="n">manipulable_outputs</span><span class="p">,</span>
+                <span class="sh">"</span><span class="s">propagation</span><span class="sh">"</span><span class="p">:</span> <span class="n">self</span><span class="p">.</span><span class="nf">analyze_propagation</span><span class="p">(</span>
+                    <span class="n">call</span><span class="p">.</span><span class="n">target</span><span class="p">,</span> <span class="n">target_address</span><span class="p">,</span> <span class="n">call</span><span class="p">.</span><span class="n">selector</span>
+                <span class="p">)</span>
+            <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">graph</span>
+
+    <span class="k">def</span> <span class="nf">find_chain_exploit</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">graph</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+        <span class="sh">"""</span><span class="s">Use AI reasoning to find multi-step exploit paths
+        across the protocol dependency graph.</span><span class="sh">"""</span>
+
+        <span class="c1"># AI reasons about which combination of
+</span>        <span class="c1"># dependency manipulations creates an exploitable state
+</span>        <span class="n">chain</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">chat</span><span class="p">.</span><span class="n">completions</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span>
+            <span class="n">model</span><span class="o">=</span><span class="sh">"</span><span class="s">gpt-5</span><span class="sh">"</span><span class="p">,</span>
+            <span class="n">messages</span><span class="o">=</span><span class="p">[{</span>
+                <span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">system</span><span class="sh">"</span><span class="p">,</span>
+                <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"""</span><span class="s">Given this protocol dependency graph,
+                find a sequence of actions across multiple protocols
+                that creates an exploitable state in the target.
+                Consider: flash loans, oracle manipulation, 
+                governance attacks, and donation attacks.</span><span class="sh">"""</span>
+            <span class="p">},</span> <span class="p">{</span>
+                <span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">user</span><span class="sh">"</span><span class="p">,</span>
+                <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="n">json</span><span class="p">.</span><span class="nf">dumps</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+            <span class="p">}]</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">chain</span>
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p><strong>Why this matters:</strong> The Makina Finance exploit ($5M, Q1 2026) required chaining Aave flash loans → Uniswap swaps → Curve price manipulation → yield protocol drain. A human attacker needed days to map this path. An AI agent can map thousands of such paths in parallel.</p>
+
+
+<hr>
+
+<h2>
+  <a name="attack-pattern-3-temporal-exploit-windows" href="#attack-pattern-3-temporal-exploit-windows">
+  </a>
+  Attack Pattern 3: Temporal Exploit Windows
+</h2>
+
+<p>AI agents excel at identifying <strong>time-dependent vulnerabilities</strong> — states that are only exploitable during specific network conditions.<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight python"><code><span class="k">class</span> <span class="nc">TemporalExploitAgent</span><span class="p">:</span>
+    <span class="sh">"""</span><span class="s">Monitors for transient exploitable states.</span><span class="sh">"""</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">conditions</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">check_oracle_staleness</span><span class="p">,</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">check_governance_quorum_gap</span><span class="p">,</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">check_liquidity_withdrawal</span><span class="p">,</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">check_bridge_finality_gap</span><span class="p">,</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">check_validator_update_window</span><span class="p">,</span>
+        <span class="p">]</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">monitor</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">Continuously monitor for exploitable windows.</span><span class="sh">"""</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">check</span> <span class="ow">in</span> <span class="n">self</span><span class="p">.</span><span class="n">conditions</span><span class="p">:</span>
+                <span class="n">window</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">check</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">window</span><span class="p">.</span><span class="n">is_exploitable</span><span class="p">:</span>
+                    <span class="c1"># AI evaluates whether the window is 
+</span>                    <span class="c1"># profitable given current gas/priority fees
+</span>                    <span class="n">profitability</span> <span class="o">=</span> <span class="k">await</span> <span class="n">self</span><span class="p">.</span><span class="nf">evaluate_profitability</span><span class="p">(</span>
+                        <span class="n">window</span><span class="p">,</span> <span class="n">gas_price</span><span class="o">=</span><span class="k">await</span> <span class="n">self</span><span class="p">.</span><span class="nf">get_gas_price</span><span class="p">()</span>
+                    <span class="p">)</span>
+                    <span class="k">if</span> <span class="n">profitability</span><span class="p">.</span><span class="n">net_profit</span> <span class="o">&gt;</span> <span class="n">self</span><span class="p">.</span><span class="n">threshold</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="k">await</span> <span class="n">self</span><span class="p">.</span><span class="nf">execute_exploit</span><span class="p">(</span><span class="n">window</span><span class="p">)</span>
+
+            <span class="k">await</span> <span class="n">asyncio</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Check every block
+</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">check_oracle_staleness</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">Detect when oracle data is stale enough to exploit.</span><span class="sh">"""</span>
+        <span class="n">oracle_address</span> <span class="o">=</span> <span class="k">await</span> <span class="n">self</span><span class="p">.</span><span class="nf">get_oracle</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+        <span class="n">last_update</span> <span class="o">=</span> <span class="k">await</span> <span class="n">self</span><span class="p">.</span><span class="nf">get_last_update</span><span class="p">(</span><span class="n">oracle_address</span><span class="p">)</span>
+        <span class="n">current_price</span> <span class="o">=</span> <span class="k">await</span> <span class="n">self</span><span class="p">.</span><span class="nf">get_market_price</span><span class="p">()</span>
+        <span class="n">oracle_price</span> <span class="o">=</span> <span class="k">await</span> <span class="n">self</span><span class="p">.</span><span class="nf">get_oracle_price</span><span class="p">(</span><span class="n">oracle_address</span><span class="p">)</span>
+
+        <span class="n">deviation</span> <span class="o">=</span> <span class="nf">abs</span><span class="p">(</span><span class="n">current_price</span> <span class="o">-</span> <span class="n">oracle_price</span><span class="p">)</span> <span class="o">/</span> <span class="n">oracle_price</span>
+        <span class="n">staleness</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="nf">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">last_update</span>
+
+        <span class="k">return</span> <span class="nc">ExploitWindow</span><span class="p">(</span>
+            <span class="n">is_exploitable</span><span class="o">=</span><span class="n">deviation</span> <span class="o">&gt;</span> <span class="mf">0.05</span> <span class="ow">and</span> <span class="n">staleness</span> <span class="o">&gt;</span> <span class="mi">300</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="sh">"</span><span class="s">oracle_staleness</span><span class="sh">"</span><span class="p">,</span>
+            <span class="n">estimated_profit</span><span class="o">=</span><span class="n">self</span><span class="p">.</span><span class="nf">calculate_oracle_profit</span><span class="p">(</span>
+                <span class="n">deviation</span><span class="p">,</span> <span class="n">target</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p><strong>The Aave CAPO oracle incident</strong> ($26M in forced liquidations, March 10 2026) was a configuration error, not an attack. But an AI agent monitoring oracle update patterns would have detected the CAPO rate discontinuity within seconds and could have front-run the liquidation cascade — extracting MEV from the resulting chaos.</p>
+
+
+<hr>
+
+<h2>
+  <a name="attack-pattern-4-adversarial-fuzzing-at-scale" href="#attack-pattern-4-adversarial-fuzzing-at-scale">
+  </a>
+  Attack Pattern 4: Adversarial Fuzzing at Scale
+</h2>
+
+<p>AI agents don't just analyze code — they generate and execute millions of test transactions to find edge cases that static analysis misses.<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight python"><code><span class="k">class</span> <span class="nc">AIFuzzAgent</span><span class="p">:</span>
+    <span class="sh">"""</span><span class="s">AI-guided fuzzing that targets semantic invariants.</span><span class="sh">"""</span>
+
+    <span class="k">def</span> <span class="nf">generate_fuzz_inputs</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">contract_abi</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> 
+                              <span class="n">analysis</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+        <span class="sh">"""</span><span class="s">AI generates high-value fuzz inputs based on
+        semantic understanding of the contract.</span><span class="sh">"""</span>
+
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">chat</span><span class="p">.</span><span class="n">completions</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span>
+            <span class="n">model</span><span class="o">=</span><span class="sh">"</span><span class="s">gpt-5</span><span class="sh">"</span><span class="p">,</span>
+            <span class="n">messages</span><span class="o">=</span><span class="p">[{</span>
+                <span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">system</span><span class="sh">"</span><span class="p">,</span>
+                <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"""</span><span class="s">Generate fuzz test inputs that target:
+                1. Boundary values for each uint parameter
+                2. Sequences that test state machine transitions
+                3. Inputs that maximize gas consumption
+                4. Values that trigger precision loss in division
+                5. Account combinations that bypass access control
+
+                Focus on inputs that a random fuzzer would never
+                generate but that test meaningful invariants.</span><span class="sh">"""</span>
+            <span class="p">},</span> <span class="p">{</span>
+                <span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">user</span><span class="sh">"</span><span class="p">,</span>
+                <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="sa">f</span><span class="sh">"</span><span class="s">ABI: </span><span class="si">{</span><span class="n">json</span><span class="p">.</span><span class="nf">dumps</span><span class="p">(</span><span class="n">contract_abi</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="sh">"</span>
+                          <span class="sa">f</span><span class="sh">"</span><span class="s">Analysis: </span><span class="si">{</span><span class="n">json</span><span class="p">.</span><span class="nf">dumps</span><span class="p">(</span><span class="n">analysis</span><span class="p">)</span><span class="si">}</span><span class="sh">"</span>
+            <span class="p">}]</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">inputs</span>
+
+    <span class="k">def</span> <span class="nf">evaluate_fuzz_result</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">pre_state</span><span class="p">,</span> <span class="n">post_state</span><span class="p">,</span> 
+                             <span class="n">tx_result</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sh">"""</span><span class="s">AI evaluates whether a fuzz result represents
+        an exploitable state transition.</span><span class="sh">"""</span>
+
+        <span class="c1"># Check: did total_value decrease without a withdrawal?
+</span>        <span class="c1"># Check: did any account gain more than deposited?
+</span>        <span class="c1"># Check: did a non-admin execute a privileged function?
+</span>        <span class="n">evaluation</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">chat</span><span class="p">.</span><span class="n">completions</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span>
+            <span class="n">model</span><span class="o">=</span><span class="sh">"</span><span class="s">gpt-5</span><span class="sh">"</span><span class="p">,</span>
+            <span class="n">messages</span><span class="o">=</span><span class="p">[{</span>
+                <span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">system</span><span class="sh">"</span><span class="p">,</span>
+                <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"""</span><span class="s">Compare pre and post states.
+                Does the state transition violate any
+                reasonable economic invariant? If so,
+                describe the violation and how to exploit it.</span><span class="sh">"""</span>
+            <span class="p">},</span> <span class="p">{</span>
+                <span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">user</span><span class="sh">"</span><span class="p">,</span>
+                <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="sa">f</span><span class="sh">"</span><span class="s">Pre: </span><span class="si">{</span><span class="n">pre_state</span><span class="si">}</span><span class="se">\n</span><span class="s">Post: </span><span class="si">{</span><span class="n">post_state</span><span class="si">}</span><span class="sh">"</span>
+            <span class="p">}]</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">evaluation</span><span class="p">.</span><span class="n">is_violation</span>
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+
+<hr>
+
+<h2>
+  <a name="the-defense-6-patterns-for-airesistant-protocols" href="#the-defense-6-patterns-for-airesistant-protocols">
+  </a>
+  The Defense: 6 Patterns for AI-Resistant Protocols
+</h2>
+
+<h3>
+  <a name="pattern-1-explicit-onchain-invariant-assertions" href="#pattern-1-explicit-onchain-invariant-assertions">
+  </a>
+  Pattern 1: Explicit On-Chain Invariant Assertions
+</h3>
+
+<p>If your invariants are only checked by off-chain tests, an AI agent will find the gap. <strong>Assert invariants on-chain.</strong><br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>// EVM: On-chain invariant checking
+contract AIResistantVault {
+    uint256 public totalDeposits;
+    uint256 public totalShares;
+
+    modifier invariantCheck() {
+        uint256 preBalance = token.balanceOf(address(this));
+        _;
+        uint256 postBalance = token.balanceOf(address(this));
+
+        // Invariant 1: Actual balance &gt;= accounting balance
+        require(
+            postBalance &gt;= totalDeposits,
+            "INVARIANT: balance &lt; deposits"
+        );
+
+        // Invariant 2: No shares without deposits
+        require(
+            totalDeposits &gt; 0 || totalShares == 0,
+            "INVARIANT: shares without deposits"
+        );
+
+        // Invariant 3: Exchange rate monotonically non-decreasing
+        // (between harvests)
+        if (totalShares &gt; 0) {
+            uint256 rate = (totalDeposits * 1e18) / totalShares;
+            require(
+                rate &gt;= lastExchangeRate,
+                "INVARIANT: exchange rate decreased"
+            );
+            lastExchangeRate = rate;
+        }
+    }
+
+    function deposit(uint256 amount) external invariantCheck {
+        // ... deposit logic
+    }
+
+    function withdraw(uint256 shares) external invariantCheck {
+        // ... withdraw logic
+    }
+}
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p><strong>Solana equivalent:</strong><br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight rust"><code><span class="k">pub</span> <span class="k">fn</span> <span class="nf">check_vault_invariants</span><span class="p">(</span><span class="n">vault</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">VaultState</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="c1">// Invariant 1: Total deposits match token account balance</span>
+    <span class="k">let</span> <span class="n">actual_balance</span> <span class="o">=</span> <span class="n">vault</span><span class="py">.token_account_balance</span><span class="p">;</span>
+    <span class="nd">require!</span><span class="p">(</span>
+        <span class="n">actual_balance</span> <span class="o">&gt;=</span> <span class="n">vault</span><span class="py">.total_deposits</span><span class="p">,</span>
+        <span class="nn">VaultError</span><span class="p">::</span><span class="n">BalanceMismatch</span>
+    <span class="p">);</span>
+
+    <span class="c1">// Invariant 2: No shares without backing</span>
+    <span class="k">if</span> <span class="n">vault</span><span class="py">.total_shares</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="nd">require!</span><span class="p">(</span><span class="n">vault</span><span class="py">.total_deposits</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="nn">VaultError</span><span class="p">::</span><span class="n">UnbackedShares</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Invariant 3: Per-user accounting sums to totals</span>
+    <span class="c1">// (checked via Merkle root of user balances)</span>
+    <span class="nd">require!</span><span class="p">(</span>
+        <span class="n">vault</span><span class="py">.user_balance_root</span> <span class="o">==</span> <span class="nf">compute_merkle_root</span><span class="p">(</span><span class="o">&amp;</span><span class="n">vault</span><span class="py">.balances</span><span class="p">),</span>
+        <span class="nn">VaultError</span><span class="p">::</span><span class="n">AccountingMismatch</span>
+    <span class="p">);</span>
+
+    <span class="nf">Ok</span><span class="p">(())</span>
+<span class="p">}</span>
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="pattern-2-ratelimited-state-transitions" href="#pattern-2-ratelimited-state-transitions">
+  </a>
+  Pattern 2: Rate-Limited State Transitions
+</h3>
+
+<p>AI agents exploit protocols by executing many transactions in rapid succession. Rate limiting at the protocol level caps the damage.<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>contract RateLimitedProtocol {
+    uint256 public constant MAX_DEPOSIT_PER_BLOCK = 100_000e18;
+    uint256 public constant MAX_WITHDRAW_PER_BLOCK = 50_000e18;
+    uint256 public constant MAX_OPS_PER_ADDRESS_PER_HOUR = 10;
+
+    mapping(uint256 =&gt; uint256) public blockDeposits;
+    mapping(uint256 =&gt; uint256) public blockWithdrawals;
+    mapping(address =&gt; mapping(uint256 =&gt; uint256)) public userOpsPerHour;
+
+    modifier rateLimited(address user, uint256 amount, bool isDeposit) {
+        uint256 hour = block.timestamp / 3600;
+        require(
+            userOpsPerHour[user][hour] &lt; MAX_OPS_PER_ADDRESS_PER_HOUR,
+            "Rate limit: too many operations"
+        );
+        userOpsPerHour[user][hour]++;
+
+        if (isDeposit) {
+            blockDeposits[block.number] += amount;
+            require(
+                blockDeposits[block.number] &lt;= MAX_DEPOSIT_PER_BLOCK,
+                "Rate limit: block deposit cap"
+            );
+        } else {
+            blockWithdrawals[block.number] += amount;
+            require(
+                blockWithdrawals[block.number] &lt;= MAX_WITHDRAW_PER_BLOCK,
+                "Rate limit: block withdrawal cap"
+            );
+        }
+        _;
+    }
+}
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="pattern-3-mevresistant-transaction-ordering" href="#pattern-3-mevresistant-transaction-ordering">
+  </a>
+  Pattern 3: MEV-Resistant Transaction Ordering
+</h3>
+
+<p>AI agents are natural MEV extractors. Commit-reveal schemes and batch auctions reduce their advantage.<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>contract CommitRevealDeposit {
+    uint256 public constant REVEAL_DELAY = 2; // blocks
+
+    struct Commitment {
+        bytes32 hash;
+        uint256 blockNumber;
+    }
+
+    mapping(address =&gt; Commitment) public commitments;
+
+    function commitDeposit(bytes32 commitHash) external {
+        commitments[msg.sender] = Commitment({
+            hash: commitHash,
+            blockNumber: block.number
+        });
+    }
+
+    function revealDeposit(uint256 amount, bytes32 salt) external {
+        Commitment memory c = commitments[msg.sender];
+        require(c.blockNumber &gt; 0, "No commitment");
+        require(
+            block.number &gt;= c.blockNumber + REVEAL_DELAY,
+            "Too early to reveal"
+        );
+        require(
+            keccak256(abi.encodePacked(amount, salt)) == c.hash,
+            "Invalid reveal"
+        );
+
+        delete commitments[msg.sender];
+        _processDeposit(msg.sender, amount);
+    }
+}
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="pattern-4-crosstransaction-state-verification" href="#pattern-4-crosstransaction-state-verification">
+  </a>
+  Pattern 4: Cross-Transaction State Verification
+</h3>
+
+<p>Detect multi-transaction exploit patterns by tracking state changes across blocks.<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>contract StateChangeDetector {
+    struct StateSnapshot {
+        uint256 totalValue;
+        uint256 blockNumber;
+        uint256 txCount;
+    }
+
+    StateSnapshot public lastSnapshot;
+    uint256 public constant MAX_VALUE_CHANGE_PER_BLOCK_BPS = 500; // 5%
+    uint256 public constant SUSPICIOUS_TX_THRESHOLD = 5;
+
+    modifier detectAnomalousPatterns() {
+        if (lastSnapshot.blockNumber == block.number) {
+            lastSnapshot.txCount++;
+
+            // Alert: Many transactions in same block targeting this contract
+            if (lastSnapshot.txCount &gt;= SUSPICIOUS_TX_THRESHOLD) {
+                emit SuspiciousActivity(
+                    block.number, 
+                    lastSnapshot.txCount,
+                    "High tx frequency in single block"
+                );
+            }
+        } else {
+            // Check value change since last block
+            uint256 currentValue = _getTotalValue();
+            if (lastSnapshot.totalValue &gt; 0) {
+                uint256 change = currentValue &gt; lastSnapshot.totalValue
+                    ? currentValue - lastSnapshot.totalValue
+                    : lastSnapshot.totalValue - currentValue;
+                uint256 changeBps = (change * 10000) / lastSnapshot.totalValue;
+
+                if (changeBps &gt; MAX_VALUE_CHANGE_PER_BLOCK_BPS) {
+                    emit SuspiciousActivity(
+                        block.number, changeBps, 
+                        "Large value change between blocks"
+                    );
+                    // Optional: pause protocol for guardian review
+                }
+            }
+
+            lastSnapshot = StateSnapshot({
+                totalValue: _getTotalValue(),
+                blockNumber: block.number,
+                txCount: 1
+            });
+        }
+        _;
+    }
+}
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="pattern-5-economic-circuit-breakers-with-graduated-response" href="#pattern-5-economic-circuit-breakers-with-graduated-response">
+  </a>
+  Pattern 5: Economic Circuit Breakers with Graduated Response
+</h3>
+
+<p>Instead of binary pause/unpause, implement graduated responses that match threat severity.<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>contract GraduatedCircuitBreaker {
+    enum ThreatLevel { NORMAL, ELEVATED, HIGH, CRITICAL }
+
+    ThreatLevel public currentThreat = ThreatLevel.NORMAL;
+
+    // Each threat level restricts operations progressively
+    mapping(ThreatLevel =&gt; uint256) public maxWithdrawBps;
+    mapping(ThreatLevel =&gt; uint256) public maxDepositBps;
+    mapping(ThreatLevel =&gt; uint256) public minDelaySeconds;
+
+    constructor() {
+        // NORMAL: No restrictions
+        maxWithdrawBps[ThreatLevel.NORMAL] = 10000;
+        maxDepositBps[ThreatLevel.NORMAL] = 10000;
+
+        // ELEVATED: 50% max withdrawal per tx, 10min delay
+        maxWithdrawBps[ThreatLevel.ELEVATED] = 5000;
+        minDelaySeconds[ThreatLevel.ELEVATED] = 600;
+
+        // HIGH: 10% max withdrawal, 1hr delay, deposits paused
+        maxWithdrawBps[ThreatLevel.HIGH] = 1000;
+        maxDepositBps[ThreatLevel.HIGH] = 0;
+        minDelaySeconds[ThreatLevel.HIGH] = 3600;
+
+        // CRITICAL: Everything paused
+        maxWithdrawBps[ThreatLevel.CRITICAL] = 0;
+        maxDepositBps[ThreatLevel.CRITICAL] = 0;
+    }
+
+    // Auto-escalation based on on-chain metrics
+    function _updateThreatLevel() internal {
+        uint256 recentLoss = _calculateRecentLoss(1 hours);
+        uint256 tvl = _getTotalValue();
+
+        if (tvl == 0) return;
+        uint256 lossBps = (recentLoss * 10000) / tvl;
+
+        if (lossBps &gt;= 1000) currentThreat = ThreatLevel.CRITICAL;
+        else if (lossBps &gt;= 500) currentThreat = ThreatLevel.HIGH;
+        else if (lossBps &gt;= 100) currentThreat = ThreatLevel.ELEVATED;
+        else currentThreat = ThreatLevel.NORMAL;
+
+        emit ThreatLevelChanged(currentThreat, lossBps);
+    }
+}
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="pattern-6-formal-verification-of-critical-paths" href="#pattern-6-formal-verification-of-critical-paths">
+  </a>
+  Pattern 6: Formal Verification of Critical Paths
+</h3>
+
+<p>AI agents can reason about code, but they can't break mathematical proofs. Formally verify your most critical invariants.<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>/// @custom:security-contact security@protocol.xyz
+/// @dev Formally verified properties:
+/// P1: forall users, sum(user.shares) == totalShares
+/// P2: forall t, exchangeRate(t) &gt;= exchangeRate(t-1)  
+/// P3: forall users, withdrawable(user) &lt;= deposited(user) + yield(user)
+/// Verified with: Certora Prover, Halmos
+contract FormallyVerifiedVault {
+    // ... implementation with verified invariants
+}
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+<div class="highlight js-code-highlight">
+<pre class="highlight python"><code><span class="c1"># Certora specification file (vault.spec)
+</span><span class="sh">"""</span><span class="s">
+rule exchangeRateNeverDecreases {
+    env e;
+    uint256 rateBefore = getExchangeRate(e);
+
+    // Execute any public function
+    calldataarg args;
+    f(e, args);
+
+    uint256 rateAfter = getExchangeRate(e);
+    assert rateAfter &gt;= rateBefore,
+        </span><span class="sh">"</span><span class="s">Exchange rate must never decrease</span><span class="sh">"</span><span class="s">;
+}
+
+rule noUnbackedShares {
+    env e;
+    assert getTotalDeposits(e) &gt; 0 || getTotalShares(e) == 0,
+        </span><span class="sh">"</span><span class="s">Shares must always be backed by deposits</span><span class="sh">"</span><span class="s">;
+}
+</span></code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+
+<hr>
+
+<h2>
+  <a name="the-10point-airesistance-checklist" href="#the-10point-airesistance-checklist">
+  </a>
+  The 10-Point AI-Resistance Checklist
+</h2>
+
+<h3>
+  <a name="onchain-defenses" href="#onchain-defenses">
+  </a>
+  On-Chain Defenses
+</h3>
+
+<ul>
+<li>[ ] Explicit invariant assertions in every state-changing function</li>
+<li>[ ] Per-block and per-address rate limiting</li>
+<li>[ ] Graduated circuit breakers with auto-escalation</li>
+<li>[ ] Commit-reveal for high-value operations</li>
+<li>[ ] Cross-transaction anomaly detection</li>
+</ul>
+
+<h3>
+  <a name="offchain-defenses" href="#offchain-defenses">
+  </a>
+  Off-Chain Defenses
+</h3>
+
+<ul>
+<li>[ ] Formal verification of critical accounting invariants</li>
+<li>[ ] AI-powered defense agents monitoring your own protocol</li>
+<li>[ ] Real-time oracle deviation monitoring with auto-pause</li>
+<li>[ ] Mempool monitoring for suspicious transaction patterns</li>
+<li>[ ] Incident response runbook with &lt;15 minute response time</li>
+</ul>
+
+
+<hr>
+
+<h2>
+  <a name="the-arms-race-reality" href="#the-arms-race-reality">
+  </a>
+  The Arms Race Reality
+</h2>
+
+<p>The uncomfortable truth: <strong>defense is losing the economics war</strong>. At $6K attacker break-even vs $60K defender break-even, the math doesn't favor protocol teams. The only sustainable defense is to make exploitation <em>structurally impossible</em> through on-chain invariants and formal verification — not just <em>difficult to find</em> through obscurity or manual audits.</p>
+
+<p>Every protocol that lost funds in Q1 2026 relied on the assumption that attackers would be human. That assumption is no longer safe. The AI agents are here, they're autonomous, and they're getting cheaper every quarter.</p>
+
+<p>Build protocols that are correct by construction, not just "audited." The next generation of exploits won't give you time to respond.</p>
+
+
+<hr>
+
+<p><em>DeFi Security Deep Dives — weekly research on smart contract vulnerabilities, audit tools, and security best practices across EVM and Solana.</em></p>
+
+
+            </div>
+
+              
+  <nav class="series-switcher crayons-card crayons-card--secondary">
+    <header class="crayons-card__header">
+      <h2 class="crayons-subtitle-2">
+        <a href="/ohmygod/series/36984">DeFi Security Deep Dives (44 Part Series)</a>
+      </h2>
+    </header>
+
+    <div class="series-switcher__list">
+
+          <a
+            href="/ohmygod/anatomy-of-a-50m-defi-slippage-disaster-how-mev-bots-ate-a-whales-lunch-on-aave-4ncf"
+            class="crayons-link crayons-link--contentful series-switcher__link  "
+            data-preload-image=""
+            title="Published Mar 13">
+            <span class="series-switcher__num">1</span>
+            <span class="series-switcher__title">Anatomy of a $50M DeFi Slippage Disaster: How MEV Bots Ate a Whale&#39;s Lunch on Aave</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-upgradeable-contract-kill-chain-how-uninitialized-proxies-became-defis-200m-recurring-357e"
+            class="crayons-link crayons-link--contentful series-switcher__link  "
+            data-preload-image=""
+            title="Published Mar 14">
+            <span class="series-switcher__num">2</span>
+            <span class="series-switcher__title">The Upgradeable Contract Kill Chain: How Uninitialized Proxies Became DeFi&#39;s $200M+ Recurring Nightmare</span>
+          </a>
+            <a
+              href="/ohmygod/eip-7702-and-the-crimeenjoyor-epidemic-how-ethereums-account-abstraction-upgrade-became-an-2ide"
+              class="crayons-link crayons-link--contentful series-switcher__link series-switcher__link--active series-switcher__link--inbetween"
+              data-preload-image=""
+              id="collection-link-inbetween"
+              data-no-instant
+              title="View more">
+              <span class="series-switcher__num">...</span>
+              <span class="series-switcher__title">40 more parts...</span>
+            </a>
+
+          <a
+            href="/ohmygod/eip-7702-and-the-crimeenjoyor-epidemic-how-ethereums-account-abstraction-upgrade-became-an-2ide"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 15">
+            <span class="series-switcher__num">3</span>
+            <span class="series-switcher__title">EIP-7702 and the CrimeEnjoyor Epidemic: How Ethereum&#39;s Account Abstraction Upgrade Became an Attacker&#39;s Dream</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-step-finance-autopsy-how-a-40m-solana-protocol-died-from-compromised-laptops-not-buggy-code-4ce3"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 15">
+            <span class="series-switcher__num">4</span>
+            <span class="series-switcher__title">The Step Finance Autopsy: How a $40M Solana Protocol Died From Compromised Laptops, Not Buggy Code</span>
+          </a>
+
+          <a
+            href="/ohmygod/collateral-manipulation-in-defi-lending-how-venus-protocol-lost-37m-to-an-illiquid-token-exploit-2ppf"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 15">
+            <span class="series-switcher__num">5</span>
+            <span class="series-switcher__title">Collateral Manipulation in DeFi Lending: How Venus Protocol Lost $3.7M to an Illiquid Token Exploit</span>
+          </a>
+
+          <a
+            href="/ohmygod/beyond-property-testing-how-coverage-guided-fuzzing-is-rewriting-the-smart-contract-security-1efh"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 16">
+            <span class="series-switcher__num">6</span>
+            <span class="series-switcher__title">Beyond Property Testing: How Coverage-Guided Fuzzing Is Rewriting the Smart Contract Security Playbook in 2026</span>
+          </a>
+
+          <a
+            href="/ohmygod/solana-restaking-security-in-2026-the-hidden-risk-surface-of-ncns-vrts-and-the-coming-slashing-5ci4"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 16">
+            <span class="series-switcher__num">7</span>
+            <span class="series-switcher__title">Solana Restaking Security in 2026: The Hidden Risk Surface of NCNs, VRTs, and the Coming Slashing Era</span>
+          </a>
+
+          <a
+            href="/ohmygod/mev-protection-on-solana-in-2026-a-developers-complete-guide-to-defending-users-against-sandwich-3ci1"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 17">
+            <span class="series-switcher__num">8</span>
+            <span class="series-switcher__title">MEV Protection on Solana in 2026: A Developer&#39;s Complete Guide to Defending Users Against Sandwich Attacks</span>
+          </a>
+
+          <a
+            href="/ohmygod/inherited-poison-how-sagaevm-lost-7m-to-an-ethermint-precompile-bug-it-didnt-write-2plb"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 17">
+            <span class="series-switcher__num">9</span>
+            <span class="series-switcher__title">Inherited Poison: How SagaEVM Lost $7M to an Ethermint Precompile Bug It Didn&#39;t Write</span>
+          </a>
+
+          <a
+            href="/ohmygod/mcpwned-how-the-model-context-protocol-is-becoming-defis-newest-attack-surface-3cch"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 17">
+            <span class="series-switcher__num">10</span>
+            <span class="series-switcher__title">MCPwned: How the Model Context Protocol Is Becoming DeFi&#39;s Newest Attack Surface</span>
+          </a>
+
+          <a
+            href="/ohmygod/defi-circuit-breakers-in-2026-from-erc-7265-to-aave-shield-five-patterns-that-actually-work-4650"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 18">
+            <span class="series-switcher__num">11</span>
+            <span class="series-switcher__title">DeFi Circuit Breakers in 2026: From ERC-7265 to Aave Shield — Five Patterns That Actually Work</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-dtrinity-index-anomaly-how-772-usdc-became-48m-in-collateral-and-drained-a-defi-lending-2639"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 18">
+            <span class="series-switcher__num">12</span>
+            <span class="series-switcher__title">The dTRINITY Index Anomaly: How 772 USDC Became $4.8M in Collateral and Drained a DeFi Lending Protocol</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-solana-cpi-security-playbook-7-cross-program-invocation-patterns-that-prevent-nine-figure-7j6"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 18">
+            <span class="series-switcher__num">13</span>
+            <span class="series-switcher__title">The Solana CPI Security Playbook: 7 Cross-Program Invocation Patterns That Prevent Nine-Figure Exploits</span>
+          </a>
+
+          <a
+            href="/ohmygod/inside-the-venus-protocol-exploit-how-9-months-of-patience-and-a-donation-attack-bypassed-supply-42e7"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 18">
+            <span class="series-switcher__num">14</span>
+            <span class="series-switcher__title">Inside the Venus Protocol Exploit: How 9 Months of Patience and a Donation Attack Bypassed Supply Caps to Drain $3.7M</span>
+          </a>
+
+          <a
+            href="/ohmygod/eip-1153-transient-storage-security-traps-how-a-gas-optimization-killed-sirtrading-and-what-your-4ogi"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 19">
+            <span class="series-switcher__num">15</span>
+            <span class="series-switcher__title">EIP-1153 Transient Storage Security Traps: How a Gas Optimization Killed SIR.trading and What Your Reentrancy Guard Is Missing</span>
+          </a>
+
+          <a
+            href="/ohmygod/cpi-reentrancy-is-back-a-solana-developers-defense-playbook-for-token-2022-transfer-hooks-4p5m"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 19">
+            <span class="series-switcher__num">16</span>
+            <span class="series-switcher__title">CPI Reentrancy Is Back: A Solana Developer&#39;s Defense Playbook for Token-2022 Transfer Hooks</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-50m-swap-disaster-why-defi-frontends-need-circuit-breakers-not-just-checkboxes-j48"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 19">
+            <span class="series-switcher__num">17</span>
+            <span class="series-switcher__title">The $50M Swap Disaster: Why DeFi Frontends Need Circuit Breakers, Not Just Checkboxes</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-venus-protocol-donation-attack-how-9-months-of-patience-and-3-lines-of-missing-code-led-to-a-33of"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 20">
+            <span class="series-switcher__num">18</span>
+            <span class="series-switcher__title">The Venus Protocol Donation Attack: How 9 Months of Patience and 3 Lines of Missing Code Led to a $3.7M Extraction</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-transient-storage-trap-why-eip-1153-gas-savings-are-creating-a-new-generation-of-smart-2f57"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 22">
+            <span class="series-switcher__num">19</span>
+            <span class="series-switcher__title">The Transient Storage Trap: Why EIP-1153 Gas Savings Are Creating a New Generation of Smart Contract Vulnerabilities</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-venus-protocol-donation-attack-how-9-months-of-patience-bypassed-three-lines-of-defense-2cb8"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 23">
+            <span class="series-switcher__num">20</span>
+            <span class="series-switcher__title">The Venus Protocol Donation Attack: How 9 Months of Patience Bypassed Three Lines of Defense</span>
+          </a>
+
+          <a
+            href="/ohmygod/evmbench-and-the-arms-race-how-ai-agents-are-rewriting-smart-contract-security-and-what-44a"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 23">
+            <span class="series-switcher__num">21</span>
+            <span class="series-switcher__title">EVMbench and the Arms Race: How AI Agents Are Rewriting Smart Contract Security — And What Defenders Must Do Now</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-venus-protocol-donation-attack-how-an-attacker-turned-027-the-tokens-into-a-36m-payday-2712"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 23">
+            <span class="series-switcher__num">22</span>
+            <span class="series-switcher__title">The Venus Protocol Donation Attack: How an Attacker Turned $0.27 THE Tokens Into a $3.6M Payday</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-venus-protocol-donation-attack-how-a-9-month-setup-broke-three-lines-of-defense-313j"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 24">
+            <span class="series-switcher__num">23</span>
+            <span class="series-switcher__title">The Venus Protocol Donation Attack: How a 9-Month Setup Broke Three Lines of Defense</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-approval-paradox-how-swapnets-134m-arbitrary-call-exploit-exposes-defis-infinite-allowance-1nf9"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 24">
+            <span class="series-switcher__num">24</span>
+            <span class="series-switcher__title">The Approval Paradox: How SwapNet&#39;s $13.4M Arbitrary Call Exploit Exposes DeFi&#39;s Infinite Allowance Time Bomb</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-truebit-integer-overflow-how-a-forgotten-safemath-gap-turned-a-2021-contract-into-a-26m-atm-3f15"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 24">
+            <span class="series-switcher__num">25</span>
+            <span class="series-switcher__title">The Truebit Integer Overflow: How a Forgotten SafeMath Gap Turned a 2021 Contract Into a $26M ATM</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-makina-finance-exploit-how-280m-in-flash-loans-turned-a-curve-pool-oracle-into-a-4m-atm-22b9"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 24">
+            <span class="series-switcher__num">26</span>
+            <span class="series-switcher__title">The Makina Finance Exploit: How $280M in Flash Loans Turned a Curve Pool Oracle Into a $4M ATM</span>
+          </a>
+
+          <a
+            href="/ohmygod/owasp-smart-contract-top-10-2026-reentrancy-falls-to-8-proxy-bugs-enter-and-your-new-audit-57l"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 25">
+            <span class="series-switcher__num">27</span>
+            <span class="series-switcher__title">OWASP Smart Contract Top 10: 2026 — Reentrancy Falls to #8, Proxy Bugs Enter, and Your New Audit Priorities</span>
+          </a>
+
+          <a
+            href="/ohmygod/evmbench-openai-and-paradigms-new-benchmark-proves-ai-agents-can-exploit-71-of-smart-contract-1o8i"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 25">
+            <span class="series-switcher__num">28</span>
+            <span class="series-switcher__title">EVMbench: OpenAI and Paradigm&#39;s New Benchmark Proves AI Agents Can Exploit 71% of Smart Contract Vulns</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-venus-protocol-donation-attack-how-a-9-month-ambush-turned-a-145m-supply-cap-into-a-53m-3ef1"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 26">
+            <span class="series-switcher__num">29</span>
+            <span class="series-switcher__title">The Venus Protocol Donation Attack: How a 9-Month Ambush Turned a $14.5M Supply Cap Into a $53M Trojan Horse — And How to Donation-Proof Your Lending Fork</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-resolv-usr-stablecoin-exploit-how-a-compromised-off-chain-signer-let-an-attacker-mint-80m-97"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 26">
+            <span class="series-switcher__num">30</span>
+            <span class="series-switcher__title">The Resolv USR Stablecoin Exploit: How a Compromised Off-Chain Signer Let an Attacker Mint 80M Unbacked Tokens and Steal $25M</span>
+          </a>
+
+          <a
+            href="/ohmygod/mutation-testing-for-solidity-the-audit-quality-metric-your-protocol-is-ignoring-4bnc"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 28">
+            <span class="series-switcher__num">31</span>
+            <span class="series-switcher__title">Mutation Testing for Solidity: The Audit Quality Metric Your Protocol Is Ignoring</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-aave-capo-oracle-misfire-how-a-timestamp-ratio-desync-liquidated-26m-in-wsteth-a-deep-dive-c0n"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 28">
+            <span class="series-switcher__num">32</span>
+            <span class="series-switcher__title">The Aave CAPO Oracle Misfire: How a Timestamp-Ratio Desync Liquidated $26M in wstETH — A Deep Dive for DeFi Builders</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-7m-sagaevm-precompile-exploit-how-a-cross-chain-validation-bypass-minted-stablecoins-from-khn"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 29">
+            <span class="series-switcher__num">33</span>
+            <span class="series-switcher__title">The $7M SagaEVM Precompile Exploit: How a Cross-Chain Validation Bypass Minted Stablecoins From Thin Air</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-40m-step-finance-kill-how-compromised-executive-devices-bypassed-every-on-chain-defense-and-1bb"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 29">
+            <span class="series-switcher__num">34</span>
+            <span class="series-switcher__title">The $40M Step Finance Kill: How Compromised Executive Devices Bypassed Every On-Chain Defense — And a 7-Layer OpSec Playbook for Solana Treasury Teams</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-custom-detector-arms-race-building-slither-aderyn-and-semgrep-rules-that-catch-the-3jcg"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 29">
+            <span class="series-switcher__num">35</span>
+            <span class="series-switcher__title">The Custom Detector Arms Race: Building Slither, Aderyn, and Semgrep Rules That Catch the Vulnerability Patterns Default Scanners Miss</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-aave-v3-fork-vulnerability-epidemic-rounding-bugs-index-desync-and-a-260m-attack-surface-584c"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 29">
+            <span class="series-switcher__num">36</span>
+            <span class="series-switcher__title">The Aave V3 Fork Vulnerability Epidemic: Rounding Bugs, Index Desync, and a $260M Attack Surface</span>
+          </a>
+
+          <a
+            href="/ohmygod/omnistealer-how-blockchain-embedded-malware-turns-tron-aptos-and-bsc-into-an-unkillable-c2-2kee"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 30">
+            <span class="series-switcher__num">37</span>
+            <span class="series-switcher__title">Omnistealer: How Blockchain-Embedded Malware Turns TRON, Aptos, and BSC Into an Unkillable C2</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-composability-tax-how-defi-protocol-interactions-create-emergent-vulnerabilities-neither-f9o"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 30">
+            <span class="series-switcher__num">38</span>
+            <span class="series-switcher__title">The Composability Tax: How DeFi Protocol Interactions Create Emergent Vulnerabilities Neither Protocol Can Detect Alone</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-ai-exploit-agent-how-autonomous-ai-discovers-defi-vulnerabilities-at-050attempt-and-6-30m4"
+            class="crayons-link crayons-link--contentful series-switcher__link series-switcher__link--active series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 30">
+            <span class="series-switcher__num">39</span>
+            <span class="series-switcher__title">The AI Exploit Agent: How Autonomous AI Discovers DeFi Vulnerabilities at $0.50/Attempt — And 6 Defense Patterns</span>
+          </a>
+
+          <a
+            href="/ohmygod/read-only-reentrancy-the-silent-price-oracle-killer-every-defi-protocol-still-gets-wrong-2fb8"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 30">
+            <span class="series-switcher__num">40</span>
+            <span class="series-switcher__title">Read-Only Reentrancy: The Silent Price Oracle Killer Every DeFi Protocol Still Gets Wrong</span>
+          </a>
+
+          <a
+            href="/ohmygod/defi-time-bomb-vulnerabilities-how-forked-code-with-hidden-assumptions-has-cost-85m-in-2026--291"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 30">
+            <span class="series-switcher__num">41</span>
+            <span class="series-switcher__title">DeFi Time-Bomb Vulnerabilities: How Forked Code With Hidden Assumptions Has Cost $85M+ in 2026 — And a 5-Layer Detection Framework</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-679k-bce-burn-exploit-how-a-defective-burn-mechanism-drained-a-pancakeswap-pool-4g00"
+            class="crayons-link crayons-link--contentful series-switcher__link  series-switcher__link--hidden"
+            data-preload-image=""
+            title="Published Mar 30">
+            <span class="series-switcher__num">42</span>
+            <span class="series-switcher__title">The $679K BCE Burn Exploit: How a Defective Burn Mechanism Drained a PancakeSwap Pool</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-proxy-upgrade-kill-switch-why-owasp-sc10-means-your-upgradeable-contract-is-exploitable-4o32"
+            class="crayons-link crayons-link--contentful series-switcher__link  "
+            data-preload-image=""
+            title="Published Mar 30">
+            <span class="series-switcher__num">43</span>
+            <span class="series-switcher__title">The Proxy Upgrade Kill Switch: Why OWASP SC10 Means Your Upgradeable Contract Is Exploitable</span>
+          </a>
+
+          <a
+            href="/ohmygod/the-phantom-approval-how-erc-2612-permit-signatures-are-being-weaponized-to-drain-defi-wallets-31bf"
+            class="crayons-link crayons-link--contentful series-switcher__link  "
+            data-preload-image=""
+            title="Published Mar 30">
+            <span class="series-switcher__num">44</span>
+            <span class="series-switcher__title">The Phantom Approval: How ERC-2612 Permit Signatures Are Being Weaponized to Drain DeFi Wallets Without On-Chain Traces</span>
+          </a>
+    </div>
+  </nav>
+
+              <div class="below-post-bb body-billboard-container" data-async-url="/ohmygod/the-ai-exploit-agent-how-autonomous-ai-discovers-defi-vulnerabilities-at-050attempt-and-6-30m4/bmar11/post_body_bottom"></div>
+          </div>
+          <section id="comments" data-follow-button-container="true" data-updated-at="2026-04-01 04:16:07 UTC" class="text-padding mb-4 border-t-1 border-0 border-solid border-base-10">
+    <header class="relative flex justify-between items-center mb-6">
+      <div class="flex items-center">
+        <h2 class="crayons-subtitle-1">
+          Top comments <span class="js-comments-count" data-comments-count="0">(0)</span>
+        </h2>
+      </div>
+
+
+      <div id="comment-subscription" class="print-hidden">
+        <div class="crayons-btn-group">
+          <span class="crayons-btn crayons-btn--outlined">Subscribe</span>
+        </div>
+      </div>
+    </header>
+    <div id="billboard_delay_trigger"></div>
+    <div
+      id="comments-container"
+      data-testid="comments-container"
+      data-commentable-id="3428341"
+      data-commentable-type="Article"
+      data-has-recent-comment-activity="true">
+
+        <div id="response-templates-data" class="hidden"></div>
+
+
+<form class="comment-form print-hidden" id="new_comment" action="/comments" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" />
+
+  <input type="hidden" name="authenticity_token" value="NOTHING" id="new_comment_authenticity_token">
+
+    <input value="3428341" autocomplete="off" type="hidden" name="comment[commentable_id]" id="comment_commentable_id" />
+    <input value="Article" autocomplete="off" type="hidden" name="comment[commentable_type]" id="comment_commentable_type" />
+    
+
+  <span class="crayons-avatar m:crayons-avatar--l mr-2 shrink-0">
+    <img src="https://media2.dev.to/dynamic/image/width=256,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" width="32" height="32" alt="pic" class="crayons-avatar__image overflow-hidden" id="comment-primary-user-profile--avatar" loading="lazy" />
+  </span>
+  <div class="comment-form__inner">
+    <div class="comment-form__field" data-tracking-name="comment_form_textfield">
+      <textarea placeholder="Add to the discussion" onfocus="handleFocus(event)" onkeyup="handleKeyUp(event)" onkeydown="handleKeyDown(event)" oninput="handleChange(event)" id="text-area" required="required" class="crayons-textfield comment-textarea crayons-textfield--ghost" aria-label="Add a comment to the discussion" name="comment[body_markdown]">
+</textarea>
+
+    </div>
+
+    <div class="response-templates-container crayons-card crayons-card--secondary p-4 mb-4 comment-form__templates fs-base hidden">
+      <header class="mb-3">
+        <button type="button" class="crayons-btn personal-template-button active" data-target-type="personal" data-form-id="new_comment">Personal</button>
+        <button type="button" class="crayons-btn moderator-template-button hidden" data-target-type="moderator" data-form-id="new_comment">Trusted User</button>
+      </header>
+
+      <div class="personal-responses-container">
+      </div>
+      <div class="moderator-responses-container hidden">
+      </div>
+
+      <a target="_blank" rel="noopener nofollow" href="/settings/response-templates">
+        Create template
+      </a>
+      <p>Templates let you quickly answer FAQs or store snippets for re-use.</p>
+    </div>
+
+    <div class="comment-form__preview text-styles text-styles--secondary" id="preview-div"></div>
+
+    <div class="comment-form__buttons mb-4">
+      <button type="submit" class="crayons-btn mr-2 js-btn-enable" onclick="validateField(event)" data-tracking-name="comment_submit_button" disabled>Submit</button>
+      <button type="button" class="preview-toggle crayons-btn crayons-btn--secondary comment-action-preview js-btn-enable mr-2" data-tracking-name="comment_preview_button" disabled>Preview</button>
+      <a href="/404.html" class="dismiss-edit-comment crayons-btn crayons-btn--ghost js-btn-dismiss hidden">Dismiss</a>
+    </div>
+  </div>
+
+  <div class="code-of-conduct" id="toggle-code-of-conduct-checkbox"></div>
+</form>
+
+
+      <div class="comments" id="comment-trees-container">
+      </div>
+    </div>
+
+    <div class="align-center">
+
+
+  <nav class="fs-s align-center block" aria-label="Conduct controls">
+  <a href="/code-of-conduct" class="crayons-link crayons-link--secondary">Code of Conduct</a>
+  <span class="opacity-25 px-2" role="presentation">&bull;</span>
+  <a href="/report-abuse" class="crayons-link crayons-link--secondary">Report abuse</a>
+</nav>
+
+</div>
+
+</section>
+<div id="hide-comments-modal" class="hidden">
+  <form id="hide-comments-modal__form" class="hide-comments-modal__form" data-type="json" action="/comments/hide" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="_method" value="patch" autocomplete="off" /><input type="hidden" name="authenticity_token" value="O-CWiwSFzytRKmXF0crY_0XR_svColvDgnCBaS_hX6gRRswxGIGX8ljjP9yODoEG7gP0-Lo-xEC7vK0-FcvYJQ" autocomplete="off" />
+    <div class="hide-comments-modal__content">
+      <p class="pb-2">
+        Are you sure you want to hide this comment? It will become hidden in your post, but will still be visible via the comment's <a id="hide-comments-modal__comment-permalink" href="#">permalink</a>.
+      </p>
+      <label class="crayons-field crayons-field--checkbox my-2">
+        <input name="hide_children" type="hidden" value="0" autocomplete="off" /><input class="hide_children crayons-checkbox" type="checkbox" value="1" name="hide_children" id="hide_children" />
+        <p class="crayons-field__label">Hide child comments as well</p>
+      </label>
+      <p class="pb-4 pt-2">
+        <button type="submit" class="crayons-btn">
+          Confirm
+        </button>
+      </p>
+    </div>
+</form>  <p class="fs-s color-base-60">For further actions, you may consider blocking this person and/or <a id="hide-comments-modal__report-link" href="/report-abuse">reporting abuse</a></p>
+</div>
+
+
+
+        </article>
+
+        <div class="pb-4 crayons-layout__comments-billboard">
+          <div class="new-bb-container pb-4 crayons-layout__comments-billboard" data-async-url="/ohmygod/the-ai-exploit-agent-how-autonomous-ai-discovers-defi-vulnerabilities-at-050attempt-and-6-30m4/bmar11/post_comments"></div>
+        </div>
+
+          <!-- Bottom content skipped via SKIP_BOTTOM_CONTENT config -->
+      </div>
+    </main>
+
+    <aside class="crayons-layout__sidebar-right" aria-label="Author details">
+      <div class="crayons-article-sticky grid gap-4 pb-4 break-word" id="article-show-primary-sticky-nav">
+  <div class="crayons-card crayons-card--secondary branded-7 p-4 pt-0 gap-4 grid" style="border-top-color: #000000;">
+    <div class="-mt-4">
+  <a href="/ohmygod" class="flex">
+    <span class="crayons-avatar crayons-avatar--xl  mr-2 shrink-0">
+      <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3750445%2F38ad506e-4cd9-4f3c-b848-9391167fb580.png" class="crayons-avatar__image" alt="" loading="lazy" />
+    </span>
+    <span class="crayons-link crayons-subtitle-2 mt-5">
+      ohmygod
+      
+    </span>
+  </a>
+</div>
+
+<div class="print-hidden">
+  <button name="button" type="button" data-info="{&quot;className&quot;:&quot;User&quot;,&quot;style&quot;:&quot;&quot;,&quot;id&quot;:3750445,&quot;name&quot;:&quot;ohmygod&quot;}" class="crayons-btn follow-action-button whitespace-nowrap w-100 follow-user" aria-label="Follow user: ohmygod" aria-pressed="false">Follow</button>
+</div>
+
+  <div class="user-metadata-details">
+    <ul class="user-metadata-details-inner">
+      <li>
+        <div class="key">
+          Joined
+        </div>
+        <div class="value">
+          <time datetime="2026-02-03T11:25:05Z" class="date">Feb 3, 2026</time>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  </div>
+
+      <div class="crayons-card crayons-card--secondary">
+        <header class="crayons-card__header">
+          <h3 class="crayons-subtitle-2">
+            More from <a href="/ohmygod">ohmygod</a>
+          </h3>
+        </header>
+        <div>
+            <a class="crayons-link crayons-link--contentful" href="/ohmygod/aderyn-vs-slither-in-2026-the-rust-vs-python-static-analysis-showdown-that-decides-your-cicd-489d">
+              Aderyn vs Slither in 2026: The Rust-vs-Python Static Analysis Showdown That Decides Your CI/CD Pipeline&#39;s Future
+              <div class="crayons-link__secondary -ml-1">
+                  <span class="mr-1"><span class="opacity-50">#</span>solidity</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>security</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>ethereum</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>smartcontract</span>
+              </div>
+            </a>
+            <a class="crayons-link crayons-link--contentful" href="/ohmygod/the-dgld-cross-chain-minting-exploit-how-an-op-stack-bridge-vulnerability-let-attackers-print-4ffb">
+              The DGLD Cross-Chain Minting Exploit: How an OP Stack Bridge Vulnerability Let Attackers Print Gold-Backed Tokens From Nothing
+              <div class="crayons-link__secondary -ml-1">
+                  <span class="mr-1"><span class="opacity-50">#</span>security</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>web3</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>defi</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>blockchain</span>
+              </div>
+            </a>
+            <a class="crayons-link crayons-link--contentful" href="/ohmygod/the-proxy-upgrade-kill-switch-why-owasp-sc10-means-your-upgradeable-contract-is-exploitable-4o32">
+              The Proxy Upgrade Kill Switch: Why OWASP SC10 Means Your Upgradeable Contract Is Exploitable
+              <div class="crayons-link__secondary -ml-1">
+                  <span class="mr-1"><span class="opacity-50">#</span>security</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>solidity</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>defi</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>web3</span>
+              </div>
+            </a>
+        </div>
+      </div>
+</div>
+
+<div class="crayons-article-sticky grid gap-4 break-word sidebar-bb" data-async-url="/ohmygod/the-ai-exploit-agent-how-autonomous-ai-discovers-defi-vulnerabilities-at-050attempt-and-6-30m4/bmar11/post_sidebar"></div>
+
+    </aside>
+  </div>
+
+  <div class="mod-actions-menu print-hidden"></div>
+  <div data-testid="unpublish-post-modal-container" class="unpublish-post-modal-container hidden"></div>
+
+  <div class="fullscreen-code js-fullscreen-code"></div>
+  <script src="https://assets.dev.to/assets/billboard-365f8f60fc3506e63bc54cc5b0a2e36f4c11024ff6a30dccd5462467f24b5215.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/localizeArticleDates-70147c5c6bfe350b42e020ebb2a3dd37419d83978982b5a67b6389119bf162ac.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/articleReactions-1f2220b03b8ee48f0e9196d07b123ad5c5d942328819c33728eab4a4ff83150b.js" defer="defer"></script>
+
+  <script>
+    function activateRunkitTags() {
+  if (!areAnyRunkitTagsPresent())
+    return
+
+  var checkRunkit = setInterval(function() {
+    try {
+      dynamicallyLoadRunkitLibrary()
+
+      if (typeof(RunKit) === 'undefined') {
+        return
+      }
+
+      replaceTagContentsWithRunkitWidget()
+      clearInterval(checkRunkit);
+    } catch(e) {
+      console.error(e);
+      clearInterval(checkRunkit);
+    }
+  }, 200);
+}
+
+function isRunkitTagAlreadyActive(runkitTag) {
+  return runkitTag.querySelector("iframe") !== null;
+};
+
+function areAnyRunkitTagsPresent() {
+  var presentRunkitTags = document.getElementsByClassName("runkit-element");
+
+  return presentRunkitTags.length > 0
+}
+
+function replaceTagContentsWithRunkitWidget() {
+  var targets = document.getElementsByClassName("runkit-element");
+  for (var i = 0; i < targets.length; i++) {
+    if (isRunkitTagAlreadyActive(targets[i])) {
+      continue;
+    }
+
+    var wrapperContent = targets[i].textContent;
+    if (/^(<iframe src)/.test(wrapperContent) === false) {
+      if (targets[i].children.length > 0) {
+        var preamble = targets[i].children[0].textContent;
+        var content = targets[i].children[1].textContent;
+        targets[i].innerHTML = "";
+        var notebook = RunKit.createNotebook({
+          element: targets[i],
+          source: content,
+          preamble: preamble
+        });
+      }
+    }
+  }
+};
+
+function dynamicallyLoadRunkitLibrary() {
+  if (typeof(dynamicallyLoadScript) === "undefined")
+    return
+
+  dynamicallyLoadScript("//embed.runkit.com")
+}
+
+activateRunkitTags();
+
+  </script>
+  <div class="js-billboard-container pb-4 crayons-layout__comments-billboard" data-async-url="/ohmygod/the-ai-exploit-agent-how-autonomous-ai-discovers-defi-vulnerabilities-at-050attempt-and-6-30m4/bmar11/post_fixed_bottom"></div>
+
+
+    <div id="runtime-banner-container"></div>
+    <div id="i18n-translations" data-translations="{&quot;en&quot;:{&quot;core&quot;:{&quot;add_comment&quot;:&quot;Add comment&quot;,&quot;beta&quot;:&quot;beta&quot;,&quot;comment&quot;:&quot;Comment&quot;,&quot;copy_link&quot;:&quot;Copy link&quot;,&quot;edit_profile&quot;:&quot;Edit profile&quot;,&quot;follow&quot;:&quot;Follow&quot;,&quot;follow_back&quot;:&quot;Follow back&quot;,&quot;following&quot;:&quot;Following&quot;,&quot;like&quot;:&quot;Like&quot;,&quot;loading&quot;:&quot;loading...&quot;,&quot;reaction&quot;:&quot;Reaction&quot;,&quot;report_abuse&quot;:&quot;Report abuse&quot;,&quot;search&quot;:&quot;Search&quot;,&quot;success_settings&quot;:&quot;Successfully updated settings.&quot;,&quot;search_placeholder&quot;:&quot;Search...&quot;,&quot;search_find_related_posts&quot;:&quot;Find related posts...&quot;,&quot;search_powered_by&quot;:&quot;Powered by Algolia&quot;,&quot;search_submit_search&quot;:&quot;Submit search for advanced filtering.&quot;,&quot;search_displaying_recommendations&quot;:&quot;Displaying Algolia Recommendations — Start typing to search&quot;,&quot;article_form_save_changes&quot;:&quot;Save changes&quot;,&quot;article_form_schedule&quot;:&quot;Schedule&quot;,&quot;article_form_publish&quot;:&quot;Publish&quot;,&quot;article_form_loading_preview&quot;:&quot;Loading preview&quot;,&quot;article_form_preview_loaded&quot;:&quot;Preview loaded&quot;,&quot;comments_preview&quot;:&quot;Preview&quot;,&quot;comments_continue_editing&quot;:&quot;Continue editing&quot;,&quot;survey_enter_response&quot;:&quot;Enter your response here...&quot;,&quot;survey_thank_you_response&quot;:&quot;Thank you for your response.&quot;,&quot;survey_thank_you_completing&quot;:&quot;Thank you for completing the survey!&quot;,&quot;dashboard_analytics_readers&quot;:&quot;Readers&quot;,&quot;dashboard_analytics_comments&quot;:&quot;Comments&quot;,&quot;dashboard_analytics_reactions&quot;:&quot;Reactions&quot;,&quot;stats_by&quot;:&quot;by&quot;,&quot;editor_new_title&quot;:&quot;New post title here...&quot;,&quot;editor_body_placeholder&quot;:&quot;Write your post content here...&quot;,&quot;tags_field_label&quot;:&quot;Add up to 4 tags&quot;,&quot;tags_field_placeholder&quot;:&quot;Add up to 4 tags...&quot;,&quot;counted_organization&quot;:{&quot;one&quot;:&quot;%{count} organization&quot;,&quot;other&quot;:&quot;%{count} organizations&quot;},&quot;counted_user&quot;:{&quot;one&quot;:&quot;%{count} person&quot;,&quot;other&quot;:&quot;%{count} people&quot;},&quot;not_following&quot;:&quot;You&#39;re not following anyone&quot;,&quot;following_everyone&quot;:&quot;You&#39;re following %{details} (everyone)&quot;,&quot;you_are_following&quot;:&quot;You&#39;re following&quot;,&quot;and&quot;:&quot;and&quot;}}}"></div>
+  </div>
+</div>
+    
+
+<footer id="footer" class="crayons-footer print-hidden">
+  <div id="footer-container" class="crayons-footer__container">
+
+
+        <style>
+  .long-bb-body {
+    max-height: calc(100vh - 200px);
+    overflow: hidden;
+  }
+  .long-bb-bottom {
+    height: 180px;
+    background: linear-gradient(to top, var(--card-bg), transparent);
+    margin-top: -180px;
+    position:relative;
+    z-index: 5;
+  }
+</style>
+
+  <div
+    style=""
+    data-display-unit data-id="146443"
+    data-category-click="click"
+    data-category-impression="impression"
+    data-context-type="home"
+    data-special="nothing"
+    data-article-id=""
+    data-type-of="in_house">
+          <div class="crayons-card crayons-card--secondary crayons-bb bb-placement js-billboard" style="display: inline-flex; flex-direction: column; align-items: center; margin: 0 auto 2rem auto; width: fit-content; padding: 2rem;">
+        <p style="font-weight: bold; margin: 0 0 1rem 0;">
+            💎 DEV Diamond Sponsors
+        </p>
+        <p style="font-size: 0.8em; margin: 0 0 2rem 0;">
+            Thank you to our Diamond Sponsors for supporting the DEV Community
+        </p>
+    
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://aistudio.google.com/?utm_source=partner&amp;utm_medium=partner&amp;utm_campaign=FY25-Global-DEVpartnership-sponsorship-AIS&amp;utm_content=-&amp;utm_term=-&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fxjlyhbdqehj3akhz166w.png" alt="Google AI - Official AI Model and Platform Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 54px; padding: 10px;" loading="lazy" width="2048" height="472">
+                </a>
+                <p style="text-align: center;">Google AI is the official AI Model and Platform Partner of DEV</p>
+            </div>
+
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://neon.tech/?ref=devto&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fbnl88cil6afxzmgwrgtt.png" alt="Neon - Official Database Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 60px; padding: 10px;" loading="lazy" width="2286" height="596">
+                </a>
+                <p style="text-align: center;">Neon is the official database partner of DEV</p>
+            </div>
+    
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://www.algolia.com/developers/?utm_source=devto&amp;utm_medium=referral&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fv30ephnolfvnlwgwm0yz.png" alt="Algolia - Official Search Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 60px; padding: 10px;" loading="lazy" width="2286" height="596">
+                </a>
+                <p style="text-align: center;">Algolia is the official search partner of DEV</p>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+    <p class="fs-s crayons-footer__description">
+      <a class="c-link c-link--branded fw-medium" aria-label="DEV Community Home" href="/">DEV Community</a> — Your community HQ
+    </p>
+
+    <ul class="footer__nav-links flex gap-2 justify-center flex-wrap fs-s p-0" style="" />
+        <li class="footer__nav-link flex items-center">
+    <a href="/">
+      Home
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/about">
+      About
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/contact">
+      Contact
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://mlh.io/">
+      MLH
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+
+    </ul>
+
+    <ul class="footer__nav-links flex gap-2 justify-center flex-wrap fs-s p-0" style="" />
+        <li class="footer__nav-link flex items-center">
+    <a href="/code-of-conduct">
+      Code of Conduct
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/privacy">
+      Privacy Policy
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/terms">
+      Terms of Use
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+
+    </ul>
+
+    <div class="fs-s">
+      <p>Built on <a class="c-link c-link--branded" target="_blank" rel="noopener" href="https://www.forem.com">Forem</a> — the <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/t/opensource">open source</a> software that powers <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to">DEV</a> and other inclusive communities.</p>
+      <p>Made with love and <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/t/rails">Ruby on Rails</a>. DEV Community <span title="copyright">&copy;</span> 2016 - 2026.</p>
+    </div>
+  </div>
+</footer>
+<div id="snack-zone"></div>
+
+    <div id="global-signup-modal" class="authentication-modal hidden">
+  <div class="authentication-modal__container">
+    <figure class="authentication-modal__image-container">
+      <img class="authentication-modal__image" src="https://media2.dev.to/dynamic/image/width=190,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+        alt="DEV Community" loading="lazy" />
+    </figure>
+    <div class="authentication-modal__content">
+      <p class="authentication-modal__description">
+          We&#39;re a place where coders share, stay up-to-date and grow their careers.
+      </p>
+    </div>
+    <div class="authentication-modal__actions">
+      <a href="https://dev.to/enter?signup_subforem=1" class="crayons-btn" aria-label="Log in" data-no-instant>
+        Log in
+      </a>
+      <a href="https://dev.to/enter?signup_subforem=1&amp;state=new-user" class="crayons-btn crayons-btn--ghost-brand js-global-signup-modal__create-account" aria-label="Create new account" data-no-instant>
+        Create account
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="https://assets.dev.to/assets/signupModalShortcuts-0b25469b985100a01e94cbd7fccaf7f0a4d776e129aac65c766aa32cb28ab29a.js" defer="defer"></script>
+
+    <div id="cookie-consent"></div>
+  <div id="reaction-category-resources" class="hidden" aria-hidden="true">
+    <img data-name="Like" data-slug="like" data-position="1" src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+    <img data-name="Unicorn" data-slug="unicorn" data-position="2" src="https://assets.dev.to/assets/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" width="18" height="18" />
+    <img data-name="Exploding Head" data-slug="exploding_head" data-position="3" src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" width="18" height="18" />
+    <img data-name="Raised Hands" data-slug="raised_hands" data-position="4" src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="18" height="18" />
+    <img data-name="Fire" data-slug="fire" data-position="5" src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+</div>
+
+    <script>
+  var userSignedIn = false;
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    initAuth();
+  } else {
+    document.addEventListener('DOMContentLoaded', initAuth);
+  }
+
+  function initAuth() {
+    var paramToken = new URLSearchParams(window.location.search).get('jwt');
+
+    if (paramToken && !userSignedIn) {
+      authenticateUser(paramToken);
+    } else {
+      var iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = 'https://forem.com/auth_pass/iframe';
+  
+      document.body.appendChild(iframe);
+  
+      window.addEventListener('message', function(event) {
+        if (event.origin !== 'https://forem.com' && event.origin !== window.location.origin) {
+          return;
+        }
+  
+        var data = event.data;
+  
+        if (data.authenticated && !userSignedIn) {
+          authenticateUser(data.token);
+        } else if(data.authenticated && window.ReactNativeWebView && window.ReactNativeWebView.postMessage) {
+          window.ReactNativeWebView.postMessage(JSON.stringify({
+            action: 'login',
+            token: data.token,
+          }));
+        }
+      });  
+    }
+
+    function authenticateUser(token) {
+      fetch('/auth_pass/token_login', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': getMetaContent('csrf-token'),
+        },
+        body: JSON.stringify({ token: token }),
+      })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        if (data.success) {
+          if (document.head.querySelector('meta[name="user-signed-in"][content="false"]')) {
+            // Reload the page to update the user's state
+            location.reload();
+          }
+        }
+      })
+      .catch(function(error) {
+        console.error('Error during authentication:', error);
+      });
+    }
+
+    function getMetaContent(name) {
+      var element = document.querySelector('meta[name="' + name + '"]');
+      return element ? element.getAttribute('content') : '';
+    }
+  }
+</script>
+
+  
+  
+  
+  </body>
+  </html>

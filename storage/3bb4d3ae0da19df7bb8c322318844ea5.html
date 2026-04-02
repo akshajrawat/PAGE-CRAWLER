@@ -1,0 +1,372 @@
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Tailwinds cdn is a placeholder before adding auto compiling of inline tailwind -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <title>Forem Pro Tools for DEV</title>
+    </head>
+    <body>
+      <meta property="og:image" content="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/u0zb0y8glbelmo0z1c6c.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Roboto:wght@400;500;700;900&family=Zen+Kaku+Gothic+Antique:wght@500;700;900&display=block"
+    rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Lato', sans-serif !important;
+      font-family: 'Roboto', sans-serif;
+      font-family: 'Zen Kaku Gothic Antique', sans-serif;;
+    }
+ad
+  </style>
+
+  <div class="bg-[#f7f9fc]">
+    <!-- Blue BG Header -->
+    <div
+      class="bg-gradient-to-br from-[#20243b] to-blue-900 px-4">
+      <div class="flex items-start justify-between py-1">
+        <div class="flex items-center flex-wrap">
+          <a class="p-6" href="/">
+            <svg class="" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" height="25"
+              viewBox="0 0 1090.47 227.92">
+              <path
+                d="M1022.12,16.43a7.08,7.08,0,0,0-10,0l-21.7,21.7L963.68,64.85l-.54.54-.55-.54L935.88,38.13l-21.71-21.7a7.07,7.07,0,0,0-10,0l-16.7,16.7a7.09,7.09,0,0,0,0,10l21.71,21.71,26.71,26.71,21.7,21.7a8.55,8.55,0,0,0,11.11,0l21.71-21.7,26.71-26.71,21.7-21.71a7.07,7.07,0,0,0,0-10Z" />
+              <path
+                d="M866.5,1.1H842.89c-3.91,0-7.08,9.51-7.08,21.25V206.51c0,11.73,3.17,21.25,7.08,21.25H866.5c3.91,0,7.08-9.52,7.08-21.25V22.35C873.58,10.61,870.41,1.1,866.5,1.1Z" />
+              <path
+                d="M1083.39,1.1h-23.61c-3.92,0-7.09,9.51-7.09,21.25V206.51c0,11.73,3.17,21.25,7.09,21.25h23.61c3.91,0,7.08-9.52,7.08-21.25V22.35C1090.47,10.61,1087.3,1.1,1083.39,1.1Z" />
+              <rect y="1.26" width="151.11" height="37.78" rx="7.08" />
+              <rect y="76.82" width="151.11" height="37.78" rx="7.08" />
+              <path
+                d="M7.08,152.37A7.08,7.08,0,0,0,0,159.45v61.39a7.08,7.08,0,0,0,7.08,7.08H30.69a7.08,7.08,0,0,0,7.09-7.08V159.45a7.08,7.08,0,0,0-7.09-7.08Z" />
+              <rect x="637.92" y="1.26" width="151.11" height="37.78" rx="7.08" />
+              <rect x="637.92" y="95.7" width="151.11" height="37.78" rx="7.08" />
+              <rect x="637.92" y="190.15" width="151.11" height="37.78" rx="7.08" />
+              <path
+                d="M347.72,94.44a7,7,0,0,1-7-6.19,56.54,56.54,0,0,0-112.39,0,7,7,0,0,1-7,6.19H197.43a7,7,0,0,1-7.07-7.51,94.44,94.44,0,0,1,188.29,0,7,7,0,0,1-7.07,7.51Z" />
+              <path
+                d="M528.29,140.87a87.35,87.35,0,0,1,80.1,80.1,6.51,6.51,0,0,1-6.54,6.95H579.79a6.49,6.49,0,0,1-6.49-5.72A52.3,52.3,0,0,0,527.06,176a6.49,6.49,0,0,1-5.72-6.49V147.41A6.51,6.51,0,0,1,528.29,140.87Z" />
+              <path
+                d="M221.29,133.48a7,7,0,0,1,7,6.19,56.54,56.54,0,0,0,112.39,0,7,7,0,0,1,7-6.19h23.86a7,7,0,0,1,7.07,7.52,94.45,94.45,0,0,1-188.29,0,7,7,0,0,1,7.07-7.52Z" />
+              <path
+                d="M491.12,91H465.87a7.08,7.08,0,0,1-7.08-7.08V46.12A7.08,7.08,0,0,1,465.87,39h25.25A7.08,7.08,0,0,0,498.2,32V8.35a7.08,7.08,0,0,0-7.08-7.09h-63A7.08,7.08,0,0,0,421,8.35V220.84a7.08,7.08,0,0,0,7.08,7.08h23.62a7.08,7.08,0,0,0,7.08-7.08V133.48a4.72,4.72,0,0,1,4.72-4.72h27.61a7.08,7.08,0,0,0,7.08-7.08V98.06A7.08,7.08,0,0,0,491.12,91Z" />
+              <path
+                d="M521.34,97.29a7,7,0,0,1,5.43-6.88,26,26,0,0,0,0-50.8,7,7,0,0,1-5.43-6.88V8.8a7.11,7.11,0,0,1,8-7,63.75,63.75,0,0,1,0,126.5,7.11,7.11,0,0,1-8-7Z" />
+            </svg>
+          </a>
+          <div class="ml-6 md:ml-6 flex hidden sm:block">
+            <a href="/pricing" class="text-white text-2xl mr-8 md:mr-8">Pricing</a>
+            <a href="/faq" class="text-white text-2xl">FAQ</a>
+          </div>
+        </div>
+        <div class="flex items-center justify-end p-3">
+          <p class="hidden md:block text-base leading-[140%] font-medium text-blue-50">Already a PRO Tools User?</p>
+          <a href="/users/sign_in"
+            class="whitespace-nowrap px-6 py-2 ml-3 text-base capitalize leading-[160%] text-[#312E81] font-bold bg-[#E0E7FF] rounded-2xl border-[3px] border-solid border-[#EEF2FF] border-opacity-30 transition ease-in-out duration-300 hover:border-[#6366F1]">Sign
+            In</a>
+        </div>
+      </div>
+      <div class="text-center py-10 md:py-[12vh]">
+        <h1 class="text-2xl md:text-6xl lg:text-[90px] font-bold inline-block mx-auto p-2 rounded-lg font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-50 to-purple-300">
+          Reach the
+          <img class="rotate-6 align-middle inline-block lg:mx-2 h-24 w-24 lg:h-36 lg:w-36 p-3 md:p-0"
+            src="https://pro.forem.tools/assets/landing_pages/Logo-5cb92b8b32cbe585bd5860b2b68232d5b74e1ad0e3f814ecf1c0943f1a22363d.svg" />
+          community
+        </h1>
+        <h2 class="text-2xl md:text-3xl font-bold mt-4 md:mt-12 text-gray-100 p-3">
+          Exclusive Performance-Driven Marketing for the Developer Ecosystem
+        </h2>
+		<h3 class="text-lg md:text-xl hidden md:block font-extralight mt-1 text-gray-200 p-3">
+			Built with open source trust, transparency and privacy.
+		<h3>
+        <a href="/users/sign_up"
+          class="shadow-lg  inline-block mx-auto mt-4 md:mt-20 bg-white text-[#20243b] text-2xl md:text-4xl font-bold rounded-full px-12 py-3 md:py-6">Create
+          Your Free Account</a>
+        <p class="mt-10 text-white text-base md:text-xl">
+          Welcome bonus of <strong class="font-bold">10,000 free impressions</strong> with first purchase
+          <sup><a href="/pricing" class="text-white text-sm">[1]</a></sup>
+        </p>
+      </div>
+
+    </div>
+	<div class="bg-gradient-to-r from-[#ebfffe] to-[#c8cbf7] text-center py-40 px-1 lg:px-8 text-2xl lg:text-3xl font-black text-slate-900 border-b-4 border-dashed border-b-[#c8cbf7] leading-[180%] px-4">
+		<p class="italic leading-normal">
+          "DEV's ad platform has been a key channel to help us reach real builders looking to jump into the blockchain ecosystem. The platform allows for great targeting and rapid creative iteration."
+		</p>
+        <p class="mt-10 text-2xl font-medium text-slate-700">Lief Storer, Director of Digital Marketing at Stellar Development Foundation</p>
+	</div>
+
+    <div class="px-2 lg:px-8 mt-0 max-w-7xl mx-auto">
+
+      <!-- Box 0 -->
+      <div
+        class="flex flex-col md:flex-row items-center p-2 py-8 md:py-16 mt-12 rounded md:items-start bg-[#fafbfc] border border-dashed border-gray-300">
+        <div class="md:w-7/12 flex flex-col justify-center items-start md:text-left md:pr-8 pl-8">
+          <h3 class="text-gray-800 text-xl md:text-5xl font-black">
+            <span class="pt-4 md:pt-0">What is Pro Tools?</span>
+          </h3>
+          <div class="max-w-md m-auto md:max-w-full text-lg lg:text-xl text-gray-700 mt-6">
+          <p class="py-4">
+			Pro Tools unlocks <strong class="font-bold">advanced functionality</strong> for your organization on DEV.
+		  </p>
+          <p class="py-4">
+			Pro Tools gives you free access to advanced insights to better understand what developers are connecting with, and advertising tools to lean in on the messages that are working.
+		  </p>
+          <p class="py-4">
+             <a href="/users/sign_up" class="font-bold text-blue-600 underline">Create your free acount</a> to
+            get
+            started.
+          </p>
+          </div>
+        </div>
+        <div class="md:w-5/12 mt-8 md:mt-0 flex justify-center p-4">
+          <img class="rounded-md border border-dashed border-gray-300 p-2 w-full object-contain md:mx-0"
+            src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/c3tttgtm2t0441jg7uma.png"
+            alt="image">
+        </div>
+      </div>
+
+
+      <!-- Box 1 -->
+      <div
+        class="flex flex-col md:flex-row items-center p-2 py-8 md:py-16 mt-12 rounded md:items-start bg-[#fafbfc] border border-dashed border-gray-300">
+        <div class="md:w-1/2 mt-8 md:mt-0 flex justify-center p-4">
+          <img class="rounded-md border border-dashed border-gray-300 p-2 w-full object-contain md:mx-0"
+            src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/577o5cqguhr983xxwznx.png"
+            alt="image">
+        </div>
+        <div class="md:w-1/2 flex flex-col justify-center items-start md:text-left md:pr-8 pl-8">
+          <h3 class="text-gray-800 text-xl md:text-5xl font-black">
+            <span class="pt-4 md:pt-0">Exclusive Advertising Access</span>
+          </h3>
+          <p class="max-w-md m-auto md:max-w-full text-base lg:text-xl text-gray-700 mt-4">
+            Use of our <strong class="font-bold">native Billboards</strong> is limited to Pro Tools users. Create
+            your account to start reaching a thriving community of developers on
+            DEV.
+		  </p>
+          <p class="max-w-md m-auto md:max-w-full text-base lg:text-xl text-gray-700 mt-4">
+			Highlight your content, brand, and products to the 1+ million registered developers and
+            <strong class="font-bold"> 15 million monthly unique visitors</strong> that spend time in the community.
+            <br><br>
+            <a href="/pricing" class="font-bold text-blue-500 underline">Pricing Info & Welcome Offer</a>
+        </div>
+      </div>
+
+
+
+      <!-- Box 2 -->
+      <div
+        class="flex flex-col md:flex-row items-center p-2 py-8 md:py-16 mt-12 rounded md:items-start bg-[#fafbfc] border border-dashed border-gray-300">
+        <div class="md:w-1/2 flex flex-col justify-center items-start md:text-left md:pr-8 pl-8">
+          <h3 class="text-gray-800 text-xl md:text-5xl font-black">
+            <span class="pt-4 md:pt-0">CTAs on Your Articles</span>
+          </h3>
+          <p class="max-w-md m-auto md:max-w-full text-base lg:text-xl text-gray-700 mt-4">
+            Enable unlimited billboards alongside your organization's own posts to strengthen your message. <br>
+            <br> What's more: you
+            can test different messages across different tags to find <strong class="font-bold">which variants are
+              resonating</strong>.
+          </p>
+        </div>
+        <div class="md:w-1/2 mt-8 md:mt-0 flex justify-center p-4">
+          <img class="rounded-md border border-dashed border-gray-300 p-2 w-full object-contain md:mx-0"
+            src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/qex64aqvuzkd4vddct1y.png"
+            alt="image">
+        </div>
+      </div>
+
+      <!-- Box 3 -->
+      <div
+        class="flex flex-col md:flex-row items-center p-2 py-8 md:py-16 mt-12 rounded md:items-start bg-[#fafbfc] border border-dashed border-gray-300">
+        <div class="md:w-1/2 mt-8 md:mt-0 flex justify-center p-4">
+          <img class="rounded-md border border-dashed border-gray-300 p-2 w-full object-contain md:mx-0"
+            src="https://res.cloudinary.com/practicaldev/image/fetch/s--twCHoMbh--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_800/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/m3e71z5fr67cuuu5y315.png"
+            alt="image">
+        </div>
+        <div class="md:w-1/2 flex flex-col justify-center items-start md:text-left md:pr-8 pl-8">
+          <h3 class="text-gray-800 text-xl md:text-5xl font-black">
+            <span class="pt-4 md:pt-0">Advanced Analytics</span>
+          </h3>
+          <p class="max-w-md m-auto md:max-w-full text-base lg:text-xl text-gray-700 mt-4">
+            Dive deeper into the day-to-day performance across your organization's content. <br><br> Develop a
+            deeper view into what content
+            is
+            resonating with the community broadly. <br><br> Leverage the exclusive <strong class="font-bold">analytics
+              API</strong>
+            available only to Pro Tools users to slice/dice in the system of your choice.
+          </p>
+        </div>
+      </div>
+
+      <a href="/users/sign_up"
+        class="shadow-lg  inline-block mx-auto bg-slate-800 text-white text-2xl md:text-4xl font-bold rounded-full px-12 py-6 mt-12">Get
+        Started</a>
+
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="lg:px-[48px] xl:px-[72px] 2xl:px-[128px] mx-auto lg:mb-[48px]">
+      <div class="section-card px-6 mt-4 pt-6 md:mt-[24px] md:pt-[48px] md:px-[48px] xl:px-[72px]">
+        <div class="flex justify-start items-start md:items-center flex-col md:flex-row mb-6 md:mb-[40px]">
+          <div class="mb-4 md:mb-0 md:mr-6">
+            <a href="/">
+              <img src="/assets/landing_pages/Logo-5cb92b8b32cbe585bd5860b2b68232d5b74e1ad0e3f814ecf1c0943f1a22363d.svg"
+                alt="logo">
+            </a>
+          </div>
+          <div>
+            <p class="text-[18px] md:text-[20px] leading-[160%] font-normal text-[#737373]">
+              A constructive and inclusive social network for software developers.
+            </p>
+            <p class="text-[18px] md:text-[20px] leading-[160%] font-normal text-[#737373]">
+              With you every step of your journey.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5">
+          <div>
+            <ul class="text-base md:text-lg font-normal leading-[140%] text-[#171717]">
+              <li class="mb-[12px]">
+                <a href="https://dev.to"
+                  class="block transition ease-in-out duration-300 hover:text-[#4F46E5] hover:underline">
+                  Home
+                </a>
+              </li>
+              <li class="mb-[12px]">
+                <a href="https://dev.to/listings"
+                  class="block transition ease-in-out duration-300 hover:text-[#4F46E5] hover:underline">
+                  Listings
+                </a>
+              </li>
+              <li class="mb-[12px]">
+                <a href="https://dev.to/podcasts"
+                  class="block transition ease-in-out duration-300 hover:text-[#4F46E5] hover:underline">
+                  Podcasts
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <ul class="text-base md:text-lg font-normal leading-[140%] text-[#171717]">
+              <li class="mb-[12px]">
+                <a href="https://dev.to/videos"
+                  class="block transition ease-in-out duration-300 hover:text-[#4F46E5] hover:underline">
+                  Videos
+                </a>
+              </li>
+              <li class="mb-[12px]">
+                <a href="https://dev.to/tags"
+                  class="block transition ease-in-out duration-300 hover:text-[#4F46E5] hover:underline">
+                  Tags
+                </a>
+              </li>
+              <li class="mb-[12px]">
+                <a href="https://dev.to/faq"
+                  class="block transition ease-in-out duration-300 hover:text-[#4F46E5] hover:underline">
+                  FAQs
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <ul class="text-base md:text-lg font-normal leading-[140%] text-[#171717]">
+              <li class="mb-[12px]">
+                <a href="https://shop.dev.to"
+                  class="block transition ease-in-out duration-300 hover:text-[#4F46E5] hover:underline">
+                  Forem shop
+                </a>
+              </li>
+              <li class="mb-[12px]">
+                <a href="https://dev.to/sponsors"
+                  class="block transition ease-in-out duration-300 hover:text-[#4F46E5] hover:underline">
+                  Sponsors
+                </a>
+              </li>
+              <li class="mb-[12px]">
+                <a href="https://dev.to/about"
+                  class="block transition ease-in-out duration-300 hover:text-[#4F46E5] hover:underline">
+                  About
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <ul class="text-base md:text-lg font-normal leading-[140%] text-[#171717]">
+              <li class="mb-[12px]">
+                <a href="https://dev.to/contact"
+                  class="block transition ease-in-out duration-300 hover:text-[#4F46E5] hover:underline">
+                  Contact
+                </a>
+              </li>
+              <li class="mb-[12px]">
+                <a href="https://dev.to/guides"
+                  class="block transition ease-in-out duration-300 hover:text-[#4F46E5] hover:underline">
+                  Guides
+                </a>
+              </li>
+              <li class="mb-[12px]">
+                <a href="https://dev.to/software-comparisons"
+                  class="block transition ease-in-out duration-300 hover:text-[#4F46E5] hover:underline">
+                  Software comparisons
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <ul class="text-base md:text-lg font-normal leading-[140%] text-[#171717]">
+              <li class="mb-[12px]">
+                <a href="https://dev.to/code-of-conduct"
+                  class="block transition ease-in-out duration-300 hover:text-[#4F46E5] hover:underline">
+                  Code of Conduct
+                </a>
+              </li>
+              <li class="mb-[12px]">
+                <a href="https://dev.to/privacy"
+                  class="block transition ease-in-out duration-300 hover:text-[#4F46E5] hover:underline">
+                  Privacy Policy
+                </a>
+              </li>
+              <li class="mb-[12px]">
+                <a href="https://dev.to/terms"
+                  class="block transition ease-in-out duration-300 hover:text-[#4F46E5] hover:underline">
+                  Terms of Use
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div
+          class="flex justify-center md:justify-start items-center flex-col md:flex-row mt-[28px] mb-6 md:mb-[40px] lg:mb-[50px]">
+          <div class="mb-2 md:mb-0 py-[9px] px-4 rounded-[32px] bg-[#FAFAFA] border border-solid border-[#E5E5E5] mr-4">
+            <h3 class="text-base leading-[140%] text-[#171717] font-black">Built on Forem</h3>
+          </div>
+          <p class="text-base leading-[20px] font-normal text-[#737373] md:text-left">
+            the <a href="https://dev.to/t/opensource" target="_blank"
+              class="underline transition ease-in-out duration-300 hover:text-[#4F46E5]">open source</a>
+            software that powers DEV and other inclusive communities. </p>
+        </div>
+
+        <div class="pb-6 md:pb-[32px]">
+          <div class="h-[1px] w-full bg-gradient-to-r from-[#FAFAFA] via-[#DBDBDB] to-[#FAFAFA]"></div>
+          <p class="text-base leading-[20px] font-normal text-[#737373] mt-6 md:mt-[32px]">
+            Made with ❤️ and <a href="https://dev.to/t/rails" target="_blank"
+              class="underline transition ease-in-out duration-300 hover:text-[#4F46E5]">Ruby on Rails</a>.
+            DEV Community 👩‍💻👨‍💻 &copy; 2016 - 2023</p>
+        </div>
+      </div>
+    </footer>
+    <!-- END Footer -->
+  </div>
+    </body>
+  </html>

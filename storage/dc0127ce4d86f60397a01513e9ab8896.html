@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>ZeroClaw: A Minimal Rust-Based AI Agent Framework for Self-Hosted Systems - DEV Community</title>
+    
+    <link rel="preload" href="/reactions?article_id=3330772" as="fetch" crossorigin="same-origin">
+    <link rel="canonical" href="https://dev.to/lightningdev123/zeroclaw-a-minimal-rust-based-ai-agent-framework-for-self-hosted-systems-5593" />
+    <meta name="description" content="Self-hosted AI agents are becoming increasingly popular among developers who want control over their... Tagged with agents, ai, performance, rust.">
+    <meta name="keywords" content="agents, ai, performance, rust, software, coding, development, engineering, inclusive, community">
+
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://dev.to/lightningdev123/zeroclaw-a-minimal-rust-based-ai-agent-framework-for-self-hosted-systems-5593" />
+    <meta property="og:title" content="ZeroClaw: A Minimal Rust-Based AI Agent Framework for Self-Hosted Systems" />
+    <meta property="og:description" content="Self-hosted AI agents are becoming increasingly popular among developers who want control over their..." />
+    <meta property="og:site_name" content="DEV Community" />
+    <meta name="twitter:site" content="@thepracticaldev">
+    <meta name="twitter:creator" content="@LightningD11921">
+    <meta name="twitter:title" content="ZeroClaw: A Minimal Rust-Based AI Agent Framework for Self-Hosted Systems">
+    <meta name="twitter:description" content="Self-hosted AI agents are becoming increasingly popular among developers who want control over their...">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:widgets:new-embed-design" content="on">
+    <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+      <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fuzgbpfsm1ntqiixif9s0.png" />
+      <meta name="twitter:image:src" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fuzgbpfsm1ntqiixif9s0.png">
+
+      <meta name="last-updated" content="2026-03-31 12:23:30 UTC">
+      <meta name="user-signed-in" content="false">
+      <meta name="head-cached-at" content="1774959810">
+      <meta name="environment" content="production">
+      <link rel="stylesheet" href="https://assets.dev.to/assets/minimal-102395aec70cbac5f7d0bd5bebb5b56f0459629c5d224dae16333f11604cbad3.css" media="all" id="main-minimal-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/views-daf614dcfafed4955d7758a6a86d63bfbb1e8d4eae8b6317b421e18a99bbe867.css" media="all" id="main-views-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/crayons-8fce708625aacc3ff4a4d4947252a1cfab954753bb082374c0bed738861b52f2.css" media="all" id="main-crayons-stylesheet" />
+
+      <script src="https://assets.dev.to/assets/base-0c748bbcdc30041261c326ef2ce931fbce46c58bc3c488da881ae35c4750941d.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/application-0b268684912bef9b0f23defff01cb608bfc5d5e5610287725e7b686139ae32d3.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/baseInitializers-2f0777a6d67046056f9f42665560ce072de3801292674358ddbad6e135c1891d.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/baseTracking-b6bf73e5ee66633e151e7d5b7c6bbccedfa4c59e3615be97b98c4c0f543ddae7.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/followButtons-a29380c2c88136b97b2b5e63e94614ff7458fc72e07cffa7b6153831c28a40d2.js" defer="defer"></script>
+
+        <meta name="search-script" content="https://assets.dev.to/assets/Search-b977aea0f2d7a5818b4ebd97f7d4aba8548099f84f5db5761f8fa67be76abc54.js">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+      <link rel="icon" type="image/x-icon" href="https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" />
+      <link rel="apple-touch-icon" href="https://media2.dev.to/dynamic/image/width=180,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="https://media2.dev.to/dynamic/image/width=152,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="https://media2.dev.to/dynamic/image/width=180,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="167x167" href="https://media2.dev.to/dynamic/image/width=167,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link href="https://media2.dev.to/dynamic/image/width=192,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" rel="icon" sizes="192x192" />
+      <link href="https://media2.dev.to/dynamic/image/width=128,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" rel="icon" sizes="128x128" />
+      <meta name="apple-mobile-web-app-title" content="dev.to">
+      <meta name="application-name" content="dev.to">
+      <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+      <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+      <link rel="search" href="https://dev.to/open-search.xml" type="application/opensearchdescription+xml" title="DEV Community" />
+
+      <meta property="forem:name" content="DEV Community" />
+      <meta property="forem:logo" content="https://media2.dev.to/dynamic/image/width=512,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" />
+      <meta property="forem:domain" content="dev.to" />
+    <style>
+.ltag__link--embedded img.subscription-icon {
+max-height: 13px !important;
+max-width: 21px !important;
+display: inline-block !important;
+border-radius: 0 !important;
+}
+.text-styles .crayons-article__context-note p {
+margin-bottom: 0 !important;
+}
+</style>
+  </head>
+    <body
+      class="sans-serif-article-body default-header"
+      data-user-status="logged-out"
+      data-is-root-subforem="false"
+        data-subforem-id="1"
+      data-side-nav-visible="true"
+      data-community-name="DEV Community"
+      data-subscription-icon="https://assets.dev.to/assets/subscription-icon-805dfa7ac7dd660f07ed8d654877270825b07a92a03841aa99a1093bd00431b2.png"
+      data-locale="en"
+      data-honeybadger-key="hbp_nqu4Y66HuEKlD6YRGssZuRQnPOjDm50J8Zkr"
+      data-deployed-at="2026-03-30T21:16:20Z"
+      data-latest-commit-id="febf67a1f6c889485b7cd5e0734a2ac09b454b65"
+      data-ga-tracking="UA-71991109-1"
+      data-cookie-banner-user-context="logged_out_only"
+      data-cookie-banner-platform-context="off"
+      data-algolia-id="PRSOBFP46H"
+      data-algolia-search-key="9aa7d31610cba78851c9b1f63776a9dd"
+      data-algolia-display="true"
+      data-dynamic-url-component="bmar11"
+      data-ga4-tracking-id="G-TYEM8Y3JN3">
+      
+      <script>
+        if (navigator.userAgent === 'ForemWebView/1' || window.frameElement) {
+          document.body.classList.add("hidden-shell");
+        }
+          if (new Date() > new Date("2026-02-04T09:00:00-05:00")) {
+            document.body.dataset.sideNavVisible = "false";
+          } 
+      </script>
+
+      <link rel="stylesheet" href="https://assets.dev.to/assets/minimal-102395aec70cbac5f7d0bd5bebb5b56f0459629c5d224dae16333f11604cbad3.css" media="all" id="secondary-minimal-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/views-daf614dcfafed4955d7758a6a86d63bfbb1e8d4eae8b6317b421e18a99bbe867.css" media="all" id="secondary-views-stylesheet" />
+<link rel="stylesheet" href="https://assets.dev.to/assets/crayons-8fce708625aacc3ff4a4d4947252a1cfab954753bb082374c0bed738861b52f2.css" media="all" id="secondary-crayons-stylesheet" />
+
+      <div id="body-styles">
+        <style>
+          :root {
+            --accent-brand-lighter-rgb: 80, 99, 301;
+            --accent-brand-rgb: 59, 73, 223;
+            --accent-brand-darker-rgb: 47, 58, 178;
+          }
+        </style>
+      </div>
+      <div id="audiocontent" data-podcast="">
+        
+      </div>
+      <div class="navigation-progress" id="navigation-progress"></div>
+
+<header id="topbar" class="crayons-header topbar print-hidden">
+  <span id="route-change-target" tabindex="-1"></span>
+  <a href="#main-content" class="skip-content-link">Skip to content</a>
+  <div class="crayons-header__container">
+    <span class="inline-block m:hidden ">
+      <button class="c-btn c-btn--icon-alone js-hamburger-trigger mx-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="ab06ft29ozuedef2krhlgq6pvsg9i5cy" class="crayons-icon"><title id="ab06ft29ozuedef2krhlgq6pvsg9i5cy">Navigation menu</title>
+    <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"></path>
+</svg>
+
+      </button>
+    </span>
+    <a href="/" class="site-logo" aria-label="DEV Community Home" >
+    <img class="site-logo__img"
+         src="https://media2.dev.to/dynamic/image/quality=100/https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png"
+         style="aspect-ratio: 10 / 8"
+         alt="DEV Community">
+</a>
+
+
+    <div class="crayons-header--search js-search-form" id="header-search">
+      <form accept-charset="UTF-8" method="get" action="/search" role="search">
+        <div class="crayons-fields crayons-fields--horizontal">
+          <div class="crayons-field flex-1 relative">
+            <input id="search-input" class="crayons-header--search-input crayons-textfield js-search-input" type="text" id="nav-search" name="q" placeholder="Find related posts..." autocomplete="off" />
+            <button type="submit" aria-label="Search" class="c-btn c-btn--icon-alone absolute inset-px right-auto mt-0 py-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="aspxkc09ni8f68ikl9i0oem85r3l9gv7" aria-hidden="true" class="crayons-icon"><title id="aspxkc09ni8f68ikl9i0oem85r3l9gv7">Search</title>
+    <path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0111 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 01-1.969 5.617zm-2.006-.742A6.977 6.977 0 0018 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 004.875-1.975l.15-.15z"></path>
+</svg>
+
+            </button>
+
+            <a class="crayons-header--search-brand-indicator" href="https://www.algolia.com/developers/?utm_source=devto&utm_medium=referral" target="_blank" rel="noopener noreferrer">
+                Powered by Algolia
+                <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" width="24" height="24" viewBox="0 0 500 500.34" role="img" aria-labelledby="a7exkoh4rp3n4u4m5l6maxrswc7di271" aria-hidden="true" class="crayons-icon"><title id="a7exkoh4rp3n4u4m5l6maxrswc7di271">Search</title>
+  <defs></defs><path class="cls-1" d="M250,0C113.38,0,2,110.16,.03,246.32c-2,138.29,110.19,252.87,248.49,253.67,42.71,.25,83.85-10.2,120.38-30.05,3.56-1.93,4.11-6.83,1.08-9.52l-23.39-20.74c-4.75-4.22-11.52-5.41-17.37-2.92-25.5,10.85-53.21,16.39-81.76,16.04-111.75-1.37-202.04-94.35-200.26-206.1,1.76-110.33,92.06-199.55,202.8-199.55h202.83V407.68l-115.08-102.25c-3.72-3.31-9.43-2.66-12.43,1.31-18.47,24.46-48.56,39.67-81.98,37.36-46.36-3.2-83.92-40.52-87.4-86.86-4.15-55.28,39.65-101.58,94.07-101.58,49.21,0,89.74,37.88,93.97,86.01,.38,4.28,2.31,8.28,5.53,11.13l29.97,26.57c3.4,3.01,8.8,1.17,9.63-3.3,2.16-11.55,2.92-23.6,2.07-35.95-4.83-70.39-61.84-127.01-132.26-131.35-80.73-4.98-148.23,58.18-150.37,137.35-2.09,77.15,61.12,143.66,138.28,145.36,32.21,.71,62.07-9.42,86.2-26.97l150.36,133.29c6.45,5.71,16.62,1.14,16.62-7.48V9.49C500,4.25,495.75,0,490.51,0H250Z"></path>
+</svg>
+
+            </a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="flex items-center h-100 ml-auto">
+        <div class="flex" id="authentication-top-nav-actions">
+          <span class="hidden m:block">
+            <a href="https://dev.to/enter?signup_subforem=1" class="c-link c-link--block mr-2 whitespace-nowrap ml-auto" data-no-instant>
+              Log in
+            </a>
+          </span>
+
+          <a href="https://dev.to/enter?signup_subforem=1&amp;state=new-user" data-tracking-id="ca_top_nav" data-tracking-source="top_navbar" class="c-cta c-cta--branded whitespace-nowrap mr-2" data-no-instant>
+            Create account
+          </a>
+        </div>
+    </div>
+  </div>
+</header>
+
+<div class="hamburger">
+  <div class="hamburger__content">
+    <header class="hamburger__content__header">
+      <h2 class="fs-l fw-bold flex-1 break-word lh-tight">DEV Community</h2>
+
+      <button class="c-btn c-btn--icon-alone js-hamburger-trigger shrink-0" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="ab27w796uisi3820ih2meh7zogad7cl6" aria-hidden="true" class="crayons-icon c-btn__icon"><title id="ab27w796uisi3820ih2meh7zogad7cl6">Close</title><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636l4.95 4.95z"></path></svg>
+
+      </button>
+    </header>
+
+    <div class="p-2 js-navigation-links-container" id="authentication-hamburger-actions">
+    </div>
+  </div>
+  <div class="hamburger__overlay js-hamburger-trigger"></div>
+</div>
+
+
+      <div id="active-broadcast" class="broadcast-wrapper"></div>
+<div id="page-content" class="wrapper stories stories-show articletag-agents articletag-ai articletag-performance articletag-rust articleuser-2757052" data-current-page="stories-show">
+  <div id="page-content-inner" data-internal-nav="false">
+    <div id="page-route-change" class="screen-reader-only" aria-live="polite" aria-atomic="true"></div>
+
+    
+<style>
+  .html-variant-wrapper { display: none}
+</style>
+
+
+
+<script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.2.10/webcomponents-loader.js"
+        integrity="sha384-3HK5hxQbkFqOIxMbpROlRmRtYl2LBZ52t+tqcjzsmr9NJuOWQxl8RgQSyFvq2lhy"
+        crossorigin="anonymous" defer></script>
+
+  <script src="https://assets.dev.to/assets/webShare-0686f0b9ac40589694ef6ae6a6202c44119bc781c254f6cf6d52d8a008461156.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/articlePage-ed23d70916aed9a7fec41f94e64aac17438d3210c1bb1d6fceace80f15445213.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/commentDropdowns-7a28d130e5b78d38b30a9495a964003a66bd64fa455fc70b766d69cf06b9ba24.js" defer="defer"></script>
+
+  <script type="application/ld+json">
+    {"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://dev.to/lightningdev123/zeroclaw-a-minimal-rust-based-ai-agent-framework-for-self-hosted-systems-5593"},"url":"https://dev.to/lightningdev123/zeroclaw-a-minimal-rust-based-ai-agent-framework-for-self-hosted-systems-5593","image":["https://media2.dev.to/dynamic/image/width=1080,height=1080,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fuzgbpfsm1ntqiixif9s0.png","https://media2.dev.to/dynamic/image/width=1280,height=720,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fuzgbpfsm1ntqiixif9s0.png","https://media2.dev.to/dynamic/image/width=1600,height=900,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fuzgbpfsm1ntqiixif9s0.png"],"publisher":{"@context":"http://schema.org","@type":"Organization","name":"DEV Community","logo":{"@context":"http://schema.org","@type":"ImageObject","url":"https://media2.dev.to/dynamic/image/width=192,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png","width":"192","height":"192"}},"headline":"ZeroClaw: A Minimal Rust-Based AI Agent Framework for Self-Hosted Systems","author":{"@context":"http://schema.org","@type":"Person","url":"https://dev.to/lightningdev123","name":"Lightning Developer"},"datePublished":"2026-03-09T12:24:47Z","dateModified":"2026-03-09T12:26:41Z","mainEntity":{"@type":"DiscussionForumPosting","@id":"#article-discussion-3330772","headline":"ZeroClaw: A Minimal Rust-Based AI Agent Framework for Self-Hosted Systems","text":"\u003cp\u003eSelf-hosted AI agents are becoming increasingly popular among developers who want control over their data, models, and infrastructure. Projects like OpenClaw demonstrated that a private AI assistant with persistent memory and multi-platform messaging is possible. However, running such systems often requires considerable resources.\u003c/p\u003e\n\n\u003cp\u003eZeroClaw approaches the same idea from a different angle. Instead of relying on a large runtime environment, it is built entirely in Rust and packaged as a compact binary. The result is an AI agent framework that consumes only a few megabytes of memory while still offering many of the capabilities developers expect from modern agent systems.\u003c/p\u003e\n\n\u003cp\u003eThis article walks through what ZeroClaw is, how it compares with OpenClaw, and how you can set it up locally.\u003c/p\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"what-is-zeroclaw\" href=\"#what-is-zeroclaw\"\u003e\n  \u003c/a\u003e\n  What is ZeroClaw?\n\u003c/h2\u003e\n\n\u003cp\u003e\u003ca href=\"https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F5a7f4ou81e8jefyatwkj.png\" class=\"article-body-image-wrapper\"\u003e\u003cimg src=\"https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F5a7f4ou81e8jefyatwkj.png\" alt=\"0claw\" loading=\"lazy\" width=\"800\" height=\"433\"\u003e\u003c/a\u003e\u003c/p\u003e\n\n\u003cp\u003eZeroClaw is an open source framework designed for building and running autonomous AI agents. The entire system is written in Rust and distributed as a single executable. Because of this design choice, the framework avoids heavy dependencies and can operate on hardware with very limited resources.\u003c/p\u003e\n\n\u003cp\u003eIn practical terms, it means the same agent infrastructure that might normally require more than a gigabyte of RAM can run comfortably within only a few megabytes.\u003c/p\u003e\n\n\u003cp\u003eDevelopers can deploy ZeroClaw on many types of devices, including small VPS instances, old laptops, or even single-board computers such as Raspberry Pi.\u003c/p\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"why-some-developers-look-for-an-alternative-to-openclaw\" href=\"#why-some-developers-look-for-an-alternative-to-openclaw\"\u003e\n  \u003c/a\u003e\n  Why Some Developers Look for an Alternative to OpenClaw\n\u003c/h2\u003e\n\n\u003cp\u003eOpenClaw attracted massive attention in the developer community and has collected more than 100,000 GitHub stars. It demonstrated that AI agents can support multiple communication channels, retain long-term memory, and perform tool-based reasoning.\u003c/p\u003e\n\n\u003cp\u003eHowever, OpenClaw is built using TypeScript and depends on Node.js. This introduces several runtime requirements that increase memory usage and startup time.\u003c/p\u003e\n\n\u003cp\u003eZeroClaw rebuilds the same concept from the ground up using Rust. The architectural difference leads to significant changes in resource consumption.\u003c/p\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"resource-comparison\" href=\"#resource-comparison\"\u003e\n  \u003c/a\u003e\n  Resource Comparison\n\u003c/h3\u003e\n\n\u003cdiv class=\"table-wrapper-paragraph\"\u003e\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth\u003eMetric\u003c/th\u003e\n\u003cth\u003eZeroClaw\u003c/th\u003e\n\u003cth\u003eOpenClaw\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n\u003ctr\u003e\n\u003ctd\u003ePrimary Language\u003c/td\u003e\n\u003ctd\u003eRust\u003c/td\u003e\n\u003ctd\u003eTypeScript\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eRAM Consumption\u003c/td\u003e\n\u003ctd\u003eLess than 5 MB\u003c/td\u003e\n\u003ctd\u003eMore than 1 GB\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eStartup Time on 0.8 GHz CPU\u003c/td\u003e\n\u003ctd\u003eUnder 10 ms\u003c/td\u003e\n\u003ctd\u003eMore than 500 ms\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eBinary Size\u003c/td\u003e\n\u003ctd\u003eAbout 8.8 MB\u003c/td\u003e\n\u003ctd\u003eAround 28 MB plus Node.js\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eDependencies\u003c/td\u003e\n\u003ctd\u003eSingle executable\u003c/td\u003e\n\u003ctd\u003eNode runtime and npm packages\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eSupported Architectures\u003c/td\u003e\n\u003ctd\u003eARM, x86, RISC-V\u003c/td\u003e\n\u003ctd\u003ex86 and ARM through Node\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\u003c/div\u003e\n\n\u003cp\u003eThe difference in memory usage is substantial. A system that requires a dedicated server with OpenClaw can often run on modest hardware when using ZeroClaw.\u003c/p\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"core-capabilities-of-zeroclaw\" href=\"#core-capabilities-of-zeroclaw\"\u003e\n  \u003c/a\u003e\n  Core Capabilities of ZeroClaw\n\u003c/h2\u003e\n\n\u003cp\u003eAlthough it is small in size, ZeroClaw includes many features that developers expect from modern AI agents.\u003c/p\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"lightweight-runtime\" href=\"#lightweight-runtime\"\u003e\n  \u003c/a\u003e\n  Lightweight Runtime\n\u003c/h3\u003e\n\n\u003cp\u003eThe framework typically runs within a few megabytes of memory when compiled in release mode. This makes it suitable for resource-constrained environments.\u003c/p\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"multiple-ai-providers\" href=\"#multiple-ai-providers\"\u003e\n  \u003c/a\u003e\n  Multiple AI Providers\n\u003c/h3\u003e\n\n\u003cp\u003eZeroClaw supports several LLM providers including:\u003c/p\u003e\n\n\u003cul\u003e\n\u003cli\u003eAnthropic\u003c/li\u003e\n\u003cli\u003eOpenAI\u003c/li\u003e\n\u003cli\u003eGoogle Gemini\u003c/li\u003e\n\u003cli\u003eOpenRouter\u003c/li\u003e\n\u003cli\u003eGitHub Copilot\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003cp\u003eIt can also connect to local model endpoints such as Ollama or LM Studio.\u003c/p\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"messaging-channels\" href=\"#messaging-channels\"\u003e\n  \u003c/a\u003e\n  Messaging Channels\n\u003c/h3\u003e\n\n\u003cp\u003eAgents can interact through different channels. A command-line interface is available by default, and integrations like Discord can be added easily.\u003c/p\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"persistent-memory\" href=\"#persistent-memory\"\u003e\n  \u003c/a\u003e\n  Persistent Memory\n\u003c/h3\u003e\n\n\u003cp\u003eZeroClaw stores conversation history and contextual information using SQLite combined with vector search. This allows the agent to recall past interactions semantically.\u003c/p\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"tooldriven-research-phase\" href=\"#tooldriven-research-phase\"\u003e\n  \u003c/a\u003e\n  Tool-Driven Research Phase\n\u003c/h3\u003e\n\n\u003cp\u003eBefore generating a response, the agent can gather information through tools such as web queries or API calls.\u003c/p\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"security-features\" href=\"#security-features\"\u003e\n  \u003c/a\u003e\n  Security Features\n\u003c/h3\u003e\n\n\u003cp\u003eSecurity is treated as a core part of the system. ZeroClaw includes authentication pairing, workspace isolation, and explicit tool allowlists.\u003c/p\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"modular-architecture\" href=\"#modular-architecture\"\u003e\n  \u003c/a\u003e\n  Modular Architecture\n\u003c/h3\u003e\n\n\u003cp\u003eThe framework follows a trait-based design. Providers, memory backends, tools, and communication channels can be swapped independently without affecting the rest of the system.\u003c/p\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"crossplatform-support\" href=\"#crossplatform-support\"\u003e\n  \u003c/a\u003e\n  Cross-Platform Support\n\u003c/h3\u003e\n\n\u003cp\u003eBecause it is written in Rust, the same binary architecture supports ARM, x86, and RISC-V environments.\u003c/p\u003e\n\n\u003cp\u003eThe project has already gained strong community interest and currently holds more than twenty thousand stars on GitHub.\u003c/p\u003e\n\n\u003ch1\u003e\n  \u003ca name=\"installing-zeroclaw\" href=\"#installing-zeroclaw\"\u003e\n  \u003c/a\u003e\n  Installing ZeroClaw\n\u003c/h1\u003e\n\n\u003cp\u003eZeroClaw can be installed in multiple ways depending on your system and preferences.\u003c/p\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"option-1-install-using-homebrew\" href=\"#option-1-install-using-homebrew\"\u003e\n  \u003c/a\u003e\n  Option 1: Install Using Homebrew\n\u003c/h2\u003e\n\n\u003cp\u003eOn macOS or Linux systems with Homebrew, installation takes only one command.\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight plaintext\"\u003e\u003ccode\u003ebrew install zeroclaw\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003cp\u003eAfter installation, confirm that the binary is available.\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight plaintext\"\u003e\u003ccode\u003ezeroclaw --version\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003ch2\u003e\n  \u003ca name=\"option-2-build-from-source\" href=\"#option-2-build-from-source\"\u003e\n  \u003c/a\u003e\n  Option 2: Build From Source\n\u003c/h2\u003e\n\n\u003cp\u003eIf you want the newest version or prefer compiling the project yourself, you can build it directly from the repository.\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight plaintext\"\u003e\u003ccode\u003egit clone https://github.com/zeroclaw-labs/zeroclaw.git\ncd zeroclaw\n./bootstrap.sh\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003cp\u003eThe bootstrap script acts as a guided installer. It asks a few configuration questions before building the project automatically.\u003c/p\u003e\n\n\u003cp\u003eExample interaction:\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight plaintext\"\u003e\u003ccode\u003eInstall system dependencies for Darwin? [y/N] y\nRun a separate prebuild before install? [Y/n] y\nInstall zeroclaw into cargo bin now? [Y/n] y\nRun onboarding after install? [y/N] y\nUse interactive onboarding? [Y/n] y\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003cp\u003eOnce the process finishes, the compiled binary is placed inside your Cargo bin directory.\u003c/p\u003e\n\n\u003cp\u003eOn modern hardware the build typically completes in about five or six minutes.\u003c/p\u003e\n\n\u003cp\u003eIf compilation resources are limited, a prebuilt binary can be used instead.\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight plaintext\"\u003e\u003ccode\u003e./bootstrap.sh --prefer-prebuilt\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003ch1\u003e\n  \u003ca name=\"creating-a-discord-bot\" href=\"#creating-a-discord-bot\"\u003e\n  \u003c/a\u003e\n  Creating a Discord Bot\n\u003c/h1\u003e\n\n\u003cp\u003eBefore linking ZeroClaw with Discord, a bot must be created.\u003c/p\u003e\n\n\u003col\u003e\n\u003cli\u003eVisit the Discord Developer Portal\u003c/li\u003e\n\u003cli\u003eCreate a new application\u003c/li\u003e\n\u003cli\u003eNavigate to the Bot section and add a bot\u003c/li\u003e\n\u003cli\u003eGenerate and copy the bot token\u003c/li\u003e\n\u003c/ol\u003e\n\n\u003cp\u003eKeep the token private. Anyone with this token could control the bot.\u003c/p\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"enable-required-intents\" href=\"#enable-required-intents\"\u003e\n  \u003c/a\u003e\n  Enable Required Intents\n\u003c/h3\u003e\n\n\u003cp\u003eInside the bot configuration page enable:\u003c/p\u003e\n\n\u003cul\u003e\n\u003cli\u003eMessage Content Intent\u003c/li\u003e\n\u003cli\u003eServer Members Intent\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003cp\u003eWithout the message content permission, the Discord channel may repeatedly disconnect with invalid session errors.\u003c/p\u003e\n\n\u003ch1\u003e\n  \u003ca name=\"running-the-onboarding-wizard\" href=\"#running-the-onboarding-wizard\"\u003e\n  \u003c/a\u003e\n  Running the Onboarding Wizard\n\u003c/h1\u003e\n\n\u003cp\u003eAfter installation, ZeroClaw launches a setup wizard that configures the environment automatically.\u003c/p\u003e\n\n\u003cp\u003eIf it does not start automatically, run:\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight plaintext\"\u003e\u003ccode\u003ezeroclaw onboard\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003cp\u003eThe wizard usually completes in less than a minute and includes several steps.\u003c/p\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"workspace-setup\" href=\"#workspace-setup\"\u003e\n  \u003c/a\u003e\n  Workspace Setup\n\u003c/h2\u003e\n\n\u003cp\u003eZeroClaw creates a workspace directory to store sessions, memory, configuration files, and agent identity.\u003c/p\u003e\n\n\u003cp\u003eExample default path:\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight plaintext\"\u003e\u003ccode\u003e~/.zeroclaw/workspace\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003cp\u003eTypical workspace structure:\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight plaintext\"\u003e\u003ccode\u003eworkspace/\n├── sessions/\n├── memory/\n├── state/\n├── cron/\n├── skills/\n├── AGENTS.md\n├── USER.md\n├── TOOLS.md\n└── BOOTSTRAP.md\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003ch2\u003e\n  \u003ca name=\"choosing-an-ai-provider\" href=\"#choosing-an-ai-provider\"\u003e\n  \u003c/a\u003e\n  Choosing an AI Provider\n\u003c/h2\u003e\n\n\u003cp\u003eDuring onboarding you select the model provider and provide an API key.\u003c/p\u003e\n\n\u003cp\u003eExample configuration with Google Gemini:\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight plaintext\"\u003e\u003ccode\u003eProvider: gemini\nModel: gemini-2.0-flash\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003cp\u003eIf Gemini CLI credentials are already available on your machine, ZeroClaw may detect them automatically.\u003c/p\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"connecting-discord\" href=\"#connecting-discord\"\u003e\n  \u003c/a\u003e\n  Connecting Discord\n\u003c/h2\u003e\n\n\u003cp\u003eTo allow messaging through Discord, provide the bot token when prompted.\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight plaintext\"\u003e\u003ccode\u003eBot token: YOUR_DISCORD_BOT_TOKEN\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003cp\u003eYou can also restrict which Discord users are allowed to communicate with the agent by specifying user IDs.\u003c/p\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"optional-tunnel-configuration\" href=\"#optional-tunnel-configuration\"\u003e\n  \u003c/a\u003e\n  Optional Tunnel Configuration\n\u003c/h2\u003e\n\n\u003cp\u003eZeroClaw can expose its gateway to the internet using a tunnel service. If you want remote access, a custom SSH tunnel command can be used.\u003c/p\u003e\n\n\u003cp\u003eExample configuration for \u003ca href=\"https://pinggy.io/\" target=\"_blank\" rel=\"noopener noreferrer\"\u003ePinggy\u003c/a\u003e:\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight plaintext\"\u003e\u003ccode\u003essh -T -p 443 -R 0:localhost:{port} -o StrictHostKeyChecking=accept-new free.pinggy.io\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003cp\u003eThis allows the agent to be reachable outside your local network.\u003c/p\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"security-and-tool-mode\" href=\"#security-and-tool-mode\"\u003e\n  \u003c/a\u003e\n  Security and Tool Mode\n\u003c/h2\u003e\n\n\u003cp\u003eThe recommended mode is Sovereign. In this configuration, all API keys remain local, and no external orchestration service is used.\u003c/p\u003e\n\n\u003cp\u003eEncrypted storage for secrets can also be enabled during setup.\u003c/p\u003e\n\n\u003ch1\u003e\n  \u003ca name=\"starting-the-channel-server\" href=\"#starting-the-channel-server\"\u003e\n  \u003c/a\u003e\n  Starting the Channel Server\n\u003c/h1\u003e\n\n\u003cp\u003eOnce the configuration is complete, start the communication server.\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight plaintext\"\u003e\u003ccode\u003ezeroclaw channel start\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003cp\u003eThe console output will show the active model, memory backend, and enabled channels.\u003c/p\u003e\n\n\u003cp\u003eExample:\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight plaintext\"\u003e\u003ccode\u003eZeroClaw Channel Server\nModel: gemini-2.0-flash\nMemory: sqlite\nChannels: discord\nListening for messages...\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003cp\u003eWhen Discord connects successfully, the logs will display confirmation messages.\u003c/p\u003e\n\n\u003ch1\u003e\n  \u003ca name=\"launching-the-web-dashboard\" href=\"#launching-the-web-dashboard\"\u003e\n  \u003c/a\u003e\n  Launching the Web Dashboard\n\u003c/h1\u003e\n\n\u003cp\u003eIf you prefer a graphical interface instead of the terminal, start the gateway dashboard.\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight plaintext\"\u003e\u003ccode\u003ezeroclaw gateway\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003cp\u003eThe interface becomes available in the browser at:\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight plaintext\"\u003e\u003ccode\u003ehttp://localhost:3000\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003cp\u003eThis dashboard allows monitoring sessions, inspecting memory, and adjusting configuration settings.\u003c/p\u003e\n\n\u003ch1\u003e\n  \u003ca name=\"testing-the-agent-from-the-cli\" href=\"#testing-the-agent-from-the-cli\"\u003e\n  \u003c/a\u003e\n  Testing the Agent from the CLI\n\u003c/h1\u003e\n\n\u003cp\u003eYou can also interact directly through the command line.\u003c/p\u003e\n\n\u003cp\u003eSend a single message:\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight plaintext\"\u003e\u003ccode\u003ezeroclaw agent -m \"Hello, ZeroClaw!\"\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003cp\u003eStart an interactive session:\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight plaintext\"\u003e\u003ccode\u003ezeroclaw agent\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003ch1\u003e\n  \u003ca name=\"testing-discord-interaction\" href=\"#testing-discord-interaction\"\u003e\n  \u003c/a\u003e\n  Testing Discord Interaction\n\u003c/h1\u003e\n\n\u003cp\u003eAfter the server is running:\u003c/p\u003e\n\n\u003col\u003e\n\u003cli\u003eOpen your Discord server\u003c/li\u003e\n\u003cli\u003eMention the bot in a channel\u003c/li\u003e\n\u003cli\u003eSend a message such as:\n\u003c/li\u003e\n\u003c/ol\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight plaintext\"\u003e\u003ccode\u003e@YourBotName Hello ZeroClaw\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003cp\u003eThe agent processes the message and sends a response back to the channel.\u003c/p\u003e\n\n\u003ch1\u003e\n  \u003ca name=\"common-issues-and-fixes\" href=\"#common-issues-and-fixes\"\u003e\n  \u003c/a\u003e\n  Common Issues and Fixes\n\u003c/h1\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"discord-keeps-reconnecting\" href=\"#discord-keeps-reconnecting\"\u003e\n  \u003c/a\u003e\n  Discord Keeps Reconnecting\n\u003c/h3\u003e\n\n\u003cp\u003eThis usually happens when the Message Content Intent is not enabled. Activate it in the Discord developer settings and restart the server.\u003c/p\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"api-key-problems\" href=\"#api-key-problems\"\u003e\n  \u003c/a\u003e\n  API Key Problems\n\u003c/h3\u003e\n\n\u003cp\u003eIf your model provider key expires, update it using:\u003cbr\u003e\n\u003c/p\u003e\n\n\u003cdiv class=\"highlight js-code-highlight\"\u003e\n\u003cpre class=\"highlight plaintext\"\u003e\u003ccode\u003ezeroclaw config set api_key \"YOUR_NEW_API_KEY\"\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class=\"highlight__panel js-actions-panel\"\u003e\n\u003cdiv class=\"highlight__panel-action js-fullscreen-code-action\"\u003e\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-on\"\u003e\u003ctitle\u003eEnter fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n    \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"20px\" height=\"20px\" viewbox=\"0 0 24 24\" class=\"highlight-action crayons-icon highlight-action--fullscreen-off\"\u003e\u003ctitle\u003eExit fullscreen mode\u003c/title\u003e\n    \u003cpath d=\"M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z\"\u003e\u003c/path\u003e\n\u003c/svg\u003e\n\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\n\n\n\u003cp\u003eThen restart the channel server.\u003c/p\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"bot-does-not-reply\" href=\"#bot-does-not-reply\"\u003e\n  \u003c/a\u003e\n  Bot Does Not Reply\n\u003c/h3\u003e\n\n\u003cp\u003eCheck that the bot has permission to read and send messages and ensure you are mentioning the bot if mention-required mode is enabled.\u003c/p\u003e\n\n\u003ch1\u003e\n  \u003ca name=\"when-to-choose-zeroclaw-or-openclaw\" href=\"#when-to-choose-zeroclaw-or-openclaw\"\u003e\n  \u003c/a\u003e\n  When to Choose ZeroClaw or OpenClaw\n\u003c/h1\u003e\n\n\u003cp\u003eBoth frameworks aim to provide self-hosted AI assistants, but their design philosophies differ.\u003c/p\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"zeroclaw-works-best-when\" href=\"#zeroclaw-works-best-when\"\u003e\n  \u003c/a\u003e\n  ZeroClaw Works Best When\n\u003c/h3\u003e\n\n\u003cul\u003e\n\u003cli\u003eYou run agents on small or low-power hardware\u003c/li\u003e\n\u003cli\u003eMinimal dependencies are preferred\u003c/li\u003e\n\u003cli\u003eRust performance and memory safety are important\u003c/li\u003e\n\u003cli\u003eCross-architecture support is required\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003ch3\u003e\n  \u003ca name=\"openclaw-may-be-better-when\" href=\"#openclaw-may-be-better-when\"\u003e\n  \u003c/a\u003e\n  OpenClaw May Be Better When\n\u003c/h3\u003e\n\n\u003cul\u003e\n\u003cli\u003eYou want a larger ecosystem and community\u003c/li\u003e\n\u003cli\u003eYou need integrations like WhatsApp, Slack, or Telegram\u003c/li\u003e\n\u003cli\u003eYour development stack is primarily JavaScript or TypeScript\u003c/li\u003e\n\u003cli\u003eHardware resources are not a concern\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003ch1\u003e\n  \u003ca name=\"practical-uses-for-zeroclaw\" href=\"#practical-uses-for-zeroclaw\"\u003e\n  \u003c/a\u003e\n  Practical Uses for ZeroClaw\n\u003c/h1\u003e\n\n\u003cp\u003eOnce the agent is connected to Discord or CLI, several possibilities open up.\u003c/p\u003e\n\n\u003cp\u003eYou can communicate with your AI assistant from any device that supports Discord. Conversations are stored in a persistent memory system, allowing the agent to remember context across sessions.\u003c/p\u003e\n\n\u003cp\u003eBecause the memory backend uses SQLite with vector search, the agent can retrieve relevant past interactions even weeks later.\u003c/p\u003e\n\n\u003cp\u003eThe framework also supports custom skills. Adding new abilities often involves dropping skill files into the workspace directory.\u003c/p\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"conclusion\" href=\"#conclusion\"\u003e\n  \u003c/a\u003e\n  Conclusion\n\u003c/h2\u003e\n\n\u003cp\u003eZeroClaw demonstrates that advanced AI agent infrastructure does not necessarily require heavy runtime environments. By implementing the system in Rust and distributing it as a single binary, the framework drastically reduces memory usage while maintaining many features found in larger projects.\u003c/p\u003e\n\n\u003cp\u003eFor developers interested in self-hosted AI assistants that can run on modest hardware, ZeroClaw offers a compelling option. Whether you are experimenting on a Raspberry Pi, running services on a low-cost VPS, or simply prefer efficient software, the project provides a practical and lightweight foundation for building AI agents.\u003c/p\u003e\n\n\u003ch2\u003e\n  \u003ca name=\"reference\" href=\"#reference\"\u003e\n  \u003c/a\u003e\n  Reference\n\u003c/h2\u003e\n\n\u003cp\u003e\u003ca href=\"https://pinggy.io/blog/zeroclaw_lightweight_openclaw_alternative/\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eZeroClaw: A Lightweight Open Source Alternative to OpenClaw\u003c/a\u003e\u003c/p\u003e\n\n","author":{"@type":"Person","name":"Lightning Developer","url":"https://dev.to/lightningdev123"},"datePublished":"2026-03-09T12:24:47Z","dateModified":"2026-03-09T12:26:41Z","url":"https://dev.to/lightningdev123/zeroclaw-a-minimal-rust-based-ai-agent-framework-for-self-hosted-systems-5593","interactionStatistic":[{"@type":"InteractionCounter","interactionType":"https://schema.org/CommentAction","userInteractionCount":1},{"@type":"InteractionCounter","interactionType":"https://schema.org/LikeAction","userInteractionCount":12}]}}
+  </script>
+
+  
+  <div class="crayons-layout crayons-layout--3-cols crayons-layout--article">
+    <aside class="crayons-layout__sidebar-left" aria-label="Article actions">
+      <script>
+  if (/Twitter for (iPhone|iPad|Android)/i.test(navigator.userAgent)) {
+    document.documentElement.classList.add('is-twitter-in-app');
+  }
+</script>
+<div class="crayons-article-actions print-hidden">
+  <div class="crayons-article-actions__inner">
+
+    
+<div class="reaction-drawer__outer hoverdown" style="">
+  <button
+    id="reaction-drawer-trigger"
+    aria-label="reaction-drawer-trigger"
+    aria-pressed="false"
+    class="hoverdown-trigger crayons-reaction pseudo-reaction crayons-tooltip__activator relative">
+      <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction--like crayons-reaction__icon--inactive" style="width: 40px; height: 40px">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" role="img" aria-hidden="true" class="crayons-icon">
+    <g clip-path="url(#clip0_988_3276)">
+        <path d="M19 14V17H22V19H18.999L19 22H17L16.999 19H14V17H17V14H19ZM20.243 4.75698C22.505 7.02498 22.583 10.637 20.479 12.992L19.059 11.574C20.39 10.05 20.32 7.65998 18.827 6.16998C17.324 4.67098 14.907 4.60698 13.337 6.01698L12.002 7.21498L10.666 6.01798C9.09103 4.60598 6.67503 4.66798 5.17203 6.17198C3.68203 7.66198 3.60703 10.047 4.98003 11.623L13.412 20.069L12 21.485L3.52003 12.993C1.41603 10.637 1.49503 7.01898 3.75603 4.75698C6.02103 2.49298 9.64403 2.41698 12 4.52898C14.349 2.41998 17.979 2.48998 20.242 4.75698H20.243Z" fill="#525252"></path>
+    </g>
+    <defs>
+        <clipPath id="clip0_988_3276">
+        <rect width="24" height="24" fill="white"></rect>
+        </clipPath>
+    </defs>
+</svg>
+
+      </span>
+      <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--active" style="width: 40px; height: 40px">
+        <img aria_hidden="true" height="24" width="24" src="https://assets.dev.to/assets/heart-plus-active-9ea3b22f2bc311281db911d416166c5f430636e76b15cd5df6b3b841d830eefa.svg" />
+      </span>
+      <span class="crayons-reaction__count" id="reaction_total_count">
+        <span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span>
+      </span>
+      <span class="crayons-tooltip__content">
+        Add reaction
+      </span>
+  </button>
+
+  <div class="reaction-drawer" aria-expanded="false">
+    <div class="reaction-drawer__container">
+        <button
+  id="reaction-butt-like"
+  name="Like"
+  aria-label="Like"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="like">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-like"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Like
+    </span>
+</button>
+
+        <button
+  id="reaction-butt-unicorn"
+  name="Unicorn"
+  aria-label="Unicorn"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="unicorn">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-unicorn"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Unicorn
+    </span>
+</button>
+
+        <button
+  id="reaction-butt-exploding_head"
+  name="Exploding Head"
+  aria-label="Exploding Head"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="exploding_head">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-exploding_head"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Exploding Head
+    </span>
+</button>
+
+        <button
+  id="reaction-butt-raised_hands"
+  name="Raised Hands"
+  aria-label="Raised Hands"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="raised_hands">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-raised_hands"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Raised Hands
+    </span>
+</button>
+
+        <button
+  id="reaction-butt-fire"
+  name="Fire"
+  aria-label="Fire"
+  aria-pressed="false"
+  class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2"
+  data-category="fire">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" />
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-fire"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Fire
+    </span>
+</button>
+
+    </div>
+  </div>
+</div>
+
+<button
+  id="reaction-butt-comment"
+  aria-label="Jump to Comments"
+  aria-pressed="false"
+  class="crayons-reaction crayons-reaction--comment crayons-tooltip__activator relative"
+  data-category="comment">
+    <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--inactive">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-hidden="true" class="crayons-icon">
+    <path d="M10 3h4a8 8 0 010 16v3.5c-5-2-12-5-12-11.5a8 8 0 018-8zm2 14h2a6 6 0 000-12h-4a6 6 0 00-6 6c0 3.61 2.462 5.966 8 8.48V17z"></path>
+</svg>
+
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-comment" data-count="0">
+      <span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span>
+    </span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Jump to Comments
+    </span>
+</button>
+
+<button
+  id="reaction-butt-readinglist"
+  aria-label="Add to reading list"
+  aria-pressed="false"
+  class="crayons-reaction crayons-reaction--readinglist crayons-tooltip__activator relative"
+  data-category="readinglist">
+    <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--inactive">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-hidden="true" class="crayons-icon">
+    <path d="M5 2h14a1 1 0 011 1v19.143a.5.5 0 01-.766.424L12 18.03l-7.234 4.536A.5.5 0 014 22.143V3a1 1 0 011-1zm13 2H6v15.432l6-3.761 6 3.761V4z"></path>
+</svg>
+
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-readinglist"><span class="bg-base-40 opacity-25 p-2 inline-block radius-default"></span></span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Save
+    </span>
+</button>
+
+
+<button
+  id="reaction-butt-boost"
+  aria-label="Boost"
+  aria-pressed="false"
+  class="crayons-reaction crayons-reaction--boost crayons-tooltip__activator relative">
+    <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--inactive">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" role="img" aria-hidden="true" class="crayons-icon" width="24" height="24">
+  <path transform="translate(24,0) scale(-1,1)" d="M6 4H21C21.5523 4 22 4.44772 22 5V12H20V6H6V9L1 5L6 1V4ZM18 20H3C2.44772 20 2 19.5523 2 19V12H4V18H18V15L23 19L18 23V20Z"></path>
+</svg>
+
+    </span>
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Boost
+    </span>
+</button>
+
+
+    <div class="only-sidebar-menu-item">
+      <div id="mod-actions-menu-btn-area" class="print-hidden trusted-visible-block align-center">
+      </div>
+    </div>
+    <div class="align-center m:relative">
+      <button id="article-show-more-button" aria-controls="article-show-more-dropdown" aria-expanded="false" aria-haspopup="true" class="dropbtn crayons-btn crayons-btn--ghost-dimmed crayons-btn--icon-rounded" aria-label="Share post options">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="ajtx73xini9lj3ggzwkdxcwpv5i5vb6e" aria-hidden="true" class="crayons-icon dropdown-icon"><title id="ajtx73xini9lj3ggzwkdxcwpv5i5vb6e">More...</title><path fill-rule="evenodd" clip-rule="evenodd" d="M7 12a2 2 0 11-4 0 2 2 0 014 0zm7 0a2 2 0 11-4 0 2 2 0 014 0zm5 2a2 2 0 100-4 2 2 0 000 4z"></path></svg>
+
+      </button>
+
+      <div id="article-show-more-dropdown" class="crayons-dropdown side-bar left-2 right-2 m:right-auto m:left-100 s:left-auto mb-1 m:mb-0 top-unset bottom-100 m:top-0 m:bottom-unset">
+        <div>
+          <button
+            id="copy-post-url-button"
+            class="flex justify-between crayons-link crayons-link--block w-100 bg-transparent border-0"
+            data-postUrl="https://dev.to/lightningdev123/zeroclaw-a-minimal-rust-based-ai-agent-framework-for-self-hosted-systems-5593">
+            <span class="fw-bold">Copy link</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" id="article-copy-icon" role="img" aria-labelledby="a72d23argbagpetcaxgbb1gc6cdcfrq" aria-hidden="true" class="crayons-icon mx-2 shrink-0"><title id="a72d23argbagpetcaxgbb1gc6cdcfrq">Copy link</title>
+    <path d="M7 6V3a1 1 0 011-1h12a1 1 0 011 1v14a1 1 0 01-1 1h-3v3c0 .552-.45 1-1.007 1H4.007A1 1 0 013 21l.003-14c0-.552.45-1 1.007-1H7zm2 0h8v10h2V4H9v2zm-2 5v2h6v-2H7zm0 4v2h6v-2H7z"></path>
+</svg>
+
+          </button>
+          <div id="article-copy-link-announcer" aria-live="polite" class="crayons-notice crayons-notice--success my-2 p-1" aria-live="polite" hidden>Copied to Clipboard</div>
+        </div>
+
+        <div class="Desktop-only">
+          <a
+            target="_blank"
+            class="crayons-link crayons-link--block"
+            rel="noopener"
+            href='https://twitter.com/intent/tweet?text=%22ZeroClaw%3A%20A%20Minimal%20Rust-Based%20AI%20Agent%20Framework%20for%20Self-Hosted%20Systems%22%20by%20%40LightningD11921%20%23DEVCommunity%20https%3A%2F%2Fdev.to%2Flightningdev123%2Fzeroclaw-a-minimal-rust-based-ai-agent-framework-for-self-hosted-systems-5593'>
+            Share to X
+          </a>
+          <a
+            target="_blank"
+            class="crayons-link crayons-link--block"
+            rel="noopener"
+            href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fdev.to%2Flightningdev123%2Fzeroclaw-a-minimal-rust-based-ai-agent-framework-for-self-hosted-systems-5593&title=ZeroClaw%3A%20A%20Minimal%20Rust-Based%20AI%20Agent%20Framework%20for%20Self-Hosted%20Systems&summary=Self-hosted%20AI%20agents%20are%20becoming%20increasingly%20popular%20among%20developers%20who%20want%20control%20over%20their...&source=DEV%20Community">
+            Share to LinkedIn
+          </a>
+          <a
+            target="_blank"
+            class="crayons-link crayons-link--block"
+            rel="noopener"
+            href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fdev.to%2Flightningdev123%2Fzeroclaw-a-minimal-rust-based-ai-agent-framework-for-self-hosted-systems-5593">
+            Share to Facebook
+          </a>
+          <a
+            target="_blank"
+            class="crayons-link crayons-link--block"
+            rel="noopener"
+            href="https://s2f.kytta.dev/?text=https%3A%2F%2Fdev.to%2Flightningdev123%2Fzeroclaw-a-minimal-rust-based-ai-agent-framework-for-self-hosted-systems-5593">
+            Share to Mastodon
+          </a>
+        </div>
+
+        <web-share-wrapper shareurl="https://dev.to/lightningdev123/zeroclaw-a-minimal-rust-based-ai-agent-framework-for-self-hosted-systems-5593" sharetitle="ZeroClaw: A Minimal Rust-Based AI Agent Framework for Self-Hosted Systems" sharetext="Self-hosted AI agents are becoming increasingly popular among developers who want control over their..." template="web-share-button">
+        </web-share-wrapper>
+        <template id="web-share-button">
+          <a href="#" class="dropdown-link-row crayons-link crayons-link--block">Share Post via...</a>
+        </template>
+
+        <a href="/report-abuse" class="crayons-link crayons-link--block" id="ReportButtonAuthor">Report Abuse</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </aside>
+
+    <main id="main-content" class="crayons-layout__content grid gap-4">
+      <div class="article-wrapper">
+
+
+        <article class="crayons-card crayons-article mb-4"
+          id="article-show-container"
+          data-article-id="3330772"
+          data-article-slug="zeroclaw-a-minimal-rust-based-ai-agent-framework-for-self-hosted-systems-5593"
+          data-author-id="2757052"
+          data-author-name="Lightning Developer"
+          data-author-username="lightningdev123"
+          data-co-author-ids=""
+          data-path="/lightningdev123/zeroclaw-a-minimal-rust-based-ai-agent-framework-for-self-hosted-systems-5593"
+          data-pin-path="/stories/feed/pinned_article"
+          data-pinned-article-id=""
+          data-published="true"
+          data-scheduled="false"
+          lang=en
+           >
+          <script>
+            try {
+              if(localStorage) {
+                let currentUser = localStorage.getItem('current_user');
+
+                if (currentUser) {
+                  currentUser = JSON.parse(currentUser);
+                  if (currentUser.id === 2757052) {
+                    document.getElementById('article-show-container').classList.add('current-user-is-article-author');
+                  }
+                }
+              }
+            } catch (e) {
+              console.error(e);
+            }
+          </script>
+          <header class="crayons-article__header" id="main-title">
+
+            <div class="crayons-article__header__meta">
+              <div class="flex s:items-start flex-col s:flex-row">
+                <div id="action-space" class="crayons-article__actions mb-4 s:mb-0 s:order-last"></div>
+                <div class="flex flex-1 mb-5 items-start">
+                  <div class="relative">
+                      <a href="/lightningdev123"><img class="radius-full align-middle" src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F2757052%2F987f57b6-be53-4d74-9893-755596ff93c5.png" width="40" height="40" alt="Lightning Developer" /></a>
+                  </div>
+                  <div class="pl-3 flex-1">
+                    <a href="/lightningdev123" class="crayons-link fw-bold">Lightning Developer</a>
+                    
+                    <p class="fs-xs color-base-60">
+                        Posted on <time datetime="2026-03-09T12:24:47Z" class="date-no-year">Mar 9</time>
+
+
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="multiple_reactions_engagement">
+    <button
+      class="reaction_engagement_like hidden crayons-reaction crayons-reaction--like"
+      data-category="like"
+      aria-label="Like"
+      type="button"
+    ><span class="crayons-reaction__icon crayons-reaction__icon--inactive p-1"><img src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="24" height="24" /></span>
+      <span class="crayons-reaction__count" id="reaction_engagement_like_count">&nbsp;</span>
+    </button>    <button
+      class="reaction_engagement_unicorn hidden crayons-reaction crayons-reaction--unicorn"
+      data-category="unicorn"
+      aria-label="Unicorn"
+      type="button"
+    ><span class="crayons-reaction__icon crayons-reaction__icon--inactive p-1"><img src="https://assets.dev.to/assets/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" width="24" height="24" /></span>
+      <span class="crayons-reaction__count" id="reaction_engagement_unicorn_count">&nbsp;</span>
+    </button>    <button
+      class="reaction_engagement_exploding_head hidden crayons-reaction crayons-reaction--exploding_head"
+      data-category="exploding_head"
+      aria-label="Exploding Head"
+      type="button"
+    ><span class="crayons-reaction__icon crayons-reaction__icon--inactive p-1"><img src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" width="24" height="24" /></span>
+      <span class="crayons-reaction__count" id="reaction_engagement_exploding_head_count">&nbsp;</span>
+    </button>    <button
+      class="reaction_engagement_raised_hands hidden crayons-reaction crayons-reaction--raised_hands"
+      data-category="raised_hands"
+      aria-label="Raised Hands"
+      type="button"
+    ><span class="crayons-reaction__icon crayons-reaction__icon--inactive p-1"><img src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="24" height="24" /></span>
+      <span class="crayons-reaction__count" id="reaction_engagement_raised_hands_count">&nbsp;</span>
+    </button>    <button
+      class="reaction_engagement_fire hidden crayons-reaction crayons-reaction--fire"
+      data-category="fire"
+      aria-label="Fire"
+      type="button"
+    ><span class="crayons-reaction__icon crayons-reaction__icon--inactive p-1"><img src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="24" height="24" /></span>
+      <span class="crayons-reaction__count" id="reaction_engagement_fire_count">&nbsp;</span>
+    </button>
+</div>
+
+
+              <h1 class=" fs-3xl m:fs-4xl l:fs-5xl fw-bold s:fw-heavy lh-tight mb-2 long">
+                ZeroClaw: A Minimal Rust-Based AI Agent Framework for Self-Hosted Systems
+              </h1>
+              
+                  <div class="spec__tags flex flex-wrap">
+                      <a class="crayons-tag   " style="
+        --tag-bg: rgba(11, 226, 245, 0.10);
+        --tag-prefix: #0be2f5;
+        --tag-bg-hover: rgba(11, 226, 245, 0.10);
+        --tag-prefix-hover: #0be2f5;
+      " href="/t/agents"><span class="crayons-tag__prefix">#</span>agents</a>
+                      <a class="crayons-tag   " style="
+        --tag-bg: rgba(23, 253, 26, 0.10);
+        --tag-prefix: #17fd1a;
+        --tag-bg-hover: rgba(23, 253, 26, 0.10);
+        --tag-prefix-hover: #17fd1a;
+      " href="/t/ai"><span class="crayons-tag__prefix">#</span>ai</a>
+                      <a class="crayons-tag   " style="
+        --tag-bg: rgba(255, 163, 100, 0.10);
+        --tag-prefix: #ffa364;
+        --tag-bg-hover: rgba(255, 163, 100, 0.10);
+        --tag-prefix-hover: #ffa364;
+      " href="/t/performance"><span class="crayons-tag__prefix">#</span>performance</a>
+                      <a class="crayons-tag   " style="
+        --tag-bg: rgba(212, 161, 116, 0.10);
+        --tag-prefix: #d4a174;
+        --tag-bg-hover: rgba(212, 161, 116, 0.10);
+        --tag-prefix-hover: #d4a174;
+      " href="/t/rust"><span class="crayons-tag__prefix">#</span>rust</a>
+                  </div>
+            </div>
+          </header>
+
+          <div class="crayons-article__main ">
+            <div class="crayons-article__body text-styles spec__body" data-article-id="3330772" id="article-body">
+                <p>Self-hosted AI agents are becoming increasingly popular among developers who want control over their data, models, and infrastructure. Projects like OpenClaw demonstrated that a private AI assistant with persistent memory and multi-platform messaging is possible. However, running such systems often requires considerable resources.</p>
+
+<p>ZeroClaw approaches the same idea from a different angle. Instead of relying on a large runtime environment, it is built entirely in Rust and packaged as a compact binary. The result is an AI agent framework that consumes only a few megabytes of memory while still offering many of the capabilities developers expect from modern agent systems.</p>
+
+<p>This article walks through what ZeroClaw is, how it compares with OpenClaw, and how you can set it up locally.</p>
+
+<h2>
+  <a name="what-is-zeroclaw" href="#what-is-zeroclaw">
+  </a>
+  What is ZeroClaw?
+</h2>
+
+<p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F5a7f4ou81e8jefyatwkj.png" class="article-body-image-wrapper"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F5a7f4ou81e8jefyatwkj.png" alt="0claw" loading="lazy" width="800" height="433"></a></p>
+
+<p>ZeroClaw is an open source framework designed for building and running autonomous AI agents. The entire system is written in Rust and distributed as a single executable. Because of this design choice, the framework avoids heavy dependencies and can operate on hardware with very limited resources.</p>
+
+<p>In practical terms, it means the same agent infrastructure that might normally require more than a gigabyte of RAM can run comfortably within only a few megabytes.</p>
+
+<p>Developers can deploy ZeroClaw on many types of devices, including small VPS instances, old laptops, or even single-board computers such as Raspberry Pi.</p>
+
+<h2>
+  <a name="why-some-developers-look-for-an-alternative-to-openclaw" href="#why-some-developers-look-for-an-alternative-to-openclaw">
+  </a>
+  Why Some Developers Look for an Alternative to OpenClaw
+</h2>
+
+<p>OpenClaw attracted massive attention in the developer community and has collected more than 100,000 GitHub stars. It demonstrated that AI agents can support multiple communication channels, retain long-term memory, and perform tool-based reasoning.</p>
+
+<p>However, OpenClaw is built using TypeScript and depends on Node.js. This introduces several runtime requirements that increase memory usage and startup time.</p>
+
+<p>ZeroClaw rebuilds the same concept from the ground up using Rust. The architectural difference leads to significant changes in resource consumption.</p>
+
+<h3>
+  <a name="resource-comparison" href="#resource-comparison">
+  </a>
+  Resource Comparison
+</h3>
+
+<div class="table-wrapper-paragraph"><table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>ZeroClaw</th>
+<th>OpenClaw</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Primary Language</td>
+<td>Rust</td>
+<td>TypeScript</td>
+</tr>
+<tr>
+<td>RAM Consumption</td>
+<td>Less than 5 MB</td>
+<td>More than 1 GB</td>
+</tr>
+<tr>
+<td>Startup Time on 0.8 GHz CPU</td>
+<td>Under 10 ms</td>
+<td>More than 500 ms</td>
+</tr>
+<tr>
+<td>Binary Size</td>
+<td>About 8.8 MB</td>
+<td>Around 28 MB plus Node.js</td>
+</tr>
+<tr>
+<td>Dependencies</td>
+<td>Single executable</td>
+<td>Node runtime and npm packages</td>
+</tr>
+<tr>
+<td>Supported Architectures</td>
+<td>ARM, x86, RISC-V</td>
+<td>x86 and ARM through Node</td>
+</tr>
+</tbody>
+</table></div>
+
+<p>The difference in memory usage is substantial. A system that requires a dedicated server with OpenClaw can often run on modest hardware when using ZeroClaw.</p>
+
+<h2>
+  <a name="core-capabilities-of-zeroclaw" href="#core-capabilities-of-zeroclaw">
+  </a>
+  Core Capabilities of ZeroClaw
+</h2>
+
+<p>Although it is small in size, ZeroClaw includes many features that developers expect from modern AI agents.</p>
+
+<h3>
+  <a name="lightweight-runtime" href="#lightweight-runtime">
+  </a>
+  Lightweight Runtime
+</h3>
+
+<p>The framework typically runs within a few megabytes of memory when compiled in release mode. This makes it suitable for resource-constrained environments.</p>
+
+<h3>
+  <a name="multiple-ai-providers" href="#multiple-ai-providers">
+  </a>
+  Multiple AI Providers
+</h3>
+
+<p>ZeroClaw supports several LLM providers including:</p>
+
+<ul>
+<li>Anthropic</li>
+<li>OpenAI</li>
+<li>Google Gemini</li>
+<li>OpenRouter</li>
+<li>GitHub Copilot</li>
+</ul>
+
+<p>It can also connect to local model endpoints such as Ollama or LM Studio.</p>
+
+<h3>
+  <a name="messaging-channels" href="#messaging-channels">
+  </a>
+  Messaging Channels
+</h3>
+
+<p>Agents can interact through different channels. A command-line interface is available by default, and integrations like Discord can be added easily.</p>
+
+<h3>
+  <a name="persistent-memory" href="#persistent-memory">
+  </a>
+  Persistent Memory
+</h3>
+
+<p>ZeroClaw stores conversation history and contextual information using SQLite combined with vector search. This allows the agent to recall past interactions semantically.</p>
+
+<h3>
+  <a name="tooldriven-research-phase" href="#tooldriven-research-phase">
+  </a>
+  Tool-Driven Research Phase
+</h3>
+
+<p>Before generating a response, the agent can gather information through tools such as web queries or API calls.</p>
+
+<h3>
+  <a name="security-features" href="#security-features">
+  </a>
+  Security Features
+</h3>
+
+<p>Security is treated as a core part of the system. ZeroClaw includes authentication pairing, workspace isolation, and explicit tool allowlists.</p>
+
+<h3>
+  <a name="modular-architecture" href="#modular-architecture">
+  </a>
+  Modular Architecture
+</h3>
+
+<p>The framework follows a trait-based design. Providers, memory backends, tools, and communication channels can be swapped independently without affecting the rest of the system.</p>
+
+<h3>
+  <a name="crossplatform-support" href="#crossplatform-support">
+  </a>
+  Cross-Platform Support
+</h3>
+
+<p>Because it is written in Rust, the same binary architecture supports ARM, x86, and RISC-V environments.</p>
+
+<p>The project has already gained strong community interest and currently holds more than twenty thousand stars on GitHub.</p>
+
+<h1>
+  <a name="installing-zeroclaw" href="#installing-zeroclaw">
+  </a>
+  Installing ZeroClaw
+</h1>
+
+<p>ZeroClaw can be installed in multiple ways depending on your system and preferences.</p>
+
+<h2>
+  <a name="option-1-install-using-homebrew" href="#option-1-install-using-homebrew">
+  </a>
+  Option 1: Install Using Homebrew
+</h2>
+
+<p>On macOS or Linux systems with Homebrew, installation takes only one command.<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>brew install zeroclaw
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>After installation, confirm that the binary is available.<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>zeroclaw --version
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<h2>
+  <a name="option-2-build-from-source" href="#option-2-build-from-source">
+  </a>
+  Option 2: Build From Source
+</h2>
+
+<p>If you want the newest version or prefer compiling the project yourself, you can build it directly from the repository.<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>git clone https://github.com/zeroclaw-labs/zeroclaw.git
+cd zeroclaw
+./bootstrap.sh
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>The bootstrap script acts as a guided installer. It asks a few configuration questions before building the project automatically.</p>
+
+<p>Example interaction:<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>Install system dependencies for Darwin? [y/N] y
+Run a separate prebuild before install? [Y/n] y
+Install zeroclaw into cargo bin now? [Y/n] y
+Run onboarding after install? [y/N] y
+Use interactive onboarding? [Y/n] y
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>Once the process finishes, the compiled binary is placed inside your Cargo bin directory.</p>
+
+<p>On modern hardware the build typically completes in about five or six minutes.</p>
+
+<p>If compilation resources are limited, a prebuilt binary can be used instead.<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>./bootstrap.sh --prefer-prebuilt
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<h1>
+  <a name="creating-a-discord-bot" href="#creating-a-discord-bot">
+  </a>
+  Creating a Discord Bot
+</h1>
+
+<p>Before linking ZeroClaw with Discord, a bot must be created.</p>
+
+<ol>
+<li>Visit the Discord Developer Portal</li>
+<li>Create a new application</li>
+<li>Navigate to the Bot section and add a bot</li>
+<li>Generate and copy the bot token</li>
+</ol>
+
+<p>Keep the token private. Anyone with this token could control the bot.</p>
+
+<h3>
+  <a name="enable-required-intents" href="#enable-required-intents">
+  </a>
+  Enable Required Intents
+</h3>
+
+<p>Inside the bot configuration page enable:</p>
+
+<ul>
+<li>Message Content Intent</li>
+<li>Server Members Intent</li>
+</ul>
+
+<p>Without the message content permission, the Discord channel may repeatedly disconnect with invalid session errors.</p>
+
+<h1>
+  <a name="running-the-onboarding-wizard" href="#running-the-onboarding-wizard">
+  </a>
+  Running the Onboarding Wizard
+</h1>
+
+<p>After installation, ZeroClaw launches a setup wizard that configures the environment automatically.</p>
+
+<p>If it does not start automatically, run:<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>zeroclaw onboard
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>The wizard usually completes in less than a minute and includes several steps.</p>
+
+<h2>
+  <a name="workspace-setup" href="#workspace-setup">
+  </a>
+  Workspace Setup
+</h2>
+
+<p>ZeroClaw creates a workspace directory to store sessions, memory, configuration files, and agent identity.</p>
+
+<p>Example default path:<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>~/.zeroclaw/workspace
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>Typical workspace structure:<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>workspace/
+├── sessions/
+├── memory/
+├── state/
+├── cron/
+├── skills/
+├── AGENTS.md
+├── USER.md
+├── TOOLS.md
+└── BOOTSTRAP.md
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<h2>
+  <a name="choosing-an-ai-provider" href="#choosing-an-ai-provider">
+  </a>
+  Choosing an AI Provider
+</h2>
+
+<p>During onboarding you select the model provider and provide an API key.</p>
+
+<p>Example configuration with Google Gemini:<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>Provider: gemini
+Model: gemini-2.0-flash
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>If Gemini CLI credentials are already available on your machine, ZeroClaw may detect them automatically.</p>
+
+<h2>
+  <a name="connecting-discord" href="#connecting-discord">
+  </a>
+  Connecting Discord
+</h2>
+
+<p>To allow messaging through Discord, provide the bot token when prompted.<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>Bot token: YOUR_DISCORD_BOT_TOKEN
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>You can also restrict which Discord users are allowed to communicate with the agent by specifying user IDs.</p>
+
+<h2>
+  <a name="optional-tunnel-configuration" href="#optional-tunnel-configuration">
+  </a>
+  Optional Tunnel Configuration
+</h2>
+
+<p>ZeroClaw can expose its gateway to the internet using a tunnel service. If you want remote access, a custom SSH tunnel command can be used.</p>
+
+<p>Example configuration for <a href="https://pinggy.io/" target="_blank" rel="noopener noreferrer">Pinggy</a>:<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>ssh -T -p 443 -R 0:localhost:{port} -o StrictHostKeyChecking=accept-new free.pinggy.io
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>This allows the agent to be reachable outside your local network.</p>
+
+<h2>
+  <a name="security-and-tool-mode" href="#security-and-tool-mode">
+  </a>
+  Security and Tool Mode
+</h2>
+
+<p>The recommended mode is Sovereign. In this configuration, all API keys remain local, and no external orchestration service is used.</p>
+
+<p>Encrypted storage for secrets can also be enabled during setup.</p>
+
+<h1>
+  <a name="starting-the-channel-server" href="#starting-the-channel-server">
+  </a>
+  Starting the Channel Server
+</h1>
+
+<p>Once the configuration is complete, start the communication server.<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>zeroclaw channel start
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>The console output will show the active model, memory backend, and enabled channels.</p>
+
+<p>Example:<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>ZeroClaw Channel Server
+Model: gemini-2.0-flash
+Memory: sqlite
+Channels: discord
+Listening for messages...
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>When Discord connects successfully, the logs will display confirmation messages.</p>
+
+<h1>
+  <a name="launching-the-web-dashboard" href="#launching-the-web-dashboard">
+  </a>
+  Launching the Web Dashboard
+</h1>
+
+<p>If you prefer a graphical interface instead of the terminal, start the gateway dashboard.<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>zeroclaw gateway
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>The interface becomes available in the browser at:<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>http://localhost:3000
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>This dashboard allows monitoring sessions, inspecting memory, and adjusting configuration settings.</p>
+
+<h1>
+  <a name="testing-the-agent-from-the-cli" href="#testing-the-agent-from-the-cli">
+  </a>
+  Testing the Agent from the CLI
+</h1>
+
+<p>You can also interact directly through the command line.</p>
+
+<p>Send a single message:<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>zeroclaw agent -m "Hello, ZeroClaw!"
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>Start an interactive session:<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>zeroclaw agent
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<h1>
+  <a name="testing-discord-interaction" href="#testing-discord-interaction">
+  </a>
+  Testing Discord Interaction
+</h1>
+
+<p>After the server is running:</p>
+
+<ol>
+<li>Open your Discord server</li>
+<li>Mention the bot in a channel</li>
+<li>Send a message such as:
+</li>
+</ol>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>@YourBotName Hello ZeroClaw
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>The agent processes the message and sends a response back to the channel.</p>
+
+<h1>
+  <a name="common-issues-and-fixes" href="#common-issues-and-fixes">
+  </a>
+  Common Issues and Fixes
+</h1>
+
+<h3>
+  <a name="discord-keeps-reconnecting" href="#discord-keeps-reconnecting">
+  </a>
+  Discord Keeps Reconnecting
+</h3>
+
+<p>This usually happens when the Message Content Intent is not enabled. Activate it in the Discord developer settings and restart the server.</p>
+
+<h3>
+  <a name="api-key-problems" href="#api-key-problems">
+  </a>
+  API Key Problems
+</h3>
+
+<p>If your model provider key expires, update it using:<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>zeroclaw config set api_key "YOUR_NEW_API_KEY"
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewbox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>Then restart the channel server.</p>
+
+<h3>
+  <a name="bot-does-not-reply" href="#bot-does-not-reply">
+  </a>
+  Bot Does Not Reply
+</h3>
+
+<p>Check that the bot has permission to read and send messages and ensure you are mentioning the bot if mention-required mode is enabled.</p>
+
+<h1>
+  <a name="when-to-choose-zeroclaw-or-openclaw" href="#when-to-choose-zeroclaw-or-openclaw">
+  </a>
+  When to Choose ZeroClaw or OpenClaw
+</h1>
+
+<p>Both frameworks aim to provide self-hosted AI assistants, but their design philosophies differ.</p>
+
+<h3>
+  <a name="zeroclaw-works-best-when" href="#zeroclaw-works-best-when">
+  </a>
+  ZeroClaw Works Best When
+</h3>
+
+<ul>
+<li>You run agents on small or low-power hardware</li>
+<li>Minimal dependencies are preferred</li>
+<li>Rust performance and memory safety are important</li>
+<li>Cross-architecture support is required</li>
+</ul>
+
+<h3>
+  <a name="openclaw-may-be-better-when" href="#openclaw-may-be-better-when">
+  </a>
+  OpenClaw May Be Better When
+</h3>
+
+<ul>
+<li>You want a larger ecosystem and community</li>
+<li>You need integrations like WhatsApp, Slack, or Telegram</li>
+<li>Your development stack is primarily JavaScript or TypeScript</li>
+<li>Hardware resources are not a concern</li>
+</ul>
+
+<h1>
+  <a name="practical-uses-for-zeroclaw" href="#practical-uses-for-zeroclaw">
+  </a>
+  Practical Uses for ZeroClaw
+</h1>
+
+<p>Once the agent is connected to Discord or CLI, several possibilities open up.</p>
+
+<p>You can communicate with your AI assistant from any device that supports Discord. Conversations are stored in a persistent memory system, allowing the agent to remember context across sessions.</p>
+
+<p>Because the memory backend uses SQLite with vector search, the agent can retrieve relevant past interactions even weeks later.</p>
+
+<p>The framework also supports custom skills. Adding new abilities often involves dropping skill files into the workspace directory.</p>
+
+<h2>
+  <a name="conclusion" href="#conclusion">
+  </a>
+  Conclusion
+</h2>
+
+<p>ZeroClaw demonstrates that advanced AI agent infrastructure does not necessarily require heavy runtime environments. By implementing the system in Rust and distributing it as a single binary, the framework drastically reduces memory usage while maintaining many features found in larger projects.</p>
+
+<p>For developers interested in self-hosted AI assistants that can run on modest hardware, ZeroClaw offers a compelling option. Whether you are experimenting on a Raspberry Pi, running services on a low-cost VPS, or simply prefer efficient software, the project provides a practical and lightweight foundation for building AI agents.</p>
+
+<h2>
+  <a name="reference" href="#reference">
+  </a>
+  Reference
+</h2>
+
+<p><a href="https://pinggy.io/blog/zeroclaw_lightweight_openclaw_alternative/" target="_blank" rel="noopener noreferrer">ZeroClaw: A Lightweight Open Source Alternative to OpenClaw</a></p>
+
+
+            </div>
+
+              <div class="below-post-bb body-billboard-container" data-async-url="/lightningdev123/zeroclaw-a-minimal-rust-based-ai-agent-framework-for-self-hosted-systems-5593/bmar11/post_body_bottom"></div>
+          </div>
+          <section id="comments" data-follow-button-container="true" data-updated-at="2026-03-31 12:23:30 UTC" class="text-padding mb-4 border-t-1 border-0 border-solid border-base-10">
+    <header class="relative flex justify-between items-center mb-6">
+      <div class="flex items-center">
+        <h2 class="crayons-subtitle-1">
+          Top comments <span class="js-comments-count" data-comments-count="0">(0)</span>
+        </h2>
+      </div>
+
+
+      <div id="comment-subscription" class="print-hidden">
+        <div class="crayons-btn-group">
+          <span class="crayons-btn crayons-btn--outlined">Subscribe</span>
+        </div>
+      </div>
+    </header>
+    <div id="billboard_delay_trigger"></div>
+    <div
+      id="comments-container"
+      data-testid="comments-container"
+      data-commentable-id="3330772"
+      data-commentable-type="Article"
+      data-has-recent-comment-activity="false">
+
+        <div id="response-templates-data" class="hidden"></div>
+
+
+<form class="comment-form print-hidden" id="new_comment" action="/comments" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" />
+
+  <input type="hidden" name="authenticity_token" value="NOTHING" id="new_comment_authenticity_token">
+
+    <input value="3330772" autocomplete="off" type="hidden" name="comment[commentable_id]" id="comment_commentable_id" />
+    <input value="Article" autocomplete="off" type="hidden" name="comment[commentable_type]" id="comment_commentable_type" />
+    
+
+  <span class="crayons-avatar m:crayons-avatar--l mr-2 shrink-0">
+    <img src="https://media2.dev.to/dynamic/image/width=256,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" width="32" height="32" alt="pic" class="crayons-avatar__image overflow-hidden" id="comment-primary-user-profile--avatar" loading="lazy" />
+  </span>
+  <div class="comment-form__inner">
+    <div class="comment-form__field" data-tracking-name="comment_form_textfield">
+      <textarea placeholder="Add to the discussion" onfocus="handleFocus(event)" onkeyup="handleKeyUp(event)" onkeydown="handleKeyDown(event)" oninput="handleChange(event)" id="text-area" required="required" class="crayons-textfield comment-textarea crayons-textfield--ghost" aria-label="Add a comment to the discussion" name="comment[body_markdown]">
+</textarea>
+
+    </div>
+
+    <div class="response-templates-container crayons-card crayons-card--secondary p-4 mb-4 comment-form__templates fs-base hidden">
+      <header class="mb-3">
+        <button type="button" class="crayons-btn personal-template-button active" data-target-type="personal" data-form-id="new_comment">Personal</button>
+        <button type="button" class="crayons-btn moderator-template-button hidden" data-target-type="moderator" data-form-id="new_comment">Trusted User</button>
+      </header>
+
+      <div class="personal-responses-container">
+      </div>
+      <div class="moderator-responses-container hidden">
+      </div>
+
+      <a target="_blank" rel="noopener nofollow" href="/settings/response-templates">
+        Create template
+      </a>
+      <p>Templates let you quickly answer FAQs or store snippets for re-use.</p>
+    </div>
+
+    <div class="comment-form__preview text-styles text-styles--secondary" id="preview-div"></div>
+
+    <div class="comment-form__buttons mb-4">
+      <button type="submit" class="crayons-btn mr-2 js-btn-enable" onclick="validateField(event)" data-tracking-name="comment_submit_button" disabled>Submit</button>
+      <button type="button" class="preview-toggle crayons-btn crayons-btn--secondary comment-action-preview js-btn-enable mr-2" data-tracking-name="comment_preview_button" disabled>Preview</button>
+      <a href="/404.html" class="dismiss-edit-comment crayons-btn crayons-btn--ghost js-btn-dismiss hidden">Dismiss</a>
+    </div>
+  </div>
+
+  <div class="code-of-conduct" id="toggle-code-of-conduct-checkbox"></div>
+</form>
+
+
+      <div class="comments" id="comment-trees-container">
+          
+      </div>
+    </div>
+
+    <div class="align-center">
+
+    <p class="fs-s color-base-60 mb-4">
+      Some comments may only be visible to logged-in visitors. <a href="/enter">Sign in</a> to view all comments.
+      
+    </p>
+
+  <nav class="fs-s align-center block" aria-label="Conduct controls">
+  <a href="/code-of-conduct" class="crayons-link crayons-link--secondary">Code of Conduct</a>
+  <span class="opacity-25 px-2" role="presentation">&bull;</span>
+  <a href="/report-abuse" class="crayons-link crayons-link--secondary">Report abuse</a>
+</nav>
+
+</div>
+
+</section>
+<div id="hide-comments-modal" class="hidden">
+  <form id="hide-comments-modal__form" class="hide-comments-modal__form" data-type="json" action="/comments/hide" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="_method" value="patch" autocomplete="off" /><input type="hidden" name="authenticity_token" value="bTPa_Sd1CGJggMuMoQMmv5K9qyw1q_U9j8NHSlsjVDpDd7HsznjlBgXYkgEa1Sppa0tuNWw6mdz4OtY0jl_UJQ" autocomplete="off" />
+    <div class="hide-comments-modal__content">
+      <p class="pb-2">
+        Are you sure you want to hide this comment? It will become hidden in your post, but will still be visible via the comment's <a id="hide-comments-modal__comment-permalink" href="#">permalink</a>.
+      </p>
+      <label class="crayons-field crayons-field--checkbox my-2">
+        <input name="hide_children" type="hidden" value="0" autocomplete="off" /><input class="hide_children crayons-checkbox" type="checkbox" value="1" name="hide_children" id="hide_children" />
+        <p class="crayons-field__label">Hide child comments as well</p>
+      </label>
+      <p class="pb-4 pt-2">
+        <button type="submit" class="crayons-btn">
+          Confirm
+        </button>
+      </p>
+    </div>
+</form>  <p class="fs-s color-base-60">For further actions, you may consider blocking this person and/or <a id="hide-comments-modal__report-link" href="/report-abuse">reporting abuse</a></p>
+</div>
+
+
+
+        </article>
+
+        <div class="pb-4 crayons-layout__comments-billboard">
+          <div class="new-bb-container pb-4 crayons-layout__comments-billboard" data-async-url="/lightningdev123/zeroclaw-a-minimal-rust-based-ai-agent-framework-for-self-hosted-systems-5593/bmar11/post_comments"></div>
+        </div>
+
+          <!-- Bottom content skipped via SKIP_BOTTOM_CONTENT config -->
+      </div>
+    </main>
+
+    <aside class="crayons-layout__sidebar-right" aria-label="Author details">
+      <div class="crayons-article-sticky grid gap-4 pb-4 break-word" id="article-show-primary-sticky-nav">
+  <div class="crayons-card crayons-card--secondary branded-7 p-4 pt-0 gap-4 grid" style="border-top-color: #000000;">
+    <div class="-mt-4">
+  <a href="/lightningdev123" class="flex">
+    <span class="crayons-avatar crayons-avatar--xl  mr-2 shrink-0">
+      <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F2757052%2F987f57b6-be53-4d74-9893-755596ff93c5.png" class="crayons-avatar__image" alt="" loading="lazy" />
+    </span>
+    <span class="crayons-link crayons-subtitle-2 mt-5">
+      Lightning Developer
+      
+    </span>
+  </a>
+</div>
+
+<div class="print-hidden">
+  <button name="button" type="button" data-info="{&quot;className&quot;:&quot;User&quot;,&quot;style&quot;:&quot;&quot;,&quot;id&quot;:2757052,&quot;name&quot;:&quot;Lightning Developer&quot;}" class="crayons-btn follow-action-button whitespace-nowrap w-100 follow-user" aria-label="Follow user: Lightning Developer" aria-pressed="false">Follow</button>
+</div>
+  <div class="color-base-70">
+    Full-stack dev. Building micro-SaaS. Exploring new frameworks. Indie hacker.
+  </div>
+
+  <div class="user-metadata-details">
+    <ul class="user-metadata-details-inner">
+      <li>
+        <div class="key">
+          Joined
+        </div>
+        <div class="value">
+          <time datetime="2025-01-24T07:52:06Z" class="date">Jan 24, 2025</time>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  </div>
+
+      <div class="crayons-card crayons-card--secondary">
+        <header class="crayons-card__header">
+          <h3 class="crayons-subtitle-2">
+            More from <a href="/lightningdev123">Lightning Developer</a>
+          </h3>
+        </header>
+        <div>
+            <a class="crayons-link crayons-link--contentful" href="/lightningdev123/build-an-ai-job-search-agent-with-langflow-docker-discord-automate-your-job-hunt-5b68">
+              Build an AI Job Search Agent with Langflow, Docker &amp; Discord (Automate Your Job Hunt)
+              <div class="crayons-link__secondary -ml-1">
+                  <span class="mr-1"><span class="opacity-50">#</span>webdev</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>ai</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>productivity</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>tutorial</span>
+              </div>
+            </a>
+            <a class="crayons-link crayons-link--contentful" href="/lightningdev123/beyond-seo-writing-for-machines-that-answer-instead-of-rank-42li">
+              Beyond SEO: Writing for Machines That Answer Instead of Rank
+              <div class="crayons-link__secondary -ml-1">
+                  <span class="mr-1"><span class="opacity-50">#</span>webdev</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>ai</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>productivity</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>tutorial</span>
+              </div>
+            </a>
+            <a class="crayons-link crayons-link--contentful" href="/lightningdev123/build-ai-agents-locally-and-access-them-anywhere-with-langflow-1nof">
+              Build AI Agents Locally and Access Them Anywhere with Langflow
+              <div class="crayons-link__secondary -ml-1">
+                  <span class="mr-1"><span class="opacity-50">#</span>ai</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>tutorial</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>devops</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>opensource</span>
+              </div>
+            </a>
+        </div>
+      </div>
+</div>
+
+<div class="crayons-article-sticky grid gap-4 break-word sidebar-bb" data-async-url="/lightningdev123/zeroclaw-a-minimal-rust-based-ai-agent-framework-for-self-hosted-systems-5593/bmar11/post_sidebar"></div>
+
+    </aside>
+  </div>
+
+  <div class="mod-actions-menu print-hidden"></div>
+  <div data-testid="unpublish-post-modal-container" class="unpublish-post-modal-container hidden"></div>
+
+  <div class="fullscreen-code js-fullscreen-code"></div>
+  <script src="https://assets.dev.to/assets/billboard-365f8f60fc3506e63bc54cc5b0a2e36f4c11024ff6a30dccd5462467f24b5215.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/localizeArticleDates-70147c5c6bfe350b42e020ebb2a3dd37419d83978982b5a67b6389119bf162ac.js" defer="defer"></script>
+<script src="https://assets.dev.to/assets/articleReactions-1f2220b03b8ee48f0e9196d07b123ad5c5d942328819c33728eab4a4ff83150b.js" defer="defer"></script>
+
+  <script>
+    function activateRunkitTags() {
+  if (!areAnyRunkitTagsPresent())
+    return
+
+  var checkRunkit = setInterval(function() {
+    try {
+      dynamicallyLoadRunkitLibrary()
+
+      if (typeof(RunKit) === 'undefined') {
+        return
+      }
+
+      replaceTagContentsWithRunkitWidget()
+      clearInterval(checkRunkit);
+    } catch(e) {
+      console.error(e);
+      clearInterval(checkRunkit);
+    }
+  }, 200);
+}
+
+function isRunkitTagAlreadyActive(runkitTag) {
+  return runkitTag.querySelector("iframe") !== null;
+};
+
+function areAnyRunkitTagsPresent() {
+  var presentRunkitTags = document.getElementsByClassName("runkit-element");
+
+  return presentRunkitTags.length > 0
+}
+
+function replaceTagContentsWithRunkitWidget() {
+  var targets = document.getElementsByClassName("runkit-element");
+  for (var i = 0; i < targets.length; i++) {
+    if (isRunkitTagAlreadyActive(targets[i])) {
+      continue;
+    }
+
+    var wrapperContent = targets[i].textContent;
+    if (/^(<iframe src)/.test(wrapperContent) === false) {
+      if (targets[i].children.length > 0) {
+        var preamble = targets[i].children[0].textContent;
+        var content = targets[i].children[1].textContent;
+        targets[i].innerHTML = "";
+        var notebook = RunKit.createNotebook({
+          element: targets[i],
+          source: content,
+          preamble: preamble
+        });
+      }
+    }
+  }
+};
+
+function dynamicallyLoadRunkitLibrary() {
+  if (typeof(dynamicallyLoadScript) === "undefined")
+    return
+
+  dynamicallyLoadScript("//embed.runkit.com")
+}
+
+activateRunkitTags();
+
+  </script>
+  <div class="js-billboard-container pb-4 crayons-layout__comments-billboard" data-async-url="/lightningdev123/zeroclaw-a-minimal-rust-based-ai-agent-framework-for-self-hosted-systems-5593/bmar11/post_fixed_bottom"></div>
+
+
+    <div id="runtime-banner-container"></div>
+    <div id="i18n-translations" data-translations="{&quot;en&quot;:{&quot;core&quot;:{&quot;add_comment&quot;:&quot;Add comment&quot;,&quot;beta&quot;:&quot;beta&quot;,&quot;comment&quot;:&quot;Comment&quot;,&quot;copy_link&quot;:&quot;Copy link&quot;,&quot;edit_profile&quot;:&quot;Edit profile&quot;,&quot;follow&quot;:&quot;Follow&quot;,&quot;follow_back&quot;:&quot;Follow back&quot;,&quot;following&quot;:&quot;Following&quot;,&quot;like&quot;:&quot;Like&quot;,&quot;loading&quot;:&quot;loading...&quot;,&quot;reaction&quot;:&quot;Reaction&quot;,&quot;report_abuse&quot;:&quot;Report abuse&quot;,&quot;search&quot;:&quot;Search&quot;,&quot;success_settings&quot;:&quot;Successfully updated settings.&quot;,&quot;search_placeholder&quot;:&quot;Search...&quot;,&quot;search_find_related_posts&quot;:&quot;Find related posts...&quot;,&quot;search_powered_by&quot;:&quot;Powered by Algolia&quot;,&quot;search_submit_search&quot;:&quot;Submit search for advanced filtering.&quot;,&quot;search_displaying_recommendations&quot;:&quot;Displaying Algolia Recommendations — Start typing to search&quot;,&quot;article_form_save_changes&quot;:&quot;Save changes&quot;,&quot;article_form_schedule&quot;:&quot;Schedule&quot;,&quot;article_form_publish&quot;:&quot;Publish&quot;,&quot;article_form_loading_preview&quot;:&quot;Loading preview&quot;,&quot;article_form_preview_loaded&quot;:&quot;Preview loaded&quot;,&quot;comments_preview&quot;:&quot;Preview&quot;,&quot;comments_continue_editing&quot;:&quot;Continue editing&quot;,&quot;survey_enter_response&quot;:&quot;Enter your response here...&quot;,&quot;survey_thank_you_response&quot;:&quot;Thank you for your response.&quot;,&quot;survey_thank_you_completing&quot;:&quot;Thank you for completing the survey!&quot;,&quot;dashboard_analytics_readers&quot;:&quot;Readers&quot;,&quot;dashboard_analytics_comments&quot;:&quot;Comments&quot;,&quot;dashboard_analytics_reactions&quot;:&quot;Reactions&quot;,&quot;stats_by&quot;:&quot;by&quot;,&quot;editor_new_title&quot;:&quot;New post title here...&quot;,&quot;editor_body_placeholder&quot;:&quot;Write your post content here...&quot;,&quot;tags_field_label&quot;:&quot;Add up to 4 tags&quot;,&quot;tags_field_placeholder&quot;:&quot;Add up to 4 tags...&quot;,&quot;counted_organization&quot;:{&quot;one&quot;:&quot;%{count} organization&quot;,&quot;other&quot;:&quot;%{count} organizations&quot;},&quot;counted_user&quot;:{&quot;one&quot;:&quot;%{count} person&quot;,&quot;other&quot;:&quot;%{count} people&quot;},&quot;not_following&quot;:&quot;You&#39;re not following anyone&quot;,&quot;following_everyone&quot;:&quot;You&#39;re following %{details} (everyone)&quot;,&quot;you_are_following&quot;:&quot;You&#39;re following&quot;,&quot;and&quot;:&quot;and&quot;}}}"></div>
+  </div>
+</div>
+    
+
+<footer id="footer" class="crayons-footer print-hidden">
+  <div id="footer-container" class="crayons-footer__container">
+
+
+        <style>
+  .long-bb-body {
+    max-height: calc(100vh - 200px);
+    overflow: hidden;
+  }
+  .long-bb-bottom {
+    height: 180px;
+    background: linear-gradient(to top, var(--card-bg), transparent);
+    margin-top: -180px;
+    position:relative;
+    z-index: 5;
+  }
+</style>
+
+  <div
+    style=""
+    data-display-unit data-id="146443"
+    data-category-click="click"
+    data-category-impression="impression"
+    data-context-type="home"
+    data-special="nothing"
+    data-article-id="935950"
+    data-type-of="in_house">
+          <div class="crayons-card crayons-card--secondary crayons-bb bb-placement js-billboard" style="display: inline-flex; flex-direction: column; align-items: center; margin: 0 auto 2rem auto; width: fit-content; padding: 2rem;">
+        <p style="font-weight: bold; margin: 0 0 1rem 0;">
+            💎 DEV Diamond Sponsors
+        </p>
+        <p style="font-size: 0.8em; margin: 0 0 2rem 0;">
+            Thank you to our Diamond Sponsors for supporting the DEV Community
+        </p>
+    
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://aistudio.google.com/?utm_source=partner&amp;utm_medium=partner&amp;utm_campaign=FY25-Global-DEVpartnership-sponsorship-AIS&amp;utm_content=-&amp;utm_term=-&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fxjlyhbdqehj3akhz166w.png" alt="Google AI - Official AI Model and Platform Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 54px; padding: 10px;" loading="lazy" width="2048" height="472">
+                </a>
+                <p style="text-align: center;">Google AI is the official AI Model and Platform Partner of DEV</p>
+            </div>
+
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://neon.tech/?ref=devto&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fbnl88cil6afxzmgwrgtt.png" alt="Neon - Official Database Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 60px; padding: 10px;" loading="lazy" width="2286" height="596">
+                </a>
+                <p style="text-align: center;">Neon is the official database partner of DEV</p>
+            </div>
+    
+            <div style="display: inline-block; max-width: 240px; font-size: 0.8em; font-style: italic; text-align: center; padding: 10px; background: #ffffff; border-radius: 5px; color: #404040;">
+                <a href="https://www.algolia.com/developers/?utm_source=devto&amp;utm_medium=referral&bb=146443" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fv30ephnolfvnlwgwm0yz.png" alt="Algolia - Official Search Partner" style="display: block; background: #ffffff; margin: 0 auto; width: auto; height: 60px; padding: 10px;" loading="lazy" width="2286" height="596">
+                </a>
+                <p style="text-align: center;">Algolia is the official search partner of DEV</p>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+    <p class="fs-s crayons-footer__description">
+      <a class="c-link c-link--branded fw-medium" aria-label="DEV Community Home" href="/">DEV Community</a> — A space to discuss and keep up software development and manage your software career
+    </p>
+
+    <ul class="footer__nav-links flex gap-2 justify-center flex-wrap fs-s p-0" style="" />
+        <li class="footer__nav-link flex items-center">
+    <a href="/">
+      Home
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/about">
+      About
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/contact">
+      Contact
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://mlh.io/">
+      MLH
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+
+    </ul>
+
+    <ul class="footer__nav-links flex gap-2 justify-center flex-wrap fs-s p-0" style="" />
+        <li class="footer__nav-link flex items-center">
+    <a href="/code-of-conduct">
+      Code of Conduct
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/privacy">
+      Privacy Policy
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="/terms">
+      Terms of Use
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+
+    </ul>
+
+    <div class="fs-s">
+      <p>Built on <a class="c-link c-link--branded" target="_blank" rel="noopener" href="https://www.forem.com">Forem</a> — the <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/t/opensource">open source</a> software that powers <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to">DEV</a> and other inclusive communities.</p>
+      <p>Made with love and <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/t/rails">Ruby on Rails</a>. DEV Community <span title="copyright">&copy;</span> 2016 - 2026.</p>
+    </div>
+  </div>
+</footer>
+<div id="snack-zone"></div>
+
+    <div id="global-signup-modal" class="authentication-modal hidden">
+  <div class="authentication-modal__container">
+    <figure class="authentication-modal__image-container">
+      <img class="authentication-modal__image" src="https://media2.dev.to/dynamic/image/width=190,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+        alt="DEV Community" loading="lazy" />
+    </figure>
+    <div class="authentication-modal__content">
+      <p class="authentication-modal__description">
+          We&#39;re a place where coders share, stay up-to-date and grow their careers.
+      </p>
+    </div>
+    <div class="authentication-modal__actions">
+      <a href="https://dev.to/enter?signup_subforem=1" class="crayons-btn" aria-label="Log in" data-no-instant>
+        Log in
+      </a>
+      <a href="https://dev.to/enter?signup_subforem=1&amp;state=new-user" class="crayons-btn crayons-btn--ghost-brand js-global-signup-modal__create-account" aria-label="Create new account" data-no-instant>
+        Create account
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="https://assets.dev.to/assets/signupModalShortcuts-0b25469b985100a01e94cbd7fccaf7f0a4d776e129aac65c766aa32cb28ab29a.js" defer="defer"></script>
+
+    <div id="cookie-consent"></div>
+  <div id="reaction-category-resources" class="hidden" aria-hidden="true">
+    <img data-name="Like" data-slug="like" data-position="1" src="https://assets.dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18" />
+    <img data-name="Unicorn" data-slug="unicorn" data-position="2" src="https://assets.dev.to/assets/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" width="18" height="18" />
+    <img data-name="Exploding Head" data-slug="exploding_head" data-position="3" src="https://assets.dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" width="18" height="18" />
+    <img data-name="Raised Hands" data-slug="raised_hands" data-position="4" src="https://assets.dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="18" height="18" />
+    <img data-name="Fire" data-slug="fire" data-position="5" src="https://assets.dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18" />
+</div>
+
+    <script>
+  var userSignedIn = false;
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    initAuth();
+  } else {
+    document.addEventListener('DOMContentLoaded', initAuth);
+  }
+
+  function initAuth() {
+    var paramToken = new URLSearchParams(window.location.search).get('jwt');
+
+    if (paramToken && !userSignedIn) {
+      authenticateUser(paramToken);
+    } else {
+      var iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = 'https://forem.com/auth_pass/iframe';
+  
+      document.body.appendChild(iframe);
+  
+      window.addEventListener('message', function(event) {
+        if (event.origin !== 'https://forem.com' && event.origin !== window.location.origin) {
+          return;
+        }
+  
+        var data = event.data;
+  
+        if (data.authenticated && !userSignedIn) {
+          authenticateUser(data.token);
+        } else if(data.authenticated && window.ReactNativeWebView && window.ReactNativeWebView.postMessage) {
+          window.ReactNativeWebView.postMessage(JSON.stringify({
+            action: 'login',
+            token: data.token,
+          }));
+        }
+      });  
+    }
+
+    function authenticateUser(token) {
+      fetch('/auth_pass/token_login', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': getMetaContent('csrf-token'),
+        },
+        body: JSON.stringify({ token: token }),
+      })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        if (data.success) {
+          if (document.head.querySelector('meta[name="user-signed-in"][content="false"]')) {
+            // Reload the page to update the user's state
+            location.reload();
+          }
+        }
+      })
+      .catch(function(error) {
+        console.error('Error during authentication:', error);
+      });
+    }
+
+    function getMetaContent(name) {
+      var element = document.querySelector('meta[name="' + name + '"]');
+      return element ? element.getAttribute('content') : '';
+    }
+  }
+</script>
+
+  
+  
+  
+  </body>
+  </html>
