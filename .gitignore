@@ -6,3 +6,9 @@ coverage
 
 # PostgreSQL
 pgdata/
+# Ignore downloaded crawler data
+storage/
+
+# (Optional) If you want Git to track the empty folder itself, but not the files inside it, do this instead:
+storage/*
+!storage/.gitkeep
