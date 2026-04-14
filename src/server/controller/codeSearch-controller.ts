@@ -22,6 +22,7 @@ export const codeSearchController = async (req: Request, res: Response) => {
     const { data: searchResult, error } = await supabase.rpc(
       "match_code_snippets",
       {
+        query_text: query,
         query_embedding: queryVector,
         match_threshold: 0.5,
         match_count: 10,
