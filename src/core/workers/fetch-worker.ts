@@ -4,18 +4,28 @@ import axios from "axios";
 import fs from "fs/promises";
 import crypto from "crypto";
 import path from "path";
+import { PolitenessGuard } from "../gaurds/politeness-gaurd";
 
 interface FetchJobData {
   url: string;
   depth?: number;
 }
 
-// 1. Setup the "Output" Queue
 const parseQueue = createQueue(QUEUE_NAMES.PARSE);
 
-// 2. Define the "Fetcher" Logic
+// Fetcher Logic
 const fetchProcessor = async (job: Job<FetchJobData>) => {
   const { url, depth = 0 } = job.data;
+
+  // THE FIREWALL
+  const allowed = await PolitenessGuard.canCrawl(url);
+
+  if (!allowed) {
+    console.log(`⏳ [Throttled] Domain locked. Deferring: ${url}`);
+    // Throwing this error tells BullMQ to put it back in the queue
+    throw new Error("RateLimitedOrBlocked");
+  }
+  
   console.log(`[FETCH] Downloading... ${url}`);
 
   try {

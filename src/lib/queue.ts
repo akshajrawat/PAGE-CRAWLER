@@ -1,26 +1,37 @@
 import { Queue, Worker } from "bullmq";
 import IORedis from "ioredis";
 
-// 1. The Connection Config
+// The Connection Config
 const redisConfig = {
   host: "localhost",
   port: 6379,
   maxRetriesPerRequest: null,
 };
 
-// 2. Define our Queue Names
+// Define our Queue Names
 const sharedConnection = new IORedis(redisConfig);
 export const QUEUE_NAMES = {
   FRONTIER: "crawler-frontier",
   PARSE: "crawler-parse",
 };
 
-// 3. Helper to create a Queue
+// Helper to create a Queue
 export const createQueue = (name: string) => {
-  return new Queue(name, { connection: sharedConnection });
+  return new Queue(name, {
+    connection: sharedConnection,
+    defaultJobOptions: {
+      attempts: 20, // Give it plenty of tries if it gets throttled
+      backoff: {
+        type: "exponential",
+        delay: 2000, // If it fails, wait 2s, then 4s, then 8s...
+      },
+      removeOnComplete: true,
+      removeOnFail: false,
+    },
+  });
 };
 
-// 4. Helper to create a Worker
+// Helper to create a Worker
 export const createWorker = (
   name: string,
   processor: any,
