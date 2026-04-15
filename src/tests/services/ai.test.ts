@@ -1,4 +1,4 @@
-import { getVectorEmbeddings, healthCheck } from "../../services/ai";
+import { getVectorEmbeddings, healthCheck } from "../../shared/services/ai";
 
 // DESCRIBE: Group of tests for the "AI Service"
 describe("AI Service Integration", () => {

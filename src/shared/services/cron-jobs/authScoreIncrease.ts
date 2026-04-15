@@ -1,5 +1,5 @@
 import cron from "node-cron";
-import { supabase } from "../../db/supabase";
+import { supabase } from "../../../db/supabase";
 
 export const startRankUpdater = () => {
   console.log("⏱️  [Cron] Rank Updater initialized.");

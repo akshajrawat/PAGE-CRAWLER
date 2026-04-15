@@ -1,10 +1,11 @@
 import { Job } from "bullmq";
-import { createQueue, createWorker, QUEUE_NAMES } from "../../lib/queue";
+import { createQueue, createWorker, QUEUE_NAMES } from "../lib/queue";
 import axios from "axios";
 import fs from "fs/promises";
 import crypto from "crypto";
 import path from "path";
-import { PolitenessGuard } from "../gaurds/politeness-gaurd";
+import { PolitenessGuard } from "../guards/politeness-guard";
+
 
 interface FetchJobData {
   url: string;

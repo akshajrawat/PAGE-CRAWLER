@@ -5,15 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "npx jest",
-    "backend": "npx ts-node src/server/server.ts",
+    "backend": "npx ts-node src/apps/api/server.ts",
     "frontend": "cd src/frontend && npm run dev",
-    "ai:server": "cd src/services/ai && .\\venv\\Scripts\\activate && uvicorn vector:app --reload",
-    "worker:fetch": "npx ts-node src/workers/fetch_worker.ts",
-    "worker:parse": "npx ts-node src/workers/parse_worker.ts",
-    "crawl": "npx ts-node src/index.ts",
-    "feed": "npx ts-node src/services/feeder/frontier-feed.ts",
-    "docker-up": "docker-compose up -d && npx supabase start",
-    "docker-down": "npx supabase stop && docker-compose down"
+    "ai:server": "cd src/shared/services/ai && .\\venv\\Scripts\\activate && uvicorn vector:app --reload",
+    "worker:fetch": "npx ts-node src/apps/worker-fetch/index.ts",
+    "worker:parse": "npx ts-node src/apps/worker-parse/index.ts",
+    "feed": "npx ts-node src/shared/services/feeder/frontier-feed.ts",
+    "docker-up": "npx supabase start && docker-compose up --build",
+    "docker-down": "npx supabase stop && docker-compose down",
+    "docker-clean": "docker-compose build --no-cache && npm run docker-up"
   },
   "keywords": [],
   "author": "",

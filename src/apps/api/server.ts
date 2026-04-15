@@ -2,7 +2,8 @@ import express from "express";
 import cors from "cors";
 import searchRoutes from "./routes/search-routes";
 import dotenv from "dotenv";
-import { startRankUpdater } from "../services/cron-jobs/authScoreIncrease";
+import { startRankUpdater } from "../../shared/services/cron-jobs/authScoreIncrease";
+
 
 const app = express();
 app.use(cors());

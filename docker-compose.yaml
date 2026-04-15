@@ -1,16 +1,57 @@
 services:
-  # --- SERVICE: REDIS (The Nervous System) ---
-  # Supabase handles the DB, but we still need Redis for our Queues.
+  # ----------------------------------------
+  # SERVICE 1: The Queue/Message Broker
+  # ----------------------------------------
   redis:
     image: redis:alpine
-    container_name: searchscale-redis
     ports:
-      - "6379:6379" # Exposed so your Node.js app can talk to it
-    volumes:
-      - redis_data:/data
-    command: redis-server --appendonly yes # Persists data to disk
-    restart: always
+      - "6379:6379"
+    # This prevents Redis from saving to disk, keeping it blazing fast for queues
+    command: redis-server --save "" --appendonly no 
 
-volumes:
-  redis_data:
-    # This ensures Redis memory survives a restart
+  # ----------------------------------------
+  # SERVICE 2: The API (Frontend facing)
+  # ----------------------------------------
+  api:
+    build: . 
+    container_name: moxcety-api
+    command: npx ts-node src/apps/api/server.ts 
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis
+    env_file:
+      - .env
+    environment:
+      - REDIS_HOST=redis
+      - SUPABASE_URL=http://host.docker.internal:54321
+
+  # ----------------------------------------
+  # SERVICE 3: The Fetch Worker
+  # ----------------------------------------
+  worker-fetch:
+    build: .
+    container_name: moxcety-fetch-worker
+    command: npx ts-node src/apps/worker-fetch/index.ts 
+    depends_on:
+      - redis
+    env_file:
+      - .env
+    environment:
+      - REDIS_HOST=redis
+      - SUPABASE_URL=http://host.docker.internal:54321
+
+  # ----------------------------------------
+  # SERVICE 4: The Parse Worker
+  # ----------------------------------------
+  worker-parse:
+    build: .
+    container_name: moxcety-parse-worker
+    command: npx ts-node src/apps/worker-parse/index.ts 
+    depends_on:
+      - redis
+    env_file:
+      - .env
+    environment:
+      - REDIS_HOST=redis
+      - SUPABASE_URL=http://host.docker.internal:54321

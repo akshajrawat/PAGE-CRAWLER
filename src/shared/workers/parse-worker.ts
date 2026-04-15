@@ -1,11 +1,11 @@
 import { Job } from "bullmq";
 import fs from "fs/promises";
-import { createWorker, QUEUE_NAMES } from "../../lib/queue";
+import { createWorker, QUEUE_NAMES } from "../lib/queue";
 import * as cheerio from "cheerio";
-import { getNormalizedUrl } from "../../utils/normalize_url";
+import { getNormalizedUrl } from "../utils/normalize_url";
+import { addUrlToFrontier } from "../services/feeder/frontier-feed";
+import { isAllowedForCrawl } from "../utils/url_filter";
 import { savePageData } from "../../db/db";
-import { addUrlToFrontier } from "../../services/feeder/frontier-feed";
-import { isAllowedForCrawl } from "../../utils/url_filter";
 
 interface parseJobData {
   url: string;

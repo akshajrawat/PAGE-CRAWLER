@@ -1,5 +1,5 @@
-import { getVectorEmbeddings } from "../shared/services/ai";
-import { supabase } from "./supabase";
+import { supabase } from "../../db/supabase";
+import { getVectorEmbeddings } from "../services/ai";
 
 // Define the shape of data coming from the crawler
 export type CrawlResult = {

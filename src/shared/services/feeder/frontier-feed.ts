@@ -1,4 +1,4 @@
-import { supabase } from "../../db/supabase";
+import { supabase } from "../../../db/supabase";
 import { createQueue, QUEUE_NAMES } from "../../lib/queue";
 import crypto from "crypto";
 import { isAllowedForCrawl } from "../../utils/url_filter";
