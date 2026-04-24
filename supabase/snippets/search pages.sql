@@ -3,7 +3,7 @@ DROP FUNCTION IF EXISTS search_pages(text, vector, double precision, integer, in
 CREATE OR REPLACE FUNCTION search_pages(
   query_text text,
   query_embedding vector(384),
-  match_threshold float DEFAULT 0.5, 
+  match_threshold float DEFAULT 0.2, 
   match_count int DEFAULT 10,
   page_offset int DEFAULT 0
 )
@@ -49,10 +49,14 @@ BEGIN
   SELECT 
     p.id, p.url, p.title, p.body_text, p.description,
     (
-      (COALESCE(LEAST(k.keyword_score, 1.0), 0) * 0.2) +      -- 20% Exact Keyword
-      (COALESCE(v.vector_score, 0) * 0.4) +                   -- 40% AI Meaning
-      (COALESCE(f.fuzzy_score, 0) * 0.3) +                    -- 30% Title Match (Huge for relevance!)
-      (log(2.0, (COALESCE(p.authority_score, 1) + 1)::numeric) * 0.1) -- 10% Authority
+      -- 1. BASE RELEVANCE (Max ~1.0)
+      (
+        (COALESCE(LEAST(k.keyword_score, 1.0), 0) * 0.15) +      -- 15% Exact Keyword
+        (COALESCE(v.vector_score, 0) * 0.70) +                   -- 70% AI Meaning (Heavy lifting)
+        (COALESCE(f.fuzzy_score, 0) * 0.15)                      -- 15% Title Match
+      )
+      -- 2. THE AUTHORITY MULTIPLIER (Base 10 log, maxes around 1.3x - 1.5x boost)
+      * (1.0 + (log(10.0, (COALESCE(p.authority_score, 0) + 1)::numeric) * 0.25))
     )::float AS similarity
   FROM combined_ids c
   JOIN pages p ON p.id = c.id

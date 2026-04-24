@@ -4,6 +4,7 @@ import { getVectorEmbeddings } from "../../../shared/services/ai";
 import { supabase } from "../../../db/supabase";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
+
 export const askController = async (req: Request, res: Response) => {
   const query = req.query.q as string;
   if (!query) {

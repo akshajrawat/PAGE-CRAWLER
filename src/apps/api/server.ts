@@ -2,7 +2,6 @@ import express from "express";
 import cors from "cors";
 import searchRoutes from "./routes/search-routes";
 import dotenv from "dotenv";
-import { startRankUpdater } from "../../shared/services/cron-jobs/authScoreIncrease";
 
 
 const app = express();
@@ -12,8 +11,6 @@ dotenv.config();
 
 const port = process.env.PORT || 3000;
 
-// Start the background cron jobs
-startRankUpdater();
 
 // Routes
 app.use("/api", searchRoutes);
