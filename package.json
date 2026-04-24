@@ -7,11 +7,11 @@
     "test": "npx jest",
     "backend": "npx ts-node src/apps/api/server.ts",
     "frontend": "cd src/frontend && npm run dev",
-    "ai:server": "cd src/shared/services/ai && .\\venv\\Scripts\\activate && uvicorn vector:app --reload",
+    "ai:server": "cd src/shared/services/ai && .\\venv\\Scripts\\activate && uvicorn vector:app --host 0.0.0.0 --port 8000 --reload",
     "worker:fetch": "npx ts-node src/apps/worker-fetch/index.ts",
     "worker:parse": "npx ts-node src/apps/worker-parse/index.ts",
     "feed": "npx ts-node src/shared/services/feeder/frontier-feed.ts",
-    "docker-up": "npx supabase start && docker-compose up --build",
+    "docker-up": "npx supabase start && docker-compose up",
     "docker-down": "npx supabase stop && docker-compose down",
     "docker-clean": "docker-compose build --no-cache && npm run docker-up"
   },

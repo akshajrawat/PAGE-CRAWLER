@@ -6,8 +6,8 @@ services:
     image: redis:alpine
     ports:
       - "6379:6379"
-    # This prevents Redis from saving to disk, keeping it blazing fast for queues
-    command: redis-server --save "" --appendonly no 
+    volumes:                 
+      - ./redis_data:/data
 
   # ----------------------------------------
   # SERVICE 2: The API (Frontend facing)
@@ -15,6 +15,8 @@ services:
   api:
     build: . 
     container_name: moxcety-api
+    extra_hosts:                               
+      - "host.docker.internal:host-gateway"
     command: npx ts-node src/apps/api/server.ts 
     ports:
       - "3000:3000"
@@ -24,7 +26,9 @@ services:
       - .env
     environment:
       - REDIS_HOST=redis
-      - SUPABASE_URL=http://host.docker.internal:54321
+      - SUPABASE_URL=http://192.168.1.15:54321
+    volumes:               
+      - ./src:/app/src
 
   # ----------------------------------------
   # SERVICE 3: The Fetch Worker
@@ -39,7 +43,10 @@ services:
       - .env
     environment:
       - REDIS_HOST=redis
-      - SUPABASE_URL=http://host.docker.internal:54321
+      - SUPABASE_URL=http://192.168.1.15:54321
+    volumes:               
+      - ./src:/app/src
+      - ./storage:/app/storage
 
   # ----------------------------------------
   # SERVICE 4: The Parse Worker
@@ -47,6 +54,8 @@ services:
   worker-parse:
     build: .
     container_name: moxcety-parse-worker
+    extra_hosts:                                
+      - "host.docker.internal:host-gateway"
     command: npx ts-node src/apps/worker-parse/index.ts 
     depends_on:
       - redis
@@ -54,4 +63,8 @@ services:
       - .env
     environment:
       - REDIS_HOST=redis
-      - SUPABASE_URL=http://host.docker.internal:54321
+      - SUPABASE_URL=http://192.168.1.15:54321
+      - AI_URL=http://192.168.1.15:8000
+    volumes:               
+      - ./src:/app/src
+      - ./storage:/app/storage

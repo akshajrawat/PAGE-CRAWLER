@@ -32,24 +32,18 @@ export const addUrlToFrontier = async (url: string, depth: number = 0) => {
 // RUNNER
 if (require.main === module) {
   const seedUrls = [
-    // --- TECH PILLAR ---
-    "https://news.ycombinator.com", 
-    "https://dev.to", 
-    "https://techcrunch.com",
-
-    // --- KNOWLEDGE & NEWS PILLAR ---
-    "https://www.bbc.com/news",
-    "https://www.theverge.com", 
-    "https://medium.com", 
-    "https://www.wired.com",
-
-    // --- DOCUMENTATION PILLAR (Keep your favorites) ---
-    "https://developer.mozilla.org/en-US/docs/Web",
-    "https://python.org",
-
-    // --- OPEN DIRECTORIES ---
-    "https://www.dmoz-odp.org", 
-  ];
+  // 1. The Safe Sandbox (Control Group)
+  "https://quotes.toscrape.com/",
+  
+  // 2. The Text Goldmine (Embedding Test)
+  "https://paulgraham.com/articles.html",
+  
+  // 3. The Authority Graph (PageRank Test)
+  "https://news.ycombinator.com/",
+  
+  // 4. The Modern Web (DOM Parsing Test)
+  "https://scrapethissite.com/pages/"
+];
 
   const run = async () => {
     try {
