@@ -1,33 +1,17 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
-import type { AskResponse } from "../../types";
-import { askAi } from "../../api/search";
+import { useAskAiStream } from "../../api/search";
 
 const AskAi = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q");
-
-  const [data, setData] = useState<AskResponse | null>(null);
-  const [loading, setLoading] = useState(false);
+  const { askAi, answer, sources, isStreaming, error } = useAskAiStream();
 
   useEffect(() => {
-    if (!query) return;
-
-    const fetchAnswer = async () => {
-      setLoading(true);
-      setData(null);
-      try {
-        const data = await askAi(query);
-        setData(data);
-      } catch (err) {
-        console.error("Failed to ask AI", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchAnswer();
+    if (query && query.trim()) {
+      askAi(query);
+    }
   }, [query]);
 
   return (
@@ -53,8 +37,33 @@ const AskAi = () => {
         </h2>
       </div>
 
+      {/* ERROR DISPLAY AREA */}
+      {error && (
+        <div className="mb-8 p-4 bg-red-900/20 border border-red-500/30 rounded-xl flex items-start gap-3 backdrop-blur-sm shadow-lg">
+          <svg
+            className="w-5 h-5 text-red-400 mt-0.5 shrink-0"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+            />
+          </svg>
+          <div className="text-red-200 text-sm">
+            <strong className="block font-medium text-red-400 mb-1">
+              Connection Error
+            </strong>
+            {error}
+          </div>
+        </div>
+      )}
+
       {/* 2. Loading State (High Tech Skeleton) */}
-      {loading && (
+      {isStreaming && !answer && (
         <div className="space-y-6 animate-pulse">
           <div className="h-4 bg-gray-800 rounded w-3/4"></div>
           <div className="h-4 bg-gray-800 rounded w-full"></div>
@@ -71,7 +80,7 @@ const AskAi = () => {
       )}
 
       {/* 3. The Answer Area */}
-      {!loading && data && (
+      {answer && (
         <div className="bg-neutral-900/50 border border-white/10 rounded-xl p-6 md:p-8 shadow-2xl backdrop-blur-sm">
           {/* Using prose-invert for readable text on dark backgrounds */}
           <div className="prose prose-invert prose-blue max-w-none">
@@ -85,31 +94,43 @@ const AskAi = () => {
                   children,
                   ...props
                 }: any) => {
-                  return inline ? (
-                    <code
-                      className="bg-gray-800 text-blue-300 px-1 py-0.5 rounded text-sm"
-                      {...props}
-                    >
-                      {children}
-                    </code>
-                  ) : (
-                    <div className="bg-black/50 rounded-lg p-4 border border-gray-800 overflow-x-auto my-4">
-                      <code className="text-gray-300 text-sm" {...props}>
+                  // If it's inline (single backticks), keep it subtle and inline
+                  if (inline) {
+                    return (
+                      <code
+                        className="bg-blue-500/20 text-blue-300 px-1.5 py-0.5 rounded font-mono text-sm border border-blue-500/30"
+                        {...props}
+                      >
                         {children}
                       </code>
+                    );
+                  }
+
+                  // Only if it's NOT inline (triple backticks), give it the big block treatment
+                  return (
+                    <div className="relative my-6 group">
+                      <div className="absolute -inset-0.5 bg-linear-to-r from-blue-500 to-purple-600 rounded-lg blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                      <div className="relative bg-black rounded-lg border border-white/10 p-4 overflow-x-auto">
+                        <code
+                          className="text-pink-400 text-sm font-mono"
+                          {...props}
+                        >
+                          {children}
+                        </code>
+                      </div>
                     </div>
                   );
                 },
               }}
             >
-              {data.answer}
+              {answer}
             </ReactMarkdown>
           </div>
         </div>
       )}
 
       {/* 4. The Sources Grid */}
-      {!loading && data && data.sources.length > 0 && (
+      {sources.length > 0 && (
         <div className="mt-10">
           <h3 className="text-xs font-semibold text-gray-500 mb-4 uppercase tracking-widest flex items-center gap-2">
             <span className="w-2 h-2 bg-green-500 rounded-full"></span>
@@ -117,7 +138,7 @@ const AskAi = () => {
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {data.sources.map((source, idx) => (
+            {sources.map((source, idx) => (
               <a
                 key={idx}
                 href={source.url}

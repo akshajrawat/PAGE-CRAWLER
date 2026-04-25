@@ -30,7 +30,7 @@ export interface CodeApiResponse {
   data: CodeSnippet[];
 }
 
-export interface AskResponse {
-  answer: string;
-  sources: { title: string; url: string }[];
+export interface AskResponseSource {
+  title: string;
+  url: string;
 }
