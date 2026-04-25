@@ -1,9 +1,5 @@
 import { useCallback, useState } from "react";
-import type {
-  ApiResponse,
-  AskResponseSource,
-  CodeApiResponse,
-} from "../types";
+import type { ApiResponse, AskResponseSource, CodeApiResponse } from "../types";
 import axios from "axios";
 
 export const BACKEND_API = "http://localhost:3000/api";
@@ -12,9 +8,13 @@ export const BACKEND_API = "http://localhost:3000/api";
 export const searchApi = async (
   query: string,
   page: number = 1,
+  options?: { signal?: AbortSignal },
 ): Promise<ApiResponse> => {
   const response = await axios.get(
     `${BACKEND_API}/search?q=${query}&page=${page}`,
+    {
+      signal: options?.signal,
+    },
   );
   return response.data;
 };
@@ -93,7 +93,7 @@ export const useAskAiStream = () => {
                 } else if (parsed.type === "done") {
                   setIsStreaming(false);
                 }
-              } catch (e : any) {
+              } catch (e: any) {
                 console.error("Failed to parse SSE chunk:", jsonString, e);
               }
             }
@@ -108,5 +108,5 @@ export const useAskAiStream = () => {
     }
   }, []);
 
-  return { askAi, answer, sources, isStreaming, error }
+  return { askAi, answer, sources, isStreaming, error };
 };

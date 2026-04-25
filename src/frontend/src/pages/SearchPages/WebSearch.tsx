@@ -1,4 +1,4 @@
-import { AlertCircle } from "lucide-react";
+import { AlertCircle, DatabaseIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import type { SearchResult } from "../../types";
 import { searchApi } from "../../api/search";
@@ -6,52 +6,99 @@ import { useSearchParams } from "react-router-dom";
 
 const WebSearch = () => {
   const [results, setResults] = useState<SearchResult[]>([]);
+  const [hasMore, setHasMore] = useState(true);
+  const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q") || "";
 
+  // explicitely for deployment
+  const [isWakingUp, setIsWakingUp] = useState(false);
+
   //  fetch the data on load
   useEffect(() => {
-    const fetchResults = async () => {
-      if (!query) return;
+    // Reset state when query changes
+    setResults([]);
+    setPage(1);
+    setHasMore(true);
 
-      setIsLoading(true);
-      setError("");
+    const controller = new AbortController();
+    fetchResults(1, controller.signal, true);
 
-      try {
-        const data = await searchApi(query);
-        setResults(data?.data || []);
-      } catch (err) {
-        setError("Failed to retrieve intelligence from the neural net.");
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchResults();
+    // Cancel pending request on query change
+    return () => controller.abort();
   }, [query]);
+
+  const fetchResults = async (
+    pageNum: number,
+    signal?: AbortSignal,
+    isInitial = false,
+  ) => {
+    if (!query) return;
+
+    setIsLoading(true);
+    setError("");
+    if (isInitial) setIsWakingUp(false);
+
+    const wakeUpTimer = setTimeout(() => setIsWakingUp(true), 4000);
+
+    try {
+      // Pass page and signal to the API
+      const data = await searchApi(query, pageNum, { signal });
+
+      const newResults = data?.data || [];
+      setResults((prev) => (isInitial ? newResults : [...prev, ...newResults]));
+      // If less than 10, no more pages
+      setHasMore(newResults.length === 10);
+    } catch (err: any) {
+      if (err.name === "AbortError") return;
+      setError("Failed to retrieve intelligence from the neural net.");
+    } finally {
+      clearTimeout(wakeUpTimer);
+      setIsWakingUp(false);
+      setIsLoading(false);
+    }
+  };
+
+  const loadMore = () => {
+    const nextPage = page + 1;
+    setPage(nextPage);
+    fetchResults(nextPage, undefined, false);
+  };
 
   return (
     <div>
+      {/* INTEGRATED LOADING & WAKE-UP UI */}
+      {isLoading && (
+        <div className="mb-8">
+          {isWakingUp && (
+            <div className="flex items-center text-amber-500 animate-pulse bg-amber-500/5 p-4 rounded-lg border border-amber-500/10 mb-6">
+              <DatabaseIcon className="w-4 h-4 mr-2" />
+              <p className="text-sm font-medium">
+                Waking up the AI server (this takes ~30 seconds on the free
+                tier)...
+              </p>
+            </div>
+          )}
+
+          <div className="space-y-8 animate-pulse">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="space-y-3">
+                <div className="h-4 bg-white/5 rounded w-1/3"></div>
+                <div className="h-6 bg-white/10 rounded w-2/3"></div>
+                <div className="h-16 bg-white/5 rounded w-full"></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* STATS BAR */}
       {!isLoading && !error && results.length > 0 && (
         <p className="text-xs text-gray-500 mb-8 font-mono">
           Moxcety found {results.length} results in 0.42 seconds.
         </p>
-      )}
-
-      {/* LOADING STATE (Skeleton) */}
-      {isLoading && (
-        <div className="space-y-8 animate-pulse">
-          {[1, 2, 3].map((i) => (
-            <div key={i} className="space-y-3">
-              <div className="h-4 bg-white/5 rounded w-1/3"></div>
-              <div className="h-6 bg-white/10 rounded w-2/3"></div>
-              <div className="h-16 bg-white/5 rounded w-full"></div>
-            </div>
-          ))}
-        </div>
       )}
 
       {/* ERROR STATE */}
@@ -129,10 +176,13 @@ const WebSearch = () => {
         ))}
       </div>
 
-      {/* PAGINATION (Simple) */}
-      {!isLoading && results.length > 0 && (
+      {/* PAGINATION */}
+      {!isLoading && hasMore && results.length > 0 && (
         <div className="mt-16 pt-8 border-t border-white/5 flex justify-center">
-          <button className="px-6 py-2 bg-white/5 hover:bg-white/10 rounded-full text-sm transition-colors text-purple-400 font-medium">
+          <button
+            onClick={loadMore}
+            className="px-6 py-2 bg-white/5 hover:bg-white/10 rounded-full text-sm transition-colors text-purple-400 font-medium"
+          >
             Load More Results
           </button>
         </div>

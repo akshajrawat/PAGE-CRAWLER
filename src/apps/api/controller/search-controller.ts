@@ -2,8 +2,15 @@ import { Request, Response } from "express";
 import axios from "axios";
 import { supabase } from "../../../db/supabase";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { Redis } from "@upstash/redis";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
+
+// Initialize Upstash Redis
+const redis = new Redis({
+  url: process.env.UPSTASH_REDIS_REST_URL || "",
+  token: process.env.UPSTASH_REDIS_REST_TOKEN || "",
+});
 
 export const searchController = async (req: Request, res: Response) => {
   try {
@@ -17,11 +24,21 @@ export const searchController = async (req: Request, res: Response) => {
 
     console.log(`Original Query: "${rawQuery}"`);
 
-    // SEMANTIC QUERY EXPANSION VIA GEMINI
+    const normalizedQuery = rawQuery.toLowerCase().trim();
+    const cacheKey = `moxcety:search:${normalizedQuery}:page:${page}`;;
 
+    // Check Redis First
+    const cachedResults = await redis.get(cacheKey);
+    if (cachedResults) {
+      console.log(`⚡ [Search Cache HIT] for: "${rawQuery}"`);
+      return res.json(cachedResults);
+    }
+    console.log(`🧠 [Search Cache MISS] for: "${rawQuery}"`);
+
+    // SEMANTIC QUERY EXPANSION VIA GEMINI
     let expandedQuery = rawQuery;
     try {
-      const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-lite" }); 
+      const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
       // Strict system instruction to prevent conversational garbage
       const prompt = `You are a search query expander for a technical database. 
@@ -69,12 +86,22 @@ export const searchController = async (req: Request, res: Response) => {
       return res.status(500).json({ error: error.message });
     }
 
+    // 4. Save to Redis before returning
+    await redis.set(
+      cacheKey,
+      {
+        page: page,
+        count: searchResult.length,
+        data: searchResult || [],
+      },
+      { ex: 86400 },
+    );
+
     return res.json({
       page: page,
       count: searchResult.length,
       data: searchResult || [],
     });
-    
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });

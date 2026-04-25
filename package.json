@@ -36,6 +36,7 @@
     "@google/generative-ai": "^0.24.1",
     "@supabase/supabase-js": "^2.95.3",
     "@types/react-syntax-highlighter": "^15.5.13",
+    "@upstash/redis": "^1.37.0",
     "axios": "^1.13.5",
     "bullmq": "^5.67.3",
     "cheerio": "^1.2.0",

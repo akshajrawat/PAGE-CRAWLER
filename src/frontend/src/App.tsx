@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import SearchLayout from "./pages/SearchLayout";
-import Dashboard from "./pages/Dashboard";
 import WebSearch from "./pages/SearchPages/WebSearch";
 import CodeSearch from "./pages/SearchPages/CodeSearch";
 import AskAi from "./pages/SearchPages/AskAi";
@@ -16,7 +15,6 @@ const App = () => {
           <Route path="code" element={<CodeSearch />} />
           <Route path="ask-ai" element={<AskAi />} />
         </Route>
-        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   );

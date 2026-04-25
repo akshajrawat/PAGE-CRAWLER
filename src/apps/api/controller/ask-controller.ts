@@ -2,8 +2,15 @@ import { Request, Response } from "express";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { getVectorEmbeddings } from "../../../shared/services/ai";
 import { supabase } from "../../../db/supabase";
+import { Redis } from "@upstash/redis";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
+
+// Initialize Upstash Redis
+const redis = new Redis({
+  url: process.env.UPSTASH_REDIS_REST_URL || "",
+  token: process.env.UPSTASH_REDIS_REST_TOKEN || "",
+});
 
 export const askController = async (req: Request, res: Response) => {
   const query = req.query.q as string;
@@ -19,7 +26,34 @@ export const askController = async (req: Request, res: Response) => {
   res.flushHeaders();
 
   try {
-    console.log(`🧠 [Ask] Thinking about: "${query}"`);
+    const normalizedQuery = query.toLowerCase().trim();
+    const cacheKey = `moxcety:ask:${normalizedQuery}`;
+
+    // redis cache logic start
+    const cachedData: any = await redis.get(cacheKey);
+
+    if (cachedData) {
+      console.log(
+        `⚡ [Cache HIT] Returning instant RAG payload for: "${query}"`,
+      );
+
+      // Send the cached sources
+      res.write(
+        `data: ${JSON.stringify({ type: "sources", data: cachedData.sources })}\n\n`,
+      );
+
+      // Send the entire synthesized answer as one massive chunk
+      res.write(
+        `data: ${JSON.stringify({ type: "chunk", text: cachedData.answer })}\n\n`,
+      );
+
+      // Close connection instantly
+      res.write(`data: ${JSON.stringify({ type: "done" })}\n\n`);
+      return res.end();
+    }
+
+    console.log(`🧠 [Cache MISS] Executing Vector Math & LLM for: "${query}"`);
+    // redis cache logic ends
 
     const queryVector = await getVectorEmbeddings(query);
     const { data: sources, error } = await supabase.rpc("search_pages", {
@@ -80,15 +114,29 @@ export const askController = async (req: Request, res: Response) => {
 
     // Generate & Send
     const result = await model.generateContentStream(prompt);
+
+    let fullAnswer = "";
+
     for await (const chunk of result.stream) {
       const chunkText = chunk.text();
+      fullAnswer += chunkText;
       // Push each text segment down the pipe as soon as Gemini yields it
       res.write(
         `data: ${JSON.stringify({ type: "chunk", text: chunkText })}\n\n`,
       );
     }
 
-    // 6. CLOSE THE CONNECTION
+    // Write to Upstash (Expire in 24 hours)
+    await redis.set(
+      cacheKey,
+      {
+        sources: formattedSources,
+        answer: fullAnswer,
+      },
+      { ex: 86400 },
+    );
+
+    // CLOSE THE CONNECTION
     res.write(`data: ${JSON.stringify({ type: "done" })}\n\n`);
     res.end();
   } catch (error: any) {
