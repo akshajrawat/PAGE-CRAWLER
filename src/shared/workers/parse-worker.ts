@@ -78,6 +78,8 @@ const parseProcessor = async (job: Job<parseJobData>) => {
     const links: string[] = [];
 
     if (depth < MAX_DEPTH) {
+      const currentHost = new URL(url).hostname;
+
       $("a").each((_, el) => {
         const href = $(el).attr("href");
         if (!href) return;
@@ -86,11 +88,18 @@ const parseProcessor = async (job: Job<parseJobData>) => {
           const validUrl = getNormalizedUrl(absoluteUrl);
 
           if (validUrl) {
-            const isAllowed = isAllowedForCrawl(validUrl);
+            const targetHost = new URL(validUrl).hostname;
 
-            // Remove duplicates from same page from the same page
-            if (isAllowed && !links.includes(validUrl)) {
-              links.push(validUrl);
+            const isSameDomain =
+              targetHost === currentHost ||
+              targetHost.endsWith(`.${currentHost}`);
+
+            if (isSameDomain) {
+              const isAllowed = isAllowedForCrawl(validUrl);
+              // Remove duplicates from same page
+              if (isAllowed && !links.includes(validUrl)) {
+                links.push(validUrl);
+              }
             }
           }
         } catch (error) {
@@ -159,15 +168,19 @@ const parseProcessor = async (job: Job<parseJobData>) => {
       return r.status === "fulfilled";
     }).length;
 
-    // after everything is done clear the html in storage to save space
-    await fs.unlink(filePath);
-
     console.log(
       `✅ [PARSE] Finished ${url}. Found ${newLinkCount} links, ${codeSnippets.length} snippets.`,
     );
   } catch (error) {
     console.error(`❌ [PARSE] Failed ${url}:`, error);
     throw error;
+  } finally {
+    // after everything is done clear the html in storage to save space
+    try {
+      await fs.unlink(filePath);
+    } catch (e) {
+      // Ignore if file was already deleted or missing
+    }
   }
 };
 

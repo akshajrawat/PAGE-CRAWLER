@@ -1,14 +1,31 @@
-node_modules
+# --- System / IDE ---
+node_modules/
+.DS_Store
+dist/
+.next/
+coverage/
 .env
-dist
-.next
-coverage
 
-# PostgreSQL
+# --- Infrastructure Data (Docker Volumes) ---
+# Postgres data (Supabase local or Docker)
 pgdata/
-# Ignore downloaded crawler data
-storage/
 
-# (Optional) If you want Git to track the empty folder itself, but not the files inside it, do this instead:
+# Redis & BullMQ Persistence
+
+redis_data/
+*.rdb
+*.aof
+
+# --- Crawler Artifacts ---
 storage/*
 !storage/.gitkeep
+
+# --- Logs ---
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# --- Frontend Build ---
+src/frontend/dist/
+src/frontend/.next/

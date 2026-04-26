@@ -32,24 +32,22 @@ export const addUrlToFrontier = async (url: string, depth: number = 0) => {
 // RUNNER
 if (require.main === module) {
   const seedUrls = [
-  // 1. The Safe Sandbox (Control Group)
-  "https://quotes.toscrape.com/",
-  
-  // 2. The Text Goldmine (Embedding Test)
-  "https://paulgraham.com/articles.html",
-  
-  // 3. The Authority Graph (PageRank Test)
-  "https://news.ycombinator.com/",
-  
-  // 4. The Modern Web (DOM Parsing Test)
-  "https://scrapethissite.com/pages/"
-];
+    "https://react.dev/reference/react",
+    "https://nextjs.org/docs",
+
+    "https://www.postgresql.org/docs/current/tutorial-start.html",
+    "https://redis.io/docs/",
+
+    "https://docs.python.org/3/tutorial/index.html",
+    "https://js.langchain.com/docs/get_started/introduction",
+
+    "https://tailwindcss.com/docs/utility-first",
+  ];
 
   const run = async () => {
     try {
       console.log("🌱 Seeding Database...");
 
-      // 1. MANUALLY SAVE THE SEED TO DB (Corrected!)
       // We map the array of strings to an array of objects
       const rowsToInsert = seedUrls.map((u) => ({
         url: u,
@@ -62,7 +60,6 @@ if (require.main === module) {
 
       if (error) throw error;
 
-      // 2. ADD TO QUEUE
       console.log("🚀 pushing to Redis...");
       for (const u of seedUrls) {
         await addUrlToFrontier(u);

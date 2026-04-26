@@ -75,7 +75,7 @@ export const searchController = async (req: Request, res: Response) => {
 
     const { data: searchResult, error } = await supabase.rpc("search_pages", {
       query_text: rawQuery,
-      match_threshold: 0.2,
+      match_threshold: 0.55,
       query_embedding: queryVector,
       match_count: 10,
       page_offset: offset,

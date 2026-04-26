@@ -1,0 +1,1 @@
+SELECT count(*) FROM pages WHERE body_text IS NOT NULL;

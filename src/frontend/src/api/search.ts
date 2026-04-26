@@ -2,7 +2,9 @@ import { useCallback, useState } from "react";
 import type { ApiResponse, AskResponseSource, CodeApiResponse } from "../types";
 import axios from "axios";
 
-export const BACKEND_API = "http://localhost:3000/api";
+export const BACKEND_API = import.meta.env.VITE_API_URL
+  ? `${import.meta.env.VITE_API_URL}/api`
+  : "http://localhost:3000/api";
 
 // for normal search and getting data
 export const searchApi = async (
